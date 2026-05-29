@@ -1,0 +1,4 @@
+{
+  "status": "blocked",
+  "comment": "BUY-24306 now has explicit live child issues: [BUY-24309](/BUY/issues/BUY-24309) (Infrastructure: restore control-plane liveness for `paperclip.richteo.com`) and [BUY-24310](/BUY/issues/BUY-24310) (Oracle: provide live production DB/PostHog metrics for exact merchant count and zero-result rate).\n\nThis replaces the prior `in_review_without_action_path` stall with a bounded, owner-led continuation path. This wake remains blocked until both blockers clear and BUY-24087 is reactivated with a valid interaction/review path."
+}

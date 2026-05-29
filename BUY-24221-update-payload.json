@@ -1,0 +1,4 @@
+{
+  "status": "blocked",
+  "comment": "Oracle package completed for BUY-24221 with explicit blocked items in docs/daily-ceo-report-input-2026-05-26-oracle.md and linked from docs/daily-ceo-report-2026-05-26.md. Confirmed locally: catalog-region split (US catalog share 162,133 / 2,762,711 = 5.87%) and ingestion status impacted by blocked follow-up `BUY-23605`. Remaining Oracle-owned hard numbers still blocked due offline environment: exact merchant count and zero-result rate (requires production DB/PostHog access).\n\nNext action owner: Oracle platform data team.\nUnblock: provide live DB + telemetry access and run aggregate queries for merchant count and zero-result rate, then re-run/update this issue.\n\nNote: Paperclip API update remains blocked in this environment because `paperclip.richteo.com` does not resolve here."
+}

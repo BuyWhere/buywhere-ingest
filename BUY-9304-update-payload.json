@@ -1,0 +1,4 @@
+{
+  "status": "blocked",
+  "comment": "Merchant hunt completed locally and documented in `docs/buy-9304-merchant-leads-2026-05-29.md`.\n\nValidated live on 2026-05-29 UTC as open WooCommerce Store API merchants during this heartbeat: `megagop.com`, `entranceaccess.com`, `y2sth.com`, `aboveaveragegolf89.com`, `dysfunctionalshoes.com`, `ghcpk.com`, `raycowylie.com`, `authorkimann.com`, and `earthstayer.com`. `foreveryoung8298.com` responded with a PHP notice before JSON, so it was kept out of the clean lead count.\n\nThis issue is blocked from thread/status sync because Paperclip control-plane API requests from this workspace are timing out, including simple authenticated reads to `/api/agents/me` and issue update attempts.\n\nUnblock owner: Paperclip platform/infrastructure.\nUnblock action: restore API liveness for `paperclip.richteo.com` from agent workspaces, then apply this payload or repost the findings from the linked doc and close the issue."
+}

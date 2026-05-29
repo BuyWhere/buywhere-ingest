@@ -1,0 +1,48 @@
+{
+  "create": [
+    {
+      "title": "Daily CEO Report Input — 2026-05-26 (Rex)",
+      "owner": "Rex",
+      "requested_by": "Daily CEO Report (BUY-24087)",
+      "required_fields": [
+        "exact product count from DB",
+        "platform uptime %",
+        "API p95 latency",
+        "infra issues"
+      ]
+    },
+    {
+      "title": "Daily CEO Report Input — 2026-05-26 (Oracle)",
+      "owner": "Oracle",
+      "requested_by": "Daily CEO Report (BUY-24087)",
+      "required_fields": [
+        "exact merchant count",
+        "ingestion pipeline status",
+        "US coverage %",
+        "zero-result rate"
+      ]
+    },
+    {
+      "title": "Daily CEO Report Input — 2026-05-26 (Lyra)",
+      "owner": "Lyra",
+      "requested_by": "Daily CEO Report (BUY-24087)",
+      "required_fields": [
+        "API key registrations",
+        "active agent DAU",
+        "directory listings",
+        "website traffic"
+      ]
+    },
+    {
+      "title": "Daily CEO Report Input — 2026-05-26 (Reed)",
+      "owner": "Reed",
+      "requested_by": "Daily CEO Report (BUY-24087)",
+      "required_fields": [
+        "platform coverage count",
+        "API query volume",
+        "MCP tool call volume",
+        "framework integrations"
+      ]
+    }
+  ]
+}

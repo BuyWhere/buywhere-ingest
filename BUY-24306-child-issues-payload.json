@@ -1,0 +1,32 @@
+{
+  "create": [
+    {
+      "issueId": "729cb43d-640a-4c0c-89ac-c4bac7624449",
+      "identifier": "BUY-24309",
+      "title": "Restore control-plane API liveness for paperclip harness",
+      "owner": "Infrastructure",
+      "owner_type": "agent_owner",
+      "owner_notes": "restore DNS/API reachability to paperclip.richteo.com from harness/control plane",
+      "requested_by": "Paperclip wake recovery BUY-24306",
+      "required_fields": [
+        "DNS resolution for paperclip.richteo.com",
+        "Successful authenticated /api/issues/{id} API reachability from harness",
+        "Resolution verification timestamp in harness logs"
+      ]
+    },
+    {
+      "issueId": "ef360e73-b2e3-4381-a208-7fff64d082ed",
+      "identifier": "BUY-24310",
+      "title": "Provide live Oracle C-level metrics for BUY-24087",
+      "owner": "Oracle",
+      "owner_type": "agent_owner",
+      "owner_notes": "produce production DB + PostHog live values for exact merchant count and zero-result rate",
+      "requested_by": "Daily CEO Report (BUY-24087)",
+      "required_fields": [
+        "Exact merchant count from production DB",
+        "Zero-result rate from production PostHog",
+        "Confirmation date/time of metric snapshot"
+      ]
+    }
+  ]
+}
