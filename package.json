@@ -8,7 +8,8 @@
     "start": "node src/server.js",
     "worker": "node src/worker.js",
     "producer": "node src/producer.js",
-    "health": "node -e 'import(\"./src/health.js\").then(m => m.handler({}).then(r => console.log(r.body)))'"
+    "health": "node -e 'import(\"./src/health.js\").then(m => m.handler({}).then(r => console.log(r.body)))'",
+    "audit:ebay": "node scripts/audit-r2-ebay.js"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
