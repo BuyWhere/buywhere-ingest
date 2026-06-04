@@ -5,12 +5,14 @@
   "type": "module",
   "main": "src/worker.js",
   "scripts": {
-    "start": "node src/worker.js",
+    "start": "node src/server.js",
+    "worker": "node src/worker.js",
     "producer": "node src/producer.js",
     "health": "node -e 'import(\"./src/health.js\").then(m => m.handler({}).then(r => console.log(r.body)))'"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
+    "express": "^4.22.2",
     "pg": "^8.11.3",
     "pg-boss": "^10.0.2",
     "xmldom": "^0.6.0"

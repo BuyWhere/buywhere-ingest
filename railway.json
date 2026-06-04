@@ -1,0 +1,36 @@
+{
+  "deploy": {
+    "db": {
+      "name": "catalog-db",
+      "adapter": "postgresql",
+      "database": "catalog",
+      "user": "catalog",
+      "password": "catalog",
+      "role": "buywhere_ingest_rw"
+    },
+    "service": {
+      "name": "buywhere-ingest",
+      "command": "npm start",
+      "env": {
+        "NODE_ENV": "production",
+        "CATALOG_DB_URL": "{{ db.CATALOG-DB.CONNECTION_STRING }}",
+        "BUYWHERE_API_URL": "https://api.buywhere.ai",
+        "BUYWHERE_API_KEY": "${BUYWHERE_API_KEY}",
+        "PGBOSS_ALLOWED_ENV": "railway",
+        "CATALOG_DB_ENVIRONMENT": "railway",
+        "CATALOG_DB_CANONICAL": "true"
+      }
+    }
+  },
+  "scheduled": {
+    "name": "shopify-producer",
+    "command": "npm run producer",
+    "env": {
+      "CATALOG_DB_URL": "{{ db.CATALOG-DB.CONNECTION_STRING }}",
+      "PGBOSS_ALLOWED_ENV": "railway",
+      "CATALOG_DB_ENVIRONMENT": "railway",
+      "CATALOG_DB_CANONICAL": "true"
+    },
+    "schedule": "0 */6 * * *"
+  }
+}

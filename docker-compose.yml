@@ -40,3 +40,5 @@ services:
       CATALOG_DB_ENVIRONMENT: local
       CATALOG_DB_ROLE: buywhere_ingest_rw
       CATALOG_DB_CANONICAL: "true"
+      BUYWHERE_API_URL: https://api.buywhere.ai
+      BUYWHERE_API_KEY: bw_265c3838655543469dda26d225412864
