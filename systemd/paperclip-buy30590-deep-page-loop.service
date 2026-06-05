@@ -1,0 +1,30 @@
+# paperclip-buy30590-deep-page-loop.service
+# BUY-31185: Systemd durability for the deep-page pagination lane.
+# Handles Shopify merchants with truncated /products.json responses (pages 7-80).
+[Unit]
+Description=Paperclip BUY-30590 Deep Page Loop — Shopify deep pagination
+After=network.target paperclip.service
+Wants=paperclip.service
+
+[Service]
+Type=simple
+User=paperclip
+Group=paperclip
+WorkingDirectory=/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c
+ExecStart=/usr/bin/node scripts/buy30590-deep-page-loop.mjs
+Restart=always
+RestartSec=15
+StartLimitIntervalSec=300
+StartLimitBurst=10
+
+# Logging
+StandardOutput=append:/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/logs/buy30590-systemd.log
+StandardError=append:/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/logs/buy30590-systemd-err.log
+SyslogIdentifier=paperclip-buy30590
+
+# Resource limits
+LimitNOFILE=65535
+MemoryMax=4G
+
+[Install]
+WantedBy=multi-user.target

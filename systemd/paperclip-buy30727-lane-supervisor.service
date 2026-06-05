@@ -1,0 +1,33 @@
+# paperclip-buy30727-lane-supervisor.service
+# BUY-31185: Systemd durability for the CC-MAIN lane supervisor.
+# Auto-replenishing worker pool for Common Crawl index processing.
+# NOTE: Currently disabled (stop marker at data/buy30727-supervisor.stopped).
+# The ExecCondition exits 0 (skip) when the stop marker is present.
+[Unit]
+Description=Paperclip BUY-30727 CC-MAIN Lane Supervisor — auto-replenishing worker pool
+After=network.target paperclip.service
+Wants=paperclip.service
+ConditionPathExists=!/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/data/buy30727-supervisor.stopped
+
+[Service]
+Type=simple
+User=paperclip
+Group=paperclip
+WorkingDirectory=/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c
+ExecStart=/usr/bin/node scripts/buy30727-lane-supervisor.mjs
+Restart=always
+RestartSec=15
+StartLimitIntervalSec=300
+StartLimitBurst=10
+
+# Logging
+StandardOutput=append:/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/logs/buy30727-systemd.log
+StandardError=append:/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/logs/buy30727-systemd-err.log
+SyslogIdentifier=paperclip-buy30727
+
+# Resource limits
+LimitNOFILE=65535
+MemoryMax=4G
+
+[Install]
+WantedBy=multi-user.target

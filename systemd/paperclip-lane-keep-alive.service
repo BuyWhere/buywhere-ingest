@@ -1,0 +1,28 @@
+# paperclip-lane-keep-alive.service
+# BUY-31185: Systemd durability for the lane keep-alive watchdog (BUY-30854).
+# Periodically checks all lane processes and restarts dead ones. Idempotent.
+[Unit]
+Description=Paperclip Lane Keep-Alive Watchdog — restarts dead lane processes
+After=network.target paperclip.service
+Wants=paperclip.service
+
+[Service]
+Type=simple
+User=paperclip
+Group=paperclip
+WorkingDirectory=/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default
+ExecStart=/bin/bash scripts/buy30854-lane-keep-alive.sh
+Restart=on-failure
+RestartSec=30
+
+# Logging
+StandardOutput=append:/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/logs/buy30854-systemd.log
+StandardError=append:/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/logs/buy30854-systemd-err.log
+SyslogIdentifier=paperclip-lane-keep-alive
+
+# Resource limits — lightweight watchdog
+LimitNOFILE=65535
+MemoryMax=512M
+
+[Install]
+WantedBy=multi-user.target

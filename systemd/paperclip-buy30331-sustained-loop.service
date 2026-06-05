@@ -1,0 +1,30 @@
+# paperclip-buy30331-sustained-loop.service
+# BUY-31185: Systemd durability for the sustained scrape+ingest fleet driver.
+# This is the primary merchant ingestion loop for Google Shopping sources.
+[Unit]
+Description=Paperclip BUY-30331 Sustained Ingest Loop — Google Shopping merchants
+After=network.target paperclip.service
+Wants=paperclip.service
+
+[Service]
+Type=simple
+User=paperclip
+Group=paperclip
+WorkingDirectory=/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c
+ExecStart=/usr/bin/node scripts/buy30331-sustained-loop.mjs
+Restart=always
+RestartSec=15
+StartLimitIntervalSec=300
+StartLimitBurst=10
+
+# Logging
+StandardOutput=append:/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/logs/buy30331-systemd.log
+StandardError=append:/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/logs/buy30331-systemd-err.log
+SyslogIdentifier=paperclip-buy30331
+
+# Resource limits
+LimitNOFILE=65535
+MemoryMax=4G
+
+[Install]
+WantedBy=multi-user.target

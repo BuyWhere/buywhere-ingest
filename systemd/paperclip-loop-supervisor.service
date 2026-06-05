@@ -1,0 +1,31 @@
+# paperclip-loop-supervisor.service
+# BUY-31185: Systemd durability for the loop-supervisor daemon.
+# The supervisor monitors buy30331/buy30590/buy30727 and auto-restarts dead loops.
+# Systemd ensures the supervisor itself survives crashes and heartbeat gaps.
+[Unit]
+Description=Paperclip Loop Supervisor — monitors and restarts critical ingest loops
+After=network.target paperclip.service
+Wants=paperclip.service
+
+[Service]
+Type=simple
+User=paperclip
+Group=paperclip
+WorkingDirectory=/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default
+ExecStart=/bin/bash scripts/loop-supervisor.sh _supervise
+Restart=always
+RestartSec=10
+StartLimitIntervalSec=300
+StartLimitBurst=10
+
+# Logging
+StandardOutput=append:/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/logs/loop-supervisor-stdout.log
+StandardError=append:/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/logs/loop-supervisor-stderr.log
+SyslogIdentifier=paperclip-loop-supervisor
+
+# Resource limits
+LimitNOFILE=65535
+MemoryMax=2G
+
+[Install]
+WantedBy=multi-user.target
