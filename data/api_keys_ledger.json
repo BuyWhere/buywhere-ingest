@@ -1,0 +1,33 @@
+{
+  "lastUpdated": "2026-06-05T15:44:34.206522Z",
+  "companyId": "177bc805-e3c8-4336-84cb-8e1e482d5a17",
+  "totalAgents": 44,
+  "apiKeys": {
+    "ZAI_API_KEY": 42,
+    "ZHIPU_API_KEY": 42,
+    "GEMINI_API_KEY": 42,
+    "GOOGLE_API_KEY": 42,
+    "SCRAPERAPI_KEY": 13,
+    "MINIMAX_API_KEY": 42,
+    "BUYWHERE_API_KEY": 42,
+    "DEEPSEEK_API_KEY": 42,
+    "BRIGHTDATA_API_KEY": 14,
+    "PAPERCLIP_WEBHOOK_TOKEN": 36,
+    "POSTHOG_PAT": 19,
+    "NOTION_API_KEY": 19,
+    "POSTHOG_PROJECT_TOKEN": 19,
+    "GH_TOKEN": 19,
+    "NPM_TOKEN": 16,
+    "NPM_ORG_API_KEY": 16,
+    "CLOUDFLARE_API_TOKEN": 10,
+    "HASHNODE_PAT": 8,
+    "DEV_TO_API_KEY": 8,
+    "AGENTMAIL_API_KEY": 9,
+    "PRODUCTHUNT_API_KEY": 8,
+    "RAILWAY_TOKEN": 8,
+    "NVIDIA_API_KEY": 1,
+    "RAILWAY_ACC_API_TOKEN": 8,
+    "CLOUDFLARE_R2_API_TOKEN": 5
+  },
+  "notes": "This ledger aggregates API key counts from agent configurations. The BUYWHERE_API_KEY count represents the company-wide developer API key inventory. Updated by BUY-31183."
+}
