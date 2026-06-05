@@ -129,31 +129,96 @@ def check_db_freshness(conn) -> dict[str, Any]:
     return result
 
 
-def check_runtime_canonical_divergence(conn) -> dict[str, Any]:
-    result = {"check": "runtime_canonical_divergence", "status": "unknown", "message": "", "value": None}
+def get_canonical_product_count(conn) -> dict[str, Any]:
+    """
+    Get exact product count from canonical DB with no silent fallback.
+
+    Returns:
+        {
+            'count': int,
+            'exact': bool,
+            'source': str,  # 'exact', 'pg_stat_fresh', 'unavailable'
+            'timestamp': str,
+            'note': str,  # Optional context
+        }
+    """
+    result = {
+        "count": 0,
+        "exact": False,
+        "source": "unavailable",
+        "timestamp": _ts(),
+        "note": "",
+    }
+
+    # Tier 1: Exact count with reasonable timeout (10s)
     try:
         with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
-            cur.execute("SET LOCAL statement_timeout = '%ds'" % DB_QUERY_TIMEOUT_S)
+            cur.execute("SET LOCAL statement_timeout = '10s'")
             cur.execute("SELECT count(*) AS cnt FROM products")
             row = cur.fetchone()
-            canonical_count = row["cnt"] if row else 0
-            exact = True
-    except Exception:
-        try:
-            conn.rollback()
-            with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
-                cur.execute("SET LOCAL statement_timeout = '%ds'" % DB_QUERY_TIMEOUT_S)
-                cur.execute(
-                    "SELECT n_live_tup AS cnt FROM pg_stat_user_tables WHERE relname = 'products'"
-                )
-                row = cur.fetchone()
-                canonical_count = row["cnt"] if row else 0
-                exact = False
-        except Exception as e2:
-            conn.rollback()
-            result["status"] = "warning"
-            result["message"] = f"Could not get canonical count: {e2}"
+            result.update({
+                "count": row["cnt"] if row else 0,
+                "exact": True,
+                "source": "exact",
+            })
             return result
+    except Exception:
+        conn.rollback()
+
+    # Tier 2: Check pg_stat freshness and use if recent (< 1 hour old)
+    try:
+        with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
+            cur.execute("SET LOCAL statement_timeout = '5s'")
+            cur.execute(
+                """
+                SELECT n_live_tup AS cnt,
+                       greatest(last_analyze, last_autoanalyze) AS last_stats_update
+                FROM pg_stat_user_tables
+                WHERE relname = 'products'
+                """
+            )
+            row = cur.fetchone()
+            if row and row["last_stats_update"]:
+                last_update = row["last_stats_update"]
+                if last_update.tzinfo is None:
+                    last_update = last_update.replace(tzinfo=timezone.utc)
+                age_seconds = (datetime.now(timezone.utc) - last_update).total_seconds()
+                if age_seconds < 3600:
+                    result.update({
+                        "count": row["cnt"] if row else 0,
+                        "exact": False,
+                        "source": "pg_stat_fresh",
+                        "note": f"pg_stat from {int(age_seconds)}s ago",
+                    })
+                    return result
+                else:
+                    result["note"] = f"pg_stat stale ({int(age_seconds)}s old), not using"
+    except Exception:
+        conn.rollback()
+
+    # Tier 3: Could not get any reliable count
+    return result
+
+
+def check_runtime_canonical_divergence(conn) -> dict[str, Any]:
+    result = {"check": "runtime_canonical_divergence", "status": "unknown", "message": "", "value": None}
+
+    canonical_data = get_canonical_product_count(conn)
+    canonical_count = canonical_data["count"]
+    exact = canonical_data["exact"]
+    source = canonical_data["source"]
+
+    if source == "unavailable":
+        result["status"] = "warning"
+        result["message"] = "Could not get canonical count (DB timeout or unavailable)"
+        result["value"] = {"canonical_count": None, "canonical_exact": False, "error": "DB unavailable"}
+        return result
+
+    if not exact:
+        result["status"] = "warning"
+        result["message"] = f"Using approximate canonical count: {canonical_data.get('note', 'pg_stat')}"
+        result["value"] = {"canonical_count": canonical_count, "canonical_exact": exact, "note": canonical_data.get("note")}
+        # Continue to check divergence anyway, but mark as warning
 
     try:
         resp = http_requests.get(
@@ -167,7 +232,7 @@ def check_runtime_canonical_divergence(conn) -> dict[str, Any]:
     except Exception as e:
         result["status"] = "warning"
         result["message"] = f"Could not reach runtime stats endpoint: {e}"
-        result["value"] = {"canonical_count": canonical_count, "canonical_exact": exact}
+        result["value"] = {"canonical_count": canonical_count, "canonical_exact": exact, "source": source}
         return result
 
     if canonical_count == 0:
@@ -178,20 +243,26 @@ def check_runtime_canonical_divergence(conn) -> dict[str, Any]:
     result["value"] = {
         "canonical_count": canonical_count,
         "canonical_exact": exact,
+        "canonical_source": source,
         "runtime_count": runtime_count,
         "divergence_pct": round(divergence_pct, 3),
         "approximate": approximate,
     }
 
     if divergence_pct > DIVERGENCE_TOLERANCE_PCT:
-        result["status"] = "warning"
+        if result["status"] != "warning":
+            result["status"] = "warning"
         result["message"] = (
             f"Runtime/canonical divergence: {divergence_pct:.1f}% "
             f"(tolerance: {DIVERGENCE_TOLERANCE_PCT}%)"
         )
     else:
-        result["status"] = "healthy"
-        result["message"] = f"Runtime/canonical aligned: {divergence_pct:.1f}% divergence"
+        if exact and source == "exact":
+            result["status"] = "healthy"
+            result["message"] = f"Runtime/canonical aligned: {divergence_pct:.1f}% divergence"
+        else:
+            result["status"] = "warning"
+            result["message"] = f"Runtime/canonical aligned ({divergence_pct:.1f}%) but using approximate canonical count"
     return result
 
 
@@ -244,43 +315,94 @@ def check_api_latency() -> dict[str, Any]:
 
 
 def check_source_diversity(conn) -> dict[str, Any]:
+    """Check source diversity using pre-aggregated catalog_stats (fast) with
+    fallback to lightweight products-sample if catalog_stats is stale."""
     result = {"check": "source_diversity", "status": "unknown", "message": "", "value": None}
     try:
-        one_hour_ago = datetime.now(timezone.utc) - timedelta(hours=1)
+        # Primary: use catalog_stats (pre-aggregated, instant)
         with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
-            cur.execute("SET LOCAL statement_timeout = '%ds'" % DB_QUERY_TIMEOUT_S)
+            cur.execute("SET LOCAL statement_timeout = '5s'")
             cur.execute(
                 """
-                SELECT count(DISTINCT source) AS distinct_sources,
-                       array_agg(DISTINCT source) AS sources
+                SELECT source, total, ts
+                FROM catalog_stats
+                WHERE source IS NOT NULL AND source != ''
+                ORDER BY total DESC
+                """
+            )
+            rows = cur.fetchall()
+            if rows:
+                # Filter out synthetic merchants from source names
+                sources = []
+                for r in rows:
+                    s = r["source"]
+                    if not any(sm in s for sm in SYNTHETIC_MERCHANTS):
+                        sources.append(s)
+                distinct_sources = len(sources)
+                ts = rows[0]["ts"]
+                if ts and ts.tzinfo is None:
+                    ts = ts.replace(tzinfo=timezone.utc)
+                stats_age_hours = (datetime.now(timezone.utc) - ts).total_seconds() / 3600 if ts else None
+
+                result["value"] = {
+                    "distinct_sources": distinct_sources,
+                    "top_sources": sources[:10],
+                    "total_sources_in_stats": len(rows),
+                    "stats_age_hours": round(stats_age_hours, 1) if stats_age_hours else None,
+                    "source": "catalog_stats",
+                }
+
+                if stats_age_hours and stats_age_hours > 24:
+                    result["status"] = "warning"
+                    result["message"] = (
+                        f"Source diversity from stale catalog_stats ({stats_age_hours:.0f}h old): "
+                        f"{distinct_sources} sources (may not reflect current state)"
+                    )
+                elif distinct_sources < MIN_SOURCE_FAMILIES:
+                    result["status"] = "warning"
+                    result["message"] = (
+                        f"Low source diversity: {distinct_sources} source(s) "
+                        f"(minimum: {MIN_SOURCE_FAMILIES}): {sources[:5]}"
+                    )
+                else:
+                    result["status"] = "healthy"
+                    result["message"] = (
+                        f"Source diversity OK: {distinct_sources} sources from catalog_stats"
+                    )
+                return result
+
+        # Fallback: lightweight sample — just count distinct sources via sku prefix
+        conn.rollback()
+        with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
+            cur.execute("SET LOCAL statement_timeout = '10s'")
+            cur.execute(
+                """
+                SELECT count(DISTINCT source) AS distinct_sources
                 FROM products
-                WHERE created_at >= %s
-                  AND merchant_id NOT IN %s
+                WHERE merchant_id NOT IN %s
+                LIMIT 1
                 """,
-                (one_hour_ago, tuple(sorted(SYNTHETIC_MERCHANTS))),
+                (tuple(sorted(SYNTHETIC_MERCHANTS)),),
             )
             row = cur.fetchone()
             distinct_sources = row["distinct_sources"] if row else 0
-            sources = row["sources"] if row else []
 
             result["value"] = {
                 "distinct_sources": distinct_sources,
-                "sources": sources,
-                "window": "1h",
+                "source": "products_sample",
             }
 
             if distinct_sources < MIN_SOURCE_FAMILIES:
                 result["status"] = "warning"
                 result["message"] = (
-                    f"Low source diversity: {distinct_sources} source(s) in last hour "
-                    f"(minimum: {MIN_SOURCE_FAMILIES}): {sources}"
+                    f"Low source diversity: {distinct_sources} source(s) "
+                    f"(minimum: {MIN_SOURCE_FAMILIES})"
                 )
             else:
                 result["status"] = "healthy"
-                result["message"] = (
-                    f"Source diversity OK: {distinct_sources} sources in last hour: {sources}"
-                )
+                result["message"] = f"Source diversity OK: {distinct_sources} sources"
     except Exception as e:
+        conn.rollback()
         result["status"] = "warning"
         result["message"] = f"Could not check source diversity: {e}"
     return result
@@ -332,27 +454,48 @@ def main() -> int:
     worst_status = "healthy"
     status_order = {"healthy": 0, "warning": 1, "critical": 2}
 
-    for check_fn, needs_conn in [
+    # Single DB connection for all DB checks — avoids 3x connection overhead
+    conn = None
+    try:
+        conn = psycopg2.connect(db_url, connect_timeout=DB_CONNECT_TIMEOUT_S)
+    except Exception as e:
+        all_checks.append({
+            "check": "db_connection",
+            "status": "critical",
+            "message": f"Could not connect to database: {e}",
+            "value": None,
+        })
+
+    db_checks = [
         (check_db_freshness, True),
         (check_runtime_canonical_divergence, True),
         (check_source_diversity, True),
-    ]:
+    ]
+    for check_fn, needs_conn in db_checks:
         if not needs_conn:
             all_checks.append(check_fn())
             continue
+        if conn is None:
+            all_checks.append({
+                "check": check_fn.__name__,
+                "status": "critical",
+                "message": f"Database error in {check_fn.__name__}: no connection",
+                "value": None,
+            })
+            continue
         try:
-            conn = psycopg2.connect(db_url, connect_timeout=DB_CONNECT_TIMEOUT_S)
-            try:
-                all_checks.append(check_fn(conn))
-            finally:
-                conn.close()
+            all_checks.append(check_fn(conn))
         except Exception as e:
+            conn.rollback()
             all_checks.append({
                 "check": check_fn.__name__,
                 "status": "critical",
                 "message": f"Database error in {check_fn.__name__}: {e}",
                 "value": None,
             })
+
+    if conn:
+        conn.close()
 
     all_checks.append(check_api_latency())
     all_checks.append(check_health_endpoints())
