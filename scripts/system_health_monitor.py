@@ -42,7 +42,7 @@ MIN_SOURCE_FAMILIES = 2
 API_BASE_URL = "https://api.buywhere.ai"
 HEALTH_TIMEOUT_S = 10
 DB_CONNECT_TIMEOUT_S = 15
-DB_QUERY_TIMEOUT_S = 15
+DB_QUERY_TIMEOUT_S = 30
 LATENCY_SAMPLE_COUNT = 3
 
 
@@ -98,9 +98,34 @@ def check_db_freshness(conn) -> dict[str, Any]:
             else:
                 result["status"] = "healthy"
                 result["message"] = f"DB writes fresh: max updated_at is {age_hours:.1f}h old"
-    except Exception as e:
-        result["status"] = "critical"
-        result["message"] = f"Could not query DB freshness: {e}"
+    except Exception:
+        conn.rollback()
+        try:
+            with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
+                cur.execute("SET LOCAL statement_timeout = '%ds'" % DB_QUERY_TIMEOUT_S)
+                cur.execute(
+                    "SELECT greatest(last_vacuum, last_analyze, last_autoanalyze) AS last_maint "
+                    "FROM pg_stat_user_tables WHERE relname = 'products'"
+                )
+                row = cur.fetchone()
+                last_maint = row["last_maint"] if row else None
+                if last_maint:
+                    if last_maint.tzinfo is None:
+                        last_maint = last_maint.replace(tzinfo=timezone.utc)
+                    age_h = (datetime.now(timezone.utc) - last_maint).total_seconds() / 3600
+                    result["status"] = "warning"
+                    result["value"] = {"last_maintenance": last_maint.isoformat(), "age_hours": round(age_h, 2)}
+                    result["message"] = (
+                        f"DB max(updated_at) timed out; last autoanalyze {age_h:.1f}h ago — "
+                        f"DB under heavy load"
+                    )
+                else:
+                    result["status"] = "warning"
+                    result["message"] = "DB max(updated_at) timed out; no maintenance stats available"
+        except Exception as e2:
+            conn.rollback()
+            result["status"] = "critical"
+            result["message"] = f"Could not query DB freshness (fallback also failed): {e2}"
     return result
 
 
@@ -112,46 +137,61 @@ def check_runtime_canonical_divergence(conn) -> dict[str, Any]:
             cur.execute("SELECT count(*) AS cnt FROM products")
             row = cur.fetchone()
             canonical_count = row["cnt"] if row else 0
-
+            exact = True
+    except Exception:
         try:
-            resp = http_requests.get(
-                f"{API_BASE_URL}/v1/catalog/stats",
-                timeout=HEALTH_TIMEOUT_S,
-            )
-            resp.raise_for_status()
-            body = resp.json()
-            runtime_count = body.get("data", {}).get("total_products", 0)
-            approximate = body.get("meta", {}).get("approximate", True)
-        except Exception as e:
+            conn.rollback()
+            with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
+                cur.execute("SET LOCAL statement_timeout = '%ds'" % DB_QUERY_TIMEOUT_S)
+                cur.execute(
+                    "SELECT n_live_tup AS cnt FROM pg_stat_user_tables WHERE relname = 'products'"
+                )
+                row = cur.fetchone()
+                canonical_count = row["cnt"] if row else 0
+                exact = False
+        except Exception as e2:
+            conn.rollback()
             result["status"] = "warning"
-            result["message"] = f"Could not reach runtime stats endpoint: {e}"
-            result["value"] = {"canonical_count": canonical_count}
+            result["message"] = f"Could not get canonical count: {e2}"
             return result
 
-        if canonical_count == 0:
-            divergence_pct = 0.0
-        else:
-            divergence_pct = abs(runtime_count - canonical_count) / canonical_count * 100
-
-        result["value"] = {
-            "canonical_count": canonical_count,
-            "runtime_count": runtime_count,
-            "divergence_pct": round(divergence_pct, 3),
-            "approximate": approximate,
-        }
-
-        if divergence_pct > DIVERGENCE_TOLERANCE_PCT:
-            result["status"] = "warning"
-            result["message"] = (
-                f"Runtime/canonical divergence: {divergence_pct:.1f}% "
-                f"(tolerance: {DIVERGENCE_TOLERANCE_PCT}%)"
-            )
-        else:
-            result["status"] = "healthy"
-            result["message"] = f"Runtime/canonical aligned: {divergence_pct:.1f}% divergence"
+    try:
+        resp = http_requests.get(
+            f"{API_BASE_URL}/v1/catalog/stats",
+            timeout=HEALTH_TIMEOUT_S,
+        )
+        resp.raise_for_status()
+        body = resp.json()
+        runtime_count = body.get("data", {}).get("total_products", 0)
+        approximate = body.get("meta", {}).get("approximate", True)
     except Exception as e:
         result["status"] = "warning"
-        result["message"] = f"Could not check divergence: {e}"
+        result["message"] = f"Could not reach runtime stats endpoint: {e}"
+        result["value"] = {"canonical_count": canonical_count, "canonical_exact": exact}
+        return result
+
+    if canonical_count == 0:
+        divergence_pct = 0.0
+    else:
+        divergence_pct = abs(runtime_count - canonical_count) / canonical_count * 100
+
+    result["value"] = {
+        "canonical_count": canonical_count,
+        "canonical_exact": exact,
+        "runtime_count": runtime_count,
+        "divergence_pct": round(divergence_pct, 3),
+        "approximate": approximate,
+    }
+
+    if divergence_pct > DIVERGENCE_TOLERANCE_PCT:
+        result["status"] = "warning"
+        result["message"] = (
+            f"Runtime/canonical divergence: {divergence_pct:.1f}% "
+            f"(tolerance: {DIVERGENCE_TOLERANCE_PCT}%)"
+        )
+    else:
+        result["status"] = "healthy"
+        result["message"] = f"Runtime/canonical aligned: {divergence_pct:.1f}% divergence"
     return result
 
 
@@ -292,21 +332,27 @@ def main() -> int:
     worst_status = "healthy"
     status_order = {"healthy": 0, "warning": 1, "critical": 2}
 
-    try:
-        conn = psycopg2.connect(db_url, connect_timeout=DB_CONNECT_TIMEOUT_S)
+    for check_fn, needs_conn in [
+        (check_db_freshness, True),
+        (check_runtime_canonical_divergence, True),
+        (check_source_diversity, True),
+    ]:
+        if not needs_conn:
+            all_checks.append(check_fn())
+            continue
         try:
-            all_checks.append(check_db_freshness(conn))
-            all_checks.append(check_runtime_canonical_divergence(conn))
-            all_checks.append(check_source_diversity(conn))
-        finally:
-            conn.close()
-    except Exception as e:
-        all_checks.append({
-            "check": "database_connection",
-            "status": "critical",
-            "message": f"Cannot connect to database: {e}",
-            "value": None,
-        })
+            conn = psycopg2.connect(db_url, connect_timeout=DB_CONNECT_TIMEOUT_S)
+            try:
+                all_checks.append(check_fn(conn))
+            finally:
+                conn.close()
+        except Exception as e:
+            all_checks.append({
+                "check": check_fn.__name__,
+                "status": "critical",
+                "message": f"Database error in {check_fn.__name__}: {e}",
+                "value": None,
+            })
 
     all_checks.append(check_api_latency())
     all_checks.append(check_health_endpoints())
