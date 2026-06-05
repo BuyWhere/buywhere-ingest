@@ -39,10 +39,13 @@ async function enqueueShopifyJobs(merchants) {
   let enqueued = 0;
   for (const merchant of merchants) {
     try {
+      const merchantSource = (merchant.source && merchant.source !== 'shopify')
+        ? merchant.source
+        : `shopify_${merchant.domain.replace(/[^a-z0-9]/gi, '').toLowerCase()}`;
       await pgBoss.send('scrape.shopify', {
         merchantId: merchant.id,
         domain: merchant.domain,
-        source: merchant.source || 'shopify',
+        source: merchantSource,
         enqueuedAt: new Date().toISOString(),
       });
       enqueued++;

@@ -88,7 +88,10 @@ await pgBoss.work(queueName, {
 }, async (job) => {
   const id = job.id;
   const payload = job.data;
-  const { merchantId, domain, source = 'shopify' } = payload;
+  const { merchantId, domain } = payload;
+  const source = (payload.source && payload.source !== 'shopify')
+    ? payload.source
+    : `shopify_${domain.replace(/[^a-z0-9]/gi, '').toLowerCase()}`;
   const createdAt = new Date().toISOString();
 
   console.log(`[worker] scrape.shopify job received at ${createdAt}`, {
