@@ -1,0 +1,44 @@
+# paperclip-data-cleanup@.service
+# BUY-33094: Templated service that runs safe-data-cleanup.sh --apply on one
+# workspace's data/ directory. The instance suffix is the workspace path
+# (e.g. paperclip-data-cleanup@3ec8f6dd-1735-4479-9825-a2c42edac34c.service
+# runs cleanup on the Oracle workspace). This file is paired with
+# paperclip-data-cleanup@.timer; install + enable the timer, not the service.
+#
+# Per BUY-33094 acceptance: failures are logged but do not block. The wrapper
+# script enforces a 10-minute hard timeout and exits 0 even on inner failure.
+[Unit]
+Description=Paperclip data cleanup (workspace %i)
+After=network.target paperclip.service
+Wants=paperclip.service
+
+[Service]
+Type=oneshot
+User=paperclip
+Group=paperclip
+# %i is the systemd instance name (workspace UUID).
+Environment=WORKSPACE_ID=%i
+ExecStart=/bin/bash -c '\
+  WS="/paperclip/instances/default/workspaces/${WORKSPACE_ID}"; \
+  WRAPPER="/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/scripts/cleanup-teardown.sh"; \
+  exec "$WRAPPER" "$WS" --apply --timeout=540'
+WorkingDirectory=/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default
+
+# Hard cap the whole unit at 15 minutes so a stuck cleanup can never wedge
+# the systemd queue.
+TimeoutStartSec=900
+
+# Logging — append to the standard logs dir for the workspace. The wrapper
+# also writes its own per-cycle log at <ws>/logs/data-cleanup.log.
+StandardOutput=append:/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/logs/data-cleanup-%i-stdout.log
+StandardError=append:/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/logs/data-cleanup-%i-stderr.log
+SyslogIdentifier=paperclip-data-cleanup
+
+# Resource limits — cleanup touches a lot of files; give it reasonable headroom.
+LimitNOFILE=65535
+MemoryMax=1G
+
+# Hardening — the wrapper is trusted, no network egress needed.
+PrivateTmp=true
+ProtectSystem=full
+NoNewPrivileges=true

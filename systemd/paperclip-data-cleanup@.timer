@@ -1,0 +1,27 @@
+# paperclip-data-cleanup@.timer
+# BUY-33094: 6-hourly sweep per scraping/ingestion workspace. RandomizedDelaySec
+# staggers the fire time so the catalog DB isn't hammered by all workspaces
+# running their cleanup in the same second. Pair with paperclip-data-cleanup@.service.
+#
+# Enable per workspace, e.g.:
+#   systemctl enable --now paperclip-data-cleanup@3ec8f6dd-1735-4479-9825-a2c42edac34c.timer
+[Unit]
+Description=Paperclip data cleanup 6-hourly sweep (workspace %i)
+Requires=paperclip-data-cleanup@%i.service
+
+[Timer]
+# Fire every 6 hours, offset 10 min past the hour so we don't collide with the
+# top-of-hour keep-alive cron or any other system cron.
+OnCalendar=*:00/6:10
+# Jitter up to 30 min per workspace so a fleet of N workspaces spreads its
+# catalog-DB load across that window. Per BUY-33094 acceptance: "jittered by
+# workspace so the catalog DB is not hammered".
+RandomizedDelaySec=1800
+# Don't pile up missed runs during downtime — one sweep per fire is enough.
+Persistent=false
+# If the unit was already running, queue the next fire from "now" rather than
+# the missed calendar slot.
+AccuracySec=60
+
+[Install]
+WantedBy=timers.target
