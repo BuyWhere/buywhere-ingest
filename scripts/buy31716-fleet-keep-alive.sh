@@ -141,7 +141,7 @@ restart_if_dead() {
   echo "[$(ts)] ${label} DEAD — restarting (consecutive_dead_ticks=${dead_ticks})"
   (
     cd "${WORKSPACE_ROOT}" &&
-    nohup bash -c "$cmd" >> "$logfile" 2>&1 < /dev/null &
+    setsid bash -c "$cmd" >> "$logfile" 2>&1 < /dev/null &
     disown
   )
   sleep 2
