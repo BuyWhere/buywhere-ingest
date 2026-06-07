@@ -87,7 +87,9 @@ async function ingestProductsToCatalog(products, source) {
 await pgBoss.work(queueName, {
   batchSize: 1,
   teamConcurrency: 1,
-}, async (job) => {
+}, async (jobs) => {
+  // pg-boss v10 passes an array of jobs even with batchSize: 1
+  const job = Array.isArray(jobs) ? jobs[0] : jobs;
   const id = job.id;
   const payload = job.data;
   const { merchantId, domain } = payload;
