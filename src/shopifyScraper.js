@@ -133,6 +133,105 @@ async function scrapePDP(url, domain) {
   }
 }
 
+function extractPriceFromVariants(p) {
+  const variants = p.variants || [];
+  const prices = variants
+    .map((v) => (v && v.price != null ? parseFloat(v.price) : null))
+    .filter((x) => x != null && !Number.isNaN(x));
+  return prices.length ? Math.min(...prices) : null;
+}
+
+// BUY-34833: deep-page variant of scrapeShopifyStore. Same output shape so the
+// existing ingestProductsToCatalog path in worker.js accepts it without a
+// branch. Uses Shopify's /products.json?page=N&limit=250 paginated endpoint
+// (sitemaps only cover the first ~250-5000 PDPs; deep paging must hit the
+// products.json endpoint directly, per buy30590-deep-page-loop.mjs which is
+// the source script being migrated).
+//
+// Stops on the first page that returns < limit products (end of catalog) or
+// returns 0 products. Returns the same `{sku, merchant_id, title, ...}`
+// shape as scrapeShopifyStore so worker.js can ingest with one call.
+export async function scrapeShopifyStorePages(domain, startPage = 7, endPage = 80, limit = 250) {
+  console.log(`[scraper] deep-page starting for ${domain} pages=${startPage}-${endPage} limit=${limit}`);
+  const all = [];
+  let lastPage = startPage - 1;
+
+  for (let page = startPage; page <= endPage; page++) {
+    const url = `https://${domain}/products.json?limit=${limit}&page=${page}`;
+    const products = await fetchShopifyJsonPage(domain, url);
+    if (!products || products.length === 0) {
+      console.log(`[scraper] deep-page ${domain} page=${page} returned 0 → stop`);
+      break;
+    }
+    lastPage = page;
+
+    for (const p of products) {
+      const handle = p.handle || '';
+      const url = handle ? `https://${domain}/products/${handle}` : `https://${domain}`;
+      const price = extractPriceFromVariants(p);
+      const image = Array.isArray(p.images) && p.images.length > 0
+        ? (p.images[0] && p.images[0].src) || null
+        : null;
+      const firstVariant = Array.isArray(p.variants) && p.variants.length > 0
+        ? p.variants[0]
+        : null;
+      all.push({
+        sku: `${domain}-${p.id}`,
+        merchant_id: domain,
+        title: p.title || '',
+        description: p.body_html || '',
+        price: price == null ? 0 : price,
+        currency: 'USD',
+        url,
+        image_url: image,
+        brand: p.vendor || null,
+        is_active: true,
+        is_available: firstVariant ? firstVariant.available !== false : true,
+        metadata: {
+          shopify_domain: domain,
+          scraped_at: new Date().toISOString(),
+          deep_page: page,
+          handle,
+          product_type: p.product_type || null,
+        },
+      });
+    }
+
+    // End-of-catalog signal: a non-full page means we hit the tail.
+    if (products.length < limit) {
+      console.log(`[scraper] deep-page ${domain} page=${page} returned ${products.length} < ${limit} → stop`);
+      break;
+    }
+  }
+
+  console.log(`[scraper] deep-page ${domain} done: pages=${startPage}-${lastPage} products=${all.length}`);
+  return all;
+}
+
+async function fetchShopifyJsonPage(domain, url) {
+  const TIMEOUT = 15000;
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), TIMEOUT);
+  try {
+    const res = await fetch(url, {
+      signal: controller.signal,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (compatible; BuywhereDeepBot/1.0)',
+        'Accept': 'application/json',
+      },
+    });
+    if (!res.ok) return null;
+    const text = await res.text();
+    if (!text.includes('"products"')) return null;
+    const data = JSON.parse(text);
+    return Array.isArray(data.products) ? data.products : null;
+  } catch {
+    return null;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 export async function scrapeShopifyStore(domain, maxProducts = 100) {
   console.log(`[scraper] Starting scrape for ${domain}`);
   

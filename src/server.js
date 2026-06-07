@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import express from 'express';
-import { scrapeShopifyStore } from './shopifyScraper.js';
+import { scrapeShopifyStore, scrapeShopifyStorePages } from './shopifyScraper.js';
 import { getIngestionStats, getRecentJobs, getQueueStats } from './health.js';
 
 dotenv.config();
@@ -48,7 +48,7 @@ app.get(['/health', '/healthz'], async (req, res) => {
   }
 });
 
-// Test endpoint for manual Shopify scraping
+// BUY-33060: page-1 scraper test endpoint (existing).
 app.get('/test-scraper', async (req, res) => {
   try {
     const { domain } = req.query;
@@ -71,6 +71,37 @@ app.get('/test-scraper', async (req, res) => {
   }
 });
 
+// BUY-34833: deep-page scraper test endpoint. Mirrors /test-scraper but
+// hits /products.json?page=N&limit=250 (pages 7-80 by default). Used for
+// pre-deploy verification on Railway against a known-good merchant.
+app.get('/test-deep-scraper', async (req, res) => {
+  try {
+    const { domain, start, end, limit } = req.query;
+    if (!domain) {
+      return res.status(400).json({ error: 'Domain parameter is required' });
+    }
+    const startPage = start ? parseInt(start, 10) : 7;
+    const endPage = end ? parseInt(end, 10) : 8;
+    const pageLimit = limit ? parseInt(limit, 10) : 250;
+
+    const products = await scrapeShopifyStorePages(domain, startPage, endPage, pageLimit);
+    res.json({
+      domain,
+      start_page: startPage,
+      end_page: endPage,
+      limit: pageLimit,
+      products_count: products.length,
+      products: products.slice(0, 2),
+      timestamp: new Date().toISOString()
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: err.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
 // Simple root endpoint
 app.get('/', (req, res) => {
   res.json({
@@ -78,8 +109,9 @@ app.get('/', (req, res) => {
     status: 'running',
     version: '1.0.0',
     endpoints: [
-      '/health - Health check and stats',
-      '/test-scraper?domain=example.com - Test scraper'
+      '/health - Health check and stats (includes scrape.shopify + scrape.shopify.deep queue counts)',
+      '/test-scraper?domain=example.com - Test page-1 scraper (sitemap)',
+      '/test-deep-scraper?domain=example.com&start=7&end=8 - Test deep scraper (/products.json?page=N)'
     ]
   });
 });

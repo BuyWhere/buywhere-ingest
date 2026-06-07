@@ -9,6 +9,14 @@ if (!catalogDbUrl) {
   throw new Error('Missing CATALOG_DB_URL (or DATABASE_URL) environment variable.');
 }
 
+// BUY-34833 / BUY-34834: surface all three ingest queues in /healthz:
+//   - scrape.shopify           — Shopify page 1 (XML sitemap → first ~250)
+//   - scrape.shopify.deep      — Shopify deep pages 7-80 (migrated from
+//                                buy30590-deep-page-loop.mjs; row rate must
+//                                match the live loop for 24h before cutover)
+//   - scrape.woocommerce.deep  — WooCommerce deep pages 1-80 (Store API)
+const TRACKED_QUEUES = ['scrape.shopify', 'scrape.shopify.deep', 'scrape.woocommerce.deep'];
+
 const db = new pg.Pool({
   connectionString: catalogDbUrl,
 });
@@ -16,7 +24,7 @@ const db = new pg.Pool({
 async function getIngestionStats() {
   try {
     const result = await db.query(`
-      SELECT 
+      SELECT
         COUNT(*) as total_runs,
         COUNT(*) FILTER (WHERE status = 'completed') as completed_runs,
         COUNT(*) FILTER (WHERE status = 'failed') as failed_runs,
@@ -38,7 +46,7 @@ async function getIngestionStats() {
 async function getRecentJobs(limit = 10) {
   try {
     const result = await db.query(`
-      SELECT 
+      SELECT
         id, source, status, created_at, finished_at,
         rows_inserted, rows_updated, rows_failed, error_message
       FROM ingestion_runs
@@ -54,18 +62,31 @@ async function getRecentJobs(limit = 10) {
 
 async function getQueueStats() {
   try {
+    // Per-queue stats. pgboss stores jobs in pgboss.job. The single-query
+    // GROUP BY is cheaper than N queries. /healthz uses these to surface
+    // deep-queue throughput (BUY-34833 acceptance: deep-page row rate >= live loop).
     const result = await db.query(`
-      SELECT 
+      SELECT
         name as queue_name,
         COUNT(*) FILTER (WHERE state = 'created') as pending,
         COUNT(*) FILTER (WHERE state = 'active') as active,
         COUNT(*) FILTER (WHERE state = 'completed') as completed,
         COUNT(*) FILTER (WHERE state = 'failed') as failed
       FROM pgboss.job
-      WHERE name = 'scrape.shopify'
+      WHERE name = ANY($1)
       GROUP BY name
-    `);
-    return result.rows[0] || null;
+    `, [TRACKED_QUEUES]);
+
+    // Always return a row per tracked queue (with zeros if absent) so the
+    // /healthz payload shape is stable across "no jobs yet" states.
+    const byName = Object.fromEntries(result.rows.map((r) => [r.queue_name, r]));
+    return TRACKED_QUEUES.map((name) => byName[name] || {
+      queue_name: name,
+      pending: 0,
+      active: 0,
+      completed: 0,
+      failed: 0,
+    });
   } catch (err) {
     console.error('[health] Error fetching queue stats:', err);
     return null;

@@ -31,5 +31,16 @@
       "CATALOG_DB_CANONICAL": "true"
     },
     "schedule": "0 */6 * * *"
+  },
+  "scheduledWc": {
+    "name": "woocommerce-producer",
+    "command": "npm run producer:wc",
+    "env": {
+      "CATALOG_DB_URL": "{{ db.CATALOG-DB.CONNECTION_STRING }}",
+      "PGBOSS_ALLOWED_ENV": "railway",
+      "CATALOG_DB_ENVIRONMENT": "railway",
+      "CATALOG_DB_CANONICAL": "true"
+    },
+    "schedule": "0 3 * * *"
   }
 }
