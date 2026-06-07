@@ -436,10 +436,32 @@ def main() -> int:
         action="store_true",
         help="File a child issue even if the result is PASS (useful for testing).",
     )
+    parser.add_argument(
+        "--check-hour",
+        type=str,
+        default=None,
+        metavar="YYYY-MM-DDTHH:00",
+        help="Check a specific past hour (e.g. 2026-06-07T06:00) instead of the just-completed hour. "
+        "Used for backfill verification of the BUY-33694 DoD windows.",
+    )
     args = parser.parse_args()
 
     now = datetime.now(timezone.utc)
-    hour_start = now.replace(minute=0, second=0, microsecond=0) - timedelta(hours=1)
+    if args.check_hour:
+        # Parse an explicit hour_start (e.g. "2026-06-07T06:00" or with timezone)
+        from datetime import datetime as _dt
+
+        hs_str = args.check_hour.replace("Z", "+00:00")
+        try:
+            hour_start = _dt.fromisoformat(hs_str)
+        except ValueError:
+            print(f"ERROR: --check-hour must be ISO-8601 (got {args.check_hour!r})")
+            return 2
+        if hour_start.tzinfo is None:
+            hour_start = hour_start.replace(tzinfo=timezone.utc)
+        hour_start = hour_start.replace(minute=0, second=0, microsecond=0)
+    else:
+        hour_start = now.replace(minute=0, second=0, microsecond=0) - timedelta(hours=1)
     fire_ts = now.strftime("%Y-%m-%d %H:%M UTC")
 
     print(
