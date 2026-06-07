@@ -1,7 +1,9 @@
 import dotenv from 'dotenv';
 import PgBoss from 'pg-boss';
 import pg from 'pg';
+import http from 'http';
 import { scrapeShopifyStore } from './shopifyScraper.js';
+import { getIngestionStats, getRecentJobs, getQueueStats } from './health.js';
 
 dotenv.config();
 
@@ -137,3 +139,49 @@ await pgBoss.work(queueName, {
 });
 
 console.log(`[worker] listening on queue ${queueName}`);
+
+// Tiny /healthz HTTP server so Railway can healthcheck the long-running
+// worker.  Returns the same shape as src/server.js's /health so the
+// BUY-33060 acceptance gate's "recentJobs visible at /healthz" item works.
+const healthPort = parseInt(process.env.PORT || '3000', 10);
+const healthServer = http.createServer(async (req, res) => {
+  if (req.url !== '/health' && req.url !== '/healthz') {
+    res.statusCode = 404;
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify({ error: 'not found' }));
+    return;
+  }
+  try {
+    const [stats, recentJobs, queueStats] = await Promise.all([
+      getIngestionStats(),
+      getRecentJobs(),
+      getQueueStats(),
+    ]);
+    let status = 'healthy';
+    if (!stats) status = 'degraded';
+    else if (stats.failed_runs > 0 && stats.completed_runs === 0) status = 'unhealthy';
+    else if (stats.running_runs > 5) status = 'busy';
+
+    res.statusCode = status === 'healthy' ? 200 : 503;
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify({
+      status,
+      timestamp: new Date().toISOString(),
+      service: 'buywhere-ingest-worker',
+      stats: stats || {},
+      queue: queueStats || {},
+      recent_jobs: recentJobs,
+    }, null, 2));
+  } catch (err) {
+    res.statusCode = 503;
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify({
+      status: 'unhealthy',
+      timestamp: new Date().toISOString(),
+      error: err.message,
+    }));
+  }
+});
+healthServer.listen(healthPort, () => {
+  console.log(`[worker] healthz server listening on port ${healthPort}`);
+});

@@ -10,7 +10,6 @@
     },
     "service": {
       "name": "buywhere-ingest",
-      "command": "npm start",
       "env": {
         "NODE_ENV": "production",
         "CATALOG_DB_URL": "{{ db.CATALOG-DB.CONNECTION_STRING }}",

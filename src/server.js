@@ -9,7 +9,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Health endpoint
-app.get('/health', async (req, res) => {
+app.get(['/health', '/healthz'], async (req, res) => {
   try {
     const stats = await getIngestionStats();
     const recentJobs = await getRecentJobs();

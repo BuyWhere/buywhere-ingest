@@ -72,6 +72,8 @@ async function getQueueStats() {
   }
 }
 
+export { getIngestionStats, getRecentJobs, getQueueStats };
+
 export async function handler(event) {
   const stats = await getIngestionStats();
   const recentJobs = await getRecentJobs();
