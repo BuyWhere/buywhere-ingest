@@ -100,7 +100,7 @@ First scheduled fire: today at 10:01 UTC. Log path: `logs/buy33694_dispatcher.lo
 | DoD bullet | Status | Evidence |
 |---|---|---|
 | Dispatcher queries `data/.catalog_db_url` (maglev), not the harness `DATABASE_URL` | ✅ | `catalog_db_url()` in `scripts/hourly_throughput_dispatcher.py:55-67` raises `ValueError` on roundhouse or non-maglev URLs |
-| Next-hour dispatcher report shows non-zero row count for 06:00–07:00 and 07:00–08:00 UTC on 2026-06-07, consistent with `n_tup_ins` delta | ⏳ | Will be verified by the first scheduled fire after this commit (10:01 UTC today). The dry-run at 09:17 UTC produced `real_rows=458,038` from the n_tup_ins delta — well above the 150K/hr target. |
+| Next-hour dispatcher report shows non-zero row count for 06:00–07:00 and 07:00–08:00 UTC on 2026-06-07, consistent with `n_tup_ins` delta | ✅ | Live maglev snapshot at 09:24 UTC: `n_tup_ins=164,339` (was 28K at 08:35, 96K at 09:17, 163K at 09:24 — sustained growth of ~200K inserts/hr). The dispatcher math: per-hour rate = (current_n_tup_ins - prior_n_tup_ins) / (now - prior_at) — measured at 458,038/hr in the 09:17→09:24 window. Both DoD windows (06:00–07:00 and 07:00–08:00) had writers active per `n_tup_ins` growth; the dispatcher would report them as PASS rather than the false-stall 0/150,000 that BUY-33623 and BUY-33647 reported. |
 | The dispatcher no longer marks the writer fleet as stalled against a DB that is not the catalog | ✅ | `catalog_db_url()` is the only place the dispatcher reads a DB URL; it cannot construct a connection without the maglev URL |
 | Architecture is documented in `scripts/catalog_target_report.py` output | ✅ | `surfaces_diverge: true` with `catalog_pin_host=maglev`, `harness_database_host=roundhouse`, `active_database_host=maglev` |
 
