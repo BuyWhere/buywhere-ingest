@@ -21,6 +21,13 @@ import {
   SUPPORTED_KINDS as SITEMAP_KINDS,
   MIN_PRODUCTS_THRESHOLD as SITEMAP_MIN_PRODUCTS_DEFAULT,
 } from './sitemapDiscover.js';
+import {
+  LANE_ROLES,
+  LANE_ROLE_CONFIG,
+  fetchLaneCandidatePages,
+  evaluateLaneQuality,
+  laneProductsToIngestRows,
+} from './laneRunner.js';
 
 dotenv.config();
 
@@ -1014,6 +1021,224 @@ await pgBoss.work(DISCOVER_SITEMAP_QUEUE, {
 
 console.log(`[worker] listening on queue ${DISCOVER_SITEMAP_QUEUE}`);
 
+// ---------------------------------------------------------------------------
+// Lane runner workers (BUY-34838) — five role-specific queues that replace
+// the buy30620-page-lane-runner.mjs keepalives (hunt, hunt2, stock, crate)
+// and the buy30620-scout-validate-lane.mjs (scout) running on the
+// `5bc984ee-…` workspace. Each lane fetches a merchant's
+// /products.json?limit=250&page=N with the role's per-config knobs, runs
+// the role-specific quality filter, and on pass calls /v1/ingest/products
+// directly (the legacy drain loop is no longer needed).
+//
+// Scout is intentionally different: it does a lightweight
+// /products.json?limit=3 live-validation and does NOT call the ingest
+// endpoint. Its job is to mark merchants as "verified" so a downstream
+// producer (or the lane workers themselves, when filtered to
+// `merchants.source='scout_verified'`) can scrape them.
+//
+// Per-(role, domain) dedupe lives in the `lane_processed` table — the
+// worker INSERTs (role, domain, status, rows_inserted) on completion. The
+// lane producer's singleton key is also per-(role, domain) within
+// LANE_SINGLETON_HOURS, so the table is the second line of defense for
+// candidates that slip through the singleton window.
+// ---------------------------------------------------------------------------
+const LANE_QUEUE_PREFIX = 'scrape.shopify.lane.';
+const LANE_QUEUES = LANE_ROLES.map((role) => `${LANE_QUEUE_PREFIX}${role}`);
+// Ingestion endpoint caps at INGEST_BATCH_LIMIT (1000) per request. The
+// hunt/hunt2/stock lanes paginate up to 40 pages of 250 = up to 10k
+// products per merchant, so we chunk.
+const LANE_INGEST_BATCH_LIMIT = 1000;
+
+async function ensureLaneTables(dbPool) {
+  // Mirror the producer's CREATE TABLE IF NOT EXISTS so a fresh
+  // deploy without the producer ever running still has the tables
+  // when the first job arrives. The producer also creates them — the
+  // pair is idempotent.
+  try {
+    await dbPool.query(`
+      CREATE TABLE IF NOT EXISTS lane_feed (
+        domain TEXT PRIMARY KEY,
+        platform TEXT,
+        products_hint INTEGER,
+        ts TIMESTAMPTZ,
+        source TEXT,
+        created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+      );
+    `);
+    await dbPool.query(`
+      CREATE TABLE IF NOT EXISTS lane_processed (
+        role TEXT NOT NULL,
+        domain TEXT NOT NULL,
+        status TEXT NOT NULL,
+        rows_inserted INTEGER NOT NULL DEFAULT 0,
+        last_seen_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+        PRIMARY KEY (role, domain)
+      );
+    `);
+  } catch (err) {
+    // Tables are owned by the catalog-db role; if the worker role
+    // can't CREATE them (only the owner can), we log and move on —
+    // the producer's tables are already there.
+    console.warn(`[worker] lane tables ensure-if-not-exists warning: ${err.message}`);
+  }
+}
+
+async function markLaneProcessed(role, domain, status, rowsInserted) {
+  try {
+    await db.query(
+      `INSERT INTO lane_processed (role, domain, status, rows_inserted, last_seen_at)
+       VALUES ($1, $2, $3, $4, NOW())
+       ON CONFLICT (role, domain) DO UPDATE
+         SET status = EXCLUDED.status,
+             rows_inserted = EXCLUDED.rows_inserted,
+             last_seen_at = NOW()`,
+      [role, domain, status, rowsInserted]
+    );
+  } catch (err) {
+    console.warn(`[worker] could not mark lane_processed (${role}, ${domain}): ${err.message}`);
+  }
+}
+
+function buildLaneWorkerHandler(role) {
+  return async (jobs) => {
+    const job = Array.isArray(jobs) ? jobs[0] : jobs;
+    const id = job.id;
+    const payload = job.data || {};
+    const domain = payload.domain;
+    const cfg = LANE_ROLE_CONFIG[role] || LANE_ROLE_CONFIG.hunt;
+    const createdAt = new Date().toISOString();
+
+    console.log(`[worker] scrape.shopify.lane.${role} job received at ${createdAt}`, { id, domain, payload });
+
+    if (!domain || typeof domain !== 'string' || !domain.includes('.')) {
+      console.warn(`[worker] scrape.shopify.lane.${role} invalid domain=${domain}, skipping`);
+      return;
+    }
+
+    // Per-role source so the catalog's (sku, source) dedup cleanly
+    // namespaces each (role, merchant) catalog.
+    const source = `lane_${role}_${domain.replace(/[^a-z0-9]/gi, '').toLowerCase()}`;
+    const runId = await createIngestionRun(source, {
+      queue: `scrape.shopify.lane.${role}`,
+      role, domain, ...payload,
+    });
+    if (!runId) {
+      console.error(`[worker] scrape.shopify.lane.${role} failed to create ingestion run for ${domain}, skipping`);
+      return;
+    }
+
+    try {
+      if (role === 'scout') {
+        // Scout is a HEAD-style live validation: a single /products.json?limit=3
+        // request with a tight (8s) timeout. We don't apply the page-1
+        // quality filter — scout's job is to mark a merchant as "verified"
+        // for downstream lanes, not to ingest products.
+        const probe = await fetchLaneCandidatePages(domain, {
+          maxPages: 1,
+          pageDelayMs: 0,
+          maxRetries: cfg.maxRetries,
+          retryDelayMs: cfg.retryDelayMs,
+          fetchTimeoutMs: cfg.fetchTimeoutMs,
+          role,
+        });
+        if (!probe || probe.status !== 200) {
+          console.log(`[worker] scrape.shopify.lane.${role} ${domain} no-200 (status=${probe?.status})`);
+          await markLaneProcessed(role, domain, 'rejected', 0);
+          await updateIngestionRun(runId, 'completed', 0, 0, 0, probe ? `status_${probe.status}` : 'fetch_failed');
+          return;
+        }
+        const quality = evaluateLaneQuality(probe.products, { mode: cfg.qualityMode });
+        if (!quality.pass) {
+          console.log(`[worker] scrape.shopify.lane.${role} ${domain} quality-reject reason=${quality.reason}`);
+          await markLaneProcessed(role, domain, 'rejected', 0);
+          await updateIngestionRun(runId, 'completed', 0, 0, 0, `quality_${quality.reason}`);
+          return;
+        }
+        // Scout accepted — record so downstream lanes can pick it up.
+        // (A follow-up enhancement could INSERT a row into the merchants
+        // table with onboarding_stage='discovered' so the cron producer
+        // for `scrape.shopify` picks it up on its next tick. For now we
+        // only update the per-role checkpoint — the lane producers read
+        // from lane_feed directly.)
+        await markLaneProcessed(role, domain, 'accepted', probe.products.length);
+        await updateIngestionRun(runId, 'completed', 0, probe.products.length, 0);
+        console.log(`[worker] scrape.shopify.lane.${role} ${domain} accepted products=${probe.products.length} attempts=${probe.attempts}`);
+        return;
+      }
+
+      // Hunt / hunt2 / stock / crate: full page-1 fetch with role config.
+      const scrape = await fetchLaneCandidatePages(domain, {
+        maxPages: payload.maxPages || cfg.maxPages,
+        pageDelayMs: payload.pageDelayMs ?? cfg.pageDelayMs,
+        maxRetries: payload.maxRetries || cfg.maxRetries,
+        retryDelayMs: payload.retryDelayMs || cfg.retryDelayMs,
+        fetchTimeoutMs: payload.fetchTimeoutMs || cfg.fetchTimeoutMs,
+        role,
+      });
+
+      if (!scrape || scrape.status !== 200) {
+        console.log(`[worker] scrape.shopify.lane.${role} ${domain} fetch-failed status=${scrape?.status}`);
+        await markLaneProcessed(role, domain, 'rejected', 0);
+        await updateIngestionRun(runId, 'completed', 0, 0, 0, scrape ? `status_${scrape.status}` : 'fetch_failed');
+        return;
+      }
+
+      const quality = evaluateLaneQuality(scrape.products, { mode: payload.qualityMode || cfg.qualityMode });
+      if (!quality.pass) {
+        console.log(`[worker] scrape.shopify.lane.${role} ${domain} quality-reject reason=${quality.reason}`);
+        await markLaneProcessed(role, domain, 'rejected', 0);
+        await updateIngestionRun(runId, 'completed', 0, 0, 0, `quality_${quality.reason}`);
+        return;
+      }
+
+      const ingestRows = laneProductsToIngestRows(scrape.products, domain);
+      const chunks = chunkArray(ingestRows, LANE_INGEST_BATCH_LIMIT);
+      let totalInserted = 0;
+      let totalUpdated = 0;
+      let totalFailed = 0;
+      for (let ci = 0; ci < chunks.length; ci++) {
+        const chunk = chunks[ci];
+        try {
+          const r = await ingestProductsToCatalog(chunk, source);
+          totalInserted += r.rows_inserted || 0;
+          totalUpdated += r.rows_updated || 0;
+          totalFailed += r.rows_failed || 0;
+        } catch (chunkErr) {
+          const msg = chunkErr?.message || String(chunkErr);
+          console.error(`[worker] scrape.shopify.lane.${role} ${domain} chunk ${ci + 1}/${chunks.length} failed: ${msg}`);
+          totalFailed += chunk.length;
+        }
+      }
+
+      const status = totalFailed === 0 ? 'completed' : 'completed_with_errors';
+      await markLaneProcessed(role, domain, status, totalInserted);
+      await updateIngestionRun(runId, status, totalInserted, totalUpdated, totalFailed);
+      console.log(`[worker] scrape.shopify.lane.${role} ${domain} done: pages=${scrape.pageCount} products=${scrape.products.length} inserted=${totalInserted} updated=${totalUpdated} failed=${totalFailed} attempts=${scrape.attempts}`);
+    } catch (err) {
+      const errorMessage = err.message || String(err);
+      console.error(`[worker] scrape.shopify.lane.${role} ${domain} job failed:`, errorMessage);
+      await markLaneProcessed(role, domain, 'failed', 0);
+      await updateIngestionRun(runId, 'failed', 0, 0, 0, errorMessage);
+    }
+  };
+}
+
+await ensureLaneTables(db);
+for (const role of LANE_ROLES) {
+  const queue = `scrape.shopify.lane.${role}`;
+  // teamConcurrency: each role keeps a small worker pool so the five
+  // roles don't starve each other on shared outbound bandwidth. The
+  // per-role defaultConcurrency in LANE_ROLE_CONFIG caps the in-flight
+  // fetches per job — pg-boss's teamConcurrency caps the parallel
+  // jobs. With teamConcurrency=2, two lane.<role> jobs run in parallel
+  // and each job runs up to defaultConcurrency fetches inside it.
+  await pgBoss.work(queue, {
+    batchSize: 1,
+    teamConcurrency: 2,
+  }, buildLaneWorkerHandler(role));
+  console.log(`[worker] listening on queue ${queue}`);
+}
+
 // Tiny /healthz HTTP server so Railway can healthcheck the long-running
 // worker.  Returns the same shape as src/server.js's /health so the
 // BUY-33060 acceptance gate's "recentJobs visible at /healthz" item works.
@@ -1042,7 +1267,7 @@ const healthServer = http.createServer(async (req, res) => {
       status,
       timestamp: new Date().toISOString(),
       service: 'buywhere-ingest-worker',
-      queues: [PAGE1_QUEUE, DEEP_QUEUE, WC_DEEP_QUEUE, DISCOVER_CC_QUEUE, DISCOVER_TRANCO_QUEUE, DISCOVER_SITEMAP_QUEUE],
+      queues: [PAGE1_QUEUE, DEEP_QUEUE, WC_DEEP_QUEUE, DISCOVER_CC_QUEUE, DISCOVER_TRANCO_QUEUE, DISCOVER_SITEMAP_QUEUE, ...LANE_QUEUES],
       deep_config: {
         start_page: DEEP_START_PAGE,
         end_page: DEEP_END_PAGE,

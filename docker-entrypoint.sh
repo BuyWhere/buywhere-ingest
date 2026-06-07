@@ -3,13 +3,14 @@
 # Default to "server" so the old buywhere-ingest (cron producer) keeps
 # its pre-BUY-33687 behavior unless explicitly overridden.
 #
-# BUY-34834 / BUY-34835 / BUY-34837: producer-wc, producer-cc, and
-# producer-sitemap are the dedicated SERVICE_ROLE values for the
-# WooCommerce deep-page producer, Common Crawl discovery producer, and
-# sitemap-driven merchant discovery producer respectively. They run the
-# same `node src/<file>.js` shape so a single image covers all roles
+# BUY-34834 / BUY-34835 / BUY-34837 / BUY-34838: producer-wc, producer-cc,
+# producer-sitemap, and producer-lanes are the dedicated SERVICE_ROLE
+# values for the WooCommerce deep-page producer, Common Crawl discovery
+# producer, sitemap-driven merchant discovery producer, and the
+# buy30620 lane runner producer respectively. They run the same
+# `node src/<file>.js` shape so a single image covers all roles
 # (server, worker, producer, producer-wc, producer-cc, producer-tranco,
-# producer-sitemap).
+# producer-sitemap, producer-lanes).
 #
 # Scheduled-job fallback: when Railway runs a scheduled job with a
 # custom command (e.g. `npm run producer:cc`), the entrypoint receives
@@ -33,6 +34,9 @@ case "${SERVICE_ROLE:-server}" in
     ;;
   producer-sitemap)
     exec node src/producer-sitemap.js
+    ;;
+  producer-lanes)
+    exec node src/producer-lanes.js
     ;;
   server)
     exec npm start
