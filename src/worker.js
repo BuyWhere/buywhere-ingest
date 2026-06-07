@@ -5,6 +5,16 @@ import http from 'http';
 import { scrapeShopifyStore, scrapeShopifyStorePages } from './shopifyScraper.js';
 import { scrapeWooCommerceStore } from './woocommerceScraper.js';
 import { getIngestionStats, getRecentJobs, getQueueStats } from './health.js';
+import {
+  probeDomainsStrict,
+  loadCandidateList,
+  isProbeableDomain,
+} from './ccDiscover.js';
+import {
+  fetchTrancoList,
+  probeTrancoHost,
+  SUPPORTED_KINDS,
+} from './trancoDiscovery.js';
 
 dotenv.config();
 
@@ -408,6 +418,434 @@ await pgBoss.work(WC_DEEP_QUEUE, {
 
 console.log(`[worker] listening on queue ${WC_DEEP_QUEUE}`);
 
+// ---------------------------------------------------------------------------
+// Common Crawl discovery worker (BUY-34835) — strict-probe pattern
+// (conc=25, 20s timeout, retry x2 on fetch-failed) against a candidate
+// list (bundled WAT pool snapshot, or a URL via CC_CANDIDATE_LIST_URL).
+// Each job is one segment of the candidate list, sliced [segmentStart, segmentEnd).
+// Verified hits are INSERTed into the `merchants` table with
+// source='shopify' and onboarding_stage='discovered', so the existing
+// Shopify producer (npm run producer) picks them up on the next cron tick
+// and enqueues `scrape.shopify` jobs for actual catalog ingestion.
+// ---------------------------------------------------------------------------
+const DISCOVER_CC_QUEUE = 'discover.cc';
+const DISCOVER_SEGMENT_SIZE = parseInt(process.env.DISCOVER_SEGMENT_SIZE || '1000', 10);
+const DISCOVER_PROBE_CONCURRENCY = parseInt(process.env.DISCOVER_PROBE_CONCURRENCY || '25', 10);
+const DISCOVER_PROBE_TIMEOUT_MS = parseInt(process.env.DISCOVER_PROBE_TIMEOUT_MS || '20000', 10);
+const DISCOVER_PROBE_RETRY_MS = parseInt(process.env.DISCOVER_PROBE_RETRY_MS || '500', 10);
+// Default to the bundled WAT pool snapshot. The producer emits the same
+// default in the job payload, so this is only a fallback if a job arrives
+// without a candidateList hint.
+const DISCOVER_DEFAULT_CANDIDATE_LIST =
+  process.env.CC_CANDIDATE_LIST_URL ||
+  process.env.DISCOVER_CANDIDATE_LIST_PATH ||
+  'data/wat-pool.jsonl';
+const DISCOVER_SINGLETON_HOURS = parseInt(process.env.DISCOVER_SINGLETON_HOURS || '24', 10);
+
+async function insertDiscoveredMerchant(domain, source, payload) {
+  // The merchants table uses `id` as the domain (per BUY-33632 producer
+  // query in producer.js). We INSERT ... ON CONFLICT DO UPDATE so a
+  // re-probe of an already-known merchant is idempotent — the existing
+  // onboarding_stage wins, and we just bump updated_at.
+  //
+  // `name` is the only non-required text column. We pull it from the WAT
+  // pool's source tag when present (e.g. CC-MAIN-2025-43:...); otherwise
+  // leave NULL.
+  const watName = typeof payload?.source === 'string' && payload.source.includes('CC-MAIN-')
+    ? payload.source.split(':')[0]
+    : null;
+  try {
+    const r = await db.query(
+      `INSERT INTO merchants (id, name, source, onboarding_stage, created_at, updated_at)
+       VALUES ($1, $2, $3, 'discovered', NOW(), NOW())
+       ON CONFLICT (id) DO UPDATE
+         SET updated_at = NOW(),
+             name = COALESCE(EXCLUDED.name, merchants.name),
+             source = COALESCE(EXCLUDED.source, merchants.source)
+       RETURNING id, (xmax = 0) AS inserted`,
+      [domain, watName, 'shopify']
+    );
+    if (r.rows.length > 0) {
+      return { ok: true, inserted: r.rows[0].inserted === true };
+    }
+    return { ok: false, reason: 'no_row_returned' };
+  } catch (err) {
+    // The `merchants` table is shared with other writers. A unique
+    // violation on re-probe is the expected case and is handled by the
+    // ON CONFLICT clause — we only see other errors here.
+    return { ok: false, reason: err.message };
+  }
+}
+
+await pgBoss.work(DISCOVER_CC_QUEUE, {
+  batchSize: 1,
+  teamConcurrency: 3,
+}, async (jobs) => {
+  const job = Array.isArray(jobs) ? jobs[0] : jobs;
+  const id = job.id;
+  const payload = job.data || {};
+  const kind = payload.kind === 'wat' ? 'wat' : 'index';
+  const segmentStart = Math.max(0, parseInt(payload.segmentStart, 10) || 0);
+  const segmentEnd = Math.max(segmentStart + 1, parseInt(payload.segmentEnd, 10) || segmentStart + DISCOVER_SEGMENT_SIZE);
+  const candidateListHint = payload.candidateList || DISCOVER_DEFAULT_CANDIDATE_LIST;
+  const createdAt = new Date().toISOString();
+
+  console.log(`[worker] ${DISCOVER_CC_QUEUE} job received at ${createdAt}`, {
+    id, kind, segmentStart, segmentEnd, candidateListHint, payload,
+  });
+
+  const runId = await createIngestionRun(`cc_shopify_discover_v2`, {
+    queue: DISCOVER_CC_QUEUE,
+    kind, segmentStart, segmentEnd, candidateListHint,
+  });
+  if (!runId) {
+    console.error(`[worker] Failed to create ingestion run for ${DISCOVER_CC_QUEUE} job, skipping`);
+    return;
+  }
+
+  try {
+    console.log(`[worker] ${DISCOVER_CC_QUEUE} loading candidate list: ${candidateListHint}`);
+    const allCandidates = await loadCandidateList(candidateListHint);
+    console.log(`[worker] ${DISCOVER_CC_QUEUE} loaded ${allCandidates.length} candidates from list`);
+
+    const slice = allCandidates.slice(segmentStart, segmentEnd);
+    console.log(`[worker] ${DISCOVER_CC_QUEUE} segment ${segmentStart}-${segmentEnd} has ${slice.length} candidates`);
+
+    if (slice.length === 0) {
+      console.log(`[worker] ${DISCOVER_CC_QUEUE} empty segment, marking completed`);
+      await updateIngestionRun(runId, 'completed', 0, 0, 0);
+      return;
+    }
+
+    // Skip domains already in the merchants table — probing them again
+    // is wasted work. We only SELECT the `id` column to keep the query
+    // cheap; a list of ~10k already-known Shopify domains is < 1MB.
+    const allIds = slice.map((c) => c.domain);
+    const knownRes = await db.query(
+      `SELECT id FROM merchants WHERE id = ANY($1::text[])`,
+      [allIds]
+    );
+    const knownSet = new Set(knownRes.rows.map((r) => r.id));
+    const toProbe = slice.filter((c) => !knownSet.has(c.domain));
+    console.log(`[worker] ${DISCOVER_CC_QUEUE} ${slice.length} candidates, ${knownSet.size} already in merchants, ${toProbe.length} to probe`);
+
+    if (toProbe.length === 0) {
+      await updateIngestionRun(runId, 'completed', 0, 0, 0);
+      return;
+    }
+
+    const domains = toProbe.map((c) => c.domain);
+    const { results, stats } = await probeDomainsStrict(domains, {
+      concurrency: DISCOVER_PROBE_CONCURRENCY,
+      timeoutMs: DISCOVER_PROBE_TIMEOUT_MS,
+      retryDelayMs: DISCOVER_PROBE_RETRY_MS,
+      onProgress: ({ done, total, verified, dead, retried }) => {
+        if (done % 200 === 0 || done === total) {
+          console.log(`[worker] ${DISCOVER_CC_QUEUE} progress: ${done}/${total} verified=${verified} dead=${dead} retried=${retried}`);
+        }
+      },
+    });
+
+    let insertedNew = 0;
+    let insertedExisting = 0;
+    let insertFailed = 0;
+    for (const cand of toProbe) {
+      const r = results.get(cand.domain);
+      if (!r || !r.ok) continue;
+      const insertResult = await insertDiscoveredMerchant(cand.domain, 'shopify', { source: cand.source });
+      if (insertResult.ok) {
+        if (insertResult.inserted) insertedNew++;
+        else insertedExisting++;
+      } else {
+        insertFailed++;
+        console.warn(`[worker] ${DISCOVER_CC_QUEUE} merchant insert failed for ${cand.domain}: ${insertResult.reason}`);
+      }
+    }
+
+    // rowsInserted = newly-discovered merchants (the main BUY-34835 KPI).
+    // rowsUpdated = merchants we re-confirmed via probe (already in the
+    // table, ON CONFLICT bumped updated_at). rowsFailed = probes that
+    // hit a non-Shopify site (the expected case for the WAT pool).
+    await updateIngestionRun(runId, 'completed', insertedNew, insertedExisting, stats.dead);
+
+    console.log(`[worker] ${DISCOVER_CC_QUEUE} segment ${segmentStart}-${segmentEnd} done`, {
+      probed: stats.probed,
+      verified: stats.verified,
+      dead: stats.dead,
+      retried: stats.retried,
+      insertedNew,
+      insertedExisting,
+      insertFailed,
+      maxDtMs: stats.maxDtMs,
+      avgDtMs: stats.probed > 0 ? Math.round(stats.totalDtMs / stats.probed) : 0,
+      errorMix: stats.errorMix,
+    });
+  } catch (err) {
+    const errorMessage = err.message || String(err);
+    console.error(`[worker] ${DISCOVER_CC_QUEUE} job failed:`, errorMessage);
+    await updateIngestionRun(runId, 'failed', 0, 0, 0, errorMessage);
+  }
+});
+
+console.log(`[worker] listening on queue ${DISCOVER_CC_QUEUE}`);
+
+// ---------------------------------------------------------------------------
+// Tranco non-Shopify discovery worker (BUY-34836) — replaces the live
+// buy31716-tranco-nonshopify-miner.mjs (Oracle's old maglev-proxy lane).
+//
+// Each job carries `{ rank_range: { start, end }, kind, trancoListId }`.
+// The worker fetches the latest Tranco list (cached for 24h in module
+// scope), slices [start-1, end), runs the kind-specific platform probe
+// (woocommerce / magento / bigcommerce / custom) on each host with
+// bounded concurrency, and INSERTs verified hosts into the `merchants`
+// table with source='tranco_<kind>' and onboarding_stage='discovered'.
+// Singleton dedupe is per (rank_start, rank_end, kind) so the daily
+// producer re-emit is safe.
+//
+// The Tranco list cache is shared across all worker jobs and refreshed
+// lazily — the first job after process start fetches it; subsequent
+// jobs within CACHE_TTL_MS use the cached copy. The cache key prefers
+// the job's trancoListId hint, then TRANCO_LIST_ID env, then "latest".
+// ---------------------------------------------------------------------------
+const DISCOVER_TRANCO_QUEUE = 'discover.tranco';
+const TRANCO_PROBE_CONCURRENCY = parseInt(process.env.TRANCO_PROBE_CONCURRENCY || '8', 10);
+const TRANCO_PROBE_TIMEOUT_MS = parseInt(process.env.TRANCO_PROBE_TIMEOUT_MS || '6000', 10);
+const TRANCO_LIST_CACHE_TTL_MS = parseInt(process.env.TRANCO_LIST_CACHE_TTL_MS || (24 * 60 * 60 * 1000), 10);
+const TRANCO_LIST_FETCH_TIMEOUT_MS = parseInt(process.env.TRANCO_FETCH_TIMEOUT_MS || '30000', 10);
+const TRANCO_SINGLETON_HOURS = parseInt(process.env.TRANCO_PRODUCER_SINGLETON_HOURS || '23', 10);
+
+// In-memory cache: { listId, availableDate, rows, fetchedAtMs }.
+let _trancoCache = null;
+let _trancoCacheInflight = null;
+
+async function getTrancoListCached(listIdHint) {
+  const now = Date.now();
+  if (_trancoCache && (now - _trancoCache.fetchedAtMs) < TRANCO_LIST_CACHE_TTL_MS) {
+    // If the job specifies a different listId than the cached one,
+    // bust the cache (e.g. operator pinned a new list ID).
+    if (!listIdHint || _trancoCache.listId === listIdHint) {
+      return _trancoCache;
+    }
+    console.log(`[worker] Tranco cache list_id mismatch (cached=${_trancoCache.listId} requested=${listIdHint}), busting`);
+    _trancoCache = null;
+  }
+  if (_trancoCacheInflight) {
+    return _trancoCacheInflight;
+  }
+  const fetchListId = listIdHint || process.env.TRANCO_LIST_ID || null;
+  _trancoCacheInflight = (async () => {
+    try {
+      const t = await fetchTrancoList({
+        limit: Math.max(parseInt(process.env.TRANCO_PRODUCER_TOP_N || '1000000', 10), 1000000),
+        listId: fetchListId,
+        fetchTimeoutMs: TRANCO_LIST_FETCH_TIMEOUT_MS,
+      });
+      _trancoCache = { ...t, fetchedAtMs: Date.now() };
+      console.log(`[worker] Tranco list cached list_id=${t.listId} available_date=${t.availableDate || '?'} rows=${t.rows.length}`);
+      return _trancoCache;
+    } finally {
+      _trancoCacheInflight = null;
+    }
+  })();
+  return _trancoCacheInflight;
+}
+
+async function insertTrancoMerchant(domain, source, kind, evidence) {
+  // Same idempotency shape as the BUY-34835 / discover.cc path. The
+  // `name` column is the only non-required text column; we leave it NULL
+  // for tranco discoveries (the WC deep lane fills it later from the
+  // WC store response if available).
+  //
+  // `source` is the per-kind source label, e.g. `tranco_woocommerce`.
+  // ON CONFLICT (id) DO UPDATE bumps updated_at so a re-probe of an
+  // already-known merchant is non-destructive — the existing
+  // onboarding_stage wins.
+  try {
+    const r = await db.query(
+      `INSERT INTO merchants (id, name, source, onboarding_stage, created_at, updated_at)
+       VALUES ($1, $2, $3, 'discovered', NOW(), NOW())
+       ON CONFLICT (id) DO UPDATE
+         SET updated_at = NOW(),
+             source = COALESCE(EXCLUDED.source, merchants.source)
+       RETURNING id, (xmax = 0) AS inserted`,
+      [domain, null, source]
+    );
+    if (r.rows.length > 0) {
+      return { ok: true, inserted: r.rows[0].inserted === true };
+    }
+    return { ok: false, reason: 'no_row_returned' };
+  } catch (err) {
+    return { ok: false, reason: err.message };
+  }
+}
+
+async function probeTrancoDomains(domains, kind, { concurrency, timeoutMs, onProgress } = {}) {
+  const results = new Map();
+  const stats = { probed: 0, verified: 0, dead: 0, errorMix: {}, totalDtMs: 0, maxDtMs: 0 };
+  const list = Array.isArray(domains) ? domains.slice() : [];
+  for (let i = 0; i < list.length; i += concurrency) {
+    const slice = list.slice(i, i + concurrency);
+    const settled = await Promise.allSettled(
+      slice.map(async (d) => {
+        const t0 = Date.now();
+        const r = await probeTrancoHost(d, kind, timeoutMs);
+        r.dt = Date.now() - t0;
+        return { domain: d, result: r };
+      })
+    );
+    for (let k = 0; k < settled.length; k++) {
+      const s = settled[k];
+      stats.probed++;
+      if (s.status !== 'fulfilled') {
+        stats.dead++;
+        const reason = 'promise_rejected';
+        stats.errorMix[reason] = (stats.errorMix[reason] || 0) + 1;
+        results.set(slice[k], { ok: false, reason, dt: 0 });
+        continue;
+      }
+      const { domain, result } = s.value;
+      results.set(domain, result);
+      stats.totalDtMs += result.dt || 0;
+      if ((result.dt || 0) > stats.maxDtMs) stats.maxDtMs = result.dt || 0;
+      if (result.ok) {
+        stats.verified++;
+      } else {
+        stats.dead++;
+        const reason = result.reason || 'unknown';
+        stats.errorMix[reason] = (stats.errorMix[reason] || 0) + 1;
+      }
+    }
+    if (onProgress) {
+      onProgress({
+        done: Math.min(i + concurrency, list.length),
+        total: list.length,
+        verified: stats.verified,
+        dead: stats.dead,
+      });
+    }
+  }
+  return { results, stats };
+}
+
+await pgBoss.work(DISCOVER_TRANCO_QUEUE, {
+  batchSize: 1,
+  teamConcurrency: 2,
+}, async (jobs) => {
+  const job = Array.isArray(jobs) ? jobs[0] : jobs;
+  const id = job.id;
+  const payload = job.data || {};
+  const kind = SUPPORTED_KINDS.includes(payload.kind) ? payload.kind : 'custom';
+  const rankStart = Math.max(1, parseInt(payload?.rank_range?.start, 10) || 1);
+  const rankEnd = Math.max(rankStart, parseInt(payload?.rank_range?.end, 10) || rankStart);
+  const listIdHint = typeof payload.trancoListId === 'string' ? payload.trancoListId : null;
+  const createdAt = new Date().toISOString();
+
+  console.log(`[worker] ${DISCOVER_TRANCO_QUEUE} job received at ${createdAt}`, {
+    id, kind, rankStart, rankEnd, listIdHint, payload,
+  });
+
+  if (rankEnd < rankStart) {
+    console.warn(`[worker] ${DISCOVER_TRANCO_QUEUE} invalid rank range start=${rankStart} end=${rankEnd}, marking failed`);
+    return;
+  }
+
+  const runId = await createIngestionRun(`tranco_${kind}_discover`, {
+    queue: DISCOVER_TRANCO_QUEUE,
+    kind, rankStart, rankEnd, listIdHint,
+  });
+  if (!runId) {
+    console.error(`[worker] Failed to create ingestion run for ${DISCOVER_TRANCO_QUEUE} job, skipping`);
+    return;
+  }
+
+  try {
+    // 1. Load (or refresh) the Tranco list cache.
+    const tranco = await getTrancoListCached(listIdHint);
+    if (!tranco || !Array.isArray(tranco.rows) || tranco.rows.length === 0) {
+      console.error(`[worker] ${DISCOVER_TRANCO_QUEUE} Tranco list unavailable`);
+      await updateIngestionRun(runId, 'failed', 0, 0, 0, 'tranco_list_unavailable');
+      return;
+    }
+
+    // 2. Slice the rank range. Tranco rows are 1-based, so rank 1 = rows[0].
+    const slice = tranco.rows.slice(rankStart - 1, rankEnd);
+    console.log(`[worker] ${DISCOVER_TRANCO_QUEUE} ranks ${rankStart}-${rankEnd} -> ${slice.length} candidates`);
+
+    if (slice.length === 0) {
+      console.log(`[worker] ${DISCOVER_TRANCO_QUEUE} empty rank range, marking completed`);
+      await updateIngestionRun(runId, 'completed', 0, 0, 0);
+      return;
+    }
+
+    // 3. Skip hosts already in merchants.
+    const allIds = slice.map((r) => r.domain);
+    const knownRes = await db.query(
+      `SELECT id FROM merchants WHERE id = ANY($1::text[])`,
+      [allIds]
+    );
+    const knownSet = new Set(knownRes.rows.map((r) => r.id));
+    const toProbe = slice.filter((r) => !knownSet.has(r.domain));
+    console.log(`[worker] ${DISCOVER_TRANCO_QUEUE} ${slice.length} candidates, ${knownSet.size} already in merchants, ${toProbe.length} to probe`);
+
+    if (toProbe.length === 0) {
+      await updateIngestionRun(runId, 'completed', 0, 0, 0);
+      return;
+    }
+
+    // 4. Probe each host with the kind-specific probe.
+    const domains = toProbe.map((r) => r.domain);
+    const { results, stats } = await probeTrancoDomains(domains, kind, {
+      concurrency: TRANCO_PROBE_CONCURRENCY,
+      timeoutMs: TRANCO_PROBE_TIMEOUT_MS,
+      onProgress: ({ done, total, verified, dead }) => {
+        if (done % 200 === 0 || done === total) {
+          console.log(`[worker] ${DISCOVER_TRANCO_QUEUE} progress: ${done}/${total} verified=${verified} dead=${dead}`);
+        }
+      },
+    });
+
+    // 5. INSERT verified hosts into merchants.
+    let insertedNew = 0;
+    let insertedExisting = 0;
+    let insertFailed = 0;
+    const source = `tranco_${kind}`;
+    for (const cand of toProbe) {
+      const r = results.get(cand.domain);
+      if (!r || !r.ok) continue;
+      const insertResult = await insertTrancoMerchant(cand.domain, source, kind, r.evidence);
+      if (insertResult.ok) {
+        if (insertResult.inserted) insertedNew++;
+        else insertedExisting++;
+      } else {
+        insertFailed++;
+        console.warn(`[worker] ${DISCOVER_TRANCO_QUEUE} merchant insert failed for ${cand.domain}: ${insertResult.reason}`);
+      }
+    }
+
+    // rowsInserted = newly-discovered merchants (the main BUY-34836 KPI).
+    // rowsUpdated = re-confirmed via probe (already in the table).
+    // rowsFailed = probes that hit a non-tranco site (the expected case).
+    await updateIngestionRun(runId, 'completed', insertedNew, insertedExisting, stats.dead);
+    console.log(`[worker] ${DISCOVER_TRANCO_QUEUE} ranks ${rankStart}-${rankEnd} (kind=${kind}) done`, {
+      probed: stats.probed,
+      verified: stats.verified,
+      dead: stats.dead,
+      insertedNew,
+      insertedExisting,
+      insertFailed,
+      maxDtMs: stats.maxDtMs,
+      avgDtMs: stats.probed > 0 ? Math.round(stats.totalDtMs / stats.probed) : 0,
+      errorMix: stats.errorMix,
+    });
+  } catch (err) {
+    const errorMessage = err.message || String(err);
+    console.error(`[worker] ${DISCOVER_TRANCO_QUEUE} job failed:`, errorMessage);
+    await updateIngestionRun(runId, 'failed', 0, 0, 0, errorMessage);
+  }
+});
+
+console.log(`[worker] listening on queue ${DISCOVER_TRANCO_QUEUE}`);
+
 // Tiny /healthz HTTP server so Railway can healthcheck the long-running
 // worker.  Returns the same shape as src/server.js's /health so the
 // BUY-33060 acceptance gate's "recentJobs visible at /healthz" item works.
@@ -436,7 +874,7 @@ const healthServer = http.createServer(async (req, res) => {
       status,
       timestamp: new Date().toISOString(),
       service: 'buywhere-ingest-worker',
-      queues: [PAGE1_QUEUE, DEEP_QUEUE, WC_DEEP_QUEUE],
+      queues: [PAGE1_QUEUE, DEEP_QUEUE, WC_DEEP_QUEUE, DISCOVER_CC_QUEUE, DISCOVER_TRANCO_QUEUE],
       deep_config: {
         start_page: DEEP_START_PAGE,
         end_page: DEEP_END_PAGE,
@@ -450,6 +888,21 @@ const healthServer = http.createServer(async (req, res) => {
         page_timeout_ms: WC_DEEP_PAGE_TIMEOUT_MS,
         page_concurrency: WC_DEEP_PAGE_CONCURRENCY,
         singleton_hours: WC_DEEP_SINGLETON_HOURS,
+      },
+      discover_cc_config: {
+        segment_size: DISCOVER_SEGMENT_SIZE,
+        probe_concurrency: DISCOVER_PROBE_CONCURRENCY,
+        probe_timeout_ms: DISCOVER_PROBE_TIMEOUT_MS,
+        probe_retry_ms: DISCOVER_PROBE_RETRY_MS,
+        candidate_list_default: DISCOVER_DEFAULT_CANDIDATE_LIST,
+        singleton_hours: DISCOVER_SINGLETON_HOURS,
+      },
+      discover_tranco_config: {
+        probe_concurrency: TRANCO_PROBE_CONCURRENCY,
+        probe_timeout_ms: TRANCO_PROBE_TIMEOUT_MS,
+        cache_ttl_ms: TRANCO_LIST_CACHE_TTL_MS,
+        singleton_hours: TRANCO_SINGLETON_HOURS,
+        kinds: SUPPORTED_KINDS,
       },
       stats: stats || {},
       queue: queueStats || {},

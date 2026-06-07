@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import { scrapeShopifyStore, scrapeShopifyStorePages } from './shopifyScraper.js';
 import { getIngestionStats, getRecentJobs, getQueueStats } from './health.js';
+import { probeTrancoHost, SUPPORTED_KINDS } from './trancoDiscovery.js';
 
 dotenv.config();
 
@@ -102,6 +103,38 @@ app.get('/test-deep-scraper', async (req, res) => {
   }
 });
 
+// BUY-34836: tranco platform fingerprint probe. Mirrors /test-scraper but
+// runs the kind-specific platform probe (woocommerce/magento/bigcommerce/custom)
+// against a single host. Used for pre-deploy verification against a known
+// non-Shopify merchant (e.g. a WordPress + WC store for kind=woocommerce).
+app.get('/test-tranco-probe', async (req, res) => {
+  try {
+    const { domain, kind, timeoutMs } = req.query;
+    if (!domain) {
+      return res.status(400).json({ error: 'Domain parameter is required' });
+    }
+    const useKind = SUPPORTED_KINDS.includes(kind) ? kind : 'woocommerce';
+    const useTimeout = timeoutMs ? Math.min(30000, Math.max(500, parseInt(timeoutMs, 10))) : 6000;
+
+    const t0 = Date.now();
+    const result = await probeTrancoHost(domain, useKind, useTimeout);
+    const dt = Date.now() - t0;
+    res.json({
+      domain,
+      kind: useKind,
+      timeout_ms: useTimeout,
+      dt_ms: dt,
+      ...result,
+      timestamp: new Date().toISOString(),
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: err.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
 // Simple root endpoint
 app.get('/', (req, res) => {
   res.json({
@@ -109,9 +142,10 @@ app.get('/', (req, res) => {
     status: 'running',
     version: '1.0.0',
     endpoints: [
-      '/health - Health check and stats (includes scrape.shopify + scrape.shopify.deep queue counts)',
+      '/health - Health check and stats (includes scrape.shopify + scrape.shopify.deep + discover.tranco queue counts)',
       '/test-scraper?domain=example.com - Test page-1 scraper (sitemap)',
-      '/test-deep-scraper?domain=example.com&start=7&end=8 - Test deep scraper (/products.json?page=N)'
+      '/test-deep-scraper?domain=example.com&start=7&end=8 - Test deep scraper (/products.json?page=N)',
+      '/test-tranco-probe?domain=example.com&kind=woocommerce - Test tranco non-Shopify platform fingerprint (woocommerce|magento|bigcommerce|custom)'
     ]
   });
 });

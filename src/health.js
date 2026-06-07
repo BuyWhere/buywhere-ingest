@@ -9,13 +9,23 @@ if (!catalogDbUrl) {
   throw new Error('Missing CATALOG_DB_URL (or DATABASE_URL) environment variable.');
 }
 
-// BUY-34833 / BUY-34834: surface all three ingest queues in /healthz:
+// BUY-34833 / BUY-34834 / BUY-34835 / BUY-34836: surface all ingest queues
+// in /healthz:
 //   - scrape.shopify           — Shopify page 1 (XML sitemap → first ~250)
 //   - scrape.shopify.deep      — Shopify deep pages 7-80 (migrated from
 //                                buy30590-deep-page-loop.mjs; row rate must
 //                                match the live loop for 24h before cutover)
 //   - scrape.woocommerce.deep  — WooCommerce deep pages 1-80 (Store API)
-const TRACKED_QUEUES = ['scrape.shopify', 'scrape.shopify.deep', 'scrape.woocommerce.deep'];
+//   - discover.cc              — Common Crawl Shopify discovery
+//   - discover.tranco          — Tranco non-Shopify platform discovery
+//                                (woocommerce/magento/bigcommerce/custom)
+const TRACKED_QUEUES = [
+  'scrape.shopify',
+  'scrape.shopify.deep',
+  'scrape.woocommerce.deep',
+  'discover.cc',
+  'discover.tranco',
+];
 
 const db = new pg.Pool({
   connectionString: catalogDbUrl,

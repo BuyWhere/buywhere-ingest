@@ -43,5 +43,29 @@
       "CATALOG_DB_CANONICAL": "true"
     },
     "schedule": "0 3 * * *"
+  },
+  "_scheduledCc_note": "BUY-34835: third cron (cc-discover-producer, `17 */6 * * *`, `npm run producer:cc`). The minute `17` is off the :00/:30 peak so it doesn't collide with the `0 */6` Shopify producer (BUY-33632) or other fleet-wide crons. Same caveat as scheduledWc — Railway's `railway.json` only honors one `scheduled` key per deploy, so this entry MUST be added via the Railway dashboard on the buywhere-ingest service. Emits `discover.cc` jobs (one per 1,000-candidate segment of the WAT pool); the worker (ccDiscover handler in src/worker.js) probes each segment and INSERTs verified merchants into the merchants table.",
+  "scheduledCc": {
+    "name": "cc-discover-producer",
+    "command": "npm run producer:cc",
+    "env": {
+      "CATALOG_DB_URL": "{{ db.CATALOG-DB.CONNECTION_STRING }}",
+      "PGBOSS_ALLOWED_ENV": "railway",
+      "CATALOG_DB_ENVIRONMENT": "railway",
+      "CATALOG_DB_CANONICAL": "true"
+    },
+    "schedule": "17 */6 * * *"
+  },
+  "_scheduledTranco_note": "BUY-34836: fourth cron (tranco-producer, daily `47 4 * * *`, `npm run producer:tranco`). The minute `47` is off the :00/:30 peak and offset by 47 min from the cc-discover producer (which runs at :17) so the worker is not flooded with two discovery waves at once. Same caveat — Railway's `railway.json` only honors one `scheduled` key per deploy, so this entry MUST be added via the Railway dashboard on the buywhere-ingest service. Emits `discover.tranco` jobs (one per 1k-rank × 4-kinds = 4000 jobs/tick by default); the worker (discover.tranco handler in src/worker.js) fetches the latest Tranco top-1M (cached 24h in memory), slices by rank_range, and probes each host with the kind-specific platform fingerprint (woocommerce/magento/bigcommerce/custom). Consider tuning TRANCO_PRODUCER_KINDS on the dashboard to limit the initial queue depth (e.g. `TRANCO_PRODUCER_KINDS=woocommerce` for the first run, then add kinds once the worker has caught up).",
+  "scheduledTranco": {
+    "name": "tranco-producer",
+    "command": "npm run producer:tranco",
+    "env": {
+      "CATALOG_DB_URL": "{{ db.CATALOG-DB.CONNECTION_STRING }}",
+      "PGBOSS_ALLOWED_ENV": "railway",
+      "CATALOG_DB_ENVIRONMENT": "railway",
+      "CATALOG_DB_CANONICAL": "true"
+    },
+    "schedule": "47 4 * * *"
   }
 }
