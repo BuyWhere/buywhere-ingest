@@ -40,9 +40,10 @@ function fetchJson(url, timeoutMs) {
     .finally(() => clearTimeout(timer));
 }
 
-async function fetchPage(domain, page, { perPage, pageTimeoutMs } = {}) {
+async function fetchPage(domain, page, { perPage, pageTimeoutMs, protocol } = {}) {
   const per_page = perPage || DEFAULT_PER_PAGE;
-  const url = `https://${domain}/wp-json/wc/store/products?per_page=${per_page}&page=${page}`;
+  const proto = protocol || 'https';
+  const url = `${proto}://${domain}/wp-json/wc/store/products?per_page=${per_page}&page=${page}`;
   const data = await fetchJson(url, pageTimeoutMs || DEFAULT_PAGE_TIMEOUT_MS);
   return Array.isArray(data) ? data : null;
 }
@@ -122,6 +123,7 @@ async function mapWithConcurrency(items, limit, mapper) {
  * @param {number} [options.perPage=100]       - items per page (max 100 on Store API)
  * @param {number} [options.pageTimeoutMs=8000] - per-page fetch timeout
  * @param {number} [options.pageConcurrency=8]  - parallel page fetches
+ * @param {string} [options.protocol='https']  - URL protocol; default https
  * @returns {Promise<Array<object>>} products in /v1/ingest/products schema
  */
 export async function scrapeWooCommerceStore(domain, options = {}) {
@@ -130,6 +132,7 @@ export async function scrapeWooCommerceStore(domain, options = {}) {
   const perPage = Math.min(100, Math.max(1, options.perPage || DEFAULT_PER_PAGE));
   const pageTimeoutMs = options.pageTimeoutMs || DEFAULT_PAGE_TIMEOUT_MS;
   const pageConcurrency = options.pageConcurrency || DEFAULT_PAGE_CONCURRENCY;
+  const protocol = options.protocol || 'https';
 
   if (!domain || typeof domain !== 'string' || !domain.includes('.')) {
     console.warn(`[woocommerce-scraper] invalid domain: ${domain}`);
@@ -140,7 +143,7 @@ export async function scrapeWooCommerceStore(domain, options = {}) {
   for (let p = pageStart; p <= pageEnd; p++) pageNums.push(p);
 
   const pageResults = await mapWithConcurrency(pageNums, pageConcurrency, (p) =>
-    fetchPage(domain, p, { perPage, pageTimeoutMs })
+    fetchPage(domain, p, { perPage, pageTimeoutMs, protocol })
   );
 
   // Pages are ordered; first empty array = end of catalog. Any null
@@ -169,11 +172,12 @@ export async function scrapeWooCommerceStore(domain, options = {}) {
  *
  * @param {string} domain
  * @param {number} [timeoutMs=6000]
+ * @param {string} [protocol='https']
  * @returns {Promise<boolean>}
  */
-export async function probeWooCommerceStore(domain, timeoutMs = 6000) {
+export async function probeWooCommerceStore(domain, timeoutMs = 6000, protocol = 'https') {
   const data = await fetchJson(
-    `https://${domain}/wp-json/wc/store/products?per_page=5&page=1`,
+    `${protocol}://${domain}/wp-json/wc/store/products?per_page=5&page=1`,
     timeoutMs
   );
   if (!Array.isArray(data) || data.length === 0) return false;

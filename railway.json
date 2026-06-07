@@ -32,6 +32,7 @@
     },
     "schedule": "0 */6 * * *"
   },
+  "_scheduledWc_note": "Railway's `railway.json` `scheduled` key only honors one cron per deploy. The second cron (woocommerce-producer, `0 3 * * *`, `npm run producer:wc`) MUST be added via the Railway dashboard on the buywhere-ingest service — there is no `projectScheduleCreate` mutation in GraphQL. If the Railway parser tolerates the non-standard `scheduledWc` key it will pick this up; otherwise the dashboard step is required regardless.",
   "scheduledWc": {
     "name": "woocommerce-producer",
     "command": "npm run producer:wc",
