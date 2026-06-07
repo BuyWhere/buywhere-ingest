@@ -25,6 +25,24 @@
 
 set -u
 
+
+# BUY-34726: source R2/Cloudflare credentials for the Oracle-spawned lanes.
+# The cron-fired parent bash (no Paperclip adapter) starts with ~7 env vars;
+# the keep-alive's `setsid bash -c "node scripts/buy30620-stock-page-lane.mjs"`
+# inherits that empty context, so the only R2-touching lane in this fleet
+# (buy30620-stock-page-lane.mjs → lane_r2_teardown.mjs) fails 100% of cycles.
+# r2-upload.mjs reads the canonical names: CLOUDFLARE_R2_ACCESS_KEY_ID,
+# CLOUDFLARE_R2_SECRET_ACCESS_KEY, CLOUDFLARE_R2_ENDPOINT, plus the
+# mixed-case Cloudflare_Account_ID / Cloudflare_API_Token. The env file is
+# created by BUY-34726 (Vera, 2026-06-07); absence is non-fatal so legacy
+# callers (dev shell, manual restart) still work.
+FLEET_ENV_FILE="${FLEET_ENV_FILE:-/tmp/buy31716-fleet-keepalive.env}"
+if [ -f "${FLEET_ENV_FILE}" ]; then
+  set -a
+  . "${FLEET_ENV_FILE}"
+  set +a
+fi
+
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 ROOT="${WORKSPACE_ROOT:-$(cd "${SCRIPT_DIR}/.." && pwd)}"
 WORKSPACE_ROOT="${WORKSPACE_ROOT:-/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c}"
