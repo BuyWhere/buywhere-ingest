@@ -3,6 +3,7 @@ import express from 'express';
 import { scrapeShopifyStore, scrapeShopifyStorePages } from './shopifyScraper.js';
 import { getIngestionStats, getRecentJobs, getQueueStats } from './health.js';
 import { probeTrancoHost, SUPPORTED_KINDS } from './trancoDiscovery.js';
+import { walkSitemapForProducts, countryFromHost, SUPPORTED_KINDS as SITEMAP_KINDS } from './sitemapDiscover.js';
 
 dotenv.config();
 
@@ -135,6 +136,58 @@ app.get('/test-tranco-probe', async (req, res) => {
   }
 });
 
+// BUY-34837: sitemap walker test endpoint. Mirrors /test-tranco-probe but
+// fetches a single sitemap URL and returns the product-URL count for it.
+// Used for pre-deploy verification on Railway against a known-good
+// merchant (e.g. Nike's sitemap_products.xml for kind=brand or Best Buy's
+// sitemaps_pdp.xml for kind=retailer). The worker itself does the same
+// walk; this endpoint just exposes it for ad-hoc smoke tests.
+app.get('/test-sitemap-walk', async (req, res) => {
+  try {
+    const { url, pattern, kind, timeoutMs, maxDepth, maxLocs } = req.query;
+    if (!url) {
+      return res.status(400).json({ error: 'url parameter is required (the sitemap URL to walk)' });
+    }
+    if (!pattern) {
+      return res.status(400).json({ error: 'pattern parameter is required (the per-merchant product URL regex)' });
+    }
+    const useKind = SITEMAP_KINDS.includes(kind) ? kind : 'brand';
+    const useTimeout = timeoutMs ? Math.min(60000, Math.max(500, parseInt(timeoutMs, 10))) : 20000;
+    const useMaxDepth = maxDepth ? Math.min(10, Math.max(1, parseInt(maxDepth, 10))) : 4;
+    const useMaxLocs = maxLocs ? Math.min(200000, Math.max(100, parseInt(maxLocs, 10))) : 50000;
+    let host = null;
+    try { host = new URL(url).host; } catch {}
+    const country = host ? countryFromHost(host) : 'US';
+
+    const t0 = Date.now();
+    const walk = await walkSitemapForProducts(url, {
+      productPattern: pattern,
+      timeoutMs: useTimeout,
+      maxDepth: useMaxDepth,
+      maxLocs: useMaxLocs,
+    });
+    const dt = Date.now() - t0;
+    res.json({
+      url,
+      host,
+      kind: useKind,
+      country,
+      product_count: walk.productUrls.length,
+      product_urls_sample: walk.productUrls.slice(0, 5),
+      sub_sitemaps_walked: walk.subSitemapsWalked,
+      fetches: walk.fetches,
+      dt_ms: dt,
+      errors: walk.errors.slice(0, 10),
+      timestamp: new Date().toISOString(),
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: err.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
 // Simple root endpoint
 app.get('/', (req, res) => {
   res.json({
@@ -142,10 +195,11 @@ app.get('/', (req, res) => {
     status: 'running',
     version: '1.0.0',
     endpoints: [
-      '/health - Health check and stats (includes scrape.shopify + scrape.shopify.deep + discover.tranco queue counts)',
+      '/health - Health check and stats (includes scrape.shopify + scrape.shopify.deep + discover.tranco + discover.sitemap queue counts)',
       '/test-scraper?domain=example.com - Test page-1 scraper (sitemap)',
       '/test-deep-scraper?domain=example.com&start=7&end=8 - Test deep scraper (/products.json?page=N)',
-      '/test-tranco-probe?domain=example.com&kind=woocommerce - Test tranco non-Shopify platform fingerprint (woocommerce|magento|bigcommerce|custom)'
+      '/test-tranco-probe?domain=example.com&kind=woocommerce - Test tranco non-Shopify platform fingerprint (woocommerce|magento|bigcommerce|custom)',
+      '/test-sitemap-walk?url=...&pattern=... - Test sitemap walker (product-URL discovery from a single sitemap URL)'
     ]
   });
 });

@@ -15,6 +15,12 @@ import {
   probeTrancoHost,
   SUPPORTED_KINDS,
 } from './trancoDiscovery.js';
+import {
+  walkSitemapForProducts,
+  countryFromHost,
+  SUPPORTED_KINDS as SITEMAP_KINDS,
+  MIN_PRODUCTS_THRESHOLD as SITEMAP_MIN_PRODUCTS_DEFAULT,
+} from './sitemapDiscover.js';
 
 dotenv.config();
 
@@ -846,6 +852,168 @@ await pgBoss.work(DISCOVER_TRANCO_QUEUE, {
 
 console.log(`[worker] listening on queue ${DISCOVER_TRANCO_QUEUE}`);
 
+// ---------------------------------------------------------------------------
+// Sitemap-driven merchant discovery worker (BUY-34837) — replaces the live
+// Oracle-workspace scripts
+//   scripts/buy30590-brand-sitemap-miner.mjs (13 brand domains)
+//   scripts/buy30590-retailer-sitemap-miner.mjs + buy30590-retailer-sitemap-loop.mjs
+//     (9 retailer domains).
+//
+// The original scripts discovered product URLs from XML sitemaps and either
+// scraped them inline (brand lane) or wrote them to a JSONL for a downstream
+// scraper (retailer lane). The replacement focuses on the upstream job:
+// discover *merchants* that have a real product sitemap. The actual catalog
+// fetch is delegated to the existing scrape.shopify / scrape.woocommerce.deep
+// cron producers (BUY-33632 / BUY-34834), which the buywhere-ingest service
+// already runs.
+//
+// Each job carries `{ domain, sitemap_url, product_pattern, kind, source,
+// country, ua_mode }`. The worker fetches the sitemap, walks the
+// sitemapindex if present, parses <url><loc> entries, filters to
+// product-shaped paths using the per-job regex, and INSERTs the *domain*
+// (not the product URLs) into the `merchants` table on the canonical
+// BuyWhere DB. Product URL count is recorded in the ingestion_runs row
+// for monitoring.
+//
+// Singleton dedupe is per (kind, domain, sitemap_url) — matches the
+// producer's singleton key so a re-enqueue within SITEMAP_SINGLETON_HOURS
+// is a no-op. teamConcurrency=2 keeps the worker from getting blocked on
+// a single slow sitemap (the brand lane is mostly Nike + Dyson = a few
+// hundred ms each; the retailer lane is mostly Best Buy + Walmart = a
+// few seconds each).
+// ---------------------------------------------------------------------------
+const DISCOVER_SITEMAP_QUEUE = 'discover.sitemap';
+const SITEMAP_FETCH_TIMEOUT_MS = parseInt(process.env.SITEMAP_FETCH_TIMEOUT_MS || '20000', 10);
+const SITEMAP_MAX_DEPTH = parseInt(process.env.SITEMAP_MAX_DEPTH || '4', 10);
+const SITEMAP_MAX_LOCS = parseInt(process.env.SITEMAP_MAX_LOCS || '50000', 10);
+const SITEMAP_SINGLETON_HOURS = parseInt(process.env.SITEMAP_SINGLETON_HOURS || '23', 10);
+const SITEMAP_MIN_PRODUCTS = parseInt(process.env.SITEMAP_MIN_PRODUCTS || String(SITEMAP_MIN_PRODUCTS_DEFAULT || 5), 10);
+
+async function insertSitemapMerchant(domain, source, country, kind, productCount) {
+  // Idempotency: ON CONFLICT (id) DO UPDATE bumps updated_at so a
+  // re-probe is non-destructive. The existing onboarding_stage wins;
+  // we only refresh `source` if it's null (preserves any later-stage
+  // label like 'shopify' that a downstream lane wrote).
+  //
+  // `name` is NULL at this stage — the downstream scrape lane fills it
+  // from the merchant's first product page response.
+  try {
+    const r = await db.query(
+      `INSERT INTO merchants (id, name, source, country, onboarding_stage, created_at, updated_at)
+       VALUES ($1, $2, $3, $4, 'discovered', NOW(), NOW())
+       ON CONFLICT (id) DO UPDATE
+         SET updated_at = NOW(),
+             country = COALESCE(EXCLUDED.country, merchants.country),
+             source = COALESCE(merchants.source, EXCLUDED.source)
+       RETURNING id, (xmax = 0) AS inserted`,
+      [domain, null, source, country]
+    );
+    if (r.rows.length > 0) {
+      return { ok: true, inserted: r.rows[0].inserted === true };
+    }
+    return { ok: false, reason: 'no_row_returned' };
+  } catch (err) {
+    return { ok: false, reason: err.message };
+  }
+}
+
+await pgBoss.work(DISCOVER_SITEMAP_QUEUE, {
+  batchSize: 1,
+  teamConcurrency: 2,
+}, async (jobs) => {
+  const job = Array.isArray(jobs) ? jobs[0] : jobs;
+  const id = job.id;
+  const payload = job.data || {};
+  const kind = SITEMAP_KINDS.includes(payload.kind) ? payload.kind : 'brand';
+  const domain = payload.domain;
+  const sitemapUrl = payload.sitemap_url;
+  const productPattern = payload.product_pattern;
+  const source = payload.source || `sitemap_${kind}`;
+  const uaMode = payload.ua_mode === 'desktop' ? 'desktop' : 'bot';
+  const country = typeof payload.country === 'string' && payload.country.length === 2
+    ? payload.country.toUpperCase()
+    : countryFromHost(domain);
+  const createdAt = new Date().toISOString();
+
+  console.log(`[worker] ${DISCOVER_SITEMAP_QUEUE} job received at ${createdAt}`, {
+    id, kind, domain, sitemapUrl, source, country, uaMode, productPattern,
+  });
+
+  if (!domain || typeof domain !== 'string' || !domain.includes('.')) {
+    console.warn(`[worker] ${DISCOVER_SITEMAP_QUEUE} invalid domain=${domain}, skipping`);
+    return;
+  }
+  if (!sitemapUrl || typeof sitemapUrl !== 'string' || !/^https?:\/\//i.test(sitemapUrl)) {
+    console.warn(`[worker] ${DISCOVER_SITEMAP_QUEUE} invalid sitemap_url=${sitemapUrl}, skipping`);
+    return;
+  }
+  if (!productPattern || typeof productPattern !== 'string') {
+    console.warn(`[worker] ${DISCOVER_SITEMAP_QUEUE} missing product_pattern for ${domain}, skipping`);
+    return;
+  }
+
+  const runSource = `sitemap_${kind}_discover`;
+  const runId = await createIngestionRun(runSource, {
+    queue: DISCOVER_SITEMAP_QUEUE,
+    kind, domain, sitemapUrl, source, country, uaMode,
+  });
+  if (!runId) {
+    console.error(`[worker] Failed to create ingestion run for ${DISCOVER_SITEMAP_QUEUE} job, skipping`);
+    return;
+  }
+
+  try {
+    const ua = uaMode === 'desktop'
+      ? 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36'
+      : 'Mozilla/5.0 (compatible; BuywhereSitemapBot/1.0; +https://buywhere.example/bot)';
+    const t0 = Date.now();
+    const walk = await walkSitemapForProducts(sitemapUrl, {
+      productPattern,
+      ua,
+      timeoutMs: SITEMAP_FETCH_TIMEOUT_MS,
+      maxDepth: SITEMAP_MAX_DEPTH,
+      maxLocs: SITEMAP_MAX_LOCS,
+    });
+    const dtMs = Date.now() - t0;
+    const productCount = walk.productUrls.length;
+    const verified = productCount >= SITEMAP_MIN_PRODUCTS;
+
+    console.log(`[worker] ${DISCOVER_SITEMAP_QUEUE} ${domain} sitemap walked: products=${productCount} subs=${walk.subSitemapsWalked} fetches=${walk.fetches} dtMs=${dtMs} verified=${verified}`, {
+      errors: walk.errors.slice(0, 5),
+    });
+
+    if (!verified) {
+      // Below the threshold — we don't insert the merchant (would pollute
+      // the queue with empty merchants), but we record the run so the
+      // failure is visible in /healthz. rowsFailed = sub-fetches that
+      // errored, if any.
+      await updateIngestionRun(runId, 'completed', 0, 0, walk.errors.length || 0, verified ? null : `below_min_products:${productCount}`);
+      return;
+    }
+
+    const insertResult = await insertSitemapMerchant(domain, source, country, kind, productCount);
+    if (!insertResult.ok) {
+      console.warn(`[worker] ${DISCOVER_SITEMAP_QUEUE} merchant insert failed for ${domain}: ${insertResult.reason}`);
+      await updateIngestionRun(runId, 'failed', 0, 0, 0, `insert_failed:${insertResult.reason}`);
+      return;
+    }
+
+    // rowsInserted = newly-discovered merchant (the main BUY-34837 KPI).
+    // rowsUpdated = re-confirmed via sitemap (already in the table).
+    // rowsFailed = sitemap fetch errors (separate from product count).
+    const rowsInserted = insertResult.inserted ? 1 : 0;
+    const rowsUpdated = insertResult.inserted ? 0 : 1;
+    await updateIngestionRun(runId, 'completed', rowsInserted, rowsUpdated, walk.errors.length);
+    console.log(`[worker] ${DISCOVER_SITEMAP_QUEUE} ${domain} done: inserted=${rowsInserted} reConfirmed=${rowsUpdated} errors=${walk.errors.length}`);
+  } catch (err) {
+    const errorMessage = err.message || String(err);
+    console.error(`[worker] ${DISCOVER_SITEMAP_QUEUE} job failed for ${domain}:`, errorMessage);
+    await updateIngestionRun(runId, 'failed', 0, 0, 0, errorMessage);
+  }
+});
+
+console.log(`[worker] listening on queue ${DISCOVER_SITEMAP_QUEUE}`);
+
 // Tiny /healthz HTTP server so Railway can healthcheck the long-running
 // worker.  Returns the same shape as src/server.js's /health so the
 // BUY-33060 acceptance gate's "recentJobs visible at /healthz" item works.
@@ -874,7 +1042,7 @@ const healthServer = http.createServer(async (req, res) => {
       status,
       timestamp: new Date().toISOString(),
       service: 'buywhere-ingest-worker',
-      queues: [PAGE1_QUEUE, DEEP_QUEUE, WC_DEEP_QUEUE, DISCOVER_CC_QUEUE, DISCOVER_TRANCO_QUEUE],
+      queues: [PAGE1_QUEUE, DEEP_QUEUE, WC_DEEP_QUEUE, DISCOVER_CC_QUEUE, DISCOVER_TRANCO_QUEUE, DISCOVER_SITEMAP_QUEUE],
       deep_config: {
         start_page: DEEP_START_PAGE,
         end_page: DEEP_END_PAGE,
@@ -903,6 +1071,14 @@ const healthServer = http.createServer(async (req, res) => {
         cache_ttl_ms: TRANCO_LIST_CACHE_TTL_MS,
         singleton_hours: TRANCO_SINGLETON_HOURS,
         kinds: SUPPORTED_KINDS,
+      },
+      discover_sitemap_config: {
+        fetch_timeout_ms: SITEMAP_FETCH_TIMEOUT_MS,
+        max_depth: SITEMAP_MAX_DEPTH,
+        max_locs: SITEMAP_MAX_LOCS,
+        min_products: SITEMAP_MIN_PRODUCTS,
+        singleton_hours: SITEMAP_SINGLETON_HOURS,
+        kinds: SITEMAP_KINDS,
       },
       stats: stats || {},
       queue: queueStats || {},

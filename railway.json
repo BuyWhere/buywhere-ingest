@@ -67,5 +67,17 @@
       "CATALOG_DB_CANONICAL": "true"
     },
     "schedule": "47 4 * * *"
+  },
+  "_scheduledSitemap_note": "BUY-34837: fifth cron (sitemap-producer, daily `7 5 * * *`, `npm run producer:sitemap`). The minute `7` is off the :00/:30 peak and offset by 20 min from the tranco-producer (which runs at :47 past 4am) so the worker's two discovery waves don't collide. Same caveat — Railway's `railway.json` only honors one `scheduled` key per deploy, so this entry MUST be added via the Railway dashboard on the buywhere-ingest service. Emits `discover.sitemap` jobs (one per (kind, domain, sitemap_url) tuple from data/brands.json + data/retailers.json = 13 brands + 9 retailers × 1-13 sitemaps each = ~50-60 jobs/tick); the worker (discover.sitemap handler in src/worker.js) fetches each sitemap, walks any sitemapindex, filters <url><loc> entries against the per-merchant product pattern, and INSERTs the *domain* into the merchants table with source='sitemap_<kind>'. SITEMAP_PRODUCER_KINDS can limit which kinds emit (e.g. `SITEMAP_PRODUCER_KINDS=brand` for a brand-only first run).",
+  "scheduledSitemap": {
+    "name": "sitemap-producer",
+    "command": "npm run producer:sitemap",
+    "env": {
+      "CATALOG_DB_URL": "{{ db.CATALOG-DB.CONNECTION_STRING }}",
+      "PGBOSS_ALLOWED_ENV": "railway",
+      "CATALOG_DB_ENVIRONMENT": "railway",
+      "CATALOG_DB_CANONICAL": "true"
+    },
+    "schedule": "7 5 * * *"
   }
 }

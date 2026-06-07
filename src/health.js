@@ -9,8 +9,8 @@ if (!catalogDbUrl) {
   throw new Error('Missing CATALOG_DB_URL (or DATABASE_URL) environment variable.');
 }
 
-// BUY-34833 / BUY-34834 / BUY-34835 / BUY-34836: surface all ingest queues
-// in /healthz:
+// BUY-34833 / BUY-34834 / BUY-34835 / BUY-34836 / BUY-34837: surface all
+// ingest queues in /healthz:
 //   - scrape.shopify           — Shopify page 1 (XML sitemap → first ~250)
 //   - scrape.shopify.deep      — Shopify deep pages 7-80 (migrated from
 //                                buy30590-deep-page-loop.mjs; row rate must
@@ -19,12 +19,16 @@ if (!catalogDbUrl) {
 //   - discover.cc              — Common Crawl Shopify discovery
 //   - discover.tranco          — Tranco non-Shopify platform discovery
 //                                (woocommerce/magento/bigcommerce/custom)
+//   - discover.sitemap         — Sitemap-driven merchant discovery
+//                                (replaces buy30590-brand-sitemap-miner
+//                                + buy30590-retailer-sitemap-loop)
 const TRACKED_QUEUES = [
   'scrape.shopify',
   'scrape.shopify.deep',
   'scrape.woocommerce.deep',
   'discover.cc',
   'discover.tranco',
+  'discover.sitemap',
 ];
 
 const db = new pg.Pool({
