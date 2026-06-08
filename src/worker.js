@@ -116,7 +116,22 @@ async function updateIngestionRun(runId, status, rowsInserted, rowsUpdated, rows
   }
 }
 
+// BUY-35410: skip products with null/0 price — these are parse failures from
+// shopify scraper, not legitimate free products. Filter before ingest to avoid
+// polluting the catalog with 0-priced items that poison find_best_price.
+function filterZeroPriceProducts(products) {
+  return products.filter(p => p.price != null && p.price > 0);
+}
+
 async function ingestProductsToCatalog(products, source) {
+  const valid = filterZeroPriceProducts(products);
+  if (valid.length === 0) {
+    console.log('[worker] All products filtered out (null/0 price), skipping ingest');
+    return { rows_inserted: 0, rows_updated: 0, rows_failed: 0 };
+  }
+  if (valid.length < products.length) {
+    console.log(`[worker] Filtered ${products.length - valid.length} null/0-price products, ingesting ${valid.length}`);
+  }
   const apiBaseUrl = process.env.BUYWHERE_API_URL || 'https://api.buywhere.ai';
   const response = await fetch(`${apiBaseUrl}/v1/ingest/products`, {
     method: 'POST',
@@ -126,7 +141,7 @@ async function ingestProductsToCatalog(products, source) {
     },
     body: JSON.stringify({
       source,
-      products,
+      products: valid,
     }),
   });
 
