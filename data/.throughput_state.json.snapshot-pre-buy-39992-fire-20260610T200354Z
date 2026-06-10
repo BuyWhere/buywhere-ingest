@@ -1,0 +1,17 @@
+{
+  "last_n_tup_ins": 28083250,
+  "last_n_tup_ins_at": "2026-06-10T19:01:54.833531+00:00",
+  "last_hour_checked": "2026-06-10T18:00:00+00:00",
+  "last_check_result": "PASS",
+  "last_check_real_rows": 282881,
+  "last_check_source": "n_tup_ins_delta",
+  "last_n_live_tup": 63554602,
+  "last_db_host": "maglev.proxy.rlwy.net:31310/railway",
+  "last_hour_window_end": "2026-06-10T19:00:00+00:00",
+  "last_check_delta_rows": 282881,
+  "last_check_delta_hours": 0.9482,
+  "last_note": "18:00-19:00 hour PASS: delta 282,881 over 0.9482h = 298,337/hr (n_tup_ins PRIMARY signal under maglev contention). n_tup_ins 27,800,369 -> 28,083,250 between 2026-06-10T18:05:01.340190+00:00 and 2026-06-10T19:01:54.833531+00:00. reltuples=61,767,104 cross-check; n_live_tup=63,554,602. pm_start=2026-06-08T10:21:09Z (outside this hour, delta method valid). No child BUY-#### filed (rate > 150K threshold).",
+  "last_check_rate": 298337.1,
+  "last_pm_start": "2026-06-08T10:21:09.112373+00:00",
+  "last_check_threshold": 150000
+}
