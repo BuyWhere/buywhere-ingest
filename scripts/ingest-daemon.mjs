@@ -95,6 +95,35 @@ function assertIngestionAllowed() {
   }
 }
 
+function isLockError(msg) {
+  if (!msg) return false;
+  const lower = msg.toLowerCase();
+  return (
+    lower.includes("database is locked") ||
+    lower.includes("could not obtain lock") ||
+    lower.includes("deadlock detected") ||
+    lower.includes("lock_not_available") ||
+    lower.includes("connection pool") ||
+    lower.includes("too many clients") ||
+    lower.includes("remaining connection slots") ||
+    lower.includes("max_connections")
+  );
+}
+
+async function withLockRetry(fn, maxRetries = 5, baseDelayMs = 500) {
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      return await fn();
+    } catch (e) {
+      if (attempt === maxRetries) throw e;
+      if (!isLockError(e.message) && !isLockError(e.code)) throw e;
+      const delay = Math.min(baseDelayMs * Math.pow(2, attempt), 30000);
+      process.stderr.write(`[ingest-daemon] lock contention, retry ${attempt + 1}/${maxRetries} after ${delay}ms: ${e.message.slice(0, 120)}\n`);
+      await new Promise((res) => setTimeout(res, delay));
+    }
+  }
+}
+
 function fabricationCheck(rows) {
   if (rows.length === 0) return { ok: true, share: {} };
   let zeroPrice = 0, nullImage = 0, nullSku = 0, emptyTitle = 0;
@@ -163,34 +192,65 @@ async function ingestFile(pool, file) {
   if (products.length === 0) return { rows: 0, written: 0, fabricated: false };
 
   const rows = products.map(normalizeRow);
-  const check = fabricationCheck(rows);
-  if (!check.ok) {
+  const seenKeys = new Map();
+  const deduped = [];
+  for (const r of rows) {
+    const key = `${r[0]||''}|${r[1]||''}`;
+    if (!key || key === '|') { continue; }
+    if (!seenKeys.has(key)) { seenKeys.set(key, true); deduped.push(r); }
+  }
+  if (deduped.length < rows.length) {
+    process.stderr.write(`[ingest-daemon] dedup: ${rows.length} -> ${deduped.length} (removed ${rows.length - deduped.length} duplicate skus)\n`);
+  }
+  // Filter out rows with null URL (DB NOT NULL constraint at index 7)
+  const withUrl = deduped.filter(r => r[7] != null && r[7] !== "");
+  if (withUrl.length < deduped.length) {
+    process.stderr.write(`[ingest-daemon] filtered ${deduped.length - withUrl.length} rows with null url\n`);
+  }
+  if (withUrl.length === 0) return { rows: products.length, written: 0, fabricated: false };
+  const check = fabricationCheck(withUrl);
+  // Row-level filter: instead of rejecting entire batches with high null-price/null-image rates,
+  // only skip rows where BOTH price=0 AND image=null (clearly incomplete). Real schema-product
+  // scrapes often have valid titles+URLs but missing prices (contact-for-price stores).
+  const writable = check.ok ? withUrl : withUrl.filter(r => {
+    const hasPrice = r[5] && r[5] !== "0" && r[5] !== "0.00" && parseFloat(r[5]) !== 0;
+    const hasImage = r[10] != null && r[10] !== "";
+    const hasTitle = r[3] && typeof r[3] === "string" && r[3].trim() !== "";
+    // Accept if has title + (price OR image) — real product with at least some data
+    return hasTitle && (hasPrice || hasImage);
+  });
+  const fabricated = !check.ok && writable.length === 0;
+  if (fabricated) {
     return { rows: products.length, written: 0, fabricated: true, share: check.share };
   }
+  const toWrite = check.ok ? withUrl : writable;
 
-  const client = await pool.connect();
-  let written = 0;
-  try {
-    await client.query("BEGIN");
-    for (let i = 0; i < rows.length; i += 5000) {
-      const batch = rows.slice(i, i + 5000);
-      const values = batch.map((r, idx) => {
-        const offset = idx * 19;
-        return `($${offset + 1},$${offset + 2},$${offset + 3},$${offset + 4},$${offset + 5},$${offset + 6}::numeric,$${offset + 7},$${offset + 8},$${offset + 9},$${offset + 10}::text[],$${offset + 11},$${offset + 12}::boolean,$${offset + 13}::jsonb,$${offset + 14},$${offset + 15},$${offset + 16},$${offset + 17},$${offset + 18}::boolean,$${offset + 19})`;
-      }).join(",");
-      const flat = batch.flat();
-      const sql = SQL.replace("%s", values);
-      const r = await client.query(sql, flat);
-      written += r.rowCount || 0;
+  return withLockRetry(async () => {
+    const client = await pool.connect();
+    let written = 0;
+    try {
+      await client.query("BEGIN");
+      // Max 3000 rows per batch: 3000 * 19 params = 57000 < 65535 Postgres limit
+      for (let i = 0; i < toWrite.length; i += 3000) {
+        const batch = toWrite.slice(i, i + 3000);
+        const values = batch.map((r, idx) => {
+          const offset = idx * 19;
+          return `($${offset + 1},$${offset + 2},$${offset + 3},$${offset + 4},$${offset + 5},$${offset + 6}::numeric,$${offset + 7},$${offset + 8},$${offset + 9},$${offset + 10}::text[],$${offset + 11},$${offset + 12}::boolean,$${offset + 13}::jsonb,$${offset + 14},$${offset + 15},$${offset + 16},$${offset + 17},$${offset + 18}::boolean,$${offset + 19})`;
+        }).join(",");
+        const flat = batch.flat();
+        const sql = SQL.replace("%s", values);
+        const r = await client.query(sql, flat);
+        written += r.rowCount || 0;
+      }
+      await client.query("COMMIT");
+    } catch (e) {
+      await client.query("ROLLBACK").catch(() => {});
+      throw e;
+    } finally {
+      client.release();
     }
-    await client.query("COMMIT");
-  } catch (e) {
-    await client.query("ROLLBACK").catch(() => {});
-    throw e;
-  } finally {
-    client.release();
-  }
-  return { rows: products.length, written, fabricated: false, share: check.share };
+    return { rows: products.length, written, fabricated: false, share: check.share, skipped_low_quality: toWrite.length < withUrl.length ? withUrl.length - toWrite.length : 0 };
+  });
 }
 
 async function watchAndProcess(args, pool) {
