@@ -81,6 +81,7 @@
     "schedule": "7 5 * * *"
   },
   "_scheduledLanes_note": "BUY-34838: sixth cron (lanes-producer, every 30min `37 */1 * * *`, `npm run producer:lanes`). The minute `37` is off the :00/:30 peak and offset from the other fleet-wide crons (Shopify `0 */6`, cc `17 */6`, WC `0 3 *`, Tranco `47 4 *`, sitemap `7 5 *`). Same caveat — Railway's `railway.json` only honors one `scheduled` key per deploy, so this entry MUST be added via the Railway dashboard on the buywhere-ingest service. Emits `scrape.shopify.lane.<role>` jobs (one per (role, domain) pair — 5 jobs per candidate, default 500 candidates/tick = 2500 jobs/tick max). The worker (5 lane handlers in src/worker.js) fetches each merchant with the role-specific maxPages/pageDelay/qualityMode config from src/laneRunner.js, runs the role-specific quality filter, and on pass calls /v1/ingest/products directly. Replaces the buy30620-page-lane-runner.mjs and buy30620-scout-validate-lane.mjs keepalives in the `5bc984ee-…` workspace; the drain loop at `7fb55262-…/scripts/ingest_buy30620_lanes.py` will see no new NDJSON files once the cutover lands. Feed source precedence: `LANE_FEED_R2_URL` (R2-stored JSONL) > `LANE_FEED_FILE_PATH` (local) > existing `lane_feed` table. Hex to populate the feed (their BUY-33668 writer can INSERT into lane_feed directly, or stage the JSONL in R2 under `lanes/google_shopping_merchants.jsonl`).",
+  "_scheduledEmbed_note": "BUY-41136: seventh cron (embed-producer, `0 */6 * * *`, `npm run producer:embed`). Runs every 6 hours at minute 0. SELECTs up to 50,000 products needing embedding from the products table (text changed or not yet embedded), priority-ordered by price DESC, and enqueues `embed.products` jobs. The embed worker (`npm run embed-worker`, `node src/embedWorker.js`) must be deployed as a separate Railway service (or added to the same service with a separate start command). Railway `railway.json` only honors one `scheduled` key per deploy, so this entry MUST be added via the Railway dashboard on the buywhere-ingest service. Env vars needed: `JINA_API_KEY` (from jina.ai dashboard), `VECTOR_DB_URL` (same as `CATALOG_DB_URL` if vector DB is co-located), `CATALOG_DB_URL`. The `product_embeddings` table must exist (BUY-41135 dependency).",
   "scheduledLanes": {
     "name": "lanes-producer",
     "command": "npm run producer:lanes",
@@ -91,5 +92,18 @@
       "CATALOG_DB_CANONICAL": "true"
     },
     "schedule": "37 */1 * * *"
+  },
+  "scheduledEmbed": {
+    "name": "embed-producer",
+    "command": "npm run producer:embed",
+    "env": {
+      "CATALOG_DB_URL": "{{ db.CATALOG-DB.CONNECTION_STRING }}",
+      "VECTOR_DB_URL": "{{ db.CATALOG-DB.CONNECTION_STRING }}",
+      "JINA_API_KEY": "${JINA_API_KEY}",
+      "PGBOSS_ALLOWED_ENV": "railway",
+      "CATALOG_DB_ENVIRONMENT": "railway",
+      "CATALOG_DB_CANONICAL": "true"
+    },
+    "schedule": "0 */6 * * *"
   }
 }

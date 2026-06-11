@@ -13,6 +13,8 @@
     "producer:tranco": "node src/producer-tranco.js",
     "producer:sitemap": "node src/producer-sitemap.js",
     "producer:lanes": "node src/producer-lanes.js",
+    "producer:embed": "node src/producer-embed.js",
+    "embed-worker": "node src/embedWorker.js",
     "test": "node --test tests/*.test.*",
     "health": "node -e 'import(\"./src/health.js\").then(m => m.handler({}).then(r => console.log(r.body)))'",
     "audit:ebay": "node scripts/audit-r2-ebay.js"

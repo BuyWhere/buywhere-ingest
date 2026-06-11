@@ -12,6 +12,15 @@
 # (server, worker, producer, producer-wc, producer-cc, producer-tranco,
 # producer-sitemap, producer-lanes).
 #
+# BUY-41158: `embed-worker` and `producer-embed` are the dedicated
+# SERVICE_ROLE values for the Jina v3 embedding pipeline
+# (node src/embedWorker.js, node src/producer-embed.js). The embed
+# worker listens on pg-boss queue `embed.products` and writes to
+# `product_embeddings` (vector DB). Required env: CATALOG_DB_URL (or
+# DATABASE_URL fallback), VECTOR_DB_URL, JINA_API_KEY. Without
+# JINA_API_KEY the worker throws at startup, so the deploy kit must
+# gate on the secret being present in the Railway dashboard.
+#
 # Scheduled-job fallback: when Railway runs a scheduled job with a
 # custom command (e.g. `npm run producer:cc`), the entrypoint receives
 # the command as its first argument. If SERVICE_ROLE is not one of the
@@ -37,6 +46,12 @@ case "${SERVICE_ROLE:-server}" in
     ;;
   producer-lanes)
     exec node src/producer-lanes.js
+    ;;
+  embed-worker)
+    exec node src/embedWorker.js
+    ;;
+  producer-embed)
+    exec node src/producer-embed.js
     ;;
   server)
     exec npm start
