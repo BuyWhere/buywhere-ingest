@@ -1,0 +1,692 @@
+{
+  "generated_at": "2026-06-14T01:10:31.802108",
+  "total_found": 63,
+  "errors": [
+    {
+      "error": "PH_API_TOKEN not set",
+      "platform": "product_hunt"
+    },
+    {
+      "error": "Smithery API returned 404",
+      "platform": "smithery"
+    }
+  ],
+  "by_threat_level": {
+    "critical": 4,
+    "high": 20,
+    "medium": 3,
+    "monitor": 36
+  },
+  "by_platform": {
+    "github": 24,
+    "hackernews": 39
+  },
+  "competitors": [
+    {
+      "name": "Mini-CRM",
+      "description": "\ud83e\udd16 AI-native Mini CRM for DTC brands to segment shoppers, launch personalized campaigns across WhatsApp, SMS, Email and RCS, simulate delivery callbacks, and track campaign performance with demo shopper data.",
+      "url": "https://github.com/Sathvik257/Mini-CRM",
+      "stars": 1,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "langgraph-shop-agent",
+      "description": "This is a personal practice project for developing an AI agent: an intelligent shopping assistant chatbot built on the LangGraph framework, supporting multi-turn conversations. Feel free to discuss and exchange ideas!",
+      "url": "https://github.com/SugarAbsinthe/langgraph-shop-agent",
+      "stars": 1,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "Food-Health-Intelligence-System",
+      "description": "Food Health Intelligence System is an AI-powered e-commerce platform that combines food shopping with nutrition guidance. Users can buy food products while viewing health benefits, nutrition facts, disease-specific recommendations, and AI-based dietary suggestions, helping them make healthier and smarter food choices.",
+      "url": "https://github.com/Sudheer-cloud123/Food-Health-Intelligence-System",
+      "stars": 1,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "shopping-agent-ai",
+      "description": "AI Shopping Agent using LangChain, Groq and Streamlit",
+      "url": "https://github.com/Dhanashree2312/shopping-agent-ai",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "AI-Shopping-Assistant",
+      "description": "AI Shopping Assistant built with React, FastAPI, JSON database, user authentication, cart management, search history, ratings, categories, and AI-powered product recommendations.",
+      "url": "https://github.com/Nandhini-2804/AI-Shopping-Assistant",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "ai-shopping-assistant",
+      "description": "",
+      "url": "https://github.com/hectorbiminchumo/ai-shopping-assistant",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "ai-shopper",
+      "description": "AI-powered shopping web app with RAG, LangChain, FastAPI and React",
+      "url": "https://github.com/Aditya0964/ai-shopper",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "AI-Powered-Shopping-Assistant",
+      "description": "Developed an AI-powered shopping assistant that provides personalized product recommendations based on user preferences and requirements. The system leverages machine learning algorithms to enhance product discovery, improve user experience, and support informed purchasing decisions through intelligent suggestions and product comparisons.",
+      "url": "https://github.com/akshaya0537-coder/AI-Powered-Shopping-Assistant",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "qualtrics-ai-shopping-proxy",
+      "description": "",
+      "url": "https://github.com/Anthonyzhuang/qualtrics-ai-shopping-proxy",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "Shoppoing-AI-Agent",
+      "description": "This repository contains the basic shopping AI agent system using MEAN & Gemini as LLM",
+      "url": "https://github.com/AniketPanchabhai/Shoppoing-AI-Agent",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "commerce-agents",
+      "description": "Autonomous commerce agents \u2014 inventory-aware purchasing, supplier selection, order routing",
+      "url": "https://github.com/oramweb3/commerce-agents",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "E-CommerceAgentDataMining_Project",
+      "description": "",
+      "url": "https://github.com/asmaa-ibrahim-2023/E-CommerceAgentDataMining_Project",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "marketmesh-commerce-agent",
+      "description": "Agentic multi-vendor software commerce: register any vendor, optimise cross-vendor deals, grounded by Microsoft Fabric IQ + Foundry IQ + Work IQ. Synthetic, DRY_RUN, public-safe.",
+      "url": "https://github.com/tdsnxtaskin-tugay/marketmesh-commerce-agent",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "agent-commerce-kit",
+      "description": "Onchain AI agent with stablecoin payments, 1Claw HSM vault, and Ampersend policy enforcement",
+      "url": "https://github.com/kmjones1979/agent-commerce-kit",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "commerce_agent_project",
+      "description": "Natural_Language_Processing_and_Chatbots",
+      "url": "https://github.com/baoyi11/commerce_agent_project",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "Agentic-E-commerce-Assistant",
+      "description": "Agentic e-commerce assistant built with LangGraph + LangChain + Groq \u2014 routes customer queries to specialized tools (semantic search, order lookup, policy RAG, bundle recommender) with structured outputs and LangSmith evals",
+      "url": "https://github.com/Poorvikanp/Agentic-E-commerce-Assistant",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "ai-commerce-ops-agent",
+      "description": "",
+      "url": "https://github.com/EthanKlocked/ai-commerce-ops-agent",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "hkt-synthetic-agent",
+      "description": "Synthetic e-commerce agent for testing agent improvement loop.",
+      "url": "https://github.com/bggoranoff/hkt-synthetic-agent",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "agent-browser-fixture",
+      "description": "Throwaway deterministic e-commerce fixture for browser-agent latency/robustness testing (deletable)",
+      "url": "https://github.com/luca-borletti/agent-browser-fixture",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "whatsapp-ai-agent",
+      "description": "WhatsApp AI Agent for Saudi E-commerce \u2014 powered by Evolution API + Claude + n8n",
+      "url": "https://github.com/samie3/whatsapp-ai-agent",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "react-api-product-search",
+      "description": "",
+      "url": "https://github.com/KashifAkram0345/react-api-product-search",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "Ecommerce_Project_using_MongoDB",
+      "description": "A full-stack AI-powered e-commerce application built with Next.js, MongoDB, and Groq AI. Features product listing, intelligent product search, MongoDB integration, REST APIs, and responsive UI.",
+      "url": "https://github.com/pinaka151/Ecommerce_Project_using_MongoDB",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "estore-spring",
+      "description": "A Spring Boot e-commerce backend featuring RESTful APIs for products, categories, carts, and orders. Built with Spring Data JPA and a clean layered architecture, with plans for AI-powered features such as product recommendations, intelligent search, and personalized shopping experiences.",
+      "url": "https://github.com/hesham-saeed/estore-spring",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "ShopEase",
+      "description": "A full-stack e-commerce web application built with Java Spring Boot REST API and React.js frontend. Features include JWT-based user authentication, role-based access control (USER/ADMIN), product listing with search and category filter, cart management, and order processing with PostgreSQL as the database.",
+      "url": "https://github.com/yasmeenarifa/ShopEase",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "Why are there an increasing number of outright unhinged high karma users on HN?",
+      "description": "HN mention for keyword 'Google Shopping'",
+      "url": "https://news.ycombinator.com/item?id=48485429",
+      "hn_id": "48485429",
+      "hn_points": 15,
+      "hn_comments": 18,
+      "hn_created_at": "2026-06-11T02:07:14Z",
+      "keyword": "Google Shopping",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Musicians shortchanged by AI deals with labels, lawsuit alleges",
+      "description": "HN mention for keyword 'Universal Cart'",
+      "url": "https://www.latimes.com/entertainment-arts/business/story/2026-06-08/american-federation-of-musicians-sues-universal-music-group-warner-musiic-group",
+      "hn_id": "48505526",
+      "hn_points": 4,
+      "hn_comments": 1,
+      "hn_created_at": "2026-06-12T15:38:24Z",
+      "keyword": "Universal Cart",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Responding to Plausibility of Alien Visitors",
+      "description": "HN mention for keyword 'Universal Cart'",
+      "url": "https://news.ycombinator.com/item?id=48505598",
+      "hn_id": "48505598",
+      "hn_points": 1,
+      "hn_comments": 3,
+      "hn_created_at": "2026-06-12T15:45:21Z",
+      "keyword": "Universal Cart",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Klarna CMO created an AI \"venting machine\" of himself",
+      "description": "HN mention for keyword 'Klarna AI'",
+      "url": "https://www.businessinsider.com/klarna-cmo-built-ai-replica-himself-colleagues-vent-at-2026-5",
+      "hn_id": "48433292",
+      "hn_points": 3,
+      "hn_comments": 0,
+      "hn_created_at": "2026-06-07T09:41:38Z",
+      "keyword": "Klarna AI",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Manus registered my domain in their own name and won't release it",
+      "description": "HN mention for keyword 'Amazon Buy for Me'",
+      "url": "https://news.ycombinator.com/item?id=48484931",
+      "hn_id": "48484931",
+      "hn_points": 3,
+      "hn_comments": 1,
+      "hn_created_at": "2026-06-11T00:55:56Z",
+      "keyword": "Amazon Buy for Me",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "We aren't getting to AGI without a fight",
+      "description": "HN mention for keyword 'Amazon Buy for Me'",
+      "url": "https://news.ycombinator.com/item?id=48520967",
+      "hn_id": "48520967",
+      "hn_points": 3,
+      "hn_comments": 1,
+      "hn_created_at": "2026-06-13T20:13:41Z",
+      "keyword": "Amazon Buy for Me",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "'Poisoned' AI: the ChatGPT shopping scams that lead to fake websites",
+      "description": "HN mention for keyword 'ChatGPT Shopping'",
+      "url": "https://www.theguardian.com/money/2026/jun/07/ai-chatgpt-shopping-scams-fake-websites",
+      "hn_id": "48443461",
+      "hn_points": 4,
+      "hn_comments": 0,
+      "hn_created_at": "2026-06-08T10:21:21Z",
+      "keyword": "ChatGPT Shopping",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Visa plugs its payment network into ChatGPT, letting AI agents shop and pay",
+      "description": "HN mention for keyword 'ChatGPT Shopping'",
+      "url": "https://apnews.com/article/visa-chatgpt-openai-shopping-mastercard-d769dec86344cb4977c98789e8ec492f",
+      "hn_id": "48480998",
+      "hn_points": 5,
+      "hn_comments": 1,
+      "hn_created_at": "2026-06-10T18:56:29Z",
+      "keyword": "ChatGPT Shopping",
+      "threat_level": "medium",
+      "platform": "hackernews"
+    },
+    {
+      "name": "OpenAI wants shopping in ChatGPT. Wassist raises $1.1M to keep it on WhatsApp",
+      "description": "HN mention for keyword 'ChatGPT Shopping'",
+      "url": "https://techfundingnews.com/openai-wants-shopping-in-chatgpt-wassist-raises-1-1m-to-keep-it-on-whatsapp/",
+      "hn_id": "48443317",
+      "hn_points": 3,
+      "hn_comments": 0,
+      "hn_created_at": "2026-06-08T10:00:32Z",
+      "keyword": "ChatGPT Shopping",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Show HN: Spanly - See what AI agents do inside your MCP server",
+      "description": "HN mention for keyword 'ChatGPT Shopping'",
+      "url": "https://spanly.com/",
+      "hn_id": "48489664",
+      "hn_points": 1,
+      "hn_comments": 0,
+      "hn_created_at": "2026-06-11T12:52:43Z",
+      "keyword": "ChatGPT Shopping",
+      "threat_level": "medium",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Ask HN: Are we as society going to let LLM companies take all the values?",
+      "description": "HN mention for keyword 'Buy for Me'",
+      "url": "https://news.ycombinator.com/item?id=48439240",
+      "hn_id": "48439240",
+      "hn_points": 31,
+      "hn_comments": 17,
+      "hn_created_at": "2026-06-07T22:30:08Z",
+      "keyword": "Buy for Me",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Ask HN: What happens when AI-voice becomes good enough?",
+      "description": "HN mention for keyword 'Buy for Me'",
+      "url": "https://news.ycombinator.com/item?id=48507696",
+      "hn_id": "48507696",
+      "hn_points": 1,
+      "hn_comments": 8,
+      "hn_created_at": "2026-06-12T18:30:02Z",
+      "keyword": "Buy for Me",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Show HN: Velo, a fast, non-linear video editor",
+      "description": "HN mention for keyword 'Buy for Me'",
+      "url": "https://github.com/notune/velo",
+      "hn_id": "48518303",
+      "hn_points": 2,
+      "hn_comments": 0,
+      "hn_created_at": "2026-06-13T15:36:05Z",
+      "keyword": "Buy for Me",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Ask HN: How do you cope when your startup contracts?",
+      "description": "HN mention for keyword 'Buy for Me'",
+      "url": "https://news.ycombinator.com/item?id=48453224",
+      "hn_id": "48453224",
+      "hn_points": 14,
+      "hn_comments": 13,
+      "hn_created_at": "2026-06-08T22:28:17Z",
+      "keyword": "Buy for Me",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Show HN: Cordium \u2013 FOSS self-hosted sandbox platform alt. Codespaces/E2B/Daytona",
+      "description": "HN mention for keyword 'Buy for Me'",
+      "url": "https://github.com/octelium/cordium",
+      "hn_id": "48433738",
+      "hn_points": 2,
+      "hn_comments": 0,
+      "hn_created_at": "2026-06-07T11:13:29Z",
+      "keyword": "Buy for Me",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "New malware campaign tricks AI scanners with fake nuclear weapon prompts",
+      "description": "HN mention for keyword 'Buy for Me'",
+      "url": "https://www.tomshardware.com/tech-industry/cyber-security/hades-malware-campaign-now-tricks-ai-bots-by-injecting-text-about-biological-and-nuclear-weapons-failsafe-mechanisms-triggered-by-prompts-for-weapon-creation-stop-scans-before-payload-is-seen",
+      "hn_id": "48517491",
+      "hn_points": 4,
+      "hn_comments": 0,
+      "hn_created_at": "2026-06-13T14:06:30Z",
+      "keyword": "Buy for Me",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Launch HN: Intuned (YC S22) \u2013 Build and run reliable browser automations as code",
+      "description": "HN mention for keyword 'Buy for Me'",
+      "url": "https://intunedhq.com",
+      "hn_id": "48445171",
+      "hn_points": 117,
+      "hn_comments": 57,
+      "hn_created_at": "2026-06-08T13:35:27Z",
+      "keyword": "Buy for Me",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "A Commons of Software Productive Infrastructure, by and for Capital",
+      "description": "HN mention for keyword 'Buy for Me'",
+      "url": "https://marewolf.me/posts/draupnir/26/software-productive-infrastructure.html",
+      "hn_id": "48489151",
+      "hn_points": 17,
+      "hn_comments": 2,
+      "hn_created_at": "2026-06-11T11:56:17Z",
+      "keyword": "Buy for Me",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Ask HN: Is there a metric for AI code quality?",
+      "description": "HN mention for keyword 'Buy for Me'",
+      "url": "https://news.ycombinator.com/item?id=48488990",
+      "hn_id": "48488990",
+      "hn_points": 6,
+      "hn_comments": 5,
+      "hn_created_at": "2026-06-11T11:39:39Z",
+      "keyword": "Buy for Me",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Show HN: Trace, offline Mac meeting transcripts you can flag mid-call",
+      "description": "HN mention for keyword 'Buy for Me'",
+      "url": "https://traceapp.info",
+      "hn_id": "48521236",
+      "hn_points": 1,
+      "hn_comments": 0,
+      "hn_created_at": "2026-06-13T20:41:58Z",
+      "keyword": "Buy for Me",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "I'm Eric Ries, author of \"The Lean Startup\" and new book \"Incorruptible\" \u2013 AMA",
+      "description": "HN mention for keyword 'Buy for Me'",
+      "url": "https://news.ycombinator.com/item?id=48477135",
+      "hn_id": "48477135",
+      "hn_points": 793,
+      "hn_comments": 570,
+      "hn_created_at": "2026-06-10T14:47:52Z",
+      "keyword": "Buy for Me",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Show HN: Lathe \u2013 Use LLMs to learn a new domain, not skip past it",
+      "description": "HN mention for keyword 'Buy for Me'",
+      "url": "https://github.com/devenjarvis/lathe",
+      "hn_id": "48433756",
+      "hn_points": 400,
+      "hn_comments": 72,
+      "hn_created_at": "2026-06-07T11:16:46Z",
+      "keyword": "Buy for Me",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Show HN: Learn from 30 historical figures, open source, nonprofit, self-hosted",
+      "description": "HN mention for keyword 'Buy for Me'",
+      "url": "https://github.com/chipmates/agoracosmica",
+      "hn_id": "48459913",
+      "hn_points": 47,
+      "hn_comments": 24,
+      "hn_created_at": "2026-06-09T11:56:25Z",
+      "keyword": "Buy for Me",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Show HN: Startup sci-fi novel that took me 5 years to write",
+      "description": "HN mention for keyword 'Buy for Me'",
+      "url": "https://www.blockchainednovel.com/",
+      "hn_id": "48447484",
+      "hn_points": 25,
+      "hn_comments": 14,
+      "hn_created_at": "2026-06-08T16:29:38Z",
+      "keyword": "Buy for Me",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Show HN: Ustps (UDP Speedy Transmission Protocol Secure) and USSH",
+      "description": "HN mention for keyword 'Buy for Me'",
+      "url": "https://github.com/x1colegal/USTP-Secure",
+      "hn_id": "48453618",
+      "hn_points": 13,
+      "hn_comments": 7,
+      "hn_created_at": "2026-06-08T23:00:04Z",
+      "keyword": "Buy for Me",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Show HN: Claumon \u2013 forecasting Claude Code usage limits with a Gamma process",
+      "description": "HN mention for keyword 'Buy for Me'",
+      "url": "https://github.com/fabioconcina/claumon",
+      "hn_id": "48488753",
+      "hn_points": 7,
+      "hn_comments": 0,
+      "hn_created_at": "2026-06-11T11:05:55Z",
+      "keyword": "Buy for Me",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Show HN: Nuts \u2013 pip/NPM for Java with first-class workspaces, JDK provisioning",
+      "description": "HN mention for keyword 'Buy for Me'",
+      "url": "https://github.com/thevpc/nuts",
+      "hn_id": "48483579",
+      "hn_points": 4,
+      "hn_comments": 2,
+      "hn_created_at": "2026-06-10T22:23:59Z",
+      "keyword": "Buy for Me",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Show HN: MicroECS \u2013 entity component system library in Python/NumPy",
+      "description": "HN mention for keyword 'Buy for Me'",
+      "url": "https://github.com/Meehai/microecs",
+      "hn_id": "48500561",
+      "hn_points": 4,
+      "hn_comments": 0,
+      "hn_created_at": "2026-06-12T06:21:24Z",
+      "keyword": "Buy for Me",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "DevRel is becoming a freelance job now? (India specific)",
+      "description": "HN mention for keyword 'Buy for Me'",
+      "url": "https://news.ycombinator.com/item?id=48499909",
+      "hn_id": "48499909",
+      "hn_points": 4,
+      "hn_comments": 0,
+      "hn_created_at": "2026-06-12T04:26:42Z",
+      "keyword": "Buy for Me",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Show HN: LLMRender, a 10kb Markdown+LaTeX renderer for React",
+      "description": "HN mention for keyword 'Buy for Me'",
+      "url": "https://llmrender.com/",
+      "hn_id": "48513016",
+      "hn_points": 3,
+      "hn_comments": 0,
+      "hn_created_at": "2026-06-13T04:11:11Z",
+      "keyword": "Buy for Me",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Atlassian \"Data Contribution\"",
+      "description": "HN mention for keyword 'Buy for Me'",
+      "url": "https://news.ycombinator.com/item?id=48522482",
+      "hn_id": "48522482",
+      "hn_points": 2,
+      "hn_comments": 0,
+      "hn_created_at": "2026-06-13T23:21:20Z",
+      "keyword": "Buy for Me",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Show HN: Musefs \u2013 organize and tag music without touching the original files",
+      "description": "HN mention for keyword 'Buy for Me'",
+      "url": "https://github.com/Sohex/musefs",
+      "hn_id": "48508883",
+      "hn_points": 1,
+      "hn_comments": 0,
+      "hn_created_at": "2026-06-12T20:08:09Z",
+      "keyword": "Buy for Me",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Ask HN: Are most corporate SWE jobs performative?",
+      "description": "HN mention for keyword 'Buy for Me'",
+      "url": "https://news.ycombinator.com/item?id=48475871",
+      "hn_id": "48475871",
+      "hn_points": 246,
+      "hn_comments": 282,
+      "hn_created_at": "2026-06-10T13:18:34Z",
+      "keyword": "Buy for Me",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Show HN: Mach \u2013 A compiled systems language looking for contributions",
+      "description": "HN mention for keyword 'Buy for Me'",
+      "url": "https://github.com/octalide/mach",
+      "hn_id": "48453666",
+      "hn_points": 32,
+      "hn_comments": 31,
+      "hn_created_at": "2026-06-08T23:05:20Z",
+      "keyword": "Buy for Me",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Show HN: Web tools an AI agent pays for per call in USDC, no API key (x402+MCP)",
+      "description": "HN mention for keyword 'x402'",
+      "url": "https://superhighway.walls.sh",
+      "hn_id": "48454470",
+      "hn_points": 4,
+      "hn_comments": 0,
+      "hn_created_at": "2026-06-09T00:30:43Z",
+      "keyword": "x402",
+      "threat_level": "medium",
+      "platform": "hackernews"
+    },
+    {
+      "name": "X402-Mesh \u2013 Open peer-pricelist and referral protocol",
+      "description": "HN mention for keyword 'x402'",
+      "url": "https://github.com/StartupHub-AI/x402-mesh",
+      "hn_id": "48435237",
+      "hn_points": 3,
+      "hn_comments": 0,
+      "hn_created_at": "2026-06-07T14:34:13Z",
+      "keyword": "x402",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Show HN: My open source agent built and launched its own business in 48 hours",
+      "description": "HN mention for keyword 'x402'",
+      "url": "https://github.com/smithersbot/smithersbot",
+      "hn_id": "48505517",
+      "hn_points": 1,
+      "hn_comments": 0,
+      "hn_created_at": "2026-06-12T15:37:37Z",
+      "keyword": "x402",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Show HN: I am running 3 coding agents non-stop over the last 3 days. Here is how",
+      "description": "HN mention for keyword 'x402'",
+      "url": "https://news.ycombinator.com/item?id=48520757",
+      "hn_id": "48520757",
+      "hn_points": 4,
+      "hn_comments": 1,
+      "hn_created_at": "2026-06-13T19:48:31Z",
+      "keyword": "x402",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "CodegenBench: Can LLMs Write Efficient Code Across Architectures?",
+      "description": "HN mention for keyword 'x402'",
+      "url": "https://arxiv.org/abs/2606.04023",
+      "hn_id": "48468715",
+      "hn_points": 2,
+      "hn_comments": 0,
+      "hn_created_at": "2026-06-09T22:31:46Z",
+      "keyword": "x402",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    }
+  ],
+  "summary": {
+    "critical_count": 4,
+    "high_count": 20,
+    "medium_count": 3,
+    "monitor_count": 36
+  }
+}
