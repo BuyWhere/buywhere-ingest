@@ -28,6 +28,7 @@ import {
   evaluateLaneQuality,
   laneProductsToIngestRows,
 } from './laneRunner.js';
+import { chunkArray } from './chunker.js';
 
 dotenv.config();
 
@@ -189,10 +190,12 @@ async function enqueueDeepJob(payload, jobId) {
 
 // ---------------------------------------------------------------------------
 // Page-1 worker (existing behavior + BUY-34833 deep fan-out)
+// BUY-34013: teamConcurrency 1→8 to close the ~320x gap to 150k/hr goal.
+// Each job is an independent Shopify scrape, so parallelism is safe.
 // ---------------------------------------------------------------------------
 await pgBoss.work(PAGE1_QUEUE, {
   batchSize: 1,
-  teamConcurrency: 1,
+  teamConcurrency: 8,
 }, async (jobs) => {
   // pg-boss v10 passes an array of jobs even with batchSize: 1
   const job = Array.isArray(jobs) ? jobs[0] : jobs;
@@ -251,10 +254,12 @@ console.log(`[worker] listening on queue ${PAGE1_QUEUE}`);
 
 // ---------------------------------------------------------------------------
 // Deep worker (BUY-34833) — pages 7-80 via /products.json?page=N&limit=250
+// BUY-34013: teamConcurrency 1→8. Deep jobs are independent per domain,
+// so parallelism is safe and multiplies effective scrape throughput.
 // ---------------------------------------------------------------------------
 await pgBoss.work(DEEP_QUEUE, {
   batchSize: 1,
-  teamConcurrency: 1,
+  teamConcurrency: 8,
 }, async (jobs) => {
   const job = Array.isArray(jobs) ? jobs[0] : jobs;
   const id = job.id;
@@ -286,13 +291,16 @@ await pgBoss.work(DEEP_QUEUE, {
       return;
     }
 
-    console.log(`[worker] Ingesting ${products.length} deep products to catalog`);
-    const ingestResult = await ingestProductsToCatalog(products, source);
-    console.log(`[worker] Deep ingest result:`, ingestResult);
-
-    const rowsInserted = ingestResult.rows_inserted || 0;
-    const rowsUpdated = ingestResult.rows_updated || 0;
-    const rowsFailed = ingestResult.rows_failed || 0;
+    // BUY-48425: Shopify deep can produce up to (DEEP_END_PAGE-DEEP_START_PAGE+1) ×
+    // DEEP_LIMIT rows in a single job — 74 pages × 250 = 18,500 products, far
+    // above the /v1/ingest/products 1000-row cap. Chunk via the shared
+    // helper so each request is its own short transaction. (The previous
+    // single-call shape returned 400 from the API and held the run in a
+    // failed-but-not-marked state for hours.)
+    const deepTotals = await chunkedIngest(products, source, { logTag: 'deep', domain });
+    const rowsInserted = deepTotals.rows_inserted;
+    const rowsUpdated = deepTotals.rows_updated;
+    const rowsFailed = deepTotals.rows_failed;
     const status = rowsFailed === 0 ? 'completed' : 'completed_with_errors';
 
     await updateIngestionRun(runId, status, rowsInserted, rowsUpdated, rowsFailed);
@@ -315,12 +323,52 @@ console.log(`[worker] listening on queue ${DEEP_QUEUE}`);
 // The /v1/ingest/products endpoint caps at 1000 products per request
 // (see api/src/routes/ingest.ts:205). A full 80-page WC deep can produce
 // up to 8000 products, so we chunk.
-const INGEST_BATCH_LIMIT = 1000;
+//
+// BUY-34013: teamConcurrency 1→8. WC deep jobs are independent per domain.
+// ---------------------------------------------------------------------------
+// BUY-48425: cap each /v1/ingest/products request at 1000 rows (the API
+// rejects >1000) and commit per batch. Previously the DEEP_QUEUE handler
+// sent the full deep-paged payload (up to 18,500 rows for Shopify pages
+// 7-80 × 250/page) in a single request — the API 400'd and the worker's
+// throw left the run stuck for hours. With per-batch commit each chunk
+// becomes its own short transaction, dropping INSERT txn duration from
+// the 72-min max that pg_stat_statements was reporting down to a few
+// seconds. Tunable via INGEST_BATCH_SIZE env var (default 1000).
+const INGEST_BATCH_LIMIT = parseInt(process.env.INGEST_BATCH_SIZE || '1000', 10);
 
-function chunkArray(arr, size) {
-  const out = [];
-  for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
-  return out;
+// Shared chunked ingest (BUY-48425): one /v1/ingest/products request per
+// chunk of INGEST_BATCH_LIMIT rows. Each request is its own transaction
+// in the API (no explicit BEGIN/COMMIT — node-pg auto-commits single
+// statements), so a chunk's failure does not poison the rest. Returns
+// aggregated { rows_inserted, rows_updated, rows_failed } plus the
+// per-chunk log prefix used by callers ("WC", "lane", "deep").
+async function chunkedIngest(products, source, { logTag, domain }) {
+  const totals = { rows_inserted: 0, rows_updated: 0, rows_failed: 0 };
+  if (!Array.isArray(products) || products.length === 0) return totals;
+  const chunks = chunkArray(products, INGEST_BATCH_LIMIT);
+  for (let ci = 0; ci < chunks.length; ci++) {
+    const chunk = chunks[ci];
+    console.log(`[worker] Ingesting ${logTag} chunk ${ci + 1}/${chunks.length} (${chunk.length} products) for ${domain}`);
+    try {
+      const r = await ingestProductsToCatalog(chunk, source);
+      totals.rows_inserted += r.rows_inserted || 0;
+      totals.rows_updated += r.rows_updated || 0;
+      totals.rows_failed += r.rows_failed || 0;
+      console.log(`[worker] ${logTag} chunk ${ci + 1}/${chunks.length} result:`, {
+        inserted: r.rows_inserted,
+        updated: r.rows_updated,
+        failed: r.rows_failed,
+      });
+    } catch (chunkErr) {
+      // One chunk's failure does not fail the run — record the
+      // chunk as failed rows and continue. The API returns 400
+      // for >1000 rows; the next chunk is retried with valid size.
+      const msg = chunkErr?.message || String(chunkErr);
+      console.error(`[worker] ${logTag} chunk ${ci + 1}/${chunks.length} failed for ${domain}: ${msg}`);
+      totals.rows_failed += chunk.length;
+    }
+  }
+  return totals;
 }
 
 function deriveWcSource(domain, payload) {
@@ -349,7 +397,7 @@ async function markMerchantIngested(merchantId) {
 
 await pgBoss.work(WC_DEEP_QUEUE, {
   batchSize: 1,
-  teamConcurrency: 1,
+  teamConcurrency: 8,
 }, async (jobs) => {
   const job = Array.isArray(jobs) ? jobs[0] : jobs;
   const id = job.id;
@@ -399,28 +447,13 @@ await pgBoss.work(WC_DEEP_QUEUE, {
     let totalInserted = 0;
     let totalUpdated = 0;
     let totalFailed = 0;
-    const chunks = chunkArray(products, INGEST_BATCH_LIMIT);
-    for (let ci = 0; ci < chunks.length; ci++) {
-      const chunk = chunks[ci];
-      console.log(`[worker] Ingesting WC chunk ${ci + 1}/${chunks.length} (${chunk.length} products) for ${domain}`);
-      try {
-        const r = await ingestProductsToCatalog(chunk, source);
-        totalInserted += r.rows_inserted || 0;
-        totalUpdated += r.rows_updated || 0;
-        totalFailed += r.rows_failed || 0;
-        console.log(`[worker] WC chunk ${ci + 1}/${chunks.length} result:`, {
-          inserted: r.rows_inserted,
-          updated: r.rows_updated,
-          failed: r.rows_failed,
-        });
-      } catch (chunkErr) {
-        // One chunk's failure does not fail the run — record the
-        // chunk as failed rows and continue.
-        const msg = chunkErr?.message || String(chunkErr);
-        console.error(`[worker] WC chunk ${ci + 1}/${chunks.length} failed for ${domain}: ${msg}`);
-        totalFailed += chunk.length;
-      }
-    }
+    // BUY-48425: delegate to the shared chunkedIngest helper. Each chunk
+    // is its own request/transaction; a single chunk's failure does not
+    // fail the run.
+    const wcTotals = await chunkedIngest(products, source, { logTag: 'WC', domain });
+    totalInserted = wcTotals.rows_inserted;
+    totalUpdated = wcTotals.rows_updated;
+    totalFailed = wcTotals.rows_failed;
 
     const status = totalFailed === 0 ? 'completed' : 'completed_with_errors';
     await updateIngestionRun(runId, status, totalInserted, totalUpdated, totalFailed);
@@ -1059,10 +1092,12 @@ console.log(`[worker] listening on queue ${DISCOVER_SITEMAP_QUEUE}`);
 // ---------------------------------------------------------------------------
 const LANE_QUEUE_PREFIX = 'scrape.shopify.lane.';
 const LANE_QUEUES = LANE_ROLES.map((role) => `${LANE_QUEUE_PREFIX}${role}`);
-// Ingestion endpoint caps at INGEST_BATCH_LIMIT (1000) per request. The
-// hunt/hunt2/stock lanes paginate up to 40 pages of 250 = up to 10k
-// products per merchant, so we chunk.
-const LANE_INGEST_BATCH_LIMIT = 1000;
+// BUY-48425: lane runner routes through the shared chunkedIngest helper,
+// which reads the same INGEST_BATCH_LIMIT (default 1000) as WC and deep.
+// The hunt/hunt2/stock lanes paginate up to 40 pages of 250 = up to 10k
+// products per merchant, so per-batch commit keeps each transaction
+// short and prevents the autovacuum cleanup-lock contention that the
+// 3-5min INSERTs were causing.
 
 async function ensureLaneTables(dbPool) {
   // Mirror the producer's CREATE TABLE IF NOT EXISTS so a fresh
@@ -1207,23 +1242,12 @@ function buildLaneWorkerHandler(role) {
       }
 
       const ingestRows = laneProductsToIngestRows(scrape.products, domain);
-      const chunks = chunkArray(ingestRows, LANE_INGEST_BATCH_LIMIT);
-      let totalInserted = 0;
-      let totalUpdated = 0;
-      let totalFailed = 0;
-      for (let ci = 0; ci < chunks.length; ci++) {
-        const chunk = chunks[ci];
-        try {
-          const r = await ingestProductsToCatalog(chunk, source);
-          totalInserted += r.rows_inserted || 0;
-          totalUpdated += r.rows_updated || 0;
-          totalFailed += r.rows_failed || 0;
-        } catch (chunkErr) {
-          const msg = chunkErr?.message || String(chunkErr);
-          console.error(`[worker] scrape.shopify.lane.${role} ${domain} chunk ${ci + 1}/${chunks.length} failed: ${msg}`);
-          totalFailed += chunk.length;
-        }
-      }
+      // BUY-48425: route through the shared chunkedIngest helper so the
+      // per-batch commit contract is consistent across deep, lane, and WC.
+      const laneTotals = await chunkedIngest(ingestRows, source, { logTag: `lane.${role}`, domain });
+      const totalInserted = laneTotals.rows_inserted;
+      const totalUpdated = laneTotals.rows_updated;
+      const totalFailed = laneTotals.rows_failed;
 
       const status = totalFailed === 0 ? 'completed' : 'completed_with_errors';
       await markLaneProcessed(role, domain, status, totalInserted);
