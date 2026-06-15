@@ -99,11 +99,28 @@
     "env": {
       "CATALOG_DB_URL": "{{ db.CATALOG-DB.CONNECTION_STRING }}",
       "VECTOR_DB_URL": "{{ db.CATALOG-DB.CONNECTION_STRING }}",
-      "JINA_API_KEY": "${JINA_API_KEY}",
+      "COHERE_API_KEY": "${COHERE_API_KEY}",
       "PGBOSS_ALLOWED_ENV": "railway",
       "CATALOG_DB_ENVIRONMENT": "railway",
       "CATALOG_DB_CANONICAL": "true"
     },
     "schedule": "0 */6 * * *"
+  },
+  "_embedWorker_note": "BUY-51459: embed-worker service for Cohere product embeddings. This service must be deployed separately from the main buywhere-ingest service to run the embedWorker.js process. The VECTOR_DB_URL should be set to a read replica connection string to ensure replica-only reads for product_embeddings queries. The COHERE_API_KEY must be set in Railway variables. The worker listens on port 3001 for health checks (/healthz, /health). Batch size is hardcoded to 64 per spec; EMBED_BATCH_LIMIT env var is not used by the current implementation.",
+  "embedWorker": {
+    "service": {
+      "name": "buywhere-embed-worker",
+      "command": "npm run embed-worker",
+      "env": {
+        "NODE_ENV": "production",
+        "CATALOG_DB_URL": "{{ db.CATALOG-DB.CONNECTION_STRING }}",
+        "VECTOR_DB_URL": "{{ db.CATALOG-DB.CONNECTION_STRING }}",
+        "COHERE_API_KEY": "${COHERE_API_KEY}",
+        "PGBOSS_ALLOWED_ENV": "railway",
+        "CATALOG_DB_ENVIRONMENT": "railway",
+        "CATALOG_DB_CANONICAL": "true",
+        "EMBED_HEALTH_PORT": "3001"
+      }
+    }
   }
 }

@@ -8,21 +8,21 @@ dotenv.config();
 
 const catalogDbUrl = process.env.CATALOG_DB_URL || process.env.DATABASE_URL;
 const vectorDbUrl = process.env.VECTOR_DB_URL || catalogDbUrl; // fallback to catalog DB if no separate vector DB
-const jinaApiKey = process.env.JINA_API_KEY;
+const cohereApiKey = process.env.COHERE_API_KEY;
 
 if (!catalogDbUrl) {
   throw new Error('Missing CATALOG_DB_URL (or DATABASE_URL) environment variable.');
 }
-if (!jinaApiKey) {
-  throw new Error('Missing JINA_API_KEY environment variable.');
+if (!cohereApiKey) {
+  throw new Error('Missing COHERE_API_KEY environment variable.');
 }
 
 const EMBED_QUEUE = 'embed.products';
-const BATCH_SIZE = 100;
-const JINA_MODEL = 'jina-embeddings-v3';
-const JINA_TASK = 'retrieval.passage';
-const JINA_DIMENSIONS = 512;
-const JINA_API_URL = 'https://api.jina.ai/v1/embeddings';
+const BATCH_SIZE = 64; // Cohere batch size per spec
+const COHERE_MODEL = 'embed-multilingual-v3.0';
+const COHERE_INPUT_TYPE = 'search_document';
+const COHERE_DIMENSIONS = 1024; // Cohere multilingual v3.0 dimension
+const COHERE_API_URL = 'https://api.cohere.ai/v1/embed';
 const MAX_RETRIES = 3;
 const BOSS_CONCURRENCY = 3;
 
@@ -48,45 +48,45 @@ pgBoss.on('error', (err) => {
 await pgBoss.start();
 
 // ---------------------------------------------------------------------------
-// Hash-gate: compute md5(title + ' ' + (description ?? ''))
+// Hash-gate: compute SHA256(title + ' ' + COALESCE(description, ''))
 // ---------------------------------------------------------------------------
 function textHash(title, description) {
   const text = `${title || ''} ${description != null ? description : ''}`;
-  return crypto.createHash('md5').update(text).digest('hex');
+  return crypto.createHash('sha256').update(text).digest('hex');
 }
 
 // ---------------------------------------------------------------------------
-// Jina API call with exponential backoff retry
+// Cohere API call with exponential backoff retry
 // ---------------------------------------------------------------------------
-async function embedWithJina(texts, attempt = 1) {
-  const response = await fetch(JINA_API_URL, {
+async function embedWithCohere(texts, attempt = 1) {
+  const response = await fetch(COHERE_API_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${jinaApiKey}`,
+      'Authorization': `Bearer ${cohereApiKey}`,
+      'X-Client-Name': 'buywhere',
     },
     body: JSON.stringify({
-      model: JINA_MODEL,
-      task: JINA_TASK,
-      dimensions: JINA_DIMENSIONS,
-      input: texts,
+      model: COHERE_MODEL,
+      input_type: COHERE_INPUT_TYPE,
+      texts: texts,
     }),
   });
 
   if (!response.ok) {
     const errorText = await response.text();
-    const err = new Error(`Jina API returned ${response.status}: ${errorText}`);
+    const err = new Error(`Cohere API returned ${response.status}: ${errorText}`);
     if (attempt < MAX_RETRIES) {
       const delay = Math.min(1000 * 2 ** (attempt - 1), 10000);
-      console.warn(`[embed] Jina API error (attempt ${attempt}/${MAX_RETRIES}), retrying in ${delay}ms: ${err.message}`);
+      console.warn(`[embed] Cohere API error (attempt ${attempt}/${MAX_RETRIES}), retrying in ${delay}ms: ${err.message}`);
       await new Promise((resolve) => setTimeout(resolve, delay));
-      return embedWithJina(texts, attempt + 1);
+      return embedWithCohere(texts, attempt + 1);
     }
     throw err;
   }
 
   const data = await response.json();
-  return data.data; // array of { index, embedding: number[] }
+  return data.embeddings; // array of number[]
 }
 
 // ---------------------------------------------------------------------------
@@ -102,14 +102,14 @@ async function upsertProductEmbeddings(records) {
     for (const rec of records) {
       // Only update if text_hash differs — skip price-only changes (~80% of ingest)
       await client.query(
-        `INSERT INTO product_embeddings (product_id, embedding, text_hash, model_ver, embedded_at)
-         VALUES ($1, $2, $3, $4, NOW())
+        `INSERT INTO product_embeddings (product_id, embedding, text_hash, embedded_at)
+         VALUES ($1::uuid, $2::halfvec(1024), $3, NOW())
          ON CONFLICT (product_id) DO UPDATE
            SET embedding = EXCLUDED.embedding,
                text_hash = EXCLUDED.text_hash,
                embedded_at = NOW()
          WHERE product_embeddings.text_hash != EXCLUDED.text_hash`,
-        [rec.product_id, rec.embedding, rec.text_hash, JINA_MODEL]
+        [rec.product_id, `[${rec.embedding}]`, rec.text_hash]
       );
     }
 
@@ -147,8 +147,8 @@ await pgBoss.work(EMBED_QUEUE, {
   try {
     // 1. Hash-gate: skip products whose text hash matches the existing record
     const productIds = products.map((p) => p.id);
-    const existingRows = await db.query(
-      `SELECT product_id, text_hash FROM product_embeddings WHERE product_id = ANY($1::bigint[])`,
+    const existingRows = await vectorDb.query(
+      `SELECT product_id, text_hash FROM product_embeddings WHERE product_id = ANY($1::uuid[])`,
       [productIds]
     );
     const existingHashMap = new Map(existingRows.rows.map((r) => [String(r.product_id), r.text_hash]));
@@ -179,28 +179,27 @@ await pgBoss.work(EMBED_QUEUE, {
 
     console.log(`[embed] embedding ${toEmbed.length} products (${products.length - toEmbed.length} skipped)`);
 
-    // 2. Batch and call Jina API
+    // 2. Batch and call Cohere API
     const texts = toEmbed.map((p) => `${p.title || ''} ${p.description != null ? p.description : ''}`.trim());
-    const embeddings = await embedWithJina(texts);
+    const embeddings = await embedWithCohere(texts);
 
     if (!embeddings || embeddings.length === 0) {
-      throw new Error('Jina API returned empty embeddings array');
+      throw new Error('Cohere API returned empty embeddings array');
     }
 
     // 3. Build records and upsert to vector DB
-    const embeddingMap = new Map(embeddings.map((e) => [e.index, e.embedding]));
     const records = [];
 
     for (let i = 0; i < toEmbed.length; i++) {
       const product = toEmbed[i];
-      const embedding = embeddingMap.get(i);
+      const embedding = embeddings[i];
       if (!embedding) {
         console.warn(`[embed] no embedding for product ${product.id} at index ${i}, skipping`);
         continue;
       }
       records.push({
         product_id: product.id,
-        embedding: JSON.stringify(embedding),
+        embedding: embedding,
         text_hash: product.hash,
       });
     }
@@ -224,6 +223,73 @@ console.log(`[embed] listening on queue ${EMBED_QUEUE} (teamConcurrency=${BOSS_C
 // ---------------------------------------------------------------------------
 const embedHealthPort = parseInt(process.env.EMBED_HEALTH_PORT || '3001', 10);
 const httpsAgent = new https.Agent({ keepAlive: true });
+
+import('express').then(({ default: express }) => {
+  const app = express();
+
+  // Simple liveness probe
+  app.get('/healthz', (_req, res) => {
+    res.json({ status: 'ok', service: 'buywhere-embed-worker', timestamp: new Date().toISOString() });
+  });
+
+  // Detailed health: verifies db, vector-db, pgboss queue state
+  app.get('/health', async (_req, res) => {
+    const out = {
+      service: 'buywhere-embed-worker',
+      timestamp: new Date().toISOString(),
+      checks: {},
+    };
+    let healthy = true;
+
+    // Check primary (catalog) DB
+    try {
+      const r = await db.query('SELECT 1 AS ok, NOW() AS now');
+      out.checks.catalog_db = { status: 'ok', now: r.rows[0].now };
+    } catch (e) {
+      out.checks.catalog_db = { status: 'fail', error: e.message };
+      healthy = false;
+    }
+
+    // Check vector DB
+    try {
+      const r = await vectorDb.query('SELECT count(*)::bigint AS n FROM product_embeddings');
+      const stateRow = await vectorDb.query(
+        "SELECT id, last_processed_product_id, products_embedded, started_at FROM embedding_pipeline_state WHERE id = 'main'"
+      );
+      out.checks.vector_db = {
+        status: 'ok',
+        embeddings: Number(r.rows[0].n),
+        pipeline_state: stateRow.rows[0] || { id: 'main', products_embedded: 0, started_at: null },
+        model: COHERE_MODEL,
+      };
+    } catch (e) {
+      out.checks.vector_db = { status: 'fail', error: e.message };
+      healthy = false;
+    }
+
+    // Check pg-boss state
+    try {
+      const q = await db.query(
+        "SELECT state, count(*)::int AS n FROM pgboss.job WHERE name = 'embed.products' GROUP BY state"
+      );
+      const states = {};
+      for (const row of q.rows) states[row.state] = row.n;
+      out.checks.pg_boss = { status: 'ok', embed_products_states: states };
+    } catch (e) {
+      out.checks.pg_boss = { status: 'fail', error: e.message };
+      // not fatal — pg-boss state query is informational
+    }
+
+    out.status = healthy ? 'healthy' : 'degraded';
+    res.status(healthy ? 200 : 503).json(out);
+  });
+
+  app.listen(embedHealthPort, () => {
+    console.log(`[embed] health server listening on :${embedHealthPort} (/healthz, /health)`);
+  });
+}).catch((e) => {
+  console.error('[embed] failed to start health server:', e.message);
+});
 
 process.on('SIGTERM', async () => {
   console.log('[embed] shutting down...');
