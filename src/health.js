@@ -35,6 +35,10 @@ const db = new pg.Pool({
   connectionString: catalogDbUrl,
 });
 
+// BUY-52236: ingestion_runs column is `started_at` (set in Phase 2 schema),
+// not `created_at`. Previous /healthz queries referenced `created_at` and
+// errored on every healthcheck, which Railway surfaced as a 503 → deployment
+// FAILED → worker stopped. Use `started_at` everywhere.
 async function getIngestionStats() {
   try {
     const result = await db.query(`
@@ -43,11 +47,11 @@ async function getIngestionStats() {
         COUNT(*) FILTER (WHERE status = 'completed') as completed_runs,
         COUNT(*) FILTER (WHERE status = 'failed') as failed_runs,
         COUNT(*) FILTER (WHERE status = 'running') as running_runs,
-        COUNT(*) FILTER (WHERE created_at > NOW() - INTERVAL '1 hour') as last_hour_runs,
-        COUNT(*) FILTER (WHERE created_at > NOW() - INTERVAL '24 hours') as last_24h_runs,
+        COUNT(*) FILTER (WHERE started_at > NOW() - INTERVAL '1 hour') as last_hour_runs,
+        COUNT(*) FILTER (WHERE started_at > NOW() - INTERVAL '24 hours') as last_24h_runs,
         SUM(rows_inserted) FILTER (WHERE rows_inserted IS NOT NULL) as total_rows_inserted,
         SUM(rows_updated) FILTER (WHERE rows_updated IS NOT NULL) as total_rows_updated,
-        MAX(created_at) as last_run_at
+        MAX(started_at) as last_run_at
       FROM ingestion_runs
     `);
     return result.rows[0];
@@ -61,10 +65,10 @@ async function getRecentJobs(limit = 10) {
   try {
     const result = await db.query(`
       SELECT
-        id, source, status, created_at, finished_at,
+        id, source, status, started_at AS created_at, finished_at,
         rows_inserted, rows_updated, rows_failed, error_message
       FROM ingestion_runs
-      ORDER BY created_at DESC
+      ORDER BY started_at DESC
       LIMIT $1
     `, [limit]);
     return result.rows;
