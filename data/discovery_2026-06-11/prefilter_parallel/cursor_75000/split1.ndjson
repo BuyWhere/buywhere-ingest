@@ -1,0 +1,5 @@
+{"domain":"headphonezone.in","platform":"shopify","product_endpoint":"https://headphonezone.in/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":1099,"country_code":"IN","currency":null}
+{"domain":"uanal.com","platform":"woocommerce","product_endpoint":"https://uanal.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":326,"country_code":"US","currency":null}
+{"domain":"netvisor.fi","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":382,"country_code":"US","currency":null}
+{"domain":"teachingamericanhistory.org","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":42,"country_code":"US","currency":null}
+{"domain":"bmr.ca","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":909,"country_code":"CA","currency":null}

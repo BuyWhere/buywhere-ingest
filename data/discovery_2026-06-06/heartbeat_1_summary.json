@@ -1,0 +1,100 @@
+{
+  "heartbeat": 1,
+  "ts": "2026-06-06T20:30:00Z",
+  "issue": "BUY-32878",
+  "owner": "Oracle (3ec8f6dd-1735-4479-9825-a2c42edac34c)",
+  "status": "in_progress",
+  "deliverables": [
+    {
+      "name": "scripts/discovery-prefilter.mjs",
+      "purpose": "Detect Shopify/WooCommerce/Magento/BigCommerce/Schema.org Product stores from a domain list via endpoint + HTML signature + JSON-LD checks",
+      "lines": 320,
+      "capabilities": ["gzip/deflate/brotli decompression", "redirect follow (3 max)", "200 concurrency", "exponential 429 backoff", "country/currency hint from TLD/HTML"]
+    },
+    {
+      "name": "scripts/discovery-multi-source.mjs",
+      "purpose": "Orchestrate candidate harvest from 10 sources (CC CDX, Tranco, BuiltWith, schema.org, affiliate networks, etc.)",
+      "lines": 372,
+      "sources": [1, 2, 3, 4, 9, 10],
+      "per_source_limit": "configurable (default 200-5000)"
+    },
+    {
+      "name": "scripts/deep-page-parallel.mjs",
+      "purpose": "Parallel deep-pager for Shopify /products.json, normalized to BuyWhere product schema",
+      "lines": 220,
+      "capabilities": ["exponential 429 backoff (5 retries)", "per-store max cap", "rate-limited", "gzip-aware"]
+    },
+    {
+      "name": "scripts/ingest-daemon.mjs",
+      "purpose": "Continuous NDJSON watcher -> batched COPY-style upsert into pinned catalog DB (data/.catalog_db_url)",
+      "lines": 287,
+      "capabilities": ["ingestion_guard integration", "fabrication share guard (zeroPrice/nullImage/nullSku/emptyTitle)", "hourly report", "NDJSON directory watcher"]
+    }
+  ],
+  "runs": [
+    {
+      "run": "prefilter_2k",
+      "started_at": "2026-06-06T20:08:44Z",
+      "finished_at": "2026-06-06T20:13:35Z",
+      "elapsed_s": 291,
+      "input": "Tranco top 2K (.com/.net/.store/.shop/.co)",
+      "domains_checked": 1975,
+      "domains_passed": 59,
+      "hit_rate_pct": 2.99,
+      "by_platform": {"shopify": 3, "shopify-html": 20, "woocommerce": 11, "woocommerce-html": 9, "magento": 2, "magento-html": 3, "schema-product": 11},
+      "output": "data/discovery_2026-06-06/prefilter_2k.ndjson"
+    },
+    {
+      "run": "deep_page_3_stores",
+      "started_at": "2026-06-06T20:16:19Z",
+      "finished_at": "2026-06-06T20:16:20Z",
+      "elapsed_s": 1,
+      "input": "data/discovery_2026-06-06/shopify_only.ndjson (3 endpoint-confirmed Shopify stores: ui.com, wyzecam.com, ubnt.com)",
+      "products_extracted": 100,
+      "fabricated": false,
+      "output": "data/discovery_2026-06-06/products/shopify_test.ndjson"
+    },
+    {
+      "run": "prefilter_20k",
+      "started_at": "2026-06-06T20:16:00Z",
+      "finished_at": "in_progress",
+      "domains_checked": 5650,
+      "domains_checked_max": 19973,
+      "domains_passed_so_far": 99,
+      "hit_rate_pct_so_far": 1.75,
+      "by_platform_so_far": {"shopify": 2, "woocommerce": 21, "shopify-html": 36, "woocommerce-html": 14, "schema-product": 18, "magento": 3, "magento-html": 4, "bigcommerce-html": 1},
+      "status": "running detached (pid 3947226)"
+    },
+    {
+      "run": "prefilter_mid_5k",
+      "started_at": "2026-06-06T20:24:00Z",
+      "finished_at": "in_progress",
+      "domains_checked": 1650,
+      "domains_checked_max": 5000,
+      "hit_rate_pct_so_far": 0.30,
+      "status": "running detached (pid 3997948); lower hit rate in mid-rank as expected"
+    }
+  ],
+  "ingest_attempts": [
+    {
+      "ts": "2026-06-06T20:18Z",
+      "result": "blocked by heavy lock contention",
+      "details": "14 active DB sessions (8 INSERTs into products, 3 SELECTs, 3 idle). Existing fleet (chewy_ingest_loop, buy30331-ingest-stream x2, buy30590-deep-page-loop, ingest_ua_and_cc, cc-shopify-discover-v2) is hammering the products table. EXPLAIN on pid 678 has been holding a relation lock since 20:07:30, blocking all competing INSERTs. Our 100-row batch is queued behind them."
+    }
+  ],
+  "next_steps": [
+    "Wait for 20K + mid-5K prefilters to complete; expect ~150-300 total candidates",
+    "Run deep-page across all confirmed Shopify/woo candidates (target: 5K-15K products)",
+    "Retry upsert in low-contention window (catalog_stats insert signals when bulk loaders idle)",
+    "Add multi-source seed expansion: when CommonCrawl CDX is reachable, harvest from *.com/products.json pattern at 5K+ scale"
+  ],
+  "evidence_files": [
+    "scripts/discovery-prefilter.mjs",
+    "scripts/discovery-multi-source.mjs",
+    "scripts/deep-page-parallel.mjs",
+    "scripts/ingest-daemon.mjs",
+    "data/discovery_2026-06-06/prefilter_2k.ndjson",
+    "data/discovery_2026-06-06/products/shopify_test.ndjson",
+    "data/discovery_2026-06-06/heartbeat_1_summary.json"
+  ]
+}

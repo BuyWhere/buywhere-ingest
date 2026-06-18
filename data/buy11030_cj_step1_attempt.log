@@ -1,0 +1,13 @@
+STEP A url= https://public.cj.com/signup/publisher?advertiserId=5206455 title= CJ
+STEP B url= https://public.cj.com/signup/publisher?advertiserId=5206455 title= Wayfair North America - CJ
+STEP B inputs= 7
+  [0] tag=INPUT type=text id=language-input name= placeholder='' value=''
+  [1] tag=INPUT type=text id=country-input name= placeholder='' value=''
+  [2] tag=INPUT type=text id=701ab9db-1c01-fc92-d767-5b38f2 name= placeholder='' value=''
+  [3] tag=INPUT type=password id=bcbcab34-0aa1-4280-4276-ec0909 name=password placeholder='' value=''
+  [4] tag=INPUT type=password id=d2f8e619-da54-0a21-7e7e-b6f0c3 name=confirmPassword placeholder='' value=''
+  [5] tag=TEXTAREA type= id=g-recaptcha-response name=g-recaptcha-response placeholder='' value=''
+  [6] tag=INPUT type=hidden id=4480d7ff-c495-0277-02ba-b2f4e8 name=recaptcha placeholder='' value=''
+CAPTCHA present: True
+email_input count= 3 pwd_input count= 2
+DONE

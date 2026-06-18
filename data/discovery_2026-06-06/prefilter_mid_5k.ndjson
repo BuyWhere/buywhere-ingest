@@ -1,0 +1,5 @@
+{"domain":"catholiccompany.com","platform":"shopify","product_endpoint":"https://catholiccompany.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":224,"country_code":"US","currency":null}
+{"domain":"youtooz.com","platform":"shopify","product_endpoint":"https://youtooz.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":878,"country_code":"US","currency":null}
+{"domain":"archiwp.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":659,"country_code":"US","currency":null}
+{"domain":"stylemixthemes.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1515,"country_code":"US","currency":null}
+{"domain":"roadtovr.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1612,"country_code":"US","currency":null}

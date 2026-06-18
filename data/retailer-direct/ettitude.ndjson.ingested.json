@@ -1,0 +1,20 @@
+{
+  "ingest": {
+    "at": "2026-06-15T23:46:47+00:00",
+    "errors": 0,
+    "inserted": 142,
+    "partial": false,
+    "records": 142
+  },
+  "ingestedBy": "BUY-52085",
+  "local": {
+    "path": "data/retailer-direct/ettitude.ndjson",
+    "sha256": "88fe3a02c13ba67c88a6732881c756d81fa9f6d408765a72de2d74e3e05293fe",
+    "size": 908990
+  },
+  "r2": {
+    "bucket": "buywhere-data",
+    "key": "scrape-artifacts/2026-06-15/ettitude.ndjson"
+  },
+  "schemaVersion": 2
+}

@@ -1,0 +1,78 @@
+{
+  "probe_at": "2026-06-06T22:10:45Z",
+  "issue": "BUY-32954",
+  "purpose": "Concrete evidence that both API keys are still 429'd at this heartbeat, documenting why the basket cannot run before the 2026-06-07 00:00 UTC reset. This file is NOT consumed by basket_verify_32954.py — it is a sidecar probe so the routine's first invocation can run a clean 300x2 basket against fresh quota.",
+  "results": [
+    {
+      "surface": "rest",
+      "key_kind": "enterprise",
+      "key_fingerprint": "bw_live_4Ae…LzP",
+      "url": "https://api.buywhere.ai/v1/products/search?q=test&country=SG&limit=1",
+      "http_status": 429,
+      "body": {
+        "error": "rate_limit_exceeded",
+        "message": "Daily limit of 1,000 requests reached. Resets at midnight UTC.",
+        "tier": "enterprise",
+        "limit": 1000,
+        "reset_at": "2026-06-07T00:00:00.000Z"
+      },
+      "latency_s": 0.045987
+    },
+    {
+      "surface": "rest",
+      "key_kind": "unverified",
+      "key_fingerprint": "bw_265c38…864",
+      "url": "https://api.buywhere.ai/v1/products/search?q=test&country=SG&limit=1",
+      "http_status": 429,
+      "body": {
+        "error": "rate_limit_exceeded",
+        "message": "Daily limit of 10,000 requests reached. Resets at midnight UTC.",
+        "tier": "unverified",
+        "limit": 10000,
+        "reset_at": "2026-06-07T00:00:00.000Z"
+      },
+      "latency_s": 0.046848
+    },
+    {
+      "surface": "mcp",
+      "key_kind": "enterprise",
+      "key_fingerprint": "bw_live_4Ae…LzP",
+      "url": "https://mcp.buywhere.ai/mcp",
+      "method": "tools/call",
+      "tool": "search_products",
+      "protocol_version": "2024-11-05",
+      "arguments": {"q": "test", "country_code": "SG", "region": "SG", "limit": 1},
+      "http_status": 429,
+      "body": {
+        "error": "rate_limit_exceeded",
+        "message": "Daily limit of 1,000 requests reached. Resets at midnight UTC.",
+        "tier": "enterprise",
+        "limit": 1000,
+        "reset_at": "2026-06-07T00:00:00.000Z"
+      },
+      "latency_s": 0.064412
+    }
+  ],
+  "basket_state": {
+    "script": "scripts/basket_verify_32954.py",
+    "basket_hash": "826df9d8c30856ca3ec4772942ba6b2006e0181ad7c95f804a6d93f6f210329a",
+    "basket_size": 300,
+    "results_jsonl": "empty (no queries recorded yet — routine will fill it cleanly)",
+    "summary_json": "absent"
+  },
+  "routine_state": {
+    "routine_id": "10976cc0-d2d1-4461-9af0-ad588adf243f",
+    "title": "BUY-32954 basket run (post-reset)",
+    "status": "active",
+    "next_run_at": "2026-06-07T00:00:00.000Z",
+    "trigger_cron": "0 0 7 6 *",
+    "trigger_timezone": "UTC",
+    "concurrency_policy": "skip_if_active",
+    "catch_up_policy": "skip_missed",
+    "last_fired_at": null,
+    "active_issue": null
+  },
+  "minutes_to_reset": 109.25,
+  "deadline": "2026-06-07T18:00:00.000Z",
+  "conclusion": "Both REST keys and the MCP endpoint share the same per-day quota counter and are all at the cap. Basket run deferred to the routine fire at 2026-06-07T00:00:00.000Z. The deadline at 18:00 UTC gives 18 hours of margin even if the routine's first attempt fails."
+}

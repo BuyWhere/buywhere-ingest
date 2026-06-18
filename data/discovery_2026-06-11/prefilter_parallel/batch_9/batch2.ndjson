@@ -1,0 +1,17 @@
+{"domain":"bestjapan.ru","platform":"bigcommerce","product_endpoint":"https://bestjapan.ru/api/catalog/products?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":144,"country_code":"US","currency":null}
+{"domain":"roxybrowser.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":139,"country_code":"US","currency":null}
+{"domain":"deskin.io","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":18,"country_code":"US","currency":null}
+{"domain":"smooche.com","platform":"shopify","product_endpoint":"https://smooche.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":4341,"country_code":"US","currency":null}
+{"domain":"hclips.vip","platform":"woocommerce","product_endpoint":"https://hclips.vip/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":925,"country_code":"US","currency":null}
+{"domain":"wiserreview.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":609,"country_code":"US","currency":null}
+{"domain":"hoptodesk.com","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":55,"country_code":"US","currency":null}
+{"domain":"spinomenal.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1720,"country_code":"US","currency":null}
+{"domain":"sreeleathersonline.com","platform":"shopify","product_endpoint":"https://sreeleathersonline.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":4826,"country_code":"US","currency":null}
+{"domain":"providence.edu","platform":"woocommerce","product_endpoint":"https://providence.edu/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":255,"country_code":"US","currency":null}
+{"domain":"lyoncapitale.fr","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":2713,"country_code":"FR","currency":null}
+{"domain":"wpmanageninja.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":53,"country_code":"US","currency":null}
+{"domain":"yonaber.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":2245,"country_code":"US","currency":null}
+{"domain":"tangem.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":1401,"country_code":"US","currency":null}
+{"domain":"peasisoft.com","platform":"bigcommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":4055,"country_code":"US","currency":null}
+{"domain":"musically.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":835,"country_code":"US","currency":null}
+{"domain":"winteriscoming.net","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1791,"country_code":"US","currency":null}

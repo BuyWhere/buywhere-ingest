@@ -1,0 +1,9 @@
+{"domain":"tabarn.app","platform":"magento","product_endpoint":"https://tabarn.app/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":188,"country_code":"US","currency":null}
+{"domain":"metalinjection.net","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":33,"country_code":"US","currency":null}
+{"domain":"mrgay.tube","platform":"woocommerce","product_endpoint":"https://mrgay.tube/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":794,"country_code":"US","currency":null}
+{"domain":"britishlegion.org.uk","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":206,"country_code":"GB","currency":null}
+{"domain":"scalperscompany.com","platform":"shopify","product_endpoint":"https://scalperscompany.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":4036,"country_code":"US","currency":null}
+{"domain":"smartname.com","platform":"woocommerce","product_endpoint":"https://smartname.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":400,"country_code":"US","currency":null}
+{"domain":"pricelabs.co","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":8395,"country_code":"US","currency":null}
+{"domain":"lifeandstylemag.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":258,"country_code":"US","currency":null}
+{"domain":"productsup.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":1978,"country_code":"US","currency":null}

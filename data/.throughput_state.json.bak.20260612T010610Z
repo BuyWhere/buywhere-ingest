@@ -1,0 +1,32 @@
+{
+  "last_n_tup_ins": 44898133,
+  "last_n_tup_ins_at": "2026-06-12T00:04:32.193579+00:00",
+  "last_hour_checked": "2026-06-11T23:00:00+00:00",
+  "last_hour_window_start": "2026-06-11T22:01:37Z",
+  "last_hour_window_end": "2026-06-12T00:04:32.193579+00:00",
+  "last_check_result": "PASS",
+  "last_check_real_rows": 272920,
+  "last_check_source": "n_tup_ins_delta",
+  "last_n_live_tup": 76752961,
+  "last_db_host": "maglev.proxy.rlwy.net:31310/railway",
+  "last_check_delta_rows": 270873,
+  "last_check_delta_hours": 0.9925,
+  "last_check_rate": 272920,
+  "last_check_threshold": 150000,
+  "last_pm_start": "2026-06-08T10:21:09.112373+00:00",
+  "last_issue_identifier": "none",
+  "last_fire_timestamp": "2026-06-12T00:04:32.193579+00:00",
+  "last_note": "23:00-24:00Z hour PASS: delta 270,873 over ~0.993h (2026-06-11T23:02:31Z anchor -> 2026-06-12T00:02:04Z) = 272,920/hr (n_tup_ins PRIMARY signal under maglev contention). S1 44,622,141 (2026-06-11T23:02:31Z) -> S2 44,893,014 (2026-06-12T00:02:04Z, re-sampled to 44,898,133 at midnight_snapshot close). n_live_tup: 76,752,961. pm_start=2026-06-08T10:21:09Z (well outside this hour, delta method valid). Hour-bucket COUNT and MAX(created_at) TIMED OUT (maglev contention \u2014 primary n_tup_ins signal used). NO child issue filed (rate 272,920/hr >= 150,000/hr threshold by +122,920/hr, +81.9%). Auto-dispatcher cron still broken (BUY-33694); this heartbeat at 2026-06-12T00:02Z is the canonical fire for the 23:00-24:00Z window. Midnight snapshot recorded for closed_day=2026-06-11: open 44,622,141 -> close 44,898,133, delta +275,992 (partial: only 23:00-24:00Z since cron is broken; for full closed-day delta reconstruct from first fire of 2026-06-11 + close fire). Comment post on BUY-33694 blocked by agent-mutate-another-agent boundary; state file is durable record.",
+  "last_closed_day": {
+    "date": "2026-06-11",
+    "n_tup_ins_open": 44622141,
+    "n_tup_ins_close": 44898133,
+    "delta": 275992,
+    "n_live_tup_close": 76752961,
+    "open_at": "2026-06-11T23:02:31+00:00",
+    "close_at": "2026-06-12T00:04:06.230363+00:00",
+    "db_host": "maglev.proxy.rlwy.net:31310/railway",
+    "source": "midnight_snapshot"
+  },
+  "last_midnight_recorded_date": "2026-06-11"
+}

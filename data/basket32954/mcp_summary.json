@@ -1,0 +1,10 @@
+{
+  "total": 300,
+  "successes": 159,
+  "success_rate": 53.0,
+  "by_status": {
+    "200": 300
+  },
+  "top_errors": [],
+  "base_url": "https://api.buywhere.ai/mcp"
+}

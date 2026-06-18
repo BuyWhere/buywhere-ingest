@@ -3,11 +3,13 @@
 import asyncio
 import json
 import re
+import logging
 from urllib.parse import urljoin
 from typing import List, Optional
 from .base_scraper import BaseScraper, Product
 
 COURTS_SG_BASE = "https://www.courts.com.sg"
+logger = logging.getLogger(__name__)
 
 
 class CourtsSGScraper(BaseScraper):
@@ -126,6 +128,7 @@ class CourtsSGScraper(BaseScraper):
     async def _scrape_impl(self, products: List[Product]) -> None:
         max_pages = 5
         page = 1
+        seen_urls: set[str] = set()
         while page <= max_pages:
             url = f"{self.search_url}/?q=*&page={page}"
             html = await self.fetch(url)
@@ -139,15 +142,57 @@ class CourtsSGScraper(BaseScraper):
             if not items:
                 break
 
+            new_products: List[Product] = []
             for item in items:
                 name_elem = item.select_one(".product-name, .product-title, h2, h3, .title")
                 price_elem = item.select_one(".price")
+                link_elem = item.select_one("a.product-item-link, a.product-photo, .product-item-link, a")
+                product_url = None
+                if link_elem:
+                    href = link_elem.get("href")
+                    if href:
+                        product_url = urljoin(self.base_url, href)
+
+                if product_url and product_url in seen_urls:
+                    continue
+                if product_url:
+                    seen_urls.add(product_url)
+
+                sku = None
+                if product_url:
+                    sku_match = re.search(r"-ip(\d+)(?:/|$)", product_url)
+                    if sku_match:
+                        sku = f"COURTS_SG_{sku_match.group(1)}"
+
+                price_text = None
+                if price_elem:
+                    price_text = self._clean_text(price_elem.get_text())
+                    if price_text:
+                        price_match = re.search(r"[\d,]+\.?\d*", price_text.replace("S$", ""))
+                        if price_match:
+                            price_text = price_match.group(0)
 
                 product = Product(
                     name=self._clean_text(name_elem.get_text()) if name_elem else None,
-                    price=self._clean_text(price_elem.get_text()) if price_elem else None,
+                    price=price_text,
+                    url=product_url,
+                    sku=sku,
                 )
                 products.append(product)
+                new_products.append(product)
+
+            # Fetch brand details for new products with detail-page URLs in-page batch.
+            if new_products:
+                brand_values = await asyncio.gather(
+                    *(self._fetch_product_brand(product.url) for product in new_products if product.url),
+                    return_exceptions=True,
+                )
+                for product, brand in zip(new_products, brand_values):
+                    if isinstance(brand, Exception):
+                        logger.warning(f"Failed to fetch brand for {product.url}: {brand}")
+                        continue
+                    if brand:
+                        product.brand = brand
 
             page += 1
             await asyncio.sleep(0.5)

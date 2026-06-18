@@ -1,0 +1,22 @@
+[prefilter] input=data/discovery_2026-06-07/tranco_50k.txt domains=49953 concurrency=200
+[prefilter] worker=3 checked=50/49953 passed=5 failed=45 by_platform={"woocommerce":2,"shopify":1,"woocommerce-html":2}
+[prefilter] worker=69 checked=100/49953 passed=13 failed=87 by_platform={"woocommerce":3,"shopify":1,"woocommerce-html":2,"shopify-html":5,"schema-product":2}
+[prefilter] worker=113 checked=150/49953 passed=19 failed=131 by_platform={"woocommerce":4,"shopify":1,"woocommerce-html":4,"shopify-html":6,"schema-product":3,"magento":1}
+[prefilter] worker=28 checked=200/49953 passed=21 failed=179 by_platform={"woocommerce":4,"shopify":1,"woocommerce-html":4,"shopify-html":6,"schema-product":4,"magento":2}
+[prefilter] worker=111 checked=250/49953 passed=24 failed=226 by_platform={"woocommerce":4,"shopify":1,"woocommerce-html":5,"shopify-html":8,"schema-product":4,"magento":2}
+[prefilter] worker=60 checked=300/49953 passed=28 failed=272 by_platform={"woocommerce":7,"shopify":1,"woocommerce-html":6,"shopify-html":8,"schema-product":4,"magento":2}
+[prefilter] worker=169 checked=350/49953 passed=32 failed=318 by_platform={"woocommerce":10,"shopify":1,"woocommerce-html":6,"shopify-html":8,"schema-product":5,"magento":2}
+[prefilter] worker=187 checked=400/49953 passed=34 failed=366 by_platform={"woocommerce":11,"shopify":1,"woocommerce-html":6,"shopify-html":8,"schema-product":6,"magento":2}
+[prefilter] worker=107 checked=450/49953 passed=34 failed=416 by_platform={"woocommerce":11,"shopify":1,"woocommerce-html":6,"shopify-html":8,"schema-product":6,"magento":2}
+[prefilter] worker=139 checked=500/49953 passed=34 failed=466 by_platform={"woocommerce":11,"shopify":1,"woocommerce-html":6,"shopify-html":8,"schema-product":6,"magento":2}
+[prefilter] worker=152 checked=550/49953 passed=34 failed=516 by_platform={"woocommerce":11,"shopify":1,"woocommerce-html":6,"shopify-html":8,"schema-product":6,"magento":2}
+[prefilter] worker=187 checked=600/49953 passed=34 failed=566 by_platform={"woocommerce":11,"shopify":1,"woocommerce-html":6,"shopify-html":8,"schema-product":6,"magento":2}
+[prefilter] worker=89 checked=650/49953 passed=34 failed=616 by_platform={"woocommerce":11,"shopify":1,"woocommerce-html":6,"shopify-html":8,"schema-product":6,"magento":2}
+[prefilter] worker=189 checked=700/49953 passed=34 failed=666 by_platform={"woocommerce":11,"shopify":1,"woocommerce-html":6,"shopify-html":8,"schema-product":6,"magento":2}
+[prefilter] worker=183 checked=750/49953 passed=34 failed=716 by_platform={"woocommerce":11,"shopify":1,"woocommerce-html":6,"shopify-html":8,"schema-product":6,"magento":2}
+[prefilter] worker=177 checked=800/49953 passed=34 failed=766 by_platform={"woocommerce":11,"shopify":1,"woocommerce-html":6,"shopify-html":8,"schema-product":6,"magento":2}
+[prefilter] worker=164 checked=850/49953 passed=34 failed=816 by_platform={"woocommerce":11,"shopify":1,"woocommerce-html":6,"shopify-html":8,"schema-product":6,"magento":2}
+[prefilter] worker=189 checked=900/49953 passed=34 failed=866 by_platform={"woocommerce":11,"shopify":1,"woocommerce-html":6,"shopify-html":8,"schema-product":6,"magento":2}
+[prefilter] worker=152 checked=950/49953 passed=34 failed=916 by_platform={"woocommerce":11,"shopify":1,"woocommerce-html":6,"shopify-html":8,"schema-product":6,"magento":2}
+[prefilter] worker=187 checked=1000/49953 passed=34 failed=966 by_platform={"woocommerce":11,"shopify":1,"woocommerce-html":6,"shopify-html":8,"schema-product":6,"magento":2}
+[prefilter] worker=89 checked=1050/49953 passed=34 failed=1016 by_platform={"woocommerce":11,"shopify":1,"woocommerce-html":6,"shopify-html":8,"schema-product":6,"magento":2}

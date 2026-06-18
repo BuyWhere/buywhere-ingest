@@ -1,0 +1,7 @@
+{"domain":"terranovastyle.com","platform":"shopify","product_endpoint":"https://terranovastyle.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":727,"country_code":"US","currency":null}
+{"domain":"vyaparapp.in","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":147,"country_code":"IN","currency":null}
+{"domain":"microperfumes.com","platform":"shopify","product_endpoint":"https://microperfumes.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":4924,"country_code":"US","currency":null}
+{"domain":"themehunk.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":2279,"country_code":"US","currency":null}
+{"domain":"rcrcq.ca","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":1033,"country_code":"CA","currency":null}
+{"domain":"niointernet.com.br","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":1314,"country_code":"BR","currency":null}
+{"domain":"rdb.rw","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":3014,"country_code":"US","currency":null}

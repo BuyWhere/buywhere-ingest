@@ -1,0 +1,6 @@
+{"domain":"navidiumapp.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":735,"country_code":"US","currency":null}
+{"domain":"abcbirds.org","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":30,"country_code":"US","currency":null}
+{"domain":"kigili.com","platform":"shopify","product_endpoint":"https://kigili.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":6506,"country_code":"US","currency":null}
+{"domain":"theccc.org.uk","platform":"magento","product_endpoint":"https://theccc.org.uk/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":191,"country_code":"GB","currency":null}
+{"domain":"thebaynet.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":622,"country_code":"US","currency":null}
+{"domain":"watchdocumentaries.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":71,"country_code":"US","currency":null}

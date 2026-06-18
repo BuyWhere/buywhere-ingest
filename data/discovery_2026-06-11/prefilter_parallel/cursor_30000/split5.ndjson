@@ -1,0 +1,4 @@
+{"domain":"aldoshoes.com","platform":"shopify","product_endpoint":"https://aldoshoes.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":848,"country_code":"US","currency":null}
+{"domain":"ascendoor.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":10,"country_code":"US","currency":null}
+{"domain":"aafa.org","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":41,"country_code":"US","currency":null}
+{"domain":"wpbrigade.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":300,"country_code":"US","currency":null}

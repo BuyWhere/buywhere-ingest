@@ -1,0 +1,7 @@
+{"domain":"woodcraft.com","platform":"shopify","product_endpoint":"https://woodcraft.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":1870,"country_code":"US","currency":null}
+{"domain":"katalon.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":672,"country_code":"US","currency":null}
+{"domain":"glamour.es","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":9245,"country_code":"ES","currency":null}
+{"domain":"bigseller.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":138,"country_code":"US","currency":null}
+{"domain":"roadtovr.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1625,"country_code":"US","currency":null}
+{"domain":"stylemixthemes.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1747,"country_code":"US","currency":null}
+{"domain":"ankersolix.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":269,"country_code":"US","currency":null}

@@ -1,0 +1,5 @@
+{"domain":"azehosting.net","platform":"magento","product_endpoint":"https://azehosting.net/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":167,"country_code":"US","currency":null}
+{"domain":"rybbit.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1180,"country_code":"US","currency":null}
+{"domain":"dollskill.com","platform":"shopify","product_endpoint":"https://dollskill.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":6070,"country_code":"US","currency":null}
+{"domain":"envysion.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":356,"country_code":"US","currency":null}
+{"domain":"natera.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1433,"country_code":"US","currency":null}

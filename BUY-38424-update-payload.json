@@ -1,0 +1,5 @@
+{
+  "status": "done",
+  "comment": "Closed with fresh runtime verification for [BUY-30854](/BUY/issues/BUY-30854).\n\nEvidence: `docs/buy-38424-vera-sustained-throughput-keep-alive-2026-06-09T170925Z.md`\n\nSummary:\n- `scripts/buy30854-lane-keep-alive.sh` still contains the dead-lane restart path, including the `exec 9>&-` lock-fd close before detached relaunch.\n- `systemd/paperclip-lane-keep-alive.timer` still enforces the 5-minute cadence with `OnUnitActiveSec=5min` and `Persistent=true`, and the service remains `Type=oneshot` running the watchdog script.\n- A fresh manual tick completed at `2026-06-09T17:09:06Z`; `sustained_loop` remained healthy at pid `3578415`.\n- `deep_page_loop` remained intentionally stopped because `data/buy30590-deep-page-loop.stopped` is present, while `woocommerce_discover` and `lane_supervisor` remained intentionally skipped by their completion/stop markers.\n- `data/buy30854-keep-alive-state.json` still shows zero dead counts for all tracked lanes, and `data/buy30854-keep-alive-escalation.json` gained no new entry in this heartbeat.\n",
+  "runId": "ef4c6553-a836-4fdd-a046-945a125a438f"
+}

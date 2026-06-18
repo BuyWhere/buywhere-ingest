@@ -1,0 +1,8 @@
+{"domain":"gocertify.me","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":2707,"country_code":"US","currency":null}
+{"domain":"freedomfi.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":38,"country_code":"US","currency":null}
+{"domain":"eflorist.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":448,"country_code":"US","currency":null}
+{"domain":"xpeng.com","platform":"woocommerce","product_endpoint":"https://xpeng.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":6413,"country_code":"US","currency":null}
+{"domain":"10best.com","platform":"woocommerce","product_endpoint":"https://10best.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":1018,"country_code":"US","currency":null}
+{"domain":"nusa.net.id","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":936,"country_code":"ID","currency":null}
+{"domain":"starapps.studio","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1549,"country_code":"US","currency":null}
+{"domain":"xxlmag.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1549,"country_code":"US","currency":null}

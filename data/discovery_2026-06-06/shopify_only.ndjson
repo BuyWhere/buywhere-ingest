@@ -1,0 +1,3 @@
+{"domain": "ui.com", "platform": "shopify", "product_endpoint": "https://ui.com/products.json?limit=1", "probe_status": 200, "detection_method": "platform_endpoint", "latency_ms": 1299, "country_code": "US", "currency": null}
+{"domain": "wyzecam.com", "platform": "shopify", "product_endpoint": "https://wyzecam.com/products.json?limit=1", "probe_status": 200, "detection_method": "platform_endpoint", "latency_ms": 2728, "country_code": "US", "currency": null}
+{"domain": "ubnt.com", "platform": "shopify", "product_endpoint": "https://ubnt.com/products.json?limit=1", "probe_status": 200, "detection_method": "platform_endpoint", "latency_ms": 4456, "country_code": "US", "currency": null}

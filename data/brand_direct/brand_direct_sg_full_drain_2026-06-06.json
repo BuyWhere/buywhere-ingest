@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-06-06T10:47:03.887852+00:00",
+  "concurrency": 8,
+  "apple": {
+    "source": "apple_sg_buy_xml",
+    "ndjson_path": "merchants/apple_sg_buy_xml_full_2026-06-06.ndjson",
+    "failures_path": "data/brand_direct/apple_sg_buy_xml_full_2026-06-06_failures.json",
+    "record_count": 935,
+    "unique_records": 935,
+    "invalid_count": 11,
+    "dropped_invalid_schema": 0,
+    "dropped_duplicate_sku_source": 11
+  },
+  "samsung": {
+    "source": "samsung_sg_sitemap",
+    "ndjson_path": "merchants/samsung_sg_sitemap_full_2026-06-06.ndjson",
+    "failures_path": "data/brand_direct/samsung_sg_sitemap_full_2026-06-06_failures.json",
+    "record_count": 1696,
+    "unique_records": 1696,
+    "invalid_count": 0,
+    "dropped_invalid_schema": 0,
+    "dropped_duplicate_sku_source": 0
+  },
+  "combined_record_count": 2631
+}

@@ -1,0 +1,10 @@
+{"domain":"wwr-stardom.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":6145,"country_code":"US","currency":null}
+{"domain":"acbl.org","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":4981,"country_code":"US","currency":null}
+{"domain":"scoresinlive.com","platform":"magento","product_endpoint":"https://scoresinlive.com/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":3554,"country_code":"US","currency":null}
+{"domain":"subscribers.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":492,"country_code":"US","currency":null}
+{"domain":"omadanetworks.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":888,"country_code":"US","currency":null}
+{"domain":"cloudradial.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":8228,"country_code":"US","currency":null}
+{"domain":"rekhtadictionary.com","platform":"woocommerce","product_endpoint":"https://rekhtadictionary.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":463,"country_code":"US","currency":null}
+{"domain":"stroilioro.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":9078,"country_code":"US","currency":null}
+{"domain":"faveni.edu.br","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":9823,"country_code":"BR","currency":null}
+{"domain":"tupperware.com","platform":"shopify","product_endpoint":"https://tupperware.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":4856,"country_code":"US","currency":null}

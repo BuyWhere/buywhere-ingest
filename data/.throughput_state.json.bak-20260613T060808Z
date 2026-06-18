@@ -1,0 +1,33 @@
+{
+  "last_n_tup_ins": 51014742,
+  "last_n_tup_ins_at": "2026-06-13T05:04:17+00:00",
+  "last_hour_checked": "2026-06-13T04:00:00+00:00",
+  "last_hour_window_start": "2026-06-13T04:00:00Z",
+  "last_hour_window_end": "2026-06-13T05:00:00Z",
+  "last_check_result": "FAIL",
+  "last_check_real_rows": 85125,
+  "last_check_source": "n_tup_ins_delta",
+  "last_n_live_tup": 82228926,
+  "last_db_host": "maglev.proxy.rlwy.net:31310/railway",
+  "last_check_delta_rows": 85125,
+  "last_check_delta_hours": 0.999,
+  "last_check_rate": 85172,
+  "last_check_threshold": 150000,
+  "last_pm_start": "2026-06-08T10:21:09.112373+00:00",
+  "last_issue_identifier": "BUY-45556",
+  "last_fire_timestamp": "2026-06-13T05:04:17Z",
+  "last_note": "2026-06-13 04:00-05:00Z hour FAIL: n_tup_ins delta 85,125 rows over 0.9994h (anchor S7=50,929,617 @2026-06-13T04:04:19Z -> S8=51,014,742 @2026-06-13T05:04:17Z) = 85,172/hr. 56.8% of 150,000/hr threshold (-64,828 rows/hr). n_live_tup 82,144,516 -> 82,228,926 = +84,410 = 84,457/hr (corroborates). pm_start=2026-06-08T10:21:09Z (5d prior, no restart, delta valid). 6th consecutive hourly FAIL. Trend: 00-01Z=79,813 -> 01-02Z=17,697 -> 02-03Z=117,259 -> 03-04Z=58,390 -> 04-05Z=85,172/hr. Root cause: BUY-30590 maglev products DB read/write contention cap.",
+  "last_closed_day": {
+    "date": "2026-06-11",
+    "n_tup_ins_open": 44622141,
+    "n_tup_ins_close": 44898133,
+    "delta": 275992,
+    "n_live_tup_close": 76752961,
+    "open_at": "2026-06-11T23:02:31+00:00",
+    "close_at": "2026-06-12T00:04:06.230363+00:00",
+    "db_host": "maglev.proxy.rlwy.net:31310/railway",
+    "source": "midnight_snapshot"
+  },
+  "last_midnight_recorded_date": "2026-06-11",
+  "last_failure_child_identifier": "BUY-45556"
+}

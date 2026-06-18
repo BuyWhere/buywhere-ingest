@@ -1,0 +1,15 @@
+[Unit]
+Description=Paperclip BUY-31716 Fleet Keep-Alive — restarts dead discovery lane processes every 5 min
+After=network.target paperclip.service
+Wants=paperclip.service
+
+[Service]
+Type=oneshot
+User=paperclip
+Group=paperclip
+WorkingDirectory=/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default
+ExecStart=/bin/bash scripts/buy31716-fleet-keep-alive.sh
+Nice=10
+
+[Install]
+WantedBy=multi-user.target

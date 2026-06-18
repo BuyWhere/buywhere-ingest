@@ -1,0 +1,33 @@
+{
+  "last_n_tup_ins": 50545719,
+  "last_n_tup_ins_at": "2026-06-12T23:07:36+00:00",
+  "last_hour_checked": "2026-06-12T22:00:00+00:00",
+  "last_hour_window_start": "2026-06-12T21:00:00Z",
+  "last_hour_window_end": "2026-06-12T22:00:00Z",
+  "last_check_result": "PASS",
+  "last_check_real_rows": 238979,
+  "last_check_source": "n_tup_ins_delta",
+  "last_n_live_tup": 81762891,
+  "last_db_host": "maglev.proxy.rlwy.net:31310/railway",
+  "last_check_delta_rows": 251658,
+  "last_check_delta_hours": 1.0531,
+  "last_check_rate": 238979,
+  "last_check_threshold": 150000,
+  "last_pm_start": "2026-06-08T10:21:09.112373+00:00",
+  "last_issue_identifier": "BUY-44888",
+  "last_fire_timestamp": "2026-06-12T23:07:36Z",
+  "last_note": "2026-06-12 22:00-23:00Z hour PASS: n_tup_ins delta 251,658 rows over 1.0531h (anchor S1=50,294,061 @22:04:25Z -> S3=50,545,719 @23:07:36Z) = 238,979/hr reported by Oracle. 159.3% of 150,000/hr threshold (+88,979 rows/hr over target). n_live_tup: 81,762,891. pm_start=2026-06-08T10:21:09Z (4d12h46m prior, delta method valid - no restart in window). n_tup_ins PRIMARY signal is canonical per BUY-33694. Hour-bucket COUNT(*) + MAX(created_at) both timed out (maglev contention) \u2014 fast-path only. Per BUY-44888 task spec, 150K+ threshold met -> NO failure child issue created. Prior hour (21-22Z, BUY-44788) PASS @ 270,277/hr. 20-21Z (BUY-44614) PASS @ 264,054/hr. 19-20Z (BUY-44582) PASS @ 237,309/hr. 18-19Z reconstructed PASS @ 341,493/hr. 17-18Z (BUY-44386) FAIL child BUY-44395 filed. 16-17Z (BUY-44277) PASS @ 285,136/hr. No new failure child for 22-23Z (PASS). Closing BUY-44888 as done.",
+  "last_closed_day": {
+    "date": "2026-06-11",
+    "n_tup_ins_open": 44622141,
+    "n_tup_ins_close": 44898133,
+    "delta": 275992,
+    "n_live_tup_close": 76752961,
+    "open_at": "2026-06-11T23:02:31+00:00",
+    "close_at": "2026-06-12T00:04:06.230363+00:00",
+    "db_host": "maglev.proxy.rlwy.net:31310/railway",
+    "source": "midnight_snapshot"
+  },
+  "last_midnight_recorded_date": "2026-06-11",
+  "last_failure_child_identifier": null
+}

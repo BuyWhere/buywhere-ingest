@@ -1,0 +1,12 @@
+{"domain":"hentaicop.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":33,"country_code":"US","currency":null}
+{"domain":"airtame.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":10,"country_code":"US","currency":null}
+{"domain":"igli.me","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":345,"country_code":"US","currency":null}
+{"domain":"gadget.ro","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":896,"country_code":"US","currency":null}
+{"domain":"dellstore.com","platform":"magento","product_endpoint":"https://dellstore.com/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":217,"country_code":"US","currency":null}
+{"domain":"caasimada.net","platform":"magento","product_endpoint":"https://caasimada.net/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":299,"country_code":"US","currency":null}
+{"domain":"kasanova.com","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":742,"country_code":"US","currency":null}
+{"domain":"metorik.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":36,"country_code":"US","currency":null}
+{"domain":"lampy.pl","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1611,"country_code":"US","currency":null}
+{"domain":"eveline.pl","platform":"shopify","product_endpoint":"https://eveline.pl/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":7071,"country_code":"US","currency":null}
+{"domain":"oziva.in","platform":"shopify","product_endpoint":"https://oziva.in/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":7475,"country_code":"IN","currency":null}
+{"domain":"xyxxcrew.com","platform":"shopify","product_endpoint":"https://xyxxcrew.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":7762,"country_code":"US","currency":null}

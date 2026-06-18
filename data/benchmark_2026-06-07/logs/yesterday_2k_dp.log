@@ -1,0 +1,69 @@
+[deep-page] input records=59 ecom=59 by_platform={"shopify":3,"shopify-html":20,"woocommerce":11,"magento":2,"woocommerce-html":9,"schema-product":11,"magento-html":3} concurrency=30
+[dp] tiktok.com page=1 status=200 bodyLen=63025
+[dp] tiktok.com parse err: Unexpected token '<', "<!doctype "... is not valid JSON
+[dp] atlassian.com page=1 status=404 bodyLen=undefined
+[dp] stripe.com page=1 status=404 bodyLen=undefined
+[dp:wc] wordpress.com page=1 status=404 bodyLen=undefined
+[dp] dropbox.com page=1 status=404 bodyLen=undefined
+[dp] time.com page=1 status=406 bodyLen=undefined
+[dp:wc] mzstatic.com page=1 status=200 bodyLen=258713
+[dp] b-cdn.net page=1 status=200 bodyLen=786920
+[dp] b-cdn.net parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[dp] hcaptcha.com page=1 status=404 bodyLen=undefined
+[dp:wc] wp.com page=1 status=404 bodyLen=undefined
+[dp] gumgum.com page=1 status=404 bodyLen=undefined
+[dp:wc] steampowered.com page=1 status=200 bodyLen=983377
+[dp] mailchimp.com page=1 status=404 bodyLen=undefined
+[dp] nginx.com page=1 status=200 bodyLen=381726
+[dp] nginx.com parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[dp] wired.com page=1 status=404 bodyLen=undefined
+[dp:wc] gravatar.com page=1 status=404 bodyLen=undefined
+[dp] themeforest.net page=1 status=404 bodyLen=undefined
+[dp] cloudflare.com page=1 status=404 bodyLen=undefined
+[dp:wc] nikkei.com page=1 status=200 bodyLen=632513
+[dp:wc] atlassian.net page=1 status=200 bodyLen=1701219
+[dp] cloudinary.com page=1 status=404 bodyLen=undefined
+[dp] klaviyo.com page=1 status=404 bodyLen=undefined
+[dp] ui.com page=1 status=200 bodyLen=107137
+[dp] hubspot.com page=1 status=404 bodyLen=undefined
+[dp] x.com page=1 status=404 bodyLen=undefined
+[deep-page] worker=3 stores=25 failed=0 products=0 by_platform={"shopify-html":12,"schema-product":5,"woocommerce-html":3,"woocommerce":4,"shopify":1}
+[dp] shopify.com page=1 status=404 bodyLen=undefined
+[dp:wc] netflix.com page=1 status=200 bodyLen=20728
+[dp:wc] meraki.com page=1 status=401 bodyLen=undefined
+[dp] wps.com page=1 status=404 bodyLen=undefined
+[dp] deepl.com page=1 status=404 bodyLen=undefined
+[dp:wc] crashlytics.com page=1 status=200 bodyLen=522587
+[dp:wc] wise.com page=1 status=404 bodyLen=undefined
+[dp] statcounter.com page=1 status=404 bodyLen=undefined
+[dp] bybit.com page=1 status=0 bodyLen=undefined
+[dp] hostinger.com page=1 status=404 bodyLen=undefined
+[dp:mg] meethue.com page=1 status=200 bodyLen=86557
+[dp:wc] netflix.net page=1 status=200 bodyLen=20728
+[dp] zapier.com page=1 status=404 bodyLen=undefined
+[dp:wc] go.com page=1 status=200 bodyLen=354893
+[dp:wc] elementor.com page=1 status=404 bodyLen=undefined
+[dp] wyzecam.com page=1 status=200 bodyLen=1132326
+[dp] figma.com page=1 status=404 bodyLen=undefined
+[dp:mg] weibo.com page=1 status=200 bodyLen=9293
+[dp] intercomcdn.com page=1 status=404 bodyLen=undefined
+[dp:wc] cpanel.net page=1 status=404 bodyLen=undefined
+[dp:mg] esquire.com page=1 status=404 bodyLen=undefined
+[dp:mg] elle.com page=1 status=404 bodyLen=undefined
+[dp] vogue.com page=1 status=404 bodyLen=undefined
+[dp] threads.com page=1 status=200 bodyLen=351844
+[dp] threads.com parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[dp] ubnt.com page=1 status=200 bodyLen=107137
+[deep-page] worker=11 stores=50 failed=0 products=203 by_platform={"shopify-html":19,"schema-product":9,"woocommerce-html":7,"woocommerce":8,"shopify":3,"magento-html":3,"magento":1}
+[dp:wc] daum.net page=1 status=200 bodyLen=614555
+[dp:wc] amazonalexa.com page=1 status=200 bodyLen=839585
+[dp] crealitycloud.com page=1 status=404 bodyLen=undefined
+[dp:wc] zemanta.com page=1 status=404 bodyLen=undefined
+[dp:wc] cloudns.net page=1 status=200 bodyLen=172724
+[dp] forter.com page=1 status=200 bodyLen=166214
+[dp] forter.com parse err: Unexpected token '<', "
+<!DOCTYPE "... is not valid JSON
+[dp:mg] alidns.com page=1 status=200 bodyLen=64
+[dp:wc] inmotionhosting.com page=1 status=401 bodyLen=undefined
+[dp] checkpoint.com page=1 status=404 bodyLen=undefined
+[deep-page] DONE: {"stores_processed":59,"stores_failed":0,"total_products":203,"by_platform":{"shopify-html":20,"schema-product":11,"woocommerce-html":9,"woocommerce":11,"shopify":3,"magento-html":3,"magento":2},"started_at":"2026-06-07T14:11:00.548Z","finished_at":"2026-06-07T14:11:05.496Z","output_rows":203}

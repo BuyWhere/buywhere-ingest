@@ -1,0 +1,3 @@
+{"domain":"monica.im","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":323,"country_code":"US","currency":null}
+{"domain":"xtemos.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":836,"country_code":"US","currency":null}
+{"domain":"bangmod.cloud","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":2302,"country_code":"US","currency":null}

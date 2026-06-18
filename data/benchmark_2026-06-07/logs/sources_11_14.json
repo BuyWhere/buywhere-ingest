@@ -1,0 +1,78 @@
+{
+  "started_at": "2026-06-07T13:37:54.837Z",
+  "sources": {
+    "11": {
+      "records": 0,
+      "meta": {
+        "source": "ct_logs",
+        "queries": [
+          {
+            "q": "%.myshopify.com",
+            "status": 502,
+            "latency_ms": 938
+          },
+          {
+            "q": "%.bigcommerce.com",
+            "status": 502,
+            "latency_ms": 495
+          },
+          {
+            "q": "store.%",
+            "status": 502,
+            "latency_ms": 499
+          }
+        ],
+        "total": 0,
+        "latency_ms": 1935
+      },
+      "file": "/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/data/benchmark_2026-06-07/raw/source_11.ndjson",
+      "elapsed_ms": 1936
+    },
+    "12": {
+      "records": 0,
+      "meta": {
+        "source": "github_search",
+        "status": 401,
+        "error": "{\r\n  \"message\": \"Requires authentication\",\r\n  \"documentation_url\": \"https://docs.github.com/rest\",\r\n  \"status\": \"401\"\r\n}",
+        "latency_ms": 241,
+        "note": "no_token"
+      },
+      "file": "/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/data/benchmark_2026-06-07/raw/source_12.ndjson",
+      "elapsed_ms": 245
+    },
+    "13": {
+      "records": 0,
+      "meta": {
+        "source": "dns_dumpster_via_crt",
+        "seeds": [
+          {
+            "seed": ".myshopify.com",
+            "status": 502,
+            "latency_ms": 255
+          },
+          {
+            "seed": ".bigcommerce.com",
+            "status": 502,
+            "latency_ms": 498
+          }
+        ],
+        "total": 0,
+        "latency_ms": 754
+      },
+      "file": "/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/data/benchmark_2026-06-07/raw/source_13.ndjson",
+      "elapsed_ms": 755
+    },
+    "14": {
+      "records": 18,
+      "meta": {
+        "source": "amazon_affiliate",
+        "status": "directory_seed",
+        "total": 18,
+        "latency_ms": 0
+      },
+      "file": "/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/data/benchmark_2026-06-07/raw/source_14.ndjson",
+      "elapsed_ms": 1
+    }
+  },
+  "finished_at": "2026-06-07T13:37:57.774Z"
+}

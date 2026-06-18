@@ -1,0 +1,5 @@
+{"domain":"thimpress.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":35,"country_code":"US","currency":null}
+{"domain":"fromsmash.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1496,"country_code":"US","currency":null}
+{"domain":"popupsmart.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":44,"country_code":"US","currency":null}
+{"domain":"parcel2go.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":42,"country_code":"US","currency":null}
+{"domain":"polaranalytics.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1976,"country_code":"US","currency":null}

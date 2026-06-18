@@ -1,0 +1,32 @@
+{
+  "last_n_tup_ins": 45541658,
+  "last_n_tup_ins_at": "2026-06-12T03:05:26.81254+00",
+  "last_hour_checked": "2026-06-12T02:00:00+00:00",
+  "last_hour_window_start": "2026-06-12T02:05:07.567637+00:00",
+  "last_hour_window_end": "2026-06-12T03:05:26.81254+00",
+  "last_check_result": "FAIL",
+  "last_check_real_rows": 57195,
+  "last_check_source": "n_tup_ins_delta",
+  "last_n_live_tup": 77084220,
+  "last_db_host": "maglev.proxy.rlwy.net:31310/railway",
+  "last_check_delta_rows": 57195,
+  "last_check_delta_hours": 1.0053,
+  "last_check_rate": 56895,
+  "last_check_threshold": 150000,
+  "last_pm_start": "2026-06-08T10:21:09.112373+00:00",
+  "last_issue_identifier": "BUY-42737",
+  "last_fire_timestamp": "2026-06-12T03:05:26.81254+00",
+  "last_note": "2026-06-12 02:00-03:00Z hour FAIL: delta 57,195 over 1.0053h (2026-06-12T02:05:07.567637+00:00 anchor -> 2026-06-12T03:05:26.81254+00) = 56,895/hr (n_tup_ins PRIMARY signal under maglev contention). S1 45,484,463 (from prior fire) -> S2 45,541,658 (now). n_live_tup: 77,084,220. pm_start=2026-06-08T10:21:09Z (4d prior, delta method valid). Filed child issue BUY-42737 (rate 56,895/hr << 150,000/hr threshold by 93,105/hr, -62.1%). Hour-over-hour: 01:00-02:00Z was 245,393/hr (PASS), so this is a 4.3x drop. Likely maglev read/write contention cap (BUY-30590) \u2014 pm_start stable (no restart). Auto-dispatcher cron still broken (BUY-33694); this heartbeat at 2026-06-12T03:05Z is the canonical fire for the 02:00-03:00Z window.",
+  "last_closed_day": {
+    "date": "2026-06-11",
+    "n_tup_ins_open": 44622141,
+    "n_tup_ins_close": 44898133,
+    "delta": 275992,
+    "n_live_tup_close": 76752961,
+    "open_at": "2026-06-11T23:02:31+00:00",
+    "close_at": "2026-06-12T00:04:06.230363+00:00",
+    "db_host": "maglev.proxy.rlwy.net:31310/railway",
+    "source": "midnight_snapshot"
+  },
+  "last_midnight_recorded_date": "2026-06-11"
+}

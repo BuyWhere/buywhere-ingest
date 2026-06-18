@@ -1,0 +1,10 @@
+{"domain":"robotshop.com","platform":"shopify","product_endpoint":"https://robotshop.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":1986,"country_code":"US","currency":null}
+{"domain":"movistar.com.mx","platform":"woocommerce","product_endpoint":"https://movistar.com.mx/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":1807,"country_code":"MX","currency":null}
+{"domain":"my-jewellery.com","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":393,"country_code":"US","currency":null}
+{"domain":"dreadcentral.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":452,"country_code":"US","currency":null}
+{"domain":"pnina.ps","platform":"magento","product_endpoint":"https://pnina.ps/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":746,"country_code":"US","currency":null}
+{"domain":"diariodorio.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":700,"country_code":"US","currency":null}
+{"domain":"russia.tv","platform":"woocommerce","product_endpoint":"https://russia.tv/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":6440,"country_code":"US","currency":null}
+{"domain":"foxycart.com","platform":"bigcommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":630,"country_code":"US","currency":null}
+{"domain":"parlament.ch","platform":"woocommerce","product_endpoint":"https://parlament.ch/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":3608,"country_code":"US","currency":null}
+{"domain":"radiusnetworks.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":20,"country_code":"US","currency":null}

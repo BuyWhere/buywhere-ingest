@@ -1,0 +1,15 @@
+{"domain":"gymshark.com","platform":"shopify","product_endpoint":"https://gymshark.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":5794,"country_code":"US","currency":null}
+{"domain":"um.edu.my","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":36,"country_code":"MY","currency":null}
+{"domain":"neurosciencenews.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":29,"country_code":"US","currency":null}
+{"domain":"roadandtrack.com","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":95,"country_code":"US","currency":null}
+{"domain":"traveltowngame.net","platform":"woocommerce","product_endpoint":"https://traveltowngame.net/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":40,"country_code":"US","currency":null}
+{"domain":"zwift.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":2799,"country_code":"US","currency":null}
+{"domain":"zmescience.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":215,"country_code":"US","currency":null}
+{"domain":"kosmo.com.my","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":767,"country_code":"MY","currency":null}
+{"domain":"teamup.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":4674,"country_code":"US","currency":null}
+{"domain":"writesonic.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":120,"country_code":"US","currency":null}
+{"domain":"zipify.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":487,"country_code":"US","currency":null}
+{"domain":"forzamotorsport.net","platform":"woocommerce","product_endpoint":"https://forzamotorsport.net/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":278,"country_code":"US","currency":null}
+{"domain":"catholicnewsagency.com","platform":"woocommerce","product_endpoint":"https://catholicnewsagency.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":1205,"country_code":"US","currency":null}
+{"domain":"originenergy.com.au","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":21,"country_code":"AU","currency":null}
+{"domain":"oprahdaily.com","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":2108,"country_code":"US","currency":null}

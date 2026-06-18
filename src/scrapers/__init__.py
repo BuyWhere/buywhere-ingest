@@ -26,6 +26,24 @@ from .forty_two import FortyTwoScraper
 from .cold_storage_sg import ColdStorageSGScraper
 from .guardian_sg import GuardianSGScraper
 from .summerhouse import SummerhouseScraper
+from .paper_source import PaperSourceScraper
+from .floor_and_decor import FloorAndDecorScraper
+from .the_body_shop import TheBodyShopScraper
+from .ikea_sg import IKEAScraper
+from .woocommerce import WooCommerceScraper
+from .shopify_store import ShopifyScraper
+from .shopify_product_page import ShopifyProductPageScraper
+from .zalora_sg import ZaloraSGScraper
+from .tokopedia import TokopediaScraper
+from .lazada_vn import LazadaVNScraper
+from .lazada_my import LazadaMYScraper
+from .shopee_sg import ShopeeSGScraper
+from .shopee_my import ShopeeMYScraper
+from .carousell_sg import CarousellSGScraper
+from .qoo10_sg import Qoo10SGScraper
+from .etsy_us import EtsyUSScraper
+from .ebay_us import EbayUSScraper
+from .ebay_us_api import EbayUSApiScraper
 
 SCRAPERS = {
     "courts_sg": CourtsSGScraper,
@@ -53,4 +71,20 @@ SCRAPERS = {
     "cold_storage_sg": ColdStorageSGScraper,
     "guardian_sg": GuardianSGScraper,
     "summerhouse": SummerhouseScraper,
+    "paper_source": PaperSourceScraper,
+    "floor_and_decor": FloorAndDecorScraper,
+    "the_body_shop": TheBodyShopScraper,
+    "ikea_sg": IKEAScraper,
+    "woocommerce": WooCommerceScraper,
+    "zalora_sg": ZaloraSGScraper,
+    "tokopedia": TokopediaScraper,
+    "lazada_vn": LazadaVNScraper,
+    "lazada_my": LazadaMYScraper,
+    "shopee_sg": ShopeeSGScraper,
+    "shopee_my": ShopeeMYScraper,
+    "carousell_sg": CarousellSGScraper,
+    "qoo10_sg": Qoo10SGScraper,
+    "etsy_us": EtsyUSScraper,
+    "ebay_us": EbayUSScraper,
+    "ebay_us_api": EbayUSApiScraper,
 }

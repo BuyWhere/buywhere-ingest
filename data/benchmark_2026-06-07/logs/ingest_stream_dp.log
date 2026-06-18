@@ -1,0 +1,28 @@
+[ingest-daemon] dedup: 1250 -> 1249 (removed 1 duplicate skus)
+(node:271944) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:271944) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+[ingest-daemon] {"ts":"2026-06-07T13:52:32.982Z","file":"seed_products.ndjson.processing.ndjson","rows":1250,"written":1249,"fabricated":false,"fabrication_share":{"zeroPriceShare":0,"nullImageShare":0.028823058446757407,"nullSkuShare":0,"emptyTitleShare":0},"elapsed_ms":1467,"rows_per_sec":"851.4"}
+[ingest-daemon] dedup: 1750 -> 1749 (removed 1 duplicate skus)
+[ingest-daemon] {"ts":"2026-06-07T14:01:24.058Z","file":"extra_seed_products.ndjson.processing.ndjson","rows":1750,"written":1749,"fabricated":false,"fabrication_share":{"zeroPriceShare":0,"nullImageShare":0.11149228130360206,"nullSkuShare":0,"emptyTitleShare":0},"elapsed_ms":22175,"rows_per_sec":"78.9"}
+[ingest-daemon] {"ts":"2026-06-07T14:02:16.924Z","file":"tranco_slice_mid_5k_products.ndjson.processing.ndjson","rows":0,"written":0,"fabricated":false,"fabrication_share":null,"elapsed_ms":0,"rows_per_sec":0}
+[ingest-daemon] {"ts":"2026-06-07T14:02:17.620Z","file":"tranco_slice_mid_5k_v2_products.ndjson.processing.ndjson","rows":500,"written":500,"fabricated":false,"fabrication_share":{"zeroPriceShare":0,"nullImageShare":0.002,"nullSkuShare":0,"emptyTitleShare":0},"elapsed_ms":695,"rows_per_sec":"719.4"}
+[ingest-daemon] dedup: 203 -> 202 (removed 1 duplicate skus)
+[ingest-daemon] dedup: 203 -> 202 (removed 1 duplicate skus)
+[ingest-daemon] {"ts":"2026-06-07T14:11:33.845Z","file":"yesterday_20k_products.ndjson.processing.ndjson","rows":203,"written":202,"fabricated":false,"fabrication_share":{"zeroPriceShare":0.0049504950495049506,"nullImageShare":0,"nullSkuShare":0,"emptyTitleShare":0},"elapsed_ms":16509,"rows_per_sec":"12.2"}
+[ingest-daemon] {"ts":"2026-06-07T14:11:35.755Z","file":"yesterday_2k_products.ndjson.processing.ndjson","rows":203,"written":202,"fabricated":false,"fabrication_share":{"zeroPriceShare":0.0049504950495049506,"nullImageShare":0,"nullSkuShare":0,"emptyTitleShare":0},"elapsed_ms":3404,"rows_per_sec":"59.3"}
+[ingest-daemon] dedup: 5768 -> 5757 (removed 11 duplicate skus)
+[ingest-daemon] curated_products.ndjson.processing.ndjson failed: bind message has 29464 parameter formats but 0 parameters
+[ingest-daemon] dedup: 5768 -> 5757 (removed 11 duplicate skus)
+[ingest-daemon] curated_products.ndjson.processing.ndjson failed: bind message has 29464 parameter formats but 0 parameters
+[ingest-daemon] dedup: 5768 -> 5757 (removed 11 duplicate skus)
+[ingest-daemon] curated_products.ndjson.processing.ndjson failed: bind message has 29464 parameter formats but 0 parameters
+[ingest-daemon] dedup: 5768 -> 5757 (removed 11 duplicate skus)
+[ingest-daemon] curated_products.ndjson.processing.ndjson failed: bind message has 29464 parameter formats but 0 parameters

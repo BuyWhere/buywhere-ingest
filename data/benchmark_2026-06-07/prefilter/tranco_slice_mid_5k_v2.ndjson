@@ -1,0 +1,4 @@
+{"domain":"bodylab24.de","platform":"shopify","product_endpoint":"https://bodylab24.de/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":489,"country_code":"DE","currency":null}
+{"domain":"zipdo.co","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":194,"country_code":"US","currency":null}
+{"domain":"yiwugo.com","platform":"magento","product_endpoint":"https://yiwugo.com/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":356,"country_code":"US","currency":null}
+{"domain":"ecommerce-platforms.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":52,"country_code":"US","currency":null}

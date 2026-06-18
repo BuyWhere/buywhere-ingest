@@ -1,0 +1,98 @@
+{
+  "started_at": "2026-06-07T14:35:22.864Z",
+  "sources": [
+    "14",
+    "11"
+  ],
+  "per_source": {
+    "11": {
+      "records": 0,
+      "meta": {
+        "source": "ct_logs",
+        "queries": [
+          {
+            "url": "https://crt.sh/?q=%25.myshopify.com&output=json&dedupe=1&limit=625",
+            "status": 502,
+            "attempt": 1,
+            "error": "transient",
+            "latency_ms": 992
+          },
+          {
+            "url": "https://crt.sh/?q=%25.myshopify.com&output=json&dedupe=1&limit=625",
+            "status": 502,
+            "attempt": 2,
+            "error": "transient",
+            "latency_ms": 243
+          },
+          {
+            "url": "https://crt.sh/?q=%25.shopify.com&output=json&dedupe=1&limit=625",
+            "status": 502,
+            "attempt": 1,
+            "error": "transient",
+            "latency_ms": 498
+          },
+          {
+            "url": "https://crt.sh/?q=%25.shopify.com&output=json&dedupe=1&limit=625",
+            "status": 502,
+            "attempt": 2,
+            "error": "transient",
+            "latency_ms": 241
+          },
+          {
+            "url": "https://crt.sh/?q=%25.bigcommerce.com&output=json&dedupe=1&limit=625",
+            "status": 502,
+            "attempt": 1,
+            "error": "transient",
+            "latency_ms": 5022
+          },
+          {
+            "url": "https://crt.sh/?q=%25.bigcommerce.com&output=json&dedupe=1&limit=625",
+            "status": 502,
+            "attempt": 2,
+            "error": "transient",
+            "latency_ms": 11058
+          },
+          {
+            "url": "https://crt.sh/?q=%25.woocommerce.com&output=json&dedupe=1&limit=625",
+            "error": "HTTP/2: \"headers timeout after 12000\"",
+            "attempt": 1,
+            "latency_ms": 12012
+          },
+          {
+            "url": "https://crt.sh/?q=%25.woocommerce.com&output=json&dedupe=1&limit=625",
+            "status": 502,
+            "attempt": 2,
+            "error": "transient",
+            "latency_ms": 11095
+          },
+          {
+            "url": "%.wixsite.com",
+            "status": "deadline_exceeded",
+            "error": "hit 30000ms cap"
+          }
+        ],
+        "total": 0,
+        "latency_ms": 45163
+      },
+      "file": "data/benchmark_2026-06-07/multi_source_test2/raw/source_11.ndjson",
+      "elapsed_ms": 45163
+    },
+    "14": {
+      "records": 18,
+      "meta": {
+        "source": "amazon_affiliate",
+        "status": "directory_seed",
+        "total": 19,
+        "sampled": 1000,
+        "latency_ms": 0
+      },
+      "file": "data/benchmark_2026-06-07/multi_source_test2/raw/source_14.ndjson",
+      "elapsed_ms": 2
+    }
+  },
+  "aggregate": {
+    "unique_domains": 18,
+    "raw_records": 18
+  },
+  "finished_at": "2026-06-07T14:36:08.031Z"
+}

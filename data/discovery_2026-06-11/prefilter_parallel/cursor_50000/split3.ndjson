@@ -1,0 +1,4 @@
+{"domain":"bluettipower.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":359,"country_code":"US","currency":null}
+{"domain":"steelersdepot.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":75,"country_code":"US","currency":null}
+{"domain":"findaspring.org","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1027,"country_code":"US","currency":null}
+{"domain":"simpletix.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1940,"country_code":"US","currency":null}

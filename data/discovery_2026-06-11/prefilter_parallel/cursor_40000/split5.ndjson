@@ -1,0 +1,11 @@
+{"domain":"thermaltake.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":451,"country_code":"US","currency":null}
+{"domain":"adsmurai.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":2525,"country_code":"US","currency":null}
+{"domain":"uep24.ru","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1040,"country_code":"US","currency":null}
+{"domain":"businesstoday.com.tw","platform":"woocommerce","product_endpoint":"https://businesstoday.com.tw/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":174,"country_code":"TW","currency":null}
+{"domain":"nic.blog","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":206,"country_code":"US","currency":null}
+{"domain":"photogrid.app","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":8014,"country_code":"US","currency":null}
+{"domain":"getguru.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":756,"country_code":"US","currency":null}
+{"domain":"hiverhq.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1429,"country_code":"US","currency":null}
+{"domain":"openpanel.dev","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":112,"country_code":"US","currency":null}
+{"domain":"admagazine.fr","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":8156,"country_code":"FR","currency":null}
+{"domain":"weatherflow.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":711,"country_code":"US","currency":null}

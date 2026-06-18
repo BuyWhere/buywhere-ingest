@@ -1,0 +1,11 @@
+{"domain":"horizonsingles.com","platform":"woocommerce","product_endpoint":"https://horizonsingles.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":334,"country_code":"US","currency":null}
+{"domain":"inkafarma.pe","platform":"woocommerce","product_endpoint":"https://inkafarma.pe/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":245,"country_code":"US","currency":null}
+{"domain":"centrumrespo.pl","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":10,"country_code":"US","currency":null}
+{"domain":"zerolifestyle.co","platform":"shopify","product_endpoint":"https://zerolifestyle.co/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":4079,"country_code":"US","currency":null}
+{"domain":"cornbreadhemp.com","platform":"shopify","product_endpoint":"https://cornbreadhemp.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":4290,"country_code":"US","currency":null}
+{"domain":"seoant.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1889,"country_code":"US","currency":null}
+{"domain":"gearset.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":70,"country_code":"US","currency":null}
+{"domain":"clearwaveinc.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":2679,"country_code":"US","currency":null}
+{"domain":"otter.ro","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":980,"country_code":"US","currency":null}
+{"domain":"duplicator.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":249,"country_code":"US","currency":null}
+{"domain":"houseofnames.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":463,"country_code":"US","currency":null}

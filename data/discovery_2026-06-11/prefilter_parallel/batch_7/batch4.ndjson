@@ -1,0 +1,11 @@
+{"domain":"noticeable.io","platform":"bigcommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":45,"country_code":"US","currency":null}
+{"domain":"legit.co.za","platform":"shopify","product_endpoint":"https://legit.co.za/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":839,"country_code":"US","currency":null}
+{"domain":"beardo.in","platform":"shopify","product_endpoint":"https://beardo.in/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":2998,"country_code":"IN","currency":null}
+{"domain":"lu24.com.ar","platform":"magento","product_endpoint":"https://lu24.com.ar/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":252,"country_code":"US","currency":null}
+{"domain":"krc.co.ke","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":524,"country_code":"US","currency":null}
+{"domain":"ceskeduchody.cz","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":545,"country_code":"US","currency":null}
+{"domain":"nobero.com","platform":"shopify","product_endpoint":"https://nobero.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":3506,"country_code":"US","currency":null}
+{"domain":"nig.ac.jp","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":794,"country_code":"JP","currency":null}
+{"domain":"extra.cw","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":751,"country_code":"US","currency":null}
+{"domain":"dspace.org","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":31,"country_code":"US","currency":null}
+{"domain":"marvimundo.com","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1000,"country_code":"US","currency":null}

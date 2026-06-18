@@ -1,0 +1,6 @@
+{"domain":"mmd.net","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":292,"country_code":"US","currency":null}
+{"domain":"book2look.com","platform":"woocommerce","product_endpoint":"https://book2look.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":1675,"country_code":"US","currency":null}
+{"domain":"vebhost.com","platform":"magento","product_endpoint":"https://vebhost.com/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":208,"country_code":"US","currency":null}
+{"domain":"zhanfubrowser.com","platform":"woocommerce","product_endpoint":"https://zhanfubrowser.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":1674,"country_code":"US","currency":null}
+{"domain":"bcr.ro","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":1017,"country_code":"US","currency":null}
+{"domain":"roamans.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":2080,"country_code":"US","currency":null}

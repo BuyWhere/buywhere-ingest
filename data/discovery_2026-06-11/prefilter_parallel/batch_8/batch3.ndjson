@@ -1,0 +1,3 @@
+{"domain":"zadig-et-voltaire.com","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":201,"country_code":"US","currency":null}
+{"domain":"robinpowered.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":297,"country_code":"US","currency":null}
+{"domain":"searacon.nl","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":2808,"country_code":"NL","currency":null}

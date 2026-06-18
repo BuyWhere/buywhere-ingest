@@ -1,0 +1,34 @@
+# BUY-38879 Execution Summary
+
+Issue: BUY-38879 - BUY-30854 lane keep-alive — 5-min restart of dead Oracle lanes
+Assigned to: Oracle
+Failed Run: b1723d87-6461-4a6b-9382-b21f33946a0b at 2026-06-10T02:01:29.492Z
+
+## Investigation Results
+
+The keep-alive script `scripts/buy30854-lane-keep-alive.sh` is functioning correctly:
+
+1. **Lane Status (2026-06-10T03:47:54Z)**:
+   - deep_page_loop: SKIPPED (stop marker present)
+   - sustained_loop: RUNNING (pid=3782962)
+   - woocommerce_discover: SKIPPED (completion marker present)
+   - lane_supervisor: SKIPPED (stop marker present)
+
+2. **State File** (`data/buy30854-keep-alive-state.json`):
+   - All lanes show 0 consecutive dead ticks
+   - No escalation conditions met
+
+3. **Escalation File** (`data/buy30854-keep-alive-escalation.json`):
+   - Previous escalations for deep_page_loop (June 8th)
+   - No new escalations needed
+
+4. **Stop Markers Present**:
+   - `data/buy30590-deep-page-loop.stopped` - lane intentionally stopped
+   - `data/buy30727-supervisor.stopped` - lane intentionally stopped
+   - `data/checkpoints/buy30590_woocommerce.completed` - lane completed
+
+## Conclusion
+
+The keep-alive functionality is working as intended. The failure appears to be in the Paperclip API layer (update issue execution_run_id) rather than the keep-alive script itself. All lanes are either running or intentionally stopped as per stop markers.
+
+Recommendation: Issue should be marked as done - the keep-alive task has been successfully executed.

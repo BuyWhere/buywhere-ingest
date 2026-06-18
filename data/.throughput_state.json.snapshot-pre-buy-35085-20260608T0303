@@ -1,0 +1,10 @@
+{
+  "last_n_tup_ins": 2909852,
+  "last_n_tup_ins_at": "2026-06-08T01:07:41.754639+00:00",
+  "last_hour_checked": "2026-06-08T00:00:00+00:00",
+  "last_check_result": "FAIL",
+  "last_check_real_rows": 36475,
+  "last_check_source": "n_tup_ins_delta",
+  "last_n_live_tup": 42930549,
+  "last_db_host": "maglev.proxy.rlwy.net:31310/railway"
+}

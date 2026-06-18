@@ -1,0 +1,17 @@
+{"domain":"instant.so","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":21,"country_code":"US","currency":null}
+{"domain":"itexamanswers.net","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":19,"country_code":"US","currency":null}
+{"domain":"sakuhentai.net","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":979,"country_code":"US","currency":null}
+{"domain":"theautopian.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":606,"country_code":"US","currency":null}
+{"domain":"kustom.co","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":928,"country_code":"US","currency":null}
+{"domain":"labusinessjournal.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":485,"country_code":"US","currency":null}
+{"domain":"abstractapi.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1730,"country_code":"US","currency":null}
+{"domain":"mangaforfree.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":497,"country_code":"US","currency":null}
+{"domain":"archweb.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":554,"country_code":"US","currency":null}
+{"domain":"ex2.com","platform":"magento","product_endpoint":"https://ex2.com/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":246,"country_code":"US","currency":null}
+{"domain":"ryviu.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":691,"country_code":"US","currency":null}
+{"domain":"otonanswer.jp","platform":"magento","product_endpoint":"https://otonanswer.jp/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":85,"country_code":"JP","currency":null}
+{"domain":"revibe.co.za","platform":"shopify","product_endpoint":"https://revibe.co.za/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":2804,"country_code":"US","currency":null}
+{"domain":"ordertracker.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1456,"country_code":"US","currency":null}
+{"domain":"ruggable.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":47,"country_code":"US","currency":null}
+{"domain":"livingsocial.com","platform":"woocommerce","product_endpoint":"https://livingsocial.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":1230,"country_code":"US","currency":null}
+{"domain":"elsol.com.ar","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":996,"country_code":"US","currency":null}

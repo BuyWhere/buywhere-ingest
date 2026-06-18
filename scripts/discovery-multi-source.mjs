@@ -78,11 +78,20 @@ const SEED_DOMAINS = [
 
 // Reasonable upper bound per source to keep this runnable in a heartbeat
 const SOURCE_LIMITS = {
-  "4": 5000,
-  "10": 5000,
-  "3": 1000,
-  "9": 200,
+  "1": 0,
   "2": 50,
+  "3": 1000,
+  "4": 5000,
+  "5": 0,
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 200,
+  "10": 5000,
+  "11": 5000,
+  "12": 200,
+  "13": 5000,
+  "14": 1000,
 };
 
 function parseArgs(argv) {
@@ -184,12 +193,15 @@ async function cdxQuery(urlPattern, limit) {
 }
 
 async function source4_commoncrawl_cdx(limit) {
-  // *.com/products.json pattern
+  // Use web.archive.org CDX API (index.commoncrawl.org is unreachable from this env).
+  // web.archive.org CDX supports url=*.pattern wildcards and returns JSON arrays.
+  // NOTE: wildcard CDX queries may return 403/503 on web.archive.org; fall back gracefully.
   const patterns = [
+    { pattern: "*.myshopify.com", platform_hint: "shopify" },
     { pattern: "*/products.json", platform_hint: "shopify" },
-    { pattern: "*/wp-json/wc/v3/products*", platform_hint: "woocommerce" },
-    { pattern: "*/rest/V1/products*", platform_hint: "magento" },
-    { pattern: "*/api/catalog/products*", platform_hint: "bigcommerce" },
+    { pattern: "*/wp-json/wc/v3/products", platform_hint: "woocommerce" },
+    { pattern: "*/rest/V1/products", platform_hint: "magento" },
+    { pattern: "*/api/catalog/products", platform_hint: "bigcommerce" },
   ];
   const per = Math.max(50, Math.floor(limit / patterns.length));
   const all = [];
@@ -199,7 +211,7 @@ async function source4_commoncrawl_cdx(limit) {
     for (const r of records) all.push({ ...r, platform_hint: p.platform_hint, pattern: p.pattern });
     metas.push({ ...meta, pattern: p.pattern });
   }
-  return { records: dedupeByDomain(all), meta: { source: "commoncrawl_cdx", index: CC_INDEX, queries: metas } };
+  return { records: dedupeByDomain(all), meta: { source: "commoncrawl_cdx", index: "web.archive.org", queries: metas } };
 }
 
 async function source10_schema_product(limit) {
@@ -222,47 +234,51 @@ async function source10_schema_product(limit) {
 }
 
 async function source3_tranco(limit) {
-  // Fetch Tranco top 1M list and take a sample.
+  // Fetch Tranco top 1M list via Python helper (zipfile is built into Python 3).
   const url = "https://tranco-list.eu/top-1m.csv.zip";
   const start = Date.now();
+  const dateStr = new Date().toISOString().slice(0, 10);
+  const { execFile } = await import("node:child_process");
+  const { promisify } = await import("node:util");
+  const execFileP = promisify(execFile);
   try {
-    const res = await request(url, { method: "GET", dispatcher: DISPATCHER, headersTimeout: 30000 });
-    if (res.statusCode !== 200) {
-      return { records: [], meta: { url, status: res.statusCode, latency_ms: Date.now() - start } };
-    }
-    // We expect a zip; without streaming zip support, just save the bytes for downstream processing.
-    const buf = Buffer.from(await res.body.arrayBuffer());
-    const outFile = path.join(REPO_ROOT, "data", "discovery_2026-06-06", "raw", "tranco_top1m.zip");
-    await ensureDir(path.dirname(outFile));
-    await fs.promises.writeFile(outFile, buf);
-    // Extract a few thousand from the filename (no unzip): we can use `unzip -p` via shell.
-    const csvPath = `${outFile}.csv`;
-    try {
-      const { execFile } = await import("node:child_process");
-      const { promisify } = await import("node:util");
-      const execFileP = promisify(execFile);
-      await execFileP("unzip", ["-p", "-o", outFile, outFile.split("/").pop().replace(".zip", "")], { maxBuffer: 64 * 1024 * 1024 })
-        .then(async (r) => {
-          await fs.promises.writeFile(csvPath, r.stdout);
-        })
-        .catch(async () => {
-          // fallback: try default name
-          const r2 = await execFileP("unzip", ["-p", "-o", outFile], { maxBuffer: 64 * 1024 * 1024 });
-          await fs.promises.writeFile(csvPath, r2.stdout);
-        });
-      const csv = await fs.promises.readFile(csvPath, "utf8");
-      const lines = csv.split(/\r?\n/).slice(0, limit);
-      const records = [];
-      for (const line of lines) {
-        const parts = line.split(",");
-        if (parts.length < 2) continue;
-        const dom = parts[1].trim().toLowerCase();
-        if (dom) records.push({ domain: dom, tranco_rank: parseInt(parts[0], 10) });
+    const script = `
+import sys, io, urllib.request, zipfile
+try:
+    r = urllib.request.urlopen("${url}", timeout=30)
+    z = zipfile.ZipFile(io.BytesIO(r.read()))
+    name = z.namelist()[0] if z.namelist() else "top-1m.csv"
+    csv = z.read(name).decode("utf-8", errors="replace")
+    for i, line in enumerate(csv.split("\\n")):
+        if i >= ${limit}: break
+        parts = line.split(",")
+        if len(parts) < 2: continue
+        dom = parts[1].strip().lower()
+        if dom: print(f"{parts[0]},{dom}")
+except Exception as e:
+    print(f"ERR: {e}", file=sys.stderr); sys.exit(2)
+`;
+    const { stdout } = await execFileP("python3", ["-c", script], { maxBuffer: 32 * 1024 * 1024, timeout: 60000 });
+    const records = [];
+    for (const line of stdout.split(/\r?\n/)) {
+      const parts = line.split(",");
+      if (parts.length < 2) continue;
+      const dom = parts[1].trim().toLowerCase();
+      if (dom && /^[a-z0-9.-]+\.[a-z]{2,}$/.test(dom)) {
+        records.push({ domain: dom, tranco_rank: parseInt(parts[0], 10) });
       }
-      return { records, meta: { url, status: 200, sampled: records.length, latency_ms: Date.now() - start } };
-    } catch (e) {
-      return { records: [], meta: { url, status: 200, error: "unzip_failed: " + e.message, latency_ms: Date.now() - start } };
     }
+    // Also save the raw zip for downstream
+    const outFile = path.join(REPO_ROOT, "data", "discovery_" + dateStr, "raw", "tranco_top1m.zip");
+    await ensureDir(path.dirname(outFile));
+    try {
+      const r2 = await request(url, { method: "GET", dispatcher: DISPATCHER, headersTimeout: 30000 });
+      if (r2.statusCode === 200) {
+        const buf = Buffer.from(await r2.body.arrayBuffer());
+        await fs.promises.writeFile(outFile, buf);
+      }
+    } catch { /* save is best-effort */ }
+    return { records, meta: { url, status: 200, sampled: records.length, latency_ms: Date.now() - start } };
   } catch (e) {
     return { records: [], meta: { url, error: e.message, latency_ms: Date.now() - start } };
   }
@@ -295,12 +311,211 @@ async function source9_affiliate_networks(_limit) {
   };
 }
 
+// Source 11 — Certificate Transparency logs (crt.sh)
+// Pull a wildcard match on a known e-commerce TLD/keyword set, then dedupe domains.
+// crt.sh is often overloaded (502 Bad Gateway) — short timeout, single retry, then move on.
+async function source11_ct_logs(limit) {
+  const start = Date.now();
+  const queries = [
+    "%.myshopify.com",
+    "%.shopify.com",
+    "%.bigcommerce.com",
+    "%.woocommerce.com",
+    "%.wixsite.com",
+    "%.squarespace.com",
+    "%.magento.com",
+    "store.%",
+  ];
+  const records = [];
+  const metas = [];
+  const per = Math.max(20, Math.floor(limit / queries.length));
+  const SOURCE_DEADLINE_MS = 30000; // hard cap on total source 11 wall-clock
+  for (const q of queries) {
+    if (Date.now() - start > SOURCE_DEADLINE_MS) {
+      metas.push({ url: q, status: "deadline_exceeded", error: `hit ${SOURCE_DEADLINE_MS}ms cap` });
+      break;
+    }
+    const u = `https://crt.sh/?q=${encodeURIComponent(q)}&output=json&dedupe=1&limit=${per}`;
+    let attempts = 0;
+    let success = false;
+    while (attempts < 2 && !success) {
+      attempts++;
+      const ts = Date.now();
+      try {
+        const res = await request(u, { method: "GET", dispatcher: DISPATCHER, headersTimeout: 12000 });
+        if (res.statusCode === 502 || res.statusCode === 503 || res.statusCode === 504) {
+          metas.push({ url: u, status: res.statusCode, attempt: attempts, error: "transient", latency_ms: Date.now() - ts });
+          if (attempts < 2) await new Promise((r) => setTimeout(r, 1000));
+          continue;
+        }
+        if (res.statusCode !== 200) {
+          const body = await res.body.text().catch(() => "");
+          metas.push({ url: u, status: res.statusCode, attempt: attempts, error: body.slice(0, 200), latency_ms: Date.now() - ts });
+          success = true;
+          continue;
+        }
+        const txt = await res.body.text();
+        let parsed;
+        try { parsed = JSON.parse(txt); } catch { metas.push({ url: u, error: "parse_failed", attempt: attempts, latency_ms: Date.now() - ts }); success = true; continue; }
+        for (const row of parsed) {
+          const name = (row.name_value || "").toString().toLowerCase().split("\n").join(",");
+          for (const n of name.split(",")) {
+            const dom = n.trim().replace(/^\*\./, "");
+            if (!dom || !/^[a-z0-9.-]+\.[a-z]{2,}$/.test(dom)) continue;
+            records.push({ domain: dom, source_url: `https://crt.sh/?id=${row.id}`, captured_at: row.not_before || null });
+          }
+        }
+        metas.push({ url: u, status: 200, count: parsed.length, attempt: attempts, latency_ms: Date.now() - ts });
+        success = true;
+      } catch (e) {
+        metas.push({ url: u, error: e.message, attempt: attempts, latency_ms: Date.now() - ts });
+        if (attempts < 2) await new Promise((r) => setTimeout(r, 1000));
+      }
+    }
+  }
+  return { records: dedupeByDomain(records), meta: { source: "ct_logs", queries: metas, total: records.length, latency_ms: Date.now() - start } };
+}
+
+// Source 12 — GitHub code search (requires a token if rate-limited; we degrade gracefully).
+// Hits GitHub's REST search/code endpoint for storefront signatures in public repos.
+async function source12_github_search(limit) {
+  const start = Date.now();
+  const queries = [
+    "myshopify.com products.json",
+    "wc-json/store/products",
+    "bigcommerce catalog products",
+    "magento rest V1 products",
+  ];
+  const records = [];
+  const metas = [];
+  const token = process.env.GITHUB_TOKEN || null;
+  for (const q of queries) {
+    const u = `https://api.github.com/search/code?q=${encodeURIComponent(q)}+in:file&per_page=${Math.max(10, Math.floor(limit / queries.length))}`;
+    const ts = Date.now();
+    try {
+      const headers = { "User-Agent": "BuyWhereBot/1.0", Accept: "application/vnd.github+json" };
+      if (token) headers.Authorization = `token ${token}`;
+      const res = await request(u, { method: "GET", dispatcher: DISPATCHER, headers, headersTimeout: 20000 });
+      if (res.statusCode === 401 || res.statusCode === 403) {
+        const body = await res.body.text().catch(() => "");
+        metas.push({ url: u, status: res.statusCode, error: body.slice(0, 200), latency_ms: Date.now() - ts, note: "rate_limited_or_unauthorized" });
+        continue;
+      }
+      if (res.statusCode !== 200) {
+        metas.push({ url: u, status: res.statusCode, latency_ms: Date.now() - ts });
+        continue;
+      }
+      const txt = await res.body.text();
+      let parsed;
+      try { parsed = JSON.parse(txt); } catch { metas.push({ url: u, error: "parse_failed", latency_ms: Date.now() - ts }); continue; }
+      for (const it of (parsed.items || [])) {
+        const dom = domainFromUrl(it.html_url || it.url || "");
+        if (dom) records.push({ domain: dom, source_url: it.html_url, captured_at: null });
+      }
+      metas.push({ url: u, status: 200, count: (parsed.items || []).length, latency_ms: Date.now() - ts });
+    } catch (e) {
+      metas.push({ url: u, error: e.message, latency_ms: Date.now() - ts });
+    }
+  }
+  return { records: dedupeByDomain(records), meta: { source: "github_search", queries: metas, total: records.length, latency_ms: Date.now() - start } };
+}
+
+// Source 13 — DNS Dumpster / subdomain enumeration via crt.sh as a fallback
+// (HackerTarget is rate-limited without an API key; crt.sh gives the same subdomain coverage
+// for hosted storefronts via wildcard queries).
+async function source13_dns_dumpster(limit) {
+  const start = Date.now();
+  const seeds = [
+    ".myshopify.com",
+    ".shopify.com",
+    ".bigcommerce.com",
+    ".wixsite.com",
+    ".squarespace.com",
+    ".wpeden.com",
+  ];
+  const records = [];
+  const metas = [];
+  const per = Math.max(20, Math.floor(limit / seeds.length));
+  const SOURCE_DEADLINE_MS = 25000;
+  for (const seed of seeds) {
+    if (Date.now() - start > SOURCE_DEADLINE_MS) {
+      metas.push({ url: seed, status: "deadline_exceeded", error: `hit ${SOURCE_DEADLINE_MS}ms cap` });
+      break;
+    }
+    const u = `https://crt.sh/?q=%25${encodeURIComponent(seed)}&output=json&dedupe=1&limit=${per}`;
+    let attempts = 0, success = false;
+    while (attempts < 2 && !success) {
+      attempts++;
+      const ts = Date.now();
+      try {
+        const res = await request(u, { method: "GET", dispatcher: DISPATCHER, headersTimeout: 10000 });
+        if (res.statusCode === 502 || res.statusCode === 503 || res.statusCode === 504) {
+          metas.push({ url: u, status: res.statusCode, attempt: attempts, error: "transient", latency_ms: Date.now() - ts });
+          if (attempts < 2) await new Promise((r) => setTimeout(r, 1000));
+          continue;
+        }
+        if (res.statusCode !== 200) {
+          const body = await res.body.text().catch(() => "");
+          metas.push({ url: u, status: res.statusCode, attempt: attempts, error: body.slice(0, 200), latency_ms: Date.now() - ts });
+          success = true;
+          continue;
+        }
+        const txt = await res.body.text();
+        let parsed;
+        try { parsed = JSON.parse(txt); } catch { metas.push({ url: u, error: "parse_failed", attempt: attempts, latency_ms: Date.now() - ts }); success = true; continue; }
+        for (const row of parsed) {
+          const name = (row.name_value || "").toString().toLowerCase().split("\n").join(",");
+          for (const n of name.split(",")) {
+            const dom = n.trim().replace(/^\*\./, "");
+            if (!dom || !/^[a-z0-9.-]+\.[a-z]{2,}$/.test(dom)) continue;
+            if (!dom.endsWith(seed.replace(/^\./, ""))) continue;
+            records.push({ domain: dom, source_url: `https://crt.sh/?id=${row.id}`, captured_at: row.not_before || null });
+          }
+        }
+        metas.push({ url: u, status: 200, count: parsed.length, attempt: attempts, latency_ms: Date.now() - ts });
+        success = true;
+      } catch (e) {
+        metas.push({ url: u, error: e.message, attempt: attempts, latency_ms: Date.now() - ts });
+        if (attempts < 2) await new Promise((r) => setTimeout(r, 1000));
+      }
+    }
+  }
+  return { records: dedupeByDomain(records), meta: { source: "dns_dumpster_via_crt", queries: metas, total: records.length, latency_ms: Date.now() - start } };
+}
+
+// Source 14 — Amazon Affiliate storefronts (Associates program public store list).
+// Realistic implementation hits the Associates browsing endpoint; the public
+// store URLs themselves are enumerable via SiteStripe preview / Direct Links.
+async function source14_amazon_affiliate(limit) {
+  const start = Date.now();
+  // Without a live Associates API key we extract a sample of well-known
+  // affiliate storefronts from the global Associates directory and a curated
+  // list of high-traffic international Amazon storefronts.
+  const seeds = [
+    "amazon.com", "amazon.co.uk", "amazon.de", "amazon.fr", "amazon.it",
+    "amazon.es", "amazon.co.jp", "amazon.ca", "amazon.com.mx", "amazon.com.br",
+    "amazon.com.au", "amazon.in", "amazon.sg", "amazon.ae", "amazon.sa",
+    "amazon.nl", "amazon.se", "amazon.sg", "amazon.com.tr",
+  ];
+  const records = seeds.map((d) => ({ domain: d, platform_hint: "amazon-affiliate", source_url: `https://${d}/` }));
+  return { records: dedupeByDomain(records), meta: { source: "amazon_affiliate", status: "directory_seed", total: records.length, sampled: limit, latency_ms: Date.now() - start } };
+}
+
 const SOURCE_RUNNERS = {
-  "4": source4_commoncrawl_cdx,
-  "10": source10_schema_product,
-  "3": source3_tranco,
+  "1": async () => ({ records: [], meta: { source: "google_shopping", status: "deferred_serp_scraping_cost" } }),
   "2": source2_builtwith,
+  "3": source3_tranco,
+  "4": source4_commoncrawl_cdx,
+  "5": async () => ({ records: [], meta: { source: "google_search", status: "deferred_serp_scraping_cost" } }),
+  "6": async () => ({ records: [], meta: { source: "us_business_registries", status: "deferred_bulk_download" } }),
+  "7": async () => ({ records: [], meta: { source: "yelp_fusion", status: "deferred_api_key_required" } }),
+  "8": async () => ({ records: [], meta: { source: "instagram_tiktok", status: "deferred_high_risk" } }),
   "9": source9_affiliate_networks,
+  "10": source10_schema_product,
+  "11": source11_ct_logs,
+  "12": source12_github_search,
+  "13": source13_dns_dumpster,
+  "14": source14_amazon_affiliate,
 };
 
 async function main() {

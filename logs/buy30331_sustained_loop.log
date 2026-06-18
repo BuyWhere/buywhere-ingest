@@ -1,0 +1,683 @@
+node:internal/modules/cjs/loader:1386
+  throw err;
+  ^
+
+Error: Cannot find module '/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/scripts/buy30331-sustained-loop.mjs'
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+    at Function._load (node:internal/modules/cjs/loader:1192:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+    at node:internal/main/run_main_module:36:49 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v22.22.2
+[2026-06-06T16:01:51.256Z] loaded 20752 candidate domains
+[2026-06-06T16:01:51.258Z] starting at cursor=5836, cycle=3349
+[2026-06-06T16:27:36.859Z] loaded 20752 candidate domains
+[2026-06-06T16:27:36.861Z] starting at cursor=5836, cycle=3349
+[2026-06-06T20:45:19.779Z] loaded 20752 candidate domains
+[2026-06-06T20:45:19.781Z] starting at cursor=8036, cycle=3360
+[2026-06-07T07:53:30.249Z] loaded 20752 candidate domains
+[2026-06-07T07:53:30.250Z] starting at cursor=15836, cycle=3399
+[2026-06-07T07:54:13.546Z] cycle 3400: 200 domains → 199 hit → 58223 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3400-2026-06-07T07-53-30-251Z.ndjson
+[2026-06-07T08:05:00.488Z] cycle 3400 ingest: exit=0 646.9s E ===
+files=1 lines=58223 valid=58223 written=51223 errors=14 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 58223 ] ]
+throttle: enabled avg_latency=36873ms batches=117 initial_parallel=8 max_parallel=8 final_parallel=1 downshifts=8 upshifts=11 paused_count=0
+[2026-06-07T08:05:51.701Z] cycle 3401: 200 domains → 200 hit → 57738 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3401-2026-06-07T08-05-05-511Z.ndjson
+[2026-06-07T08:13:46.585Z] cycle 3401 ingest: exit=0 474.9s ONE ===
+files=1 lines=57738 valid=57738 written=55238 errors=5 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 57738 ] ]
+throttle: enabled avg_latency=12783ms batches=116 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=3 upshifts=7 paused_count=0
+[2026-06-07T08:17:24.825Z] cycle 3402: 200 domains → 200 hit → 56884 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3402-2026-06-07T08-13-51-600Z.ndjson
+[2026-06-07T08:19:47.407Z] cycle 3402 ingest: exit=0 142.6s DONE ===
+files=1 lines=56884 valid=56884 written=55884 errors=2 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 56884 ] ]
+throttle: enabled avg_latency=7362ms batches=114 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=0 upshifts=0 paused_count=0
+[2026-06-07T08:21:47.468Z] cycle 3402 teardown: exit=0 120.0s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=120s apply=1
+[2026-06-07T08:26:13.525Z] cycle 3403: 200 domains → 180 hit → 41795 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3403-2026-06-07T08-21-52-473Z.ndjson
+[2026-06-07T08:33:47.492Z] cycle 3403 ingest: exit=0 454.0s DONE ===
+files=1 lines=41795 valid=41795 written=36295 errors=11 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 41795 ] ]
+throttle: enabled avg_latency=2851ms batches=84 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=3 upshifts=7 paused_count=0
+[2026-06-07T08:35:45.516Z] cycle 3404: 200 domains → 199 hit → 52176 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3404-2026-06-07T08-33-52-512Z.ndjson
+[2026-06-07T08:37:09.737Z] cycle 3404 ingest: exit=1 84.2s 
+[2026-06-07T08:38:19.777Z] cycle 3405: 200 domains → 200 hit → 48755 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3405-2026-06-07T08-37-14-756Z.ndjson
+[2026-06-07T08:40:59.876Z] cycle 3405 ingest: exit=0 160.1s  DONE ===
+files=1 lines=48755 valid=48755 written=46255 errors=5 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 48755 ] ]
+throttle: enabled avg_latency=4638ms batches=98 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=2 upshifts=6 paused_count=0
+[2026-06-07T08:46:33.534Z] cycle 3406: 200 domains → 121 hit → 22249 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3406-2026-06-07T08-41-04-892Z.ndjson
+[2026-06-07T08:47:22.096Z] cycle 3406 ingest: exit=0 48.6s  DONE ===
+files=1 lines=22249 valid=22249 written=22249 errors=0 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 22249 ] ]
+throttle: enabled avg_latency=2590ms batches=45 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=0 upshifts=0 paused_count=0
+[2026-06-07T08:50:00.665Z] cycle 3407: 200 domains → 200 hit → 72360 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3407-2026-06-07T08-47-27-110Z.ndjson
+[2026-06-07T09:13:41.901Z] cycle 3407 ingest: exit=0 1421.2s ONE ===
+files=1 lines=72360 valid=72360 written=44860 errors=55 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 72360 ] ]
+throttle: enabled avg_latency=6632ms batches=145 initial_parallel=8 max_parallel=8 final_parallel=2 downshifts=6 upshifts=8 paused_count=0
+[2026-06-07T09:21:50.431Z] cycle 3408: 200 domains → 20 hit → 7783 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3408-2026-06-07T09-13-46-932Z.ndjson
+[2026-06-07T09:22:31.754Z] cycle 3408 ingest: exit=0 41.3s EST DONE ===
+files=1 lines=7783 valid=7783 written=7783 errors=0 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 7783 ] ]
+throttle: enabled avg_latency=18744ms batches=16 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=0 upshifts=0 paused_count=0
+[2026-06-07T09:24:31.808Z] cycle 3408 teardown: exit=0 120.0s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=120s apply=1
+[2026-06-07T09:25:46.892Z] cycle 3409: 200 domains → 200 hit → 46988 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3409-2026-06-07T09-24-36-813Z.ndjson
+[2026-06-07T09:28:08.492Z] cycle 3409 ingest: exit=0 141.6s  DONE ===
+files=1 lines=46988 valid=46988 written=46988 errors=0 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 46988 ] ]
+throttle: enabled avg_latency=7648ms batches=94 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=0 upshifts=0 paused_count=0
+[2026-06-07T09:34:43.995Z] cycle 3410: 200 domains → 60 hit → 13144 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3410-2026-06-07T09-28-13-512Z.ndjson
+[2026-06-07T09:35:01.883Z] cycle 3410 ingest: exit=0 17.9s  DONE ===
+files=1 lines=13144 valid=13144 written=13144 errors=0 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 13144 ] ]
+throttle: enabled avg_latency=5419ms batches=27 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=0 upshifts=0 paused_count=0
+[2026-06-07T09:37:18.165Z] cycle 3411: 200 domains → 200 hit → 55153 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3411-2026-06-07T09-35-06-900Z.ndjson
+[2026-06-07T09:42:01.613Z] cycle 3411 ingest: exit=0 283.4s ONE ===
+files=1 lines=55153 valid=55153 written=54653 errors=1 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 55153 ] ]
+throttle: enabled avg_latency=12600ms batches=111 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=3 upshifts=7 paused_count=0
+[2026-06-07T09:48:43.459Z] cycle 3412: 200 domains → 101 hit → 23252 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3412-2026-06-07T09-42-06-635Z.ndjson
+[2026-06-07T09:50:15.206Z] cycle 3412 ingest: exit=0 91.7s  DONE ===
+files=1 lines=23252 valid=23252 written=23252 errors=0 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 23252 ] ]
+throttle: enabled avg_latency=6802ms batches=47 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=0 upshifts=0 paused_count=0
+[2026-06-07T09:52:02.042Z] cycle 3413: 200 domains → 200 hit → 42404 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3413-2026-06-07T09-50-20-223Z.ndjson
+[2026-06-07T09:52:58.824Z] cycle 3413 ingest: exit=0 56.8s  DONE ===
+files=1 lines=42404 valid=42404 written=42404 errors=0 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 42404 ] ]
+throttle: enabled avg_latency=9329ms batches=85 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=0 upshifts=0 paused_count=0
+[2026-06-07T09:59:32.648Z] cycle 3414: 200 domains → 60 hit → 10954 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3414-2026-06-07T09-53-03-845Z.ndjson
+[2026-06-07T10:00:16.204Z] cycle 3414 ingest: exit=0 43.6s DONE ===
+files=1 lines=10954 valid=10954 written=10954 errors=0 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 10954 ] ]
+throttle: enabled avg_latency=16730ms batches=22 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=0 upshifts=0 paused_count=0
+[2026-06-07T10:02:16.306Z] cycle 3414 teardown: exit=0 120.1s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=120s apply=1
+[2026-06-07T10:04:34.013Z] cycle 3415: 200 domains → 199 hit → 53473 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3415-2026-06-07T10-02-21-311Z.ndjson
+[2026-06-07T10:09:38.904Z] cycle 3415 ingest: exit=0 304.9s ONE ===
+files=1 lines=53473 valid=53473 written=52473 errors=2 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 53473 ] ]
+throttle: enabled avg_latency=13453ms batches=107 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=3 upshifts=7 paused_count=0
+[2026-06-07T10:14:49.199Z] cycle 3416: 200 domains → 134 hit → 28193 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3416-2026-06-07T10-09-43-944Z.ndjson
+[2026-06-07T10:15:54.751Z] cycle 3416 ingest: exit=0 65.6s DONE ===
+files=1 lines=28193 valid=28193 written=28193 errors=0 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 28193 ] ]
+throttle: enabled avg_latency=11626ms batches=57 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=0 upshifts=0 paused_count=0
+[2026-06-07T10:17:11.884Z] cycle 3417: 200 domains → 198 hit → 41187 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3417-2026-06-07T10-15-59-781Z.ndjson
+[2026-06-07T10:21:41.187Z] cycle 3417 ingest: exit=0 269.3s DONE ===
+files=1 lines=41187 valid=41187 written=39187 errors=4 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 41187 ] ]
+throttle: enabled avg_latency=24179ms batches=83 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=3 upshifts=7 paused_count=0
+[2026-06-07T10:29:33.677Z] cycle 3418: 200 domains → 198 hit → 53474 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3418-2026-06-07T10-21-46-205Z.ndjson
+[2026-06-07T10:30:11.862Z] cycle 3418 ingest: exit=0 38.2s DONE ===
+files=1 lines=53474 valid=53474 written=53474 errors=0 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 53474 ] ]
+throttle: enabled avg_latency=3803ms batches=107 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=0 upshifts=0 paused_count=0
+[2026-06-07T10:33:22.316Z] cycle 3419: 200 domains → 199 hit → 55790 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3419-2026-06-07T10-30-16-887Z.ndjson
+[2026-06-07T10:35:35.333Z] cycle 3419 ingest: exit=0 133.0s DONE ===
+files=1 lines=55790 valid=55790 written=55790 errors=0 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 55790 ] ]
+throttle: enabled avg_latency=4974ms batches=112 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=0 upshifts=0 paused_count=0
+[2026-06-07T10:36:45.905Z] cycle 3420: 200 domains → 200 hit → 49605 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3420-2026-06-07T10-35-40-354Z.ndjson
+[2026-06-07T10:37:57.009Z] cycle 3420 ingest: exit=0 71.1s DONE ===
+files=1 lines=49605 valid=49605 written=49605 errors=0 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 49605 ] ]
+throttle: enabled avg_latency=1156ms batches=100 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=0 upshifts=0 paused_count=0
+[2026-06-07T10:39:57.077Z] cycle 3420 teardown: exit=0 120.1s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=120s apply=1
+[2026-06-07T10:40:56.273Z] cycle 3421: 200 domains → 200 hit → 44181 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3421-2026-06-07T10-40-02-083Z.ndjson
+[2026-06-07T10:42:44.813Z] cycle 3421 ingest: exit=0 108.5s DONE ===
+files=1 lines=44181 valid=44181 written=44181 errors=0 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 44181 ] ]
+throttle: enabled avg_latency=12489ms batches=89 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=0 upshifts=0 paused_count=0
+[2026-06-07T10:43:47.500Z] cycle 3422: 200 domains → 199 hit → 42123 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3422-2026-06-07T10-42-49-834Z.ndjson
+[2026-06-07T10:46:20.681Z] cycle 3422 ingest: exit=0 153.2s DONE ===
+files=1 lines=42123 valid=42123 written=41123 errors=2 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 42123 ] ]
+throttle: enabled avg_latency=43950ms batches=85 initial_parallel=8 max_parallel=8 final_parallel=1 downshifts=3 upshifts=0 paused_count=0
+[2026-06-07T10:48:03.358Z] cycle 3423: 200 domains → 198 hit → 45236 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3423-2026-06-07T10-46-25-702Z.ndjson
+[2026-06-07T11:02:20.990Z] cycle 3423 ingest: exit=0 857.6s  DONE ===
+files=1 lines=45236 valid=45236 written=42236 errors=6 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 45236 ] ]
+throttle: enabled avg_latency=6280ms batches=91 initial_parallel=8 max_parallel=8 final_parallel=1 downshifts=3 upshifts=0 paused_count=0
+[2026-06-07T11:03:22.560Z] cycle 3424: 200 domains → 199 hit → 62773 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3424-2026-06-07T11-02-26-007Z.ndjson
+[2026-06-07T11:19:28.932Z] cycle 3424 ingest: exit=0 966.4s ONE ===
+files=1 lines=62773 valid=62773 written=59773 errors=6 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 62773 ] ]
+throttle: enabled avg_latency=13589ms batches=126 initial_parallel=8 max_parallel=8 final_parallel=1 downshifts=6 upshifts=7 paused_count=0
+[2026-06-07T11:20:29.100Z] cycle 3425: 200 domains → 198 hit → 44598 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3425-2026-06-07T11-19-33-959Z.ndjson
+[2026-06-07T11:30:17.458Z] cycle 3425 ingest: exit=0 588.4s DONE ===
+files=1 lines=44598 valid=44598 written=43098 errors=3 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 44598 ] ]
+throttle: enabled avg_latency=31833ms batches=90 initial_parallel=8 max_parallel=8 final_parallel=1 downshifts=6 upshifts=7 paused_count=0
+[2026-06-07T11:32:40.289Z] cycle 3426: 200 domains → 200 hit → 83123 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3426-2026-06-07T11-30-22-480Z.ndjson
+[2026-06-07T11:35:36.487Z] cycle 3426 ingest: exit=0 176.2s ONE ===
+files=1 lines=83123 valid=83123 written=82123 errors=2 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 83123 ] ]
+throttle: enabled avg_latency=11393ms batches=167 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=0 upshifts=0 paused_count=0
+[2026-06-07T11:37:36.581Z] cycle 3426 teardown: exit=0 120.1s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=120s apply=1
+[2026-06-07T11:40:31.291Z] cycle 3427: 200 domains → 200 hit → 179610 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3427-2026-06-07T11-37-41-586Z.ndjson
+[2026-06-07T11:56:13.204Z] cycle 3427 ingest: exit=0 941.9s =
+files=1 lines=179610 valid=179610 written=172110 errors=15 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 179610 ] ]
+throttle: enabled avg_latency=29925ms batches=360 initial_parallel=8 max_parallel=8 final_parallel=1 downshifts=9 upshifts=14 paused_count=0
+[2026-06-07T11:58:40.623Z] cycle 3428: 200 domains → 199 hit → 169509 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3428-2026-06-07T11-56-18-227Z.ndjson
+[2026-06-07T14:03:52.986Z] loaded 20752 candidate domains
+[2026-06-07T14:03:52.988Z] starting at cursor=1084, cycle=3429
+[2026-06-07T14:20:59.383Z] loaded 20752 candidate domains
+[2026-06-07T14:20:59.387Z] starting at cursor=1084, cycle=3429
+[2026-06-07T14:24:24.390Z] loaded 20752 candidate domains
+[2026-06-07T14:24:24.392Z] starting at cursor=1084, cycle=3429
+[2026-06-07T14:27:06.324Z] cycle 3430: 200 domains → 196 hit → 190453 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3430-2026-06-07T14-24-24-392Z.ndjson
+[2026-06-07T14:43:07.407Z] cycle 3430 ingest: exit=0 961.1s ==
+files=1 lines=190453 valid=190453 written=177953 errors=25 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 190453 ] ]
+throttle: enabled avg_latency=15730ms batches=381 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=3 upshifts=7 paused_count=0
+[2026-06-07T14:57:05.149Z] loaded 20752 candidate domains
+[2026-06-07T14:57:05.150Z] starting at cursor=1284, cycle=3430
+[2026-06-07T16:37:52.286Z] loaded 20752 candidate domains
+[2026-06-07T16:37:52.287Z] starting at cursor=1484, cycle=3431
+[2026-06-07T16:40:35.445Z] loaded 20752 candidate domains
+[2026-06-07T16:40:35.446Z] starting at cursor=1484, cycle=3431
+[2026-06-07T16:43:47.546Z] loaded 20752 candidate domains
+[2026-06-07T16:43:47.547Z] starting at cursor=1484, cycle=3431
+[2026-06-07T16:48:17.011Z] loaded 20752 candidate domains
+[2026-06-07T16:48:17.011Z] starting at cursor=1484, cycle=3431
+[2026-06-07T16:52:53.097Z] loaded 20752 candidate domains
+[2026-06-07T16:52:53.098Z] starting at cursor=1484, cycle=3431
+[2026-06-07T16:54:34.535Z] loaded 20752 candidate domains
+[2026-06-07T16:54:34.536Z] starting at cursor=1484, cycle=3431
+[2026-06-07T16:55:48.646Z] loaded 20752 candidate domains
+[2026-06-07T16:55:48.647Z] starting at cursor=1484, cycle=3431
+[2026-06-07T16:58:20.762Z] loaded 20752 candidate domains
+[2026-06-07T16:58:20.763Z] starting at cursor=1484, cycle=3431
+[2026-06-07T17:00:39.307Z] loaded 20752 candidate domains
+[2026-06-07T17:00:39.308Z] starting at cursor=1484, cycle=3431
+[2026-06-07T17:16:57.369Z] loaded 20752 candidate domains
+[2026-06-07T17:16:57.370Z] starting at cursor=1484, cycle=3431
+[2026-06-07T17:32:56.724Z] loaded 20752 candidate domains
+[2026-06-07T17:32:56.725Z] starting at cursor=1484, cycle=3431
+[2026-06-07T17:38:08.148Z] loaded 20752 candidate domains
+[2026-06-07T17:38:08.150Z] starting at cursor=1484, cycle=3431
+[2026-06-07T17:44:29.693Z] loaded 20752 candidate domains
+[2026-06-07T17:44:29.694Z] starting at cursor=1484, cycle=3431
+[2026-06-07T17:49:41.189Z] loaded 20752 candidate domains
+[2026-06-07T17:49:41.192Z] starting at cursor=1484, cycle=3431
+[2026-06-07T17:54:37.342Z] cycle 3432: 200 domains → 113 hit → 96121 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3432-2026-06-07T17-49-41-193Z.ndjson
+[2026-06-07T18:12:54.187Z] cycle 3432 ingest: exit=0 1096.8s NE ===
+files=1 lines=96121 valid=96121 written=82121 errors=28 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 96121 ] ]
+throttle: enabled avg_latency=6322ms batches=193 initial_parallel=8 max_parallel=8 final_parallel=4 downshifts=9 upshifts=17 paused_count=0
+[2026-06-07T18:14:54.253Z] cycle 3432 teardown: exit=0 120.0s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=120s apply=1
+[2026-06-07T18:16:38.209Z] cycle 3433: 200 domains → 199 hit → 176718 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3433-2026-06-07T18-14-59-259Z.ndjson
+[2026-06-07T18:20:42.393Z] cycle 3433 ingest: exit=0 244.2s ===
+files=1 lines=176718 valid=176718 written=176218 errors=1 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 176718 ] ]
+throttle: enabled avg_latency=10420ms batches=354 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=0 upshifts=0 paused_count=0
+[2026-06-07T18:29:47.656Z] cycle 3434: 200 domains → 199 hit → 183247 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3434-2026-06-07T18-20-47-422Z.ndjson
+[2026-06-07T18:43:17.642Z] cycle 3434 ingest: exit=0 809.9s ==
+files=1 lines=183247 valid=183247 written=172747 errors=21 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 183247 ] ]
+throttle: enabled avg_latency=2019ms batches=367 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=4 upshifts=11 paused_count=0
+[2026-06-07T18:46:24.867Z] cycle 3435: 200 domains → 199 hit → 180433 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3435-2026-06-07T18-43-22-670Z.ndjson
+[2026-06-07T18:50:27.581Z] cycle 3435 ingest: exit=0 242.7s  ===
+files=1 lines=180433 valid=180433 written=179933 errors=1 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 180433 ] ]
+throttle: enabled avg_latency=4617ms batches=361 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=0 upshifts=0 paused_count=0
+[2026-06-07T18:56:44.272Z] cycle 3436: 200 domains → 114 hit → 104934 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3436-2026-06-07T18-50-32-609Z.ndjson
+[2026-06-07T19:01:23.592Z] cycle 3436 ingest: exit=0 279.3s  ===
+files=1 lines=104934 valid=104934 written=102934 errors=4 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 104934 ] ]
+throttle: enabled avg_latency=4184ms batches=210 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=0 upshifts=0 paused_count=0
+[2026-06-07T19:02:22.514Z] loaded 20752 candidate domains
+[2026-06-07T19:02:22.516Z] starting at cursor=2484, cycle=3436
+[2026-06-07T19:04:40.437Z] cycle 3437: 200 domains → 200 hit → 177460 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3437-2026-06-07T19-02-22-517Z.ndjson
+[2026-06-07T19:11:14.613Z] cycle 3437 ingest: exit=0 394.2s  ===
+files=1 lines=177460 valid=177460 written=172960 errors=9 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 177460 ] ]
+throttle: enabled avg_latency=1838ms batches=355 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=3 upshifts=7 paused_count=0
+[2026-06-07T19:17:14.737Z] cycle 3438: 200 domains → 199 hit → 184617 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3438-2026-06-07T19-11-19-637Z.ndjson
+[2026-06-07T19:47:00.872Z] cycle 3438 ingest: exit=0 1786.1s ===
+files=1 lines=184617 valid=184617 written=175117 errors=19 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 184617 ] ]
+throttle: enabled avg_latency=8175ms batches=370 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=3 upshifts=7 paused_count=0
+[2026-06-07T19:49:00.974Z] cycle 3438 teardown: exit=0 120.1s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=120s apply=1
+[2026-06-07T19:57:12.628Z] cycle 3439: 200 domains → 161 hit → 147320 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3439-2026-06-07T19-49-05-979Z.ndjson
+[2026-06-07T20:00:38.664Z] cycle 3439 ingest: exit=0 206.0s  ===
+files=1 lines=147320 valid=147320 written=146820 errors=1 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 147320 ] ]
+throttle: enabled avg_latency=1083ms batches=295 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=0 upshifts=0 paused_count=0
+[2026-06-08T05:16:48.124Z] loaded 20752 candidate domains
+[2026-06-08T05:16:48.125Z] starting at cursor=9684, cycle=3472
+[2026-06-08T05:19:28.275Z] cycle 3473: 200 domains → 200 hit → 125562 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3473-2026-06-08T05-16-48-126Z.ndjson
+[2026-06-08T05:21:22.602Z] loaded 20752 candidate domains
+[2026-06-08T05:21:22.603Z] starting at cursor=9684, cycle=3472
+[2026-06-08T05:23:18.609Z] cycle 3473: 200 domains → 200 hit → 125562 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3473-2026-06-08T05-21-22-604Z.ndjson
+[2026-06-08T05:27:01.752Z] loaded 20752 candidate domains
+[2026-06-08T05:27:01.752Z] starting at cursor=9684, cycle=3472
+[2026-06-08T05:28:29.822Z] cycle 3473: 200 domains → 200 hit → 125562 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3473-2026-06-08T05-27-01-753Z.ndjson
+[2026-06-08T05:40:46.165Z] loaded 20752 candidate domains
+[2026-06-08T05:40:46.166Z] starting at cursor=9684, cycle=3472
+[2026-06-08T05:42:10.272Z] cycle 3473: 200 domains → 200 hit → 125561 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3473-2026-06-08T05-40-46-167Z.ndjson
+[2026-06-08T05:42:54.346Z] cycle 3473 ingest: exit=0 44.1s E ===
+files=1 lines=125561 valid=125561 written=38500 errors=175 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 125561 ] ]
+throttle: enabled avg_latency=58ms batches=252 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=0 upshifts=0 paused_count=0
+[2026-06-08T05:49:26.310Z] loaded 20752 candidate domains
+[2026-06-08T05:49:26.311Z] starting at cursor=9884, cycle=3473
+[2026-06-08T05:58:57.675Z] loaded 20752 candidate domains
+[2026-06-08T05:58:57.676Z] starting at cursor=10084, cycle=3474
+[2026-06-08T06:03:25.963Z] loaded 20752 candidate domains
+[2026-06-08T06:03:25.964Z] starting at cursor=10084, cycle=3474
+[2026-06-08T06:10:26.122Z] loaded 20752 candidate domains
+[2026-06-08T06:10:26.123Z] starting at cursor=10084, cycle=3474
+[2026-06-08T06:12:00.756Z] cycle 3475: 200 domains → 198 hit → 96368 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3475-2026-06-08T06-10-26-123Z.ndjson
+[2026-06-08T06:21:22.787Z] loaded 20752 candidate domains
+[2026-06-08T06:21:22.787Z] starting at cursor=10084, cycle=3474
+[2026-06-08T06:22:19.823Z] cycle 3475: 200 domains → 198 hit → 96368 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3475-2026-06-08T06-21-22-788Z.ndjson
+[2026-06-08T06:24:56.116Z] cycle 3475 ingest: exit=0 156.3s DONE ===
+files=1 lines=96368 valid=96368 written=95368 errors=2 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 96368 ] ]
+throttle: enabled avg_latency=2767ms batches=193 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=3 upshifts=7 paused_count=0
+[2026-06-08T06:27:14.104Z] cycle 3476: 200 domains → 200 hit → 129856 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3476-2026-06-08T06-25-01-141Z.ndjson
+[2026-06-08T06:31:20.577Z] cycle 3476 ingest: exit=0 246.5s  ===
+files=1 lines=129856 valid=129856 written=129856 errors=0 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 129856 ] ]
+throttle: enabled avg_latency=4604ms batches=260 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=0 upshifts=0 paused_count=0
+[2026-06-08T06:35:26.720Z] loaded 20752 candidate domains
+[2026-06-08T06:35:26.721Z] starting at cursor=10484, cycle=3476
+[2026-06-08T06:37:27.538Z] cycle 3477: 200 domains → 198 hit → 132308 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3477-2026-06-08T06-35-26-721Z.ndjson
+[2026-06-08T06:38:57.771Z] cycle 3477 ingest: exit=0 90.2s  ===
+files=1 lines=132308 valid=132308 written=132308 errors=0 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 132308 ] ]
+throttle: enabled avg_latency=1000ms batches=265 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=0 upshifts=0 paused_count=0
+[2026-06-08T06:41:59.731Z] loaded 20752 candidate domains
+[2026-06-08T06:41:59.732Z] starting at cursor=10684, cycle=3477
+[2026-06-08T06:44:37.825Z] cycle 3478: 200 domains → 196 hit → 114901 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3478-2026-06-08T06-41-59-733Z.ndjson
+[2026-06-08T06:46:14.720Z] loaded 20752 candidate domains
+[2026-06-08T06:46:14.721Z] starting at cursor=10684, cycle=3477
+[2026-06-08T06:47:43.900Z] cycle 3478: 200 domains → 200 hit → 116576 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3478-2026-06-08T06-46-14-721Z.ndjson
+[2026-06-08T06:51:45.513Z] loaded 20752 candidate domains
+[2026-06-08T06:51:45.513Z] starting at cursor=10684, cycle=3477
+[2026-06-08T08:52:36.118Z] loaded 20752 candidate domains
+[2026-06-08T08:52:36.119Z] starting at cursor=16284, cycle=3505
+[2026-06-08T08:54:09.675Z] cycle 3506: 200 domains → 200 hit → 61297 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3506-2026-06-08T08-52-36-120Z.ndjson
+[2026-06-08T08:55:09.366Z] cycle 3506 ingest: exit=0 59.7s  DONE ===
+files=1 lines=61297 valid=61297 written=61297 errors=0 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 61297 ] ]
+throttle: enabled avg_latency=971ms batches=123 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=3 upshifts=7 paused_count=0
+[2026-06-08T08:58:06.873Z] loaded 20752 candidate domains
+[2026-06-08T08:58:06.874Z] starting at cursor=16484, cycle=3506
+[2026-06-08T08:59:11.867Z] cycle 3507: 200 domains → 200 hit → 44326 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3507-2026-06-08T08-58-06-874Z.ndjson
+[2026-06-08T08:59:18.567Z] cycle 3507 ingest: exit=0 6.7s T DONE ===
+files=1 lines=44326 valid=44326 written=44326 errors=0 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 44326 ] ]
+throttle: enabled avg_latency=797ms batches=89 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=0 upshifts=0 paused_count=0
+[2026-06-08T09:02:56.975Z] loaded 20752 candidate domains
+[2026-06-08T09:02:56.977Z] starting at cursor=16684, cycle=3507
+[2026-06-08T09:04:15.096Z] cycle 3508: 200 domains → 199 hit → 53122 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3508-2026-06-08T09-02-56-978Z.ndjson
+[2026-06-08T14:28:49.155Z] loaded 20752 candidate domains
+[2026-06-08T14:28:49.156Z] starting at cursor=6532, cycle=3560
+[2026-06-08T14:32:54.020Z] loaded 20752 candidate domains
+[2026-06-08T14:32:54.020Z] starting at cursor=6532, cycle=3560
+[2026-06-08T14:34:31.636Z] cycle 3561: 200 domains → 199 hit → 184282 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3561-2026-06-08T14-32-54-021Z.ndjson
+[2026-06-08T15:12:37.533Z] loaded 20752 candidate domains
+[2026-06-08T15:12:37.535Z] starting at cursor=6732, cycle=3561
+[2026-06-08T19:08:04.738Z] loaded 20752 candidate domains
+[2026-06-08T19:08:04.739Z] starting at cursor=7332, cycle=3564
+[2026-06-08T19:10:01.126Z] cycle 3565: 200 domains → 197 hit → 139745 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3565-2026-06-08T19-08-04-739Z.ndjson
+[2026-06-08T19:10:49.810Z] loaded 20752 candidate domains
+[2026-06-08T19:10:49.811Z] starting at cursor=7332, cycle=3564
+[2026-06-08T19:12:05.035Z] cycle 3565: 200 domains → 198 hit → 139788 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3565-2026-06-08T19-10-49-812Z.ndjson
+[2026-06-09T02:19:33.420Z] loaded 20752 candidate domains
+[2026-06-09T02:19:33.422Z] starting at cursor=19132, cycle=3623
+[2026-06-09T02:35:24.309Z] cycle 3624: 200 domains → 199 hit → 53538 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3624-2026-06-09T02-19-33-422Z.ndjson
+[2026-06-09T02:35:24.383Z] cycle 3624 ingest: exit=1 0.1s 
+[2026-06-09T02:37:24.435Z] cycle 3624 teardown: exit=0 120.0s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=120s apply=1
+[2026-06-09T02:38:31.434Z] cycle 3625: 200 domains → 195 hit → 36809 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3625-2026-06-09T02-37-29-439Z.ndjson
+[2026-06-09T02:38:31.511Z] cycle 3625 ingest: exit=1 0.1s 
+[2026-06-09T02:40:09.068Z] cycle 3626: 200 domains → 198 hit → 62517 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3626-2026-06-09T02-38-36-522Z.ndjson
+[2026-06-09T02:40:09.161Z] cycle 3626 ingest: exit=1 0.1s 
+[2026-06-09T02:45:19.163Z] cycle 3627: 200 domains → 100 hit → 26433 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3627-2026-06-09T02-40-14-172Z.ndjson
+[2026-06-09T02:45:19.234Z] cycle 3627 ingest: exit=1 0.1s 
+[2026-06-09T02:48:26.696Z] cycle 3628: 200 domains → 168 hit → 37849 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3628-2026-06-09T02-45-24-247Z.ndjson
+[2026-06-09T02:48:26.775Z] cycle 3628 ingest: exit=1 0.1s 
+[2026-06-09T02:50:03.547Z] cycle 3629: 200 domains → 200 hit → 41944 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3629-2026-06-09T02-48-31-794Z.ndjson
+[2026-06-09T02:50:03.627Z] cycle 3629 ingest: exit=1 0.1s 
+[2026-06-09T02:53:27.761Z] cycle 3630: 200 domains → 195 hit → 40642 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3630-2026-06-09T02-50-08-651Z.ndjson
+[2026-06-09T02:53:27.833Z] cycle 3630 ingest: exit=1 0.1s 
+[2026-06-09T02:55:27.887Z] cycle 3630 teardown: exit=0 120.0s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=120s apply=1
+[2026-06-09T02:56:52.627Z] cycle 3631: 200 domains → 200 hit → 53860 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3631-2026-06-09T02-55-32-892Z.ndjson
+[2026-06-09T02:56:52.706Z] cycle 3631 ingest: exit=1 0.1s 
+[2026-06-09T02:58:01.652Z] cycle 3632: 200 domains → 198 hit → 55766 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3632-2026-06-09T02-56-57-722Z.ndjson
+[2026-06-09T02:58:01.722Z] cycle 3632 ingest: exit=1 0.1s 
+[2026-06-09T02:59:55.470Z] cycle 3633: 200 domains → 199 hit → 45189 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3633-2026-06-09T02-58-06-733Z.ndjson
+[2026-06-09T02:59:55.546Z] cycle 3633 ingest: exit=1 0.1s 
+[2026-06-09T03:06:19.402Z] cycle 3634: 200 domains → 141 hit → 97781 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3634-2026-06-09T03-00-00-561Z.ndjson
+[2026-06-09T03:06:19.475Z] cycle 3634 ingest: exit=1 0.1s 
+[2026-06-09T03:18:54.544Z] cycle 3635: 200 domains → 110 hit → 91757 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3635-2026-06-09T03-06-24-492Z.ndjson
+[2026-06-09T03:18:54.652Z] cycle 3635 ingest: exit=1 0.1s 
+[2026-06-09T03:26:29.469Z] cycle 3636: 200 domains → 153 hit → 56868 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3636-2026-06-09T03-18-59-669Z.ndjson
+[2026-06-09T03:26:29.549Z] cycle 3636 ingest: exit=1 0.1s 
+[2026-06-09T03:28:29.606Z] cycle 3636 teardown: exit=0 120.0s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=120s apply=1
+[2026-06-09T03:31:03.046Z] cycle 3637: 200 domains → 199 hit → 156978 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3637-2026-06-09T03-28-34-612Z.ndjson
+[2026-06-09T03:31:03.121Z] cycle 3637 ingest: exit=1 0.1s 
+[2026-06-09T03:38:41.678Z] cycle 3638: 200 domains → 109 hit → 95964 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3638-2026-06-09T03-31-08-148Z.ndjson
+[2026-06-09T03:38:41.755Z] cycle 3638 ingest: exit=1 0.1s 
+[2026-06-09T03:46:02.229Z] cycle 3639: 200 domains → 118 hit → 118013 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3639-2026-06-09T03-38-46-771Z.ndjson
+[2026-06-09T03:46:02.320Z] cycle 3639 ingest: exit=1 0.1s 
+[2026-06-09T03:52:26.409Z] cycle 3640: 200 domains → 95 hit → 80605 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3640-2026-06-09T03-46-07-343Z.ndjson
+[2026-06-09T03:52:26.483Z] cycle 3640 ingest: exit=1 0.1s 
+[2026-06-09T03:58:38.666Z] cycle 3641: 200 domains → 97 hit → 73987 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3641-2026-06-09T03-52-31-509Z.ndjson
+[2026-06-09T03:58:38.739Z] cycle 3641 ingest: exit=1 0.1s 
+[2026-06-09T04:06:19.356Z] cycle 3642: 200 domains → 115 hit → 104365 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3642-2026-06-09T03-58-43-754Z.ndjson
+[2026-06-09T04:06:19.495Z] cycle 3642 ingest: exit=1 0.1s 
+[2026-06-09T04:08:19.587Z] cycle 3642 teardown: exit=0 120.1s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=120s apply=1
+[2026-06-09T04:18:55.960Z] cycle 3643: 200 domains → 86 hit → 82435 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3643-2026-06-09T04-08-24-592Z.ndjson
+[2026-06-09T04:18:56.038Z] cycle 3643 ingest: exit=1 0.1s 
+[2026-06-09T04:26:18.359Z] cycle 3644: 200 domains → 135 hit → 115944 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3644-2026-06-09T04-19-01-055Z.ndjson
+[2026-06-09T04:26:18.440Z] cycle 3644 ingest: exit=1 0.1s 
+[2026-06-09T04:28:32.051Z] cycle 3645: 200 domains → 200 hit → 184120 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3645-2026-06-09T04-26-23-454Z.ndjson
+[2026-06-09T04:28:32.127Z] cycle 3645 ingest: exit=1 0.1s 
+[2026-06-09T04:32:41.676Z] cycle 3646: 200 domains → 199 hit → 180801 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3646-2026-06-09T04-28-37-155Z.ndjson
+[2026-06-09T04:32:41.752Z] cycle 3646 ingest: exit=1 0.1s 
+[2026-06-09T04:35:40.406Z] cycle 3647: 200 domains → 199 hit → 185565 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3647-2026-06-09T04-32-46-763Z.ndjson
+[2026-06-09T04:35:40.490Z] cycle 3647 ingest: exit=1 0.1s 
+[2026-06-09T04:44:11.135Z] cycle 3648: 200 domains → 97 hit → 90042 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3648-2026-06-09T04-35-45-512Z.ndjson
+[2026-06-09T04:44:11.219Z] cycle 3648 ingest: exit=1 0.1s 
+[2026-06-09T04:46:11.289Z] cycle 3648 teardown: exit=0 120.1s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=120s apply=1
+[2026-06-09T04:50:20.835Z] cycle 3649: 200 domains → 183 hit → 149400 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3649-2026-06-09T04-46-16-294Z.ndjson
+[2026-06-09T04:50:20.914Z] cycle 3649 ingest: exit=1 0.1s 
+[2026-06-09T04:57:33.276Z] cycle 3650: 200 domains → 82 hit → 66002 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3650-2026-06-09T04-50-25-928Z.ndjson
+[2026-06-09T04:57:33.346Z] cycle 3650 ingest: exit=1 0.1s 
+[2026-06-09T05:06:07.195Z] cycle 3651: 200 domains → 70 hit → 55841 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3651-2026-06-09T04-57-38-362Z.ndjson
+[2026-06-09T05:06:07.277Z] cycle 3651 ingest: exit=1 0.1s 
+[2026-06-09T05:15:03.183Z] cycle 3652: 200 domains → 53 hit → 41476 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3652-2026-06-09T05-06-12-294Z.ndjson
+[2026-06-09T05:15:03.271Z] cycle 3652 ingest: exit=1 0.1s 
+[2026-06-09T05:28:31.140Z] cycle 3653: 200 domains → 53 hit → 42865 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3653-2026-06-09T05-15-08-288Z.ndjson
+[2026-06-09T05:28:31.220Z] cycle 3653 ingest: exit=1 0.1s 
+[2026-06-09T05:35:36.009Z] cycle 3654: 200 domains → 144 hit → 136893 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3654-2026-06-09T05-28-36-236Z.ndjson
+[2026-06-09T05:35:36.092Z] cycle 3654 ingest: exit=1 0.1s 
+[2026-06-09T05:37:36.152Z] cycle 3654 teardown: exit=0 120.0s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=120s apply=1
+[2026-06-09T05:44:45.133Z] cycle 3655: 200 domains → 118 hit → 108229 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3655-2026-06-09T05-37-41-157Z.ndjson
+[2026-06-09T05:44:45.222Z] cycle 3655 ingest: exit=1 0.1s 
+[2026-06-09T05:51:05.030Z] cycle 3656: 200 domains → 167 hit → 136481 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3656-2026-06-09T05-44-50-243Z.ndjson
+[2026-06-09T05:51:05.125Z] cycle 3656 ingest: exit=1 0.1s 
+[2026-06-09T06:00:52.741Z] cycle 3657: 200 domains → 73 hit → 74743 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3657-2026-06-09T05-51-10-142Z.ndjson
+[2026-06-09T06:00:52.823Z] cycle 3657 ingest: exit=1 0.1s 
+[2026-06-09T06:04:17.175Z] cycle 3658: 200 domains → 183 hit → 166846 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3658-2026-06-09T06-00-57-839Z.ndjson
+[2026-06-09T06:04:17.255Z] cycle 3658 ingest: exit=1 0.1s 
+[2026-06-09T06:14:26.841Z] cycle 3659: 200 domains → 93 hit → 95867 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3659-2026-06-09T06-04-22-273Z.ndjson
+[2026-06-09T06:14:26.923Z] cycle 3659 ingest: exit=1 0.1s 
+[2026-06-09T06:22:38.563Z] cycle 3660: 200 domains → 36 hit → 34949 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3660-2026-06-09T06-14-31-945Z.ndjson
+[2026-06-09T06:22:38.643Z] cycle 3660 ingest: exit=1 0.1s 
+[2026-06-09T06:24:38.704Z] cycle 3660 teardown: exit=0 120.0s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=120s apply=1
+[2026-06-09T06:34:37.410Z] cycle 3661: 200 domains → 84 hit → 76109 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3661-2026-06-09T06-24-43-708Z.ndjson
+[2026-06-09T06:34:37.497Z] cycle 3661 ingest: exit=1 0.1s 
+[2026-06-09T06:41:12.501Z] cycle 3662: 200 domains → 97 hit → 82522 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3662-2026-06-09T06-34-42-517Z.ndjson
+[2026-06-09T06:41:12.588Z] cycle 3662 ingest: exit=1 0.1s 
+[2026-06-09T10:09:27.528Z] loaded 20752 candidate domains
+[2026-06-09T10:09:27.531Z] starting at cursor=13180, cycle=3697
+[2026-06-09T10:12:59.380Z] loaded 20752 candidate domains
+[2026-06-09T10:12:59.380Z] starting at cursor=13180, cycle=3697
+[2026-06-09T10:14:28.645Z] cycle 3698: 200 domains → 199 hit → 38262 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3698-2026-06-09T10-12-59-381Z.ndjson
+[2026-06-09T10:14:28.722Z] cycle 3698 ingest: exit=1 0.1s 
+[2026-06-09T10:16:01.459Z] cycle 3699: 200 domains → 200 hit → 39905 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3699-2026-06-09T10-14-33-735Z.ndjson
+[2026-06-09T10:16:01.539Z] cycle 3699 ingest: exit=1 0.1s 
+[2026-06-09T10:17:09.180Z] cycle 3700: 200 domains → 200 hit → 44077 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3700-2026-06-09T10-16-06-549Z.ndjson
+[2026-06-09T10:17:09.258Z] cycle 3700 ingest: exit=1 0.1s 
+[2026-06-09T10:18:48.809Z] cycle 3701: 200 domains → 199 hit → 47807 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3701-2026-06-09T10-17-14-268Z.ndjson
+[2026-06-09T10:18:48.883Z] cycle 3701 ingest: exit=1 0.1s 
+[2026-06-09T10:26:52.013Z] cycle 3702: 200 domains → 21 hit → 3189 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3702-2026-06-09T10-18-53-900Z.ndjson
+[2026-06-09T10:26:52.106Z] cycle 3702 ingest: exit=1 0.1s 
+[2026-06-09T10:28:52.159Z] cycle 3702 teardown: exit=0 120.0s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=120s apply=1
+[2026-06-09T10:32:46.571Z] cycle 3703: 200 domains → 160 hit → 46221 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3703-2026-06-09T10-28-57-164Z.ndjson
+[2026-06-09T10:32:46.649Z] cycle 3703 ingest: exit=1 0.1s 
+[2026-06-09T10:40:48.411Z] cycle 3704: 200 domains → 1 hit → 45 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3704-2026-06-09T10-32-51-663Z.ndjson
+[2026-06-09T10:40:48.492Z] cycle 3704 ingest: exit=1 0.1s 
+[2026-06-09T10:42:42.322Z] cycle 3705: 200 domains → 199 hit → 56268 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3705-2026-06-09T10-40-53-506Z.ndjson
+[2026-06-09T10:42:42.394Z] cycle 3705 ingest: exit=1 0.1s 
+[2026-06-09T10:43:52.338Z] cycle 3706: 200 domains → 199 hit → 40193 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3706-2026-06-09T10-42-47-405Z.ndjson
+[2026-06-09T10:43:52.422Z] cycle 3706 ingest: exit=1 0.1s 
+[2026-06-09T10:44:53.395Z] cycle 3707: 200 domains → 200 hit → 48268 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3707-2026-06-09T10-43-57-432Z.ndjson
+[2026-06-09T10:44:53.489Z] cycle 3707 ingest: exit=1 0.1s 
+[2026-06-09T10:45:59.280Z] cycle 3708: 200 domains → 199 hit → 35115 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3708-2026-06-09T10-44-58-503Z.ndjson
+[2026-06-09T10:45:59.366Z] cycle 3708 ingest: exit=1 0.1s 
+[2026-06-09T10:47:59.421Z] cycle 3708 teardown: exit=0 120.0s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=120s apply=1
+[2026-06-09T10:52:24.432Z] cycle 3709: 200 domains → 160 hit → 28178 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3709-2026-06-09T10-48-04-425Z.ndjson
+[2026-06-09T10:52:24.506Z] cycle 3709 ingest: exit=1 0.1s 
+[2026-06-09T10:54:43.341Z] cycle 3710: 200 domains → 157 hit → 46265 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3710-2026-06-09T10-52-29-517Z.ndjson
+[2026-06-09T10:54:43.416Z] cycle 3710 ingest: exit=1 0.1s 
+[2026-06-09T10:56:10.306Z] cycle 3711: 200 domains → 198 hit → 59103 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3711-2026-06-09T10-54-48-427Z.ndjson
+[2026-06-09T10:56:10.384Z] cycle 3711 ingest: exit=1 0.1s 
+[2026-06-09T10:57:27.743Z] cycle 3712: 200 domains → 200 hit → 61091 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3712-2026-06-09T10-56-15-396Z.ndjson
+[2026-06-09T10:57:27.839Z] cycle 3712 ingest: exit=1 0.1s 
+[2026-06-09T11:01:26.862Z] cycle 3713: 200 domains → 179 hit → 45343 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3713-2026-06-09T10-57-32-852Z.ndjson
+[2026-06-09T11:01:26.947Z] cycle 3713 ingest: exit=1 0.1s 
+[2026-06-09T11:09:29.137Z] cycle 3714: 200 domains → 20 hit → 5044 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3714-2026-06-09T11-01-31-970Z.ndjson
+[2026-06-09T11:09:29.221Z] cycle 3714 ingest: exit=1 0.1s 
+[2026-06-09T11:11:29.274Z] cycle 3714 teardown: exit=0 120.0s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=120s apply=1
+[2026-06-09T11:19:33.429Z] cycle 3715: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3715-2026-06-09T11-11-34-277Z.ndjson
+[2026-06-09T11:28:03.007Z] cycle 3716: 200 domains → 21 hit → 2433 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3716-2026-06-09T11-19-38-448Z.ndjson
+[2026-06-09T11:28:03.087Z] cycle 3716 ingest: exit=1 0.1s 
+[2026-06-09T11:31:19.710Z] cycle 3717: 200 domains → 146 hit → 33444 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3717-2026-06-09T11-28-08-106Z.ndjson
+[2026-06-09T11:31:19.795Z] cycle 3717 ingest: exit=1 0.1s 
+[2026-06-09T11:32:40.183Z] cycle 3718: 200 domains → 200 hit → 64764 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3718-2026-06-09T11-31-24-808Z.ndjson
+[2026-06-09T11:32:40.298Z] cycle 3718 ingest: exit=1 0.1s 
+[2026-06-09T11:33:59.960Z] cycle 3719: 200 domains → 200 hit → 52775 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3719-2026-06-09T11-32-45-333Z.ndjson
+[2026-06-09T11:34:00.043Z] cycle 3719 ingest: exit=1 0.1s 
+[2026-06-09T11:35:17.613Z] cycle 3720: 200 domains → 200 hit → 48067 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3720-2026-06-09T11-34-05-057Z.ndjson
+[2026-06-09T11:35:17.692Z] cycle 3720 ingest: exit=1 0.1s 
+[2026-06-09T11:37:17.771Z] cycle 3720 teardown: exit=0 120.1s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=120s apply=1
+[2026-06-09T11:41:28.451Z] cycle 3721: 200 domains → 140 hit → 29138 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3721-2026-06-09T11-37-22-775Z.ndjson
+[2026-06-09T11:41:28.537Z] cycle 3721 ingest: exit=1 0.1s 
+[2026-06-09T11:43:34.229Z] cycle 3722: 200 domains → 200 hit → 51442 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3722-2026-06-09T11-41-33-550Z.ndjson
+[2026-06-09T11:43:34.317Z] cycle 3722 ingest: exit=1 0.1s 
+[2026-06-09T11:46:41.564Z] cycle 3723: 200 domains → 200 hit → 58334 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3723-2026-06-09T11-43-39-338Z.ndjson
+[2026-06-09T11:46:41.706Z] cycle 3723 ingest: exit=1 0.1s 
+[2026-06-09T11:50:56.622Z] cycle error: disk-pressure guard tripped for "buy30331-sustained-loop:appendOut" — use=95% >= threshold=95% (mounted=/, free=11533364); exiting 75
+[2026-06-09T11:51:01.647Z] cycle error: disk-pressure guard tripped for "buy30331-sustained-loop:outFile" — use=95% >= threshold=95% (mounted=/, free=11533104); exiting 75
+[2026-06-09T11:51:06.675Z] cycle error: disk-pressure guard tripped for "buy30331-sustained-loop:outFile" — use=95% >= threshold=95% (mounted=/, free=11528864); exiting 75
+[2026-06-09T11:51:11.707Z] cycle error: disk-pressure guard tripped for "buy30331-sustained-loop:outFile" — use=95% >= threshold=95% (mounted=/, free=11522708); exiting 75
+[2026-06-09T11:51:16.730Z] cycle error: disk-pressure guard tripped for "buy30331-sustained-loop:outFile" — use=95% >= threshold=95% (mounted=/, free=11521108); exiting 75
+[2026-06-09T11:51:21.756Z] cycle error: disk-pressure guard tripped for "buy30331-sustained-loop:outFile" — use=95% >= threshold=95% (mounted=/, free=11519820); exiting 75
+[2026-06-09T11:51:26.779Z] cycle error: disk-pressure guard tripped for "buy30331-sustained-loop:outFile" — use=95% >= threshold=95% (mounted=/, free=11519008); exiting 75
+[2026-06-09T11:51:31.804Z] cycle error: disk-pressure guard tripped for "buy30331-sustained-loop:outFile" — use=95% >= threshold=95% (mounted=/, free=11518284); exiting 75
+[2026-06-09T11:51:36.832Z] cycle error: disk-pressure guard tripped for "buy30331-sustained-loop:outFile" — use=95% >= threshold=95% (mounted=/, free=11514244); exiting 75
+[2026-06-09T11:51:41.853Z] cycle error: disk-pressure guard tripped for "buy30331-sustained-loop:outFile" — use=95% >= threshold=95% (mounted=/, free=11514064); exiting 75
+[2026-06-09T11:51:46.883Z] cycle error: disk-pressure guard tripped for "buy30331-sustained-loop:outFile" — use=95% >= threshold=95% (mounted=/, free=11513188); exiting 75
+[2026-06-09T11:51:51.906Z] cycle error: disk-pressure guard tripped for "buy30331-sustained-loop:outFile" — use=95% >= threshold=95% (mounted=/, free=11512224); exiting 75
+[2026-06-09T11:51:56.936Z] cycle error: disk-pressure guard tripped for "buy30331-sustained-loop:outFile" — use=95% >= threshold=95% (mounted=/, free=11512092); exiting 75
+[2026-06-09T11:52:01.960Z] cycle error: disk-pressure guard tripped for "buy30331-sustained-loop:outFile" — use=95% >= threshold=95% (mounted=/, free=11490884); exiting 75
+[2026-06-09T11:52:06.984Z] cycle error: disk-pressure guard tripped for "buy30331-sustained-loop:outFile" — use=95% >= threshold=95% (mounted=/, free=11483984); exiting 75
+[2026-06-09T12:00:38.269Z] cycle 3739: 200 domains → 49 hit → 38811 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3739-2026-06-09T11-52-11-987Z.ndjson
+[2026-06-09T12:00:38.356Z] cycle 3739 ingest: exit=1 0.1s 
+[2026-06-09T12:03:08.394Z] cycle 3740: 200 domains → 188 hit → 59481 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3740-2026-06-09T12-00-43-374Z.ndjson
+[2026-06-09T12:03:08.490Z] cycle 3740 ingest: exit=1 0.1s 
+[2026-06-09T12:07:59.374Z] cycle 3741: 200 domains → 200 hit → 181190 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3741-2026-06-09T12-03-13-506Z.ndjson
+[2026-06-09T12:07:59.453Z] cycle 3741 ingest: exit=1 0.1s 
+[2026-06-09T12:13:53.424Z] cycle 3742: 200 domains → 27 hit → 25971 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3742-2026-06-09T12-08-04-474Z.ndjson
+[2026-06-09T12:13:53.523Z] cycle 3742 ingest: exit=1 0.1s 
+[2026-06-09T12:14:14.482Z] cycle 3743: 200 domains → 20 hit → 16897 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3743-2026-06-09T12-13-58-546Z.ndjson
+[2026-06-09T12:14:14.568Z] cycle 3743 ingest: exit=1 0.1s 
+[2026-06-09T12:14:19.811Z] cycle 3744: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3744-2026-06-09T12-14-19-612Z.ndjson
+[2026-06-09T12:14:19.928Z] cycle 3744 teardown: exit=0 0.1s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=0s apply=1
+[2026-06-09T12:17:52.547Z] cycle 3745: 200 domains → 183 hit → 173374 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3745-2026-06-09T12-14-24-929Z.ndjson
+[2026-06-09T12:17:52.644Z] cycle 3745 ingest: exit=1 0.1s 
+[2026-06-09T12:26:28.358Z] cycle 3746: 200 domains → 49 hit → 35326 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3746-2026-06-09T12-17-57-661Z.ndjson
+[2026-06-09T12:26:28.440Z] cycle 3746 ingest: exit=1 0.1s 
+[2026-06-09T14:12:23.084Z] loaded 20752 candidate domains
+[2026-06-09T14:12:23.085Z] starting at cursor=4428, cycle=3757
+[2026-06-09T14:21:21.668Z] cycle 3758: 200 domains → 53 hit → 52447 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3758-2026-06-09T14-12-23-085Z.ndjson
+[2026-06-09T14:21:21.738Z] cycle 3758 ingest: exit=1 0.1s 
+[2026-06-09T14:27:15.414Z] cycle 3759: 200 domains → 96 hit → 82481 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3759-2026-06-09T14-21-26-750Z.ndjson
+[2026-06-09T14:27:15.497Z] cycle 3759 ingest: exit=1 0.1s 
+[2026-06-09T14:34:49.506Z] cycle 3760: 200 domains → 70 hit → 55810 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3760-2026-06-09T14-27-20-508Z.ndjson
+[2026-06-09T14:34:49.597Z] cycle 3760 ingest: exit=1 0.1s 
+[2026-06-09T14:40:20.646Z] cycle 3761: 200 domains → 157 hit → 154655 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3761-2026-06-09T14-34-54-609Z.ndjson
+[2026-06-09T14:40:20.727Z] cycle 3761 ingest: exit=1 0.1s 
+[2026-06-09T14:47:16.320Z] cycle 3762: 200 domains → 85 hit → 66520 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3762-2026-06-09T14-40-25-746Z.ndjson
+[2026-06-09T14:47:16.398Z] cycle 3762 ingest: exit=1 0.1s 
+[2026-06-09T14:49:16.460Z] cycle 3762 teardown: exit=0 120.0s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=120s apply=1
+[2026-06-09T14:57:28.530Z] cycle 3763: 200 domains → 98 hit → 94524 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3763-2026-06-09T14-49-21-464Z.ndjson
+[2026-06-09T14:57:28.614Z] cycle 3763 ingest: exit=1 0.1s 
+[2026-06-09T15:02:52.090Z] cycle 3764: 200 domains → 140 hit → 122863 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3764-2026-06-09T14-57-33-633Z.ndjson
+[2026-06-09T15:02:52.193Z] cycle 3764 ingest: exit=1 0.1s 
+[2026-06-09T15:09:53.233Z] cycle 3765: 200 domains → 83 hit → 72918 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3765-2026-06-09T15-02-57-208Z.ndjson
+[2026-06-09T15:09:53.308Z] cycle 3765 ingest: exit=1 0.1s 
+[2026-06-09T15:17:40.212Z] cycle 3766: 200 domains → 81 hit → 72364 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3766-2026-06-09T15-09-58-326Z.ndjson
+[2026-06-09T15:17:40.298Z] cycle 3766 ingest: exit=1 0.1s 
+[2026-06-09T15:24:57.053Z] cycle 3767: 200 domains → 85 hit → 84503 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3767-2026-06-09T15-17-45-314Z.ndjson
+[2026-06-09T15:24:57.131Z] cycle 3767 ingest: exit=1 0.1s 
+[2026-06-09T15:30:49.597Z] cycle 3768: 200 domains → 120 hit → 93845 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3768-2026-06-09T15-25-02-145Z.ndjson
+[2026-06-09T15:30:49.678Z] cycle 3768 ingest: exit=1 0.1s 
+[2026-06-09T15:32:49.760Z] cycle 3768 teardown: exit=0 120.1s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=120s apply=1
+[2026-06-09T15:39:21.626Z] cycle 3769: 200 domains → 133 hit → 111069 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3769-2026-06-09T15-32-54-765Z.ndjson
+[2026-06-09T15:39:21.736Z] cycle 3769 ingest: exit=1 0.1s 
+[2026-06-09T15:46:49.316Z] cycle 3770: 200 domains → 47 hit → 48854 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3770-2026-06-09T15-39-26-754Z.ndjson
+[2026-06-09T15:46:49.397Z] cycle 3770 ingest: exit=1 0.1s 
+[2026-06-09T15:53:12.793Z] cycle 3771: 200 domains → 107 hit → 87860 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3771-2026-06-09T15-46-54-413Z.ndjson
+[2026-06-09T15:53:12.878Z] cycle 3771 ingest: exit=1 0.1s 
+[2026-06-09T15:57:59.432Z] cycle 3772: 200 domains → 151 hit → 124974 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3772-2026-06-09T15-53-17-894Z.ndjson
+[2026-06-09T15:57:59.529Z] cycle 3772 ingest: exit=1 0.1s 
+[2026-06-09T16:00:34.972Z] cycle 3773: 200 domains → 194 hit → 142508 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3773-2026-06-09T15-58-04-544Z.ndjson
+[2026-06-09T16:00:35.054Z] cycle 3773 ingest: exit=1 0.1s 
+[2026-06-09T16:03:07.832Z] cycle 3774: 200 domains → 197 hit → 123797 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3774-2026-06-09T16-00-40-067Z.ndjson
+[2026-06-09T16:03:07.949Z] cycle 3774 ingest: exit=1 0.1s 
+[2026-06-09T16:05:08.014Z] cycle 3774 teardown: exit=0 120.0s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=121s apply=1
+[2026-06-09T16:07:38.255Z] cycle 3775: 200 domains → 197 hit → 137559 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3775-2026-06-09T16-05-13-018Z.ndjson
+[2026-06-09T16:07:38.377Z] cycle 3775 ingest: exit=1 0.1s 
+[2026-06-09T16:09:45.428Z] cycle 3776: 200 domains → 200 hit → 130118 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3776-2026-06-09T16-07-43-391Z.ndjson
+[2026-06-09T16:09:45.510Z] cycle 3776 ingest: exit=1 0.1s 
+[2026-06-09T16:11:42.378Z] cycle 3777: 200 domains → 199 hit → 132104 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3777-2026-06-09T16-09-50-526Z.ndjson
+[2026-06-09T16:11:42.464Z] cycle 3777 ingest: exit=1 0.1s 
+[2026-06-09T16:18:03.195Z] cycle 3778: 200 domains → 109 hit → 67514 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3778-2026-06-09T16-11-47-482Z.ndjson
+[2026-06-09T16:18:03.303Z] cycle 3778 ingest: exit=1 0.1s 
+[2026-06-09T16:20:36.798Z] cycle 3779: 200 domains → 199 hit → 119736 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3779-2026-06-09T16-18-08-328Z.ndjson
+[2026-06-09T16:20:36.878Z] cycle 3779 ingest: exit=1 0.1s 
+[2026-06-09T16:22:41.861Z] loaded 20752 candidate domains
+[2026-06-09T16:22:41.862Z] starting at cursor=8828, cycle=3779
+[2026-06-09T16:25:09.974Z] cycle 3780: 200 domains → 199 hit → 114708 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3780-2026-06-09T16-22-41-863Z.ndjson
+[2026-06-09T16:25:10.053Z] cycle 3780 ingest: exit=1 0.1s 
+[2026-06-09T16:27:10.127Z] cycle 3780 teardown: exit=0 120.1s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=120s apply=1
+[2026-06-09T16:35:31.591Z] cycle 3781: 200 domains → 108 hit → 69798 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3781-2026-06-09T16-27-15-132Z.ndjson
+[2026-06-09T16:35:31.666Z] cycle 3781 ingest: exit=1 0.1s 
+[2026-06-09T16:41:01.197Z] cycle 3782: 200 domains → 180 hit → 128119 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3782-2026-06-09T16-35-36-680Z.ndjson
+[2026-06-09T16:41:01.278Z] cycle 3782 ingest: exit=1 0.1s 
+[2026-06-09T16:49:23.815Z] cycle 3783: 200 domains → 63 hit → 39178 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3783-2026-06-09T16-41-06-299Z.ndjson
+[2026-06-09T16:49:23.889Z] cycle 3783 ingest: exit=1 0.1s 
+[2026-06-09T16:55:39.621Z] cycle 3784: 200 domains → 185 hit → 116356 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3784-2026-06-09T16-49-28-904Z.ndjson
+[2026-06-09T16:55:39.710Z] cycle 3784 ingest: exit=1 0.1s 
+[2026-06-09T17:03:56.985Z] cycle 3785: 200 domains → 100 hit → 66230 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3785-2026-06-09T16-55-44-729Z.ndjson
+[2026-06-09T17:03:57.068Z] cycle 3785 ingest: exit=1 0.1s 
+[2026-06-09T17:06:21.644Z] cycle 3786: 200 domains → 200 hit → 95700 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3786-2026-06-09T17-04-02-083Z.ndjson
+[2026-06-09T17:06:21.725Z] cycle 3786 ingest: exit=1 0.1s 
+[2026-06-09T17:08:21.790Z] cycle 3786 teardown: exit=0 120.1s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=120s apply=1
+[2026-06-09T17:16:28.454Z] cycle 3787: 200 domains → 130 hit → 81576 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3787-2026-06-09T17-08-26-795Z.ndjson
+[2026-06-09T17:16:28.537Z] cycle 3787 ingest: exit=1 0.1s 
+[2026-06-09T17:18:50.030Z] cycle 3788: 200 domains → 199 hit → 133517 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-3788-2026-06-09T17-16-33-552Z.ndjson
+[2026-06-09T17:18:50.125Z] cycle 3788 ingest: exit=1 0.1s 
+[2026-06-10T06:46:40.580Z] loaded 20752 candidate domains
+[2026-06-10T06:46:40.587Z] starting at cursor=14452, cycle=5156
+[2026-06-10T06:49:44.409Z] cycle 5157: 200 domains → 160 hit → 35196 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-5157-2026-06-10T06-46-40-588Z.ndjson
+[2026-06-10T06:49:44.516Z] cycle 5157 ingest: exit=1 0.1s 
+[2026-06-10T06:51:02.737Z] cycle 5158: 200 domains → 199 hit → 40042 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-5158-2026-06-10T06-49-49-528Z.ndjson
+[2026-06-10T06:51:02.851Z] cycle 5158 ingest: exit=1 0.1s 
+[2026-06-10T06:52:08.681Z] cycle 5159: 200 domains → 199 hit → 45733 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-5159-2026-06-10T06-51-07-860Z.ndjson
+[2026-06-10T06:52:08.768Z] cycle 5159 ingest: exit=1 0.1s 
+[2026-06-10T06:53:11.722Z] cycle 5160: 200 domains → 199 hit → 47792 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-5160-2026-06-10T06-52-13-780Z.ndjson
+[2026-06-10T06:53:11.796Z] cycle 5160 ingest: exit=1 0.1s 
+[2026-06-10T06:55:11.882Z] cycle 5160 teardown: exit=0 120.1s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=120s apply=1
+[2026-06-10T07:01:59.395Z] loaded 20752 candidate domains
+[2026-06-10T07:01:59.396Z] starting at cursor=15252, cycle=5160
+[2026-06-10T07:02:53.506Z] cycle 5161: 200 domains → 199 hit → 33289 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-5161-2026-06-10T07-01-59-397Z.ndjson
+[2026-06-10T07:02:53.583Z] cycle 5161 ingest: exit=1 0.1s 
+[2026-06-10T07:04:01.848Z] cycle 5162: 200 domains → 199 hit → 40499 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-5162-2026-06-10T07-02-58-592Z.ndjson
+[2026-06-10T07:04:01.939Z] cycle 5162 ingest: exit=1 0.1s 
+[2026-06-10T07:04:48.169Z] cycle 5163: 200 domains → 157 hit → 48171 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-5163-2026-06-10T07-04-06-950Z.ndjson
+[2026-06-10T07:04:48.282Z] cycle 5163 ingest: exit=1 0.1s 
+[2026-06-10T07:05:47.443Z] cycle 5164: 200 domains → 198 hit → 61106 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-5164-2026-06-10T07-04-53-292Z.ndjson
+[2026-06-10T07:05:47.523Z] cycle 5164 ingest: exit=1 0.1s 
+[2026-06-10T07:06:46.381Z] cycle 5165: 200 domains → 199 hit → 56028 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-5165-2026-06-10T07-05-52-532Z.ndjson
+[2026-06-10T07:06:46.465Z] cycle 5165 ingest: exit=1 0.1s 
+[2026-06-10T07:17:55.461Z] cycle 5166: 200 domains → 82 hit → 20361 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-5166-2026-06-10T07-06-51-483Z.ndjson
+[2026-06-10T07:17:55.552Z] cycle 5166 ingest: exit=1 0.1s 
+[2026-06-10T07:19:55.617Z] cycle 5166 teardown: exit=0 120.1s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=120s apply=1
+[2026-06-10T07:22:04.663Z] cycle 5167: 200 domains → 200 hit → 43101 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-5167-2026-06-10T07-20-00-623Z.ndjson
+[2026-06-10T07:22:04.749Z] cycle 5167 ingest: exit=1 0.1s 
+[2026-06-10T10:26:32.388Z] loaded 64646 candidate domains
+[2026-06-10T10:26:32.389Z] starting at cursor=19852, cycle=5183
+[2026-06-10T10:34:55.923Z] loaded 64652 candidate domains
+[2026-06-10T10:34:55.924Z] starting at cursor=19852, cycle=5183
+[2026-06-10T10:35:35.275Z] cycle 5184: 200 domains → 199 hit → 50148 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-5184-2026-06-10T10-34-55-924Z.ndjson
+[2026-06-10T10:56:14.193Z] cycle 5184 ingest: exit=0 1238.9s NE ===
+files=1 lines=50148 valid=50148 written=41648 errors=17 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 50148 ] ]
+throttle: enabled avg_latency=17084ms batches=101 initial_parallel=8 max_parallel=8 final_parallel=1 downshifts=3 upshifts=0 paused_count=0
+[2026-06-10T10:58:14.258Z] cycle 5184 teardown: exit=0 120.0s [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=120s apply=1
+[2026-06-10T11:00:26.395Z] cycle 5185: 200 domains → 180 hit → 37456 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-5185-2026-06-10T10-58-19-262Z.ndjson
+[2026-06-10T11:03:27.185Z] cycle 5185 ingest: exit=0 180.8s DONE ===
+files=1 lines=37456 valid=37456 written=35500 errors=4 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 37456 ] ]
+throttle: enabled avg_latency=44471ms batches=75 initial_parallel=8 max_parallel=8 final_parallel=1 downshifts=6 upshifts=7 paused_count=0
+[2026-06-10T11:04:38.919Z] cycle 5186: 200 domains → 131 hit → 33200 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-5186-2026-06-10T11-03-32-199Z.ndjson
+[2026-06-10T11:06:17.404Z] cycle 5186 ingest: exit=0 98.5s  DONE ===
+files=1 lines=33200 valid=33200 written=32700 errors=1 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 33200 ] ]
+throttle: enabled avg_latency=5137ms batches=67 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=0 upshifts=0 paused_count=0
+[2026-06-10T11:10:23.611Z] cycle 5187: 200 domains → 104 hit → 41581 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-5187-2026-06-10T11-06-22-419Z.ndjson
+[2026-06-10T11:11:41.783Z] cycle 5187 ingest: exit=0 78.2s  DONE ===
+files=1 lines=41581 valid=41581 written=41081 errors=1 batch_size=500 stmt_timeout_ms=30000 pool_max=3
+skipped: {}
+top sources: [ [ 'shopify', 41581 ] ]
+throttle: enabled avg_latency=3812ms batches=84 initial_parallel=8 max_parallel=8 final_parallel=8 downshifts=0 upshifts=0 paused_count=0

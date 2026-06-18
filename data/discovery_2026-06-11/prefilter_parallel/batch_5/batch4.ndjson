@@ -1,0 +1,7 @@
+{"domain":"scentsnstories.pk","platform":"shopify","product_endpoint":"https://scentsnstories.pk/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":497,"country_code":"US","currency":null}
+{"domain":"nestasia.in","platform":"shopify","product_endpoint":"https://nestasia.in/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":1542,"country_code":"IN","currency":null}
+{"domain":"putzperle.de","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":1785,"country_code":"DE","currency":null}
+{"domain":"supertails.com","platform":"shopify","product_endpoint":"https://supertails.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":7186,"country_code":"US","currency":null}
+{"domain":"urban-planet.com","platform":"shopify","product_endpoint":"https://urban-planet.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":7392,"country_code":"US","currency":null}
+{"domain":"klopotenko.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1519,"country_code":"US","currency":null}
+{"domain":"slazzer.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":748,"country_code":"US","currency":null}

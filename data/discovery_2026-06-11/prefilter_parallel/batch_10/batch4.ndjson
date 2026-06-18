@@ -1,0 +1,10 @@
+{"domain":"teatr-dndz.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":521,"country_code":"US","currency":null}
+{"domain":"mydukaan.io","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":548,"country_code":"US","currency":null}
+{"domain":"mochishoes.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":564,"country_code":"US","currency":null}
+{"domain":"bricsys.com","platform":"woocommerce","product_endpoint":"https://bricsys.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":1199,"country_code":"US","currency":null}
+{"domain":"tmoney.co.kr","platform":"magento","product_endpoint":"https://tmoney.co.kr/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":4614,"country_code":"KR","currency":null}
+{"domain":"globalworkplaceanalytics.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1700,"country_code":"US","currency":null}
+{"domain":"linetv.tw","platform":"woocommerce","product_endpoint":"https://linetv.tw/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":6142,"country_code":"TW","currency":null}
+{"domain":"wpthemespace.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1206,"country_code":"US","currency":null}
+{"domain":"prohoster.info","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":1373,"country_code":"US","currency":null}
+{"domain":"imagicaaworld.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1294,"country_code":"US","currency":null}

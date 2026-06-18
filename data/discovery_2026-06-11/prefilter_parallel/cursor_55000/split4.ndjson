@@ -1,0 +1,4 @@
+{"domain":"uncrate.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":257,"country_code":"US","currency":null}
+{"domain":"focusrite.com","platform":"bigcommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":2175,"country_code":"US","currency":null}
+{"domain":"laam.pk","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":3393,"country_code":"US","currency":null}
+{"domain":"foodtechconnect.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":86,"country_code":"US","currency":null}

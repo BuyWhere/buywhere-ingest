@@ -84,12 +84,29 @@ run_cleanup() {
   local args=()
   [ "$APPLY" = 1 ] && args+=(--apply)
   [ -n "$GRACE_H" ] && args+=(--grace="$GRACE_H")
-  # BUY-33094: pass --skip-r2 by default. The R2-marker durability layer
-  # (BUY-33089) and R2 uploader (BUY-33090) are still in flight, so Gate D
-  # would block every routine cleanup. Skip R2 for the sweep and rely on
-  # Gates A + B + C. Override with CLEANUP_REQUIRE_R2=1 for a one-shot strict
-  # pass.
+  # BUY-33094: --skip-r2 is still the default for the 6-hourly fleet sweep
+  # (R2-marker durability layer BUY-33089 + uploader BUY-33090 are in flight).
+  # The bypass is opt-out for raw scrape files: those live in data/buy*/ and
+  # carry the same durably-stored risk that the 2026-06-07 incident surfaced
+  # (1.6GB buy30620_scout_full_scrape moved to _trash on catalog-sample alone,
+  # with the live scraper still rotating files in the same directory). For
+  # raw files we require a sibling <file>.ingested.json R2 marker, regardless
+  # of the global --skip-r2 toggle. data/ingested/ and the canonical widening
+  # batches already have their own ingestion signal, so they keep the bypass.
+  #
+  # Override:
+  #   CLEANUP_REQUIRE_R2=1            -> require R2 for ALL files (strict)
+  #   CLEANUP_REQUIRE_R2_FOR_RAW=0    -> skip R2 even for raw (legacy, not recommended)
   if [ "${CLEANUP_REQUIRE_R2:-0}" != "1" ]; then
+    if [ "${CLEANUP_REQUIRE_R2_FOR_RAW:-1}" = "1" ]; then
+      # New policy: --skip-r2 globally is OK, but raw files get a stricter
+      # check at the gate layer. safe-data-cleanup.sh honors
+      # CLEANUP_REQUIRE_R2_FOR_RAW (default 1) by refusing to delete a raw
+      # file without a sibling .ingested.json R2 marker, even when --skip-r2
+      # is set. This honors the "do not delete files that have not been
+      # ingested" constraint from BUY-32838.
+      export CLEANUP_REQUIRE_R2_FOR_RAW=1
+    fi
     args+=(--skip-r2)
   fi
   [ "$SKIP_LSOF" = 1 ] && args+=(--skip-lsof)

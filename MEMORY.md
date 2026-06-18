@@ -1,0 +1,3 @@
+- [BUY-38881 keepalive adapter fix](buy38881_keepalive_adapter_fix.md) — execution failures due to codex_local limits, functionality working
+- [BUY-52237 catalog 95M shift](buy52237_2026-06-16_catalog_95m.md) — 2026-06-16 Oracle catalog is 95.24M n_live_tup (00:15:16Z), not 16.8M May 31 reference; 100M target effectively met; cite BUY-48231 reconciliation
+- [BUY-52246 PostHog HogQL lockout](buy52246_posthog_query_lockout.md) — 2026-06-16 PostHog query:read denied on project 415112; carry 06-14 closed-day forward until fixed

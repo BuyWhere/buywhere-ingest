@@ -1,0 +1,100 @@
+INFO:__main__:Running in continuous mode with 3600s interval
+INFO:__main__:Starting cycle 1
+INFO:__main__:Scraping Courts SG...
+INFO:httpx:HTTP Request: GET https://www.courts.com.sg/catalogsearch/result/?q=*&page=1 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://www.courts.com.sg/braun-lf40-lens-filters-for-thermoscan-532067 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://www.courts.com.sg/tineco-bundle-of-2-deodorizing-cleaning-solution-480ml-bundle-of-2-multi-surface-deodorizing-cleaning-solution-16-9oz-480ml-ip182360 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://www.courts.com.sg/soundteoh-ta-15-zan-adaptor-ip215549 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://www.courts.com.sg/laifen-wave-3-brush-heads-transparent-color-ultra-whiten-wave-electric-toothbrush-head-3-brush-heads-transparent-color-ultra-whitening-ip203794 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://www.courts.com.sg/belkin-cab004bt1mwh-boostcharge-braided-usb-c-to-usb-c-cable-60w-1m-white-ip189534 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://www.courts.com.sg/oral-b-eb-60-2-powered-by-braun-ultrathin-brush-heads-2pcs-ip137181 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://www.courts.com.sg/sony-mdrex15ap-v-ex-monitor-headphones-mobile-phone-compatible-series-ip095419 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://www.courts.com.sg/elecom-mpa-chdmi10bk-usb-c-hdmi-1m-ip178099 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://www.courts.com.sg/cornell-cjks17l-kettle-1-7l-ip084748 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://www.courts.com.sg/logitech-910-005791-g203-lightsync-rgb-wired-mouse-white-ip159994 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://www.courts.com.sg/philips-hd9926-00-grill-kit-ip207789 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://www.courts.com.sg/morries-ms-922hm-hand-mixer-250w-ip174768 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://www.courts.com.sg/elecom-m-tm10dbpn-wireless-flat-shape-4-button-blue-led-pn-ip169607 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://www.courts.com.sg/switchbot-sbt-msensor-w1101500-motion-sensor-white-ip182539 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://www.courts.com.sg/logitech-910-006986-pebble-mouse-2-m350s-tonal-white-ip186595 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://www.courts.com.sg/havit-hvtws-tw906-pro-bk-anc-enc-true-wireless-tws-stereo-earbuds-ip204495 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://www.courts.com.sg/catalogsearch/result/?q=*&page=2 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://www.courts.com.sg/catalogsearch/result/?q=*&page=3 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://www.courts.com.sg/catalogsearch/result/?q=*&page=4 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://www.courts.com.sg/catalogsearch/result/?q=*&page=5 "HTTP/1.1 200 OK"
+INFO:__main__:Courts SG: 21 products
+INFO:__main__:Scraping Decathlon SG...
+WARNING:src.scrapers.base_scraper:Attempt 1 failed for https://www.decathlon.com.sg/search?q=*&page=1: All connection attempts failed
+WARNING:src.scrapers.base_scraper:Attempt 2 failed for https://www.decathlon.com.sg/search?q=*&page=1: All connection attempts failed
+WARNING:src.scrapers.base_scraper:Attempt 3 failed for https://www.decathlon.com.sg/search?q=*&page=1: All connection attempts failed
+INFO:__main__:Decathlon SG: 0 products
+INFO:__main__:Scraping Harvey Norman SG...
+INFO:__main__:Harvey Norman SG: 0 products
+INFO:__main__:Scraping FairPrice...
+INFO:httpx:HTTP Request: GET https://www.fairprice.com.sg/search?query=*&page=1 "HTTP/1.1 200 OK"
+INFO:__main__:FairPrice: 0 products
+INFO:__main__:Scraping Uniqlo SG...
+INFO:httpx:HTTP Request: GET https://www.uniqlo.com/sg/search?q=*&page=1 "HTTP/1.1 404 Not Found"
+WARNING:src.scrapers.base_scraper:Attempt 1 failed for https://www.uniqlo.com/sg/search?q=*&page=1: Client error '404 Not Found' for url 'https://www.uniqlo.com/sg/search?q=*&page=1'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+INFO:httpx:HTTP Request: GET https://www.uniqlo.com/sg/search?q=*&page=1 "HTTP/1.1 404 Not Found"
+WARNING:src.scrapers.base_scraper:Attempt 2 failed for https://www.uniqlo.com/sg/search?q=*&page=1: Client error '404 Not Found' for url 'https://www.uniqlo.com/sg/search?q=*&page=1'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+INFO:httpx:HTTP Request: GET https://www.uniqlo.com/sg/search?q=*&page=1 "HTTP/1.1 404 Not Found"
+WARNING:src.scrapers.base_scraper:Attempt 3 failed for https://www.uniqlo.com/sg/search?q=*&page=1: Client error '404 Not Found' for url 'https://www.uniqlo.com/sg/search?q=*&page=1'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+INFO:__main__:Uniqlo SG: 0 products
+INFO:__main__:Scraping Love Bonito...
+INFO:httpx:HTTP Request: GET https://www.lovebonito.com/search?q=*&page=1 "HTTP/1.1 307 Temporary Redirect"
+INFO:httpx:HTTP Request: GET https://www.lovebonito.com/sg/ "HTTP/1.1 301 Moved Permanently"
+INFO:httpx:HTTP Request: GET https://www.lovebonito.com/sg "HTTP/1.1 200 OK"
+INFO:__main__:Love Bonito: 0 products
+INFO:__main__:Scraping Charles & Keith...
+INFO:httpx:HTTP Request: GET https://www.charleskeith.com/sg/search?q=*&page=1 "HTTP/1.1 200 OK"
+INFO:__main__:Charles & Keith: 0 products
+INFO:__main__:Scraping Pedro...
+WARNING:src.scrapers.base_scraper:Attempt 1 failed for https://www.pedro.com.sg/search?q=*&page=1: 
+WARNING:src.scrapers.base_scraper:Attempt 2 failed for https://www.pedro.com.sg/search?q=*&page=1: 
+WARNING:src.scrapers.base_scraper:Attempt 3 failed for https://www.pedro.com.sg/search?q=*&page=1: 
+INFO:__main__:Pedro: 0 products
+INFO:__main__:Scraping Nike SG...
+INFO:httpx:HTTP Request: GET https://www.nike.com/sg/search?q=*&page=1 "HTTP/1.1 404 Not Found"
+WARNING:src.scrapers.base_scraper:Attempt 1 failed for https://www.nike.com/sg/search?q=*&page=1: Client error '404 Not Found' for url 'https://www.nike.com/sg/search?q=*&page=1'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+INFO:httpx:HTTP Request: GET https://www.nike.com/sg/search?q=*&page=1 "HTTP/1.1 404 Not Found"
+WARNING:src.scrapers.base_scraper:Attempt 2 failed for https://www.nike.com/sg/search?q=*&page=1: Client error '404 Not Found' for url 'https://www.nike.com/sg/search?q=*&page=1'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+INFO:httpx:HTTP Request: GET https://www.nike.com/sg/search?q=*&page=1 "HTTP/1.1 404 Not Found"
+WARNING:src.scrapers.base_scraper:Attempt 3 failed for https://www.nike.com/sg/search?q=*&page=1: Client error '404 Not Found' for url 'https://www.nike.com/sg/search?q=*&page=1'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+INFO:__main__:Nike SG: 0 products
+INFO:__main__:Scraping Cotton On SG...
+INFO:httpx:HTTP Request: GET https://cottonon.com/sg/search?q=*&page=1 "HTTP/1.1 301 "
+INFO:httpx:HTTP Request: GET https://cottonon.com/SG/search/?q=*&page=1 "HTTP/1.1 302 "
+INFO:httpx:HTTP Request: GET https://cottonon.com/SG/ "HTTP/1.1 200 OK "
+INFO:__main__:Cotton On SG: 0 products
+INFO:__main__:Scraping Shein SG...
+INFO:httpx:HTTP Request: GET https://www.shein.com/sg/search?q=*&page=1 "HTTP/1.1 302 Moved Temporarily"
+INFO:httpx:HTTP Request: GET https://sg.shein.com/sg/search?q=*&page=1&cdn_rsite=ak&ref=www&rep=dir&ret=sg "HTTP/1.1 404 Not Found"
+WARNING:src.scrapers.base_scraper:Attempt 1 failed for https://www.shein.com/sg/search?q=*&page=1: Client error '404 Not Found' for url 'https://sg.shein.com/sg/search?q=*&page=1&cdn_rsite=ak&ref=www&rep=dir&ret=sg'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+INFO:httpx:HTTP Request: GET https://www.shein.com/sg/search?q=*&page=1 "HTTP/1.1 302 Moved Temporarily"
+INFO:httpx:HTTP Request: GET https://sg.shein.com/sg/search?q=*&page=1&cdn_rsite=ak&ref=www&rep=dir&ret=sg "HTTP/1.1 404 Not Found"
+WARNING:src.scrapers.base_scraper:Attempt 2 failed for https://www.shein.com/sg/search?q=*&page=1: Client error '404 Not Found' for url 'https://sg.shein.com/sg/search?q=*&page=1&cdn_rsite=ak&ref=www&rep=dir&ret=sg'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+INFO:httpx:HTTP Request: GET https://www.shein.com/sg/search?q=*&page=1 "HTTP/1.1 302 Moved Temporarily"
+INFO:httpx:HTTP Request: GET https://sg.shein.com/sg/search?q=*&page=1&cdn_rsite=ak&ref=www&rep=dir&ret=sg "HTTP/1.1 404 Not Found"
+WARNING:src.scrapers.base_scraper:Attempt 3 failed for https://www.shein.com/sg/search?q=*&page=1: Client error '404 Not Found' for url 'https://sg.shein.com/sg/search?q=*&page=1&cdn_rsite=ak&ref=www&rep=dir&ret=sg'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+INFO:__main__:Shein SG: 0 products
+INFO:__main__:Scraping The Editor's Market...
+WARNING:src.scrapers.base_scraper:Attempt 1 failed for https://www.editorsmarket.com/search?q=*&page=1: [Errno -3] Temporary failure in name resolution
+WARNING:src.scrapers.base_scraper:Attempt 2 failed for https://www.editorsmarket.com/search?q=*&page=1: [Errno -3] Temporary failure in name resolution
+WARNING:src.scrapers.base_scraper:Attempt 3 failed for https://www.editorsmarket.com/search?q=*&page=1: [Errno -3] Temporary failure in name resolution
+INFO:__main__:The Editor's Market: 0 products
+INFO:__main__:Scraping Tangs...
+INFO:httpx:HTTP Request: GET https://www.tangs.com/search?q=*&page=1 "HTTP/1.1 301 Moved Permanently"
+INFO:httpx:HTTP Request: GET https://tangs.com/search?q=*&page=1 "HTTP/1.1 200 OK"
+INFO:__main__:Tangs: 0 products
+INFO:__main__:Scraping Taka...
+WARNING:src.scrapers.base_scraper:Attempt 1 failed for https://www.taka.com.sg/search?q=*&page=1: [Errno -3] Temporary failure in name resolution

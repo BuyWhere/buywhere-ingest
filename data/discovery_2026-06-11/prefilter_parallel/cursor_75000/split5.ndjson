@@ -1,0 +1,5 @@
+{"domain":"asianews.network","platform":"magento","product_endpoint":"https://asianews.network/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":260,"country_code":"US","currency":null}
+{"domain":"desi-porn.tube","platform":"woocommerce","product_endpoint":"https://desi-porn.tube/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":340,"country_code":"US","currency":null}
+{"domain":"innovist.com","platform":"shopify","product_endpoint":"https://innovist.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":4729,"country_code":"US","currency":null}
+{"domain":"larapush.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":190,"country_code":"US","currency":null}
+{"domain":"xotiny.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":515,"country_code":"US","currency":null}

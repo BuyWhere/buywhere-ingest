@@ -1,0 +1,85 @@
+{
+  "started_at": "2026-06-06T22:52:15.883Z",
+  "sources": [
+    "4",
+    "10"
+  ],
+  "per_source": {
+    "4": {
+      "records": 0,
+      "meta": {
+        "source": "commoncrawl_cdx",
+        "index": "CC-MAIN-2025-43",
+        "queries": [
+          {
+            "url": "https://web.archive.org/cdx/search/cdx?url=*%2Fproducts.json&output=json&fl=url%2Cstatus%2Ctimestamp%2Clength&limit=1250&filter=status%3A200&from=20250101&to=20260601",
+            "status": 400,
+            "error": "",
+            "latency_ms": 6415,
+            "pattern": "*/products.json"
+          },
+          {
+            "url": "https://web.archive.org/cdx/search/cdx?url=*%2Fwp-json%2Fwc%2Fv3%2Fproducts*&output=json&fl=url%2Cstatus%2Ctimestamp%2Clength&limit=1250&filter=status%3A200&from=20250101&to=20260601",
+            "status": 400,
+            "error": "",
+            "latency_ms": 4810,
+            "pattern": "*/wp-json/wc/v3/products*"
+          },
+          {
+            "url": "https://web.archive.org/cdx/search/cdx?url=*%2Frest%2FV1%2Fproducts*&output=json&fl=url%2Cstatus%2Ctimestamp%2Clength&limit=1250&filter=status%3A200&from=20250101&to=20260601",
+            "status": 503,
+            "error": "<html><body><h1>503 Service Unavailable</h1>\nNo server is available to handle this request.\n</body></html>\n",
+            "latency_ms": 5192,
+            "pattern": "*/rest/V1/products*"
+          },
+          {
+            "url": "https://web.archive.org/cdx/search/cdx?url=*%2Fapi%2Fcatalog%2Fproducts*&output=json&fl=url%2Cstatus%2Ctimestamp%2Clength&limit=1250&filter=status%3A200&from=20250101&to=20260601",
+            "status": 400,
+            "error": "",
+            "latency_ms": 4917,
+            "pattern": "*/api/catalog/products*"
+          }
+        ]
+      },
+      "file": "data/discovery_2026-06-06/raw/source_4.ndjson",
+      "elapsed_ms": 21336
+    },
+    "10": {
+      "records": 0,
+      "meta": {
+        "source": "schema_product_via_cdx",
+        "index": "CC-MAIN-2025-43",
+        "queries": [
+          {
+            "url": "https://web.archive.org/cdx/search/cdx?url=*%2Fproduct%2F*&output=json&fl=url%2Cstatus%2Ctimestamp%2Clength&limit=1666&filter=status%3A200&from=20250101&to=20260601",
+            "status": 400,
+            "error": "",
+            "latency_ms": 5229,
+            "pattern": "*/product/*"
+          },
+          {
+            "url": "https://web.archive.org/cdx/search/cdx?url=*%2Fproducts%2F*&output=json&fl=url%2Cstatus%2Ctimestamp%2Clength&limit=1666&filter=status%3A200&from=20250101&to=20260601",
+            "status": 400,
+            "error": "",
+            "latency_ms": 4027,
+            "pattern": "*/products/*"
+          },
+          {
+            "url": "https://web.archive.org/cdx/search/cdx?url=*%2Fp%2F*&output=json&fl=url%2Cstatus%2Ctimestamp%2Clength&limit=1666&filter=status%3A200&from=20250101&to=20260601",
+            "status": 400,
+            "error": "",
+            "latency_ms": 2860,
+            "pattern": "*/p/*"
+          }
+        ]
+      },
+      "file": "data/discovery_2026-06-06/raw/source_10.ndjson",
+      "elapsed_ms": 12117
+    }
+  },
+  "aggregate": {
+    "unique_domains": 0,
+    "raw_records": 0
+  },
+  "finished_at": "2026-06-06T22:52:49.337Z"
+}

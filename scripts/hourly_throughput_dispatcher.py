@@ -75,6 +75,7 @@ TARGET_ROWS_PER_HOUR = 150_000
 # Per-statement timeouts (seconds) — maglev is contended; COUNTs can stall.
 # Long enough to succeed in a quiet window, short enough not to block cron.
 STMT_TIMEOUT_FAST_S = 5        # for pg_stat_user_tables and other O(1) reads
+STMT_TIMEOUT_FAST_RETRY_S = 20 # one retry when the fast path is transiently contended
 STMT_TIMEOUT_COUNT_S = 30      # for the hour-bucket COUNT (best-effort)
 STMT_TIMEOUT_MAX_CREATED_S = 8 # for MAX(created_at) staleness snapshot
 
@@ -152,17 +153,27 @@ def save_state(state: dict[str, Any]) -> None:
 
 
 def read_pg_stat_products(conn) -> dict[str, Any]:
-    """O(1) read of pg_stat_user_tables.products — works under writer contention."""
-    with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
-        cur.execute("SET statement_timeout = %s", (f"{STMT_TIMEOUT_FAST_S}s",))
-        cur.execute(
-            """
-            SELECT n_live_tup, n_tup_ins, n_tup_upd, n_tup_del,
-                   seq_scan, idx_scan
-            FROM pg_stat_user_tables WHERE relname = 'products'
-            """
-        )
-        row = cur.fetchone()
+    """O(1) read of pg_stat_user_tables.products with one longer retry on timeout."""
+    row = None
+    last_error = None
+    for timeout_s in (STMT_TIMEOUT_FAST_S, STMT_TIMEOUT_FAST_RETRY_S):
+        try:
+            with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
+                cur.execute("SET statement_timeout = %s", (f"{timeout_s}s",))
+                cur.execute(
+                    """
+                    SELECT n_live_tup, n_tup_ins, n_tup_upd, n_tup_del,
+                           seq_scan, idx_scan
+                    FROM pg_stat_user_tables WHERE relname = 'products'
+                    """
+                )
+                row = cur.fetchone()
+            break
+        except psycopg2.errors.QueryCanceled as exc:
+            conn.rollback()
+            last_error = exc
+    if row is None and last_error is not None:
+        raise last_error
     if not row:
         return {}
     return {
@@ -200,6 +211,8 @@ def query_hour_window(conn, hour_start: datetime) -> dict[str, Any] | None:
     except psycopg2.errors.QueryCanceled:
         conn.rollback()  # cancel aborts the txn; clear it for the next query
         return {"error": "statement_timeout", "timeout_s": STMT_TIMEOUT_COUNT_S}
+    except (psycopg2.OperationalError, psycopg2.InterfaceError) as exc:
+        return {"error": "connection_lost", "detail": str(exc).strip()}
     conn.rollback()  # release the implicit txn so future SETs aren't in a bad state
     return {
         "total_rows": int(row["total_rows"] or 0),
@@ -221,6 +234,48 @@ def query_max_created_at(conn) -> dict[str, Any] | None:
     except psycopg2.errors.QueryCanceled:
         conn.rollback()
         return {"error": "statement_timeout", "timeout_s": STMT_TIMEOUT_MAX_CREATED_S}
+    except (psycopg2.OperationalError, psycopg2.InterfaceError) as exc:
+        return {"error": "connection_lost", "detail": str(exc).strip()}
+
+
+def query_postmaster_start_time(conn) -> str | None:
+    """Snapshot the current postmaster start time to validate delta semantics."""
+    try:
+        with conn.cursor() as cur:
+            cur.execute("SET statement_timeout = %s", (f"{STMT_TIMEOUT_FAST_S}s",))
+            cur.execute("SELECT pg_postmaster_start_time()")
+            row = cur.fetchone()
+        conn.rollback()
+        return str(row[0]) if row and row[0] else None
+    except (psycopg2.errors.QueryCanceled, psycopg2.OperationalError, psycopg2.InterfaceError):
+        try:
+            conn.rollback()
+        except Exception:
+            pass
+        return None
+
+
+def reconnect_if_needed(conn, db_url: str):
+    """Refresh the connection after a best-effort query drops the SSL session."""
+    if getattr(conn, "closed", 0):
+        try:
+            conn.close()
+        except Exception:
+            pass
+        return psycopg2.connect(db_url, connect_timeout=15)
+    return conn
+
+
+def connect_catalog(db_url: str):
+    """Open the canonical catalog connection and keep failures user-readable."""
+    try:
+        return psycopg2.connect(db_url, connect_timeout=15)
+    except psycopg2.OperationalError as exc:
+        print(
+            "[throughput-dispatcher] FATAL: could not connect to canonical catalog DB: "
+            f"{str(exc).strip()}"
+        )
+        return None
 
 
 # ---------------------------------------------------------------------------
@@ -229,7 +284,11 @@ def query_max_created_at(conn) -> dict[str, Any] | None:
 
 
 def compute_real_rows_from_delta(
-    state: dict[str, Any], stat: dict[str, Any], hour_start: datetime, now: datetime,
+    state: dict[str, Any],
+    stat: dict[str, Any],
+    hour_start: datetime,
+    now: datetime,
+    pm_start: str | None,
 ) -> dict[str, Any]:
     """Compute the per-hour insertion rate from the n_tup_ins delta since last run.
 
@@ -268,6 +327,21 @@ def compute_real_rows_from_delta(
     last_at_dt = datetime.fromisoformat(last_at.replace("Z", "+00:00"))
     if last_at_dt.tzinfo is None:
         last_at_dt = last_at_dt.replace(tzinfo=timezone.utc)
+
+    if pm_start:
+        pm_start_dt = datetime.fromisoformat(pm_start.replace("Z", "+00:00"))
+        if pm_start_dt.tzinfo is None:
+            pm_start_dt = pm_start_dt.replace(tzinfo=timezone.utc)
+        if pm_start_dt > last_at_dt:
+            return {
+                "real_rows": None,
+                "source": "unavailable",
+                "note": (
+                    "postmaster restarted after the saved n_tup_ins baseline "
+                    f"(pm_start={pm_start_dt.isoformat()}, baseline_at={last_at_dt.isoformat()})"
+                ),
+            }
+
     delta_hours = (now - last_at_dt).total_seconds() / 3600.0
 
     delta_rows = now_n - last_n
@@ -299,17 +373,54 @@ def compute_real_rows_from_delta(
 
 
 def dedup_check_existing_child(hour_start: datetime) -> bool:
-    """Return True if a child issue for this hour already exists under BUY-29861."""
-    hour_tag = hour_start.strftime("%Y-%m-%dT%H")
-    r = requests.get(
-        f"{_api_base()}/companies/{COMPANY_ID}/issues",
-        params={"q": f"throughput-check-{hour_tag}", "parentId": PARENT_ISSUE_ID},
-        headers=_api_headers(),
-        timeout=20,
+    """Return True if a child issue for this hour already exists under BUY-29861.
+
+    Fix (BUY-52687): the previous implementation searched for a synthetic prefix
+    ``throughput-check-{hour_tag}`` that NEVER appears in the dispatcher's own
+    title format (``[BUY-33694 dispatcher] Hourly throughput check
+    (YYYY-MM-DD HH:MM UTC fire, HH:MM–HH:MM window)``). The search always
+    returned 0 results, so dedup silently failed and duplicate FAIL children
+    were filed for the same window (BUY-52684 / BUY-52677, 2026-06-18).
+
+    New approach: fetch children by ``parentId`` only, then in Python check the
+    title for the literal hour-window substring ``HH:MM–HH:MM window`` (U+2013
+    en-dash, with trailing ``window)`` to anchor). That substring is unique
+    per dispatched hour and is not subject to API search-tokenization quirks.
+    Belt-and-suspenders: if the parentId fetch fails, we fall through (return
+    False) so the check never strands a real failure.
+    """
+    # Anchor on the window substring: "HH:MM–HH:MM window)" with U+2013 en-dash.
+    # The window uniquely identifies the dispatched hour (22:00–23:00 window
+    # only appears for the 22:00 hour; 21:00–22:00 window only for 21:00).
+    end = hour_start + timedelta(hours=1)
+    window_tag = (
+        f"{hour_start.strftime('%H:%M')}–{end.strftime('%H:%M')} window)"
     )
-    if r.ok:
-        issues = r.json() if isinstance(r.json(), list) else r.json().get("issues", [])
-        return len(issues) > 0
+    try:
+        r = requests.get(
+            f"{_api_base()}/companies/{COMPANY_ID}/issues",
+            params={"parentId": PARENT_ISSUE_ID, "limit": 100},
+            headers=_api_headers(),
+            timeout=20,
+        )
+    except requests.RequestException as exc:
+        print(
+            "[throughput-dispatcher] dedup_check_existing_child: "
+            f"Paperclip API lookup failed ({exc.__class__.__name__}: {exc}); continuing"
+        )
+        return False
+    if not r.ok:
+        print(
+            "[throughput-dispatcher] dedup_check_existing_child: "
+            f"API returned HTTP {r.status_code}; continuing"
+        )
+        return False
+    body = r.json()
+    issues = body if isinstance(body, list) else body.get("issues", [])
+    for issue in issues:
+        title = (issue.get("title") or "")
+        if window_tag in title:
+            return True
     return False
 
 
@@ -417,6 +528,47 @@ Connection string source: `data/.catalog_db_url` (maglev). NOT the harness `DATA
     return r.json().get("identifier", "BUY-????")
 
 
+def build_run_note(
+    *,
+    hour_start: datetime,
+    hour_end: datetime,
+    result: str,
+    real_rows: int,
+    source: str,
+    delta_result: dict[str, Any],
+    stat: dict[str, Any],
+    pm_start: str | None,
+    failure_identifier: str | None,
+) -> str:
+    rate = delta_result.get("real_rows")
+    delta_rows = delta_result.get("delta_rows")
+    delta_hours = delta_result.get("delta_window_hours")
+    parts = [
+        (
+            f"{hour_start:%Y-%m-%d %H:%M}-{hour_end:%H:%M}Z hour {result}: "
+            f"{real_rows:,}/hr via {source}."
+        )
+    ]
+    if delta_rows is not None and delta_hours is not None and rate is not None:
+        parts.append(
+            f"n_tup_ins delta {delta_rows:,} over {delta_hours:.3f}h = {rate:,}/hr."
+        )
+    else:
+        note = delta_result.get("note")
+        if note:
+            parts.append(str(note))
+    parts.append(
+        f"n_tup_ins={stat.get('n_tup_ins', 0):,}, n_live_tup={stat.get('n_live_tup', 0):,}."
+    )
+    if pm_start:
+        parts.append(f"pm_start={pm_start}.")
+    if failure_identifier:
+        parts.append(f"Filed child {failure_identifier} under BUY-29861.")
+    else:
+        parts.append("No child filed.")
+    return " ".join(parts)
+
+
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
@@ -477,8 +629,17 @@ def main() -> int:
     print(f"[throughput-dispatcher] DB: {db_host}")
 
     state = load_state()
+    failure_identifier = None
 
-    # Avoid running twice in the same hour (unless --force).
+    # BUY-52603 fix: the prior exit-early check `(hour_start + 1h) > now` caused the
+    # dispatcher to exit when it ran AT the hour boundary (window just closed but
+    # condition was still true), and also fired for the wrong window when
+    # source_scoped_recovery_action woke it mid-hour. The correct behaviour is:
+    #   - Dedup is the sole mechanism for preventing double-fires in the same hour
+    #   - We ALWAYS check the just-completed hour (hour_start = now - 1h, zeroed)
+    #     regardless of wall-clock time; late-arriving data is handled by the
+    #     ~30-second psql statement_timeout floor
+    #   - The ONLY early-exit right is the dedup check below
     if not args.force and state.get("last_hour_checked") == hour_start.isoformat():
         print(
             f"[throughput-dispatcher] Already ran for {hour_start.isoformat()}, "
@@ -495,8 +656,11 @@ def main() -> int:
         # Persist the new n_tup_ins baseline so the next run's delta is accurate.
         # We still want to capture n_tup_ins even when dedup blocks the file.
         try:
-            conn = psycopg2.connect(db_url, connect_timeout=15)
+            conn = connect_catalog(db_url)
+            if conn is None:
+                return 2
             stat = read_pg_stat_products(conn)
+            pm_start = query_postmaster_start_time(conn)
             conn.close()
             if stat:
                 state["last_n_tup_ins"] = stat.get("n_tup_ins")
@@ -504,15 +668,41 @@ def main() -> int:
                 state["last_hour_checked"] = hour_start.isoformat()
                 state["last_check_result"] = "DEDUP"
                 state["last_check_source"] = "n_tup_ins"
+                state["last_n_live_tup"] = stat.get("n_live_tup")
+                state["last_db_host"] = db_host
+                state["last_hour_window_start"] = hour_start.isoformat()
+                state["last_hour_window_end"] = (hour_start + timedelta(hours=1)).isoformat()
+                state["last_check_threshold"] = TARGET_ROWS_PER_HOUR
+                state["last_check_delta_rows"] = None
+                state["last_check_delta_hours"] = None
+                state["last_check_rate"] = None
+                state["last_pm_start"] = pm_start
+                state["last_fire_timestamp"] = now.strftime("%Y-%m-%dT%H:%M:%SZ")
+                state["last_issue_identifier"] = None
+                state["last_note"] = (
+                    f"{hour_start:%Y-%m-%d %H:%M}-{(hour_start + timedelta(hours=1)):%H:%M}Z "
+                    "hour already had a failure child filed under BUY-29861; "
+                    "refreshed n_tup_ins baseline only."
+                )
                 save_state(state)
         except Exception as e:
             print(f"[throughput-dispatcher] baseline refresh failed: {e}")
         return 0
 
-    conn = psycopg2.connect(db_url, connect_timeout=15)
+    conn = connect_catalog(db_url)
+    if conn is None:
+        return 2
     try:
         # PRIMARY: pg_stat (fast).
-        stat = read_pg_stat_products(conn)
+        try:
+            stat = read_pg_stat_products(conn)
+        except psycopg2.errors.QueryCanceled:
+            conn.rollback()
+            print(
+                "[throughput-dispatcher] FATAL: pg_stat_user_tables.products timed out "
+                f"after {STMT_TIMEOUT_FAST_S}s and {STMT_TIMEOUT_FAST_RETRY_S}s retries"
+            )
+            return 2
         if not stat:
             print("[throughput-dispatcher] FATAL: pg_stat_user_tables returned no row for products")
             return 2
@@ -524,19 +714,26 @@ def main() -> int:
                 f"[throughput-dispatcher] hour_bucket_count: total={hour_data['total_rows']:,} "
                 f"real={hour_data['real_rows']:,}"
             )
-        elif hour_data and "error" in hour_data:
+        elif hour_data and hour_data.get("error") == "statement_timeout":
             print(
                 f"[throughput-dispatcher] hour_bucket_count: TIMEOUT after {hour_data['timeout_s']}s "
                 "(maglev contention — using n_tup_ins delta only)"
+            )
+        elif hour_data and hour_data.get("error") == "connection_lost":
+            print(
+                "[throughput-dispatcher] hour_bucket_count: connection lost during COUNT "
+                "(using n_tup_ins delta only)"
             )
         else:
             print("[throughput-dispatcher] hour_bucket_count: returned None")
 
         # Snapshot for staleness (best-effort).
+        conn = reconnect_if_needed(conn, db_url)
         max_created = query_max_created_at(conn)
+        pm_start = query_postmaster_start_time(conn)
 
         # Compute the real_rows number.
-        delta_result = compute_real_rows_from_delta(state, stat, hour_start, now)
+        delta_result = compute_real_rows_from_delta(state, stat, hour_start, now, pm_start)
         real_rows_from_delta = delta_result["real_rows"]
 
         # Prefer the COUNT window if available, fall back to delta.
@@ -586,34 +783,93 @@ def main() -> int:
                     "this run. The next hour's run will compute the delta."
                 )
             elif real_rows < TARGET_ROWS_PER_HOUR and not args.force:
-                identifier = create_stall_issue(
+                failure_identifier = create_stall_issue(
                     hour_start, real_rows, source, note,
                     hour_data, stat, max_created, db_host, fire_ts,
                 )
-                print(f"[throughput-dispatcher] FAIL — filed {identifier} under BUY-29861")
+                print(f"[throughput-dispatcher] FAIL — filed {failure_identifier} under BUY-29861")
+            elif args.force and real_rows < TARGET_ROWS_PER_HOUR:
+                # --force on a real FAIL: correctly report the actual result
+                print(f"[throughput-dispatcher] FAIL (--force override — no issue filed): {real_rows:,} < {TARGET_ROWS_PER_HOUR:,}")
             else:
                 print(f"[throughput-dispatcher] PASS — {real_rows:,} >= {TARGET_ROWS_PER_HOUR:,}. No issue filed.")
 
-        # Persist the new n_tup_ins baseline and result for the next run.
-        # `last_n_tup_ins_at` is the wall-clock time of THIS reading; the next
-        # run's delta is then (next_now - this_now), which is the actual
-        # elapsed time between the two fires and gives the correct per-hour
-        # rate regardless of how often the dispatcher is invoked.
-        state["last_n_tup_ins"] = stat.get("n_tup_ins")
-        state["last_n_tup_ins_at"] = now.isoformat()
-        state["last_hour_checked"] = hour_start.isoformat()
-        state["last_check_result"] = (
-            "BASELINE" if is_first_baseline
-            else "PASS" if real_rows >= TARGET_ROWS_PER_HOUR
-            else "FAIL"
-        )
-        state["last_check_real_rows"] = real_rows
-        state["last_check_source"] = source
-        state["last_n_live_tup"] = stat.get("n_live_tup")
-        state["last_db_host"] = db_host
-        save_state(state)
+        if args.dry_run:
+            print("[throughput-dispatcher] dry-run: leaving data/.throughput_state.json unchanged")
+        else:
+            # Persist the new n_tup_ins baseline and result for the next run.
+            # `last_n_tup_ins_at` is the wall-clock time of THIS reading; the next
+            # run's delta is then (next_now - this_now), which is the actual
+            # elapsed time between the two fires and gives the correct per-hour
+            # rate regardless of how often the dispatcher is invoked.
+            state["last_n_tup_ins"] = stat.get("n_tup_ins")
+            state["last_n_tup_ins_at"] = now.isoformat()
+            state["last_hour_checked"] = hour_start.isoformat()
+            state["last_check_result"] = (
+                "BASELINE" if is_first_baseline
+                else "PASS" if real_rows >= TARGET_ROWS_PER_HOUR
+                else "FAIL"
+            )
+            state["last_check_real_rows"] = real_rows
+            state["last_check_source"] = source
+            state["last_n_live_tup"] = stat.get("n_live_tup")
+            state["last_db_host"] = db_host
+            state["last_hour_window_start"] = hour_start.isoformat()
+            state["last_hour_window_end"] = (hour_start + timedelta(hours=1)).isoformat()
+            state["last_check_threshold"] = TARGET_ROWS_PER_HOUR
+            state["last_check_delta_rows"] = delta_result.get("delta_rows")
+            state["last_check_delta_hours"] = delta_result.get("delta_window_hours")
+            state["last_check_rate"] = (
+                delta_result.get("real_rows")
+                if delta_result.get("real_rows") is not None
+                else real_rows
+            )
+            state["last_pm_start"] = pm_start
+            state["last_fire_timestamp"] = now.strftime("%Y-%m-%dT%H:%M:%SZ")
+            state["last_issue_identifier"] = failure_identifier
+            if failure_identifier:
+                state["last_failure_child_identifier"] = failure_identifier
+            run_result = state["last_check_result"]
+            state["last_note"] = build_run_note(
+                hour_start=hour_start,
+                hour_end=hour_start + timedelta(hours=1),
+                result=run_result,
+                real_rows=real_rows,
+                source=source,
+                delta_result=delta_result,
+                stat=stat,
+                pm_start=pm_start,
+                failure_identifier=failure_identifier,
+            )
+            save_state(state)
     finally:
         conn.close()
+
+    # BUY-39805: capture the midnight-boundary n_tup_ins snapshot if the
+    # dispatcher's fire crossed a UTC day boundary. Safe to call every fire;
+    # the function is a no-op when no boundary was crossed.
+    try:
+        import importlib.util as _ilu
+
+        _ms_path = Path(__file__).resolve().parent / "midnight_snapshot.py"
+        _spec = _ilu.spec_from_file_location("midnight_snapshot", _ms_path)
+        _ms_mod = _ilu.module_from_spec(_spec)
+        _spec.loader.exec_module(_ms_mod)
+        snapshot = _ms_mod.capture_closed_day_snapshot(
+            fire_issue_identifier=state.get("last_issue_identifier"),
+            dry_run=args.dry_run,
+        )
+        if snapshot is not None:
+            print(
+                f"[throughput-dispatcher] midnight-snapshot recorded: "
+                f"closed_day={snapshot['date']} delta={snapshot['delta']:+,}"
+            )
+    except Exception as e:
+        # Never let midnight-snapshot failure block the dispatcher's result.
+        print(
+            f"[throughput-dispatcher] midnight-snapshot call failed: "
+            f"{e.__class__.__name__}: {e}"
+        )
 
     return 0
 

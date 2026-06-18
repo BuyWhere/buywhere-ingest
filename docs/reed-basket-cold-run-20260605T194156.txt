@@ -1,0 +1,32 @@
+BUY-31312 Basket Verification — 300 queries at 40 rpm
+API Key: bw_live_4AeojSmUExdazRv1...
+
+=== Rich's criterion: iPhone 15 Pro + SG + limit=5 ===
+  HTTP 200 | result_count=5 | time=19:42:09
+  Result: PASS
+
+=== Basket test (300 queries, throttled to 40 rpm) ===
+  [50/300] Success: 40 (80.0%) | 429s: 0 | Elapsed: 163s | ETA: 813s
+  [100/300] Success: 67 (67.0%) | 429s: 0 | Elapsed: 333s | ETA: 665s
+  [150/300] Success: 107 (71.3%) | 429s: 0 | Elapsed: 499s | ETA: 499s
+  [200/300] Success: 138 (69.0%) | 429s: 0 | Elapsed: 647s | ETA: 324s
+  [250/300] Success: 178 (71.2%) | 429s: 0 | Elapsed: 760s | ETA: 152s
+  [300/300] Success: 206 (68.7%) | 429s: 0 | Elapsed: 936s | ETA: 0s
+
+=== RESULTS ===
+Total queries:   300
+Successes:       206 (68.7%)
+Errors (total):  94 (31.3%)
+  - 429s:        0
+  - Timeouts:    7
+  - Other:       87
+Elapsed:         936s (15.6min)
+Avg interval:    3122ms
+Error samples:   ["HTTP 200 q='iPad Air M2' err=None", "HTTP 200 q='Bose QuietComfort 45' err=None", "HTTP 200 q='Dyson V15 Detect' err=None"]
+
+=== VERDICT ===
+Rich's criterion (5 results iPhone 15 Pro+SG): PASS
+Basket ≥50% success (68.7%):          PASS
+Error rate <5% (31.3%):                 FAIL
+
+OVERALL: ✗ FAIL

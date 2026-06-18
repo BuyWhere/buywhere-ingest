@@ -1,0 +1,3 @@
+{"domain":"beautymarket.ma","platform":"shopify","product_endpoint":"https://beautymarket.ma/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":4069,"country_code":"US","currency":null}
+{"domain":"koalendar.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":203,"country_code":"US","currency":null}
+{"domain":"myeducator.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":16,"country_code":"US","currency":null}

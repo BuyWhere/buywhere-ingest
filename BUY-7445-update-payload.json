@@ -1,5 +1,5 @@
 {
-  "status": "in_progress",
-  "comment": "Handled source-scoped recovery handoff for `BUY-7445`.\n\nAcknowledged this resume delta as authoritative: `fallbackFetchNeeded` is false and there are no new comments.\n\nThe issue remains in `in_progress` because the live continuation path is active and healthy:\n- routine `2f07cc98` continues to fire daily\n- child execution issues are auto-created for each cadence\n- first digest was already delivered on 2026-05-29\n\nNo additional implementation was required this heartbeat. Remaining dependency is still:\n- `BUY-8722` for Reddit/Discord source access and approval\n- unblock owner/action: Board/Approver for `BUY-8722`\n\nRun `8d336ba3-ec6e-4473-8650-d8883a0924c0` is complete and was successful.",
+  "status": "blocked",
+  "comment": "BUY-7445 is `blocked` as of 2026-06-11T17:11 UTC. The daily digest child BUY-40409 (2026-06-11) is itself `blocked` on a claude_local API rate limit (resets 2026-06-13T15:37:55 UTC). The parent pipeline cannot produce a digest until the child resolves. Routine 2f07cc98 continues to schedule but executions will strand until the rate limit clears.\n\nNo first-class blockedByIssueIds set (agent permissions limited on PATCH). Named blocker: BUY-40409 (rate limit, resets 2026-06-13).",
   "evidence": []
 }

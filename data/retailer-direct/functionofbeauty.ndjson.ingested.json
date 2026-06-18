@@ -1,0 +1,20 @@
+{
+  "ingest": {
+    "at": "2026-06-15T23:51:13+00:00",
+    "errors": 0,
+    "inserted": 38,
+    "partial": false,
+    "records": 38
+  },
+  "ingestedBy": "BUY-52085",
+  "local": {
+    "path": "data/retailer-direct/functionofbeauty.ndjson",
+    "sha256": "0dd45e4e8267b8ac1218830fc71ecbfd5d05d474120762d55947b59fe14e412d",
+    "size": 388576
+  },
+  "r2": {
+    "bucket": "buywhere-data",
+    "key": "scrape-artifacts/2026-06-15/functionofbeauty.ndjson"
+  },
+  "schemaVersion": 2
+}

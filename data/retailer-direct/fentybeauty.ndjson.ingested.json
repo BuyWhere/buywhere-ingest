@@ -1,0 +1,20 @@
+{
+  "ingest": {
+    "at": "2026-06-15T23:51:12+00:00",
+    "errors": 0,
+    "inserted": 898,
+    "partial": false,
+    "records": 898
+  },
+  "ingestedBy": "BUY-52085",
+  "local": {
+    "path": "data/retailer-direct/fentybeauty.ndjson",
+    "sha256": "7842ef89fa199001b18716b707aa90ba395b27ee2508f417fcb19e5d2bef0063",
+    "size": 4950739
+  },
+  "r2": {
+    "bucket": "buywhere-data",
+    "key": "scrape-artifacts/2026-06-15/fentybeauty.ndjson"
+  },
+  "schemaVersion": 2
+}

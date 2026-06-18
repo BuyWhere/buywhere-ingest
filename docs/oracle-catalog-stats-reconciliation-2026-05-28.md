@@ -145,3 +145,80 @@ Date: 2026-05-28 UTC
 - That means this workspace can document the canonical definitions and the drift, but it cannot satisfy the runtime acceptance criteria by itself.
 - The existing runtime blocker is [BUY-22720](/BUY/issues/BUY-22720), which already tracks replacing `pg_class.reltuples`-based estimates with an exact catalog-stats source.
 - Until `BUY-22720` lands or the runtime owner ships a separate warning/deprecation change on the live endpoint, `GET /v1/catalog/stats` must continue to be treated as non-canonical for CEO reporting.
+
+## 2026-06-02 production verification
+
+The old `pg_class_fallback` behavior is no longer live, but the endpoint still does not match the canonical CEO metric family.
+
+Live check captured on `2026-06-02 19:27:13 UTC`:
+
+```json
+{
+  "data": {
+    "total_products": 16816466,
+    "total_merchants": 68384,
+    "active_products": 16816466
+  },
+  "meta": {
+    "approximate": false,
+    "source": "catalog_stats",
+    "ts": "2026-06-02T19:27:13.830Z"
+  }
+}
+```
+
+Same-day canonical exact values already published in the dated CEO artifacts:
+
+- `public.products` real products: `16,816,466`
+- `public.products` active products: `16,795,557`
+- `count(distinct public.products.merchant_id)`: `24,932`
+- `public.merchants` registry rows: `68,384`
+
+What this proves:
+
+- `total_products` now matches the exact `public.products` total-row count.
+- `total_merchants` still matches the broader `public.merchants` registry family, not the CEO report's catalog-backed merchant definition.
+- `active_products` still collapses to `total_products`, so the endpoint does not preserve the exact `is_active` distinction required by the canonical scoreboard.
+
+Current status:
+
+- The estimator/fallback bug is fixed.
+- The endpoint is still not CEO-canonical because its field semantics remain mixed.
+- `GET /v1/catalog/stats` should therefore either:
+  - align `active_products` and `total_merchants` to the exact `public.products` definitions, or
+  - visibly label those fields as non-canonical/runtime-only so they cannot be mistaken for the executive source of truth.
+
+## 2026-06-02 final runtime verification
+
+The remaining field-semantic mismatch has now been fixed in [BUY-29160](/BUY/issues/BUY-29160).
+
+Per the completed runtime deployment evidence recorded in that child issue:
+
+- `https://buywhere-api-production.up.railway.app/v1/catalog/stats` at `2026-06-02T19:37:57.563Z` returned:
+
+```json
+{
+  "data": {
+    "total_products": 16816466,
+    "total_merchants": 24932,
+    "active_products": 16795557
+  },
+  "meta": {
+    "approximate": false,
+    "source": "public.products"
+  }
+}
+```
+
+- `https://api.buywhere.ai/v1/catalog/stats` at `2026-06-02T19:37:54.977Z` returned the same canonical values.
+
+That closes the original CEO-reporting gap:
+
+- `total_products` now matches exact `count(*)` from `public.products`
+- `active_products` now matches exact `count(*) filter (where is_active)` from `public.products`
+- `total_merchants` now matches exact `count(distinct merchant_id)` from `public.products`
+- `meta.approximate=false` and `meta.source=public.products` make the runtime contract explicit
+
+Result:
+
+- `GET /v1/catalog/stats` is now aligned with the canonical CEO scoreboard definitions documented in this note.

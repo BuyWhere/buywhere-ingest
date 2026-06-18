@@ -1,0 +1,1394 @@
+[2026-06-06T00:18:20.042Z] loaded 16174 candidate domains
+[2026-06-06T00:18:20.047Z] starting at cursor=11836, cycle=2317
+[2026-06-06T00:18:21.771Z] cycle 2318: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2318-2026-06-06T00-18-20-047Z.ndjson
+[2026-06-06T00:18:28.152Z] cycle 2319: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2319-2026-06-06T00-18-26-777Z.ndjson
+[2026-06-06T00:18:33.954Z] cycle 2320: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2320-2026-06-06T00-18-33-157Z.ndjson
+[2026-06-06T00:18:39.668Z] cycle 2321: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2321-2026-06-06T00-18-38-957Z.ndjson
+[2026-06-06T00:18:45.369Z] cycle 2322: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2322-2026-06-06T00-18-44-671Z.ndjson
+[2026-06-06T00:18:51.088Z] cycle 2323: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2323-2026-06-06T00-18-50-371Z.ndjson
+[2026-06-06T00:18:56.829Z] cycle 2324: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2324-2026-06-06T00-18-56-091Z.ndjson
+[2026-06-06T00:19:02.535Z] cycle 2325: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2325-2026-06-06T00-19-01-832Z.ndjson
+[2026-06-06T00:19:10.790Z] cycle 2326: 200 domains → 4 hit → 374 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2326-2026-06-06T00-19-07-539Z.ndjson
+[2026-06-06T00:19:24.136Z] cycle 2326 ingest: exit=0 13.3s === STREAM INGEST DONE ===
+files=1 lines=374 valid=374 written=374 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 374 ] ]
+[2026-06-06T00:19:29.870Z] cycle 2327: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2327-2026-06-06T00-19-29-137Z.ndjson
+[2026-06-06T00:19:35.841Z] cycle 2328: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2328-2026-06-06T00-19-34-874Z.ndjson
+[2026-06-06T00:19:41.544Z] cycle 2329: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2329-2026-06-06T00-19-40-845Z.ndjson
+[2026-06-06T00:19:47.341Z] cycle 2330: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2330-2026-06-06T00-19-46-545Z.ndjson
+[2026-06-06T00:19:53.161Z] cycle 2331: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2331-2026-06-06T00-19-52-344Z.ndjson
+[2026-06-06T00:19:58.957Z] cycle 2332: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2332-2026-06-06T00-19-58-165Z.ndjson
+[2026-06-06T00:20:04.648Z] cycle 2333: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2333-2026-06-06T00-20-03-960Z.ndjson
+[2026-06-06T00:20:10.832Z] cycle 2334: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2334-2026-06-06T00-20-09-651Z.ndjson
+[2026-06-06T00:20:17.160Z] cycle 2335: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2335-2026-06-06T00-20-15-839Z.ndjson
+[2026-06-06T00:20:25.070Z] cycle 2336: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2336-2026-06-06T00-20-22-171Z.ndjson
+[2026-06-06T00:20:45.341Z] cycle 2337: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2337-2026-06-06T00-20-30-077Z.ndjson
+[2026-06-06T00:20:54.130Z] cycle 2338: 200 domains → 4 hit → 521 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2338-2026-06-06T00-20-50-345Z.ndjson
+[2026-06-06T00:30:54.680Z] cycle 2338 ingest: exit=0 600.5s === STREAM INGEST DONE ===
+files=1 lines=521 valid=521 written=500 errors=1
+skipped: {}
+top sources: [ [ 'shopify', 521 ] ]
+[2026-06-06T00:31:21.557Z] cycle 2339: 200 domains → 199 hit → 61198 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2339-2026-06-06T00-30-59-685Z.ndjson
+[2026-06-06T00:42:12.065Z] cycle 2339 ingest: exit=0 650.5s === STREAM INGEST DONE ===
+files=1 lines=61198 valid=61198 written=61198 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 61198 ] ]
+[2026-06-06T00:42:38.958Z] cycle 2340: 200 domains → 199 hit → 47093 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2340-2026-06-06T00-42-17-066Z.ndjson
+[2026-06-06T00:53:32.216Z] cycle 2340 ingest: exit=0 653.3s === STREAM INGEST DONE ===
+files=1 lines=47093 valid=47093 written=46593 errors=1
+skipped: {}
+top sources: [ [ 'shopify', 47093 ] ]
+[2026-06-06T00:53:56.634Z] cycle 2341: 200 domains → 174 hit → 42368 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2341-2026-06-06T00-53-37-220Z.ndjson
+[2026-06-06T01:00:22.069Z] cycle 2341 ingest: exit=0 385.4s === STREAM INGEST DONE ===
+files=1 lines=42368 valid=42368 written=41868 errors=1
+skipped: {}
+top sources: [ [ 'shopify', 42368 ] ]
+[2026-06-06T01:00:30.629Z] cycle 2342: 200 domains → 1 hit → 1500 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2342-2026-06-06T01-00-27-074Z.ndjson
+[2026-06-06T01:00:43.393Z] cycle 2342 ingest: exit=0 12.8s === STREAM INGEST DONE ===
+files=1 lines=1500 valid=1500 written=1500 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 1500 ] ]
+[2026-06-06T01:00:53.539Z] cycle 2343: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2343-2026-06-06T01-00-48-395Z.ndjson
+[2026-06-06T01:01:02.244Z] cycle 2344: 200 domains → 1 hit → 843 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2344-2026-06-06T01-00-58-540Z.ndjson
+[2026-06-06T01:01:36.103Z] cycle 2344 ingest: exit=0 33.9s === STREAM INGEST DONE ===
+files=1 lines=843 valid=843 written=843 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 843 ] ]
+[2026-06-06T01:01:49.657Z] cycle 2345: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2345-2026-06-06T01-01-41-103Z.ndjson
+[2026-06-06T01:01:58.897Z] cycle 2346: 200 domains → 1 hit → 47 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2346-2026-06-06T01-01-54-661Z.ndjson
+[2026-06-06T01:02:17.717Z] cycle 2346 ingest: exit=0 18.8s === STREAM INGEST DONE ===
+files=1 lines=47 valid=47 written=47 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 47 ] ]
+[2026-06-06T01:02:26.545Z] cycle 2347: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2347-2026-06-06T01-02-22-722Z.ndjson
+[2026-06-06T01:02:36.635Z] cycle 2348: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2348-2026-06-06T01-02-31-550Z.ndjson
+[2026-06-06T01:02:49.285Z] cycle 2349: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2349-2026-06-06T01-02-41-640Z.ndjson
+[2026-06-06T01:02:59.775Z] cycle 2350: 200 domains → 1 hit → 76 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2350-2026-06-06T01-02-54-286Z.ndjson
+[2026-06-06T01:03:06.963Z] cycle 2350 ingest: exit=0 7.2s === STREAM INGEST DONE ===
+files=1 lines=76 valid=76 written=76 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 76 ] ]
+[2026-06-06T01:03:16.904Z] cycle 2351: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2351-2026-06-06T01-03-11-967Z.ndjson
+[2026-06-06T01:03:33.268Z] cycle 2352: 200 domains → 1 hit → 1500 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2352-2026-06-06T01-03-21-905Z.ndjson
+[2026-06-06T01:04:25.881Z] cycle 2352 ingest: exit=0 52.6s === STREAM INGEST DONE ===
+files=1 lines=1500 valid=1500 written=1500 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 1500 ] ]
+[2026-06-06T01:05:08.526Z] cycle 2353: 200 domains → 28 hit → 27472 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2353-2026-06-06T01-04-30-885Z.ndjson
+[2026-06-06T01:18:20.859Z] cycle 2353 ingest: exit=0 792.3s === STREAM INGEST DONE ===
+files=1 lines=27472 valid=27472 written=26972 errors=1
+skipped: {}
+top sources: [ [ 'shopify', 27472 ] ]
+[2026-06-06T01:18:57.965Z] cycle 2354: 200 domains → 38 hit → 34269 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2354-2026-06-06T01-18-25-863Z.ndjson
+[2026-06-06T01:32:53.237Z] cycle 2354 ingest: exit=0 835.3s === STREAM INGEST DONE ===
+files=1 lines=34269 valid=34269 written=33769 errors=1
+skipped: {}
+top sources: [ [ 'shopify', 34269 ] ]
+[2026-06-06T01:33:33.112Z] cycle 2355: 200 domains → 102 hit → 78509 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2355-2026-06-06T01-32-58-241Z.ndjson
+[2026-06-06T01:48:36.105Z] cycle 2355 ingest: exit=0 903.0s === STREAM INGEST DONE ===
+files=1 lines=78509 valid=78509 written=78009 errors=1
+skipped: {}
+top sources: [ [ 'shopify', 78509 ] ]
+[2026-06-06T01:49:13.092Z] cycle 2356: 200 domains → 20 hit → 19906 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2356-2026-06-06T01-48-41-133Z.ndjson
+[2026-06-06T01:49:16.685Z] cycle 2356 ingest: exit=0 3.6s === STREAM INGEST DONE ===
+files=1 lines=19906 valid=19906 written=19906 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 19906 ] ]
+[2026-06-06T01:49:56.077Z] cycle 2357: 200 domains → 32 hit → 31094 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2357-2026-06-06T01-49-21-690Z.ndjson
+[2026-06-06T01:50:16.646Z] cycle 2357 ingest: exit=0 20.6s === STREAM INGEST DONE ===
+files=1 lines=31094 valid=31094 written=31094 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 31094 ] ]
+[2026-06-06T01:50:31.589Z] cycle 2358: 200 domains → 14 hit → 10464 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2358-2026-06-06T01-50-21-651Z.ndjson
+[2026-06-06T01:50:37.036Z] cycle 2358 ingest: exit=0 5.4s === STREAM INGEST DONE ===
+files=1 lines=10464 valid=10464 written=10464 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 10464 ] ]
+[2026-06-06T01:50:56.820Z] cycle 2359: 200 domains → 1 hit → 74 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2359-2026-06-06T01-50-42-041Z.ndjson
+[2026-06-06T01:50:57.080Z] cycle 2359 ingest: exit=0 0.3s === STREAM INGEST DONE ===
+files=1 lines=74 valid=74 written=74 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 74 ] ]
+[2026-06-06T01:51:08.700Z] cycle 2360: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2360-2026-06-06T01-51-02-085Z.ndjson
+[2026-06-06T01:51:26.920Z] cycle 2361: 200 domains → 2 hit → 331 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2361-2026-06-06T01-51-13-705Z.ndjson
+[2026-06-06T01:51:27.435Z] cycle 2361 ingest: exit=0 0.5s === STREAM INGEST DONE ===
+files=1 lines=331 valid=331 written=331 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 331 ] ]
+[2026-06-06T01:51:39.537Z] cycle 2362: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2362-2026-06-06T01-51-32-436Z.ndjson
+[2026-06-06T01:51:50.376Z] cycle 2363: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2363-2026-06-06T01-51-44-541Z.ndjson
+[2026-06-06T01:52:02.095Z] cycle 2364: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2364-2026-06-06T01-51-55-376Z.ndjson
+[2026-06-06T01:52:15.650Z] cycle 2365: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2365-2026-06-06T01-52-07-099Z.ndjson
+[2026-06-06T01:52:27.160Z] cycle 2366: 200 domains → 2 hit → 197 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2366-2026-06-06T01-52-20-656Z.ndjson
+[2026-06-06T01:52:27.576Z] cycle 2366 ingest: exit=0 0.4s === STREAM INGEST DONE ===
+files=1 lines=197 valid=197 written=197 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 197 ] ]
+[2026-06-06T01:52:48.045Z] cycle 2367: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2367-2026-06-06T01-52-32-581Z.ndjson
+[2026-06-06T01:53:00.193Z] cycle 2368: 200 domains → 1 hit → 235 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2368-2026-06-06T01-52-53-048Z.ndjson
+[2026-06-06T01:53:04.571Z] cycle 2368 ingest: exit=0 4.4s === STREAM INGEST DONE ===
+files=1 lines=235 valid=235 written=235 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 235 ] ]
+[2026-06-06T01:53:17.940Z] cycle 2369: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2369-2026-06-06T01-53-09-576Z.ndjson
+[2026-06-06T01:53:32.101Z] cycle 2370: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2370-2026-06-06T01-53-22-940Z.ndjson
+[2026-06-06T01:53:45.554Z] cycle 2371: 200 domains → 1 hit → 1500 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2371-2026-06-06T01-53-37-106Z.ndjson
+[2026-06-06T01:53:59.132Z] cycle 2371 ingest: exit=0 13.6s === STREAM INGEST DONE ===
+files=1 lines=1500 valid=1500 written=1500 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 1500 ] ]
+[2026-06-06T01:54:11.788Z] cycle 2372: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2372-2026-06-06T01-54-04-137Z.ndjson
+[2026-06-06T01:54:25.538Z] cycle 2373: 200 domains → 2 hit → 364 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2373-2026-06-06T01-54-16-793Z.ndjson
+[2026-06-06T01:54:46.281Z] cycle 2373 ingest: exit=0 20.7s === STREAM INGEST DONE ===
+files=1 lines=364 valid=364 written=364 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 364 ] ]
+[2026-06-06T01:54:57.716Z] cycle 2374: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2374-2026-06-06T01-54-51-286Z.ndjson
+[2026-06-06T01:55:18.542Z] loaded 16174 candidate domains
+[2026-06-06T01:55:18.543Z] starting at cursor=7062, cycle=2374
+[2026-06-06T01:55:31.169Z] cycle 2375: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2375-2026-06-06T01-55-18-544Z.ndjson
+[2026-06-06T01:55:42.306Z] cycle 2376: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2376-2026-06-06T01-55-36-174Z.ndjson
+[2026-06-06T01:56:01.631Z] cycle 2377: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2377-2026-06-06T01-55-47-312Z.ndjson
+[2026-06-06T01:56:14.588Z] cycle 2378: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2378-2026-06-06T01-56-06-632Z.ndjson
+[2026-06-06T01:56:28.226Z] cycle 2379: 200 domains → 1 hit → 250 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2379-2026-06-06T01-56-19-591Z.ndjson
+[2026-06-06T01:56:35.214Z] cycle 2379 ingest: exit=0 7.0s === STREAM INGEST DONE ===
+files=1 lines=250 valid=250 written=250 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 250 ] ]
+[2026-06-06T01:56:48.230Z] cycle 2380: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2380-2026-06-06T01-56-40-219Z.ndjson
+[2026-06-06T01:57:01.260Z] cycle 2381: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2381-2026-06-06T01-56-53-236Z.ndjson
+[2026-06-06T01:57:19.591Z] cycle 2382: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2382-2026-06-06T01-57-06-265Z.ndjson
+[2026-06-06T01:57:30.311Z] cycle 2383: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2383-2026-06-06T01-57-24-595Z.ndjson
+[2026-06-06T01:57:42.098Z] cycle 2384: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2384-2026-06-06T01-57-35-323Z.ndjson
+[2026-06-06T01:57:55.266Z] cycle 2385: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2385-2026-06-06T01-57-47-101Z.ndjson
+[2026-06-06T01:58:06.855Z] cycle 2386: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2386-2026-06-06T01-58-00-274Z.ndjson
+[2026-06-06T01:58:18.656Z] cycle 2387: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2387-2026-06-06T01-58-11-860Z.ndjson
+[2026-06-06T01:58:36.474Z] cycle 2388: 200 domains → 67 hit → 25218 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30331/cycle-2388-2026-06-06T01-58-23-659Z.ndjson
+[2026-06-06T01:59:09.406Z] loaded 16174 candidate domains
+[2026-06-06T01:59:09.407Z] starting at cursor=9662, cycle=2387
+[2026-06-06T01:59:13.067Z] cycle 2388: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2388-2026-06-06T01-59-09-407Z.ndjson
+[2026-06-06T01:59:25.256Z] cycle 2389: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2389-2026-06-06T01-59-18-076Z.ndjson
+[2026-06-06T01:59:35.875Z] cycle 2390: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2390-2026-06-06T01-59-30-257Z.ndjson
+[2026-06-06T01:59:47.863Z] cycle 2391: 200 domains → 2 hit → 483 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2391-2026-06-06T01-59-40-880Z.ndjson
+[2026-06-06T02:00:05.180Z] cycle 2391 ingest: exit=0 17.3s === STREAM INGEST DONE ===
+files=1 lines=483 valid=483 written=483 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 483 ] ]
+[2026-06-06T02:00:21.950Z] cycle 2392: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2392-2026-06-06T02-00-10-188Z.ndjson
+[2026-06-06T02:00:50.295Z] cycle 2393: 200 domains → 28 hit → 16881 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2393-2026-06-06T02-00-26-950Z.ndjson
+[2026-06-06T02:18:27.490Z] cycle 2393 ingest: exit=0 1057.2s === STREAM INGEST DONE ===
+files=1 lines=16881 valid=16881 written=16000 errors=2
+skipped: {}
+top sources: [ [ 'shopify', 16881 ] ]
+[2026-06-06T02:19:08.192Z] cycle 2394: 200 domains → 115 hit → 48674 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2394-2026-06-06T02-18-32-540Z.ndjson
+[2026-06-06T02:31:02.977Z] cycle 2394 ingest: exit=0 714.8s === STREAM INGEST DONE ===
+files=1 lines=48674 valid=48674 written=48674 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 48674 ] ]
+[2026-06-06T02:31:29.696Z] loaded 16174 candidate domains
+[2026-06-06T02:31:29.712Z] starting at cursor=11062, cycle=2394
+[2026-06-06T02:32:09.898Z] loaded 16174 candidate domains
+[2026-06-06T02:32:09.900Z] starting at cursor=11062, cycle=2394
+[2026-06-06T02:32:52.347Z] cycle 2395: 200 domains → 173 hit → 89839 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2395-2026-06-06T02-32-09-901Z.ndjson
+[2026-06-06T02:33:24.957Z] cycle 2395 ingest: exit=0 32.6s === STREAM INGEST DONE ===
+files=1 lines=89839 valid=89839 written=89839 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 89839 ] ]
+[2026-06-06T02:33:51.999Z] cycle 2396: 200 domains → 100 hit → 42408 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2396-2026-06-06T02-33-29-963Z.ndjson
+[2026-06-06T02:48:21.529Z] cycle 2396 ingest: exit=0 869.5s === STREAM INGEST DONE ===
+files=1 lines=42408 valid=42408 written=41408 errors=2
+skipped: {}
+top sources: [ [ 'shopify', 42408 ] ]
+[2026-06-06T02:48:59.908Z] cycle 2397: 200 domains → 41 hit → 25777 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2397-2026-06-06T02-48-26-568Z.ndjson
+[2026-06-06T02:50:01.381Z] cycle 2397 ingest: exit=0 61.5s === STREAM INGEST DONE ===
+files=1 lines=25777 valid=25777 written=25777 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 25777 ] ]
+[2026-06-06T02:50:38.472Z] cycle 2398: 200 domains → 34 hit → 19851 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2398-2026-06-06T02-50-06-387Z.ndjson
+[2026-06-06T02:51:06.569Z] cycle 2398 ingest: exit=0 28.1s === STREAM INGEST DONE ===
+files=1 lines=19851 valid=19851 written=19851 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 19851 ] ]
+[2026-06-06T02:51:36.728Z] cycle 2399: 200 domains → 41 hit → 27551 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2399-2026-06-06T02-51-11-581Z.ndjson
+[2026-06-06T02:52:01.533Z] cycle 2399 ingest: exit=0 24.8s === STREAM INGEST DONE ===
+files=1 lines=27551 valid=27551 written=27551 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 27551 ] ]
+[2026-06-06T02:52:12.171Z] cycle 2400: 200 domains → 27 hit → 10027 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2400-2026-06-06T02-52-06-539Z.ndjson
+[2026-06-06T02:52:17.348Z] cycle 2400 ingest: exit=0 5.2s === STREAM INGEST DONE ===
+files=1 lines=10027 valid=10027 written=10027 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 10027 ] ]
+[2026-06-06T02:52:23.096Z] cycle 2401: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2401-2026-06-06T02-52-22-354Z.ndjson
+[2026-06-06T02:52:29.036Z] cycle 2402: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2402-2026-06-06T02-52-28-098Z.ndjson
+[2026-06-06T02:52:35.127Z] cycle 2403: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2403-2026-06-06T02-52-34-040Z.ndjson
+[2026-06-06T02:52:40.938Z] cycle 2404: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2404-2026-06-06T02-52-40-130Z.ndjson
+[2026-06-06T02:52:46.741Z] cycle 2405: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2405-2026-06-06T02-52-45-941Z.ndjson
+[2026-06-06T02:52:53.009Z] cycle 2406: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2406-2026-06-06T02-52-51-744Z.ndjson
+[2026-06-06T02:52:59.268Z] cycle 2407: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2407-2026-06-06T02-52-58-013Z.ndjson
+[2026-06-06T02:53:05.161Z] cycle 2408: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2408-2026-06-06T02-53-04-271Z.ndjson
+[2026-06-06T02:53:10.935Z] cycle 2409: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2409-2026-06-06T02-53-10-165Z.ndjson
+[2026-06-06T02:53:17.002Z] cycle 2410: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2410-2026-06-06T02-53-15-940Z.ndjson
+[2026-06-06T02:53:22.772Z] cycle 2411: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2411-2026-06-06T02-53-22-006Z.ndjson
+[2026-06-06T02:53:28.479Z] cycle 2412: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2412-2026-06-06T02-53-27-776Z.ndjson
+[2026-06-06T02:53:34.327Z] cycle 2413: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2413-2026-06-06T02-53-33-482Z.ndjson
+[2026-06-06T02:53:40.793Z] cycle 2414: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2414-2026-06-06T02-53-39-336Z.ndjson
+[2026-06-06T02:53:46.950Z] cycle 2415: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2415-2026-06-06T02-53-45-797Z.ndjson
+[2026-06-06T02:53:53.394Z] cycle 2416: 200 domains → 1 hit → 250 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2416-2026-06-06T02-53-51-956Z.ndjson
+[2026-06-06T02:53:53.869Z] cycle 2416 ingest: exit=0 0.5s === STREAM INGEST DONE ===
+files=1 lines=250 valid=250 written=250 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 250 ] ]
+[2026-06-06T02:53:59.677Z] cycle 2417: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2417-2026-06-06T02-53-58-871Z.ndjson
+[2026-06-06T02:54:15.752Z] cycle 2418: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2418-2026-06-06T02-54-04-683Z.ndjson
+[2026-06-06T02:54:24.341Z] cycle 2419: 200 domains → 4 hit → 521 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2419-2026-06-06T02-54-20-753Z.ndjson
+[2026-06-06T02:54:25.090Z] cycle 2419 ingest: exit=0 0.7s === STREAM INGEST DONE ===
+files=1 lines=521 valid=521 written=521 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 521 ] ]
+[2026-06-06T02:54:31.433Z] cycle 2420: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2420-2026-06-06T02-54-30-092Z.ndjson
+[2026-06-06T02:54:37.189Z] cycle 2421: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2421-2026-06-06T02-54-36-436Z.ndjson
+[2026-06-06T02:54:43.359Z] cycle 2422: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2422-2026-06-06T02-54-42-193Z.ndjson
+[2026-06-06T02:54:50.632Z] cycle 2423: 200 domains → 1 hit → 1500 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2423-2026-06-06T02-54-48-362Z.ndjson
+[2026-06-06T02:54:51.477Z] cycle 2423 ingest: exit=0 0.8s === STREAM INGEST DONE ===
+files=1 lines=1500 valid=1500 written=1500 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 1500 ] ]
+[2026-06-06T02:54:58.615Z] cycle 2424: 200 domains → 1 hit → 843 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2424-2026-06-06T02-54-56-477Z.ndjson
+[2026-06-06T02:55:00.957Z] cycle 2424 ingest: exit=0 2.3s === STREAM INGEST DONE ===
+files=1 lines=843 valid=843 written=843 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 843 ] ]
+[2026-06-06T02:55:07.265Z] cycle 2425: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2425-2026-06-06T02-55-05-958Z.ndjson
+[2026-06-06T02:55:15.799Z] cycle 2426: 200 domains → 1 hit → 250 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2426-2026-06-06T02-55-12-269Z.ndjson
+[2026-06-06T02:55:16.197Z] cycle 2426 ingest: exit=0 0.4s === STREAM INGEST DONE ===
+files=1 lines=250 valid=250 written=250 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 250 ] ]
+[2026-06-06T02:55:23.719Z] cycle 2427: 200 domains → 1 hit → 47 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2427-2026-06-06T02-55-21-198Z.ndjson
+[2026-06-06T02:55:23.994Z] cycle 2427 ingest: exit=0 0.3s === STREAM INGEST DONE ===
+files=1 lines=47 valid=47 written=47 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 47 ] ]
+[2026-06-06T02:55:31.284Z] cycle 2428: 200 domains → 1 hit → 250 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2428-2026-06-06T02-55-28-996Z.ndjson
+[2026-06-06T02:55:32.914Z] cycle 2428 ingest: exit=0 1.6s === STREAM INGEST DONE ===
+files=1 lines=250 valid=250 written=250 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 250 ] ]
+[2026-06-06T02:55:40.058Z] cycle 2429: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2429-2026-06-06T02-55-37-921Z.ndjson
+[2026-06-06T02:55:47.905Z] cycle 2430: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2430-2026-06-06T02-55-45-063Z.ndjson
+[2026-06-06T02:55:55.112Z] cycle 2431: 200 domains → 1 hit → 76 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2431-2026-06-06T02-55-52-911Z.ndjson
+[2026-06-06T02:55:55.479Z] cycle 2431 ingest: exit=0 0.4s === STREAM INGEST DONE ===
+files=1 lines=76 valid=76 written=76 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 76 ] ]
+[2026-06-06T02:56:11.241Z] cycle 2432: 200 domains → 66 hit → 27503 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2432-2026-06-06T02-56-00-480Z.ndjson
+[2026-06-06T02:56:20.786Z] cycle 2432 ingest: exit=0 9.5s === STREAM INGEST DONE ===
+files=1 lines=27503 valid=27503 written=27503 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 27503 ] ]
+[2026-06-06T02:56:32.214Z] cycle 2433: 200 domains → 1 hit → 1500 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2433-2026-06-06T02-56-25-791Z.ndjson
+[2026-06-06T02:56:34.544Z] cycle 2433 ingest: exit=0 2.3s === STREAM INGEST DONE ===
+files=1 lines=1500 valid=1500 written=1500 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 1500 ] ]
+[2026-06-06T02:56:44.422Z] cycle 2434: 200 domains → 1 hit → 662 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2434-2026-06-06T02-56-39-548Z.ndjson
+[2026-06-06T02:56:47.602Z] cycle 2434 ingest: exit=0 3.2s === STREAM INGEST DONE ===
+files=1 lines=662 valid=662 written=662 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 662 ] ]
+[2026-06-06T02:56:55.353Z] cycle 2435: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2435-2026-06-06T02-56-52-606Z.ndjson
+[2026-06-06T02:57:02.870Z] cycle 2436: 200 domains → 1 hit → 61 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2436-2026-06-06T02-57-00-358Z.ndjson
+[2026-06-06T02:57:03.208Z] cycle 2436 ingest: exit=0 0.3s === STREAM INGEST DONE ===
+files=1 lines=61 valid=61 written=61 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 61 ] ]
+[2026-06-06T02:57:11.502Z] cycle 2437: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2437-2026-06-06T02-57-08-210Z.ndjson
+[2026-06-06T02:57:17.811Z] cycle 2438: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2438-2026-06-06T02-57-16-507Z.ndjson
+[2026-06-06T02:57:25.553Z] cycle 2439: 200 domains → 1 hit → 135 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2439-2026-06-06T02-57-22-816Z.ndjson
+[2026-06-06T02:57:26.051Z] cycle 2439 ingest: exit=0 0.5s === STREAM INGEST DONE ===
+files=1 lines=135 valid=135 written=135 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 135 ] ]
+[2026-06-06T02:57:42.428Z] cycle 2440: 200 domains → 1 hit → 74 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2440-2026-06-06T02-57-31-054Z.ndjson
+[2026-06-06T02:57:42.877Z] cycle 2440 ingest: exit=0 0.4s === STREAM INGEST DONE ===
+files=1 lines=74 valid=74 written=74 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 74 ] ]
+[2026-06-06T02:57:52.428Z] cycle 2441: 200 domains → 1 hit → 158 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2441-2026-06-06T02-57-47-878Z.ndjson
+[2026-06-06T02:57:52.756Z] cycle 2441 ingest: exit=0 0.3s === STREAM INGEST DONE ===
+files=1 lines=158 valid=158 written=158 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 158 ] ]
+[2026-06-06T02:58:00.406Z] cycle 2442: 200 domains → 1 hit → 81 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2442-2026-06-06T02-57-57-761Z.ndjson
+[2026-06-06T02:58:00.696Z] cycle 2442 ingest: exit=0 0.3s === STREAM INGEST DONE ===
+files=1 lines=81 valid=81 written=81 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 81 ] ]
+[2026-06-06T02:58:07.560Z] cycle 2443: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2443-2026-06-06T02-58-05-700Z.ndjson
+[2026-06-06T02:58:14.691Z] cycle 2444: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2444-2026-06-06T02-58-12-565Z.ndjson
+[2026-06-06T02:58:22.168Z] cycle 2445: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2445-2026-06-06T02-58-19-693Z.ndjson
+[2026-06-06T02:58:29.449Z] cycle 2446: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2446-2026-06-06T02-58-27-174Z.ndjson
+[2026-06-06T02:58:37.170Z] cycle 2447: 200 domains → 2 hit → 197 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2447-2026-06-06T02-58-34-452Z.ndjson
+[2026-06-06T02:58:37.902Z] cycle 2447 ingest: exit=0 0.7s === STREAM INGEST DONE ===
+files=1 lines=197 valid=197 written=197 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 197 ] ]
+[2026-06-06T02:58:46.270Z] cycle 2448: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2448-2026-06-06T02-58-42-907Z.ndjson
+[2026-06-06T02:58:53.091Z] cycle 2449: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2449-2026-06-06T02-58-51-275Z.ndjson
+[2026-06-06T02:59:00.726Z] cycle 2450: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2450-2026-06-06T02-58-58-093Z.ndjson
+[2026-06-06T02:59:07.588Z] cycle 2451: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2451-2026-06-06T02-59-05-730Z.ndjson
+[2026-06-06T02:59:23.836Z] cycle 2452: 200 domains → 1 hit → 1500 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2452-2026-06-06T02-59-12-592Z.ndjson
+[2026-06-06T02:59:24.563Z] cycle 2452 ingest: exit=0 0.7s === STREAM INGEST DONE ===
+files=1 lines=1500 valid=1500 written=1500 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 1500 ] ]
+[2026-06-06T02:59:34.527Z] cycle 2453: 200 domains → 1 hit → 1116 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2453-2026-06-06T02-59-29-566Z.ndjson
+[2026-06-06T02:59:35.567Z] cycle 2453 ingest: exit=0 1.0s === STREAM INGEST DONE ===
+files=1 lines=1116 valid=1116 written=1116 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 1116 ] ]
+[2026-06-06T02:59:42.231Z] cycle 2454: 200 domains → 1 hit → 114 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2454-2026-06-06T02-59-40-569Z.ndjson
+[2026-06-06T02:59:42.686Z] cycle 2454 ingest: exit=0 0.5s === STREAM INGEST DONE ===
+files=1 lines=114 valid=114 written=114 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 114 ] ]
+[2026-06-06T02:59:50.252Z] cycle 2455: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2455-2026-06-06T02-59-47-690Z.ndjson
+[2026-06-06T02:59:57.578Z] cycle 2456: 200 domains → 1 hit → 68 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2456-2026-06-06T02-59-55-254Z.ndjson
+[2026-06-06T02:59:59.862Z] cycle 2456 ingest: exit=0 2.3s === STREAM INGEST DONE ===
+files=1 lines=68 valid=68 written=68 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 68 ] ]
+[2026-06-06T03:00:21.803Z] cycle 2457: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2457-2026-06-06T03-00-04-866Z.ndjson
+[2026-06-06T03:00:30.194Z] cycle 2458: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2458-2026-06-06T03-00-26-806Z.ndjson
+[2026-06-06T03:00:36.677Z] cycle 2459: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2459-2026-06-06T03-00-35-196Z.ndjson
+[2026-06-06T03:00:43.930Z] cycle 2460: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2460-2026-06-06T03-00-41-682Z.ndjson
+[2026-06-06T03:00:50.845Z] cycle 2461: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2461-2026-06-06T03-00-48-935Z.ndjson
+[2026-06-06T03:00:58.281Z] cycle 2462: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2462-2026-06-06T03-00-55-850Z.ndjson
+[2026-06-06T03:01:05.855Z] cycle 2463: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2463-2026-06-06T03-01-03-284Z.ndjson
+[2026-06-06T03:01:12.622Z] cycle 2464: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2464-2026-06-06T03-01-10-859Z.ndjson
+[2026-06-06T03:01:20.081Z] cycle 2465: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2465-2026-06-06T03-01-17-624Z.ndjson
+[2026-06-06T03:01:27.683Z] cycle 2466: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2466-2026-06-06T03-01-25-087Z.ndjson
+[2026-06-06T03:01:35.849Z] cycle 2467: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2467-2026-06-06T03-01-32-686Z.ndjson
+[2026-06-06T03:01:50.143Z] cycle 2468: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2468-2026-06-06T03-01-40-854Z.ndjson
+[2026-06-06T03:01:57.508Z] cycle 2469: 200 domains → 1 hit → 74 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2469-2026-06-06T03-01-55-147Z.ndjson
+[2026-06-06T03:01:57.744Z] cycle 2469 ingest: exit=0 0.2s === STREAM INGEST DONE ===
+files=1 lines=74 valid=74 written=74 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 74 ] ]
+[2026-06-06T03:02:12.721Z] cycle 2470: 200 domains → 1 hit → 161 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2470-2026-06-06T03-02-02-746Z.ndjson
+[2026-06-06T03:02:13.371Z] cycle 2470 ingest: exit=0 0.6s === STREAM INGEST DONE ===
+files=1 lines=161 valid=161 written=161 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 161 ] ]
+[2026-06-06T03:02:20.825Z] cycle 2471: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2471-2026-06-06T03-02-18-376Z.ndjson
+[2026-06-06T03:02:28.518Z] cycle 2472: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2472-2026-06-06T03-02-25-834Z.ndjson
+[2026-06-06T03:02:35.544Z] cycle 2473: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2473-2026-06-06T03-02-33-526Z.ndjson
+[2026-06-06T03:02:42.620Z] cycle 2474: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2474-2026-06-06T03-02-40-547Z.ndjson
+[2026-06-06T03:02:49.742Z] cycle 2475: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2475-2026-06-06T03-02-47-624Z.ndjson
+[2026-06-06T03:02:58.137Z] cycle 2476: 200 domains → 2 hit → 827 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2476-2026-06-06T03-02-54-746Z.ndjson
+[2026-06-06T03:03:18.663Z] cycle 2476 ingest: exit=0 20.5s === STREAM INGEST DONE ===
+files=1 lines=827 valid=827 written=827 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 827 ] ]
+[2026-06-06T03:03:32.691Z] cycle 2477: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2477-2026-06-06T03-03-23-676Z.ndjson
+[2026-06-06T03:03:39.537Z] cycle 2478: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2478-2026-06-06T03-03-37-695Z.ndjson
+[2026-06-06T03:03:54.132Z] cycle 2479: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2479-2026-06-06T03-03-44-542Z.ndjson
+[2026-06-06T03:04:04.113Z] cycle 2480: 200 domains → 1 hit → 191 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2480-2026-06-06T03-03-59-137Z.ndjson
+[2026-06-06T03:04:06.206Z] cycle 2480 ingest: exit=0 2.1s === STREAM INGEST DONE ===
+files=1 lines=191 valid=191 written=191 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 191 ] ]
+[2026-06-06T03:04:12.227Z] cycle 2481: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2481-2026-06-06T03-04-11-212Z.ndjson
+[2026-06-06T03:04:18.046Z] cycle 2482: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2482-2026-06-06T03-04-17-231Z.ndjson
+[2026-06-06T03:04:23.901Z] cycle 2483: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2483-2026-06-06T03-04-23-052Z.ndjson
+[2026-06-06T03:04:30.390Z] cycle 2484: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2484-2026-06-06T03-04-28-906Z.ndjson
+[2026-06-06T03:04:36.220Z] cycle 2485: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2485-2026-06-06T03-04-35-395Z.ndjson
+[2026-06-06T03:04:41.959Z] cycle 2486: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2486-2026-06-06T03-04-41-225Z.ndjson
+[2026-06-06T03:04:47.855Z] cycle 2487: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2487-2026-06-06T03-04-46-964Z.ndjson
+[2026-06-06T03:04:53.651Z] cycle 2488: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2488-2026-06-06T03-04-52-859Z.ndjson
+[2026-06-06T03:04:59.573Z] cycle 2489: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2489-2026-06-06T03-04-58-655Z.ndjson
+[2026-06-06T03:05:05.435Z] cycle 2490: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2490-2026-06-06T03-05-04-579Z.ndjson
+[2026-06-06T03:05:11.378Z] cycle 2491: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2491-2026-06-06T03-05-10-439Z.ndjson
+[2026-06-06T03:05:17.621Z] cycle 2492: 200 domains → 1 hit → 1 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2492-2026-06-06T03-05-16-383Z.ndjson
+[2026-06-06T03:05:20.564Z] cycle 2492 ingest: exit=0 2.9s === STREAM INGEST DONE ===
+files=1 lines=1 valid=1 written=1 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 1 ] ]
+[2026-06-06T03:05:26.622Z] cycle 2493: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2493-2026-06-06T03-05-25-566Z.ndjson
+[2026-06-06T03:05:32.413Z] cycle 2494: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2494-2026-06-06T03-05-31-627Z.ndjson
+[2026-06-06T03:05:38.176Z] cycle 2495: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2495-2026-06-06T03-05-37-418Z.ndjson
+[2026-06-06T03:05:43.944Z] cycle 2496: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2496-2026-06-06T03-05-43-182Z.ndjson
+[2026-06-06T03:05:49.682Z] cycle 2497: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2497-2026-06-06T03-05-48-949Z.ndjson
+[2026-06-06T03:05:55.470Z] cycle 2498: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2498-2026-06-06T03-05-54-688Z.ndjson
+[2026-06-06T03:06:22.540Z] cycle 2499: 200 domains → 50 hit → 14872 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2499-2026-06-06T03-06-00-474Z.ndjson
+[2026-06-06T03:06:57.240Z] cycle 2499 ingest: exit=0 34.7s === STREAM INGEST DONE ===
+files=1 lines=14872 valid=14872 written=14872 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 14872 ] ]
+[2026-06-06T03:07:08.216Z] cycle 2500: 200 domains → 44 hit → 13356 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2500-2026-06-06T03-07-02-242Z.ndjson
+[2026-06-06T03:07:18.884Z] cycle 2500 ingest: exit=0 10.7s === STREAM INGEST DONE ===
+files=1 lines=13356 valid=13356 written=13356 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 13356 ] ]
+[2026-06-06T03:07:24.842Z] cycle 2501: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2501-2026-06-06T03-07-23-889Z.ndjson
+[2026-06-06T03:07:30.773Z] cycle 2502: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2502-2026-06-06T03-07-29-845Z.ndjson
+[2026-06-06T03:07:38.403Z] cycle 2503: 200 domains → 1 hit → 1500 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2503-2026-06-06T03-07-35-773Z.ndjson
+[2026-06-06T03:07:39.231Z] cycle 2503 ingest: exit=0 0.8s === STREAM INGEST DONE ===
+files=1 lines=1500 valid=1500 written=1500 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 1500 ] ]
+[2026-06-06T03:07:45.542Z] cycle 2504: 200 domains → 1 hit → 12 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2504-2026-06-06T03-07-44-233Z.ndjson
+[2026-06-06T03:07:45.749Z] cycle 2504 ingest: exit=0 0.2s === STREAM INGEST DONE ===
+files=1 lines=12 valid=12 written=12 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 12 ] ]
+[2026-06-06T03:07:52.651Z] cycle 2505: 200 domains → 1 hit → 843 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2505-2026-06-06T03-07-50-752Z.ndjson
+[2026-06-06T03:07:53.264Z] cycle 2505 ingest: exit=0 0.6s === STREAM INGEST DONE ===
+files=1 lines=843 valid=843 written=843 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 843 ] ]
+[2026-06-06T03:07:59.343Z] cycle 2506: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2506-2026-06-06T03-07-58-265Z.ndjson
+[2026-06-06T03:08:06.136Z] cycle 2507: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2507-2026-06-06T03-08-04-347Z.ndjson
+[2026-06-06T03:08:13.051Z] cycle 2508: 200 domains → 1 hit → 47 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2508-2026-06-06T03-08-11-138Z.ndjson
+[2026-06-06T03:08:13.367Z] cycle 2508 ingest: exit=0 0.3s === STREAM INGEST DONE ===
+files=1 lines=47 valid=47 written=47 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 47 ] ]
+[2026-06-06T03:08:20.067Z] cycle 2509: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2509-2026-06-06T03-08-18-369Z.ndjson
+[2026-06-06T03:08:28.403Z] cycle 2510: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2510-2026-06-06T03-08-25-072Z.ndjson
+[2026-06-06T03:08:36.222Z] cycle 2511: 200 domains → 1 hit → 250 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2511-2026-06-06T03-08-33-408Z.ndjson
+[2026-06-06T03:08:36.845Z] cycle 2511 ingest: exit=0 0.6s === STREAM INGEST DONE ===
+files=1 lines=250 valid=250 written=250 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 250 ] ]
+[2026-06-06T03:08:44.467Z] cycle 2512: 200 domains → 1 hit → 76 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2512-2026-06-06T03-08-41-846Z.ndjson
+[2026-06-06T03:08:44.854Z] cycle 2512 ingest: exit=0 0.4s === STREAM INGEST DONE ===
+files=1 lines=76 valid=76 written=76 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 76 ] ]
+[2026-06-06T03:08:51.997Z] cycle 2513: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2513-2026-06-06T03-08-49-859Z.ndjson
+[2026-06-06T03:09:00.766Z] cycle 2514: 200 domains → 2 hit → 1750 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2514-2026-06-06T03-08-57-001Z.ndjson
+[2026-06-06T03:09:01.551Z] cycle 2514 ingest: exit=0 0.8s === STREAM INGEST DONE ===
+files=1 lines=1750 valid=1750 written=1750 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 1750 ] ]
+[2026-06-06T03:09:13.927Z] cycle 2515: 200 domains → 1 hit → 662 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2515-2026-06-06T03-09-06-553Z.ndjson
+[2026-06-06T03:09:14.727Z] cycle 2515 ingest: exit=0 0.8s === STREAM INGEST DONE ===
+files=1 lines=662 valid=662 written=662 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 662 ] ]
+[2026-06-06T03:09:21.471Z] cycle 2516: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2516-2026-06-06T03-09-19-731Z.ndjson
+[2026-06-06T03:09:28.774Z] cycle 2517: 200 domains → 1 hit → 61 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2517-2026-06-06T03-09-26-477Z.ndjson
+[2026-06-06T03:09:29.093Z] cycle 2517 ingest: exit=0 0.3s === STREAM INGEST DONE ===
+files=1 lines=61 valid=61 written=61 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 61 ] ]
+[2026-06-06T03:09:36.051Z] cycle 2518: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2518-2026-06-06T03-09-34-097Z.ndjson
+[2026-06-06T03:09:43.680Z] cycle 2519: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2519-2026-06-06T03-09-41-057Z.ndjson
+[2026-06-06T03:09:51.698Z] cycle 2520: 200 domains → 2 hit → 209 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2520-2026-06-06T03-09-48-683Z.ndjson
+[2026-06-06T03:09:52.191Z] cycle 2520 ingest: exit=0 0.5s === STREAM INGEST DONE ===
+files=1 lines=209 valid=209 written=209 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 209 ] ]
+[2026-06-06T03:10:07.580Z] cycle 2521: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2521-2026-06-06T03-09-57-193Z.ndjson
+[2026-06-06T03:10:17.320Z] cycle 2522: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2522-2026-06-06T03-10-12-585Z.ndjson
+[2026-06-06T03:10:24.712Z] cycle 2523: 200 domains → 1 hit → 81 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2523-2026-06-06T03-10-22-325Z.ndjson
+[2026-06-06T03:10:27.064Z] cycle 2523 ingest: exit=0 2.4s === STREAM INGEST DONE ===
+files=1 lines=81 valid=81 written=81 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 81 ] ]
+[2026-06-06T03:10:36.241Z] cycle 2524: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2524-2026-06-06T03-10-32-067Z.ndjson
+[2026-06-06T03:10:42.952Z] cycle 2525: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2525-2026-06-06T03-10-41-245Z.ndjson
+[2026-06-06T03:10:50.787Z] cycle 2526: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2526-2026-06-06T03-10-47-956Z.ndjson
+[2026-06-06T03:11:00.180Z] cycle 2527: 200 domains → 1 hit → 99 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2527-2026-06-06T03-10-55-792Z.ndjson
+[2026-06-06T03:11:00.589Z] cycle 2527 ingest: exit=0 0.4s === STREAM INGEST DONE ===
+files=1 lines=99 valid=99 written=99 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 99 ] ]
+[2026-06-06T03:11:07.026Z] cycle 2528: 200 domains → 1 hit → 98 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2528-2026-06-06T03-11-05-590Z.ndjson
+[2026-06-06T03:11:07.316Z] cycle 2528 ingest: exit=0 0.3s === STREAM INGEST DONE ===
+files=1 lines=98 valid=98 written=98 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 98 ] ]
+[2026-06-06T03:11:14.203Z] cycle 2529: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2529-2026-06-06T03-11-12-318Z.ndjson
+[2026-06-06T03:11:20.893Z] cycle 2530: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2530-2026-06-06T03-11-19-207Z.ndjson
+[2026-06-06T03:11:28.012Z] cycle 2531: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2531-2026-06-06T03-11-25-896Z.ndjson
+[2026-06-06T03:11:34.615Z] cycle 2532: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2532-2026-06-06T03-11-33-017Z.ndjson
+[2026-06-06T03:11:42.114Z] cycle 2533: 200 domains → 2 hit → 1750 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2533-2026-06-06T03-11-39-618Z.ndjson
+[2026-06-06T03:12:00.829Z] cycle 2533 ingest: exit=0 18.7s === STREAM INGEST DONE ===
+files=1 lines=1750 valid=1750 written=1750 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 1750 ] ]
+[2026-06-06T03:12:08.253Z] cycle 2534: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2534-2026-06-06T03-12-05-834Z.ndjson
+[2026-06-06T03:12:27.753Z] cycle 2535: 200 domains → 16 hit → 7751 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2535-2026-06-06T03-12-13-259Z.ndjson
+[2026-06-06T03:12:43.726Z] cycle 2535 ingest: exit=0 16.0s === STREAM INGEST DONE ===
+files=1 lines=7751 valid=7751 written=7751 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 7751 ] ]
+[2026-06-06T03:12:50.633Z] cycle 2536: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2536-2026-06-06T03-12-48-729Z.ndjson
+[2026-06-06T03:12:57.489Z] cycle 2537: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2537-2026-06-06T03-12-55-634Z.ndjson
+[2026-06-06T03:13:11.461Z] cycle 2538: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2538-2026-06-06T03-13-02-493Z.ndjson
+[2026-06-06T03:13:19.409Z] cycle 2539: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2539-2026-06-06T03-13-16-464Z.ndjson
+[2026-06-06T03:13:25.757Z] cycle 2540: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2540-2026-06-06T03-13-24-410Z.ndjson
+[2026-06-06T03:13:31.969Z] cycle 2541: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2541-2026-06-06T03-13-30-763Z.ndjson
+[2026-06-06T03:13:37.897Z] cycle 2542: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2542-2026-06-06T03-13-36-973Z.ndjson
+[2026-06-06T03:13:44.512Z] cycle 2543: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2543-2026-06-06T03-13-42-902Z.ndjson
+[2026-06-06T03:13:50.827Z] cycle 2544: 200 domains → 2 hit → 500 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2544-2026-06-06T03-13-49-517Z.ndjson
+[2026-06-06T03:14:15.346Z] cycle 2544 ingest: exit=0 24.5s === STREAM INGEST DONE ===
+files=1 lines=500 valid=500 written=500 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 500 ] ]
+[2026-06-06T03:14:21.875Z] cycle 2545: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2545-2026-06-06T03-14-20-351Z.ndjson
+[2026-06-06T03:14:27.978Z] cycle 2546: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2546-2026-06-06T03-14-26-881Z.ndjson
+[2026-06-06T03:14:34.263Z] cycle 2547: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2547-2026-06-06T03-14-32-984Z.ndjson
+[2026-06-06T03:14:42.798Z] cycle 2548: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2548-2026-06-06T03-14-39-265Z.ndjson
+[2026-06-06T03:14:50.220Z] cycle 2549: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2549-2026-06-06T03-14-47-803Z.ndjson
+[2026-06-06T03:14:57.274Z] cycle 2550: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2550-2026-06-06T03-14-55-224Z.ndjson
+[2026-06-06T03:15:03.801Z] cycle 2551: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2551-2026-06-06T03-15-02-278Z.ndjson
+[2026-06-06T03:15:09.914Z] cycle 2552: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2552-2026-06-06T03-15-08-807Z.ndjson
+[2026-06-06T03:15:16.366Z] cycle 2553: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2553-2026-06-06T03-15-14-918Z.ndjson
+[2026-06-06T03:15:30.250Z] cycle 2554: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2554-2026-06-06T03-15-21-367Z.ndjson
+[2026-06-06T03:15:36.832Z] cycle 2555: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2555-2026-06-06T03-15-35-253Z.ndjson
+[2026-06-06T03:15:43.406Z] cycle 2556: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2556-2026-06-06T03-15-41-837Z.ndjson
+[2026-06-06T03:15:49.875Z] cycle 2557: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2557-2026-06-06T03-15-48-411Z.ndjson
+[2026-06-06T03:15:56.304Z] cycle 2558: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2558-2026-06-06T03-15-54-881Z.ndjson
+[2026-06-06T03:16:02.808Z] cycle 2559: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2559-2026-06-06T03-16-01-309Z.ndjson
+[2026-06-06T03:16:16.527Z] cycle 2560: 200 domains → 2 hit → 500 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2560-2026-06-06T03-16-07-812Z.ndjson
+[2026-06-06T03:16:30.090Z] cycle 2560 ingest: exit=0 13.6s === STREAM INGEST DONE ===
+files=1 lines=500 valid=500 written=500 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 500 ] ]
+[2026-06-06T03:16:36.662Z] cycle 2561: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2561-2026-06-06T03-16-35-094Z.ndjson
+[2026-06-06T03:16:42.369Z] cycle 2562: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2562-2026-06-06T03-16-41-666Z.ndjson
+[2026-06-06T03:16:48.081Z] cycle 2563: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2563-2026-06-06T03-16-47-373Z.ndjson
+[2026-06-06T03:16:53.783Z] cycle 2564: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2564-2026-06-06T03-16-53-086Z.ndjson
+[2026-06-06T03:17:00.128Z] cycle 2565: 200 domains → 1 hit → 12 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2565-2026-06-06T03-16-58-788Z.ndjson
+[2026-06-06T03:17:01.135Z] cycle 2565 ingest: exit=0 1.0s === STREAM INGEST DONE ===
+files=1 lines=12 valid=12 written=12 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 12 ] ]
+[2026-06-06T03:17:06.823Z] cycle 2566: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2566-2026-06-06T03-17-06-137Z.ndjson
+[2026-06-06T03:17:12.737Z] cycle 2567: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2567-2026-06-06T03-17-11-827Z.ndjson
+[2026-06-06T03:17:18.412Z] cycle 2568: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2568-2026-06-06T03-17-17-742Z.ndjson
+[2026-06-06T03:17:24.236Z] cycle 2569: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2569-2026-06-06T03-17-23-417Z.ndjson
+[2026-06-06T03:17:30.216Z] cycle 2570: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2570-2026-06-06T03-17-29-240Z.ndjson
+[2026-06-06T03:17:35.960Z] cycle 2571: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2571-2026-06-06T03-17-35-220Z.ndjson
+[2026-06-06T03:17:42.083Z] cycle 2572: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2572-2026-06-06T03-17-40-965Z.ndjson
+[2026-06-06T03:17:47.790Z] cycle 2573: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2573-2026-06-06T03-17-47-088Z.ndjson
+[2026-06-06T03:17:53.618Z] cycle 2574: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2574-2026-06-06T03-17-52-794Z.ndjson
+[2026-06-06T03:17:59.454Z] cycle 2575: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2575-2026-06-06T03-17-58-623Z.ndjson
+[2026-06-06T03:18:05.176Z] cycle 2576: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2576-2026-06-06T03-18-04-458Z.ndjson
+[2026-06-06T03:18:10.842Z] cycle 2577: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2577-2026-06-06T03-18-10-180Z.ndjson
+[2026-06-06T03:18:17.012Z] cycle 2578: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2578-2026-06-06T03-18-15-848Z.ndjson
+[2026-06-06T03:18:26.036Z] cycle 2579: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2579-2026-06-06T03-18-22-015Z.ndjson
+[2026-06-06T03:18:39.625Z] cycle 2580: 200 domains → 2 hit → 215 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2580-2026-06-06T03-18-31-037Z.ndjson
+[2026-06-06T03:19:17.865Z] cycle 2580 ingest: exit=0 38.2s === STREAM INGEST DONE ===
+files=1 lines=215 valid=215 written=215 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 215 ] ]
+[2026-06-06T03:19:25.415Z] cycle 2581: 200 domains → 2 hit → 306 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2581-2026-06-06T03-19-22-865Z.ndjson
+[2026-06-06T03:19:58.070Z] cycle 2581 ingest: exit=0 32.7s === STREAM INGEST DONE ===
+files=1 lines=306 valid=306 written=306 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 306 ] ]
+[2026-06-06T03:20:03.969Z] cycle 2582: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2582-2026-06-06T03-20-03-071Z.ndjson
+[2026-06-06T03:20:09.978Z] cycle 2583: 200 domains → 1 hit → 11 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2583-2026-06-06T03-20-08-969Z.ndjson
+[2026-06-06T03:20:13.422Z] cycle 2583 ingest: exit=0 3.4s === STREAM INGEST DONE ===
+files=1 lines=11 valid=11 written=11 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 11 ] ]
+[2026-06-06T03:20:20.061Z] cycle 2584: 200 domains → 1 hit → 1500 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2584-2026-06-06T03-20-18-424Z.ndjson
+[2026-06-06T03:21:15.296Z] cycle 2584 ingest: exit=0 55.2s === STREAM INGEST DONE ===
+files=1 lines=1500 valid=1500 written=1500 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 1500 ] ]
+[2026-06-06T03:21:22.464Z] cycle 2585: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2585-2026-06-06T03-21-20-302Z.ndjson
+[2026-06-06T03:21:30.276Z] cycle 2586: 200 domains → 1 hit → 843 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2586-2026-06-06T03-21-27-469Z.ndjson
+[2026-06-06T03:21:58.028Z] cycle 2586 ingest: exit=0 27.8s === STREAM INGEST DONE ===
+files=1 lines=843 valid=843 written=843 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 843 ] ]
+[2026-06-06T03:22:04.148Z] cycle 2587: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2587-2026-06-06T03-22-03-033Z.ndjson
+[2026-06-06T03:22:12.569Z] cycle 2588: 200 domains → 2 hit → 297 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2588-2026-06-06T03-22-09-153Z.ndjson
+[2026-06-06T03:22:32.849Z] cycle 2588 ingest: exit=0 20.3s === STREAM INGEST DONE ===
+files=1 lines=297 valid=297 written=297 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 297 ] ]
+[2026-06-06T03:22:39.238Z] cycle 2589: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2589-2026-06-06T03-22-37-850Z.ndjson
+[2026-06-06T03:22:48.090Z] cycle 2590: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2590-2026-06-06T03-22-44-243Z.ndjson
+[2026-06-06T03:22:54.741Z] cycle 2591: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2591-2026-06-06T03-22-53-096Z.ndjson
+[2026-06-06T03:23:01.033Z] cycle 2592: 200 domains → 1 hit → 76 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2592-2026-06-06T03-22-59-746Z.ndjson
+[2026-06-06T03:23:11.050Z] cycle 2592 ingest: exit=0 10.0s === STREAM INGEST DONE ===
+files=1 lines=76 valid=76 written=76 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 76 ] ]
+[2026-06-06T03:23:17.898Z] cycle 2593: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2593-2026-06-06T03-23-16-055Z.ndjson
+[2026-06-06T03:23:24.362Z] cycle 2594: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2594-2026-06-06T03-23-22-900Z.ndjson
+[2026-06-06T03:23:31.522Z] cycle 2595: 200 domains → 1 hit → 1500 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2595-2026-06-06T03-23-29-368Z.ndjson
+[2026-06-06T03:23:58.776Z] cycle 2595 ingest: exit=0 27.3s === STREAM INGEST DONE ===
+files=1 lines=1500 valid=1500 written=1500 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 1500 ] ]
+[2026-06-06T03:24:08.339Z] cycle 2596: 200 domains → 1 hit → 662 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2596-2026-06-06T03-24-03-781Z.ndjson
+[2026-06-06T03:24:40.603Z] cycle 2596 ingest: exit=0 32.3s === STREAM INGEST DONE ===
+files=1 lines=662 valid=662 written=662 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 662 ] ]
+[2026-06-06T03:24:47.131Z] cycle 2597: 200 domains → 1 hit → 250 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2597-2026-06-06T03-24-45-609Z.ndjson
+[2026-06-06T03:25:03.815Z] cycle 2597 ingest: exit=0 16.7s === STREAM INGEST DONE ===
+files=1 lines=250 valid=250 written=250 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 250 ] ]
+[2026-06-06T03:25:10.508Z] cycle 2598: 200 domains → 1 hit → 61 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2598-2026-06-06T03-25-08-824Z.ndjson
+[2026-06-06T03:25:17.576Z] cycle 2598 ingest: exit=0 7.1s === STREAM INGEST DONE ===
+files=1 lines=61 valid=61 written=61 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 61 ] ]
+[2026-06-06T03:25:25.225Z] cycle 2599: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2599-2026-06-06T03-25-22-582Z.ndjson
+[2026-06-06T03:25:32.520Z] cycle 2600: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2600-2026-06-06T03-25-30-231Z.ndjson
+[2026-06-06T03:25:40.101Z] cycle 2601: 200 domains → 2 hit → 209 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2601-2026-06-06T03-25-37-525Z.ndjson
+[2026-06-06T03:26:01.516Z] cycle 2601 ingest: exit=0 21.4s === STREAM INGEST DONE ===
+files=1 lines=209 valid=209 written=209 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 209 ] ]
+[2026-06-06T03:26:16.433Z] cycle 2602: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2602-2026-06-06T03-26-06-521Z.ndjson
+[2026-06-06T03:26:26.130Z] cycle 2603: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2603-2026-06-06T03-26-21-438Z.ndjson
+[2026-06-06T03:26:33.840Z] cycle 2604: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2604-2026-06-06T03-26-31-134Z.ndjson
+[2026-06-06T03:26:42.544Z] cycle 2605: 200 domains → 1 hit → 250 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2605-2026-06-06T03-26-38-845Z.ndjson
+[2026-06-06T03:26:54.082Z] cycle 2605 ingest: exit=0 11.5s === STREAM INGEST DONE ===
+files=1 lines=250 valid=250 written=250 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 250 ] ]
+[2026-06-06T03:27:00.703Z] cycle 2606: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2606-2026-06-06T03-26-59-087Z.ndjson
+[2026-06-06T03:27:07.855Z] cycle 2607: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2607-2026-06-06T03-27-05-708Z.ndjson
+[2026-06-06T03:27:20.477Z] cycle 2608: 200 domains → 41 hit → 30797 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2608-2026-06-06T03-27-12-859Z.ndjson
+[2026-06-06T03:37:20.896Z] cycle 2608 ingest: exit=0 600.4s === STREAM INGEST DONE ===
+files=1 lines=30797 valid=30797 written=29297 errors=3
+skipped: {}
+top sources: [ [ 'shopify', 30797 ] ]
+[2026-06-06T03:37:30.111Z] cycle 2609: 200 domains → 54 hit → 12031 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2609-2026-06-06T03-37-25-900Z.ndjson
+[2026-06-06T03:40:02.472Z] cycle 2609 ingest: exit=0 152.4s === STREAM INGEST DONE ===
+files=1 lines=12031 valid=12031 written=12031 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 12031 ] ]
+[2026-06-06T03:40:10.689Z] cycle 2610: 200 domains → 1 hit → 250 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2610-2026-06-06T03-40-07-476Z.ndjson
+[2026-06-06T03:40:11.257Z] cycle 2610 ingest: exit=0 0.6s === STREAM INGEST DONE ===
+files=1 lines=250 valid=250 written=250 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 250 ] ]
+[2026-06-06T03:40:18.080Z] cycle 2611: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2611-2026-06-06T03-40-16-260Z.ndjson
+[2026-06-06T03:40:25.416Z] cycle 2612: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2612-2026-06-06T03-40-23-084Z.ndjson
+[2026-06-06T03:40:33.159Z] cycle 2613: 200 domains → 1 hit → 1500 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2613-2026-06-06T03-40-30-421Z.ndjson
+[2026-06-06T03:40:51.334Z] cycle 2613 ingest: exit=0 18.2s === STREAM INGEST DONE ===
+files=1 lines=1500 valid=1500 written=1500 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 1500 ] ]
+[2026-06-06T03:40:58.893Z] cycle 2614: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2614-2026-06-06T03-40-56-338Z.ndjson
+[2026-06-06T03:41:09.832Z] cycle 2615: 200 domains → 2 hit → 1230 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2615-2026-06-06T03-41-03-894Z.ndjson
+[2026-06-06T03:41:52.317Z] cycle 2615 ingest: exit=0 42.5s === STREAM INGEST DONE ===
+files=1 lines=1230 valid=1230 written=1230 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 1230 ] ]
+[2026-06-06T03:41:59.459Z] cycle 2616: 200 domains → 1 hit → 59 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2616-2026-06-06T03-41-57-321Z.ndjson
+[2026-06-06T03:42:03.661Z] cycle 2616 ingest: exit=0 4.2s === STREAM INGEST DONE ===
+files=1 lines=59 valid=59 written=59 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 59 ] ]
+[2026-06-06T03:42:10.674Z] cycle 2617: 200 domains → 1 hit → 68 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2617-2026-06-06T03-42-08-665Z.ndjson
+[2026-06-06T03:42:14.735Z] cycle 2617 ingest: exit=0 4.1s === STREAM INGEST DONE ===
+files=1 lines=68 valid=68 written=68 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 68 ] ]
+[2026-06-06T03:42:22.283Z] cycle 2618: 200 domains → 1 hit → 250 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2618-2026-06-06T03-42-19-740Z.ndjson
+[2026-06-06T03:42:30.359Z] cycle 2618 ingest: exit=0 8.1s === STREAM INGEST DONE ===
+files=1 lines=250 valid=250 written=250 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 250 ] ]
+[2026-06-06T03:42:44.672Z] cycle 2619: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2619-2026-06-06T03-42-35-363Z.ndjson
+[2026-06-06T03:42:52.471Z] cycle 2620: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2620-2026-06-06T03-42-49-676Z.ndjson
+[2026-06-06T03:42:59.162Z] cycle 2621: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2621-2026-06-06T03-42-57-472Z.ndjson
+[2026-06-06T03:43:06.265Z] cycle 2622: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2622-2026-06-06T03-43-04-165Z.ndjson
+[2026-06-06T03:43:12.913Z] cycle 2623: 200 domains → 2 hit → 295 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2623-2026-06-06T03-43-11-270Z.ndjson
+[2026-06-06T03:43:35.423Z] cycle 2623 ingest: exit=0 22.5s === STREAM INGEST DONE ===
+files=1 lines=295 valid=295 written=295 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 295 ] ]
+[2026-06-06T03:43:47.802Z] cycle 2624: 200 domains → 21 hit → 12660 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2624-2026-06-06T03-43-40-429Z.ndjson
+[2026-06-06T03:48:14.816Z] cycle 2624 ingest: exit=0 267.0s === STREAM INGEST DONE ===
+files=1 lines=12660 valid=12660 written=12660 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 12660 ] ]
+[2026-06-06T03:48:21.969Z] cycle 2625: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2625-2026-06-06T03-48-19-822Z.ndjson
+[2026-06-06T03:48:28.681Z] cycle 2626: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2626-2026-06-06T03-48-26-971Z.ndjson
+[2026-06-06T03:48:35.302Z] cycle 2627: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2627-2026-06-06T03-48-33-686Z.ndjson
+[2026-06-06T03:48:42.653Z] cycle 2628: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2628-2026-06-06T03-48-40-306Z.ndjson
+[2026-06-06T03:48:51.118Z] cycle 2629: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2629-2026-06-06T03-48-47-655Z.ndjson
+[2026-06-06T03:48:59.733Z] cycle 2630: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2630-2026-06-06T03-48-56-123Z.ndjson
+[2026-06-06T03:49:07.237Z] cycle 2631: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2631-2026-06-06T03-49-04-737Z.ndjson
+[2026-06-06T03:49:14.185Z] cycle 2632: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2632-2026-06-06T03-49-12-240Z.ndjson
+[2026-06-06T03:49:21.468Z] cycle 2633: 200 domains → 1 hit → 55 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2633-2026-06-06T03-49-19-190Z.ndjson
+[2026-06-06T03:49:21.896Z] cycle 2633 ingest: exit=0 0.4s === STREAM INGEST DONE ===
+files=1 lines=55 valid=55 written=55 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 55 ] ]
+[2026-06-06T03:49:28.192Z] cycle 2634: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2634-2026-06-06T03-49-26-898Z.ndjson
+[2026-06-06T03:49:42.994Z] cycle 2635: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2635-2026-06-06T03-49-33-194Z.ndjson
+[2026-06-06T03:49:49.689Z] cycle 2636: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2636-2026-06-06T03-49-48-003Z.ndjson
+[2026-06-06T03:50:03.478Z] cycle 2637: 200 domains → 1 hit → 132 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2637-2026-06-06T03-49-54-694Z.ndjson
+[2026-06-06T03:50:03.924Z] cycle 2637 ingest: exit=0 0.4s === STREAM INGEST DONE ===
+files=1 lines=132 valid=132 written=132 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 132 ] ]
+[2026-06-06T03:50:12.665Z] cycle 2638: 200 domains → 1 hit → 695 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2638-2026-06-06T03-50-08-926Z.ndjson
+[2026-06-06T03:50:13.333Z] cycle 2638 ingest: exit=0 0.7s === STREAM INGEST DONE ===
+files=1 lines=695 valid=695 written=695 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 695 ] ]
+[2026-06-06T03:50:19.633Z] cycle 2639: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2639-2026-06-06T03-50-18-337Z.ndjson
+[2026-06-06T03:50:35.477Z] cycle 2640: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2640-2026-06-06T03-50-24-635Z.ndjson
+[2026-06-06T03:50:42.791Z] cycle 2641: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2641-2026-06-06T03-50-40-479Z.ndjson
+[2026-06-06T03:50:49.118Z] cycle 2642: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2642-2026-06-06T03-50-47-791Z.ndjson
+[2026-06-06T03:50:55.151Z] cycle 2643: 200 domains → 1 hit → 29 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2643-2026-06-06T03-50-54-122Z.ndjson
+[2026-06-06T03:50:55.357Z] cycle 2643 ingest: exit=0 0.2s === STREAM INGEST DONE ===
+files=1 lines=29 valid=29 written=29 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 29 ] ]
+[2026-06-06T03:51:01.358Z] cycle 2644: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2644-2026-06-06T03-51-00-359Z.ndjson
+[2026-06-06T03:51:07.095Z] cycle 2645: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2645-2026-06-06T03-51-06-363Z.ndjson
+[2026-06-06T03:51:12.800Z] cycle 2646: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2646-2026-06-06T03-51-12-099Z.ndjson
+[2026-06-06T03:51:19.043Z] cycle 2647: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2647-2026-06-06T03-51-17-805Z.ndjson
+[2026-06-06T03:51:25.039Z] cycle 2648: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2648-2026-06-06T03-51-24-049Z.ndjson
+[2026-06-06T03:51:30.822Z] cycle 2649: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2649-2026-06-06T03-51-30-045Z.ndjson
+[2026-06-06T03:51:36.747Z] cycle 2650: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2650-2026-06-06T03-51-35-827Z.ndjson
+[2026-06-06T03:51:42.558Z] cycle 2651: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2651-2026-06-06T03-51-41-751Z.ndjson
+[2026-06-06T03:51:48.287Z] cycle 2652: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2652-2026-06-06T03-51-47-563Z.ndjson
+[2026-06-06T03:51:53.958Z] cycle 2653: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2653-2026-06-06T03-51-53-292Z.ndjson
+[2026-06-06T03:51:59.583Z] cycle 2654: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2654-2026-06-06T03-51-58-963Z.ndjson
+[2026-06-06T03:52:05.702Z] cycle 2655: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2655-2026-06-06T03-52-04-587Z.ndjson
+[2026-06-06T03:52:11.546Z] cycle 2656: 200 domains → 1 hit → 35 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2656-2026-06-06T03-52-10-707Z.ndjson
+[2026-06-06T03:52:11.758Z] cycle 2656 ingest: exit=0 0.2s === STREAM INGEST DONE ===
+files=1 lines=35 valid=35 written=35 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 35 ] ]
+[2026-06-06T03:52:17.501Z] cycle 2657: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2657-2026-06-06T03-52-16-759Z.ndjson
+[2026-06-06T03:52:23.166Z] cycle 2658: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2658-2026-06-06T03-52-22-508Z.ndjson
+[2026-06-06T03:52:28.867Z] cycle 2659: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2659-2026-06-06T03-52-28-170Z.ndjson
+[2026-06-06T03:52:40.583Z] cycle 2660: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2660-2026-06-06T03-52-33-872Z.ndjson
+[2026-06-06T03:52:49.239Z] cycle 2661: 200 domains → 2 hit → 215 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2661-2026-06-06T03-52-45-583Z.ndjson
+[2026-06-06T03:52:49.941Z] cycle 2661 ingest: exit=0 0.7s === STREAM INGEST DONE ===
+files=1 lines=215 valid=215 written=215 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 215 ] ]
+[2026-06-06T03:52:57.518Z] cycle 2662: 200 domains → 2 hit → 306 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2662-2026-06-06T03-52-54-940Z.ndjson
+[2026-06-06T03:52:58.161Z] cycle 2662 ingest: exit=0 0.6s === STREAM INGEST DONE ===
+files=1 lines=306 valid=306 written=306 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 306 ] ]
+[2026-06-06T03:53:03.968Z] cycle 2663: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2663-2026-06-06T03-53-03-162Z.ndjson
+[2026-06-06T03:53:09.998Z] cycle 2664: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2664-2026-06-06T03-53-08-981Z.ndjson
+[2026-06-06T03:53:18.365Z] cycle 2665: 200 domains → 1 hit → 1500 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2665-2026-06-06T03-53-15-002Z.ndjson
+[2026-06-06T03:53:19.449Z] cycle 2665 ingest: exit=0 1.1s === STREAM INGEST DONE ===
+files=1 lines=1500 valid=1500 written=1500 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 1500 ] ]
+[2026-06-06T03:53:27.017Z] cycle 2666: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2666-2026-06-06T03-53-24-451Z.ndjson
+[2026-06-06T03:53:34.944Z] cycle 2667: 200 domains → 1 hit → 843 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2667-2026-06-06T03-53-32-023Z.ndjson
+[2026-06-06T03:53:35.754Z] cycle 2667 ingest: exit=0 0.8s === STREAM INGEST DONE ===
+files=1 lines=843 valid=843 written=843 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 843 ] ]
+[2026-06-06T03:53:41.771Z] cycle 2668: 200 domains → 1 hit → 250 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2668-2026-06-06T03-53-40-756Z.ndjson
+[2026-06-06T03:53:42.387Z] cycle 2668 ingest: exit=0 0.6s === STREAM INGEST DONE ===
+files=1 lines=250 valid=250 written=250 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 250 ] ]
+[2026-06-06T03:53:57.597Z] cycle 2669: 200 domains → 11 hit → 8438 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2669-2026-06-06T03-53-47-390Z.ndjson
+[2026-06-06T03:54:12.928Z] cycle 2669 ingest: exit=0 15.3s === STREAM INGEST DONE ===
+files=1 lines=8438 valid=8438 written=8438 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 8438 ] ]
+[2026-06-06T03:54:19.287Z] cycle 2670: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2670-2026-06-06T03-54-17-928Z.ndjson
+[2026-06-06T03:54:25.635Z] cycle 2671: 200 domains → 2 hit → 145 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2671-2026-06-06T03-54-24-292Z.ndjson
+[2026-06-06T03:54:26.032Z] cycle 2671 ingest: exit=0 0.4s === STREAM INGEST DONE ===
+files=1 lines=145 valid=145 written=145 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 145 ] ]
+[2026-06-06T03:54:32.236Z] cycle 2672: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2672-2026-06-06T03-54-31-035Z.ndjson
+[2026-06-06T03:54:39.370Z] cycle 2673: 200 domains → 1 hit → 76 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2673-2026-06-06T03-54-37-241Z.ndjson
+[2026-06-06T03:54:39.901Z] cycle 2673 ingest: exit=0 0.5s === STREAM INGEST DONE ===
+files=1 lines=76 valid=76 written=76 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 76 ] ]
+[2026-06-06T03:54:47.877Z] cycle 2674: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2674-2026-06-06T03-54-44-903Z.ndjson
+[2026-06-06T03:54:54.795Z] cycle 2675: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2675-2026-06-06T03-54-52-880Z.ndjson
+[2026-06-06T03:55:03.501Z] cycle 2676: 200 domains → 2 hit → 1750 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2676-2026-06-06T03-54-59-798Z.ndjson
+[2026-06-06T03:55:04.119Z] cycle 2676 ingest: exit=0 0.6s === STREAM INGEST DONE ===
+files=1 lines=1750 valid=1750 written=1750 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 1750 ] ]
+[2026-06-06T03:55:12.006Z] cycle 2677: 200 domains → 1 hit → 662 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2677-2026-06-06T03-55-09-123Z.ndjson
+[2026-06-06T03:55:12.840Z] cycle 2677 ingest: exit=0 0.8s === STREAM INGEST DONE ===
+files=1 lines=662 valid=662 written=662 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 662 ] ]
+[2026-06-06T03:55:18.847Z] cycle 2678: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2678-2026-06-06T03-55-17-843Z.ndjson
+[2026-06-06T03:55:25.181Z] cycle 2679: 200 domains → 1 hit → 61 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2679-2026-06-06T03-55-23-852Z.ndjson
+[2026-06-06T03:55:25.502Z] cycle 2679 ingest: exit=0 0.3s === STREAM INGEST DONE ===
+files=1 lines=61 valid=61 written=61 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 61 ] ]
+[2026-06-06T03:55:31.885Z] cycle 2680: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2680-2026-06-06T03-55-30-505Z.ndjson
+[2026-06-06T03:55:38.628Z] cycle 2681: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2681-2026-06-06T03-55-36-889Z.ndjson
+[2026-06-06T03:55:47.759Z] cycle 2682: 200 domains → 2 hit → 209 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2682-2026-06-06T03-55-43-632Z.ndjson
+[2026-06-06T03:55:48.257Z] cycle 2682 ingest: exit=0 0.5s === STREAM INGEST DONE ===
+files=1 lines=209 valid=209 written=209 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 209 ] ]
+[2026-06-06T03:56:02.575Z] cycle 2683: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2683-2026-06-06T03-55-53-259Z.ndjson
+[2026-06-06T03:56:13.555Z] cycle 2684: 200 domains → 1 hit → 81 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2684-2026-06-06T03-56-07-580Z.ndjson
+[2026-06-06T03:56:14.176Z] cycle 2684 ingest: exit=0 0.6s === STREAM INGEST DONE ===
+files=1 lines=81 valid=81 written=81 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 81 ] ]
+[2026-06-06T03:56:22.021Z] cycle 2685: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2685-2026-06-06T03-56-19-177Z.ndjson
+[2026-06-06T03:56:30.200Z] cycle 2686: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2686-2026-06-06T03-56-27-025Z.ndjson
+[2026-06-06T03:56:37.078Z] cycle 2687: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2687-2026-06-06T03-56-35-203Z.ndjson
+[2026-06-06T03:56:44.451Z] cycle 2688: 200 domains → 1 hit → 128 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2688-2026-06-06T03-56-42-080Z.ndjson
+[2026-06-06T03:56:44.692Z] cycle 2688 ingest: exit=0 0.2s === STREAM INGEST DONE ===
+files=1 lines=128 valid=128 written=128 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 128 ] ]
+[2026-06-06T03:56:52.278Z] cycle 2689: 200 domains → 1 hit → 99 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2689-2026-06-06T03-56-49-694Z.ndjson
+[2026-06-06T03:56:52.604Z] cycle 2689 ingest: exit=0 0.3s === STREAM INGEST DONE ===
+files=1 lines=99 valid=99 written=99 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 99 ] ]
+[2026-06-06T03:56:59.928Z] cycle 2690: 200 domains → 1 hit → 98 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2690-2026-06-06T03-56-57-608Z.ndjson
+[2026-06-06T03:57:00.312Z] cycle 2690 ingest: exit=0 0.4s === STREAM INGEST DONE ===
+files=1 lines=98 valid=98 written=98 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 98 ] ]
+[2026-06-06T03:57:10.084Z] cycle 2691: 200 domains → 2 hit → 358 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2691-2026-06-06T03-57-05-315Z.ndjson
+[2026-06-06T03:57:10.596Z] cycle 2691 ingest: exit=0 0.5s === STREAM INGEST DONE ===
+files=1 lines=358 valid=358 written=358 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 358 ] ]
+[2026-06-06T03:57:24.800Z] cycle 2692: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2692-2026-06-06T03-57-15-599Z.ndjson
+[2026-06-06T03:57:32.226Z] cycle 2693: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2693-2026-06-06T03-57-29-804Z.ndjson
+[2026-06-06T03:57:53.722Z] cycle 2694: 200 domains → 20 hit → 7186 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2694-2026-06-06T03-57-37-230Z.ndjson
+[2026-06-06T03:58:02.555Z] cycle 2694 ingest: exit=0 8.8s === STREAM INGEST DONE ===
+files=1 lines=7186 valid=7186 written=7186 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 7186 ] ]
+[2026-06-06T03:58:11.949Z] cycle 2695: 200 domains → 1 hit → 1116 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2695-2026-06-06T03-58-07-560Z.ndjson
+[2026-06-06T03:58:13.032Z] cycle 2695 ingest: exit=0 1.1s === STREAM INGEST DONE ===
+files=1 lines=1116 valid=1116 written=1116 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 1116 ] ]
+[2026-06-06T03:58:19.532Z] cycle 2696: 200 domains → 1 hit → 114 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2696-2026-06-06T03-58-18-034Z.ndjson
+[2026-06-06T03:58:19.925Z] cycle 2696 ingest: exit=0 0.4s === STREAM INGEST DONE ===
+files=1 lines=114 valid=114 written=114 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 114 ] ]
+[2026-06-06T03:58:26.534Z] cycle 2697: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2697-2026-06-06T03-58-24-927Z.ndjson
+[2026-06-06T03:58:34.470Z] cycle 2698: 200 domains → 1 hit → 68 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2698-2026-06-06T03-58-31-538Z.ndjson
+[2026-06-06T03:58:34.886Z] cycle 2698 ingest: exit=0 0.4s === STREAM INGEST DONE ===
+files=1 lines=68 valid=68 written=68 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 68 ] ]
+[2026-06-06T03:58:42.709Z] cycle 2699: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2699-2026-06-06T03-58-39-897Z.ndjson
+[2026-06-06T03:58:56.455Z] cycle 2700: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2700-2026-06-06T03-58-47-714Z.ndjson
+[2026-06-06T03:59:05.363Z] cycle 2701: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2701-2026-06-06T03-59-01-459Z.ndjson
+[2026-06-06T03:59:12.583Z] cycle 2702: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2702-2026-06-06T03-59-10-364Z.ndjson
+[2026-06-06T03:59:19.065Z] cycle 2703: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2703-2026-06-06T03-59-17-588Z.ndjson
+[2026-06-06T03:59:32.944Z] cycle 2704: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2704-2026-06-06T03-59-24-071Z.ndjson
+[2026-06-06T03:59:39.775Z] cycle 2705: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2705-2026-06-06T03-59-37-948Z.ndjson
+[2026-06-06T03:59:47.872Z] cycle 2706: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2706-2026-06-06T03-59-44-780Z.ndjson
+[2026-06-06T03:59:54.429Z] cycle 2707: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2707-2026-06-06T03-59-52-876Z.ndjson
+[2026-06-06T04:00:01.268Z] cycle 2708: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2708-2026-06-06T03-59-59-434Z.ndjson
+[2026-06-06T04:00:07.649Z] cycle 2709: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2709-2026-06-06T04-00-06-269Z.ndjson
+[2026-06-06T04:00:14.096Z] cycle 2710: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2710-2026-06-06T04-00-12-654Z.ndjson
+[2026-06-06T04:00:28.444Z] cycle 2711: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2711-2026-06-06T04-00-19-097Z.ndjson
+[2026-06-06T04:00:35.769Z] cycle 2712: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2712-2026-06-06T04-00-33-447Z.ndjson
+[2026-06-06T04:00:42.363Z] cycle 2713: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2713-2026-06-06T04-00-40-773Z.ndjson
+[2026-06-06T04:00:48.591Z] cycle 2714: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2714-2026-06-06T04-00-47-367Z.ndjson
+[2026-06-06T04:00:55.638Z] cycle 2715: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2715-2026-06-06T04-00-53-596Z.ndjson
+[2026-06-06T04:01:03.160Z] cycle 2716: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2716-2026-06-06T04-01-00-641Z.ndjson
+[2026-06-06T04:01:11.232Z] cycle 2717: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2717-2026-06-06T04-01-08-165Z.ndjson
+[2026-06-06T04:01:23.219Z] cycle 2718: 200 domains → 2 hit → 827 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2718-2026-06-06T04-01-16-237Z.ndjson
+[2026-06-06T04:01:46.702Z] cycle 2718 ingest: exit=0 23.5s === STREAM INGEST DONE ===
+files=1 lines=827 valid=827 written=827 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 827 ] ]
+[2026-06-06T04:01:52.981Z] cycle 2719: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2719-2026-06-06T04-01-51-706Z.ndjson
+[2026-06-06T04:01:59.621Z] cycle 2720: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2720-2026-06-06T04-01-57-983Z.ndjson
+[2026-06-06T04:02:13.780Z] cycle 2721: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2721-2026-06-06T04-02-04-625Z.ndjson
+[2026-06-06T04:02:20.848Z] cycle 2722: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2722-2026-06-06T04-02-18-783Z.ndjson
+[2026-06-06T04:02:27.873Z] cycle 2723: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2723-2026-06-06T04-02-25-848Z.ndjson
+[2026-06-06T04:02:33.626Z] cycle 2724: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2724-2026-06-06T04-02-32-877Z.ndjson
+[2026-06-06T04:02:39.392Z] cycle 2725: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2725-2026-06-06T04-02-38-631Z.ndjson
+[2026-06-06T04:02:45.399Z] cycle 2726: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2726-2026-06-06T04-02-44-397Z.ndjson
+[2026-06-06T04:02:51.450Z] cycle 2727: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2727-2026-06-06T04-02-50-406Z.ndjson
+[2026-06-06T04:02:57.134Z] cycle 2728: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2728-2026-06-06T04-02-56-455Z.ndjson
+[2026-06-06T04:03:02.828Z] cycle 2729: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2729-2026-06-06T04-03-02-138Z.ndjson
+[2026-06-06T04:03:08.616Z] cycle 2730: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2730-2026-06-06T04-03-07-833Z.ndjson
+[2026-06-06T04:03:14.317Z] cycle 2731: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2731-2026-06-06T04-03-13-621Z.ndjson
+[2026-06-06T04:03:19.971Z] cycle 2732: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2732-2026-06-06T04-03-19-322Z.ndjson
+[2026-06-06T04:03:25.710Z] cycle 2733: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2733-2026-06-06T04-03-24-975Z.ndjson
+[2026-06-06T04:03:31.662Z] cycle 2734: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2734-2026-06-06T04-03-30-715Z.ndjson
+[2026-06-06T04:03:37.971Z] cycle 2735: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2735-2026-06-06T04-03-36-667Z.ndjson
+[2026-06-06T04:03:43.660Z] cycle 2736: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2736-2026-06-06T04-03-42-974Z.ndjson
+[2026-06-06T04:03:49.422Z] cycle 2737: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2737-2026-06-06T04-03-48-665Z.ndjson
+[2026-06-06T04:03:55.382Z] cycle 2738: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2738-2026-06-06T04-03-54-427Z.ndjson
+[2026-06-06T04:04:05.088Z] cycle 2739: 200 domains → 80 hit → 15579 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2739-2026-06-06T04-04-00-387Z.ndjson
+[2026-06-06T04:04:30.396Z] cycle 2739 ingest: exit=0 25.3s === STREAM INGEST DONE ===
+files=1 lines=15579 valid=15579 written=15579 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 15579 ] ]
+[2026-06-06T04:04:36.205Z] cycle 2740: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2740-2026-06-06T04-04-35-400Z.ndjson
+[2026-06-06T04:04:52.138Z] cycle 2741: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2741-2026-06-06T04-04-41-211Z.ndjson
+[2026-06-06T04:05:00.299Z] cycle 2742: 200 domains → 2 hit → 215 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2742-2026-06-06T04-04-57-138Z.ndjson
+[2026-06-06T04:05:12.055Z] cycle 2742 ingest: exit=0 11.8s === STREAM INGEST DONE ===
+files=1 lines=215 valid=215 written=215 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 215 ] ]
+[2026-06-06T04:05:19.561Z] cycle 2743: 200 domains → 2 hit → 306 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2743-2026-06-06T04-05-17-060Z.ndjson
+[2026-06-06T04:05:37.582Z] cycle 2743 ingest: exit=0 18.0s === STREAM INGEST DONE ===
+files=1 lines=306 valid=306 written=306 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 306 ] ]
+[2026-06-06T04:05:43.225Z] cycle 2744: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2744-2026-06-06T04-05-42-582Z.ndjson
+[2026-06-06T04:05:48.911Z] cycle 2745: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2745-2026-06-06T04-05-48-230Z.ndjson
+[2026-06-06T04:05:55.266Z] cycle 2746: 200 domains → 1 hit → 1500 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2746-2026-06-06T04-05-53-916Z.ndjson
+[2026-06-06T04:06:19.847Z] cycle 2746 ingest: exit=0 24.6s === STREAM INGEST DONE ===
+files=1 lines=1500 valid=1500 written=1500 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 1500 ] ]
+[2026-06-06T04:06:27.853Z] cycle 2747: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2747-2026-06-06T04-06-24-851Z.ndjson
+[2026-06-06T04:06:33.991Z] cycle 2748: 200 domains → 1 hit → 843 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2748-2026-06-06T04-06-32-853Z.ndjson
+[2026-06-06T04:06:51.069Z] cycle 2748 ingest: exit=0 17.1s === STREAM INGEST DONE ===
+files=1 lines=843 valid=843 written=843 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 843 ] ]
+[2026-06-06T04:07:00.063Z] cycle 2749: 200 domains → 1 hit → 250 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2749-2026-06-06T04-06-56-073Z.ndjson
+[2026-06-06T04:07:05.880Z] cycle 2749 ingest: exit=0 5.8s === STREAM INGEST DONE ===
+files=1 lines=250 valid=250 written=250 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 250 ] ]
+[2026-06-06T04:07:13.985Z] cycle 2750: 200 domains → 1 hit → 47 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2750-2026-06-06T04-07-10-881Z.ndjson
+[2026-06-06T04:07:16.198Z] cycle 2750 ingest: exit=0 2.2s === STREAM INGEST DONE ===
+files=1 lines=47 valid=47 written=47 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 47 ] ]
+[2026-06-06T04:07:25.072Z] cycle 2751: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2751-2026-06-06T04-07-21-202Z.ndjson
+[2026-06-06T04:07:31.632Z] cycle 2752: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2752-2026-06-06T04-07-30-082Z.ndjson
+[2026-06-06T04:07:38.991Z] cycle 2753: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2753-2026-06-06T04-07-36-637Z.ndjson
+[2026-06-06T04:07:45.333Z] cycle 2754: 200 domains → 1 hit → 76 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2754-2026-06-06T04-07-43-996Z.ndjson
+[2026-06-06T04:07:50.639Z] cycle 2754 ingest: exit=0 5.3s === STREAM INGEST DONE ===
+files=1 lines=76 valid=76 written=76 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 76 ] ]
+[2026-06-06T04:08:05.707Z] cycle 2755: 200 domains → 64 hit → 17172 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2755-2026-06-06T04-07-55-644Z.ndjson
+[2026-06-06T04:09:18.651Z] cycle 2755 ingest: exit=0 72.9s === STREAM INGEST DONE ===
+files=1 lines=17172 valid=17172 written=17172 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 17172 ] ]
+[2026-06-06T04:09:28.181Z] cycle 2756: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2756-2026-06-06T04-09-23-655Z.ndjson
+[2026-06-06T04:09:39.659Z] cycle 2757: 200 domains → 2 hit → 2162 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2757-2026-06-06T04-09-33-186Z.ndjson
+[2026-06-06T04:09:41.132Z] cycle 2757 ingest: exit=0 1.5s === STREAM INGEST DONE ===
+files=1 lines=2162 valid=2162 written=2162 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 2162 ] ]
+[2026-06-06T04:09:49.625Z] cycle 2758: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2758-2026-06-06T04-09-46-141Z.ndjson
+[2026-06-06T04:09:56.968Z] cycle 2759: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2759-2026-06-06T04-09-54-630Z.ndjson
+[2026-06-06T04:10:04.514Z] cycle 2760: 200 domains → 1 hit → 61 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2760-2026-06-06T04-10-01-972Z.ndjson
+[2026-06-06T04:10:06.085Z] cycle 2760 ingest: exit=0 1.6s === STREAM INGEST DONE ===
+files=1 lines=61 valid=61 written=61 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 61 ] ]
+[2026-06-06T04:10:21.085Z] cycle 2761: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2761-2026-06-06T04-10-11-090Z.ndjson
+[2026-06-06T04:10:28.822Z] cycle 2762: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2762-2026-06-06T04-10-26-090Z.ndjson
+[2026-06-06T04:10:45.099Z] cycle 2763: 200 domains → 2 hit → 209 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2763-2026-06-06T04-10-33-827Z.ndjson
+[2026-06-06T04:10:49.841Z] cycle 2763 ingest: exit=0 4.7s === STREAM INGEST DONE ===
+files=1 lines=209 valid=209 written=209 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 209 ] ]
+[2026-06-06T04:10:58.694Z] cycle 2764: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2764-2026-06-06T04-10-54-845Z.ndjson
+[2026-06-06T04:11:08.067Z] cycle 2765: 200 domains → 1 hit → 81 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2765-2026-06-06T04-11-03-696Z.ndjson
+[2026-06-06T04:11:08.494Z] cycle 2765 ingest: exit=0 0.4s === STREAM INGEST DONE ===
+files=1 lines=81 valid=81 written=81 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 81 ] ]
+[2026-06-06T04:11:17.055Z] cycle 2766: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2766-2026-06-06T04-11-13-495Z.ndjson
+[2026-06-06T04:11:32.005Z] cycle 2767: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2767-2026-06-06T04-11-22-061Z.ndjson
+[2026-06-06T04:11:39.962Z] cycle 2768: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2768-2026-06-06T04-11-37-009Z.ndjson
+[2026-06-06T04:11:56.668Z] cycle 2769: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2769-2026-06-06T04-11-44-971Z.ndjson
+[2026-06-06T04:12:06.795Z] cycle 2770: 200 domains → 2 hit → 197 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2770-2026-06-06T04-12-01-672Z.ndjson
+[2026-06-06T04:12:07.544Z] cycle 2770 ingest: exit=0 0.7s === STREAM INGEST DONE ===
+files=1 lines=197 valid=197 written=197 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 197 ] ]
+[2026-06-06T04:12:15.798Z] cycle 2771: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2771-2026-06-06T04-12-12-547Z.ndjson
+[2026-06-06T04:12:24.209Z] cycle 2772: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2772-2026-06-06T04-12-20-803Z.ndjson
+[2026-06-06T04:12:32.733Z] cycle 2773: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2773-2026-06-06T04-12-29-210Z.ndjson
+[2026-06-06T04:12:41.888Z] cycle 2774: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2774-2026-06-06T04-12-37-737Z.ndjson
+[2026-06-06T04:12:50.488Z] cycle 2775: 200 domains → 1 hit → 1500 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2775-2026-06-06T04-12-46-891Z.ndjson
+[2026-06-06T04:13:02.697Z] cycle 2775 ingest: exit=0 12.2s === STREAM INGEST DONE ===
+files=1 lines=1500 valid=1500 written=1500 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 1500 ] ]
+[2026-06-06T04:13:18.752Z] cycle 2776: 200 domains → 1 hit → 1116 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2776-2026-06-06T04-13-07-701Z.ndjson
+[2026-06-06T04:13:36.877Z] cycle 2776 ingest: exit=0 18.1s === STREAM INGEST DONE ===
+files=1 lines=1116 valid=1116 written=1116 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 1116 ] ]
+[2026-06-06T04:13:44.917Z] cycle 2777: 200 domains → 1 hit → 114 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2777-2026-06-06T04-13-41-893Z.ndjson
+[2026-06-06T04:13:47.774Z] cycle 2777 ingest: exit=0 2.9s === STREAM INGEST DONE ===
+files=1 lines=114 valid=114 written=114 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 114 ] ]
+[2026-06-06T04:13:55.581Z] cycle 2778: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2778-2026-06-06T04-13-52-778Z.ndjson
+[2026-06-06T04:14:35.369Z] cycle 2779: 200 domains → 23 hit → 18153 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2779-2026-06-06T04-14-00-586Z.ndjson
+[2026-06-06T04:25:04.253Z] cycle 2779 ingest: exit=0 628.9s === STREAM INGEST DONE ===
+files=1 lines=18153 valid=18153 written=17653 errors=1
+skipped: {}
+top sources: [ [ 'shopify', 18153 ] ]
+[2026-06-06T04:25:30.940Z] cycle 2780: 200 domains → 45 hit → 40542 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2780-2026-06-06T04-25-09-257Z.ndjson
+[2026-06-06T04:26:45.258Z] cycle 2780 ingest: exit=0 74.3s === STREAM INGEST DONE ===
+files=1 lines=40542 valid=40536 written=40536 errors=0
+skipped: { dup_in_chunk: 6 }
+top sources: [ [ 'shopify', 40536 ] ]
+[2026-06-06T04:27:17.006Z] cycle 2781: 200 domains → 30 hit → 15825 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2781-2026-06-06T04-26-50-263Z.ndjson
+[2026-06-06T04:27:29.206Z] cycle 2781 ingest: exit=0 12.2s === STREAM INGEST DONE ===
+files=1 lines=15825 valid=15825 written=15825 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 15825 ] ]
+[2026-06-06T04:27:54.095Z] cycle 2782: 200 domains → 43 hit → 32270 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2782-2026-06-06T04-27-34-212Z.ndjson
+[2026-06-06T04:29:12.907Z] cycle 2782 ingest: exit=0 78.8s === STREAM INGEST DONE ===
+files=1 lines=32270 valid=32270 written=32270 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 32270 ] ]
+[2026-06-06T04:29:44.564Z] cycle 2783: 200 domains → 92 hit → 47891 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2783-2026-06-06T04-29-17-912Z.ndjson
+[2026-06-06T04:33:33.430Z] cycle 2783 ingest: exit=0 228.9s === STREAM INGEST DONE ===
+files=1 lines=47891 valid=47891 written=47891 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 47891 ] ]
+[2026-06-06T04:34:11.046Z] cycle 2784: 200 domains → 39 hit → 28282 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2784-2026-06-06T04-33-38-435Z.ndjson
+[2026-06-06T04:34:59.397Z] cycle 2784 ingest: exit=0 48.4s === STREAM INGEST DONE ===
+files=1 lines=28282 valid=28282 written=28282 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 28282 ] ]
+[2026-06-06T04:35:19.774Z] cycle 2785: 200 domains → 23 hit → 10543 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2785-2026-06-06T04-35-04-401Z.ndjson
+[2026-06-06T04:35:49.375Z] cycle 2785 ingest: exit=0 29.6s === STREAM INGEST DONE ===
+files=1 lines=10543 valid=10543 written=10543 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 10543 ] ]
+[2026-06-06T04:36:35.993Z] cycle 2786: 200 domains → 49 hit → 34135 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2786-2026-06-06T04-35-54-380Z.ndjson
+[2026-06-06T04:39:40.036Z] cycle 2786 ingest: exit=0 184.0s === STREAM INGEST DONE ===
+files=1 lines=34135 valid=34135 written=34135 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 34135 ] ]
+[2026-06-06T04:39:56.845Z] cycle 2787: 200 domains → 29 hit → 16582 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2787-2026-06-06T04-39-45-041Z.ndjson
+[2026-06-06T04:41:13.041Z] cycle 2787 ingest: exit=0 76.2s === STREAM INGEST DONE ===
+files=1 lines=16582 valid=16582 written=16582 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 16582 ] ]
+[2026-06-06T04:41:21.113Z] cycle 2788: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2788-2026-06-06T04-41-18-043Z.ndjson
+[2026-06-06T04:41:28.304Z] cycle 2789: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2789-2026-06-06T04-41-26-118Z.ndjson
+[2026-06-06T04:41:36.889Z] cycle 2790: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2790-2026-06-06T04-41-33-307Z.ndjson
+[2026-06-06T04:41:43.936Z] cycle 2791: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2791-2026-06-06T04-41-41-894Z.ndjson
+[2026-06-06T04:41:51.588Z] cycle 2792: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2792-2026-06-06T04-41-48-938Z.ndjson
+[2026-06-06T04:41:59.425Z] cycle 2793: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2793-2026-06-06T04-41-56-589Z.ndjson
+[2026-06-06T04:42:06.357Z] cycle 2794: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2794-2026-06-06T04-42-04-428Z.ndjson
+[2026-06-06T04:42:14.412Z] cycle 2795: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2795-2026-06-06T04-42-11-363Z.ndjson
+[2026-06-06T04:42:22.381Z] cycle 2796: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2796-2026-06-06T04-42-19-417Z.ndjson
+[2026-06-06T04:42:31.795Z] cycle 2797: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2797-2026-06-06T04-42-27-382Z.ndjson
+[2026-06-06T04:42:39.578Z] cycle 2798: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2798-2026-06-06T04-42-36-800Z.ndjson
+[2026-06-06T04:42:46.852Z] cycle 2799: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2799-2026-06-06T04-42-44-583Z.ndjson
+[2026-06-06T04:42:54.699Z] cycle 2800: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2800-2026-06-06T04-42-51-856Z.ndjson
+[2026-06-06T04:43:01.982Z] cycle 2801: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2801-2026-06-06T04-42-59-702Z.ndjson
+[2026-06-06T04:43:16.929Z] cycle 2802: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2802-2026-06-06T04-43-06-984Z.ndjson
+[2026-06-06T04:43:25.607Z] cycle 2803: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2803-2026-06-06T04-43-21-934Z.ndjson
+[2026-06-06T04:43:32.497Z] cycle 2804: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2804-2026-06-06T04-43-30-609Z.ndjson
+[2026-06-06T04:43:38.295Z] cycle 2805: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2805-2026-06-06T04-43-37-502Z.ndjson
+[2026-06-06T04:43:44.006Z] cycle 2806: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2806-2026-06-06T04-43-43-300Z.ndjson
+[2026-06-06T04:43:49.988Z] cycle 2807: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2807-2026-06-06T04-43-49-012Z.ndjson
+[2026-06-06T04:43:55.719Z] cycle 2808: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2808-2026-06-06T04-43-54-994Z.ndjson
+[2026-06-06T04:44:01.473Z] cycle 2809: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2809-2026-06-06T04-44-00-723Z.ndjson
+[2026-06-06T04:44:07.693Z] cycle 2810: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2810-2026-06-06T04-44-06-480Z.ndjson
+[2026-06-06T04:44:13.378Z] cycle 2811: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2811-2026-06-06T04-44-12-698Z.ndjson
+[2026-06-06T04:44:19.063Z] cycle 2812: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2812-2026-06-06T04-44-18-383Z.ndjson
+[2026-06-06T04:44:24.767Z] cycle 2813: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2813-2026-06-06T04-44-24-068Z.ndjson
+[2026-06-06T04:44:30.438Z] cycle 2814: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2814-2026-06-06T04-44-29-769Z.ndjson
+[2026-06-06T04:44:36.124Z] cycle 2815: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2815-2026-06-06T04-44-35-443Z.ndjson
+[2026-06-06T04:44:41.886Z] cycle 2816: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2816-2026-06-06T04-44-41-129Z.ndjson
+[2026-06-06T04:44:47.557Z] cycle 2817: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2817-2026-06-06T04-44-46-891Z.ndjson
+[2026-06-06T04:44:53.205Z] cycle 2818: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2818-2026-06-06T04-44-52-563Z.ndjson
+[2026-06-06T04:44:58.877Z] cycle 2819: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2819-2026-06-06T04-44-58-210Z.ndjson
+[2026-06-06T04:45:04.634Z] cycle 2820: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2820-2026-06-06T04-45-03-883Z.ndjson
+[2026-06-06T04:45:10.378Z] cycle 2821: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2821-2026-06-06T04-45-09-638Z.ndjson
+[2026-06-06T04:45:25.604Z] cycle 2822: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2822-2026-06-06T04-45-15-383Z.ndjson
+[2026-06-06T04:45:33.615Z] cycle 2823: 200 domains → 3 hit → 397 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2823-2026-06-06T04-45-30-605Z.ndjson
+[2026-06-06T04:45:34.535Z] cycle 2823 ingest: exit=0 0.9s === STREAM INGEST DONE ===
+files=1 lines=397 valid=397 written=397 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 397 ] ]
+[2026-06-06T04:45:41.525Z] cycle 2824: 200 domains → 1 hit → 124 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2824-2026-06-06T04-45-39-536Z.ndjson
+[2026-06-06T04:45:41.917Z] cycle 2824 ingest: exit=0 0.4s === STREAM INGEST DONE ===
+files=1 lines=124 valid=124 written=124 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 124 ] ]
+[2026-06-06T04:45:47.636Z] cycle 2825: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2825-2026-06-06T04-45-46-920Z.ndjson
+[2026-06-06T04:45:53.350Z] cycle 2826: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2826-2026-06-06T04-45-52-641Z.ndjson
+[2026-06-06T04:46:01.654Z] cycle 2827: 200 domains → 3 hit → 1639 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2827-2026-06-06T04-45-58-355Z.ndjson
+[2026-06-06T04:46:04.259Z] cycle 2827 ingest: exit=0 2.6s === STREAM INGEST DONE ===
+files=1 lines=1639 valid=1639 written=1639 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 1639 ] ]
+[2026-06-06T04:46:14.042Z] cycle 2828: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2828-2026-06-06T04-46-09-262Z.ndjson
+[2026-06-06T04:46:21.118Z] cycle 2829: 200 domains → 1 hit → 843 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2829-2026-06-06T04-46-19-043Z.ndjson
+[2026-06-06T04:46:21.920Z] cycle 2829 ingest: exit=0 0.8s === STREAM INGEST DONE ===
+files=1 lines=843 valid=843 written=843 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 843 ] ]
+[2026-06-06T04:46:34.563Z] cycle 2830: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2830-2026-06-06T04-46-26-924Z.ndjson
+[2026-06-06T04:46:42.559Z] cycle 2831: 200 domains → 1 hit → 47 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2831-2026-06-06T04-46-39-568Z.ndjson
+[2026-06-06T04:46:42.834Z] cycle 2831 ingest: exit=0 0.3s === STREAM INGEST DONE ===
+files=1 lines=47 valid=47 written=47 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 47 ] ]
+[2026-06-06T04:46:50.716Z] cycle 2832: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2832-2026-06-06T04-46-47-836Z.ndjson
+[2026-06-06T04:46:58.663Z] cycle 2833: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2833-2026-06-06T04-46-55-721Z.ndjson
+[2026-06-06T04:47:07.552Z] cycle 2834: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2834-2026-06-06T04-47-03-668Z.ndjson
+[2026-06-06T04:47:17.065Z] cycle 2835: 200 domains → 1 hit → 76 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2835-2026-06-06T04-47-12-558Z.ndjson
+[2026-06-06T04:47:17.392Z] cycle 2835 ingest: exit=0 0.3s === STREAM INGEST DONE ===
+files=1 lines=76 valid=76 written=76 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 76 ] ]
+[2026-06-06T04:47:27.102Z] cycle 2836: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2836-2026-06-06T04-47-22-394Z.ndjson
+[2026-06-06T04:47:36.610Z] cycle 2837: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2837-2026-06-06T04-47-32-107Z.ndjson
+[2026-06-06T04:47:44.904Z] cycle 2838: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2838-2026-06-06T04-47-41-617Z.ndjson
+[2026-06-06T04:47:54.320Z] cycle 2839: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2839-2026-06-06T04-47-49-910Z.ndjson
+[2026-06-06T04:48:02.778Z] cycle 2840: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2840-2026-06-06T04-47-59-326Z.ndjson
+[2026-06-06T04:48:12.151Z] cycle 2841: 200 domains → 1 hit → 61 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2841-2026-06-06T04-48-07-783Z.ndjson
+[2026-06-06T04:48:12.508Z] cycle 2841 ingest: exit=0 0.4s === STREAM INGEST DONE ===
+files=1 lines=61 valid=61 written=61 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 61 ] ]
+[2026-06-06T04:48:20.819Z] cycle 2842: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2842-2026-06-06T04-48-17-513Z.ndjson
+[2026-06-06T04:48:31.865Z] cycle 2843: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2843-2026-06-06T04-48-25-823Z.ndjson
+[2026-06-06T04:48:48.257Z] cycle 2844: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2844-2026-06-06T04-48-36-870Z.ndjson
+[2026-06-06T04:48:59.714Z] cycle 2845: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2845-2026-06-06T04-48-53-261Z.ndjson
+[2026-06-06T04:49:18.033Z] cycle 2846: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2846-2026-06-06T04-49-04-719Z.ndjson
+[2026-06-06T04:49:27.128Z] cycle 2847: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2847-2026-06-06T04-49-23-038Z.ndjson
+[2026-06-06T04:49:38.689Z] cycle 2848: 200 domains → 65 hit → 37495 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2848-2026-06-06T04-49-32-133Z.ndjson
+[2026-06-06T04:50:12.103Z] cycle 2848 ingest: exit=0 33.4s === STREAM INGEST DONE ===
+files=1 lines=37495 valid=37495 written=37495 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 37495 ] ]
+[2026-06-06T04:50:21.279Z] cycle 2849: 200 domains → 1 hit → 250 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2849-2026-06-06T04-50-17-104Z.ndjson
+[2026-06-06T04:50:21.573Z] cycle 2849 ingest: exit=0 0.3s === STREAM INGEST DONE ===
+files=1 lines=250 valid=250 written=250 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 250 ] ]
+[2026-06-06T04:50:32.617Z] cycle 2850: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2850-2026-06-06T04-50-26-576Z.ndjson
+[2026-06-06T04:50:41.713Z] cycle 2851: 200 domains → 2 hit → 197 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2851-2026-06-06T04-50-37-622Z.ndjson
+[2026-06-06T04:50:42.340Z] cycle 2851 ingest: exit=0 0.6s === STREAM INGEST DONE ===
+files=1 lines=197 valid=197 written=197 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 197 ] ]
+[2026-06-06T04:50:51.427Z] cycle 2852: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2852-2026-06-06T04-50-47-342Z.ndjson
+[2026-06-06T04:51:05.412Z] cycle 2853: 200 domains → 4 hit → 2340 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2853-2026-06-06T04-50-56-428Z.ndjson
+[2026-06-06T04:51:06.263Z] cycle 2853 ingest: exit=0 0.9s === STREAM INGEST DONE ===
+files=1 lines=2340 valid=2340 written=2340 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 2340 ] ]
+[2026-06-06T04:51:47.814Z] cycle 2854: 200 domains → 29 hit → 26868 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2854-2026-06-06T04-51-11-266Z.ndjson
+[2026-06-06T04:53:58.717Z] cycle 2854 ingest: exit=0 130.9s === STREAM INGEST DONE ===
+files=1 lines=26868 valid=26868 written=26868 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 26868 ] ]
+[2026-06-06T04:54:08.143Z] cycle 2855: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2855-2026-06-06T04-54-03-721Z.ndjson
+[2026-06-06T04:54:18.344Z] cycle 2856: 200 domains → 1 hit → 1500 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2856-2026-06-06T04-54-13-149Z.ndjson
+[2026-06-06T05:04:18.663Z] cycle 2856 ingest: exit=0 600.3s === STREAM INGEST DONE ===
+files=1 lines=1500 valid=1500 written=1000 errors=1
+skipped: {}
+top sources: [ [ 'shopify', 1500 ] ]
+[2026-06-06T05:05:04.829Z] cycle 2857: 200 domains → 96 hit → 55627 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2857-2026-06-06T05-04-23-668Z.ndjson
+[2026-06-06T05:11:33.272Z] cycle 2857 ingest: exit=0 388.4s === STREAM INGEST DONE ===
+files=1 lines=55627 valid=55627 written=55627 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 55627 ] ]
+[2026-06-06T05:12:03.800Z] cycle 2858: 200 domains → 38 hit → 30343 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2858-2026-06-06T05-11-38-277Z.ndjson
+[2026-06-06T05:24:10.453Z] cycle 2858 ingest: exit=0 726.7s === STREAM INGEST DONE ===
+files=1 lines=30343 valid=30343 written=28843 errors=3
+skipped: {}
+top sources: [ [ 'shopify', 30343 ] ]
+[2026-06-06T05:24:21.983Z] cycle 2859: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2859-2026-06-06T05-24-15-458Z.ndjson
+[2026-06-06T05:24:34.517Z] cycle 2860: 200 domains → 1 hit → 68 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2860-2026-06-06T05-24-26-988Z.ndjson
+[2026-06-06T05:29:53.214Z] cycle 2860 ingest: exit=0 318.7s === STREAM INGEST DONE ===
+files=1 lines=68 valid=68 written=68 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 68 ] ]
+[2026-06-06T05:30:00.961Z] cycle 2861: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2861-2026-06-06T05-29-58-244Z.ndjson
+[2026-06-06T05:30:22.819Z] cycle 2862: 200 domains → 64 hit → 16125 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2862-2026-06-06T05-30-05-966Z.ndjson
+[2026-06-06T05:38:16.852Z] cycle 2862 ingest: exit=0 474.0s === STREAM INGEST DONE ===
+files=1 lines=16125 valid=16125 written=16125 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 16125 ] ]
+[2026-06-06T05:38:25.499Z] cycle 2863: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2863-2026-06-06T05-38-21-874Z.ndjson
+[2026-06-06T05:38:34.819Z] cycle 2864: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2864-2026-06-06T05-38-30-504Z.ndjson
+[2026-06-06T05:38:43.462Z] cycle 2865: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2865-2026-06-06T05-38-39-825Z.ndjson
+[2026-06-06T05:38:51.646Z] cycle 2866: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2866-2026-06-06T05-38-48-467Z.ndjson
+[2026-06-06T05:39:01.218Z] cycle 2867: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2867-2026-06-06T05-38-56-651Z.ndjson
+[2026-06-06T05:39:09.129Z] cycle 2868: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2868-2026-06-06T05-39-06-223Z.ndjson
+[2026-06-06T05:39:17.853Z] cycle 2869: 200 domains → 1 hit → 69 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2869-2026-06-06T05-39-14-133Z.ndjson
+[2026-06-06T05:39:18.243Z] cycle 2869 ingest: exit=0 0.4s === STREAM INGEST DONE ===
+files=1 lines=69 valid=69 written=69 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 69 ] ]
+[2026-06-06T05:39:27.422Z] cycle 2870: 200 domains → 1 hit → 39 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2870-2026-06-06T05-39-23-244Z.ndjson
+[2026-06-06T05:39:27.680Z] cycle 2870 ingest: exit=0 0.3s === STREAM INGEST DONE ===
+files=1 lines=39 valid=39 written=39 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 39 ] ]
+[2026-06-06T05:39:35.418Z] cycle 2871: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2871-2026-06-06T05-39-32-681Z.ndjson
+[2026-06-06T05:39:44.641Z] cycle 2872: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2872-2026-06-06T05-39-40-423Z.ndjson
+[2026-06-06T05:39:54.071Z] cycle 2873: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2873-2026-06-06T05-39-49-643Z.ndjson
+[2026-06-06T05:40:04.035Z] cycle 2874: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2874-2026-06-06T05-39-59-072Z.ndjson
+[2026-06-06T05:40:12.194Z] cycle 2875: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2875-2026-06-06T05-40-09-040Z.ndjson
+[2026-06-06T05:40:34.085Z] cycle 2876: 200 domains → 31 hit → 12876 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2876-2026-06-06T05-40-17-199Z.ndjson
+[2026-06-06T05:40:36.032Z] cycle 2876 ingest: exit=0 1.9s === STREAM INGEST DONE ===
+files=1 lines=12876 valid=12876 written=12876 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 12876 ] ]
+[2026-06-06T05:40:42.783Z] cycle 2877: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2877-2026-06-06T05-40-41-036Z.ndjson
+[2026-06-06T05:40:49.510Z] cycle 2878: 200 domains → 2 hit → 500 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2878-2026-06-06T05-40-47-785Z.ndjson
+[2026-06-06T05:40:49.985Z] cycle 2878 ingest: exit=0 0.5s === STREAM INGEST DONE ===
+files=1 lines=500 valid=500 written=500 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 500 ] ]
+[2026-06-06T05:40:57.632Z] cycle 2879: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2879-2026-06-06T05-40-54-986Z.ndjson
+[2026-06-06T05:41:06.823Z] cycle 2880: 200 domains → 2 hit → 827 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2880-2026-06-06T05-41-02-635Z.ndjson
+[2026-06-06T05:41:07.837Z] cycle 2880 ingest: exit=0 1.0s === STREAM INGEST DONE ===
+files=1 lines=827 valid=827 written=827 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 827 ] ]
+[2026-06-06T05:41:15.514Z] cycle 2881: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2881-2026-06-06T05-41-12-839Z.ndjson
+[2026-06-06T05:41:22.596Z] cycle 2882: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2882-2026-06-06T05-41-20-518Z.ndjson
+[2026-06-06T05:41:29.392Z] cycle 2883: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2883-2026-06-06T05-41-27-600Z.ndjson
+[2026-06-06T05:41:35.943Z] cycle 2884: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2884-2026-06-06T05-41-34-396Z.ndjson
+[2026-06-06T05:41:42.043Z] cycle 2885: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2885-2026-06-06T05-41-40-948Z.ndjson
+[2026-06-06T05:41:48.572Z] cycle 2886: 200 domains → 1 hit → 250 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2886-2026-06-06T05-41-47-048Z.ndjson
+[2026-06-06T05:41:49.181Z] cycle 2886 ingest: exit=0 0.6s === STREAM INGEST DONE ===
+files=1 lines=250 valid=250 written=250 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 250 ] ]
+[2026-06-06T05:41:54.963Z] cycle 2887: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2887-2026-06-06T05-41-54-183Z.ndjson
+[2026-06-06T05:42:00.816Z] cycle 2888: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2888-2026-06-06T05-41-59-974Z.ndjson
+[2026-06-06T05:42:06.635Z] cycle 2889: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2889-2026-06-06T05-42-05-817Z.ndjson
+[2026-06-06T05:42:12.423Z] cycle 2890: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2890-2026-06-06T05-42-11-640Z.ndjson
+[2026-06-06T05:42:18.195Z] cycle 2891: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2891-2026-06-06T05-42-17-428Z.ndjson
+[2026-06-06T05:42:23.909Z] cycle 2892: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2892-2026-06-06T05-42-23-200Z.ndjson
+[2026-06-06T05:42:29.738Z] cycle 2893: 200 domains → 1 hit → 3 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2893-2026-06-06T05-42-28-922Z.ndjson
+[2026-06-06T05:42:29.969Z] cycle 2893 ingest: exit=0 0.2s === STREAM INGEST DONE ===
+files=1 lines=3 valid=3 written=3 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 3 ] ]
+[2026-06-06T05:42:35.610Z] cycle 2894: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2894-2026-06-06T05-42-34-970Z.ndjson
+[2026-06-06T05:42:41.716Z] cycle 2895: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2895-2026-06-06T05-42-40-618Z.ndjson
+[2026-06-06T05:42:47.537Z] cycle 2896: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2896-2026-06-06T05-42-46-718Z.ndjson
+[2026-06-06T05:42:53.335Z] cycle 2897: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2897-2026-06-06T05-42-52-542Z.ndjson
+[2026-06-06T05:43:03.067Z] cycle 2898: 200 domains → 80 hit → 19468 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2898-2026-06-06T05-42-58-340Z.ndjson
+[2026-06-06T05:43:37.139Z] cycle 2898 ingest: exit=0 34.1s === STREAM INGEST DONE ===
+files=1 lines=19468 valid=19468 written=19468 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 19468 ] ]
+[2026-06-06T05:43:43.158Z] cycle 2899: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2899-2026-06-06T05-43-42-144Z.ndjson
+[2026-06-06T05:43:48.982Z] cycle 2900: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2900-2026-06-06T05-43-48-160Z.ndjson
+[2026-06-06T05:43:54.686Z] cycle 2901: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2901-2026-06-06T05-43-53-987Z.ndjson
+[2026-06-06T05:44:00.476Z] cycle 2902: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2902-2026-06-06T05-43-59-687Z.ndjson
+[2026-06-06T05:44:13.692Z] cycle 2903: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2903-2026-06-06T05-44-05-483Z.ndjson
+[2026-06-06T05:44:22.522Z] cycle 2904: 200 domains → 3 hit → 397 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2904-2026-06-06T05-44-18-693Z.ndjson
+[2026-06-06T05:45:25.903Z] cycle 2904 ingest: exit=0 63.4s === STREAM INGEST DONE ===
+files=1 lines=397 valid=397 written=397 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 397 ] ]
+[2026-06-06T05:45:32.624Z] cycle 2905: 200 domains → 1 hit → 1 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2905-2026-06-06T05-45-30-904Z.ndjson
+[2026-06-06T05:45:32.864Z] cycle 2905 ingest: exit=0 0.2s === STREAM INGEST DONE ===
+files=1 lines=1 valid=1 written=1 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 1 ] ]
+[2026-06-06T05:45:38.733Z] cycle 2906: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2906-2026-06-06T05-45-37-864Z.ndjson
+[2026-06-06T05:45:44.691Z] cycle 2907: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2907-2026-06-06T05-45-43-733Z.ndjson
+[2026-06-06T05:45:54.360Z] cycle 2908: 200 domains → 1 hit → 1500 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2908-2026-06-06T05-45-49-695Z.ndjson
+[2026-06-06T05:45:55.592Z] cycle 2908 ingest: exit=0 1.2s === STREAM INGEST DONE ===
+files=1 lines=1500 valid=1500 written=1500 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 1500 ] ]
+[2026-06-06T05:46:04.008Z] cycle 2909: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2909-2026-06-06T05-46-00-609Z.ndjson
+[2026-06-06T05:46:11.406Z] cycle 2910: 200 domains → 1 hit → 843 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2910-2026-06-06T05-46-09-025Z.ndjson
+[2026-06-06T05:46:12.453Z] cycle 2910 ingest: exit=0 1.0s === STREAM INGEST DONE ===
+files=1 lines=843 valid=843 written=843 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 843 ] ]
+[2026-06-06T05:46:20.876Z] cycle 2911: 200 domains → 1 hit → 225 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2911-2026-06-06T05-46-17-457Z.ndjson
+[2026-06-06T05:46:21.283Z] cycle 2911 ingest: exit=0 0.4s === STREAM INGEST DONE ===
+files=1 lines=225 valid=225 written=225 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 225 ] ]
+[2026-06-06T05:46:28.446Z] cycle 2912: 200 domains → 1 hit → 47 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2912-2026-06-06T05-46-26-287Z.ndjson
+[2026-06-06T05:46:28.744Z] cycle 2912 ingest: exit=0 0.3s === STREAM INGEST DONE ===
+files=1 lines=47 valid=47 written=47 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 47 ] ]
+[2026-06-06T05:46:35.953Z] cycle 2913: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2913-2026-06-06T05-46-33-748Z.ndjson
+[2026-06-06T05:46:43.172Z] cycle 2914: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2914-2026-06-06T05-46-40-958Z.ndjson
+[2026-06-06T05:46:51.391Z] cycle 2915: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2915-2026-06-06T05-46-48-177Z.ndjson
+[2026-06-06T05:46:58.928Z] cycle 2916: 200 domains → 1 hit → 76 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2916-2026-06-06T05-46-56-396Z.ndjson
+[2026-06-06T05:46:59.330Z] cycle 2916 ingest: exit=0 0.4s === STREAM INGEST DONE ===
+files=1 lines=76 valid=76 written=76 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 76 ] ]
+[2026-06-06T05:47:07.288Z] cycle 2917: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2917-2026-06-06T05-47-04-333Z.ndjson
+[2026-06-06T05:47:16.002Z] cycle 2918: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2918-2026-06-06T05-47-12-292Z.ndjson
+[2026-06-06T05:47:24.460Z] cycle 2919: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2919-2026-06-06T05-47-21-007Z.ndjson
+[2026-06-06T05:47:32.421Z] cycle 2920: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2920-2026-06-06T05-47-29-465Z.ndjson
+[2026-06-06T05:47:40.356Z] cycle 2921: 200 domains → 1 hit → 61 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2921-2026-06-06T05-47-37-427Z.ndjson
+[2026-06-06T05:47:41.068Z] cycle 2921 ingest: exit=0 0.7s === STREAM INGEST DONE ===
+files=1 lines=61 valid=61 written=61 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 61 ] ]
+[2026-06-06T05:47:48.845Z] cycle 2922: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2922-2026-06-06T05-47-46-070Z.ndjson
+[2026-06-06T05:47:56.770Z] cycle 2923: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2923-2026-06-06T05-47-53-850Z.ndjson
+[2026-06-06T05:48:05.138Z] cycle 2924: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2924-2026-06-06T05-48-01-776Z.ndjson
+[2026-06-06T05:48:20.970Z] cycle 2925: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2925-2026-06-06T05-48-10-143Z.ndjson
+[2026-06-06T05:48:31.507Z] cycle 2926: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2926-2026-06-06T05-48-25-975Z.ndjson
+[2026-06-06T05:48:40.394Z] cycle 2927: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2927-2026-06-06T05-48-36-511Z.ndjson
+[2026-06-06T05:48:48.685Z] cycle 2928: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2928-2026-06-06T05-48-45-399Z.ndjson
+[2026-06-06T05:48:56.680Z] cycle 2929: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2929-2026-06-06T05-48-53-690Z.ndjson
+[2026-06-06T05:49:04.814Z] cycle 2930: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2930-2026-06-06T05-49-01-680Z.ndjson
+[2026-06-06T05:49:13.910Z] cycle 2931: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2931-2026-06-06T05-49-09-819Z.ndjson
+[2026-06-06T05:49:22.964Z] cycle 2932: 200 domains → 2 hit → 197 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2932-2026-06-06T05-49-18-914Z.ndjson
+[2026-06-06T05:49:48.336Z] cycle 2932 ingest: exit=0 25.4s === STREAM INGEST DONE ===
+files=1 lines=197 valid=197 written=197 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 197 ] ]
+[2026-06-06T05:50:03.393Z] cycle 2933: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2933-2026-06-06T05-49-53-341Z.ndjson
+[2026-06-06T05:50:15.314Z] cycle 2934: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2934-2026-06-06T05-50-08-401Z.ndjson
+[2026-06-06T05:50:26.637Z] cycle 2935: 200 domains → 0 hit → 0 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2935-2026-06-06T05-50-20-329Z.ndjson
+[2026-06-06T05:51:07.718Z] loaded 20752 candidate domains
+[2026-06-06T05:51:07.719Z] starting at cursor=6044, cycle=2935
+[2026-06-06T05:51:15.948Z] cycle 2936: 200 domains → 66 hit → 40384 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2936-2026-06-06T05-51-07-720Z.ndjson
+[2026-06-06T05:57:52.147Z] cycle 2936 ingest: exit=0 396.2s === STREAM INGEST DONE ===
+files=1 lines=40384 valid=40383 written=40383 errors=0
+skipped: { dup_in_chunk: 1 }
+top sources: [ [ 'shopify', 40383 ] ]
+[2026-06-06T05:58:32.475Z] cycle 2937: 200 domains → 40 hit → 39878 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2937-2026-06-06T05-57-57-186Z.ndjson
+[2026-06-06T05:59:23.744Z] cycle 2937 ingest: exit=0 51.3s === STREAM INGEST DONE ===
+files=1 lines=39878 valid=39878 written=39878 errors=0
+skipped: {}
+top sources: [ [ 'shopify', 39878 ] ]
+[2026-06-06T06:00:06.202Z] cycle 2938: 200 domains → 39 hit → 28866 products → /paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/data/buy30590/cycle-2938-2026-06-06T05-59-28-748Z.ndjson

@@ -1,0 +1,20 @@
+{
+  "ingest": {
+    "at": "2026-06-15T23:51:00+00:00",
+    "errors": 0,
+    "inserted": 5000,
+    "partial": false,
+    "records": 5000
+  },
+  "ingestedBy": "BUY-52085",
+  "local": {
+    "path": "data/retailer-direct/maidenhome.ndjson",
+    "sha256": "86f7a7e73af468d4a13c0dd275f9323b2039eb6b0a2d88afb05c6e23d8d7d883",
+    "size": 75645190
+  },
+  "r2": {
+    "bucket": "buywhere-data",
+    "key": "scrape-artifacts/2026-06-15/maidenhome.ndjson"
+  },
+  "schemaVersion": 2
+}

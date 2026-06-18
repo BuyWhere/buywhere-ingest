@@ -1,0 +1,32 @@
+{
+  "last_n_tup_ins": 43727492,
+  "last_n_tup_ins_at": "2026-06-11T20:02:25.871654Z",
+  "last_hour_checked": "2026-06-11T19:00:00+00:00",
+  "last_hour_window_start": "2026-06-11T19:01:59Z",
+  "last_hour_window_end": "2026-06-11T20:02:25.871654Z",
+  "last_check_result": "FAIL",
+  "last_check_real_rows": 143713,
+  "last_check_source": "n_tup_ins_delta",
+  "last_n_live_tup": 75883821,
+  "last_db_host": "maglev.proxy.rlwy.net:31310/railway",
+  "last_check_delta_rows": 144765,
+  "last_check_delta_hours": 1.0073,
+  "last_check_rate": 143713,
+  "last_check_threshold": 150000,
+  "last_pm_start": "2026-06-08T10:21:09.112373+00:00",
+  "last_issue_identifier": "BUY-41973",
+  "last_fire_timestamp": "2026-06-11T20:02:10Z",
+  "last_note": "19:00-20:00Z hour FAIL: delta 144,765 over 1.0073h (2026-06-11T19:01:59Z anchor -> 2026-06-11T20:02:25Z) = 143,713/hr (n_tup_ins PRIMARY signal under maglev contention). S1 43,582,727 (2026-06-11T19:01:59Z) -> S2 43,727,492 (2026-06-11T20:02:25Z) -> delta 144,765 in 1.0073h = 143,713/hr. n_live_tup: 75,883,821. pm_start=2026-06-08T10:21:09Z (well outside this hour, delta method valid). count(*) skipped (products_created_at_idx invalid since BUY-32878; secondary signal unreliable under maglev contention). Child BUY-41973 filed (FAIL below 150K threshold by -6,287/hr, -4.2%), assigned to user MRfjkCUzuFyLTtKHcVLDaJxoAAWxM7b6. Auto-dispatcher cron still broken (BUY-33694); this heartbeat at 2026-06-11T20:02:10Z is the canonical fire for the 19:00-20:00Z window. Work-doer issue BUY-41962 will be closed done after this record is persisted.",
+  "last_closed_day": {
+    "date": "2026-06-10",
+    "n_tup_ins_open": 30148362,
+    "n_tup_ins_close": 30542209,
+    "delta": 393847,
+    "n_live_tup_close": 65495587,
+    "open_at": "2026-06-10T23:01:43.565471+00:00",
+    "close_at": "2026-06-11T00:01:03.257837+00:00",
+    "db_host": "maglev.proxy.rlwy.net:31310/railway",
+    "source": "midnight_snapshot"
+  },
+  "last_midnight_recorded_date": "2026-06-10"
+}

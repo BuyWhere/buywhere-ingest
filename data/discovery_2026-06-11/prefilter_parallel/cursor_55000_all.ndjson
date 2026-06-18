@@ -1,0 +1,17 @@
+{"domain":"biglots.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":451,"country_code":"US","currency":null}
+{"domain":"mmd.net","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":278,"country_code":"US","currency":null}
+{"domain":"book2look.com","platform":"woocommerce","product_endpoint":"https://book2look.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":1013,"country_code":"US","currency":null}
+{"domain":"asicentral.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":22,"country_code":"US","currency":null}
+{"domain":"coinpedia.org","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1476,"country_code":"US","currency":null}
+{"domain":"ananova.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":434,"country_code":"US","currency":null}
+{"domain":"webo.hosting","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":336,"country_code":"US","currency":null}
+{"domain":"eastbayexpress.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":50,"country_code":"US","currency":null}
+{"domain":"kissmetrics.io","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":471,"country_code":"US","currency":null}
+{"domain":"tldv.io","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":29,"country_code":"US","currency":null}
+{"domain":"uncrate.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":257,"country_code":"US","currency":null}
+{"domain":"focusrite.com","platform":"bigcommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":2175,"country_code":"US","currency":null}
+{"domain":"laam.pk","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":3393,"country_code":"US","currency":null}
+{"domain":"foodtechconnect.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":86,"country_code":"US","currency":null}
+{"domain":"microperfumes.com","platform":"shopify","product_endpoint":"https://microperfumes.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":2272,"country_code":"US","currency":null}
+{"domain":"vyaparapp.in","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1435,"country_code":"IN","currency":null}
+{"domain":"rcrcq.ca","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":1071,"country_code":"CA","currency":null}

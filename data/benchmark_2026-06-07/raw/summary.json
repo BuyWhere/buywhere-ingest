@@ -1,0 +1,100 @@
+{
+  "started_at": "2026-06-07T13:34:35.679Z",
+  "sources": [
+    "3",
+    "4",
+    "9",
+    "10"
+  ],
+  "per_source": {
+    "3": {
+      "records": 5000,
+      "meta": {
+        "url": "https://tranco-list.eu/top-1m.csv.zip",
+        "status": 200,
+        "sampled": 5000,
+        "latency_ms": 1412
+      },
+      "file": "/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/data/benchmark_2026-06-07/raw/source_3.ndjson",
+      "elapsed_ms": 1583
+    },
+    "4": {
+      "records": 0,
+      "meta": {
+        "source": "commoncrawl_cdx",
+        "index": "CC-MAIN-2025-43",
+        "queries": [
+          {
+            "url": "https://index.commoncrawl.org/CC-MAIN-2025-43-index?url=*.com%2Fproducts.json&output=json&limit=1250&fl=url,timestamp,status&filter=status:200",
+            "error": "connect ECONNREFUSED 54.237.141.66:443",
+            "latency_ms": 242
+          },
+          {
+            "url": "https://index.commoncrawl.org/CC-MAIN-2025-43-index?url=*%2Fwp-json%2Fwc%2Fv3%2Fproducts*&output=json&limit=1250&fl=url,timestamp,status&filter=status:200",
+            "error": "connect ECONNREFUSED 54.237.141.66:443",
+            "latency_ms": 241
+          },
+          {
+            "url": "https://index.commoncrawl.org/CC-MAIN-2025-43-index?url=*%2Frest%2FV1%2Fproducts*&output=json&limit=1250&fl=url,timestamp,status&filter=status:200",
+            "error": "connect ECONNREFUSED 54.237.141.66:443",
+            "latency_ms": 233
+          },
+          {
+            "url": "https://index.commoncrawl.org/CC-MAIN-2025-43-index?url=*%2Fapi%2Fcatalog%2Fproducts*&output=json&limit=1250&fl=url,timestamp,status&filter=status:200",
+            "error": "connect ECONNREFUSED 54.237.141.66:443",
+            "latency_ms": 240
+          }
+        ]
+      },
+      "file": "/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/data/benchmark_2026-06-07/raw/source_4.ndjson",
+      "elapsed_ms": 957
+    },
+    "9": {
+      "records": 3,
+      "meta": {
+        "source": "affiliate_networks",
+        "status": "directory_index_only",
+        "note": "real merchants come from per-network advertiser search"
+      },
+      "file": "/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/data/benchmark_2026-06-07/raw/source_9.ndjson",
+      "elapsed_ms": 0
+    },
+    "10": {
+      "records": 0,
+      "meta": {
+        "source": "schema_product_via_cdx",
+        "index": "CC-MAIN-2025-43",
+        "queries": [
+          {
+            "url": "https://web.archive.org/cdx/search/cdx?url=*%2Fproduct%2F*&output=json&fl=url%2Cstatus%2Ctimestamp%2Clength&limit=1666&filter=status%3A200&from=20250101&to=20260601",
+            "status": 400,
+            "error": "",
+            "latency_ms": 4744,
+            "pattern": "*/product/*"
+          },
+          {
+            "url": "https://web.archive.org/cdx/search/cdx?url=*%2Fproducts%2F*&output=json&fl=url%2Cstatus%2Ctimestamp%2Clength&limit=1666&filter=status%3A200&from=20250101&to=20260601",
+            "status": 400,
+            "error": "",
+            "latency_ms": 3649,
+            "pattern": "*/products/*"
+          },
+          {
+            "url": "https://web.archive.org/cdx/search/cdx?url=*%2Fp%2F*&output=json&fl=url%2Cstatus%2Ctimestamp%2Clength&limit=1666&filter=status%3A200&from=20250101&to=20260601",
+            "status": 400,
+            "error": "",
+            "latency_ms": 5368,
+            "pattern": "*/p/*"
+          }
+        ]
+      },
+      "file": "/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/data/benchmark_2026-06-07/raw/source_10.ndjson",
+      "elapsed_ms": 13763
+    }
+  },
+  "aggregate": {
+    "unique_domains": 5003,
+    "raw_records": 5003
+  },
+  "finished_at": "2026-06-07T13:34:51.993Z"
+}

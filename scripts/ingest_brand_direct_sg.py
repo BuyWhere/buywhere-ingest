@@ -126,20 +126,22 @@ def main() -> int:
     marker_summaries: dict[str, dict] = {}
     if not args.skip_marker:
         if apple_written > 0:
+            apple_errors = max(0, len(apple_records) - apple_written)
             marker_summaries["apple"] = finalize_marker(
                 apple_path,
                 record_count=len(apple_records),
                 inserted=apple_written,
-                errors=0,
+                errors=apple_errors,
                 writer="ingest_brand_direct_sg.py:BUY-32061",
                 require_r2=not args.lenient_marker,
             )
         if samsung_written > 0:
+            samsung_errors = max(0, len(samsung_records) - samsung_written)
             marker_summaries["samsung"] = finalize_marker(
                 samsung_path,
                 record_count=len(samsung_records),
                 inserted=samsung_written,
-                errors=0,
+                errors=samsung_errors,
                 writer="ingest_brand_direct_sg.py:BUY-32061",
                 require_r2=not args.lenient_marker,
             )
@@ -147,6 +149,14 @@ def main() -> int:
     if marker_summaries:
         print("\nIngest markers:")
         print(json.dumps(marker_summaries, indent=2, sort_keys=True))
+
+    partial_keys = [k for k, v in marker_summaries.items() if v.get("partial")]
+    if partial_keys:
+        print(
+            f"WARNING: partial ingest detected for {partial_keys}. "
+            "Marker written with ingest.partial=true so Gate B retains the file for re-drive.",
+            file=sys.stderr,
+        )
 
     return 0
 

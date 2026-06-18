@@ -21,6 +21,8 @@ class Product:
     image_url: Optional[str] = None
     sku: Optional[str] = None
     category: Optional[str] = None
+    category_path: Optional[List[str]] = None
+    in_stock: Optional[bool] = None
     raw_data: Optional[Dict[str, Any]] = None
 
 

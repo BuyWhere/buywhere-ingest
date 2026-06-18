@@ -1,0 +1,3 @@
+{"domain":"adit.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":791,"country_code":"US","currency":null}
+{"domain":"ipax.at","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":631,"country_code":"US","currency":null}
+{"domain":"exibart.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":890,"country_code":"US","currency":null}

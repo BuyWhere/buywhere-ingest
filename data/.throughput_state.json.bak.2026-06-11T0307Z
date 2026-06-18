@@ -1,0 +1,32 @@
+{
+  "last_n_tup_ins": 32022447,
+  "last_n_tup_ins_at": "2026-06-11T02:08:24+00:00",
+  "last_hour_checked": "2026-06-11T01:00:00+00:00",
+  "last_hour_window_start": "2026-06-11T01:00:00+00:00",
+  "last_hour_window_end": "2026-06-11T02:00:00+00:00",
+  "last_check_result": "PASS",
+  "last_check_real_rows": 732942,
+  "last_check_source": "n_tup_ins_delta",
+  "last_n_live_tup": 66387468,
+  "last_db_host": "maglev.proxy.rlwy.net:31310/railway",
+  "last_check_delta_rows": 732942,
+  "last_check_delta_hours": 1.0,
+  "last_check_rate": 732942,
+  "last_check_threshold": 150000,
+  "last_pm_start": "2026-06-08T10:21:09.112373+00:00",
+  "last_issue_identifier": "BUY-40480",
+  "last_fire_timestamp": "2026-06-11T02:06:00Z",
+  "last_note": "01:00-02:00Z hour PASS: delta ~732,942 over 1.0h = 732,942/hr (n_tup_ins PRIMARY signal under maglev contention). n_tup_ins 31,278,731 (01:01:49Z, prior fire) -> 31,995,778 (02:01:31Z, fresh sample) -> 32,010,194 (02:03:04Z, rate sample) -> 32,022,447 (02:08:24Z, this fire). Raw 01:01:49Z->02:01:31Z delta 717,047 over 0.9950h = 720,650/hr. Corrected for 01:00-02:00Z window by subtracting ~14,105 post-02:00 inserts (rate 155/s at 02:01:31Z-02:03:04Z samples) and adding ~30,000 pre-01:01:49Z inserts (rate ~275/s at start-of-hour per prior fire BUY-40411 observation) = ~732,942. n_live_tup partial cross-check: 66,090,517 (01:03:41Z) -> 66,387,021 (01:23:44Z, ANALYZE) = +296,504 in 21m55s = 811,899/hr (mid-hour rate, no full-hour ANALYZE bracket). 732,942 rows = 488.6% of 150K threshold. pm_start=2026-06-08T10:21:09Z (well outside this hour, delta method valid). count(*) skipped (products_created_at_idx invalid since BUY-32878). No child BUY-#### filed. Auto-dispatcher cron still broken (BUY-33694); this manual BUY-40480 heartbeat at 02:06:00Z is the canonical fire for the 01:00-02:00Z window.",
+  "last_closed_day": {
+    "date": "2026-06-10",
+    "n_tup_ins_open": 30148362,
+    "n_tup_ins_close": 30542209,
+    "delta": 393847,
+    "n_live_tup_close": 65495587,
+    "open_at": "2026-06-10T23:01:43.565471+00:00",
+    "close_at": "2026-06-11T00:01:03.257837+00:00",
+    "db_host": "maglev.proxy.rlwy.net:31310/railway",
+    "source": "midnight_snapshot"
+  },
+  "last_midnight_recorded_date": "2026-06-10"
+}

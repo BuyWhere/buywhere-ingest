@@ -1,0 +1,9 @@
+BUY-31312 Basket Verification — 300 queries at 40 rpm
+API Key: bw_live_4AeojSmUExdazRv1...
+
+=== Rich's criterion: iPhone 15 Pro + SG + limit=5 ===
+  HTTP 429 | result_count=0 | time=07:34:38
+  Result: FAIL
+
+=== Basket test (300 queries, throttled to 40 rpm) ===
+  [50/300] Success: 0 (0.0%) | 429s: 50 | Elapsed: 75s | ETA: 375s

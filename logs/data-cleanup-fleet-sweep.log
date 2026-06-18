@@ -1,0 +1,364 @@
+[2026-06-07T00:07:01Z] === fleet-sweep start (12 workspaces) ===
+[2026-06-07T00:08:52Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep start (jitter=111s)
+[2026-06-07T00:08:52Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep done: [/paperclip/instances/default/workspaces/0ed653ab-62ba-4deb-8348-3086ab46961c] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-07T00:10:50Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep start (jitter=118s)
+[2026-06-07T00:19:50Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep done: [/paperclip/instances/default/workspaces/2e68d8a0-9b0e-4573-8185-323edaabb186] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-07T00:25:33Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep start (jitter=343s)
+[2026-06-07T00:34:33Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep done: [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-07T00:36:23Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep start (jitter=110s)
+[2026-06-07T00:45:23Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep done: [/paperclip/instances/default/workspaces/4df23039-272b-4621-9d77-7cf9b7121242] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-07T00:48:39Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep start (jitter=196s)
+[2026-06-07T00:57:39Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep done: [/paperclip/instances/default/workspaces/5bc984ee-e2d2-4312-9e6c-b2864524a21f] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-07T01:00:06Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep start (jitter=147s)
+[2026-06-07T01:00:08Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep done: [/paperclip/instances/default/workspaces/708a8ce4-96dd-409d-94e7-a91d5032e4e0] cleaned files=0 freed=0.00GB catalogChecked=4 lowMatchKept=0 r2Missed=0 apply=1 dur=2s apply=1
+[2026-06-07T01:06:20Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep start (jitter=372s)
+[2026-06-07T01:15:20Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep done: [/paperclip/instances/default/workspaces/7fb55262-e658-45e2-88c0-b0e8ccc5ad6c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-07T01:18:57Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep start (jitter=217s)
+[2026-06-07T01:27:57Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep done: [/paperclip/instances/default/workspaces/a29ac9dc-cf0a-455b-964c-e75bd2f5fc47] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-07T01:33:03Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep start (jitter=306s)
+[2026-06-07T01:33:03Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep done: [/paperclip/instances/default/workspaces/bf810416-2f4c-4c4b-b27c-1270ea6f20b3] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-07T01:35:13Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep start (jitter=130s)
+[2026-06-07T01:35:14Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep done: [/paperclip/instances/default/workspaces/c2850c54-3396-420a-b7c3-92faae3137c1] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=1s apply=1
+[2026-06-07T01:38:57Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep start (jitter=223s)
+[2026-06-07T01:38:57Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep done: [/paperclip/instances/default/workspaces/d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-07T01:44:32Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep start (jitter=335s)
+[2026-06-07T01:53:32Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep done: [/paperclip/instances/default/workspaces/f6a39f3c-210b-479b-a8e7-c78491c120e9] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-07T01:53:32Z] === fleet-sweep done dur=6391s ===
+[2026-06-07T06:07:01Z] === fleet-sweep start (12 workspaces) ===
+[2026-06-07T06:12:24Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep start (jitter=323s)
+[2026-06-07T06:12:24Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep done: [/paperclip/instances/default/workspaces/0ed653ab-62ba-4deb-8348-3086ab46961c] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-07T06:16:00Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep start (jitter=216s)
+[2026-06-07T06:25:00Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep done: [/paperclip/instances/default/workspaces/2e68d8a0-9b0e-4573-8185-323edaabb186] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-07T06:26:57Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep start (jitter=117s)
+[2026-06-07T06:35:57Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep done: [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-07T06:40:57Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep start (jitter=300s)
+[2026-06-07T06:40:58Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep done: [/paperclip/instances/default/workspaces/4df23039-272b-4621-9d77-7cf9b7121242] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=1s apply=1
+[2026-06-07T06:45:33Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep start (jitter=275s)
+[2026-06-07T06:45:33Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep done: [/paperclip/instances/default/workspaces/5bc984ee-e2d2-4312-9e6c-b2864524a21f] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-07T06:49:02Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep start (jitter=209s)
+[2026-06-07T06:58:02Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep done: [/paperclip/instances/default/workspaces/708a8ce4-96dd-409d-94e7-a91d5032e4e0] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-07T07:02:03Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep start (jitter=241s)
+[2026-06-07T07:02:03Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep done: [/paperclip/instances/default/workspaces/7fb55262-e658-45e2-88c0-b0e8ccc5ad6c] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-07T07:07:42Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep start (jitter=339s)
+[2026-06-07T07:16:42Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep done: [/paperclip/instances/default/workspaces/a29ac9dc-cf0a-455b-964c-e75bd2f5fc47] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-07T07:19:46Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep start (jitter=184s)
+[2026-06-07T07:19:46Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep done: [/paperclip/instances/default/workspaces/bf810416-2f4c-4c4b-b27c-1270ea6f20b3] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-07T07:24:11Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep start (jitter=265s)
+[2026-06-07T07:24:12Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep done: [/paperclip/instances/default/workspaces/c2850c54-3396-420a-b7c3-92faae3137c1] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=1s apply=1
+[2026-06-07T07:30:07Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep start (jitter=355s)
+[2026-06-07T07:30:07Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep done: [/paperclip/instances/default/workspaces/d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-07T07:32:06Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep start (jitter=119s)
+[2026-06-07T07:41:06Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep done: [/paperclip/instances/default/workspaces/f6a39f3c-210b-479b-a8e7-c78491c120e9] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-07T07:41:06Z] === fleet-sweep done dur=5645s ===
+[2026-06-07T11:20:49Z] === fleet-sweep start (12 workspaces) ===
+[2026-06-07T11:22:55Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep start (jitter=126s)
+[2026-06-07T11:22:55Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep done: [/paperclip/instances/default/workspaces/0ed653ab-62ba-4deb-8348-3086ab46961c] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-07T11:27:14Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep start (jitter=259s)
+[2026-06-07T11:29:24Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep done: [/paperclip/instances/default/workspaces/2e68d8a0-9b0e-4573-8185-323edaabb186] cleaned files=0 freed=0.00GB catalogChecked=12 lowMatchKept=0 r2Missed=0 apply=1 dur=130s apply=1
+[2026-06-07T11:33:19Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep start (jitter=235s)
+[2026-06-07T11:42:19Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep done: [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-07T11:46:03Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep start (jitter=224s)
+[2026-06-07T11:46:03Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep done: [/paperclip/instances/default/workspaces/4df23039-272b-4621-9d77-7cf9b7121242] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-07T11:50:26Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep start (jitter=263s)
+[2026-06-07T11:50:26Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep done: [/paperclip/instances/default/workspaces/5bc984ee-e2d2-4312-9e6c-b2864524a21f] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-07T11:52:14Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep start (jitter=108s)
+[2026-06-07T12:01:14Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep done: [/paperclip/instances/default/workspaces/708a8ce4-96dd-409d-94e7-a91d5032e4e0] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-07T12:02:44Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep start (jitter=90s)
+[2026-06-07T12:02:44Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep done: [/paperclip/instances/default/workspaces/7fb55262-e658-45e2-88c0-b0e8ccc5ad6c] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-07T12:05:07Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep start (jitter=143s)
+[2026-06-07T12:07:01Z] === fleet-sweep start (12 workspaces) ===
+[2026-06-07T12:07:18Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep done: [/paperclip/instances/default/workspaces/a29ac9dc-cf0a-455b-964c-e75bd2f5fc47] cleaned files=0 freed=0.00GB catalogChecked=34 lowMatchKept=0 r2Missed=0 apply=1 dur=131s apply=1
+[2026-06-07T12:09:28Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep start (jitter=130s)
+[2026-06-07T12:09:28Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep done: [/paperclip/instances/default/workspaces/bf810416-2f4c-4c4b-b27c-1270ea6f20b3] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-07T12:12:38Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep start (jitter=337s)
+[2026-06-07T12:12:38Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep done: [/paperclip/instances/default/workspaces/0ed653ab-62ba-4deb-8348-3086ab46961c] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-07T12:14:14Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep start (jitter=286s)
+[2026-06-07T12:14:15Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep done: [/paperclip/instances/default/workspaces/c2850c54-3396-420a-b7c3-92faae3137c1] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=1s apply=1
+[2026-06-07T12:16:37Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep start (jitter=239s)
+[2026-06-07T12:17:33Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep start (jitter=198s)
+[2026-06-07T12:17:33Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep done: [/paperclip/instances/default/workspaces/d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-07T12:18:41Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep done: [/paperclip/instances/default/workspaces/2e68d8a0-9b0e-4573-8185-323edaabb186] cleaned files=0 freed=0.00GB catalogChecked=12 lowMatchKept=0 r2Missed=0 apply=1 dur=124s apply=1
+[2026-06-07T12:23:31Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep start (jitter=358s)
+[2026-06-07T12:24:16Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep start (jitter=335s)
+[2026-06-07T12:26:41Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep done: [/paperclip/instances/default/workspaces/f6a39f3c-210b-479b-a8e7-c78491c120e9] cleaned files=0 freed=0.00GB catalogChecked=12 lowMatchKept=0 r2Missed=0 apply=1 dur=190s apply=1
+[2026-06-07T12:26:41Z] === fleet-sweep done dur=3952s ===
+[2026-06-07T12:33:16Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep done: [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-07T12:39:40Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep start (jitter=384s)
+[2026-06-07T12:39:40Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep done: [/paperclip/instances/default/workspaces/4df23039-272b-4621-9d77-7cf9b7121242] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-07T12:43:39Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep start (jitter=239s)
+[2026-06-07T12:43:40Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep done: [/paperclip/instances/default/workspaces/5bc984ee-e2d2-4312-9e6c-b2864524a21f] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=1s apply=1
+[2026-06-07T12:47:07Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep start (jitter=207s)
+[2026-06-07T12:56:07Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep done: [/paperclip/instances/default/workspaces/708a8ce4-96dd-409d-94e7-a91d5032e4e0] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-07T12:58:45Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep start (jitter=158s)
+[2026-06-07T12:58:45Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep done: [/paperclip/instances/default/workspaces/7fb55262-e658-45e2-88c0-b0e8ccc5ad6c] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-07T13:00:22Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep start (jitter=97s)
+[2026-06-07T13:01:23Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep done: [/paperclip/instances/default/workspaces/a29ac9dc-cf0a-455b-964c-e75bd2f5fc47] cleaned files=0 freed=0.00GB catalogChecked=3 lowMatchKept=0 r2Missed=0 apply=1 dur=61s apply=1
+[2026-06-07T13:04:20Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep start (jitter=177s)
+[2026-06-07T13:04:21Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep done: [/paperclip/instances/default/workspaces/bf810416-2f4c-4c4b-b27c-1270ea6f20b3] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=1s apply=1
+[2026-06-07T13:10:05Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep start (jitter=344s)
+[2026-06-07T13:10:05Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep done: [/paperclip/instances/default/workspaces/c2850c54-3396-420a-b7c3-92faae3137c1] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-07T13:12:55Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep start (jitter=170s)
+[2026-06-07T13:12:56Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep done: [/paperclip/instances/default/workspaces/d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=1s apply=1
+[2026-06-07T13:19:23Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep start (jitter=387s)
+[2026-06-07T13:28:23Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep done: [/paperclip/instances/default/workspaces/f6a39f3c-210b-479b-a8e7-c78491c120e9] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-07T13:28:23Z] === fleet-sweep done dur=4882s ===
+[2026-06-07T18:07:01Z] === fleet-sweep start (12 workspaces) ===
+[2026-06-07T18:11:17Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep start (jitter=256s)
+[2026-06-07T18:11:17Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep done: [/paperclip/instances/default/workspaces/0ed653ab-62ba-4deb-8348-3086ab46961c] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-07T18:13:32Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep start (jitter=135s)
+[2026-06-07T18:15:42Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep done: [/paperclip/instances/default/workspaces/2e68d8a0-9b0e-4573-8185-323edaabb186] cleaned files=0 freed=0.00GB catalogChecked=12 lowMatchKept=0 r2Missed=0 apply=1 dur=130s apply=1
+[2026-06-07T18:17:15Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep start (jitter=93s)
+[2026-06-07T18:26:15Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep done: [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-07T18:30:45Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep start (jitter=270s)
+[2026-06-07T18:30:45Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep done: [/paperclip/instances/default/workspaces/4df23039-272b-4621-9d77-7cf9b7121242] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-07T18:32:43Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep start (jitter=118s)
+[2026-06-07T18:32:43Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep done: [/paperclip/instances/default/workspaces/5bc984ee-e2d2-4312-9e6c-b2864524a21f] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-07T18:35:44Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep start (jitter=181s)
+[2026-06-07T18:44:44Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep done: [/paperclip/instances/default/workspaces/708a8ce4-96dd-409d-94e7-a91d5032e4e0] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-07T18:49:29Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep start (jitter=285s)
+[2026-06-07T18:49:29Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep done: [/paperclip/instances/default/workspaces/7fb55262-e658-45e2-88c0-b0e8ccc5ad6c] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-07T18:54:03Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep start (jitter=274s)
+[2026-06-07T18:55:07Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep done: [/paperclip/instances/default/workspaces/a29ac9dc-cf0a-455b-964c-e75bd2f5fc47] cleaned files=0 freed=0.00GB catalogChecked=4 lowMatchKept=0 r2Missed=0 apply=1 dur=64s apply=1
+[2026-06-07T18:59:30Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep start (jitter=263s)
+[2026-06-07T18:59:30Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep done: [/paperclip/instances/default/workspaces/bf810416-2f4c-4c4b-b27c-1270ea6f20b3] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-07T19:04:25Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep start (jitter=295s)
+[2026-06-07T19:04:26Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep done: [/paperclip/instances/default/workspaces/c2850c54-3396-420a-b7c3-92faae3137c1] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=1s apply=1
+[2026-06-07T19:06:06Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep start (jitter=100s)
+[2026-06-07T19:06:06Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep done: [/paperclip/instances/default/workspaces/d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-07T19:10:15Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep start (jitter=249s)
+[2026-06-07T19:19:15Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep done: [/paperclip/instances/default/workspaces/f6a39f3c-210b-479b-a8e7-c78491c120e9] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-07T19:19:15Z] === fleet-sweep done dur=4334s ===
+[2026-06-08T00:07:01Z] === fleet-sweep start (12 workspaces) ===
+[2026-06-08T00:10:02Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep start (jitter=181s)
+[2026-06-08T00:10:02Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep done: [/paperclip/instances/default/workspaces/0ed653ab-62ba-4deb-8348-3086ab46961c] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-08T00:16:17Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep start (jitter=375s)
+[2026-06-08T00:18:27Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep done: [/paperclip/instances/default/workspaces/2e68d8a0-9b0e-4573-8185-323edaabb186] cleaned files=0 freed=0.00GB catalogChecked=13 lowMatchKept=0 r2Missed=0 apply=1 dur=130s apply=1
+[2026-06-08T00:21:36Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep start (jitter=189s)
+[2026-06-08T00:30:36Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep done: [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-08T00:33:23Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep start (jitter=167s)
+[2026-06-08T00:33:23Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep done: [/paperclip/instances/default/workspaces/4df23039-272b-4621-9d77-7cf9b7121242] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-08T00:36:14Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep start (jitter=171s)
+[2026-06-08T00:36:14Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep done: [/paperclip/instances/default/workspaces/5bc984ee-e2d2-4312-9e6c-b2864524a21f] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-08T00:39:37Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep start (jitter=203s)
+[2026-06-08T00:48:37Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep done: [/paperclip/instances/default/workspaces/708a8ce4-96dd-409d-94e7-a91d5032e4e0] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-08T00:54:52Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep start (jitter=375s)
+[2026-06-08T00:54:53Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep done: [/paperclip/instances/default/workspaces/7fb55262-e658-45e2-88c0-b0e8ccc5ad6c] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=1s apply=1
+[2026-06-08T00:57:00Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep start (jitter=127s)
+[2026-06-08T00:58:02Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep done: [/paperclip/instances/default/workspaces/a29ac9dc-cf0a-455b-964c-e75bd2f5fc47] cleaned files=0 freed=0.00GB catalogChecked=5 lowMatchKept=0 r2Missed=0 apply=1 dur=62s apply=1
+[2026-06-08T01:01:15Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep start (jitter=193s)
+[2026-06-08T01:01:16Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep done: [/paperclip/instances/default/workspaces/bf810416-2f4c-4c4b-b27c-1270ea6f20b3] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-08T01:05:35Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep start (jitter=259s)
+[2026-06-08T01:05:35Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep done: [/paperclip/instances/default/workspaces/c2850c54-3396-420a-b7c3-92faae3137c1] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-08T01:10:17Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep start (jitter=282s)
+[2026-06-08T01:10:17Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep done: [/paperclip/instances/default/workspaces/d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-08T01:12:49Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep start (jitter=152s)
+[2026-06-08T01:21:49Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep done: [/paperclip/instances/default/workspaces/f6a39f3c-210b-479b-a8e7-c78491c120e9] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-08T01:21:49Z] === fleet-sweep done dur=4488s ===
+[2026-06-08T06:07:01Z] === fleet-sweep start (12 workspaces) ===
+[2026-06-08T06:12:54Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep start (jitter=353s)
+[2026-06-08T06:12:54Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep done: [/paperclip/instances/default/workspaces/0ed653ab-62ba-4deb-8348-3086ab46961c] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-08T06:18:59Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep start (jitter=365s)
+[2026-06-08T06:21:05Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep done: [/paperclip/instances/default/workspaces/2e68d8a0-9b0e-4573-8185-323edaabb186] cleaned files=0 freed=0.00GB catalogChecked=13 lowMatchKept=0 r2Missed=0 apply=1 dur=126s apply=1
+[2026-06-08T06:23:20Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep start (jitter=135s)
+[2026-06-08T06:32:20Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep done: [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-08T06:38:35Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep start (jitter=375s)
+[2026-06-08T06:38:35Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep done: [/paperclip/instances/default/workspaces/4df23039-272b-4621-9d77-7cf9b7121242] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-08T06:42:52Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep start (jitter=257s)
+[2026-06-08T06:42:52Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep done: [/paperclip/instances/default/workspaces/5bc984ee-e2d2-4312-9e6c-b2864524a21f] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-08T06:47:09Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep start (jitter=257s)
+[2026-06-08T06:56:09Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep done: [/paperclip/instances/default/workspaces/708a8ce4-96dd-409d-94e7-a91d5032e4e0] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-08T07:00:23Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep start (jitter=254s)
+[2026-06-08T07:00:23Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep done: [/paperclip/instances/default/workspaces/7fb55262-e658-45e2-88c0-b0e8ccc5ad6c] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-08T07:06:04Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep start (jitter=341s)
+[2026-06-08T07:07:06Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep done: [/paperclip/instances/default/workspaces/a29ac9dc-cf0a-455b-964c-e75bd2f5fc47] cleaned files=0 freed=0.00GB catalogChecked=9 lowMatchKept=0 r2Missed=0 apply=1 dur=62s apply=1
+[2026-06-08T07:11:02Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep start (jitter=236s)
+[2026-06-08T07:11:02Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep done: [/paperclip/instances/default/workspaces/bf810416-2f4c-4c4b-b27c-1270ea6f20b3] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-08T07:14:06Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep start (jitter=184s)
+[2026-06-08T07:14:07Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep done: [/paperclip/instances/default/workspaces/c2850c54-3396-420a-b7c3-92faae3137c1] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=1s apply=1
+[2026-06-08T07:15:49Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep start (jitter=102s)
+[2026-06-08T07:15:49Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep done: [/paperclip/instances/default/workspaces/d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-08T07:20:06Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep start (jitter=257s)
+[2026-06-08T07:29:06Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep done: [/paperclip/instances/default/workspaces/f6a39f3c-210b-479b-a8e7-c78491c120e9] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-08T07:29:06Z] === fleet-sweep done dur=4925s ===
+[2026-06-08T12:07:01Z] === fleet-sweep start (12 workspaces) ===
+[2026-06-08T12:09:19Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep start (jitter=138s)
+[2026-06-08T12:09:19Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep done: [/paperclip/instances/default/workspaces/0ed653ab-62ba-4deb-8348-3086ab46961c] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-08T12:11:51Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep start (jitter=152s)
+[2026-06-08T12:13:53Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep done: [/paperclip/instances/default/workspaces/2e68d8a0-9b0e-4573-8185-323edaabb186] cleaned files=0 freed=0.00GB catalogChecked=13 lowMatchKept=0 r2Missed=0 apply=1 dur=122s apply=1
+[2026-06-08T12:15:33Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep start (jitter=100s)
+[2026-06-08T12:24:33Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep done: [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-08T12:27:46Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep start (jitter=193s)
+[2026-06-08T12:27:46Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep done: [/paperclip/instances/default/workspaces/4df23039-272b-4621-9d77-7cf9b7121242] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-08T12:32:19Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep start (jitter=273s)
+[2026-06-08T12:40:58Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep done: [/paperclip/instances/default/workspaces/5bc984ee-e2d2-4312-9e6c-b2864524a21f] cleaned files=0 freed=0.00GB catalogChecked=9 lowMatchKept=0 r2Missed=0 apply=1 dur=519s apply=1
+[2026-06-08T12:46:15Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep start (jitter=317s)
+[2026-06-08T12:55:15Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep done: [/paperclip/instances/default/workspaces/708a8ce4-96dd-409d-94e7-a91d5032e4e0] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-08T12:58:07Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep start (jitter=172s)
+[2026-06-08T12:58:07Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep done: [/paperclip/instances/default/workspaces/7fb55262-e658-45e2-88c0-b0e8ccc5ad6c] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-08T13:00:58Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep start (jitter=171s)
+[2026-06-08T13:02:00Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep done: [/paperclip/instances/default/workspaces/a29ac9dc-cf0a-455b-964c-e75bd2f5fc47] cleaned files=0 freed=0.00GB catalogChecked=10 lowMatchKept=0 r2Missed=0 apply=1 dur=62s apply=1
+[2026-06-08T13:05:58Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep start (jitter=238s)
+[2026-06-08T13:05:59Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep done: [/paperclip/instances/default/workspaces/bf810416-2f4c-4c4b-b27c-1270ea6f20b3] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=1s apply=1
+[2026-06-08T13:08:21Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep start (jitter=142s)
+[2026-06-08T13:08:21Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep done: [/paperclip/instances/default/workspaces/c2850c54-3396-420a-b7c3-92faae3137c1] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-08T13:11:18Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep start (jitter=177s)
+[2026-06-08T13:11:18Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep done: [/paperclip/instances/default/workspaces/d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-08T13:13:15Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep start (jitter=117s)
+[2026-06-08T13:22:15Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep done: [/paperclip/instances/default/workspaces/f6a39f3c-210b-479b-a8e7-c78491c120e9] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-08T13:22:15Z] === fleet-sweep done dur=4514s ===
+[2026-06-08T18:07:01Z] === fleet-sweep start (12 workspaces) ===
+[2026-06-08T18:13:13Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep start (jitter=372s)
+[2026-06-08T18:13:13Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep done: [/paperclip/instances/default/workspaces/0ed653ab-62ba-4deb-8348-3086ab46961c] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-08T18:19:34Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep start (jitter=381s)
+[2026-06-08T18:21:39Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep done: [/paperclip/instances/default/workspaces/2e68d8a0-9b0e-4573-8185-323edaabb186] cleaned files=0 freed=0.00GB catalogChecked=13 lowMatchKept=0 r2Missed=0 apply=1 dur=125s apply=1
+[2026-06-08T18:26:01Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep start (jitter=262s)
+[2026-06-08T18:35:01Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep done: [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-08T18:39:21Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep start (jitter=260s)
+[2026-06-08T18:39:21Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep done: [/paperclip/instances/default/workspaces/4df23039-272b-4621-9d77-7cf9b7121242] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-08T18:41:43Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep start (jitter=142s)
+[2026-06-08T18:50:43Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep done: [/paperclip/instances/default/workspaces/5bc984ee-e2d2-4312-9e6c-b2864524a21f] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-08T18:53:49Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep start (jitter=186s)
+[2026-06-08T19:02:49Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep done: [/paperclip/instances/default/workspaces/708a8ce4-96dd-409d-94e7-a91d5032e4e0] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-08T19:06:54Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep start (jitter=245s)
+[2026-06-08T19:07:55Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep done: [/paperclip/instances/default/workspaces/7fb55262-e658-45e2-88c0-b0e8ccc5ad6c] cleaned files=0 freed=0.00GB catalogChecked=3 lowMatchKept=0 r2Missed=0 apply=1 dur=61s apply=1
+[2026-06-08T19:11:03Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep start (jitter=188s)
+[2026-06-08T19:12:04Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep done: [/paperclip/instances/default/workspaces/a29ac9dc-cf0a-455b-964c-e75bd2f5fc47] cleaned files=0 freed=0.00GB catalogChecked=12 lowMatchKept=0 r2Missed=0 apply=1 dur=61s apply=1
+[2026-06-08T19:15:28Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep start (jitter=204s)
+[2026-06-08T19:15:28Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep done: [/paperclip/instances/default/workspaces/bf810416-2f4c-4c4b-b27c-1270ea6f20b3] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-08T19:20:51Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep start (jitter=323s)
+[2026-06-08T19:20:51Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep done: [/paperclip/instances/default/workspaces/c2850c54-3396-420a-b7c3-92faae3137c1] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-08T19:24:31Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep start (jitter=220s)
+[2026-06-08T19:24:32Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep done: [/paperclip/instances/default/workspaces/d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=1s apply=1
+[2026-06-08T19:28:03Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep start (jitter=211s)
+[2026-06-08T19:37:03Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep done: [/paperclip/instances/default/workspaces/f6a39f3c-210b-479b-a8e7-c78491c120e9] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-08T19:37:03Z] === fleet-sweep done dur=5402s ===
+[2026-06-09T00:07:01Z] === fleet-sweep start (12 workspaces) ===
+[2026-06-09T00:12:41Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep start (jitter=340s)
+[2026-06-09T00:12:42Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep done: [/paperclip/instances/default/workspaces/0ed653ab-62ba-4deb-8348-3086ab46961c] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=1s apply=1
+[2026-06-09T00:17:09Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep start (jitter=267s)
+[2026-06-09T00:19:00Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep done: [/paperclip/instances/default/workspaces/2e68d8a0-9b0e-4573-8185-323edaabb186] cleaned files=0 freed=0.00GB catalogChecked=13 lowMatchKept=0 r2Missed=0 apply=1 dur=111s apply=1
+[2026-06-09T00:22:26Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep start (jitter=206s)
+[2026-06-09T00:31:26Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep done: [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-09T00:36:49Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep start (jitter=323s)
+[2026-06-09T00:36:49Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep done: [/paperclip/instances/default/workspaces/4df23039-272b-4621-9d77-7cf9b7121242] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-09T00:38:26Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep start (jitter=97s)
+[2026-06-09T00:47:26Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep done: [/paperclip/instances/default/workspaces/5bc984ee-e2d2-4312-9e6c-b2864524a21f] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-09T00:51:53Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep start (jitter=267s)
+[2026-06-09T01:00:53Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep done: [/paperclip/instances/default/workspaces/708a8ce4-96dd-409d-94e7-a91d5032e4e0] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-09T01:07:21Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep start (jitter=388s)
+[2026-06-09T01:08:09Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep done: [/paperclip/instances/default/workspaces/7fb55262-e658-45e2-88c0-b0e8ccc5ad6c] cleaned files=0 freed=0.00GB catalogChecked=3 lowMatchKept=0 r2Missed=0 apply=1 dur=48s apply=1
+[2026-06-09T01:12:37Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep start (jitter=268s)
+[2026-06-09T01:13:41Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep done: [/paperclip/instances/default/workspaces/a29ac9dc-cf0a-455b-964c-e75bd2f5fc47] cleaned files=0 freed=0.00GB catalogChecked=12 lowMatchKept=0 r2Missed=0 apply=1 dur=64s apply=1
+[2026-06-09T01:17:01Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep start (jitter=200s)
+[2026-06-09T01:17:01Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep done: [/paperclip/instances/default/workspaces/bf810416-2f4c-4c4b-b27c-1270ea6f20b3] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-09T01:18:34Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep start (jitter=93s)
+[2026-06-09T01:18:34Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep done: [/paperclip/instances/default/workspaces/c2850c54-3396-420a-b7c3-92faae3137c1] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-09T01:22:40Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep start (jitter=246s)
+[2026-06-09T01:22:41Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep done: [/paperclip/instances/default/workspaces/d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=1s apply=1
+[2026-06-09T01:28:11Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep start (jitter=330s)
+[2026-06-09T01:37:11Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep done: [/paperclip/instances/default/workspaces/f6a39f3c-210b-479b-a8e7-c78491c120e9] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-09T01:37:11Z] === fleet-sweep done dur=5410s ===
+[2026-06-09T06:07:01Z] === fleet-sweep start (12 workspaces) ===
+[2026-06-09T06:11:58Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep start (jitter=297s)
+[2026-06-09T06:11:58Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep done: [/paperclip/instances/default/workspaces/0ed653ab-62ba-4deb-8348-3086ab46961c] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-09T06:17:14Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep start (jitter=316s)
+[2026-06-09T06:19:08Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep done: [/paperclip/instances/default/workspaces/2e68d8a0-9b0e-4573-8185-323edaabb186] cleaned files=0 freed=0.00GB catalogChecked=13 lowMatchKept=0 r2Missed=0 apply=1 dur=114s apply=1
+[2026-06-09T06:24:04Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep start (jitter=296s)
+[2026-06-09T06:33:04Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep done: [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-09T06:38:21Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep start (jitter=317s)
+[2026-06-09T06:38:22Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep done: [/paperclip/instances/default/workspaces/4df23039-272b-4621-9d77-7cf9b7121242] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=1s apply=1
+[2026-06-09T06:39:55Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep start (jitter=93s)
+[2026-06-09T06:48:55Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep done: [/paperclip/instances/default/workspaces/5bc984ee-e2d2-4312-9e6c-b2864524a21f] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-09T06:50:48Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep start (jitter=113s)
+[2026-06-09T06:59:48Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep done: [/paperclip/instances/default/workspaces/708a8ce4-96dd-409d-94e7-a91d5032e4e0] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-09T07:01:19Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep start (jitter=91s)
+[2026-06-09T07:02:20Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep done: [/paperclip/instances/default/workspaces/7fb55262-e658-45e2-88c0-b0e8ccc5ad6c] cleaned files=0 freed=0.00GB catalogChecked=3 lowMatchKept=0 r2Missed=0 apply=1 dur=61s apply=1
+[2026-06-09T07:05:26Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep start (jitter=186s)
+[2026-06-09T07:06:30Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep done: [/paperclip/instances/default/workspaces/a29ac9dc-cf0a-455b-964c-e75bd2f5fc47] cleaned files=0 freed=0.00GB catalogChecked=12 lowMatchKept=0 r2Missed=0 apply=1 dur=64s apply=1
+[2026-06-09T07:11:38Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep start (jitter=308s)
+[2026-06-09T07:11:38Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep done: [/paperclip/instances/default/workspaces/bf810416-2f4c-4c4b-b27c-1270ea6f20b3] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-09T07:14:21Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep start (jitter=163s)
+[2026-06-09T07:14:21Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep done: [/paperclip/instances/default/workspaces/c2850c54-3396-420a-b7c3-92faae3137c1] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-09T07:16:59Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep start (jitter=158s)
+[2026-06-09T07:17:00Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep done: [/paperclip/instances/default/workspaces/d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=1s apply=1
+[2026-06-09T07:19:59Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep start (jitter=179s)
+[2026-06-09T07:28:59Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep done: [/paperclip/instances/default/workspaces/f6a39f3c-210b-479b-a8e7-c78491c120e9] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-09T07:28:59Z] === fleet-sweep done dur=4918s ===
+[2026-06-09T12:07:01Z] === fleet-sweep start (12 workspaces) ===
+[2026-06-09T12:11:23Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep start (jitter=262s)
+[2026-06-09T12:11:23Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep done: [/paperclip/instances/default/workspaces/0ed653ab-62ba-4deb-8348-3086ab46961c] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-09T12:17:41Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep start (jitter=378s)
+[2026-06-09T12:19:18Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep done: [/paperclip/instances/default/workspaces/2e68d8a0-9b0e-4573-8185-323edaabb186] cleaned files=0 freed=0.00GB catalogChecked=13 lowMatchKept=0 r2Missed=0 apply=1 dur=97s apply=1
+[2026-06-09T12:25:03Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep start (jitter=345s)
+[2026-06-09T12:34:03Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep done: [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-09T12:40:18Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep start (jitter=375s)
+[2026-06-09T12:40:18Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep done: [/paperclip/instances/default/workspaces/4df23039-272b-4621-9d77-7cf9b7121242] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-09T12:45:38Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep start (jitter=320s)
+[2026-06-09T12:54:38Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep done: [/paperclip/instances/default/workspaces/5bc984ee-e2d2-4312-9e6c-b2864524a21f] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-09T12:58:38Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep start (jitter=240s)
+[2026-06-09T13:07:38Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep done: [/paperclip/instances/default/workspaces/708a8ce4-96dd-409d-94e7-a91d5032e4e0] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-09T13:10:19Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep start (jitter=161s)
+[2026-06-09T13:12:23Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep done: [/paperclip/instances/default/workspaces/7fb55262-e658-45e2-88c0-b0e8ccc5ad6c] cleaned files=0 freed=0.00GB catalogChecked=5 lowMatchKept=0 r2Missed=0 apply=1 dur=124s apply=1
+[2026-06-09T13:17:17Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep start (jitter=294s)
+[2026-06-09T13:18:20Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep done: [/paperclip/instances/default/workspaces/a29ac9dc-cf0a-455b-964c-e75bd2f5fc47] cleaned files=0 freed=0.00GB catalogChecked=12 lowMatchKept=0 r2Missed=0 apply=1 dur=63s apply=1
+[2026-06-09T13:20:31Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep start (jitter=131s)
+[2026-06-09T13:20:32Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep done: [/paperclip/instances/default/workspaces/bf810416-2f4c-4c4b-b27c-1270ea6f20b3] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=1s apply=1
+[2026-06-09T13:26:36Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep start (jitter=364s)
+[2026-06-09T13:26:36Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep done: [/paperclip/instances/default/workspaces/c2850c54-3396-420a-b7c3-92faae3137c1] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-09T13:28:32Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep start (jitter=116s)
+[2026-06-09T13:28:32Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep done: [/paperclip/instances/default/workspaces/d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-09T13:33:04Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep start (jitter=272s)
+[2026-06-09T13:42:04Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep done: [/paperclip/instances/default/workspaces/f6a39f3c-210b-479b-a8e7-c78491c120e9] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-09T13:42:04Z] === fleet-sweep done dur=5703s ===
+[2026-06-09T18:07:01Z] === fleet-sweep start (12 workspaces) ===
+[2026-06-09T18:09:00Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep start (jitter=119s)
+[2026-06-09T18:09:00Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep done: [/paperclip/instances/default/workspaces/0ed653ab-62ba-4deb-8348-3086ab46961c] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-09T18:11:50Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep start (jitter=170s)
+[2026-06-09T18:13:23Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep done: [/paperclip/instances/default/workspaces/2e68d8a0-9b0e-4573-8185-323edaabb186] cleaned files=0 freed=0.00GB catalogChecked=13 lowMatchKept=0 r2Missed=0 apply=1 dur=93s apply=1
+[2026-06-09T18:19:34Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep start (jitter=371s)
+[2026-06-09T18:28:34Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep done: [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-09T18:33:04Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep start (jitter=270s)
+[2026-06-09T18:33:04Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep done: [/paperclip/instances/default/workspaces/4df23039-272b-4621-9d77-7cf9b7121242] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-09T18:39:01Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep start (jitter=357s)
+[2026-06-09T18:48:01Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep done: [/paperclip/instances/default/workspaces/5bc984ee-e2d2-4312-9e6c-b2864524a21f] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-09T18:52:36Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep start (jitter=275s)
+[2026-06-09T19:01:36Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep done: [/paperclip/instances/default/workspaces/708a8ce4-96dd-409d-94e7-a91d5032e4e0] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-09T19:07:56Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep start (jitter=380s)
+[2026-06-09T19:09:32Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep done: [/paperclip/instances/default/workspaces/7fb55262-e658-45e2-88c0-b0e8ccc5ad6c] cleaned files=0 freed=0.00GB catalogChecked=5 lowMatchKept=0 r2Missed=0 apply=1 dur=96s apply=1
+[2026-06-09T19:12:56Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep start (jitter=204s)
+[2026-06-09T19:13:34Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep done: [/paperclip/instances/default/workspaces/a29ac9dc-cf0a-455b-964c-e75bd2f5fc47] cleaned files=0 freed=0.00GB catalogChecked=11 lowMatchKept=0 r2Missed=0 apply=1 dur=38s apply=1
+[2026-06-09T19:15:20Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep start (jitter=106s)
+[2026-06-09T19:15:20Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep done: [/paperclip/instances/default/workspaces/bf810416-2f4c-4c4b-b27c-1270ea6f20b3] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-09T19:20:45Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep start (jitter=325s)
+[2026-06-09T19:20:45Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep done: [/paperclip/instances/default/workspaces/c2850c54-3396-420a-b7c3-92faae3137c1] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-09T19:24:15Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep start (jitter=210s)
+[2026-06-09T19:24:16Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep done: [/paperclip/instances/default/workspaces/d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=1s apply=1
+[2026-06-09T19:29:25Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep start (jitter=309s)
+[2026-06-09T19:38:25Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep done: [/paperclip/instances/default/workspaces/f6a39f3c-210b-479b-a8e7-c78491c120e9] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-09T19:38:25Z] === fleet-sweep done dur=5484s ===
+[2026-06-10T00:07:01Z] === fleet-sweep start (12 workspaces) ===
+[2026-06-10T00:09:26Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep start (jitter=145s)
+[2026-06-10T00:09:27Z]   [1/12] 0ed653ab-62ba-4deb-8348-3086ab46961c sweep done: [/paperclip/instances/default/workspaces/0ed653ab-62ba-4deb-8348-3086ab46961c] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-10T00:12:06Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep start (jitter=159s)
+[2026-06-10T00:21:06Z]   [2/12] 2e68d8a0-9b0e-4573-8185-323edaabb186 sweep done: [/paperclip/instances/default/workspaces/2e68d8a0-9b0e-4573-8185-323edaabb186] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-10T00:22:53Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep start (jitter=107s)
+[2026-06-10T00:29:55Z]   [3/12] 3ec8f6dd-1735-4479-9825-a2c42edac34c sweep done: [/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c] cleaned files=200 freed=0.57GB catalogChecked=370 lowMatchKept=0 r2Missed=0 apply=1 dur=422s apply=1
+[2026-06-10T00:34:03Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep start (jitter=248s)
+[2026-06-10T00:34:03Z]   [4/12] 4df23039-272b-4621-9d77-7cf9b7121242 sweep done: [/paperclip/instances/default/workspaces/4df23039-272b-4621-9d77-7cf9b7121242] cleaned files=0 freed=0.00GB catalogChecked=0 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-10T00:38:55Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep start (jitter=292s)
+[2026-06-10T00:47:55Z]   [5/12] 5bc984ee-e2d2-4312-9e6c-b2864524a21f sweep done: [/paperclip/instances/default/workspaces/5bc984ee-e2d2-4312-9e6c-b2864524a21f] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-10T00:51:24Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep start (jitter=209s)
+[2026-06-10T01:00:24Z]   [6/12] 708a8ce4-96dd-409d-94e7-a91d5032e4e0 sweep done: [/paperclip/instances/default/workspaces/708a8ce4-96dd-409d-94e7-a91d5032e4e0] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-10T01:04:11Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep start (jitter=227s)
+[2026-06-10T01:06:14Z]   [7/12] 7fb55262-e658-45e2-88c0-b0e8ccc5ad6c sweep done: [/paperclip/instances/default/workspaces/7fb55262-e658-45e2-88c0-b0e8ccc5ad6c] cleaned files=0 freed=0.00GB catalogChecked=5 lowMatchKept=0 r2Missed=0 apply=1 dur=123s apply=1
+[2026-06-10T01:09:39Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep start (jitter=205s)
+[2026-06-10T01:10:35Z]   [8/12] a29ac9dc-cf0a-455b-964c-e75bd2f5fc47 sweep done: [/paperclip/instances/default/workspaces/a29ac9dc-cf0a-455b-964c-e75bd2f5fc47] cleaned files=0 freed=0.00GB catalogChecked=11 lowMatchKept=0 r2Missed=0 apply=1 dur=56s apply=1
+[2026-06-10T01:14:15Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep start (jitter=220s)
+[2026-06-10T01:14:15Z]   [9/12] bf810416-2f4c-4c4b-b27c-1270ea6f20b3 sweep done: [/paperclip/instances/default/workspaces/bf810416-2f4c-4c4b-b27c-1270ea6f20b3] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-10T01:16:51Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep start (jitter=156s)
+[2026-06-10T01:16:51Z]   [10/12] c2850c54-3396-420a-b7c3-92faae3137c1 sweep done: [/paperclip/instances/default/workspaces/c2850c54-3396-420a-b7c3-92faae3137c1] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-10T01:21:25Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep start (jitter=274s)
+[2026-06-10T01:21:25Z]   [11/12] d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342 sweep done: [/paperclip/instances/default/workspaces/d70ff7b3-e26b-4d23-8e05-bfc5d6f7a342] cleaned files=0 freed=0.00GB catalogChecked=1 lowMatchKept=0 r2Missed=0 apply=1 dur=0s apply=1
+[2026-06-10T01:25:44Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep start (jitter=259s)
+[2026-06-10T01:34:44Z]   [12/12] f6a39f3c-210b-479b-a8e7-c78491c120e9 sweep done: [/paperclip/instances/default/workspaces/f6a39f3c-210b-479b-a8e7-c78491c120e9] cleaned (no summary line — nothing eligible in dry-run, or timeout) dur=540s apply=1
+[2026-06-10T01:34:44Z] === fleet-sweep done dur=5263s ===

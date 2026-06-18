@@ -1,0 +1,5 @@
+{"domain":"diners.com.pk","platform":"shopify","product_endpoint":"https://diners.com.pk/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":371,"country_code":"US","currency":null}
+{"domain":"sprunkin.com","platform":"magento","product_endpoint":"https://sprunkin.com/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":219,"country_code":"US","currency":null}
+{"domain":"autodriven.com","platform":"woocommerce","product_endpoint":"https://autodriven.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":13,"country_code":"US","currency":null}
+{"domain":"curiowhisper.com","platform":"magento","product_endpoint":"https://curiowhisper.com/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":96,"country_code":"US","currency":null}
+{"domain":"teachmeanatomy.info","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":95,"country_code":"US","currency":null}

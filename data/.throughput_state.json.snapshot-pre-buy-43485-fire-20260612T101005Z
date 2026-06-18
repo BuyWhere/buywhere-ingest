@@ -1,0 +1,32 @@
+{
+  "last_n_tup_ins": 46333572,
+  "last_n_tup_ins_at": "2026-06-12T09:05:59.530085+00:00",
+  "last_hour_checked": "2026-06-12T08:00:00+00:00",
+  "last_hour_window_start": "2026-06-12T08:07:03.800Z",
+  "last_hour_window_end": "2026-06-12T09:05:59.530085+00:00",
+  "last_check_result": "PASS",
+  "last_check_real_rows": 479011,
+  "last_check_source": "n_tup_ins_delta",
+  "last_n_live_tup": 77740566,
+  "last_db_host": "maglev.proxy.rlwy.net:31310/railway",
+  "last_check_delta_rows": 479011,
+  "last_check_delta_hours": 0.98215,
+  "last_check_rate": 487718.0,
+  "last_check_threshold": 150000,
+  "last_pm_start": "2026-06-08T10:21:09.112373+00:00",
+  "last_issue_identifier": "BUY-43393",
+  "last_fire_timestamp": "2026-06-12T09:05:59.530085+00:00",
+  "last_note": "2026-06-12 08:00-09:00Z hour PASS: raw delta 479,011 rows over 0.98215h (2026-06-12T08:07:03.800Z anchor -> 2026-06-12T09:05:59.530085+00:00 sample) = 487,718/hr (n_tup_ins PRIMARY signal under maglev contention). S1 45,854,561 (from BUY-43285 prior fire) -> S2 46,333,572 (now). n_live_tup: 77,740,566 (delta 445,514). pm_start=2026-06-08T10:21:09Z (3d22h44m prior, delta method valid). Rate 487,718/hr is 325% of 150,000/hr threshold (+225% vs threshold). Hour-over-hour: 07:00-08:00Z was 121,963/hr (BUY-43285 FAIL), this is +365,755/hr recovery \u2014 3rd consecutive hour-over-hour recovery from collapse, finally crossing 150K/hr gate. Auto-dispatcher cron still broken (BUY-33694); this heartbeat at 2026-06-12T09:05:59.530085+00:00 is the canonical fire for the 08:00-09:00Z window.",
+  "last_closed_day": {
+    "date": "2026-06-11",
+    "n_tup_ins_open": 44622141,
+    "n_tup_ins_close": 44898133,
+    "delta": 275992,
+    "n_live_tup_close": 76752961,
+    "open_at": "2026-06-11T23:02:31+00:00",
+    "close_at": "2026-06-12T00:04:06.230363+00:00",
+    "db_host": "maglev.proxy.rlwy.net:31310/railway",
+    "source": "midnight_snapshot"
+  },
+  "last_midnight_recorded_date": "2026-06-11"
+}

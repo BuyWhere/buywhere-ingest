@@ -1,0 +1,5 @@
+{"domain":"arihantbooks.com","platform":"shopify","product_endpoint":"https://arihantbooks.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":417,"country_code":"US","currency":null}
+{"domain":"cyrillus.fr","platform":"shopify","product_endpoint":"https://cyrillus.fr/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":763,"country_code":"FR","currency":null}
+{"domain":"99wholesale.com","platform":"shopify","product_endpoint":"https://99wholesale.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":3194,"country_code":"US","currency":null}
+{"domain":"bruntworkwear.com","platform":"shopify","product_endpoint":"https://bruntworkwear.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":5335,"country_code":"US","currency":null}
+{"domain":"superbid.net","platform":"woocommerce","product_endpoint":"https://superbid.net/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":1751,"country_code":"US","currency":null}

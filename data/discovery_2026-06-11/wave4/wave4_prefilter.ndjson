@@ -1,0 +1,4 @@
+{"domain":"migoals.com.au","platform":"shopify","product_endpoint":"https://migoals.com.au/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":520,"country_code":"AU","currency":null}
+{"domain":"bychari.com","platform":"shopify","product_endpoint":"https://bychari.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":531,"country_code":"US","currency":null}
+{"domain":"missoma.com","platform":"shopify","product_endpoint":"https://missoma.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":617,"country_code":"US","currency":null}
+{"domain":"mejuri.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":6425,"country_code":"US","currency":null}

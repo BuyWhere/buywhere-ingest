@@ -1,0 +1,8 @@
+{"domain":"simplelocalize.io","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":18,"country_code":"US","currency":null}
+{"domain":"glossier.com","platform":"shopify","product_endpoint":"https://glossier.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":1627,"country_code":"US","currency":null}
+{"domain":"trueprofit.io","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":25,"country_code":"US","currency":null}
+{"domain":"anjouangaming.org","platform":"magento","product_endpoint":"https://anjouangaming.org/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":232,"country_code":"US","currency":null}
+{"domain":"msmagazine.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":486,"country_code":"US","currency":null}
+{"domain":"dataremote.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":27,"country_code":"US","currency":null}
+{"domain":"gaviaspreview.com","platform":"magento","product_endpoint":"https://gaviaspreview.com/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":194,"country_code":"US","currency":null}
+{"domain":"fal.ai","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":2732,"country_code":"US","currency":null}

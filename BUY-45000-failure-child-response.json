@@ -1,0 +1,329 @@
+{
+  "id": "237ae759-4e9d-4370-9be4-1002344ff339",
+  "companyId": "177bc805-e3c8-4336-84cb-8e1e482d5a17",
+  "projectId": null,
+  "projectWorkspaceId": null,
+  "goalId": "49056fb8-4d69-4d5f-9298-b286fc371c3d",
+  "parentId": "4891fe2c-4957-46c9-a45d-451c157af77a",
+  "title": "Hourly throughput failure \u2014 2026-06-12 23:00 UTC",
+  "description": "## Hourly throughput failure \u2014 2026-06-12 23:00\u201300:00 UTC\n\n**Verdict: FAIL** \u2014 net products added in canonical PostgreSQL (maglev) was **below the 150,000/hr threshold** for the 23:00\u201300:00Z hour.\n\n### DB-proof numbers (from pg_stat_user_tables on maglev.proxy.rlwy.net:31310/railway)\n\n| Signal | Value |\n|---|---|\n| Open anchor (S3, 2026-06-12T23:07:36+00:00) | `n_tup_ins = 50,545,719` |\n| Close sample (S4, 2026-06-13T00:04:28+00:00) | `n_tup_ins = 50,656,943` |\n| Delta (S4 \u2212 S3) over 0.9478h | **111,224 rows** |\n| Window | 0:56:52 = 0.9478h |\n| Rate | **117,352 rows/hr** |\n| Threshold | 150,000 rows/hr |\n| % of target | **78.2%** (32,648 rows/hr short) |\n| `n_live_tup` (S4) | 81,873,186 |\n| `n_live_tup` delta (S3 \u2192 S4) | +110,295 over 0.9478h = 116,372/hr |\n| `pg_postmaster_start_time` | 2026-06-08T10:21:09Z (4d13h43m ago, no restart in window \u2192 n_tup_ins delta method valid) |\n\n### Signal cross-check\n\n- **PRIMARY** \u2014 `pg_stat_user_tables.n_tup_ins` delta: **117,352/hr** (PRIMARY signal, canonical per BUY-33694).\n- **SECONDARY** \u2014 `n_live_tup` delta (real-time live-tup movement, includes any DELETE noise): **116,372/hr** \u2014 confirms the shortfall is real, not a pg_stat counter artifact.\n- Hour-bucket `COUNT(*)` and `MAX(created_at)` skipped \u2014 maglev contention (BUY-30590 / BUY-32878 invalid index) causes timeouts (statement_timeout exceeded on the secondary path).\n\n### Prior hour context (recent hourly children of BUY-29861)\n\n| Hour (UTC) | Rate | Identifier | Result |\n|---|---|---|---|\n| 16:00\u201317:00 | 285,136 rows/hr | BUY-44277 | PASS (190.1% of target) |\n| 17:00\u201318:00 | 148,358 rows/hr | BUY-44395 | **FAIL (98.9% of target)** |\n| 18:00\u201319:00 | 341,493 rows/hr | BUY-44486 | PASS (reconstructed) |\n| 19:00\u201320:00 | 237,309 rows/hr | BUY-44582 | PASS |\n| 20:00\u201321:00 | 264,054 rows/hr | BUY-44685 | PASS |\n| 21:00\u201322:00 | 270,277 rows/hr | BUY-44788 | PASS |\n| 22:00\u201323:00 | 238,979 rows/hr | BUY-44888 | PASS |\n| **23:00\u201324:00** | **117,352 rows/hr** | **this issue \u2014 BUY-45000 child** | **FAIL (78.2% of target)** |\n\n### Method\n\n- Source: `pg_stat_user_tables.n_tup_ins` delta between two anchor samples (canonical per BUY-33694; hour-bucket `COUNT(*)` skipped \u2014 maglev contention causes timeout).\n- `n_tup_ins` is the PRIMARY signal under maglev contention (per BUY-33694 dispatcher). It includes `INSERT` rows from all sources (rejects roundhouse by DB binding).\n- No maglev restart in window (pm_start = 2026-06-08T10:21:09Z, 4d13h43m pre-window). Delta method valid.\n\n### Operational notes\n\n- This is the **second sub-bar hour in the last 8h** (after 17:00\u201318:00Z BUY-44395 at 148,358/hr). Between them, 18:00\u201322:00Z ran 4 consecutive hours above target, then dropped to 117,352/hr in the 23:00\u201324:00Z window.\n- The shortfall is real: `n_live_tup` (real-time live row count) corroborates the same shape (+110,295 in 0.9478h = 116,372/hr), so this is not a pg_stat-counter skew.\n- Fleet keep-alive is healthy per routine 476009cc (last clean tick 16:22Z, BUY-39634).\n- Maglev contention (BUY-30590, BUY-32878 invalid `products_created_at_idx`) is the named cap blocking higher throughput per the CEO escalation chain.\n- Dispatcher cron (BUY-33694) is still broken \u2014 manual heartbeats via BUY-29861 children (this issue) are the active fallback.\n\n### Action requested\n\nOwner: **Rich** (user `MRfjkCUzuFyLTtKHcVLDaJxoAAWxM7b6`).\n\n1. Decide whether the 32,648 rows/hr shortfall is acceptable for this hour, or whether it warrants a fleet re-shake (lanes paused / lane-supervisor wake).\n2. If not acceptable: this is the second FAIL in 8h \u2014 likely the maglev catalog is hitting the structural contention cap (BUY-30590, BUY-32878). Worth evaluating lane redistribution or a Bolt/Ops escalation to break the read/write contention.\n3. Reference: dispatcher cron is still broken (BUY-33694); manual heartbeats via BUY-45000 (this issue's parent) are the active fallback check.\n\n\u2014 Oracle (3ec8f6dd), heartbeat for 2026-06-13 00:00:00Z fire\n",
+  "status": "todo",
+  "workMode": "standard",
+  "priority": "critical",
+  "assigneeAgentId": null,
+  "assigneeUserId": "MRfjkCUzuFyLTtKHcVLDaJxoAAWxM7b6",
+  "checkoutRunId": null,
+  "executionRunId": null,
+  "executionAgentNameKey": null,
+  "executionLockedAt": null,
+  "createdByAgentId": "3ec8f6dd-1735-4479-9825-a2c42edac34c",
+  "createdByUserId": null,
+  "issueNumber": 45014,
+  "identifier": "BUY-45014",
+  "originKind": "manual",
+  "originId": null,
+  "originRunId": null,
+  "originFingerprint": "default",
+  "requestDepth": 0,
+  "billingCode": null,
+  "assigneeAdapterOverrides": null,
+  "executionPolicy": null,
+  "executionState": null,
+  "monitorNextCheckAt": null,
+  "monitorWakeRequestedAt": null,
+  "monitorLastTriggeredAt": null,
+  "monitorAttemptCount": 0,
+  "monitorNotes": null,
+  "monitorScheduledBy": null,
+  "executionWorkspaceId": null,
+  "executionWorkspacePreference": null,
+  "executionWorkspaceSettings": null,
+  "startedAt": null,
+  "completedAt": null,
+  "cancelledAt": null,
+  "hiddenAt": null,
+  "createdAt": "2026-06-13T00:07:08.179Z",
+  "updatedAt": "2026-06-13T00:07:08.179Z",
+  "labels": [],
+  "labelIds": [],
+  "relatedWork": {
+    "outbound": [
+      {
+        "issue": {
+          "id": "4891fe2c-4957-46c9-a45d-451c157af77a",
+          "identifier": "BUY-29861",
+          "title": "150,000 Products Added Per Hour - Create Report On Failed Hour Assigned to Fix",
+          "status": "done",
+          "priority": "critical",
+          "assigneeAgentId": "8ca957f8-0911-4e81-a963-e2cf54c97d44",
+          "assigneeUserId": null
+        },
+        "mentionCount": 1,
+        "sources": [
+          {
+            "kind": "description",
+            "sourceRecordId": null,
+            "label": "description",
+            "matchedText": "BUY-29861"
+          }
+        ]
+      },
+      {
+        "issue": {
+          "id": "6079a740-9f12-40f0-918c-b206d0b9033d",
+          "identifier": "BUY-30590",
+          "title": "Sustained discovery \u2014 keep Oracle's discovery+scrape fleet continuously running, \u2265150k/hr maglev for 12 consecutive hours",
+          "status": "cancelled",
+          "priority": "critical",
+          "assigneeAgentId": "19dcd635-1d2b-4e41-9950-5865876e12b2",
+          "assigneeUserId": null
+        },
+        "mentionCount": 1,
+        "sources": [
+          {
+            "kind": "description",
+            "sourceRecordId": null,
+            "label": "description",
+            "matchedText": "BUY-30590"
+          }
+        ]
+      },
+      {
+        "issue": {
+          "id": "ba72ae21-c940-4483-ae16-9c26cc096b75",
+          "identifier": "BUY-32878",
+          "title": "DIRECTIVE: MULTI-SOURCE MERCHANT DISCOVERY & PRODUCT CATALOGING",
+          "status": "done",
+          "priority": "critical",
+          "assigneeAgentId": "19dcd635-1d2b-4e41-9950-5865876e12b2",
+          "assigneeUserId": null
+        },
+        "mentionCount": 1,
+        "sources": [
+          {
+            "kind": "description",
+            "sourceRecordId": null,
+            "label": "description",
+            "matchedText": "BUY-32878"
+          }
+        ]
+      },
+      {
+        "issue": {
+          "id": "587621b2-70bb-4d99-a82c-94852cd14588",
+          "identifier": "BUY-33694",
+          "title": "[2026-06-07 CEO] Repoint the hourly throughput dispatcher from roundhouse to maglev (or document a separate writer primary)",
+          "status": "done",
+          "priority": "high",
+          "assigneeAgentId": "19dcd635-1d2b-4e41-9950-5865876e12b2",
+          "assigneeUserId": null
+        },
+        "mentionCount": 1,
+        "sources": [
+          {
+            "kind": "description",
+            "sourceRecordId": null,
+            "label": "description",
+            "matchedText": "BUY-33694"
+          }
+        ]
+      },
+      {
+        "issue": {
+          "id": "123e0206-2dec-42f7-9ac0-0ebc0580dd41",
+          "identifier": "BUY-39634",
+          "title": "BUY-31716 fleet keep-alive \u2014 5-min restart of 8 new discovery lanes",
+          "status": "done",
+          "priority": "high",
+          "assigneeAgentId": "3ec8f6dd-1735-4479-9825-a2c42edac34c",
+          "assigneeUserId": null
+        },
+        "mentionCount": 1,
+        "sources": [
+          {
+            "kind": "description",
+            "sourceRecordId": null,
+            "label": "description",
+            "matchedText": "BUY-39634"
+          }
+        ]
+      },
+      {
+        "issue": {
+          "id": "4919942c-e56e-4dc1-8f17-d23329f1afd9",
+          "identifier": "BUY-44277",
+          "title": "Hourly throughput failure report \u2014 BUY-29861",
+          "status": "done",
+          "priority": "critical",
+          "assigneeAgentId": "3ec8f6dd-1735-4479-9825-a2c42edac34c",
+          "assigneeUserId": null
+        },
+        "mentionCount": 1,
+        "sources": [
+          {
+            "kind": "description",
+            "sourceRecordId": null,
+            "label": "description",
+            "matchedText": "BUY-44277"
+          }
+        ]
+      },
+      {
+        "issue": {
+          "id": "2b9ad424-33c2-444a-b0a2-2127bdbb51bf",
+          "identifier": "BUY-44395",
+          "title": "Hourly throughput failure \u2014 2026-06-12 17:00 UTC",
+          "status": "todo",
+          "priority": "critical",
+          "assigneeAgentId": "3ec8f6dd-1735-4479-9825-a2c42edac34c",
+          "assigneeUserId": "MRfjkCUzuFyLTtKHcVLDaJxoAAWxM7b6"
+        },
+        "mentionCount": 1,
+        "sources": [
+          {
+            "kind": "description",
+            "sourceRecordId": null,
+            "label": "description",
+            "matchedText": "BUY-44395"
+          }
+        ]
+      },
+      {
+        "issue": {
+          "id": "dc465ee3-c86e-47eb-94a0-00dfc1ae76a8",
+          "identifier": "BUY-44486",
+          "title": "Hourly throughput failure report \u2014 BUY-29861",
+          "status": "done",
+          "priority": "critical",
+          "assigneeAgentId": "3ec8f6dd-1735-4479-9825-a2c42edac34c",
+          "assigneeUserId": null
+        },
+        "mentionCount": 1,
+        "sources": [
+          {
+            "kind": "description",
+            "sourceRecordId": null,
+            "label": "description",
+            "matchedText": "BUY-44486"
+          }
+        ]
+      },
+      {
+        "issue": {
+          "id": "ce42c557-a49d-4145-8344-55a7cbfd3ad3",
+          "identifier": "BUY-44582",
+          "title": "Hourly throughput failure report \u2014 BUY-29861",
+          "status": "done",
+          "priority": "critical",
+          "assigneeAgentId": "3ec8f6dd-1735-4479-9825-a2c42edac34c",
+          "assigneeUserId": null
+        },
+        "mentionCount": 1,
+        "sources": [
+          {
+            "kind": "description",
+            "sourceRecordId": null,
+            "label": "description",
+            "matchedText": "BUY-44582"
+          }
+        ]
+      },
+      {
+        "issue": {
+          "id": "f873bfb3-844f-427b-9f33-9b579254fdb1",
+          "identifier": "BUY-44685",
+          "title": "Hourly throughput failure report \u2014 BUY-29861",
+          "status": "done",
+          "priority": "critical",
+          "assigneeAgentId": "3ec8f6dd-1735-4479-9825-a2c42edac34c",
+          "assigneeUserId": null
+        },
+        "mentionCount": 1,
+        "sources": [
+          {
+            "kind": "description",
+            "sourceRecordId": null,
+            "label": "description",
+            "matchedText": "BUY-44685"
+          }
+        ]
+      },
+      {
+        "issue": {
+          "id": "9c430b99-16a2-4683-812f-90dda7e6bf87",
+          "identifier": "BUY-44788",
+          "title": "Hourly throughput failure report \u2014 BUY-29861",
+          "status": "done",
+          "priority": "critical",
+          "assigneeAgentId": "3ec8f6dd-1735-4479-9825-a2c42edac34c",
+          "assigneeUserId": null
+        },
+        "mentionCount": 1,
+        "sources": [
+          {
+            "kind": "description",
+            "sourceRecordId": null,
+            "label": "description",
+            "matchedText": "BUY-44788"
+          }
+        ]
+      },
+      {
+        "issue": {
+          "id": "1e11256a-099b-45d0-baab-08e870ede2ed",
+          "identifier": "BUY-44888",
+          "title": "Hourly throughput failure report \u2014 BUY-29861",
+          "status": "done",
+          "priority": "critical",
+          "assigneeAgentId": "3ec8f6dd-1735-4479-9825-a2c42edac34c",
+          "assigneeUserId": null
+        },
+        "mentionCount": 1,
+        "sources": [
+          {
+            "kind": "description",
+            "sourceRecordId": null,
+            "label": "description",
+            "matchedText": "BUY-44888"
+          }
+        ]
+      },
+      {
+        "issue": {
+          "id": "9e6f2007-ad1b-4938-8e7d-490ffcc85793",
+          "identifier": "BUY-45000",
+          "title": "Hourly throughput failure report \u2014 BUY-29861",
+          "status": "in_progress",
+          "priority": "critical",
+          "assigneeAgentId": "3ec8f6dd-1735-4479-9825-a2c42edac34c",
+          "assigneeUserId": null
+        },
+        "mentionCount": 1,
+        "sources": [
+          {
+            "kind": "description",
+            "sourceRecordId": null,
+            "label": "description",
+            "matchedText": "BUY-45000"
+          }
+        ]
+      }
+    ],
+    "inbound": []
+  },
+  "referencedIssueIdentifiers": [
+    "BUY-29861",
+    "BUY-30590",
+    "BUY-32878",
+    "BUY-33694",
+    "BUY-39634",
+    "BUY-44277",
+    "BUY-44395",
+    "BUY-44486",
+    "BUY-44582",
+    "BUY-44685",
+    "BUY-44788",
+    "BUY-44888",
+    "BUY-45000"
+  ]
+}

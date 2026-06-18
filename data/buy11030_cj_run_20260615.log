@@ -1,0 +1,35 @@
+/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/scripts/cj_affiliate_application.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] Starting CJ Affiliate application...")
+/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/scripts/cj_affiliate_application.py:76: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print(f"[{datetime.utcnow().isoformat()}] Navigating to {application_url}...")
+/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/scripts/cj_affiliate_application.py:387: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  result["date_submitted"] = datetime.utcnow().isoformat()
+[2026-06-15T09:41:20.527786] Starting CJ Affiliate application...
+Target URL: https://public.cj.com/signup/publisher?advertiserId=5206455
+[2026-06-15T09:41:21.048265] Navigating to https://public.cj.com/signup/publisher?advertiserId=5206455...
+Screenshot saved: /paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/data/buy33947_cj_initial.png
+Page title: CJ
+
+--- Exploring form fields ---
+Found 0 inputs, 0 textareas, 0 selects
+
+--- Attempting to fill form fields ---
+Screenshot after form fill saved
+
+--- Looking for submit button ---
+Found submit button with selector: button:has-text('Apply')
+Clicking submit button...
+Confirmation screenshot saved
+Application appears to have been submitted successfully
+
+Result saved to: /paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/data/buy33947_cj_result.json
+
+============================================================
+APPLICATION RESULT
+============================================================
+Success: True
+Confirmation Number: None
+Date Submitted: 2026-06-15T09:41:31.825983
+Error: None
+Screenshots: /paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/data/buy33947_cj_initial.png
+============================================================

@@ -1,0 +1,399 @@
+[stream-dp] watching /paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/data/benchmark_2026-06-07/prefilter for new prefilter outputs...
+[stream-dp] [deep-page] input records=2 ecom=2 by_platform={"schema-product":1,"woocommerce":1} concurrency=50
+[stream-dp] [dp] uservoice.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] tinder.com page=1 status=200 bodyLen=546500
+[stream-dp] [deep-page] DONE: {"stores_processed":2,"stores_failed":0,"total_products":0,"by_platform":{"schema-product":1,"woocommerce":1},"started_at":"2026-06-07T14:02:02.857Z","finished_at":"2026-06-07T14:02:04.035Z","output_rows":0}
+[stream-dp] done: tranco_slice_mid_5k.ndjson products=0 elapsed_ms=1319
+[stream-dp] [deep-page] input records=4 ecom=4 by_platform={"shopify":1,"shopify-html":2,"magento":1} concurrency=50
+[stream-dp] [dp] ecommerce-platforms.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] zipdo.co page=1 status=500 bodyLen=undefined
+[stream-dp] [dp] bodylab24.de page=1 status=200 bodyLen=1074246
+[stream-dp] [dp] bodylab24.de page=2 status=200 bodyLen=1468161
+[stream-dp] [dp:mg] yiwugo.com page=1 status=200 bodyLen=36
+[stream-dp] [deep-page] DONE: {"stores_processed":4,"stores_failed":0,"total_products":500,"by_platform":{"shopify-html":2,"shopify":1,"magento":1},"started_at":"2026-06-07T14:02:04.191Z","finished_at":"2026-06-07T14:02:07.144Z","output_rows":500}
+[stream-dp] done: tranco_slice_mid_5k_v2.ndjson products=500 elapsed_ms=3116
+[stream-dp] [deep-page] input records=3 ecom=3 by_platform={"woocommerce-html":1,"woocommerce":2} concurrency=50
+[stream-dp] [dp:wc] empire88id.com page=1 status=200 bodyLen=129800
+[stream-dp] [dp:wc] archiwp.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] alexismind.com page=1 status=200 bodyLen=830044
+[stream-dp] [deep-page] DONE: {"stores_processed":3,"stores_failed":0,"total_products":0,"by_platform":{"woocommerce":2,"woocommerce-html":1},"started_at":"2026-06-07T14:24:28.404Z","finished_at":"2026-06-07T14:24:29.856Z","output_rows":0}
+[stream-dp] done: tranco_slice_4.ndjson products=0 elapsed_ms=1597
+[stream-dp] [deep-page] input records=4 ecom=4 by_platform={"woocommerce":1,"shopify-html":1,"woocommerce-html":1,"schema-product":1} concurrency=50
+[stream-dp] [dp] tradablebits.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] dnyuz.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] xnxx.dev page=1 status=200 bodyLen=66199
+[stream-dp] [dp] mobileproxy.space page=1 status=404 bodyLen=undefined
+[stream-dp] [deep-page] DONE: {"stores_processed":4,"stores_failed":0,"total_products":0,"by_platform":{"shopify-html":1,"woocommerce-html":1,"woocommerce":1,"schema-product":1},"started_at":"2026-06-07T14:24:30.002Z","finished_at":"2026-06-07T14:24:30.786Z","output_rows":0}
+[stream-dp] done: tranco_slice_5.ndjson products=0 elapsed_ms=926
+[stream-dp] [deep-page] input records=0 ecom=0 by_platform={} concurrency=50
+[stream-dp] [deep-page] DONE: {"stores_processed":0,"stores_failed":0,"total_products":0,"by_platform":{},"started_at":"2026-06-07T14:24:30.917Z","finished_at":"2026-06-07T14:24:30.918Z","output_rows":0}
+[stream-dp] done: tranco_slice_6.ndjson products=0 elapsed_ms=131
+[stream-dp] [deep-page] input records=9 ecom=9 by_platform={"shopify":6,"shopify-html":1,"woocommerce-html":2} concurrency=50
+[stream-dp] [dp] yogabars.in page=1 status=200 bodyLen=223237
+[stream-dp] [dp] thehatke.com page=1 status=200 bodyLen=763088
+[stream-dp] [dp] saasreviewzone.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] thehatke.com page=2 status=200 bodyLen=861059
+[stream-dp] [dp] gracestore.pk page=1 status=200 bodyLen=884487
+[stream-dp] [dp:wc] dniperu.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] greenfit.com.co page=1 status=200 bodyLen=752988
+[stream-dp] [dp] nunalie.it page=1 status=200 bodyLen=915146
+[stream-dp] [dp] voltas.com page=1 status=200 bodyLen=1501183
+[stream-dp] [dp] gracestore.pk page=2 status=200 bodyLen=822683
+[stream-dp] [dp] nunalie.it page=2 status=200 bodyLen=816477
+[stream-dp] [dp] greenfit.com.co page=2 status=200 bodyLen=885758
+[stream-dp] [dp:wc] songslover.net page=1 status=404 bodyLen=undefined
+[stream-dp] [deep-page] DONE: {"stores_processed":9,"stores_failed":0,"total_products":2297,"by_platform":{"shopify":6,"shopify-html":1,"woocommerce-html":2},"started_at":"2026-06-07T14:24:31.063Z","finished_at":"2026-06-07T14:24:33.610Z","output_rows":2297}
+[stream-dp] done: tranco_slice_7.ndjson products=2297 elapsed_ms=2718
+[stream-dp] [deep-page] input records=271 ecom=271 by_platform={"shopify":6,"woocommerce":63,"shopify-html":82,"schema-product":48,"woocommerce-html":44,"magento":12,"magento-html":14,"bigcommerce-html":2} concurrency=50
+[stream-dp] [dp] bit.ly page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] wordpress.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] stripe.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] b-cdn.net page=1 status=200 bodyLen=786920
+[dp] b-cdn.net parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[stream-dp] [dp] shopify.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] hcaptcha.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] sentry.io page=1 status=200 bodyLen=20440
+[stream-dp] [dp] x.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] mzstatic.com page=1 status=200 bodyLen=258713
+[stream-dp] [dp:mg] ipinfo.io page=1 status=200 bodyLen=261
+[stream-dp] [dp] time.com page=1 status=406 bodyLen=undefined
+[stream-dp] [dp] mailchi.mp page=1 status=200 bodyLen=2702
+[stream-dp] [dp] mailchi.mp parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[stream-dp] [dp] atlassian.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] themeforest.net page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] dropbox.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] gravatar.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] mailchimp.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] wp.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] cloudinary.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] statcounter.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] wise.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] pendo.io page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] ui.com page=1 status=200 bodyLen=107137
+[stream-dp] [dp] abc.net.au page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] cloudflare.com page=1 status=404 bodyLen=undefined
+[stream-dp] [deep-page] worker=8 stores=25 failed=0 products=0 by_platform={"shopify-html":12,"woocommerce-html":4,"woocommerce":2,"magento":1,"schema-product":5,"shopify":1}
+[stream-dp] [dp] wyzecam.com page=1 status=200 bodyLen=1132326
+[stream-dp] [dp:wc] atlassian.net page=1 status=200 bodyLen=1701227
+[stream-dp] [dp:wc] kontur.ru page=1 status=403 bodyLen=undefined
+[stream-dp] [dp] lc.chat page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] hubspot.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] yahoo.co.jp page=1 status=200 bodyLen=32763
+[stream-dp] [dp:wc] crashlytics.com page=1 status=200 bodyLen=522587
+[stream-dp] [dp:wc] meraki.com page=1 status=401 bodyLen=undefined
+[stream-dp] [dp:wc] onelink.me page=1 status=200 bodyLen=412209
+[stream-dp] [dp] letsencrypt.org page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] workers.dev page=1 status=200 bodyLen=1370853
+[stream-dp] [dp] workers.dev parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[stream-dp] [dp] hostinger.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] netflix.com page=1 status=200 bodyLen=20728
+[stream-dp] [dp] nginx.com page=1 status=200 bodyLen=381726
+[dp] nginx.com parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[stream-dp] [dp:mg] weibo.com page=1 status=200 bodyLen=9293
+[stream-dp] [dp:mg] meethue.com page=1 status=200 bodyLen=86557
+[stream-dp] [dp:wc] netflix.net page=1 status=200 bodyLen=20728
+[stream-dp] [dp] wired.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] go.com page=1 status=200 bodyLen=354893
+[stream-dp] [dp:wc] cloud.microsoft page=1 status=200 bodyLen=1236472
+[stream-dp] [dp] eepurl.com page=1 status=400 bodyLen=undefined
+[stream-dp] [dp] forter.com page=1 status=200 bodyLen=166214
+[stream-dp] [dp] forter.com parse err: Unexpected token '<', "
+<!DOCTYPE "... is not valid JSON
+[stream-dp] [dp:wc] steampowered.com page=1 status=200 bodyLen=981657
+[stream-dp] [dp] figma.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] trustindex.io page=1 status=200 bodyLen=91188
+[stream-dp] [dp] trustindex.io parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[deep-page] worker=22 stores=50 failed=0 products=203 by_platform={"shopify-html":21,"woocommerce-html":5,"woocommerce":12,"magento":2,"schema-product":7,"shopify":2,"magento-html":1}
+[stream-dp] [dp:wc] daum.net page=1 status=200 bodyLen=616027
+[stream-dp] [dp] usercentrics.eu page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] lge.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] checkpoint.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] cpanel.net page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] statuspage.io page=1 status=200 bodyLen=124787
+[stream-dp] [dp] statuspage.io parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[stream-dp] [dp:wc] peacocktv.com page=1 status=200 bodyLen=209832
+[stream-dp] [dp:wc] admatic.de page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] ubnt.com page=1 status=200 bodyLen=107137
+[stream-dp] [dp] rudderstack.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] reg.ru page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] hihonor.com page=1 status=200 bodyLen=511442
+[stream-dp] [dp] brevo.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] hollywoodreporter.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] zapier.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] suno.com page=1 status=200 bodyLen=230696
+[stream-dp] [dp:wc] one.one page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] elementor.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] cloudns.net page=1 status=200 bodyLen=172724
+[stream-dp] [dp:wc] polybuzz.ai page=1 status=200 bodyLen=173373
+[stream-dp] [dp:wc] mystrikingly.com page=1 status=200 bodyLen=123584
+[stream-dp] [dp:wc] shopee.ph page=1 status=200 bodyLen=163859
+[stream-dp] [dp] lg.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] poshvine.com page=1 status=200 bodyLen=1338994
+[stream-dp] [dp:wc] matomo.org page=1 status=404 bodyLen=undefined
+[stream-dp] [deep-page] worker=28 stores=75 failed=0 products=203 by_platform={"shopify-html":26,"woocommerce-html":10,"woocommerce":21,"magento":2,"schema-product":12,"shopify":3,"magento-html":1}
+[stream-dp] [dp:mg] alidns.com page=1 status=200 bodyLen=64
+[stream-dp] [dp:wc] spamhaus.org page=1 status=200 bodyLen=721566
+[stream-dp] [dp] bybit.com page=1 status=0 bodyLen=undefined
+[stream-dp] [dp] woocommerce.com page=1 status=200 bodyLen=297083
+[stream-dp] [dp] woocommerce.com parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[stream-dp] [dp:wc] vidazoo.com page=1 status=200 bodyLen=612719
+[stream-dp] [dp:wc] evergage.com page=1 status=200 bodyLen=569904
+[stream-dp] [dp] cookieyes.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] intercomcdn.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] tbank.ru page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] mountain.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] web.app page=1 status=200 bodyLen=517185
+[stream-dp] [dp:wc] swiftkey.com page=1 status=200 bodyLen=178415
+[stream-dp] [dp:wc] ventraip.net.au page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] wistia.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:mg] esquire.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:mg] pavietnam.vn page=1 status=200 bodyLen=107
+[stream-dp] [dp:mg] elle.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] singular.net page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] edna.ru page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] haberler.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] heise.de page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] guard.io page=1 status=200 bodyLen=359984
+[stream-dp] [dp:mg] mysecurecloudhost.com page=1 status=200 bodyLen=107
+[stream-dp] [dp] bitly.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] lastpass.com page=1 status=404 bodyLen=undefined
+[deep-page] worker=49 stores=100 failed=0 products=203 by_platform={"shopify-html":32,"woocommerce-html":12,"woocommerce":27,"magento":5,"schema-product":18,"shopify":3,"magento-html":3}
+[stream-dp] [dp:wc] flashbots.net page=1 status=200 bodyLen=195705
+[stream-dp] [dp] tinkoff.ru page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] urbanairship.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] hubspot.net page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] freecash.com page=1 status=200 bodyLen=756178
+[stream-dp] [dp:wc] undertone.com page=1 status=200 bodyLen=612719
+[stream-dp] [dp] onlinepbx.ru page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] vanityfair.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] billboard.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] vogue.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] zemanta.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] comodoca.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] webflow.io page=1 status=200 bodyLen=618490
+[stream-dp] [dp:wc] newsbreak.com page=1 status=200 bodyLen=605062
+[stream-dp] [dp:wc] jb.gg page=1 status=200 bodyLen=47461
+[stream-dp] [dp] razorpay.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] parallels.com page=1 status=301 bodyLen=undefined
+[stream-dp] [dp] claude.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] postman.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] mux.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] vistarsagency.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] webgo.de page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] dashlane.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] demandbase.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] economictimes.com page=1 status=404 bodyLen=undefined
+[stream-dp] [deep-page] worker=39 stores=125 failed=0 products=203 by_platform={"shopify-html":38,"woocommerce-html":16,"woocommerce":33,"magento":5,"schema-product":27,"shopify":3,"magento-html":3}
+[stream-dp] [dp] urbandictionary.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] firebaseapp.com page=1 status=200 bodyLen=517189
+[stream-dp] [dp:mg] hoster.ru page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] permutive.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] crealitycloud.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:mg] stashaway.com page=1 status=200 bodyLen=15
+[stream-dp] [dp:mg] popularmechanics.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] honor.com page=1 status=200 bodyLen=511440
+[stream-dp] [dp] sproutsocial.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] inmotionhosting.com page=1 status=401 bodyLen=undefined
+[stream-dp] [dp] isc.org page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] lazada.co.id page=1 status=200 bodyLen=81278
+[stream-dp] [dp] xero.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] sueddeutsche.de page=1 status=200 bodyLen=2161274
+[stream-dp] [dp] zimperium.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:mg] menshealth.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] honeywell.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] ampproject.net page=1 status=200 bodyLen=137586
+[stream-dp] [dp:wc] chrome.com page=1 status=200 bodyLen=464298
+[stream-dp] [dp:wc] strato.de page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] ipapi.co page=1 status=200 bodyLen=104469
+[stream-dp] [dp] ipapi.co parse err: Unexpected token '<', "
+
+<!DOCTYPE "... is not valid JSON
+[stream-dp] [dp:wc] lazada.sg page=1 status=200 bodyLen=77634
+[stream-dp] [dp:wc] lazada.com.ph page=1 status=200 bodyLen=77850
+[stream-dp] [dp:wc] ktalk.ru page=1 status=403 bodyLen=undefined
+[stream-dp] [dp] buymeacoffee.com page=1 status=404 bodyLen=undefined
+[deep-page] worker=45 stores=150 failed=0 products=203 by_platform={"shopify-html":45,"woocommerce-html":19,"woocommerce":42,"magento":6,"schema-product":29,"shopify":3,"magento-html":6}
+[stream-dp] [dp:mg] doxygen.org page=1 status=200 bodyLen=107
+[stream-dp] [dp:wc] indiana.edu page=1 status=200 bodyLen=139165
+[stream-dp] [dp] lonelyplanet.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] adyen.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] estadao.com.br page=1 status=403 bodyLen=undefined
+[stream-dp] [dp] pushwoosh.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] codecanyon.net page=1 status=403 bodyLen=undefined
+[stream-dp] [dp] alltrails.com page=1 status=403 bodyLen=undefined
+[stream-dp] [dp:wc] bitrix24.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] dinahosting.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:bc] digitaltrends.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] onenote.com page=1 status=200 bodyLen=75171
+[stream-dp] [dp:mg] caranddriver.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] a2hosting.com page=1 status=200 bodyLen=287465
+[stream-dp] [dp] lovable.dev page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] getdropbox.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] growthbook.io page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] wyze.com page=1 status=429 bodyLen=undefined
+[stream-dp] [dp:wc] tinder.com page=1 status=200 bodyLen=546500
+[stream-dp] [dp] afr.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] adspower.net page=1 status=200 bodyLen=24527
+[dp] adspower.net parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[stream-dp] [dp] gq.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] foxsports.com page=1 status=200 bodyLen=1803891
+[stream-dp] [dp:wc] loopia.se page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] binance.info page=1 status=200 bodyLen=312137
+[stream-dp] [dp] bambuser.com page=1 status=404 bodyLen=undefined
+[deep-page] worker=10 stores=175 failed=0 products=203 by_platform={"shopify-html":52,"woocommerce-html":23,"woocommerce":48,"magento":7,"schema-product":34,"shopify":3,"magento-html":7,"bigcommerce-html":1}
+[stream-dp] [dp:wc] pardot.com page=1 status=200 bodyLen=598734
+[stream-dp] [dp] livechat.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:mg] wlvpn.com page=1 status=200 bodyLen=107
+[stream-dp] [dp:wc] freewebs.com page=1 status=200 bodyLen=889079
+[stream-dp] [dp:mg] eukdns.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] servidoresdns.net page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] wired.co.uk page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] etrade.com page=1 status=200 bodyLen=14529
+[stream-dp] [dp] etrade.com parse err: Unexpected token '<', "<!doctype "... is not valid JSON
+[stream-dp] [dp:mg] countryliving.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] wetteronline.de page=1 status=200 bodyLen=41552
+[stream-dp] [dp] xe.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] transip.nl page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] sniffies.com page=1 status=200 bodyLen=229436
+[stream-dp] [dp] sniffies.com parse err: Unexpected token '<', "<!doctype "... is not valid JSON
+[stream-dp] [dp] adage.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] uline.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] dandomain.dk page=1 status=200 bodyLen=15181
+[stream-dp] [dp] tomsguide.com page=1 status=301 bodyLen=undefined
+[stream-dp] [dp] ves.io page=1 status=200 bodyLen=553526
+[stream-dp] [dp] ves.io parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[stream-dp] [dp:wc] zazzle.com page=1 status=200 bodyLen=1236069
+[stream-dp] [dp:bc] contentful.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] vanityfair.it page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] ipvanish.com page=1 status=200 bodyLen=107
+[stream-dp] [dp] datagrail.io page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] ngrok.io page=1 status=200 bodyLen=321098
+[stream-dp] [dp] sectigo.com page=1 status=404 bodyLen=undefined
+[deep-page] worker=41 stores=200 failed=0 products=203 by_platform={"shopify-html":59,"woocommerce-html":27,"woocommerce":53,"magento":8,"schema-product":39,"shopify":3,"magento-html":9,"bigcommerce-html":2}
+[stream-dp] [dp] cntraveler.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] judge.me page=1 status=200 bodyLen=5607
+[dp] judge.me parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[stream-dp] [dp] complianz.io page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] threatdown.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] tally.so page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] sapphireonline.pk page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] swissinfo.ch page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] lovable.app page=1 status=200 bodyLen=383334
+[stream-dp] [dp] getpostman.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] consentmanager.net page=1 status=200 bodyLen=259925
+[dp] consentmanager.net parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[stream-dp] [dp:wc] travelaudience.com page=1 status=200 bodyLen=472087
+[stream-dp] [dp] boat-lifestyle.com page=1 status=429 bodyLen=undefined
+[stream-dp] [dp:mg] biography.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] igvita.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] catchthemes.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] claro.com.br page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] pitchfork.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] theonion.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] tradedoubler.com page=1 status=200 bodyLen=1790834
+[stream-dp] [dp] podscribe.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] frontapp.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] fineartamerica.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] glamour.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:mg] delish.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] singaporeair.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] hextom.com page=1 status=403 bodyLen=undefined
+[deep-page] worker=43 stores=225 failed=0 products=203 by_platform={"shopify-html":70,"woocommerce-html":33,"woocommerce":55,"magento":8,"schema-product":43,"shopify":3,"magento-html":11,"bigcommerce-html":2}
+[stream-dp] [dp:mg] wordstream.com page=1 status=200 bodyLen=107
+[stream-dp] [dp:wc] go-vip.net page=1 status=200 bodyLen=247739
+[stream-dp] [dp] libertaddigital.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] linksys.com page=1 status=200 bodyLen=15
+[stream-dp] [dp] linksys.com no products
+[stream-dp] [dp:wc] amarujala.com page=1 status=200 bodyLen=743250
+[stream-dp] [dp] flexport.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] websitedemos.net page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] lazada.com.my page=1 status=200 bodyLen=82020
+[stream-dp] [dp:mg] learncbse.in page=1 status=200 bodyLen=107
+[stream-dp] [dp:mg] tecnomat.it page=1 status=403 bodyLen=undefined
+[stream-dp] [dp] eufy.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] pm-betting.com page=1 status=200 bodyLen=220374
+[stream-dp] [dp] zellbury.com page=1 status=200 bodyLen=1176254
+[stream-dp] [dp:wc] lek-manga.net page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] ionos.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] 1und1.de page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] evidon.com page=1 status=200 bodyLen=40992
+[stream-dp] [dp] evidon.com parse err: Unexpected token '<', "<!doctype "... is not valid JSON
+[stream-dp] [dp] saya.pk page=1 status=200 bodyLen=1866914
+[stream-dp] [dp] but.fr page=1 status=403 bodyLen=undefined
+[stream-dp] [dp] onthemarket.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:mg] css-tricks.com page=1 status=200 bodyLen=107
+[stream-dp] [dp] minepi.com page=1 status=200 bodyLen=170372
+[stream-dp] [dp] minepi.com parse err: Unexpected token '<', "<!doctype "... is not valid JSON
+[stream-dp] [dp] unibo.it page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] powerreviews.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] piwik.pro page=1 status=200 bodyLen=200020
+[stream-dp] [dp] piwik.pro parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[stream-dp] [dp:wc] fivethirtyeight.com page=1 status=200 bodyLen=306513
+[stream-dp] [dp:wc] wpzoom.com page=1 status=404 bodyLen=undefined
+[stream-dp] [deep-page] worker=30 stores=250 failed=0 products=203 by_platform={"shopify-html":77,"woocommerce-html":39,"woocommerce":59,"magento":11,"schema-product":47,"shopify":3,"magento-html":12,"bigcommerce-html":2}
+[stream-dp] [dp:wc] mobizil.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] thenkiri.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] zellbury.com page=2 status=200 bodyLen=946889
+[stream-dp] [dp:mg] brstej.com page=1 status=200 bodyLen=1020581
+[stream-dp] [dp] provenexpert.com page=1 status=410 bodyLen=undefined
+[stream-dp] [dp:mg] gpb.ru page=1 status=200 bodyLen=74
+[stream-dp] [dp:wc] pair.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] smartnews.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] 8888.bg page=1 status=200 bodyLen=342235
+[stream-dp] [dp] saya.pk page=2 status=200 bodyLen=2057991
+[stream-dp] [dp] reviewjournal.com page=1 status=200 bodyLen=393076
+[stream-dp] [dp] reviewjournal.com parse err: Unexpected token '<', "<!doctype "... is not valid JSON
+[stream-dp] [dp:wc] boomtrain.com page=1 status=200 bodyLen=156743
+[stream-dp] [dp] evri.com page=1 status=200 bodyLen=365027
+[stream-dp] [dp] evri.com parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[stream-dp] [dp:wc] fnn.jp page=1 status=200 bodyLen=148122
+[stream-dp] [dp:wc] hostnet.nl page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] wyze.com page=1 status=429 bodyLen=undefined
+[stream-dp] [dp] snapcraft.io page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:mg] truper.com page=1 status=200 bodyLen=36558
+[stream-dp] [dp] boat-lifestyle.com page=1 status=429 bodyLen=undefined
+[stream-dp] [dp:wc] codedish.co page=1 status=404 bodyLen=undefined
+[stream-dp] [dp:wc] kuaishou.com page=1 status=0 bodyLen=undefined
+[stream-dp] [dp] wyze.com page=1 status=429 bodyLen=undefined
+[stream-dp] [dp] boat-lifestyle.com page=1 status=429 bodyLen=undefined
+[stream-dp] [dp] wyze.com page=1 status=429 bodyLen=undefined
+[stream-dp] [dp] boat-lifestyle.com page=1 status=429 bodyLen=undefined
+[stream-dp] [dp] wyze.com page=1 status=429 bodyLen=undefined
+[stream-dp] [dp] boat-lifestyle.com page=1 status=429 bodyLen=undefined
+[stream-dp] [dp] wyze.com page=1 status=429 bodyLen=undefined
+[stream-dp] [dp] boat-lifestyle.com page=1 status=429 bodyLen=undefined
+[stream-dp] [deep-page] DONE: {"stores_processed":271,"stores_failed":0,"total_products":1203,"by_platform":{"shopify-html":82,"woocommerce-html":44,"woocommerce":63,"magento":12,"schema-product":48,"shopify":6,"magento-html":14,"bigcommerce-html":2},"started_at":"2026-06-07T14:31:14.043Z","finished_at":"2026-06-07T14:32:22.861Z","output_rows":1203}
+[stream-dp] done: tranco_slice_0.ndjson products=1203 elapsed_ms=69019
+[stream-dp] [deep-page] input records=4 ecom=4 by_platform={"shopify":3,"magento-html":1} concurrency=50
+[stream-dp] [dp] scooboo.in page=1 status=429 bodyLen=undefined
+[stream-dp] [dp] vincecare.com page=1 status=429 bodyLen=undefined
+[stream-dp] [dp:mg] ambientweather.com page=1 status=401 bodyLen=undefined
+[stream-dp] [dp] x-sense.com page=1 status=200 bodyLen=327392
+[stream-dp] [dp] scooboo.in page=1 status=429 bodyLen=undefined
+[stream-dp] [dp] vincecare.com page=1 status=429 bodyLen=undefined
+[stream-dp] [dp] vincecare.com page=1 status=429 bodyLen=undefined
+[stream-dp] [dp] scooboo.in page=1 status=429 bodyLen=undefined
+[stream-dp] [dp] vincecare.com page=1 status=429 bodyLen=undefined
+[stream-dp] [dp] scooboo.in page=1 status=429 bodyLen=undefined
+[stream-dp] [dp] scooboo.in page=1 status=429 bodyLen=undefined
+[stream-dp] [dp] vincecare.com page=1 status=429 bodyLen=undefined
+[stream-dp] [dp] vincecare.com page=1 status=429 bodyLen=undefined
+[stream-dp] [dp] scooboo.in page=1 status=429 bodyLen=undefined
+[stream-dp] [deep-page] DONE: {"stores_processed":4,"stores_failed":0,"total_products":45,"by_platform":{"magento-html":1,"shopify":3},"started_at":"2026-06-07T14:32:23.064Z","finished_at":"2026-06-07T14:33:23.208Z","output_rows":45}
+[stream-dp] done: tranco_slice_e1.ndjson products=45 elapsed_ms=60289
+[stream-dp] [deep-page] input records=2 ecom=2 by_platform={"shopify":1,"magento-html":1} concurrency=50
+[stream-dp] [dp:mg] pinarello.com page=1 status=404 bodyLen=undefined
+[stream-dp] [dp] mingalondon.com page=1 status=200 bodyLen=1824829
+[stream-dp] [dp] mingalondon.com page=2 status=200 bodyLen=1570637
+[stream-dp] [deep-page] DONE: {"stores_processed":2,"stores_failed":0,"total_products":500,"by_platform":{"magento-html":1,"shopify":1},"started_at":"2026-06-07T14:33:23.348Z","finished_at":"2026-06-07T14:33:27.384Z","output_rows":500}
+[stream-dp] done: tranco_slice_e2.ndjson products=500 elapsed_ms=4181
+[stream-dp] [deep-page] input records=0 ecom=0 by_platform={} concurrency=50
+[stream-dp] [deep-page] DONE: {"stores_processed":0,"stores_failed":0,"total_products":0,"by_platform":{},"started_at":"2026-06-07T14:57:08.812Z","finished_at":"2026-06-07T14:57:08.813Z","output_rows":0}
+[stream-dp] done: tranco_slice_3_tail.ndjson products=0 elapsed_ms=166
+[stream-dp] [deep-page] input records=1 ecom=1 by_platform={"shopify-html":1} concurrency=50
+[stream-dp] [dp] lumenlearning.com page=1 status=404 bodyLen=undefined
+[stream-dp] [deep-page] DONE: {"stores_processed":1,"stores_failed":0,"total_products":0,"by_platform":{"shopify-html":1},"started_at":"2026-06-07T14:57:49.001Z","finished_at":"2026-06-07T14:57:51.030Z","output_rows":0}
+[stream-dp] done: tranco_slice_1_tail.ndjson products=0 elapsed_ms=2193
+[stream-dp] [deep-page] input records=0 ecom=0 by_platform={} concurrency=50
+[stream-dp] [deep-page] DONE: {"stores_processed":0,"stores_failed":0,"total_products":0,"by_platform":{},"started_at":"2026-06-07T14:58:31.200Z","finished_at":"2026-06-07T14:58:31.201Z","output_rows":0}
+[stream-dp] done: tranco_slice_2_tail.ndjson products=0 elapsed_ms=136

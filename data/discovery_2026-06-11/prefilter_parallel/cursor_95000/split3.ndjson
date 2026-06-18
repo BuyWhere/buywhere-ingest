@@ -1,0 +1,4 @@
+{"domain":"bioz.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":490,"country_code":"US","currency":null}
+{"domain":"ozow.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":470,"country_code":"US","currency":null}
+{"domain":"wildundhund.de","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1968,"country_code":"DE","currency":null}
+{"domain":"nowtolove.com.au","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":613,"country_code":"AU","currency":null}

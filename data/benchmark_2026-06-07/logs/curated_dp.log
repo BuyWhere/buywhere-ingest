@@ -1,0 +1,113 @@
+[deep-page] input records=99 ecom=99 by_platform={"shopify":91,"woocommerce":6,"magento":2} concurrency=50
+[dp] ten Thousand.com page=1 status=0 bodyLen=undefined
+[dp] stockx.com page=1 status=403 bodyLen=undefined
+[dp] redbubble.com page=1 status=403 bodyLen=undefined
+[dp] away.com page=1 status=0 bodyLen=undefined
+[dp] goat.com page=1 status=403 bodyLen=undefined
+[dp] huckberry.com page=1 status=403 bodyLen=undefined
+[dp] meundies.com page=1 status=429 bodyLen=undefined
+[dp] rhone.com page=1 status=403 bodyLen=undefined
+[dp] ruggable.com page=1 status=404 bodyLen=undefined
+[dp] miansai.com page=1 status=200 bodyLen=1043906
+[dp] roi-calculator.com page=1 status=200 bodyLen=131
+[dp] roi-calculator.com parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[dp] mrporter.com page=1 status=0 bodyLen=undefined
+[dp] koio.co page=1 status=200 bodyLen=1295949
+[dp] greats.com page=1 status=200 bodyLen=671537
+[dp] kith.net page=1 status=0 bodyLen=undefined
+[dp] fashionnova.com page=1 status=200 bodyLen=1140576
+[dp] casper.com page=1 status=200 bodyLen=885472
+[dp] allbirds.com page=1 status=200 bodyLen=1577656
+[dp] glossier.com page=1 status=200 bodyLen=1399496
+[dp] gymshark.com page=1 status=200 bodyLen=1697089
+[dp] girlfriend.com page=1 status=200 bodyLen=1468549
+[dp] kith.com page=1 status=200 bodyLen=1570575
+[dp] bodega.com page=1 status=404 bodyLen=undefined
+[dp] hanon-shop.com page=1 status=404 bodyLen=undefined
+[dp] ssense.com page=1 status=403 bodyLen=undefined
+[dp] kithnyc.com page=1 status=200 bodyLen=1570575
+[dp] cutsclothing.com page=1 status=200 bodyLen=1267281
+[dp] bode.com page=1 status=200 bodyLen=1123618
+[dp] buckmason.com page=1 status=404 bodyLen=undefined
+[dp] society6.com page=1 status=200 bodyLen=3011055
+[dp] representclothing.com page=1 status=0 bodyLen=undefined
+[dp] trueclassic.com page=1 status=200 bodyLen=1927044
+[deep-page] worker=1 stores=25 failed=0 products=1768 by_platform={"shopify":25}
+[dp] selfridges.com page=1 status=403 bodyLen=undefined
+[dp] teepublic.com page=1 status=406 bodyLen=undefined
+[dp] harveynichols.com page=1 status=403 bodyLen=undefined
+[dp] johnlewis.com page=1 status=0 bodyLen=undefined
+[dp] tracksmith.com page=1 status=404 bodyLen=undefined
+[dp] brilliantearth.com page=1 status=403 bodyLen=undefined
+[dp] theiconic.com.au page=1 status=403 bodyLen=undefined
+[dp] harrods.com page=1 status=0 bodyLen=undefined
+[dp] offspring.co.uk page=1 status=403 bodyLen=undefined
+[dp] vuori.com page=1 status=404 bodyLen=undefined
+[dp] asos.com page=1 status=0 bodyLen=undefined
+[dp] pacsun.com page=1 status=403 bodyLen=undefined
+[dp] oneractive.com page=1 status=200 bodyLen=1771507
+[dp] revolve.com page=1 status=0 bodyLen=undefined
+[dp:wc] kith.com page=1 status=400 bodyLen=undefined
+[dp] very.co.uk page=1 status=403 bodyLen=undefined
+[dp:wc] kithnyc.com page=1 status=400 bodyLen=undefined
+[dp] warbyparker.com page=1 status=403 bodyLen=undefined
+[dp] aybl.com page=1 status=200 bodyLen=1519780
+[dp:wc] ssense.com page=1 status=403 bodyLen=undefined
+[dp:wc] mrporter.com page=1 status=0 bodyLen=undefined
+[deep-page] worker=37 stores=50 failed=0 products=3268 by_platform={"shopify":46,"woocommerce":4}
+[dp] mizzenandmain.com page=1 status=404 bodyLen=undefined
+[dp] libertylondon.com page=1 status=410 bodyLen=undefined
+[dp] concepts.com page=1 status=0 bodyLen=undefined
+[dp] therealreal.com page=1 status=403 bodyLen=undefined
+[dp] toteme-studio.com page=1 status=200 bodyLen=1458670
+[dp] flannels.com page=1 status=0 bodyLen=undefined
+[dp] bergdorfgoodman.com page=1 status=403 bodyLen=undefined
+[dp] boohooman.com page=1 status=403 bodyLen=undefined
+[dp] whitefoxboutique.com page=1 status=200 bodyLen=1397249
+[dp] generalpants.com.au page=1 status=200 bodyLen=1923792
+[dp] neimanmarcus.com page=1 status=403 bodyLen=undefined
+[dp] skims.com page=1 status=404 bodyLen=undefined
+[dp] endclothing.com page=1 status=404 bodyLen=undefined
+[dp] endclothing.co.uk page=1 status=404 bodyLen=undefined
+[dp] mytheresa.com page=1 status=200 bodyLen=938870
+[dp] mytheresa.com parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[dp] sizeofficial.com page=1 status=404 bodyLen=undefined
+[dp] baitshop.com page=1 status=404 bodyLen=undefined
+[dp] fahertybrand.com page=1 status=200 bodyLen=2469931
+[dp] riverisland.com page=1 status=404 bodyLen=undefined
+[dp] meshki.us page=1 status=200 bodyLen=1775897
+[dp:mg] alpinestars.com page=1 status=404 bodyLen=undefined
+[dp] bloomingdales.com page=1 status=403 bodyLen=undefined
+[dp] forward.com page=1 status=404 bodyLen=undefined
+[dp] macys.com page=1 status=403 bodyLen=undefined
+[dp] princesspolly.com page=1 status=404 bodyLen=undefined
+[deep-page] worker=2 stores=75 failed=0 products=4518 by_platform={"shopify":70,"woocommerce":4,"magento":1}
+[dp] urbanoutfitters.com page=1 status=404 bodyLen=undefined
+[dp] freepeople.com page=1 status=404 bodyLen=undefined
+[dp] anthropologie.com page=1 status=404 bodyLen=undefined
+[dp:wc] endclothing.com page=1 status=404 bodyLen=undefined
+[dp] tessuti.co.uk page=1 status=403 bodyLen=undefined
+[dp] ohpolly.com page=1 status=200 bodyLen=1429347
+[dp] atmosny.com page=1 status=200 bodyLen=131
+[dp] atmosny.com parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[dp] shopbop.com page=1 status=404 bodyLen=undefined
+[dp] nordstrom.com page=1 status=404 bodyLen=undefined
+[dp] saksfifthavenue.com page=1 status=403 bodyLen=undefined
+[dp:mg] bodylab24.de page=1 status=404 bodyLen=undefined
+[dp] showpo.com page=1 status=200 bodyLen=2074990
+[dp] footpatrol.com page=1 status=200 bodyLen=1310171
+[dp] saksoff5th.com page=1 status=200 bodyLen=2255
+[dp] saksoff5th.com parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[dp] meundies.com page=1 status=429 bodyLen=undefined
+[dp] farfetch.com page=1 status=404 bodyLen=undefined
+[dp] meundies.com page=1 status=429 bodyLen=undefined
+[dp] size.co.uk page=1 status=0 bodyLen=undefined
+[dp] gymshark.co.uk page=1 status=0 bodyLen=undefined
+[dp] lululemon.com page=1 status=0 bodyLen=undefined
+[dp] net-a-porter.com page=1 status=0 bodyLen=undefined
+[dp:wc] size.co.uk page=1 status=0 bodyLen=undefined
+[dp] barneys.com page=1 status=0 bodyLen=undefined
+[dp] meundies.com page=1 status=429 bodyLen=undefined
+[dp] meundies.com page=1 status=429 bodyLen=undefined
+[dp] meundies.com page=1 status=429 bodyLen=undefined
+[deep-page] DONE: {"stores_processed":99,"stores_failed":0,"total_products":5768,"by_platform":{"shopify":91,"woocommerce":6,"magento":2},"started_at":"2026-06-07T14:12:22.729Z","finished_at":"2026-06-07T14:13:23.292Z","output_rows":5768}

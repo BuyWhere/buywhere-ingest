@@ -1,0 +1,20 @@
+{
+  "ingest": {
+    "at": "2026-06-15T23:51:03+00:00",
+    "errors": 0,
+    "inserted": 522,
+    "partial": false,
+    "records": 522
+  },
+  "ingestedBy": "BUY-52085",
+  "local": {
+    "path": "data/retailer-direct/medleyhome.ndjson",
+    "sha256": "a520653de3ca31c2f63b523f22648cd342df0e497e9c96cdda139ebaf954a102",
+    "size": 2916302
+  },
+  "r2": {
+    "bucket": "buywhere-data",
+    "key": "scrape-artifacts/2026-06-15/medleyhome.ndjson"
+  },
+  "schemaVersion": 2
+}

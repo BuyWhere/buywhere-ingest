@@ -1,0 +1,16 @@
+{
+  "kind": "request_confirmation",
+  "idempotencyKey": "confirmation:d4ec5ae6-9f59-47d0-be5c-78491acfe6c5:verification:2026-06-06T04:18Z",
+  "title": "Catalog drift verification — accept and close?",
+  "continuationPolicy": "wake_assignee",
+  "payload": {
+    "version": 1,
+    "prompt": "Confirm that the catalog drift is resolved (0.13% drift, well within 5% tolerance and below the 102,494 baseline) and BUY-31179 can be closed.",
+    "acceptLabel": "Accept - close BUY-31179",
+    "rejectLabel": "Reject - keep open, need more work",
+    "rejectRequiresReason": true,
+    "rejectReasonLabel": "What still needs to happen?",
+    "detailsMarkdown": "## Verification of /v1/catalog/stats vs canonical DB (2026-06-06T04:18 UTC)\n\n### Drift results\n\n- Runtime `/v1/catalog/stats` (api.buywhere.ai + railway.app): **32,152,304** products (`source=pg_class_estimate, approximate=true`)\n- Canonical `public.products` exact `count(*)`: **32,109,098** products\n- Delta: **+43,206 rows** = **0.13% drift** (well under 5% tolerance, and 58% under the 102,494 issue-title threshold)\n- Runtime is no longer frozen at the 2026-06-02 snapshot - it is now serving live data\n\n### Cross-check counts (all captured 2026-06-06T04:17Z)\n\n- `pg_class.reltuples` (what the runtime reads): 32,152,304\n- `pg_stat_user_tables.n_live_tup` (autovacuum, 1.4h old): 32,335,240\n- `public.catalog_stats_mv.total_products` (frozen 2026-06-05T19:15Z): 30,079,559\n- `count(*) FILTER (WHERE is_active)`: 32,044,935\n- `count(DISTINCT merchant_id)`: 46,579\n\n### What this resolves\n\n- [BUY-31273](/BUY/issues/BUY-31273) (blocker, done) replaced the silent pg_class_fallback in this workspace.\n- The 102,494-row drift baseline from the BUY-31179 title is now well below threshold.\n- The frozen-snapshot regression (16.8M products on 2026-06-05T15:46Z) is gone.\n\n### What remains (child issues, not in this closure)\n\n- [BUY-31222](/BUY/issues/BUY-31222) (Flux, in_progress): replace the pg_class_estimate path with an exact `count(*)` so the runtime drops the `approximate=true` label. This is a quality step, not a drift fix.\n- [BUY-31223](/BUY/issues/BUY-31223) (todo, Ops): grant data-workspace `UPDATE` on `catalog_stats` / `catalog_stats_mv` so the data layer can refresh without runtime assistance.\n\n### Re-runnable verification\n\n```sql\n-- canonical exact (runtime DB = maglev.proxy.rlwy.net:31310/railway)\nSELECT count(*) AS real_products FROM products;\n\n-- what the runtime is actually serving\nSELECT reltuples::bigint AS pg_class_estimate FROM pg_class WHERE relname='products';\n\n-- public endpoint\ncurl https://api.buywhere.ai/v1/catalog/stats\n```\n\n### Accept / Reject\n\n- Accept → close BUY-31179 (catalog drift is within tolerance, follow-ups tracked in BUY-31222 / BUY-31223)\n- Reject → keep this issue in_progress and tell me what additional verification or data-layer change is needed before close",
+    "supersedeOnUserComment": true
+  }
+}

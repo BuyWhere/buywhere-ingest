@@ -1,0 +1,4 @@
+{"domain":"giftee.biz","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1523,"country_code":"US","currency":null}
+{"domain":"mooncat.com","platform":"shopify","product_endpoint":"https://mooncat.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":4283,"country_code":"US","currency":null}
+{"domain":"messagemedia.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":737,"country_code":"US","currency":null}
+{"domain":"entera.pro","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":1940,"country_code":"US","currency":null}

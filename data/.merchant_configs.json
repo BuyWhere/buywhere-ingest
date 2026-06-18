@@ -1,0 +1,145 @@
+{
+  "paper_source": {
+    "scraper_key": "paper_source",
+    "defaults": {
+      "merchant_id": "paper_source",
+      "source": "paper_source",
+      "platform": "shopify",
+      "region": "US",
+      "country_code": "US",
+      "currency": "USD",
+      "is_active": true,
+      "in_stock": true
+    }
+  },
+  "floor_and_decor": {
+    "scraper_key": "floor_and_decor",
+    "defaults": {
+      "merchant_id": "floor_and_decor",
+      "source": "floor_and_decor",
+      "platform": "custom",
+      "region": "US",
+      "country_code": "US",
+      "currency": "USD",
+      "is_active": true,
+      "in_stock": true
+    }
+  },
+  "the_body_shop": {
+    "scraper_key": "the_body_shop",
+    "defaults": {
+      "merchant_id": "the_body_shop",
+      "source": "the_body_shop",
+      "platform": "shopify",
+      "region": "UK",
+      "country_code": "GB",
+      "currency": "GBP",
+      "is_active": true,
+      "in_stock": true
+    }
+  },
+  "woocommerce": {
+    "scraper_key": "woocommerce",
+    "defaults": {
+      "merchant_id": "woocommerce",
+      "source": "woocommerce",
+      "platform": "woocommerce",
+      "region": "US",
+      "country_code": "US",
+      "currency": "USD",
+      "is_active": true,
+      "in_stock": true
+    }
+  },
+  "courts_sg": {
+    "scraper_key": "courts_sg",
+    "defaults": {
+      "merchant_id": "courts_sg",
+      "source": "courts_sg",
+      "platform": "custom",
+      "region": "SG",
+      "country_code": "SG",
+      "currency": "SGD",
+      "is_active": true,
+      "in_stock": true
+    }
+  },
+  "guardian_sg": {
+    "scraper_key": "guardian_sg",
+    "defaults": {
+      "merchant_id": "guardian_sg",
+      "source": "guardian_sg",
+      "platform": "custom",
+      "region": "SG",
+      "country_code": "SG",
+      "currency": "SGD",
+      "is_active": false,
+      "in_stock": true
+    }
+  },
+  "zalora_sg": {
+    "scraper_key": "zalora_sg",
+    "defaults": {
+      "merchant_id": "zalora_sg",
+      "source": "zalora_sg",
+      "platform": "custom",
+      "region": "SG",
+      "country_code": "SG",
+      "currency": "SGD",
+      "is_active": true,
+      "in_stock": true
+    }
+  },
+  "tokopedia": {
+    "scraper_key": "tokopedia",
+    "defaults": {
+      "merchant_id": "tokopedia",
+      "source": "tokopedia",
+      "platform": "custom",
+      "region": "ID",
+      "country_code": "ID",
+      "currency": "IDR",
+      "is_active": true,
+      "in_stock": true
+    }
+  },
+  "newchapter": {
+    "scraper_key": "newchapter",
+    "defaults": {
+      "merchant_id": "newchapter",
+      "source": "newchapter",
+      "platform": "shopify",
+      "region": "US",
+      "country_code": "US",
+      "currency": "USD",
+      "is_active": true,
+      "in_stock": true
+    }
+  },
+  "allbirds": {
+    "scraper_key": "allbirds",
+    "defaults": {
+      "merchant_id": "allbirds",
+      "source": "allbirds",
+      "platform": "shopify",
+      "region": "US",
+      "country_code": "US",
+      "currency": "USD",
+      "is_active": true,
+      "in_stock": true
+    }
+  },
+  "muji_us": {
+    "scraper_key": "muji_us",
+    "defaults": {
+      "merchant_id": "muji_us",
+      "source": "muji_us",
+      "platform": "shopify",
+      "region": "US",
+      "country_code": "US",
+      "currency": "USD",
+      "is_active": true,
+      "in_stock": true
+    }
+  }
+}

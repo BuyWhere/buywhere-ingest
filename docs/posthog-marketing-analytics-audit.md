@@ -44,8 +44,10 @@ Observed in project `415112`:
   - `$virt_traffic_category`
   - `$virt_bot_name`
 
-This means the issue's "agent-vs-human segmentation property" requirement is satisfied by the
-existing `is_bot` split, with `agent_family` available for more detailed cuts.
+The segmentation properties exist, but they are not currently trustworthy for `pageview_server`.
+As of `2026-05-30`, monitor and crawler traffic including `UptimeRobot/2.0`,
+`Consolidated-Health-Check/1.0`, and `A2A-Registry-TaskProbe/1.0` is still appearing with
+`is_bot = false` on `pageview_server`.
 
 ## Dashboard Created
 
@@ -60,9 +62,10 @@ Panels:
 
 Query conventions:
 
-- Human traffic filter: `properties.is_bot = false`
+- Temporary human traffic filter: `event = '$pageview' AND properties.is_bot = false`
 - Agent/bot split: `multiIf(properties.is_bot = true, 'agent_or_bot', properties.is_bot = false, 'human', 'unknown')`
-- Pageview source: combined `('$pageview', 'pageview_server')`
+- Combined `('$pageview', 'pageview_server')` is suspended as a human-web KPI until `pageview_server`
+  classification is repaired
 
 ## Caveats
 
@@ -70,6 +73,9 @@ Query conventions:
   created during API retries. Use dashboard `1622959` as the source of truth.
 - Because the live site is not loading `posthog-js`, browser-only web analytics features are still
   not actually wired from the public site HTML.
+- The prior combined human-pageview definition is now known to be contaminated by `pageview_server`
+  traffic hitting `0.0.0.0:8080` with monitor and crawler user agents. See
+  [docs/buy-27385-lyra-traffic-kpi-contamination-2026-05-30.md](/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/docs/buy-27385-lyra-traffic-kpi-contamination-2026-05-30.md).
 
 ## External Dependency
 

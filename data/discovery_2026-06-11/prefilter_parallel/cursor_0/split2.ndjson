@@ -1,0 +1,10 @@
+{"domain":"statcounter.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":279,"country_code":"US","currency":null}
+{"domain":"wise.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":936,"country_code":"US","currency":null}
+{"domain":"hostinger.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":64,"country_code":"US","currency":null}
+{"domain":"meethue.com","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":211,"country_code":"US","currency":null}
+{"domain":"lge.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":370,"country_code":"US","currency":null}
+{"domain":"usercentrics.eu","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":661,"country_code":"US","currency":null}
+{"domain":"letsencrypt.org","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":6,"country_code":"US","currency":null}
+{"domain":"sectigo.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":1850,"country_code":"US","currency":null}
+{"domain":"singular.net","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":969,"country_code":"US","currency":null}
+{"domain":"haberler.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":20,"country_code":"US","currency":null}

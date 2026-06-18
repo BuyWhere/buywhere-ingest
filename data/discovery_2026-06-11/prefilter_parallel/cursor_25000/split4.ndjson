@@ -1,0 +1,2 @@
+{"domain":"target-video.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":9867,"country_code":"US","currency":null}
+{"domain":"megasoft.ru","platform":"woocommerce","product_endpoint":"https://megasoft.ru/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":2963,"country_code":"US","currency":null}

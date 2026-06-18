@@ -1,0 +1,20 @@
+{
+  "ingest": {
+    "at": "2026-06-15T23:51:14+00:00",
+    "errors": 0,
+    "inserted": 97,
+    "partial": false,
+    "records": 97
+  },
+  "ingestedBy": "BUY-52085",
+  "local": {
+    "path": "data/retailer-direct/jonesroadbeauty.ndjson",
+    "sha256": "962cc00a921fd65b2a4a5fa2f7e28a8a646084619a181e089f1c71aaeafd2dbf",
+    "size": 567750
+  },
+  "r2": {
+    "bucket": "buywhere-data",
+    "key": "scrape-artifacts/2026-06-15/jonesroadbeauty.ndjson"
+  },
+  "schemaVersion": 2
+}

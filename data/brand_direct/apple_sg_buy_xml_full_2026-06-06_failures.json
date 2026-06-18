@@ -1,0 +1,495 @@
+{
+  "source": "apple_sg_buy_xml",
+  "merchant_id": "apple_sg",
+  "generated_at": "2026-06-06T10:47:03.858885+00:00",
+  "total_candidates": 1055,
+  "record_count": 935,
+  "unique_records": 935,
+  "elapsed_seconds": 251.77,
+  "failure_count": 109,
+  "failures": [
+    {
+      "url": "https://www.apple.com/sg/shop/buy-iphone/iphone-16",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-iphone/iphone-17-pro",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-iphone/iphone-17",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-iphone/iphone-17e",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-iphone/iphone-air",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/imac",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/mac-mini",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/mac-studio",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-air",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-air/13-inch",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-air/13-inch-silver-m5-chip-10-core-cpu-10-core-gpu-16gb-memory-2tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-air/13-inch-midnight-m5-chip-10-core-cpu-10-core-gpu-32gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-air/13-inch-midnight-m5-chip-10-core-cpu-10-core-gpu-16gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-air/13-inch-silver-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-2tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-air/13-inch-sky-blue-m5-chip-10-core-cpu-10-core-gpu-16gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-air/13-inch-sky-blue-m5-chip-10-core-cpu-10-core-gpu-16gb-memory-2tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-air/15-inch",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-air/13-inch-sky-blue-m5-chip-10-core-cpu-10-core-gpu-16gb-memory-512gb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-air/13-inch-starlight-m5-chip-10-core-cpu-10-core-gpu-16gb-memory-512gb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-air/13-inch-starlight-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-air/13-inch-starlight-m5-chip-10-core-cpu-10-core-gpu-16gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-air/13-inch-starlight-m5-chip-10-core-cpu-10-core-gpu-32gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-air/15-inch-midnight-m5-chip-10-core-cpu-10-core-gpu-16gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-air/15-inch-midnight-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-2tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-neo",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-air/15-inch-silver-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-2tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-air/15-inch-silver-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-m5",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-m5-max",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-air/15-inch-sky-blue-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-air/15-inch-starlight-m5-chip-10-core-cpu-10-core-gpu-16gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-air/15-inch-starlight-m5-chip-10-core-cpu-10-core-gpu-32gb-memory-512gb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-air/15-inch-starlight-m5-chip-10-core-cpu-10-core-gpu-32gb-memory-2tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-m5-pro",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-nano-texture-display-apple-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-1tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-nano-texture-display-apple-m5-chip-10-core-cpu-10-core-gpu-16gb-memory-2tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-nano-texture-display-apple-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-nano-texture-display-apple-m5-chip-10-core-cpu-10-core-gpu-32gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-nano-texture-display-apple-m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-nano-texture-display-apple-m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-8tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-nano-texture-display-apple-m5-max-chip-18-core-cpu-40-core-gpu-128gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-nano-texture-display-apple-m5-max-chip-18-core-cpu-40-core-gpu-128gb-memory-8tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-nano-texture-display-apple-m5-max-chip-18-core-cpu-40-core-gpu-48gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-nano-texture-display-apple-m5-max-chip-18-core-cpu-40-core-gpu-48gb-memory-8tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-nano-texture-display-apple-m5-max-chip-18-core-cpu-40-core-gpu-64gb-memory-8tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-nano-texture-display-apple-m5-pro-chip-15-core-cpu-16-core-gpu-24gb-memory-2tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-nano-texture-display-apple-m5-pro-chip-15-core-cpu-16-core-gpu-24gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-nano-texture-display-apple-m5-pro-chip-15-core-cpu-16-core-gpu-48gb-memory-1tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-nano-texture-display-apple-m5-pro-chip-15-core-cpu-16-core-gpu-48gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-nano-texture-display-apple-m5-pro-chip-18-core-cpu-20-core-gpu-24gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-nano-texture-display-apple-m5-pro-chip-18-core-cpu-20-core-gpu-48gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-nano-texture-display-apple-m5-pro-chip-18-core-cpu-20-core-gpu-64gb-memory-1tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-nano-texture-display-apple-m5-pro-chip-18-core-cpu-20-core-gpu-64gb-memory-2tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-standard-display-apple-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-standard-display-apple-m5-chip-10-core-cpu-10-core-gpu-16gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-standard-display-apple-m5-chip-10-core-cpu-10-core-gpu-32gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-standard-display-apple-m5-chip-10-core-cpu-10-core-gpu-32gb-memory-2tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-standard-display-apple-m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-standard-display-apple-m5-max-chip-18-core-cpu-40-core-gpu-48gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-standard-display-apple-m5-max-chip-18-core-cpu-40-core-gpu-128gb-memory-8tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-standard-display-apple-m5-pro-chip-15-core-cpu-16-core-gpu-24gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-silver-standard-display-apple-m5-pro-chip-18-core-cpu-20-core-gpu-48gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-space-black-nano-texture-display-apple-m5-chip-10-core-cpu-10-core-gpu-16gb-memory-2tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-space-black-nano-texture-display-apple-m5-chip-10-core-cpu-10-core-gpu-16gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-space-black-nano-texture-display-apple-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-space-black-nano-texture-display-apple-m5-chip-10-core-cpu-10-core-gpu-32gb-memory-2tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-space-black-nano-texture-display-apple-m5-max-chip-18-core-cpu-40-core-gpu-128gb-memory-2tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-space-black-nano-texture-display-apple-m5-max-chip-18-core-cpu-40-core-gpu-128gb-memory-8tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-space-black-nano-texture-display-apple-m5-max-chip-18-core-cpu-40-core-gpu-48gb-memory-8tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-space-black-nano-texture-display-apple-m5-pro-chip-15-core-cpu-16-core-gpu-24gb-memory-2tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-space-black-nano-texture-display-apple-m5-pro-chip-15-core-cpu-16-core-gpu-24gb-memory-1tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-space-black-nano-texture-display-apple-m5-pro-chip-18-core-cpu-20-core-gpu-64gb-memory-1tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-space-black-standard-display-apple-m5-chip-10-core-cpu-10-core-gpu-24gb-memory-2tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-space-black-standard-display-apple-m5-chip-10-core-cpu-10-core-gpu-16gb-memory-2tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-space-black-standard-display-apple-m5-chip-10-core-cpu-10-core-gpu-32gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-space-black-standard-display-apple-m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-8tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/16-inch",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-space-black-standard-display-apple-m5-max-chip-18-core-cpu-40-core-gpu-128gb-memory-8tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-space-black-standard-display-apple-m5-max-chip-18-core-cpu-40-core-gpu-48gb-memory-2tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/16-inch-m5-max",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/16-inch-m5-pro",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-space-black-standard-display-apple-m5-max-chip-18-core-cpu-40-core-gpu-48gb-memory-8tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-space-black-standard-display-apple-m5-max-chip-18-core-cpu-40-core-gpu-64gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-space-black-standard-display-apple-m5-max-chip-18-core-cpu-40-core-gpu-64gb-memory-8tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/14-inch-space-black-standard-display-apple-m5-pro-chip-18-core-cpu-20-core-gpu-48gb-memory-2tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/16-inch-silver-nano-texture-display-apple-m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-2tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/16-inch-silver-nano-texture-display-apple-m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-8tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/16-inch-silver-nano-texture-display-apple-m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/16-inch-silver-nano-texture-display-apple-m5-max-chip-18-core-cpu-40-core-gpu-48gb-memory-8tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/16-inch-silver-nano-texture-display-apple-m5-max-chip-18-core-cpu-40-core-gpu-48gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/16-inch-silver-nano-texture-display-apple-m5-pro-chip-18-core-cpu-20-core-gpu-24gb-memory-2tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/16-inch-silver-nano-texture-display-apple-m5-pro-chip-18-core-cpu-20-core-gpu-48gb-memory-2tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/16-inch-silver-nano-texture-display-apple-m5-pro-chip-18-core-cpu-20-core-gpu-24gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/16-inch-silver-nano-texture-display-apple-m5-pro-chip-18-core-cpu-20-core-gpu-48gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/16-inch-silver-nano-texture-display-apple-m5-pro-chip-18-core-cpu-20-core-gpu-64gb-memory-2tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/16-inch-silver-standard-display-apple-m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-8tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/16-inch-silver-standard-display-apple-m5-max-chip-18-core-cpu-40-core-gpu-48gb-memory-8tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/16-inch-silver-standard-display-apple-m5-pro-chip-18-core-cpu-20-core-gpu-24gb-memory-2tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/16-inch-silver-standard-display-apple-m5-pro-chip-18-core-cpu-20-core-gpu-64gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/16-inch-silver-standard-display-apple-m5-pro-chip-18-core-cpu-20-core-gpu-64gb-memory-2tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/16-inch-space-black-nano-texture-display-apple-m5-max-chip-18-core-cpu-32-core-gpu-36gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/16-inch-space-black-nano-texture-display-apple-m5-max-chip-18-core-cpu-40-core-gpu-48gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-vision/apple-vision-pro",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/16-inch-space-black-nano-texture-display-apple-m5-pro-chip-18-core-cpu-20-core-gpu-24gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/16-inch-space-black-nano-texture-display-apple-m5-pro-chip-18-core-cpu-20-core-gpu-64gb-memory-4tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/16-inch-space-black-standard-display-apple-m5-max-chip-18-core-cpu-40-core-gpu-48gb-memory-8tb-storage",
+      "error": "status 541"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/macbook-pro/16-inch-space-black-standard-display-apple-m5-pro-chip-18-core-cpu-20-core-gpu-48gb-memory-2tb-storage",
+      "error": "status 541"
+    }
+  ],
+  "invalid_schema": [
+    {
+      "url": "https://www.apple.com/sg/shop/buy-airpods/airpods-4/with-active-noise-cancellation",
+      "error": "duplicate (sku, source)"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-airtag/airtag",
+      "error": "duplicate (sku, source)"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-homepod/homepod/midnight",
+      "error": "duplicate (sku, source)"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-homepod/homepod-mini",
+      "error": "duplicate (sku, source)"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-ipad/ipad-air/11-inch-display-512gb-starlight-wifi",
+      "error": "duplicate (sku, source)"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-ipad/ipad-mini/256gb-starlight-wifi",
+      "error": "duplicate (sku, source)"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-ipad/ipad-pro/11-inch-display-2tb-space-black-wifi-cellular-standard-glass",
+      "error": "duplicate (sku, source)"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-ipad/ipad/512gb-blue-wifi-cellular",
+      "error": "duplicate (sku, source)"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/studio-display-xdr/standard-glass-vesa-mount-adapter",
+      "error": "duplicate (sku, source)"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-tv/apple-tv-4k/64gb",
+      "error": "duplicate (sku, source)"
+    },
+    {
+      "url": "https://www.apple.com/sg/shop/buy-mac/studio-display/standard-glass-vesa-mount-adapter",
+      "error": "duplicate (sku, source)"
+    }
+  ],
+  "invalid_count": 11
+}

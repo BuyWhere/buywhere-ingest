@@ -1,0 +1,300 @@
+{"query":"iPhone 15 Pro","country":"SG","limit":5,"status":200,"result_count":5,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:07Z"}
+{"query":"iPhone 15 Pro Max","country":"SG","limit":5,"status":200,"result_count":5,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:08Z"}
+{"query":"iPhone 14 Pro","country":"SG","limit":5,"status":200,"result_count":2,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:09Z"}
+{"query":"iPhone 13","country":"SG","limit":5,"status":200,"result_count":4,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:10Z"}
+{"query":"Samsung Galaxy S24","country":"SG","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:11Z"}
+{"query":"Samsung Galaxy S24 Ultra","country":"SG","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:12Z"}
+{"query":"MacBook Air M3","country":"SG","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:13Z"}
+{"query":"MacBook Pro M3","country":"SG","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:14Z"}
+{"query":"iPad Pro M4","country":"SG","limit":5,"status":200,"result_count":5,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:15Z"}
+{"query":"iPad Air M2","country":"SG","limit":5,"status":200,"result_count":3,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:16Z"}
+{"query":"AirPods Pro 2","country":"SG","limit":5,"status":200,"result_count":5,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:17Z"}
+{"query":"Sony WH-1000XM5","country":"SG","limit":5,"status":200,"result_count":4,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:18Z"}
+{"query":"Sony WF-1000XM5","country":"SG","limit":5,"status":200,"result_count":2,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:19Z"}
+{"query":"Bose QuietComfort 45","country":"SG","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:20Z"}
+{"query":"Dyson V15 Detect","country":"SG","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:21Z"}
+{"query":"Dyson Airwrap","country":"SG","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:22Z"}
+{"query":"Nintendo Switch OLED","country":"SG","limit":5,"status":200,"result_count":2,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:23Z"}
+{"query":"PS5 Digital","country":"SG","limit":5,"status":200,"result_count":5,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:24Z"}
+{"query":"Xbox Series X","country":"SG","limit":5,"status":200,"result_count":3,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:25Z"}
+{"query":"Pixel 8 Pro","country":"SG","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:26Z"}
+{"query":"OnePlus 12","country":"SG","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:27Z"}
+{"query":"Xiaomi 14 Ultra","country":"SG","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:28Z"}
+{"query":"ASUS ROG Phone 8","country":"SG","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:29Z"}
+{"query":"Oppo Find X7 Pro","country":"SG","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:30Z"}
+{"query":"Razer Blade 15","country":"SG","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:31Z"}
+{"query":"LG OLED C3 55","country":"SG","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:32Z"}
+{"query":"Samsung QLED 65","country":"SG","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:33Z"}
+{"query":"Roborock S8 Pro Ultra","country":"SG","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:34Z"}
+{"query":"Ecovacs Deebot X2","country":"SG","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:35Z"}
+{"query":"Philips Hue Starter","country":"SG","limit":5,"status":200,"result_count":3,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:36Z"}
+{"query":"laptop","country":"SG","limit":5,"status":200,"result_count":5,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:37Z"}
+{"query":"gaming laptop","country":"SG","limit":5,"status":200,"result_count":5,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:38Z"}
+{"query":"ultrabook","country":"SG","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:39Z"}
+{"query":"wireless earbuds","country":"SG","limit":5,"status":200,"result_count":5,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:40Z"}
+{"query":"true wireless earphones","country":"SG","limit":5,"status":200,"result_count":5,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:41Z"}
+{"query":"smartwatch","country":"SG","limit":5,"status":200,"result_count":5,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:42Z"}
+{"query":"fitness tracker","country":"SG","limit":5,"status":200,"result_count":1,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:43Z"}
+{"query":"4K TV","country":"SG","limit":5,"status":200,"result_count":5,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:44Z"}
+{"query":"air purifier","country":"SG","limit":5,"status":200,"result_count":5,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:45Z"}
+{"query":"robot vacuum","country":"SG","limit":5,"status":200,"result_count":5,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:46Z"}
+{"query":"espresso machine","country":"SG","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:47Z"}
+{"query":"coffee maker","country":"SG","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:48Z"}
+{"query":"standing desk","country":"SG","limit":5,"status":200,"result_count":5,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:49Z"}
+{"query":"ergonomic chair","country":"SG","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:50Z"}
+{"query":"gaming chair","country":"SG","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:51Z"}
+{"query":"monitor arm","country":"SG","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:52Z"}
+{"query":"webcam 4K","country":"SG","limit":5,"status":200,"result_count":3,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:53Z"}
+{"query":"microphone USB","country":"SG","limit":5,"status":200,"result_count":5,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:54Z"}
+{"query":"mechanical keyboard","country":"SG","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:55Z"}
+{"query":"gaming mouse","country":"SG","limit":5,"status":200,"result_count":5,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:56Z"}
+{"query":"iPhone 15 Pro","country":"US","limit":5,"status":200,"result_count":1,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:57Z"}
+{"query":"iPhone 15 Pro Max","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:58Z"}
+{"query":"iPhone 14 Pro","country":"US","limit":5,"status":200,"result_count":1,"error":null,"latency_ms":null,"ts":"2026-06-15T18:08:59Z"}
+{"query":"Samsung Galaxy S24","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:00Z"}
+{"query":"Samsung Galaxy S24 Ultra","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:01Z"}
+{"query":"MacBook Air M3","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:02Z"}
+{"query":"MacBook Pro 14 M3","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:03Z"}
+{"query":"iPad Pro M4","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:04Z"}
+{"query":"AirPods Pro 2","country":"US","limit":5,"status":200,"result_count":1,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:05Z"}
+{"query":"Sony WH-1000XM5","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:06Z"}
+{"query":"Bose QuietComfort 45","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:07Z"}
+{"query":"Dell XPS 15","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:08Z"}
+{"query":"Surface Pro 9","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:09Z"}
+{"query":"ThinkPad X1 Carbon","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:10Z"}
+{"query":"ASUS ZenBook 14","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:11Z"}
+{"query":"Canon EOS R6 Mark II","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:12Z"}
+{"query":"GoPro Hero 12 Black","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:13Z"}
+{"query":"Kindle Paperwhite 2023","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:14Z"}
+{"query":"Pixel 8 Pro","country":"US","limit":5,"status":200,"result_count":1,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:15Z"}
+{"query":"Pixel Watch 2","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:16Z"}
+{"query":"Herman Miller Aeron","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:17Z"}
+{"query":"Logitech MX Master 3S","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:18Z"}
+{"query":"Razer DeathAdder V3","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:19Z"}
+{"query":"SteelSeries Arctis Nova Pro","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:20Z"}
+{"query":"LG UltraGear 27","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:21Z"}
+{"query":"Samsung Odyssey G7","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:22Z"}
+{"query":"Nest Thermostat","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:23Z"}
+{"query":"Ring Video Doorbell","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:24Z"}
+{"query":"Philips Hue Bridge","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:25Z"}
+{"query":"laptop","country":"US","limit":5,"status":200,"result_count":5,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:26Z"}
+{"query":"gaming laptop","country":"US","limit":5,"status":200,"result_count":3,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:27Z"}
+{"query":"wireless earbuds","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:28Z"}
+{"query":"smartwatch","country":"US","limit":5,"status":200,"result_count":1,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:29Z"}
+{"query":"4K TV","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:30Z"}
+{"query":"air purifier","country":"US","limit":5,"status":200,"result_count":4,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:31Z"}
+{"query":"robot vacuum","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:32Z"}
+{"query":"coffee machine","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:33Z"}
+{"query":"standing desk","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:34Z"}
+{"query":"monitor","country":"US","limit":5,"status":200,"result_count":5,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:35Z"}
+{"query":"webcam","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:36Z"}
+{"query":"microphone","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:37Z"}
+{"query":"mechanical keyboard","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:38Z"}
+{"query":"gaming mouse","country":"US","limit":5,"status":200,"result_count":5,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:39Z"}
+{"query":"gaming headset","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:40Z"}
+{"query":"graphics card","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:41Z"}
+{"query":"CPU processor","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:42Z"}
+{"query":"SSD 1TB","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:43Z"}
+{"query":"RAM 32GB","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:44Z"}
+{"query":"gaming PC","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:45Z"}
+{"query":"noise cancelling headphones","country":"US","limit":5,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:46Z"}
+{"query":"iPhone 15 Pro","country":"SG","limit":10,"status":200,"result_count":8,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:47Z"}
+{"query":"iPhone 15 Pro Max","country":"SG","limit":10,"status":200,"result_count":8,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:48Z"}
+{"query":"iPhone 14 Pro","country":"SG","limit":10,"status":200,"result_count":2,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:49Z"}
+{"query":"iPhone 13","country":"SG","limit":10,"status":200,"result_count":4,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:50Z"}
+{"query":"Samsung Galaxy S24","country":"SG","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:51Z"}
+{"query":"Samsung Galaxy S24 Ultra","country":"SG","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:52Z"}
+{"query":"MacBook Air M3","country":"SG","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:53Z"}
+{"query":"MacBook Pro M3","country":"SG","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:54Z"}
+{"query":"iPad Pro M4","country":"SG","limit":10,"status":200,"result_count":10,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:55Z"}
+{"query":"iPad Air M2","country":"SG","limit":10,"status":200,"result_count":3,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:56Z"}
+{"query":"AirPods Pro 2","country":"SG","limit":10,"status":200,"result_count":6,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:57Z"}
+{"query":"Sony WH-1000XM5","country":"SG","limit":10,"status":200,"result_count":4,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:58Z"}
+{"query":"Sony WF-1000XM5","country":"SG","limit":10,"status":200,"result_count":2,"error":null,"latency_ms":null,"ts":"2026-06-15T18:09:59Z"}
+{"query":"Bose QuietComfort 45","country":"SG","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:00Z"}
+{"query":"Dyson V15 Detect","country":"SG","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:01Z"}
+{"query":"Dyson Airwrap","country":"SG","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:02Z"}
+{"query":"Nintendo Switch OLED","country":"SG","limit":10,"status":200,"result_count":2,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:03Z"}
+{"query":"PS5 Digital","country":"SG","limit":10,"status":200,"result_count":8,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:04Z"}
+{"query":"Xbox Series X","country":"SG","limit":10,"status":200,"result_count":3,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:05Z"}
+{"query":"Pixel 8 Pro","country":"SG","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:06Z"}
+{"query":"OnePlus 12","country":"SG","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:07Z"}
+{"query":"Xiaomi 14 Ultra","country":"SG","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:08Z"}
+{"query":"ASUS ROG Phone 8","country":"SG","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:09Z"}
+{"query":"Oppo Find X7 Pro","country":"SG","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:10Z"}
+{"query":"Razer Blade 15","country":"SG","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:11Z"}
+{"query":"LG OLED C3 55","country":"SG","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:12Z"}
+{"query":"Samsung QLED 65","country":"SG","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:13Z"}
+{"query":"Roborock S8 Pro Ultra","country":"SG","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:14Z"}
+{"query":"Ecovacs Deebot X2","country":"SG","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:15Z"}
+{"query":"Philips Hue Starter","country":"SG","limit":10,"status":200,"result_count":3,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:16Z"}
+{"query":"laptop","country":"SG","limit":10,"status":200,"result_count":10,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:17Z"}
+{"query":"gaming laptop","country":"SG","limit":10,"status":200,"result_count":10,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:18Z"}
+{"query":"ultrabook","country":"SG","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:19Z"}
+{"query":"wireless earbuds","country":"SG","limit":10,"status":200,"result_count":10,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:20Z"}
+{"query":"true wireless earphones","country":"SG","limit":10,"status":200,"result_count":10,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:21Z"}
+{"query":"smartwatch","country":"SG","limit":10,"status":200,"result_count":10,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:22Z"}
+{"query":"fitness tracker","country":"SG","limit":10,"status":200,"result_count":1,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:23Z"}
+{"query":"4K TV","country":"SG","limit":10,"status":200,"result_count":10,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:24Z"}
+{"query":"air purifier","country":"SG","limit":10,"status":200,"result_count":10,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:25Z"}
+{"query":"robot vacuum","country":"SG","limit":10,"status":200,"result_count":10,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:26Z"}
+{"query":"espresso machine","country":"SG","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:27Z"}
+{"query":"coffee maker","country":"SG","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:28Z"}
+{"query":"standing desk","country":"SG","limit":10,"status":200,"result_count":7,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:29Z"}
+{"query":"ergonomic chair","country":"SG","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:30Z"}
+{"query":"gaming chair","country":"SG","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:31Z"}
+{"query":"monitor arm","country":"SG","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:32Z"}
+{"query":"webcam 4K","country":"SG","limit":10,"status":200,"result_count":3,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:33Z"}
+{"query":"microphone USB","country":"SG","limit":10,"status":200,"result_count":10,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:34Z"}
+{"query":"mechanical keyboard","country":"SG","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:35Z"}
+{"query":"gaming mouse","country":"SG","limit":10,"status":200,"result_count":10,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:36Z"}
+{"query":"iPhone 15 Pro","country":"US","limit":10,"status":200,"result_count":1,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:37Z"}
+{"query":"iPhone 15 Pro Max","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:38Z"}
+{"query":"iPhone 14 Pro","country":"US","limit":10,"status":200,"result_count":1,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:39Z"}
+{"query":"Samsung Galaxy S24","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:40Z"}
+{"query":"Samsung Galaxy S24 Ultra","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:41Z"}
+{"query":"MacBook Air M3","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:42Z"}
+{"query":"MacBook Pro 14 M3","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:43Z"}
+{"query":"iPad Pro M4","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:44Z"}
+{"query":"AirPods Pro 2","country":"US","limit":10,"status":200,"result_count":1,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:45Z"}
+{"query":"Sony WH-1000XM5","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:46Z"}
+{"query":"Bose QuietComfort 45","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:47Z"}
+{"query":"Dell XPS 15","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:48Z"}
+{"query":"Surface Pro 9","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:49Z"}
+{"query":"ThinkPad X1 Carbon","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:50Z"}
+{"query":"ASUS ZenBook 14","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:51Z"}
+{"query":"Canon EOS R6 Mark II","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:52Z"}
+{"query":"GoPro Hero 12 Black","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:53Z"}
+{"query":"Kindle Paperwhite 2023","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:54Z"}
+{"query":"Pixel 8 Pro","country":"US","limit":10,"status":200,"result_count":1,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:55Z"}
+{"query":"Pixel Watch 2","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:56Z"}
+{"query":"Herman Miller Aeron","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:57Z"}
+{"query":"Logitech MX Master 3S","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:58Z"}
+{"query":"Razer DeathAdder V3","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:10:59Z"}
+{"query":"SteelSeries Arctis Nova Pro","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:00Z"}
+{"query":"LG UltraGear 27","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:01Z"}
+{"query":"Samsung Odyssey G7","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:02Z"}
+{"query":"Nest Thermostat","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:03Z"}
+{"query":"Ring Video Doorbell","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:04Z"}
+{"query":"Philips Hue Bridge","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:05Z"}
+{"query":"laptop","country":"US","limit":10,"status":200,"result_count":10,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:06Z"}
+{"query":"gaming laptop","country":"US","limit":10,"status":200,"result_count":3,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:07Z"}
+{"query":"wireless earbuds","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:08Z"}
+{"query":"smartwatch","country":"US","limit":10,"status":200,"result_count":1,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:09Z"}
+{"query":"4K TV","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:10Z"}
+{"query":"air purifier","country":"US","limit":10,"status":200,"result_count":4,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:11Z"}
+{"query":"robot vacuum","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:12Z"}
+{"query":"coffee machine","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:13Z"}
+{"query":"standing desk","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:14Z"}
+{"query":"monitor","country":"US","limit":10,"status":200,"result_count":10,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:15Z"}
+{"query":"webcam","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:16Z"}
+{"query":"microphone","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:17Z"}
+{"query":"mechanical keyboard","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:18Z"}
+{"query":"gaming mouse","country":"US","limit":10,"status":200,"result_count":7,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:19Z"}
+{"query":"gaming headset","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:20Z"}
+{"query":"graphics card","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:21Z"}
+{"query":"CPU processor","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:22Z"}
+{"query":"SSD 1TB","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:23Z"}
+{"query":"RAM 32GB","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:24Z"}
+{"query":"gaming PC","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:25Z"}
+{"query":"noise cancelling headphones","country":"US","limit":10,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:26Z"}
+{"query":"iPhone 15 Pro","country":"SG","limit":20,"status":200,"result_count":8,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:27Z"}
+{"query":"iPhone 15 Pro Max","country":"SG","limit":20,"status":200,"result_count":8,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:28Z"}
+{"query":"iPhone 14 Pro","country":"SG","limit":20,"status":200,"result_count":2,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:29Z"}
+{"query":"iPhone 13","country":"SG","limit":20,"status":200,"result_count":4,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:30Z"}
+{"query":"Samsung Galaxy S24","country":"SG","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:31Z"}
+{"query":"Samsung Galaxy S24 Ultra","country":"SG","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:32Z"}
+{"query":"MacBook Air M3","country":"SG","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:33Z"}
+{"query":"MacBook Pro M3","country":"SG","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:34Z"}
+{"query":"iPad Pro M4","country":"SG","limit":20,"status":200,"result_count":20,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:35Z"}
+{"query":"iPad Air M2","country":"SG","limit":20,"status":200,"result_count":3,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:36Z"}
+{"query":"AirPods Pro 2","country":"SG","limit":20,"status":200,"result_count":6,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:37Z"}
+{"query":"Sony WH-1000XM5","country":"SG","limit":20,"status":200,"result_count":4,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:38Z"}
+{"query":"Sony WF-1000XM5","country":"SG","limit":20,"status":200,"result_count":2,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:39Z"}
+{"query":"Bose QuietComfort 45","country":"SG","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:40Z"}
+{"query":"Dyson V15 Detect","country":"SG","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:41Z"}
+{"query":"Dyson Airwrap","country":"SG","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:42Z"}
+{"query":"Nintendo Switch OLED","country":"SG","limit":20,"status":200,"result_count":2,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:43Z"}
+{"query":"PS5 Digital","country":"SG","limit":20,"status":200,"result_count":8,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:44Z"}
+{"query":"Xbox Series X","country":"SG","limit":20,"status":200,"result_count":3,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:45Z"}
+{"query":"Pixel 8 Pro","country":"SG","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:46Z"}
+{"query":"OnePlus 12","country":"SG","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:47Z"}
+{"query":"Xiaomi 14 Ultra","country":"SG","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:48Z"}
+{"query":"ASUS ROG Phone 8","country":"SG","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:49Z"}
+{"query":"Oppo Find X7 Pro","country":"SG","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:50Z"}
+{"query":"Razer Blade 15","country":"SG","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:51Z"}
+{"query":"LG OLED C3 55","country":"SG","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:52Z"}
+{"query":"Samsung QLED 65","country":"SG","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:53Z"}
+{"query":"Roborock S8 Pro Ultra","country":"SG","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:54Z"}
+{"query":"Ecovacs Deebot X2","country":"SG","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:55Z"}
+{"query":"Philips Hue Starter","country":"SG","limit":20,"status":200,"result_count":3,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:56Z"}
+{"query":"laptop","country":"SG","limit":20,"status":200,"result_count":20,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:57Z"}
+{"query":"gaming laptop","country":"SG","limit":20,"status":200,"result_count":20,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:58Z"}
+{"query":"ultrabook","country":"SG","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:11:59Z"}
+{"query":"wireless earbuds","country":"SG","limit":20,"status":200,"result_count":20,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:00Z"}
+{"query":"true wireless earphones","country":"SG","limit":20,"status":200,"result_count":19,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:01Z"}
+{"query":"smartwatch","country":"SG","limit":20,"status":200,"result_count":20,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:02Z"}
+{"query":"fitness tracker","country":"SG","limit":20,"status":200,"result_count":1,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:03Z"}
+{"query":"4K TV","country":"SG","limit":20,"status":200,"result_count":15,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:04Z"}
+{"query":"air purifier","country":"SG","limit":20,"status":200,"result_count":18,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:05Z"}
+{"query":"robot vacuum","country":"SG","limit":20,"status":200,"result_count":16,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:06Z"}
+{"query":"espresso machine","country":"SG","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:07Z"}
+{"query":"coffee maker","country":"SG","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:08Z"}
+{"query":"standing desk","country":"SG","limit":20,"status":200,"result_count":7,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:09Z"}
+{"query":"ergonomic chair","country":"SG","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:10Z"}
+{"query":"gaming chair","country":"SG","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:11Z"}
+{"query":"monitor arm","country":"SG","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:12Z"}
+{"query":"webcam 4K","country":"SG","limit":20,"status":200,"result_count":3,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:13Z"}
+{"query":"microphone USB","country":"SG","limit":20,"status":200,"result_count":20,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:14Z"}
+{"query":"mechanical keyboard","country":"SG","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:15Z"}
+{"query":"gaming mouse","country":"SG","limit":20,"status":200,"result_count":20,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:16Z"}
+{"query":"iPhone 15 Pro","country":"US","limit":20,"status":200,"result_count":1,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:17Z"}
+{"query":"iPhone 15 Pro Max","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:18Z"}
+{"query":"iPhone 14 Pro","country":"US","limit":20,"status":200,"result_count":1,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:19Z"}
+{"query":"Samsung Galaxy S24","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:20Z"}
+{"query":"Samsung Galaxy S24 Ultra","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:21Z"}
+{"query":"MacBook Air M3","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:22Z"}
+{"query":"MacBook Pro 14 M3","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:23Z"}
+{"query":"iPad Pro M4","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:24Z"}
+{"query":"AirPods Pro 2","country":"US","limit":20,"status":200,"result_count":1,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:25Z"}
+{"query":"Sony WH-1000XM5","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:26Z"}
+{"query":"Bose QuietComfort 45","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:27Z"}
+{"query":"Dell XPS 15","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:28Z"}
+{"query":"Surface Pro 9","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:29Z"}
+{"query":"ThinkPad X1 Carbon","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:30Z"}
+{"query":"ASUS ZenBook 14","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:31Z"}
+{"query":"Canon EOS R6 Mark II","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:32Z"}
+{"query":"GoPro Hero 12 Black","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:33Z"}
+{"query":"Kindle Paperwhite 2023","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:34Z"}
+{"query":"Pixel 8 Pro","country":"US","limit":20,"status":200,"result_count":1,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:35Z"}
+{"query":"Pixel Watch 2","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:36Z"}
+{"query":"Herman Miller Aeron","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:37Z"}
+{"query":"Logitech MX Master 3S","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:38Z"}
+{"query":"Razer DeathAdder V3","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:39Z"}
+{"query":"SteelSeries Arctis Nova Pro","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:40Z"}
+{"query":"LG UltraGear 27","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:41Z"}
+{"query":"Samsung Odyssey G7","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:42Z"}
+{"query":"Nest Thermostat","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:43Z"}
+{"query":"Ring Video Doorbell","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:44Z"}
+{"query":"Philips Hue Bridge","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:45Z"}
+{"query":"laptop","country":"US","limit":20,"status":200,"result_count":18,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:46Z"}
+{"query":"gaming laptop","country":"US","limit":20,"status":200,"result_count":3,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:47Z"}
+{"query":"wireless earbuds","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:48Z"}
+{"query":"smartwatch","country":"US","limit":20,"status":200,"result_count":1,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:49Z"}
+{"query":"4K TV","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:50Z"}
+{"query":"air purifier","country":"US","limit":20,"status":200,"result_count":4,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:51Z"}
+{"query":"robot vacuum","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:52Z"}
+{"query":"coffee machine","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:53Z"}
+{"query":"standing desk","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:54Z"}
+{"query":"monitor","country":"US","limit":20,"status":200,"result_count":15,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:55Z"}
+{"query":"webcam","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:56Z"}
+{"query":"microphone","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:57Z"}
+{"query":"mechanical keyboard","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:58Z"}
+{"query":"gaming mouse","country":"US","limit":20,"status":200,"result_count":7,"error":null,"latency_ms":null,"ts":"2026-06-15T18:12:59Z"}
+{"query":"gaming headset","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:13:00Z"}
+{"query":"graphics card","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:13:01Z"}
+{"query":"CPU processor","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:13:02Z"}
+{"query":"SSD 1TB","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:13:03Z"}
+{"query":"RAM 32GB","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:13:04Z"}
+{"query":"gaming PC","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:13:05Z"}
+{"query":"noise cancelling headphones","country":"US","limit":20,"status":200,"result_count":0,"error":null,"latency_ms":null,"ts":"2026-06-15T18:13:06Z"}

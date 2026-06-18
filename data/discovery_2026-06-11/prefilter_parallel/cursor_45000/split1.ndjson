@@ -1,0 +1,5 @@
+{"domain":"withcherry.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":80,"country_code":"US","currency":null}
+{"domain":"nooie.com","platform":"shopify","product_endpoint":"https://nooie.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":6510,"country_code":"US","currency":null}
+{"domain":"moosend.com","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":229,"country_code":"US","currency":null}
+{"domain":"tartecosmetics.com","platform":"shopify","product_endpoint":"https://tartecosmetics.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":7063,"country_code":"US","currency":null}
+{"domain":"geckoboard.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1125,"country_code":"US","currency":null}

@@ -1,0 +1,6 @@
+{"domain":"sitevibes.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":32,"country_code":"US","currency":null}
+{"domain":"fluorescent.co","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":385,"country_code":"US","currency":null}
+{"domain":"bhosted.nl","platform":"magento","product_endpoint":"https://bhosted.nl/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":242,"country_code":"NL","currency":null}
+{"domain":"recart.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":303,"country_code":"US","currency":null}
+{"domain":"windowslatest.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":99,"country_code":"US","currency":null}
+{"domain":"productreview.com.au","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":142,"country_code":"AU","currency":null}

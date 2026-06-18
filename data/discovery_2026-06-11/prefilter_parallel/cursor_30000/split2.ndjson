@@ -1,0 +1,8 @@
+{"domain":"firstthings.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":44,"country_code":"US","currency":null}
+{"domain":"anti-captcha.com","platform":"woocommerce","product_endpoint":"https://anti-captcha.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":738,"country_code":"US","currency":null}
+{"domain":"bigscoots.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":29,"country_code":"US","currency":null}
+{"domain":"historynet.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":4,"country_code":"US","currency":null}
+{"domain":"profitroom.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":715,"country_code":"US","currency":null}
+{"domain":"ovoenergy.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":962,"country_code":"US","currency":null}
+{"domain":"monobank.ua","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":13,"country_code":"US","currency":null}
+{"domain":"america.net","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":7880,"country_code":"US","currency":null}

@@ -1,0 +1,22 @@
+{
+  "last_n_tup_ins": 1109202,
+  "last_n_tup_ins_at": "2026-06-08T08:09:28.669615+00:00",
+  "last_hour_checked": "2026-06-08T07:00:00+00:00",
+  "last_check_result": "PASS",
+  "last_check_real_rows": 551204,
+  "last_check_source": "n_tup_ins_delta",
+  "last_n_live_tup": 50449077,
+  "last_db_host": "maglev.proxy.rlwy.net:31310/railway",
+  "last_fire_buy": "BUY-35353",
+  "last_filed_child": null,
+  "last_fire_note": "Manual heartbeat for 07:00-08:00Z. n_tup_ins delta since prior fire 07:10:31Z (567,688 → 1,109,202) = 541,514 rows in 0.9824h = 551,204/hr. Estimated 07:00-08:00Z window count (back-calculated from 08:09:28Z sample and rate) = ~462,457 rows. Both signals well above 150K threshold -> no child filed per BUY-29861 rule.",
+  "last_manual_fire_buy": "BUY-35353",
+  "last_manual_fire_at": "2026-06-08T08:09:28.669615+00:00",
+  "last_manual_fire_hour_checked": "2026-06-08T07:00:00+00:00",
+  "last_manual_fire_result": "PASS",
+  "last_manual_fire_real_rows": 551204,
+  "last_manual_fire_source": "n_tup_ins_delta",
+  "last_manual_filed_child": null,
+  "last_manual_fire_note": "541,514 inserts in 58m57s (07:10:31Z → 08:09:28Z) = 551,204/hr. Estimated 07:00-08:00Z window count = ~462,457 (308% of 150K target). Postmaster at 06:03:42Z is 2.10h old, no second restart. Prior heartbeat's prediction of FAIL (700/hr post-backfill decay) was wrong — rate re-accelerated to ~592K/hr sustained from 07:10:31Z onward (likely a second backfill pass + sustained live ingest).",
+  "last_manual_fire_doc": "docs/buy-35353-hourly-throughput-check-2026-06-08T07.md"
+}

@@ -1,0 +1,1582 @@
+{
+  "source": "samsung_sg_sitemap",
+  "merchant_id": "samsung_sg",
+  "generated_at": "2026-06-06T10:47:03.885227+00:00",
+  "total_candidates": 2397,
+  "record_count": 1696,
+  "unique_records": 1696,
+  "elapsed_seconds": 100.56,
+  "failure_count": 392,
+  "failures": [
+    {
+      "url": "https://www.samsung.com/sg/mobile/galaxy-bespoke/galaxy-z-flip4/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/mobile/mobile-phone-buying-guide/exclusive-galaxy-z-fold6-flip6-colours-and-accessories/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/mobile/mobile-phone-buying-guide/galaxy-s24-pre-order-and-promotions/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/mobile/mobile-phone-buying-guide/galaxy-s24-colours/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/mobile/mobile-phone-buying-guide/introducing-the-new-samsung-galaxy-s26/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/mobile/mobile-phone-buying-guide/galaxy-s24-release-date/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/mobile/mobile-phone-buying-guide/galaxy-s26-camera-display-upgrades/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/mobile/mobile-phone-buying-guide/galaxy-s26-ai-innovations/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/mobile/mobile-phone-buying-guide/samsung-galaxy-z-flip7-vs-z-flip6/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/mobile/mobile-phone-buying-guide/samsung-s22-ultra-vs-s23-ultra/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/mobile/mobile-phone-buying-guide/samsung-galaxy-z-fold7-samsung-galaxy-z-flip7-galaxy-z-flip7-fe-release-date-online-exclusive-colours-offers/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/mobile/mobile-phone-buying-guide/samsung-galaxy-z-fold7-vs-z-fold6/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/mobile/s24-galaxy-ai/",
+      "error": "status 404"
+    },
+    {
+      "url": "https://www.samsung.com/sg/smartphones/galaxy-s23-ultra/upgrade-your-galaxy-note-to-galaxy-s23-ultra/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/tablets/galaxy-tab-s7/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/accessories/galaxy-s24-customisation/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/accessories/galaxy-studio/galaxy-s25-edge/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/accessories/galaxy-studio/galaxy-s25-plus/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/accessories/galaxy-studio/galaxy-s25-ultra/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/bespoke-creators-collection/confirmation-page-2/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/bespoke-creators-collection/confirmation-page-3/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/bespoke-creators-collection/confirmation-page-1/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/bespoke-creators-collection/confirmation-page-6/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/bespoke-creators-collection/confirmation-page-5/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/bespoke-creators-collection/confirmation-page-4/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/bespoke-creators-collection/confirmation-page-7/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/education/k-to-12/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/event/short-and-sharp-2025/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/explore/brand/generation17-todays-leaders-for-a-better-tomorrow/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/explore/brand/samsung-sft-2022-sg-winners/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/explore/brand/infographic-work-smarter-with-the-s-pen-fold-edition-and-the-galaxy-z-fold3-5g/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/explore/brand/expansive-line-up-of-galaxy-devices-powered-by-5g/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/explore/brand/style-that-meets-function-galaxy-z-flip-3-5g-stunning-new-cover-screen-empowers-users-to-do-more/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/explore/brand/your-galaxy-your-way-with-oneui4/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/explore/brand/the-z-factor-fashion-meets-fun-function-with-the-new-galaxy-z-flip3-5g/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/explore/life-hacks/5-accessibility-features-you-didnt-know-were-in-the-palm-of-your-hand/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/explore/entertainment/galaxy-z-flip4-new-flip-phone-2022/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/explore/entertainment/galaxy-z-fold4-new-fold-phone-2022/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/explore/entertainment/7-geolocation-games-to-get-you-exploring-the-outdoors/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/explore/life-hacks/2021-new-years-revelation-youre-fine-as-is/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/explore/life-hacks/4-eco-friendly-tech-tips-to-shrink-your-carbon-footprint/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/explore/life-hacks/5-must-haves-for-your-back-to-school-backpack/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/explore/life-hacks/5-ways-to-have-an-amazing-spring-break-at-home/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/explore/photography/3-reasons-why-you-should-shoot-with-expert-raw/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/explore/life-hacks/5-ways-to-make-this-years-holiday-better-than-ever/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/explore/life-hacks/gift-yourself-4-ideas-for-a-joyous-staycation/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/explore/life-hacks/6-interactive-homeschool-activities/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/explore/wellbeing/supercharge-your-30-minute-yoga-flow-with-galaxy/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/explore/photography/goodbye-2020-heres-our-vision-board-for-2021/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/flip3-designed-by-you/design-tool-flip3/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/29-rooms-ticket/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/explore/wellbeing/kids-first-phones-4-rules-parents-should-follow/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/all-content/brand/samsung-at-ces-2021/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/all-content/brand/samsung-at-ces-2020/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/all-content/brand/nothing-in-between-the-2020-samsung-qled-8k-design-story/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/all-content/life/goodbye-2020-heres-our-vision-board-for-2021/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/all-content/brand/samsung-defines-connected-living-at-ifa-2019/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/all-content/product/complete-immersion-perfecting-samsung-neo-qled-8k-through-elimination/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/all-content/life/lose-yourself-in-70-million-songs-on-your-tv/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/all-content/life/kids-first-phones-4-rules-parents-should-follow/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/digital-gift/musicfest-wallpaper-2/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/gameplay-wheel-gift1/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/watch-party/gameplay-1-dec/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/watch-party/launch-party-11-july/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/gameplay-wheel-gift2/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/gameplay-wheel-gift3/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/watch-party/epic-party-18-jan/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/news-and-tips/latest-galaxy-accessories-drop-the-y2k-4eva-collection/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/watch-party/launch-party-2-feb/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/watch-party/musicfest-30-nov/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/watch-party/launch-party-27-july/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/4-tech-tips-you-need-to-know-before-you-travel/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/watch-party/musicfest-livestream-22-sept/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/affordable-and-awesome-samsung-launches-galaxy-a22-5g-galaxy-tab-a7-lite-and-new-health-updates-for-galaxy-watch/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/fan-favourite-galaxy-tab-s7-fe/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/connect-your-galaxy-z-flip5-fold5-watch6-and-tab-s9-to-make-life-easier/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/features-we-love-about-the-galaxy-s23-series/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/galaxy-buds2-pro-the-ultimate-hi-fi-sound-is-now-wireless/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/galaxy-ai-how-to-level-up-your-student-and-social-life-with-the-galaxy-s24-series/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/galaxy-s24-series-discover-all-the-new-and-exciting-features/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/galaxy-tab-s8-x-samsung-notes-the-ultimate-note-taking-hacks/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/galaxy-tab-s8-x-batman/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/galaxy-tab-s9-and-watch6-series-ways-you-can-use-these-devices/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/galaxy-watch5-series-the-watch-that-knows-you-best/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/galaxy-tab-s9-fe-series-galaxy-buds-fe-galaxy-smarttag2-key-features-you-need-to-know/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/galaxy-z-flip5-flex-window-discover-what-the-hype-is-about/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/galaxy-x-bts-over-the-horizon-2022-produced-by-suga-of-bts/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/galaxy-z-fold5-new-features-that-we-love/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/galaxy-z-fold4-the-ultimate-smartphone-that-lets-you-do-more/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/get-your-epic-photos-during-your-day-trip-galaxys22camera/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/galaxy-z-flip4-the-ultimate-smartphone-for-self-expression/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/hdr10-adaptive-optimal-picture-quality-regardless-of-your-rooms-lighting-condition/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/hear-what-our-samsung-members-have-to-say-about-the-galaxy-z-flip4-and-fold4/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/mwc-2021-getting-ready-for-the-virtual-samsung-galaxy-event/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/hear-what-samsung-members-say-about-the-new-galaxy-s23-series/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/mwc-2021-samsung-presents-new-watch-experience-with-a-sneak-peek-of-one-ui-watch/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/musicfest-2023-playlist/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/interesting-galaxy-s23-series-camera-features-you-might-not-know-of/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/record-immersive-videos-with-galaxy-buds2-pro-360-audio-recording-update/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/one-ui-6-our-top-10-favourite-features-to-elevate-your-mobile-experience/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/our-best-tips-to-personalise-the-galaxy-z-flip5/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/nifty-tips-to-try-on-the-galaxy-z-flip5-and-fold5-galaxy-tab-s9-and-galaxy-watch6-series/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/our-pick-of-the-coolest-customisation-features-of-one-ui-5-1/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/samsung-galaxy-s21-ultra-5g-awarded-best-smartphone-at-the-global-mobile-awards-at-mobile-world-congress-2021/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/samsung-members-2nd-nft-drop-the-uniquely-us-collection/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/samsung-partners-with-29rooms-to-create-a-unique-galaxy-s23-series-experience/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/samsungs-art-store-on-the-frame-5-things-you-need-to-know/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/samsungs-new-dvm-s2-vrf-air-conditioner-delivers-windfree-cooling-everywhere/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/samsung-india-teams-up-with-national-geographic-traveller-india-for-first-ever-underwater-expedition-with-galaxy-s21-ultra-5gs-8k-video-snap-feature/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/say-hello-to-the-brand-new-smart-monitor-m8/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/sleep-better-with-your-galaxy-watch4-and-galaxy-s22-plus-5g/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/the-new-galaxy-s23-fe/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/three-camera-tricks-that-will-take-your-shots-to-the-next-level-with-galaxy-s23/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/the-ultimate-in-picture-quality-experience-3-innovative-neo-qled-technologies-as-shown-in-graphs/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/tips-for-personalising-your-galaxy-z-flip4-and-fold4/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/your-galaxy-your-way-one-ui-5/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/top-favourite-tips-and-tricks-on-galaxy-s24-series/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/members/whats-new/unpacking-the-samsung-galaxy-s22-ultra/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/multihyphenate/tnc/galaxy-z-flip-5g/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/multihyphenate/tnc/galaxy-z-fold2-5g/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/2020-tv-soundbar-line-up/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/J3Pro-J7Pro-launch/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/Samsung-Announces-the-Launch-of-the-Galaxy-J7-Prime-and-the-Galaxy-Tab-A-2016-70-Wi-Fi-in-Singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/Samsung-Announces-the-Retail-Availability-of-the-Galaxy-J5-Prime-and-Galaxy-J7-Prime-in-Pink-Gold-in-Singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/Samsung-Announces-Pre-Order-Availability-of-the-Galaxy-A-2017-in-Singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/Samsung-Expands-Smartwatch-Offerings-with-Gear-S3/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/Samsung-Introduces-the-New-Galaxy-A-2017/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/Samsung-offers-enhanced-tablet-experience-with-launch-of-new-Galaxy-Tab-A-2016-with-S-Pen-4G/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/Samsung-announces-the-new-galaxy-j-series-2018-line-up-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/Samsung-Launches-the-Galaxy-J5-Prime/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/advances-external-storage-innovatin-with-new-portable-ssd-x5/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/affordable-and-awesome-samsung-launches-galaxy-a22-5g-galaxy-tab-a7-lite-and-new-health-updates-for-galaxy-watch/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/adorn-your-galaxy-z-flip3-5g-with-all-new-accessories-from-disney-cinematic-galaxies-available-this-11-11-exclusively-at-shopee/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/a-day-in-the-life-of-students-and-young-professionals-with-galaxy-s21-fe/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/an-awesome-weekend-with-the-new-samsung-galaxy-a53-5g/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/announces-availability-of-the-new-galaxy-s8-in-rose-pink-and-note8-in-deepsea-blue-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/announces-the-launch-of-the-galaxy-a80-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/availability-of-the-galaxy-s9-in-polaris-blue/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/bring-multi-terabyte-storage-capacities-at-accessible-prices-with-860-evo-ssd/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/behind-the-scenes-of-how-samsung-tests-the-galaxy-z-fold3-flip3-5g/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/build-your-dream-home-in-the-metaverse-with-the-samsung-galaxy-s22-treasure-hunt-campaign/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/breaking-the-rules-with-galaxy-tab-s8-series-the-biggest-boldest-most-versatile-galaxy-tablet-ever/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/built-for-the-way-we-communicate-today-galaxy-s9/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/consumer-technology-association-honors-samsung-with-43-ces-2022-innovation-awards-for-distinctive-design-and-engineering/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/capture-more-of-what-you-love-with-new-features-on-galaxy-s10-and-galaxy-note10/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/cultural-medallion-recipient-goh-beng-kwan-works-come-to-life-with-samsung-galaxy-s22-5g-series/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/do-more-with-5g-samsung-galaxy-smartphones/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/do-bigger-things-with-samsung-galaxy-note8/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/enriched-entertainment-at-excellent-value-samsung-launches-galaxy-a52s-5g-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/editorial-introducing-the-vision-behind-samsungs-bespoke-home-2022-and-the-expansion-of-home-life-possibilities/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/factory-tour-offers-a-peek-at-how-samsung-makes-each-galaxy-note9/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/galaxy-a53-5g-and-galaxy-a33-5g-awesome-mobile-experiences-open-to-everyone/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/galaxy-a31-a11/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/galaxy-s10-lite-a51-launch/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/galaxy-s20-launch/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/fan-favourite-galaxy-tab-s7-fe-wifi-edition-now-available/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/galaxy-tab-s6-lite/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/four-reasons-why-the-galaxy-watch4-series-is-the-ultimate-workout-companion/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/galaxy-tab-a8-the-most-streamlined-and-powerful-galaxy-tab-a-series-yet-availability-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/first-look-unboxing-the-galaxy-note20-ultra/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/galaxy-watch3-and-galaxy-buds-live-now-available/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/galaxy-watch4-and-galaxy-watch4-classic-reshaping-the-smartwatch-experience/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/get-ready-for-the-samsung-galaxy-s21-series-5g-available-in-singapore-tomorrow-29-january/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/galaxy-watch4-series-levels-up-holistic-wellness-and-customization-with-new-update/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/icymi-together-for-tomorrow-with-samsung-at-ces-2022/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/galaxy-z-flip-5g-range-of-5g-devices/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/ideas-on-bacteria-driven-biofilter-for-vehicles-and-solar-energy-management-system-emerge-as-winners-at-samsung-solve-for-tomorrow-2021-competition/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/ibm-samsung-electronics-and-m1-unveil-singapores-first-5g-industry-4-0-studio-supported-by-imda/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/industry-leading-8tb-870-qvo/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/introducing-galaxy-note10/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/innovating-for-a-new-era-our-focus-for-ces-2022/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/introducing-new-variants-for-galaxy-s21-series-5g-galaxy-tab-s7-and-galaxy-watch-active2/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/introducing-samsung-galaxy-m52-5g-the-first-5g-enabled-galaxy-m-series-smartphone/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/introducing-galaxy-s21-fe-5g-a-smartphone-for-the-family/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/introducing-samsung-galaxy-m32-an-entertainment-powerhouse-exclusively-available-on-lazada/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/introducing-samsung-galaxy-s20/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/launch-galaxy-s20-buds-plus-bts-edition/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/introducing-samsungs-new-galaxy-tab-a8-more-screen-more-power-and-more-performance/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/introducing-the-most-ultimate-premium-galaxy-s-series-experience-ever-galaxy-s22-ultra-5g/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/launch-galaxy-z-flip-thom-browne-s20-colour-red-buds-plus/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/introducing-the-samsung-galaxy-tab-s6/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/invitation-unbox-discover-2022/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/launch-of-galaxy-z-fold3-5g-galaxy-z-flip3-5g-galaxy-watch4-series-and-galaxy-buds2-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/introducing-the-galaxy-z-fold2-change-the-shape-of-the-future/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/launch-of-the-galaxy-watch-active2-and-galaxy-watch-active2-under-armour-edition/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/launches-worlds-first-thunderbolt-3-qled-curved-monitor/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/launch-of-the-galaxy-xcover-4-and-the-galaxy-tab-a/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/level-up-your-content-creation-skills-with-the-galaxy-a52/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/live-in-the-moment-with-the-galaxy-a9/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/local-pricing-availability-galaxy-z-fold2/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/make-every-day-epic-with-samsung-galaxy-s21-5g-and-galaxy-s21plus-5g/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/m1-partners-samsung-to-be-the-first-operator-in-the-world-to-support-voice-over-5g-new-radio-vonr-service-on-5g-sa-network/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/meet-galaxy-tab-s7-and-s7-plus-your-perfect-companion-to-work-play-and-more/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/next-level-ssd-performance-980-pro/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/new-portable-ssd-t5/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/offers-best-in-class-mobile-entertainment-and-productivity-with-the-galaxy-tab-s3/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/new-performance-levels-for-consumer-nvme-ssds-with-970-evo-plus/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/one-ui-4-update-delivers-an-elevated-mobile-experience-centered-around-you/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/meet-galaxy-s21-fe-5g-flagship-smartphone-designed-for-fans-and-social-expressers/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/pre-order-collection-of-samsung-galaxy-note8-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/pre-order-collection-of-samsung-galaxy-note9/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/pre-order-collection-of-samsung-galaxy-s8-and-s8plus-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/pre-order-numbers-for-galaxy-note10-and-note10plus-hit-record-high/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/pre-order-collection-of-samsung-galaxy-s7-4g-and-s7-edge-4g-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/retail-availability-and-record-pre-order-of-samsung-galaxy-s8-and-s8plus-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/pre-order-collection-of-the-highly-anticipated-samsung-galaxy-s10-and-s10plus-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-announces-availability-of-galaxy-note10-aura-pink/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/retail-launch-of-samsung-galaxy-note-5-4g-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/return-of-the-flip-time-names-galaxy-z-flip3-5g-among-2021s-100-best-inventions/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-2016-uhd-tvs-receive-certification-for-top-uhd-standards-from-digital-europe/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-ai-forum-2021-explores-future-of-ai-research/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-Introduces-the-POWERbot-VR7000-robot-vacuum/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-announces-availability-of-galaxy-s7-4g-and-s7-edge-4g-in-pink-gold-and-gear-360-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-announces-availability-of-galaxy-xcover-5/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-announces-availability-of-the-galaxy-s9plus-in-128gb-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-announces-availability-of-galaxy-s8-s8plus-and-galaxy-tab-s3-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-announces-availability-of-gear-iconx-in-singapore-from-16-july-2016/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-announces-availability-of-the-gear-sport-gear-fit2-pro-and-gear-iconx/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-announces-expansion-of-its-business-rugged-device-range-with-galaxy-tab-active3-and-galaxy-xcover-pro/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-announces-launch-of-the-samsung-galaxy-j1-2016-4g-in-singapore-from-23-april-2016/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-announces-availablity-of-the-galaxy-tab-s4-and-galax-tab-a-10-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-announces-launch-of-the-samsung-galaxy-j1-mini-and-galaxy-tab-a-4g-in-singapore-from-7-may/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-announces-resolution-for-galaxy-note7-customers-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-announces-launch-of-the-samsung-galaxy-j1-ace-4g-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-announces-the-launch-of-the-galaxy-a10-a30-a50-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-announces-the-launch-of-galaxy-tab-s2-2016-edition-and-galaxy-tab-a-2016-editon-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-announces-the-launch-of-the-galaxy-a10s-and-galaxy-a30s/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-announces-the-launch-of-the-galaxy-a20-and-a70-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-announces-the-retail-availability-of-the-galaxy-j2-pro-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-announces-the-launch-of-the-galaxy-a8-star-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-announces-the-retail-availability-of-the-galaxy-j3-2016-4g-and-galaxy-j5-2016-4g-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-announces-the-retail-availability-of-the-galaxy-j7plus-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-announces-winners-of-2021-short-and-sharp-mobile-film-festival/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-becomes-first-tv-manufacturer-to-launch-the-apple-tv-app-and-airplay2/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-celebrates-10years-of-galaxy-and-launch-of-galaxy-s10/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-celebrates-singapore-ahead-of-galaxy-unpacked-2018/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-brings-qled-technology-to-the-frame-in-2019/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-celebrates-the-launch-of-the-galaxy-note9/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-comes-on-board-as-the-official-presenter-of-the-return-of-star-search-2019/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-debuts-2021-neoqled-microled-lifestyletv/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-delivers-greater-value-and-convenience-to-consumers-with-shopee-this-super-brand-day-2021/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-electronics-announces-2022-initiatives-to-make-home-appliances-more-eco-conscious/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-electronics-claims-top-spot-as-best-brand-in-asia-in-2016-for-fifth-consecutive-year/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-electronics-sets-new-performance-standards-for-nvme-ssds-with-970-pro-and-evo/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-electronics-hosts-2022-media-forum-showcasing-latest-innovations-in-neo-qled-8k/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-electronics-ranks-fourth-place-in-wbas-2021-digital-inclusion-benchmark/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-electronics-unfolds-the-next-generation-communications-technology-at-the-first-samsung-6g-forum/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-electronics-unveils-together-for-tomorrow-vision-at-ces-2022/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-elevates-Samsung-pay-offerings-through-in-app-payment-partnership-with-qoo10-and-vaniday/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-electronics-launches-a-new-generation-of-high-performance-vrf-dvm-s-30hp/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-expands-smartwatch-offerings-with-gear-s3/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-fiesta-2017/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-expands-worlds-best-selling-consumer-sata-ssd-series-with-870-evo/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-galaxy-s10-now-carries-powerful-new-features/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-galaxy-s21-ultra-5g-the-ultimate-smartphone-experience-designed-to-be-epic-in-every-way/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-galaxy-s21-ultra-5g-awarded-best-smartphone-at-the-global-mobile-awards-at-mobile-world-congress-2021/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-galaxy-s22-and-s22-plus-5g-deliver-camera-and-performance-experiences-for-everyday-creators/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-galaxy-s22-series-5g-and-galaxy-tab-s8-series-5g-now-available-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-galaxy-studio-at-civic-plaza-ngee-ann-city-2016/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-galaxy-z-fold3-5g-and-galaxy-z-flip3-5g-sees-overwhelming-demand-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-galaxy-z-flip-s20-series/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-gear-S3-used-to-increase-productivity-in-SATS-tech-ramp-operations/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-introduces-4-door-flex-refrigerator-series-and-jet-bot-with-clean-station-for-smarter-enhanced-living-experiences/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-introduces-availability-of-the-galaxy-note9-in-alpine-white/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-introduces-availablity-of-galaxy-note9-lavender-purple/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-introduces-galaxy-tab-s7-fe-5g-in-singapore-packed-with-fan-favourite-features/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-introduces-game-changing-exynos-2200-processor-with-xclipse-gpu-powered-by-amd-rdna-2-architecture/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-introduces-the-frame-2018/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-introduces-the-new-galaxy-tab-active2/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-introduces-the-latest-luxurious-colour-edition-of-the-galaxy-s9plus-n-singapore-burgundy-red/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-kids-update-with-one-ui-4-helps-kids-develop-good-digital-habits-with-new-friends/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-launch-most-affordable-enterprise-ready-smartphone-galaxy-A12/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-invites-you-to-uncover-alternative-careers-on-6-may/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-introduces-the-new-premium-gear-s2-classic-plated-in-18k-rose-gold-and-platinum/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-launches-240hz-g-sync-compatible-curved-crg5-gaming-monitor/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-launches-galaxy-a9-pro-2016-the-bold-new-smartphone-for-super-sized-entertainment/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-launches-980-nvme-ssd-combines-speed-and-affordability/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-launches-galaxy-a-2016-with-premium-design-and-enhanced-features/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-launches-galaxy-s7-4g-and-s7-edge-4g-at-the-core-of-connected-galaxy-experience/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-launches-the-galaxy-e7-4g-offering-superior-viewing-and-dual-sim-capability/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-new-power-galaxy-devices-available-21-aug/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-one-ui-3-1-update-brings-select-powerful-features-from-the-galaxy-s21-to-the-galaxy-s20-galaxy-note20-and-galaxy-z-series/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-raises-the-bar-with-galaxy-s10/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-provides-an-immersive-experience-with-the-galaxy-s9-and-s9plus-at-galaxy-studio/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-launches-galaxy-watch-active2-stainless-steel-case-LTE-variant/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-reimagines-the-way-moments-are-captured-and-shared-with-gear-360/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-release-portable-ssd-t7-touch/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-refreshes-smart-monitor-lineup-for-2022/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-revolutionises-the-home-entertainment-experience-with-2018-qled-tv/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-releases-details-of-exchange-refund-options-for-galaxy-note7-owners/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-rings-in-lazmall-super-brand-day-2021-with-exclusive-deals-on-most-coveted-products/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-s7-delights/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-sets-new-standard-for-flagship-mobile-processors-with-exynos-2100/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-sets-new-standards-in-picture-quality-with-2016-line-up-of-suhd-tvs/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-showcase-2020/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-smart-tv-models-are-registered-with-ida-to-be-compatible-with-the-digital-format-dvb-t2/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-smart-tvs-to-launch-itunes-movies-tv-shows-and-support-airplay-2-beginning-spring-2019/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-showcases-the-premium-handcrafted-leather-strap-for-gear-s2-classic/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-solvefortomorrow-2020/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-solve-for-tomorrow-finale-2018/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-solve-for-tomorrow-2021-returns-to-inspire-students-in-singapore-to-dream-up-solutions-for-a-better-future/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-to-spark-that-super-feeling-in-consumers-across-southeast-asia-with-lazmall-super-brand-day-2022-on-lazada/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-treats-customers-with-s7-delights-at-vivocity/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-unboxes-2022-neo-qled-and-lifestyle-tvs-in-singapore-along-with-refreshed-soundbar-lineup/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-unboxes-its-2021-lineup-letting-you-discover-more-of-what-youre-passionate-about/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-unveils-2021-tv-and-soundbar-lines-along-with-the-premiere/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-unveils-new-high-resolution-2021-monitor-lineup/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-unveils-2019-line-up-featuring-qled-8k/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-unveils-the-future-of-gaming-with-the-odyssey-neo-g9/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-unveils-the-galaxy-tab-s2-the-premium-tablet-for-entertainment-and-quality-me-time/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsungs-most-affordable-5g-smartphone-to-launch/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsung-unveils-the-new-gear-fit2-and-iconx/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/samsungs-rugged-t7-shield-portable-ssd-offers-durability-and-high-performance-for-creative-professionals-and-consumers-on-the-go/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/seize-the-night-with-the-samsung-galaxy-s22-ultra/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/singapore-availability-for-galaxy-z-series-5g-galaxy-watch4-series-galaxy-buds2-and-accessories/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/singapore-availability-pricing-galaxy-s20-fe-5g/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/singapore-availability-of-galaxy-s9-and-s9plus/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/singapore-availability-for-galaxy-s21-series-galaxy-buds-pro-and-accessories/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/take-awesome-innovation-even-further-with-the-new-samsung-galaxy-a73-5g/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/singapore-first-5g-industry-trial/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/statement-on-the-us-department-of-transportations-new-order-to-ban-all-galaxy-note7-devices/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/the-all-new-powerful-galaxy-note9/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/the-galaxy-note20-series-hands-on-redefining-work-and-play-with-powerful-new-features/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/the-next-chapter-in-mobile-innovation-unfold-your-world-with-galaxy-z-fold3-5g-and-galaxy-z-flip3-5g/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/the-future-is-here-with-samsung-awesome-5g-lineup/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/the-samsung-galaxy-a52-5g-makes-innovation-accessible-to-all/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/the-story-behind-a-space-a-road-trip-with-location-manager-taeyoung-kim-and-the-galaxy-z-fold3/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/unbox-samsungs-2022-lineup-designed-for-innovative-personalized-experiences/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/unfolding-the-next-level-of-smartphone-experiences-with-the-galaxy-z-fold3-5g/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/unpacking-the-samsung-galaxy-s22-ultra-4-firsts-that-break-the-rules/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/unveil-is-innovations-to-elevate-the-consumer-experience-at-the-2017/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/unveiling-samsung-galaxy-s20-fe-fan-favorite-features-at-an-accessible-price-point/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/unveiling-the-samsung-galaxy-m22-lte-exclusively-available-on-shopee/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/update-for-galaxy-note7-customers-in-singapore/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/offer/6-6-flash-sale/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/upgraded-health-and-personalization-features-come-to-galaxy-watch-galaxy-watch-active-galaxy-watch-active2-and-galaxy-watch3/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/update-on-samsung-galaxy-note7/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/user-guide-handy-tools-that-enriches-your-daily-life-heres-how-to-use-the-galaxy-watch4-and-galaxy-buds2/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/watch-snap-win-spot-our-galaxy-watch-squad-to-win-a-galaxy-watch-active2/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/offer/galaxy-s26-series/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/news/local/user-guide-maximize-your-time-at-work-a-day-in-the-life-of-a-galaxy-s22-user/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/offer/8-8-sale/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/offer/9-9-sale-teaser/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/offer/galaxy-s24-series/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/offer/colour-your-life-with-a-bespoke-experience2/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/offer/galaxy-z-fold7-flip7-series/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/offer/number-1-tv/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/one-ui/features/5-1-1/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/redemption/z5-series-redirect/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/smart-home/8k-tv-mobile-bundle/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/sosmartsg/3-door-flex/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/brand-innovation/brand-new-galaxy-z-flip-5g/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/brand-innovation/better-than-bold-zflip3-zfold3-design-story/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/brand-innovation/bringing-self-expression-to-life-with-the-galaxy-watch4-series/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/brand-innovation/camera-tips-for-galaxy-s21-on-international-guide-dog-day/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/offer/new-galaxy-tab-s7-fe-wifi/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/brand-innovation/galaxy-s22-ultra/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/offer/tv-2021-neo-qled/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/brand-innovation/democratisation-of-5g/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/brand-innovation/fold2-design-story/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/brand-innovation/galaxy-tab-s8-series/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/brand-innovation/galaxy-watch4-series/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/brand-innovation/how-the-galaxybuds2-was-developed-with-charli-xcx/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/offer/UHDSmartTV-NU7090-2020/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/brand-innovation/key-drivers-for-koreas-5g-success/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/brand-innovation/master-of-multitasking-with-z-fold2/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/brand-innovation/meet-s21-fe-5g-flagship-smartphone-designed-for-fans-of-all-kinds/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/brand-innovation/s22-design-story/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/brand-innovation/patent-leader-for-5g/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/brand-innovation/samsung-top-five-interbrands-best-global-brands-2020/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/brand-innovation/samsung-ai-forum-2020/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/brand-innovation/samsung-x-singtel-5g/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/inspiration/5g-network-compact-core/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/brand-innovation/video-behind-the-scenes-of-how-samsung-tests-the-galaxy-z-fold-flip3-5g/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/inspiration/getting-to-know-5g/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/brand-innovation/upgrade-your-style-this-season-with-the-galaxy-z-flip3-5g/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/inspiration/interview-samsung-executives-share-their-insights-into-the-groundbreaking-galaxy-z-series-and-galaxy-watch4/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/brand-innovation/user-guide-a-comprehensive-guide-to-using-the-galaxy-z-fold3-5g/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/inspiration/from-tablet-to-table-how-chef-joseph-lidgerwood-uses-the-galaxy-tab-s7-plus-to-bring-his-unique-recipes-to-life/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/brand-innovation/style-that-meets-function-galaxy-z-flip-3-5gs-stunning-new-cover-screen-empowers-users-to-do-more/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/unfoldthefuture/inspiration/mark-louison-5g-imperative-for-next-normal/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/monitors/24-inch-monitors/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/monitors/27-inch-monitors/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/monitors/49-inch-monitors/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/monitors/28-inch-monitors/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/monitors/32-inch-monitors/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/monitors/55-inch-monitors/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/monitors/43-inch-monitors/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/monitors/34-inch-monitors/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/monitors/full-hd-1080p/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/monitors/mbs-pop-up-2024/",
+      "error": "no_product_payload"
+    },
+    {
+      "url": "https://www.samsung.com/sg/tvs/77-inch-tvs/",
+      "error": "no_product_payload"
+    }
+  ],
+  "invalid_schema": [],
+  "invalid_count": 0
+}

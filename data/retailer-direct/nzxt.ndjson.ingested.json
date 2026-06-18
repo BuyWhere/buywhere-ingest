@@ -1,0 +1,20 @@
+{
+  "ingest": {
+    "at": "2026-06-15T23:46:39+00:00",
+    "errors": 0,
+    "inserted": 176,
+    "partial": false,
+    "records": 176
+  },
+  "ingestedBy": "BUY-52085",
+  "local": {
+    "path": "data/retailer-direct/nzxt.ndjson",
+    "sha256": "599e8124efce3107c77dd170f9f27801689b6ff3268ece4f16f22b171cf6e180",
+    "size": 1165637
+  },
+  "r2": {
+    "bucket": "buywhere-data",
+    "key": "scrape-artifacts/2026-06-15/nzxt.ndjson"
+  },
+  "schemaVersion": 2
+}

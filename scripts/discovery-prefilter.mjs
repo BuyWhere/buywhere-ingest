@@ -100,7 +100,10 @@ const CURRENCY_TOKENS = {
   AUD: ["aud", "a$"],
 };
 
+// Domains that are CDN/SaaS/tech infrastructure — NOT e-commerce stores.
+// These pass HTML signature checks but have no products to deep-page.
 const BLOCKED_DOMAINS = new Set([
+  // Marketplaces / large retailers (skip — already scraped or blocked)
   "amazon.com", "amazon.co.uk", "amazon.de", "amazon.ca", "amazon.sg",
   "amazon.com.au", "amazon.co.jp", "amazon.in", "amazon.com.mx", "amazon.com.br",
   "amazon_jp", "amazon_us", "amazon_sg",
@@ -109,9 +112,115 @@ const BLOCKED_DOMAINS = new Set([
   "costco.com", "ikea.com", "macys.com", "nordstrom.com",
   "alibaba.com", "aliexpress.com", "tmall.com", "jd.com", "taobao.com",
   "shopee", "lazada", "tokopedia", "qoo10", "rakuten", "coupang",
+  // Tech giants
   "google.com", "facebook.com", "youtube.com", "twitter.com", "instagram.com",
-  "github.com", "wikipedia.org", "reddit.com", "linkedin.com",
+  "github.com", "wikipedia.org", "reddit.com", "linkedinin.com",
+  "apple.com", "microsoft.com", "netflix.com", "amazon.com",
+  // CDN / edge / cloud infrastructure
+  "cloudflare.com", "akamai.com", "fastly.com", "cloudfront.net",
+  "cdn.cloudflare.com", ".edgesuite.net", "akamaiedge.net",
+  "b-cdn.net", "cdn77.org", "cdnjs.cloudflare.com", "unpkg.com",
+  "jsdelivr.net", "jsdelivr.com", "jquery.com", "jquerycdn.com",
+  // SaaS / developer platforms (pass HTML signature but not stores)
+  "wordpress.com", "wp.com", "wix.com", "squarespace.com", "shopify.com",
+  "wixsite.com", "weebly.com", "bigcartel.com", "bigcommerce.com",
+  "atlassian.net", "atlassian.com", "jira.com", "confluence.com",
+  "github.com", "gitlab.com", "bitbucket.org", "github.io", "gitlab.io",
+  "heroku.com", "vercel.com", "netlify.com", "cloudflare.com",
+  "digitalocean.com", "linode.com", "vultr.com", "aws.amazon.com",
+  "cloud.google.com", "azure.microsoft.com", "oracle.com",
+  // Email / marketing automation
+  "mailchimp.com", "sendgrid.net", "constantcontact.com", "hubspot.com",
+  "marketo.com", "pardot.com", "eloqua.com", "mailgun.com",
+  "postmarkapp.com", "sparkpost.com", "amazonses.com",
+  // Analytics / tracking
+  "google-analytics.com", "googletagmanager.com", "segment.io",
+  "segment.com", "mixpanel.com", "amplitude.com", "heap.io",
+  "hotjar.com", "crazyegg.com", "optimizely.com", "quantserve.com",
+  // Customer service / live chat
+  "intercom.io", "intercom.com", "zendesk.com", "freshdesk.com",
+  "desk.com", "salesforce.com", "helpdesk.com",
+  // URL shorteners / link management
+  "bit.ly", "tinyurl.com", "goo.gl", "ow.ly", "t.co", "lnkd.in",
+  "rebrandly.com", "short.io", "bitly.com",
+  // Security / authentication
+  "recaptcha.net", "hcaptcha.com", "cloudflare.com", "akamai.com",
+  "forter.com", "riskified.com", "signifyd.com", "siftsf.com",
+  // Payments / fintech
+  "stripe.com", "paypal.com", "braintreepayments.com", "adyen.com",
+  "squareup.com", "clover.com", "shopify.com", "woocommerce.com",
+  // Push / notification
+  "pusher.com", "onesignal.com", "airship.com", "urbanairship.com",
+  "onesignal.org", "wonderpush.com",
+  // Search / SEO
+  "duckduckgo.com", "startpage.com", "yahoo.com", "bing.com", "baidu.com",
+  "yandex.com", "naver.com", "seznam.cz",
+  // Social / sharing
+  "dropbox.com", "drive.google.com", "box.com", "onedrive.live.com",
+  "slideshare.net", "scribd.com", "issuu.com", "calameo.com",
+  // Translation / internationalization
+  "deepl.com", "deepL.com", "translate.google.com", "babbel.com",
+  // Storage / file hosting
+  "drive.google.com", "mediafire.com", "dropbox.com", "wetransfer.com",
+  "icoud.com", "icloud.com",
+  // Misc tech (pass HTML sig, not stores)
+  "cloudns.net", "dnsimple.com", "namecheap.com", "godaddy.com",
+  "reg.ru", "uniregistry.com", "enom.com", "networkolutions.com",
+  "workers.dev", "pages.dev", "vercel.app", "webflow.io",
+  "shopify.com", "myshopify.com", "commercejs.com", "snipcart.com",
+  "stripe.com", "bambora.com", "checkout.com", "klarna.com",
+  "afterpay.com", "sezzle.com", "affirm.com", "paypal.com",
+  // Productivity / office
+  "slack.com", "teams.microsoft.com", "zoom.us", "webex.com",
+  "asana.com", "trello.com", "monday.com", "notion.so",
+  "evernote.com", "dropbox.com", "box.com", "zdassets.com",
+  // Error / monitoring
+  "sentry.io", "bugsnag.com", "rollbar.com", "airbrake.io",
+  "newrelic.com", "datadog.com", "grafana.com", "splunk.com",
+  // Login / identity
+  "auth0.com", "okta.com", "onelogin.com", "pingidentity.com",
+  "google.com", "facebook.com", "apple.com", "twitter.com",
+  // VPN / proxy / networking
+  "cloudflare.com", "nordvpn.com", "expressvpn.com", "ultrasurf.com",
+  "hideMyAss.com", "protonvpn.com", "tunnelbear.com",
+  // News / media / blogs
+  "medium.com", "substack.com", "ghost.org", "substackcdn.com",
+  "wixpress.com", "wordpress.com", "blogspot.com", "tumblr.com",
+  // Video / streaming
+  "vimeo.com", "dailymotion.com", "twitch.tv", "youtube.com",
+  "googlevideo.com", "ytimg.com", "youtube-nocookie.com",
+  // Misc infrastructure that slips through HTML detection
+  "hcaptcha.com", "captcha.com", "recaptcha.net", "funcaptcha.com",
+  "cloudflareinsights.com", "bugfender.com", "appdynamics.com",
+  "newrelic.com", "applications.microsoft.com", "updates.microsoft.com",
+  "office.com", "live.com", "msn.com", "bing.com", "msftconnecttest.com",
+  "spotify.com", "soundcloud.com", "bandcamp.com", "tidal.com",
+  "deezer.com", "pandora.com", "apple.com", "music.apple.com",
+  "steampowered.com", "steamcommunity.com", "steamstatic.com",
+  "discord.com", "slack.com", "telegram.org", "whatsapp.com",
+  "zoom.us", "webex.com", "gotomeeting.com", "join.me",
+  "teamviewer.com", "anydesk.com", "logmein.com",
 ]);
+
+// Block parent domains (pass subdomain check but parent is not a store)
+const BLOCKED_PARENTS = [
+  "google.com", "microsoft.com", "amazon.com", "facebook.com",
+  "apple.com", "cloudflare.com", "akamai.com", "fastly.com",
+  "wordpress.com", "wix.com", "wixsite.com", "shopify.com",
+  "atlassian.com", "github.com", "twitter.com", "t.co",
+  "youtube.com", "instagram.com", "reddit.com", "wikipedia.org",
+  "linkedin.com", "dropbox.com", "box.com", "slack.com",
+  "zoom.us", "microsoftonline.com", "live.com", "office.com",
+  "bing.com", "msn.com", "yahoo.com", "yahoo.co.jp",
+  "baidu.com", "yandex.com", "mailchimp.com", "hubspot.com",
+  "sendgrid.net", "stripe.com", "paypal.com", "braintreepayments.com",
+  "intercom.io", "zendesk.com", "shopify.com", "woocommerce.com",
+  "wp.com", "wordpress.com", "wixpress.com", "ghost.org",
+  "sentry.io", "newrelic.com", "segment.io", "segment.com",
+  "mixpanel.com", "amplitude.com", "heap.io", "hotjar.com",
+  "digitalocean.com", "linode.com", "vultr.com", "heroku.com",
+  "vercel.com", "netlify.com", "cloud.google.com", "azure.microsoft.com",
+];
 
 function parseArgs(argv) {
   const out = { input: null, output: null, concurrency: 100, timeoutMs: 8000, maxDomains: 0 };
@@ -149,6 +258,12 @@ async function readDomains(inputPath, maxDomains) {
       .replace(/:\d+$/, "");
     if (!cleaned || !/^[a-z0-9.-]+\.[a-z]{2,}$/.test(cleaned)) continue;
     if (BLOCKED_DOMAINS.has(cleaned)) continue;
+    // Block subdomains of known non-store parents (e.g. cloudflare.com, wordpress.com)
+    const parts = cleaned.split(".");
+    if (parts.length >= 2) {
+      const parent = parts.slice(-2).join(".");
+      if (BLOCKED_PARENTS.includes(parent)) continue;
+    }
     if (seen.has(cleaned)) continue;
     seen.add(cleaned);
     out.push(cleaned);
@@ -314,7 +429,9 @@ async function main() {
   console.error(`[prefilter] done: ${JSON.stringify(stats)}`);
 }
 
-main().catch((e) => {
-  console.error("[prefilter] fatal:", e);
-  process.exit(1);
-});
+main()
+  .then(() => process.exit(0))
+  .catch((e) => {
+    console.error("[prefilter] fatal:", e);
+    process.exit(1);
+  });

@@ -1,0 +1,5 @@
+{"domain":"asimjofa.com","platform":"shopify","product_endpoint":"https://asimjofa.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":247,"country_code":"US","currency":null}
+{"domain":"ayntec.com","platform":"shopify","product_endpoint":"https://ayntec.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":3324,"country_code":"US","currency":null}
+{"domain":"zdopravy.cz","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":256,"country_code":"US","currency":null}
+{"domain":"stape.biz","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":437,"country_code":"US","currency":null}
+{"domain":"sxl.cn","platform":"woocommerce","product_endpoint":"https://sxl.cn/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":2567,"country_code":"CN","currency":null}

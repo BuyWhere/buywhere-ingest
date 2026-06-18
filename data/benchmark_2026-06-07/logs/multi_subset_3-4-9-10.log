@@ -1,0 +1,5 @@
+[multi-source] source=3 records=5000 elapsed_ms=1593
+[multi-source] source=4 records=0 elapsed_ms=957
+[multi-source] source=9 records=3 elapsed_ms=0
+[multi-source] source=10 records=0 elapsed_ms=13763
+[multi-source] DONE: unique=5003 raw=5003

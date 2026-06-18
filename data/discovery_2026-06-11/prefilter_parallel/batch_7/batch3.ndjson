@@ -1,0 +1,10 @@
+{"domain":"mariab.pk","platform":"shopify","product_endpoint":"https://mariab.pk/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":1710,"country_code":"US","currency":null}
+{"domain":"wimhofmethod.com","platform":"magento","product_endpoint":"https://wimhofmethod.com/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":212,"country_code":"US","currency":null}
+{"domain":"speakol.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":31,"country_code":"US","currency":null}
+{"domain":"lendirqu.in","platform":"woocommerce","product_endpoint":"https://lendirqu.in/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":811,"country_code":"IN","currency":null}
+{"domain":"drsheths.com","platform":"shopify","product_endpoint":"https://drsheths.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":5532,"country_code":"US","currency":null}
+{"domain":"karakubuy.com","platform":"shopify","product_endpoint":"https://karakubuy.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":5149,"country_code":"US","currency":null}
+{"domain":"kaisan.com.br","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":820,"country_code":"BR","currency":null}
+{"domain":"shaukatkhanum.org.pk","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":38,"country_code":"US","currency":null}
+{"domain":"fridayparts.com","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1278,"country_code":"US","currency":null}
+{"domain":"cweb.hu","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":365,"country_code":"US","currency":null}

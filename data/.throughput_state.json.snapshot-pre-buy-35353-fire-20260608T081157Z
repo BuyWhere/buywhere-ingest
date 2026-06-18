@@ -1,0 +1,22 @@
+{
+  "last_n_tup_ins": 567688,
+  "last_n_tup_ins_at": "2026-06-08T07:10:31.953365+00:00",
+  "last_hour_checked": "2026-06-08T06:00:00+00:00",
+  "last_check_result": "PASS",
+  "last_check_real_rows": 559675,
+  "last_check_source": "n_tup_ins_delta_post_postmaster_restart",
+  "last_n_live_tup": 49755359,
+  "last_db_host": "maglev.proxy.rlwy.net:31310/railway",
+  "last_fire_buy": "BUY-35306",
+  "last_filed_child": null,
+  "last_fire_note": "Manual heartbeat for 06:00-07:00Z. Postmaster restarted at 06:03:42Z (BUY-35260) so n_tup_ins at 06:00:00Z=0; sampled n_tup_ins at 07:00:28Z=559,675 -> 559,675 inserts in the 06:00-07:00Z hour, well above 150K threshold. No child filed per BUY-29861 rule.",
+  "last_manual_fire_buy": "BUY-35306",
+  "last_manual_fire_at": "2026-06-08T07:10:31.953365+00:00",
+  "last_manual_fire_hour_checked": "2026-06-08T06:00:00+00:00",
+  "last_manual_fire_result": "PASS",
+  "last_manual_fire_real_rows": 559675,
+  "last_manual_fire_source": "n_tup_ins_delta_post_postmaster_restart",
+  "last_manual_filed_child": null,
+  "last_manual_fire_note": "559,675 inserts in 06:00-07:00Z. Postmaster at 06:03:42Z reset n_tup_ins to 0; sampled at 07:00:28Z=559,675 -> delta=559,675 = full hour net inserts. Above 150K threshold -> no child filed. Steady-state rate at 07:10Z is ~700/hr (post-backfill decay), so the 07:00-08:00Z hour is likely to FAIL.",
+  "last_manual_fire_doc": "docs/buy-35306-hourly-throughput-check-2026-06-08T06.md"
+}

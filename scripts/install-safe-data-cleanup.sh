@@ -61,9 +61,13 @@ for id in "${TARGETS[@]}"; do
     install -m 0755 "$REF" "$ws/safe-data-cleanup.sh"
     echo "INSTALLED safe-data-cleanup.sh: $id"
   else
+    if [[ "$(readlink -f "$REF")" == "$(readlink -f "$ws/safe-data-cleanup.sh")" ]]; then
+      echo "SKIP refresh safe-data-cleanup.sh: $id (canonical source)"
+    else
     # Refresh the copy in case the protocol was updated.
-    install -m 0755 "$REF" "$ws/safe-data-cleanup.sh"
-    echo "REFRESHED safe-data-cleanup.sh: $id"
+      install -m 0755 "$REF" "$ws/safe-data-cleanup.sh"
+      echo "REFRESHED safe-data-cleanup.sh: $id"
+    fi
   fi
   # Gate D in the cleanup script depends on r2_head.py being next to it.
   mkdir -p "$ws/scripts"

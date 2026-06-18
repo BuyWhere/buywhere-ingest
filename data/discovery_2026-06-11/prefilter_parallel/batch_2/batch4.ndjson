@@ -1,0 +1,4 @@
+{"domain":"asicentral.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":24,"country_code":"US","currency":null}
+{"domain":"coinpedia.org","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":269,"country_code":"US","currency":null}
+{"domain":"ananova.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1378,"country_code":"US","currency":null}
+{"domain":"tldv.io","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":30,"country_code":"US","currency":null}

@@ -1,0 +1,7 @@
+{"domain":"facturama.mx","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":388,"country_code":"MX","currency":null}
+{"domain":"verabradleyoutlet.com","platform":"shopify","product_endpoint":"https://verabradleyoutlet.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":4432,"country_code":"US","currency":null}
+{"domain":"1password.ca","platform":"woocommerce","product_endpoint":"https://1password.ca/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":328,"country_code":"CA","currency":null}
+{"domain":"clym.io","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":255,"country_code":"US","currency":null}
+{"domain":"regonline.com","platform":"woocommerce","product_endpoint":"https://regonline.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":2613,"country_code":"US","currency":null}
+{"domain":"coolhunting.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":687,"country_code":"US","currency":null}
+{"domain":"shenasname.ir","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1202,"country_code":"US","currency":null}

@@ -1,0 +1,32 @@
+{
+  "last_n_tup_ins": 47474146,
+  "last_n_tup_ins_at": "2026-06-12T12:04:14.000000+00:00",
+  "last_hour_checked": "2026-06-12T11:00:00+00:00",
+  "last_hour_window_start": "2026-06-12T11:04:27.190262Z",
+  "last_hour_window_end": "2026-06-12T12:04:14.000000Z",
+  "last_check_result": "PASS",
+  "last_check_real_rows": 429579,
+  "last_check_source": "n_tup_ins_delta",
+  "last_n_live_tup": 78728293,
+  "last_db_host": "maglev.proxy.rlwy.net:31310/railway",
+  "last_check_delta_rows": 429579,
+  "last_check_delta_hours": 0.99639,
+  "last_check_rate": 431134,
+  "last_check_threshold": 150000,
+  "last_pm_start": "2026-06-08T10:21:09.112373+00:00",
+  "last_issue_identifier": "BUY-43708",
+  "last_fire_timestamp": "2026-06-12T12:04:14.000000+00:00",
+  "last_note": "2026-06-12 11:00-12:00Z hour PASS: raw delta 429,579 rows over 0.99639h (2026-06-12T11:04:27.190Z anchor from BUY-43592 prior fire -> 2026-06-12T12:04:14Z sample) = 431,134/hr (n_tup_ins PRIMARY signal under maglev contention). S1 47,044,567 (from BUY-43592 prior fire) -> S2 47,474,146 (now). n_live_tup: 78,728,293. pm_start=2026-06-08T10:21:09Z (4d1h43m prior, delta method valid). Rate 431,134/hr is 287% of 150,000/hr threshold (+187% vs threshold). Hour-over-hour: 10:00-11:00Z was 360,116/hr (BUY-43592 PASS), 11:00-12:00Z (this fire) 431,134/hr. Anchor-to-sample straddles 12:00Z so rate is averaged over the straddle, but throughput is approximately stationary. Auto-dispatcher cron still broken (BUY-33694); this heartbeat at 2026-06-12T12:04:14Z is the canonical fire for the 11:00-12:00Z window. NO child failure issue created (PASS).",
+  "last_closed_day": {
+    "date": "2026-06-11",
+    "n_tup_ins_open": 44622141,
+    "n_tup_ins_close": 44898133,
+    "delta": 275992,
+    "n_live_tup_close": 76752961,
+    "open_at": "2026-06-11T23:02:31+00:00",
+    "close_at": "2026-06-12T00:04:06.230363+00:00",
+    "db_host": "maglev.proxy.rlwy.net:31310/railway",
+    "source": "midnight_snapshot"
+  },
+  "last_midnight_recorded_date": "2026-06-11"
+}

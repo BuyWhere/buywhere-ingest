@@ -1,0 +1,33 @@
+[prefilter] input=data/benchmark_2026-06-07/tranco_slice_1_tail.txt domains=1550 concurrency=200
+[prefilter] worker=14 checked=50/1550 passed=0 failed=50 by_platform={}
+[prefilter] worker=193 checked=100/1550 passed=1 failed=99 by_platform={"shopify-html":1}
+[prefilter] worker=132 checked=150/1550 passed=1 failed=149 by_platform={"shopify-html":1}
+[prefilter] worker=56 checked=200/1550 passed=1 failed=199 by_platform={"shopify-html":1}
+[prefilter] worker=14 checked=250/1550 passed=1 failed=249 by_platform={"shopify-html":1}
+[prefilter] worker=126 checked=300/1550 passed=1 failed=299 by_platform={"shopify-html":1}
+[prefilter] worker=171 checked=350/1550 passed=1 failed=349 by_platform={"shopify-html":1}
+[prefilter] worker=56 checked=400/1550 passed=1 failed=399 by_platform={"shopify-html":1}
+[prefilter] worker=14 checked=450/1550 passed=1 failed=449 by_platform={"shopify-html":1}
+[prefilter] worker=177 checked=500/1550 passed=1 failed=499 by_platform={"shopify-html":1}
+[prefilter] worker=133 checked=550/1550 passed=1 failed=549 by_platform={"shopify-html":1}
+[prefilter] worker=74 checked=600/1550 passed=1 failed=599 by_platform={"shopify-html":1}
+[prefilter] worker=14 checked=650/1550 passed=1 failed=649 by_platform={"shopify-html":1}
+[prefilter] worker=3 checked=700/1550 passed=1 failed=699 by_platform={"shopify-html":1}
+[prefilter] worker=171 checked=750/1550 passed=1 failed=749 by_platform={"shopify-html":1}
+[prefilter] worker=74 checked=800/1550 passed=1 failed=799 by_platform={"shopify-html":1}
+[prefilter] worker=14 checked=850/1550 passed=1 failed=849 by_platform={"shopify-html":1}
+[prefilter] worker=172 checked=900/1550 passed=1 failed=899 by_platform={"shopify-html":1}
+[prefilter] worker=133 checked=950/1550 passed=1 failed=949 by_platform={"shopify-html":1}
+[prefilter] worker=85 checked=1000/1550 passed=1 failed=999 by_platform={"shopify-html":1}
+[prefilter] worker=14 checked=1050/1550 passed=1 failed=1049 by_platform={"shopify-html":1}
+[prefilter] worker=198 checked=1100/1550 passed=1 failed=1099 by_platform={"shopify-html":1}
+[prefilter] worker=171 checked=1150/1550 passed=1 failed=1149 by_platform={"shopify-html":1}
+[prefilter] worker=32 checked=1200/1550 passed=1 failed=1199 by_platform={"shopify-html":1}
+[prefilter] worker=14 checked=1250/1550 passed=1 failed=1249 by_platform={"shopify-html":1}
+[prefilter] worker=183 checked=1300/1550 passed=1 failed=1299 by_platform={"shopify-html":1}
+[prefilter] worker=133 checked=1350/1550 passed=1 failed=1349 by_platform={"shopify-html":1}
+[prefilter] worker=85 checked=1400/1550 passed=1 failed=1399 by_platform={"shopify-html":1}
+[prefilter] worker=14 checked=1450/1550 passed=1 failed=1449 by_platform={"shopify-html":1}
+[prefilter] worker=189 checked=1500/1550 passed=1 failed=1499 by_platform={"shopify-html":1}
+[prefilter] worker=170 checked=1550/1550 passed=1 failed=1549 by_platform={"shopify-html":1}
+[prefilter] done: {"checked":1550,"passed":1,"failed":1549,"by_platform":{"shopify-html":1},"started_at":"2026-06-07T14:51:57.494Z","finished_at":"2026-06-07T14:57:37.244Z","output":"data/benchmark_2026-06-07/prefilter/tranco_slice_1_tail.ndjson","output_rows":1}

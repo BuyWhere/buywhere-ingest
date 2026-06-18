@@ -1,0 +1,3 @@
+{"domain":"vuoriclothing.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":273,"country_code":"US","currency":null}
+{"domain":"vuori.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":234,"country_code":"US","currency":null}
+{"domain":"tracksmith.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":14,"country_code":"US","currency":null}

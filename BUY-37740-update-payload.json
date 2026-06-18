@@ -1,0 +1,4 @@
+{
+  "status": "done",
+  "comment": "Closed with fresh runtime verification for [BUY-30854](/BUY/issues/BUY-30854).\n\nEvidence: `docs/buy-37740-oracle-lane-keep-alive-closeout-20260609T113656Z.md`\n\nSummary:\n- `scripts/buy30854-lane-keep-alive.sh` remains the active watchdog and `systemd/paperclip-lane-keep-alive.timer` still enforces the 5-minute cadence with `Persistent=true`.\n- A manual tick completed at `2026-06-09T11:36:27Z` with `deep_page_loop` and `sustained_loop` healthy, `woocommerce_discover` skipped by its completion marker, and `lane_supervisor` skipped by its BUY-31452 stop marker.\n- `data/buy30854-keep-alive-state.json` reset all tracked dead counters to zero after the tick, and `data/buy30854-keep-alive-escalation.json` did not gain a new entry.\n- `systemd-analyze verify` produced only the known unrelated `/etc/systemd/system/hindsight.service` warning and no watchdog unit or timer errors."
+}

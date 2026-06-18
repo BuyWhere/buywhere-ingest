@@ -1,0 +1,13 @@
+{
+  "last_n_tup_ins": 2909852,
+  "last_n_tup_ins_at": "2026-06-08T01:07:41.754639+00:00",
+  "last_hour_checked": "2026-06-08T02:00:00+00:00",
+  "last_check_result": "FAIL",
+  "last_check_real_rows": 0,
+  "last_check_source": "maglev_unreachable",
+  "last_n_live_tup": 42930549,
+  "last_db_host": "maglev.proxy.rlway.net:31310/railway",
+  "last_fire_buy": "BUY-35085",
+  "last_filed_child": "BUY-35092",
+  "last_fire_note": "Maglev Postgres in startup/restart (TCP accepts, Postgres handshake ECONNRESET). Same fingerprint as BUY-34770 + BUY-35041. Writer pipe dark."
+}

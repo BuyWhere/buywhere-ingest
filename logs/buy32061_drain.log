@@ -1,0 +1,51 @@
+[apple] discovering buy.xml URLs...
+[apple] discovered 1055 unique buy URLs
+  pending: 1055 (skipped cached)
+  parsed 100/1055
+  parsed 200/1055
+  parsed 300/1055
+  parsed 400/1055
+  parsed 500/1055
+  parsed 600/1055
+  parsed 700/1055
+  parsed 800/1055
+  parsed 900/1055
+[samsung] discovering sitemap URLs...
+[samsung] discovered 5 child sitemaps
+[samsung] discovered 2397 candidate URLs across 5 sitemaps
+  pending: 2397 (skipped cached)
+  parsed 200/2397
+  parsed 400/2397
+  parsed 600/2397
+  parsed 800/2397
+  parsed 1000/2397
+  parsed 1200/2397
+  parsed 1400/2397
+  parsed 1600/2397
+  parsed 1800/2397
+  parsed 2000/2397
+{
+  "generated_at": "2026-06-06T02:33:52.237482+00:00",
+  "concurrency": 8,
+  "apple": {
+    "source": "apple_sg_buy_xml",
+    "ndjson_path": "merchants/apple_sg_buy_xml_full_2026-06-06.ndjson",
+    "failures_path": "data/brand_direct/apple_sg_buy_xml_full_2026-06-06_failures.json",
+    "record_count": 946,
+    "total_candidates": 1055,
+    "failure_count": 109,
+    "invalid_count": 0,
+    "elapsed_seconds": 251.77
+  },
+  "samsung": {
+    "source": "samsung_sg_sitemap",
+    "ndjson_path": "merchants/samsung_sg_sitemap_full_2026-06-06.ndjson",
+    "failures_path": "data/brand_direct/samsung_sg_sitemap_full_2026-06-06_failures.json",
+    "record_count": 2005,
+    "total_candidates": 2397,
+    "failure_count": 392,
+    "invalid_count": 309,
+    "elapsed_seconds": 100.56
+  },
+  "combined_record_count": 2951
+}

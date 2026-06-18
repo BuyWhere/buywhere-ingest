@@ -1,0 +1,7 @@
+{"domain":"whop.com","platform":"woocommerce","product_endpoint":"https://whop.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":865,"country_code":"US","currency":null}
+{"domain":"redbackinternet.net","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":413,"country_code":"US","currency":null}
+{"domain":"zr.ru","platform":"magento","product_endpoint":"https://zr.ru/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":1639,"country_code":"US","currency":null}
+{"domain":"vibe.co","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":588,"country_code":"US","currency":null}
+{"domain":"portalinmobiliario.com","platform":"woocommerce","product_endpoint":"https://portalinmobiliario.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":1806,"country_code":"US","currency":null}
+{"domain":"sravni.ru","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":1241,"country_code":"US","currency":null}
+{"domain":"asaas.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":3097,"country_code":"US","currency":null}

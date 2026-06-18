@@ -1,0 +1,33 @@
+{
+  "last_n_tup_ins": 50871634,
+  "last_n_tup_ins_at": "2026-06-13T03:04:44.595695+00:00",
+  "last_hour_checked": "2026-06-13T02:00:00+00:00",
+  "last_hour_window_start": "2026-06-13T02:00:00Z",
+  "last_hour_window_end": "2026-06-13T03:00:00Z",
+  "last_check_result": "FAIL",
+  "last_check_real_rows": 117259,
+  "last_check_source": "n_tup_ins_delta",
+  "last_n_live_tup": 82086849,
+  "last_db_host": "maglev.proxy.rlwy.net:31310/railway",
+  "last_check_delta_rows": 117213,
+  "last_check_delta_hours": 0.9994,
+  "last_check_rate": 117283,
+  "last_check_threshold": 150000,
+  "last_pm_start": "2026-06-08T10:21:09.112373+00:00",
+  "last_issue_identifier": "BUY-45349",
+  "last_fire_timestamp": "2026-06-13T03:04:44Z",
+  "last_note": "2026-06-13 02:00-03:00Z hour FAIL: n_tup_ins delta 117,213 rows over 0.9994h (anchor S6=50,754,421 @02:04:46Z -> S7=50,871,634 @03:04:44Z) = 117,283/hr reported by dispatcher (real_rows=117,259). 78.2% of 150,000/hr threshold (-32,741 rows/hr). n_live_tup delta 81,991,098 -> 82,086,849 = +95,751 over 0.9994h = 95,808/hr (corroborates, below target). pm_start=2026-06-08T10:21:09Z (5d prior, no restart in window, delta method valid). hour_bucket_count TIMEOUT 30s (maglev contention). RECOVERY from catastrophic 17,697/hr dip in 01-02Z. 4th consecutive hourly FAIL. Trend: 23-00Z=117,352 -> 00-01Z=79,813 -> 01-02Z=17,697 -> 02-03Z=117,259/hr. FAIL child BUY-45349 filed (assignee Rich MRfjkCUz, parent BUY-29861). Root cause pointer: BUY-30590 maglev cap.",
+  "last_closed_day": {
+    "date": "2026-06-11",
+    "n_tup_ins_open": 44622141,
+    "n_tup_ins_close": 44898133,
+    "delta": 275992,
+    "n_live_tup_close": 76752961,
+    "open_at": "2026-06-11T23:02:31+00:00",
+    "close_at": "2026-06-12T00:04:06.230363+00:00",
+    "db_host": "maglev.proxy.rlwy.net:31310/railway",
+    "source": "midnight_snapshot"
+  },
+  "last_midnight_recorded_date": "2026-06-11",
+  "last_failure_child_identifier": "BUY-45349"
+}

@@ -1,0 +1,32 @@
+{
+  "last_n_tup_ins": 40855698,
+  "last_n_tup_ins_at": "2026-06-11T14:02:26.723413+00:00",
+  "last_hour_checked": "2026-06-11T13:00:00+00:00",
+  "last_hour_window_start": "2026-06-11T13:04:12+00:00",
+  "last_hour_window_end": "2026-06-11T14:02:26+00:00",
+  "last_check_result": "PASS",
+  "last_check_real_rows": 1162211,
+  "last_check_source": "n_tup_ins_delta",
+  "last_n_live_tup": 73890931,
+  "last_db_host": "maglev.proxy.rlwy.net:31310/railway",
+  "last_check_delta_rows": 1162211,
+  "last_check_delta_hours": 0.9705,
+  "last_check_rate": 1197538,
+  "last_check_threshold": 150000,
+  "last_pm_start": "2026-06-08T10:21:09.112373+00:00",
+  "last_issue_identifier": "BUY-41360",
+  "last_fire_timestamp": "2026-06-11T14:02:26Z",
+  "last_note": "13:00-14:00Z hour PASS: delta 1,162,211 over 58.23m (13:04:12Z anchor -> 14:02:26Z) = 1,197,538/hr (n_tup_ins PRIMARY signal under maglev contention). S1 39,693,487 (13:04:12Z) -> S2 40,855,698 (14:02:26Z) -> delta 1,162,211 in 0.9705h = 1,197,538/hr. n_live_tup: 73,890,931 (14:02Z). pm_start=2026-06-08T10:21:09Z (well outside this hour, delta method valid). count(*) skipped (products_created_at_idx invalid since BUY-32878). No child BUY-#### filed. Auto-dispatcher cron still broken (BUY-33694); this BUY-41360 heartbeat at 14:02:26Z is the canonical fire for the 13:00-14:00Z window.",
+  "last_closed_day": {
+    "date": "2026-06-10",
+    "n_tup_ins_open": 30148362,
+    "n_tup_ins_close": 30542209,
+    "delta": 393847,
+    "n_live_tup_close": 65495587,
+    "open_at": "2026-06-10T23:01:43.565471+00:00",
+    "close_at": "2026-06-11T00:01:03.257837+00:00",
+    "db_host": "maglev.proxy.rlwy.net:31310/railway",
+    "source": "midnight_snapshot"
+  },
+  "last_midnight_recorded_date": "2026-06-10"
+}

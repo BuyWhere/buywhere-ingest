@@ -1,0 +1,3 @@
+{"domain":"storista.io","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":281,"country_code":"US","currency":null}
+{"domain":"sudathi.com","platform":"shopify","product_endpoint":"https://sudathi.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":4326,"country_code":"US","currency":null}
+{"domain":"alfred.com","platform":"shopify","product_endpoint":"https://alfred.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":7444,"country_code":"US","currency":null}

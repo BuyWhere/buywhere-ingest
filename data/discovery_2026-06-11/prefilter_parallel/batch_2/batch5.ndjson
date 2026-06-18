@@ -1,0 +1,9 @@
+{"domain":"focusrite.com","platform":"bigcommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":945,"country_code":"US","currency":null}
+{"domain":"otelms.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":999,"country_code":"US","currency":null}
+{"domain":"laam.pk","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":783,"country_code":"US","currency":null}
+{"domain":"uncrate.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":241,"country_code":"US","currency":null}
+{"domain":"bajajallianz.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":9,"country_code":"US","currency":null}
+{"domain":"dreamproxies.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":829,"country_code":"US","currency":null}
+{"domain":"pvamu.edu","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":299,"country_code":"US","currency":null}
+{"domain":"foodtechconnect.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":3,"country_code":"US","currency":null}
+{"domain":"ultraedit.com","platform":"woocommerce","product_endpoint":"https://ultraedit.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":539,"country_code":"US","currency":null}

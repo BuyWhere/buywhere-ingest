@@ -1,0 +1,7 @@
+{"domain":"logrocket.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":44,"country_code":"US","currency":null}
+{"domain":"v0.app","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1462,"country_code":"US","currency":null}
+{"domain":"hide.me","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":406,"country_code":"US","currency":null}
+{"domain":"minmaxify.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":17,"country_code":"US","currency":null}
+{"domain":"hallow.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":2078,"country_code":"US","currency":null}
+{"domain":"giantitp.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":472,"country_code":"US","currency":null}
+{"domain":"rdstation.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":541,"country_code":"US","currency":null}

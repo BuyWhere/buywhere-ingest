@@ -1,0 +1,3 @@
+{"domain":"gptforwork.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":29,"country_code":"US","currency":null}
+{"domain":"quartzcomponents.com","platform":"shopify","product_endpoint":"https://quartzcomponents.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":825,"country_code":"US","currency":null}
+{"domain":"zw-net.com","platform":"magento","product_endpoint":"https://zw-net.com/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":169,"country_code":"US","currency":null}

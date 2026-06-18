@@ -1,0 +1,118 @@
+[deep-page] input records=100 ecom=100 by_platform={"shopify":2,"magento":3,"woocommerce":21,"shopify-html":36,"woocommerce-html":15,"schema-product":18,"magento-html":4,"bigcommerce-html":1} concurrency=30
+[dp] b-cdn.net page=1 status=200 bodyLen=786920
+[dp] b-cdn.net parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[dp] time.com page=1 status=406 bodyLen=undefined
+[dp] hcaptcha.com page=1 status=404 bodyLen=undefined
+[dp] stripe.com page=1 status=404 bodyLen=undefined
+[dp] atlassian.com page=1 status=404 bodyLen=undefined
+[dp:wc] wordpress.com page=1 status=404 bodyLen=undefined
+[dp] wps.com page=1 status=404 bodyLen=undefined
+[dp] dropbox.com page=1 status=404 bodyLen=undefined
+[dp:wc] mzstatic.com page=1 status=200 bodyLen=258713
+[dp:wc] wp.com page=1 status=404 bodyLen=undefined
+[dp:wc] nikkei.com page=1 status=200 bodyLen=632513
+[dp] gumgum.com page=1 status=404 bodyLen=undefined
+[dp] mailchimp.com page=1 status=404 bodyLen=undefined
+[dp] wired.com page=1 status=404 bodyLen=undefined
+[dp] nginx.com page=1 status=200 bodyLen=381726
+[dp] nginx.com parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[dp:wc] steampowered.com page=1 status=200 bodyLen=983378
+[dp] klaviyo.com page=1 status=404 bodyLen=undefined
+[dp] cloudinary.com page=1 status=404 bodyLen=undefined
+[dp] cloudflare.com page=1 status=404 bodyLen=undefined
+[dp:wc] gravatar.com page=1 status=404 bodyLen=undefined
+[dp:wc] crashlytics.com page=1 status=200 bodyLen=522587
+[dp:wc] atlassian.net page=1 status=200 bodyLen=1701254
+[dp] themeforest.net page=1 status=404 bodyLen=undefined
+[dp:wc] wise.com page=1 status=404 bodyLen=undefined
+[dp] deepl.com page=1 status=404 bodyLen=undefined
+[deep-page] worker=15 stores=25 failed=0 products=0 by_platform={"shopify-html":9,"schema-product":7,"woocommerce-html":4,"woocommerce":5}
+[dp] statcounter.com page=1 status=404 bodyLen=undefined
+[dp:wc] go.com page=1 status=200 bodyLen=354893
+[dp] shopify.com page=1 status=404 bodyLen=undefined
+[dp] ui.com page=1 status=200 bodyLen=107137
+[dp:wc] netflix.com page=1 status=200 bodyLen=20728
+[dp:wc] meraki.com page=1 status=401 bodyLen=undefined
+[dp] threads.com page=1 status=200 bodyLen=354484
+[dp] threads.com parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[dp:wc] ampproject.net page=1 status=200 bodyLen=137586
+[dp] mux.com page=1 status=404 bodyLen=undefined
+[dp] hostinger.com page=1 status=404 bodyLen=undefined
+[dp:wc] honor.com page=1 status=200 bodyLen=511442
+[dp] bitly.com page=1 status=404 bodyLen=undefined
+[dp:mg] meethue.com page=1 status=200 bodyLen=86558
+[dp] economictimes.com page=1 status=404 bodyLen=undefined
+[dp] claude.com page=1 status=404 bodyLen=undefined
+[dp:mg] popularmechanics.com page=1 status=404 bodyLen=undefined
+[dp:mg] stashaway.com page=1 status=200 bodyLen=15
+[dp] hubspot.com page=1 status=404 bodyLen=undefined
+[dp:mg] alidns.com page=1 status=200 bodyLen=64
+[dp:wc] chrome.com page=1 status=200 bodyLen=464298
+[dp] figma.com page=1 status=404 bodyLen=undefined
+[dp:mg] weibo.com page=1 status=200 bodyLen=9293
+[dp:wc] vistarsagency.com page=1 status=404 bodyLen=undefined
+[dp:wc] cpanel.net page=1 status=404 bodyLen=undefined
+[dp] wyzecam.com page=1 status=200 bodyLen=1132326
+[deep-page] worker=28 stores=50 failed=0 products=203 by_platform={"shopify-html":18,"schema-product":9,"woocommerce-html":7,"woocommerce":10,"shopify":1,"magento-html":2,"magento":3}
+[dp:mg] menshealth.com page=1 status=404 bodyLen=undefined
+[dp:wc] permutive.com page=1 status=404 bodyLen=undefined
+[dp] zimperium.com page=1 status=404 bodyLen=undefined
+[dp] dashlane.com page=1 status=404 bodyLen=undefined
+[dp] honeywell.com page=1 status=404 bodyLen=undefined
+[dp:wc] netflix.net page=1 status=200 bodyLen=20728
+[dp] ubnt.com page=1 status=200 bodyLen=107137
+[dp] cursor.com page=1 status=404 bodyLen=undefined
+[dp] urbandictionary.com page=1 status=404 bodyLen=undefined
+[dp] xero.com page=1 status=404 bodyLen=undefined
+[dp] alltrails.com page=1 status=403 bodyLen=undefined
+[dp:mg] caranddriver.com page=1 status=404 bodyLen=undefined
+[dp:wc] firebaseapp.com page=1 status=200 bodyLen=517185
+[dp:wc] cloudns.net page=1 status=200 bodyLen=172724
+[dp] buymeacoffee.com page=1 status=404 bodyLen=undefined
+[dp] ipapi.co page=1 status=200 bodyLen=104469
+[dp] ipapi.co parse err: Unexpected token '<', "
+
+<!DOCTYPE "... is not valid JSON
+[dp:wc] onenote.com page=1 status=200 bodyLen=75171
+[dp:wc] amazonalexa.com page=1 status=200 bodyLen=839550
+[dp] postman.com page=1 status=404 bodyLen=undefined
+[dp] adyen.com page=1 status=404 bodyLen=undefined
+[dp] sproutsocial.com page=1 status=404 bodyLen=undefined
+[dp] razorpay.com page=1 status=404 bodyLen=undefined
+[dp] livechat.com page=1 status=404 bodyLen=undefined
+[dp:wc] visualcapitalist.com page=1 status=403 bodyLen=undefined
+[dp:wc] hosting.com page=1 status=200 bodyLen=1694
+[deep-page] worker=28 stores=75 failed=0 products=203 by_platform={"shopify-html":28,"schema-product":13,"woocommerce-html":10,"woocommerce":15,"shopify":2,"magento-html":4,"magento":3}
+[dp:wc] mac.com page=1 status=200 bodyLen=1034909
+[dp:wc] dinahosting.com page=1 status=404 bodyLen=undefined
+[dp:wc] bitrix24.com page=1 status=404 bodyLen=undefined
+[dp] lonelyplanet.com page=1 status=404 bodyLen=undefined
+[dp:wc] tinder.com page=1 status=200 bodyLen=546500
+[dp] netgate.com page=1 status=404 bodyLen=undefined
+[dp] checkpoint.com page=1 status=404 bodyLen=undefined
+[dp:wc] pardot.com page=1 status=200 bodyLen=598734
+[dp:wc] zazzle.com page=1 status=200 bodyLen=1236070
+[dp] gq.com page=1 status=404 bodyLen=undefined
+[dp] pushwoosh.com page=1 status=404 bodyLen=undefined
+[dp] forter.com page=1 status=200 bodyLen=166214
+[dp] forter.com parse err: Unexpected token '<', "
+<!DOCTYPE "... is not valid JSON
+[dp:wc] msnbc.com page=1 status=404 bodyLen=undefined
+[dp:wc] freecash.com page=1 status=200 bodyLen=756178
+[dp:wc] servidoresdns.net page=1 status=404 bodyLen=undefined
+[dp] tomsguide.com page=1 status=301 bodyLen=undefined
+[dp] etrade.com page=1 status=200 bodyLen=14529
+[dp] etrade.com parse err: Unexpected token '<', "<!doctype "... is not valid JSON
+[dp:wc] uadns.com page=1 status=200 bodyLen=738363
+[dp:bc] digitaltrends.com page=1 status=404 bodyLen=undefined
+[dp] consentmanager.net page=1 status=200 bodyLen=259925
+[dp] consentmanager.net parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[dp:wc] sardinasystems.com page=1 status=404 bodyLen=undefined
+[dp] signifyd.com page=1 status=200 bodyLen=287477
+[dp] signifyd.com parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[dp] evidon.com page=1 status=200 bodyLen=40992
+[dp] evidon.com parse err: Unexpected token '<', "<!doctype "... is not valid JSON
+[dp] xe.com page=1 status=404 bodyLen=undefined
+[dp] sectigo.com page=1 status=404 bodyLen=undefined
+[deep-page] worker=23 stores=100 failed=0 products=203 by_platform={"shopify-html":36,"schema-product":18,"woocommerce-html":15,"woocommerce":21,"shopify":2,"magento-html":4,"magento":3,"bigcommerce-html":1}
+[deep-page] DONE: {"stores_processed":100,"stores_failed":0,"total_products":203,"by_platform":{"shopify-html":36,"schema-product":18,"woocommerce-html":15,"woocommerce":21,"shopify":2,"magento-html":4,"magento":3,"bigcommerce-html":1},"started_at":"2026-06-07T14:11:00.554Z","finished_at":"2026-06-07T14:11:09.174Z","output_rows":203}

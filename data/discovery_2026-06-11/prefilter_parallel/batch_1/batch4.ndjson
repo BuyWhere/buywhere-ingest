@@ -1,0 +1,5 @@
+{"domain":"steelersdepot.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":29,"country_code":"US","currency":null}
+{"domain":"orthofeet.com","platform":"shopify","product_endpoint":"https://orthofeet.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":4669,"country_code":"US","currency":null}
+{"domain":"findaspring.org","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":916,"country_code":"US","currency":null}
+{"domain":"wired.jp","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":173,"country_code":"JP","currency":null}
+{"domain":"educationdata.org","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1118,"country_code":"US","currency":null}

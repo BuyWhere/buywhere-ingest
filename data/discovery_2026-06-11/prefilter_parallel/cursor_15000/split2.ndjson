@@ -1,0 +1,9 @@
+{"domain":"db.tt","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":4558,"country_code":"US","currency":null}
+{"domain":"fivetran.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":5682,"country_code":"US","currency":null}
+{"domain":"clickn.co.kr","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":2682,"country_code":"KR","currency":null}
+{"domain":"skorozvon.ru","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":759,"country_code":"US","currency":null}
+{"domain":"talentlms.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":2520,"country_code":"US","currency":null}
+{"domain":"junglescout.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":60,"country_code":"US","currency":null}
+{"domain":"midea.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":92,"country_code":"US","currency":null}
+{"domain":"zougla.gr","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1549,"country_code":"US","currency":null}
+{"domain":"footlocker.com","platform":"woocommerce","product_endpoint":"https://footlocker.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":1578,"country_code":"US","currency":null}

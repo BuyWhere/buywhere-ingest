@@ -1,0 +1,3 @@
+{"domain":"vuoriclothing.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":321,"country_code":"US","currency":null}
+{"domain":"vuori.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":341,"country_code":"US","currency":null}
+{"domain":"outlier.nyc","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":158,"country_code":"US","currency":null}

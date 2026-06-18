@@ -1,0 +1,4 @@
+{"domain":"tanjunggo.ink","platform":"woocommerce","product_endpoint":"https://tanjunggo.ink/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":853,"country_code":"US","currency":null}
+{"domain":"telugujobspoint.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":390,"country_code":"US","currency":null}
+{"domain":"teamvedika.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":514,"country_code":"US","currency":null}
+{"domain":"telkomschools.sch.id","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":690,"country_code":"ID","currency":null}

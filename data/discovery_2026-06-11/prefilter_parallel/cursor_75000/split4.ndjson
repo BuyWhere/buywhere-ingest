@@ -1,0 +1,2 @@
+{"domain":"rekhtadictionary.com","platform":"woocommerce","product_endpoint":"https://rekhtadictionary.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":465,"country_code":"US","currency":null}
+{"domain":"tupperware.com","platform":"shopify","product_endpoint":"https://tupperware.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":4649,"country_code":"US","currency":null}

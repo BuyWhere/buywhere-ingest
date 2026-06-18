@@ -158,6 +158,7 @@ def main() -> int:
         )
         return 0
 
+    record_count = len(products)
     inserted = upsert_products(
         products,
         source=MERCHANT_DEFAULTS[args.merchant_key]["source"],
@@ -173,11 +174,12 @@ def main() -> int:
 
     marker_summary: dict[str, Any] | None = None
     if not args.skip_marker and inserted > 0:
+        partial_errors = max(0, record_count - inserted)
         marker_summary = finalize_marker(
             args.ndjson_path,
-            record_count=len(products),
+            record_count=record_count,
             inserted=inserted,
-            errors=0,
+            errors=partial_errors,
             writer="emergency_catalog_ingest.py:BUY-29199",
             require_r2=not args.lenient_marker,
         )
@@ -187,11 +189,20 @@ def main() -> int:
     payload = {
         "merchant_key": args.merchant_key,
         "ndjson_path": str(args.ndjson_path),
+        "record_count": record_count,
         "rows_written": inserted,
+        "rows_skipped": max(0, record_count - inserted),
+        "partial": bool(marker_summary and marker_summary.get("partial")),
         "database_url": database_url(),
         "marker": marker_summary,
     }
     print(json.dumps(payload, indent=2, sort_keys=True))
+    if marker_summary and marker_summary.get("partial"):
+        print(
+            f"WARNING: partial ingest — {payload['rows_skipped']} of {record_count} records were not upserted. "
+            f"Marker written with ingest.partial=true so Gate B retains the file for re-drive.",
+            file=sys.stderr,
+        )
     return 0
 
 

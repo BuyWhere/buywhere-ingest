@@ -1,0 +1,352 @@
+{
+  "started_at": "2026-06-07T14:36:48.646Z",
+  "sources": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14"
+  ],
+  "per_source": {
+    "1": {
+      "records": 0,
+      "meta": {
+        "source": "google_shopping",
+        "status": "deferred_serp_scraping_cost"
+      },
+      "file": "data/benchmark_2026-06-07/multi_source_bench/raw/source_1.ndjson",
+      "elapsed_ms": 0
+    },
+    "2": {
+      "records": 0,
+      "meta": {
+        "source": "builtwith_free",
+        "status": "deferred_no_api_key",
+        "note": "Register at https://api.builtwith.com/ for free tier access; emit integration plan only.",
+        "candidates_to_evaluate": [
+          "shopify.com",
+          "woocommerce.com",
+          "magento.com",
+          "bigcommerce.com",
+          "prestashop.com",
+          "opencart.com"
+        ]
+      },
+      "file": "data/benchmark_2026-06-07/multi_source_bench/raw/source_2.ndjson",
+      "elapsed_ms": 0
+    },
+    "3": {
+      "records": 1000,
+      "meta": {
+        "url": "https://tranco-list.eu/top-1m.csv.zip",
+        "status": 200,
+        "sampled": 1000,
+        "latency_ms": 1700
+      },
+      "file": "data/benchmark_2026-06-07/multi_source_bench/raw/source_3.ndjson",
+      "elapsed_ms": 1738
+    },
+    "4": {
+      "records": 0,
+      "meta": {
+        "source": "commoncrawl_cdx",
+        "index": "CC-MAIN-2025-43",
+        "queries": [
+          {
+            "url": "https://index.commoncrawl.org/CC-MAIN-2025-43-index?url=*.com%2Fproducts.json&output=json&limit=1250&fl=url,timestamp,status&filter=status:200",
+            "error": "connect ECONNREFUSED 54.237.141.66:443",
+            "latency_ms": 242
+          },
+          {
+            "url": "https://index.commoncrawl.org/CC-MAIN-2025-43-index?url=*%2Fwp-json%2Fwc%2Fv3%2Fproducts*&output=json&limit=1250&fl=url,timestamp,status&filter=status:200",
+            "error": "connect ECONNREFUSED 54.237.141.66:443",
+            "latency_ms": 241
+          },
+          {
+            "url": "https://index.commoncrawl.org/CC-MAIN-2025-43-index?url=*%2Frest%2FV1%2Fproducts*&output=json&limit=1250&fl=url,timestamp,status&filter=status:200",
+            "error": "connect ECONNREFUSED 54.237.141.66:443",
+            "latency_ms": 232
+          },
+          {
+            "url": "https://index.commoncrawl.org/CC-MAIN-2025-43-index?url=*%2Fapi%2Fcatalog%2Fproducts*&output=json&limit=1250&fl=url,timestamp,status&filter=status:200",
+            "error": "connect ECONNREFUSED 54.237.141.66:443",
+            "latency_ms": 240
+          }
+        ]
+      },
+      "file": "data/benchmark_2026-06-07/multi_source_bench/raw/source_4.ndjson",
+      "elapsed_ms": 956
+    },
+    "5": {
+      "records": 0,
+      "meta": {
+        "source": "google_search",
+        "status": "deferred_serp_scraping_cost"
+      },
+      "file": "data/benchmark_2026-06-07/multi_source_bench/raw/source_5.ndjson",
+      "elapsed_ms": 0
+    },
+    "6": {
+      "records": 0,
+      "meta": {
+        "source": "us_business_registries",
+        "status": "deferred_bulk_download"
+      },
+      "file": "data/benchmark_2026-06-07/multi_source_bench/raw/source_6.ndjson",
+      "elapsed_ms": 0
+    },
+    "7": {
+      "records": 0,
+      "meta": {
+        "source": "yelp_fusion",
+        "status": "deferred_api_key_required"
+      },
+      "file": "data/benchmark_2026-06-07/multi_source_bench/raw/source_7.ndjson",
+      "elapsed_ms": 0
+    },
+    "8": {
+      "records": 0,
+      "meta": {
+        "source": "instagram_tiktok",
+        "status": "deferred_high_risk"
+      },
+      "file": "data/benchmark_2026-06-07/multi_source_bench/raw/source_8.ndjson",
+      "elapsed_ms": 0
+    },
+    "9": {
+      "records": 3,
+      "meta": {
+        "source": "affiliate_networks",
+        "status": "directory_index_only",
+        "note": "real merchants come from per-network advertiser search"
+      },
+      "file": "data/benchmark_2026-06-07/multi_source_bench/raw/source_9.ndjson",
+      "elapsed_ms": 0
+    },
+    "10": {
+      "records": 0,
+      "meta": {
+        "source": "schema_product_via_cdx",
+        "index": "CC-MAIN-2025-43",
+        "queries": [
+          {
+            "url": "https://web.archive.org/cdx/search/cdx?url=*%2Fproduct%2F*&output=json&fl=url%2Cstatus%2Ctimestamp%2Clength&limit=1666&filter=status%3A200&from=20250101&to=20260601",
+            "status": 400,
+            "error": "",
+            "latency_ms": 21854,
+            "pattern": "*/product/*"
+          },
+          {
+            "url": "https://web.archive.org/cdx/search/cdx?url=*%2Fproducts%2F*&output=json&fl=url%2Cstatus%2Ctimestamp%2Clength&limit=1666&filter=status%3A200&from=20250101&to=20260601",
+            "status": 400,
+            "error": "",
+            "latency_ms": 8679,
+            "pattern": "*/products/*"
+          },
+          {
+            "url": "https://web.archive.org/cdx/search/cdx?url=*%2Fp%2F*&output=json&fl=url%2Cstatus%2Ctimestamp%2Clength&limit=1666&filter=status%3A200&from=20250101&to=20260601",
+            "status": 400,
+            "error": "",
+            "latency_ms": 4990,
+            "pattern": "*/p/*"
+          }
+        ]
+      },
+      "file": "data/benchmark_2026-06-07/multi_source_bench/raw/source_10.ndjson",
+      "elapsed_ms": 35523
+    },
+    "11": {
+      "records": 0,
+      "meta": {
+        "source": "ct_logs",
+        "queries": [
+          {
+            "url": "https://crt.sh/?q=%25.myshopify.com&output=json&dedupe=1&limit=625",
+            "status": 502,
+            "attempt": 1,
+            "error": "transient",
+            "latency_ms": 937
+          },
+          {
+            "url": "https://crt.sh/?q=%25.myshopify.com&output=json&dedupe=1&limit=625",
+            "status": 502,
+            "attempt": 2,
+            "error": "transient",
+            "latency_ms": 260
+          },
+          {
+            "url": "https://crt.sh/?q=%25.shopify.com&output=json&dedupe=1&limit=625",
+            "status": 502,
+            "attempt": 1,
+            "error": "transient",
+            "latency_ms": 495
+          },
+          {
+            "url": "https://crt.sh/?q=%25.shopify.com&output=json&dedupe=1&limit=625",
+            "status": 502,
+            "attempt": 2,
+            "error": "transient",
+            "latency_ms": 233
+          },
+          {
+            "url": "https://crt.sh/?q=%25.bigcommerce.com&output=json&dedupe=1&limit=625",
+            "status": 502,
+            "attempt": 1,
+            "error": "transient",
+            "latency_ms": 501
+          },
+          {
+            "url": "https://crt.sh/?q=%25.bigcommerce.com&output=json&dedupe=1&limit=625",
+            "status": 502,
+            "attempt": 2,
+            "error": "transient",
+            "latency_ms": 233
+          },
+          {
+            "url": "https://crt.sh/?q=%25.woocommerce.com&output=json&dedupe=1&limit=625",
+            "status": 502,
+            "attempt": 1,
+            "error": "transient",
+            "latency_ms": 7342
+          },
+          {
+            "url": "https://crt.sh/?q=%25.woocommerce.com&output=json&dedupe=1&limit=625",
+            "status": 502,
+            "attempt": 2,
+            "error": "transient",
+            "latency_ms": 11052
+          },
+          {
+            "url": "https://crt.sh/?q=%25.wixsite.com&output=json&dedupe=1&limit=625",
+            "error": "HTTP/2: \"headers timeout after 12000\"",
+            "attempt": 1,
+            "latency_ms": 12011
+          },
+          {
+            "url": "https://crt.sh/?q=%25.wixsite.com&output=json&dedupe=1&limit=625",
+            "status": 502,
+            "attempt": 2,
+            "error": "transient",
+            "latency_ms": 11089
+          },
+          {
+            "url": "%.squarespace.com",
+            "status": "deadline_exceeded",
+            "error": "hit 30000ms cap"
+          }
+        ],
+        "total": 0,
+        "latency_ms": 49162
+      },
+      "file": "data/benchmark_2026-06-07/multi_source_bench/raw/source_11.ndjson",
+      "elapsed_ms": 49164
+    },
+    "12": {
+      "records": 0,
+      "meta": {
+        "source": "github_search",
+        "queries": [
+          {
+            "url": "https://api.github.com/search/code?q=myshopify.com%20products.json+in:file&per_page=50",
+            "status": 401,
+            "error": "{\r\n  \"message\": \"Requires authentication\",\r\n  \"documentation_url\": \"https://docs.github.com/rest\",\r\n  \"status\": \"401\"\r\n}",
+            "latency_ms": 250,
+            "note": "rate_limited_or_unauthorized"
+          },
+          {
+            "url": "https://api.github.com/search/code?q=wc-json%2Fstore%2Fproducts+in:file&per_page=50",
+            "status": 401,
+            "error": "{\r\n  \"message\": \"Requires authentication\",\r\n  \"documentation_url\": \"https://docs.github.com/rest\",\r\n  \"status\": \"401\"\r\n}",
+            "latency_ms": 228,
+            "note": "rate_limited_or_unauthorized"
+          },
+          {
+            "url": "https://api.github.com/search/code?q=bigcommerce%20catalog%20products+in:file&per_page=50",
+            "status": 401,
+            "error": "{\r\n  \"message\": \"Requires authentication\",\r\n  \"documentation_url\": \"https://docs.github.com/rest\",\r\n  \"status\": \"401\"\r\n}",
+            "latency_ms": 234,
+            "note": "rate_limited_or_unauthorized"
+          },
+          {
+            "url": "https://api.github.com/search/code?q=magento%20rest%20V1%20products+in:file&per_page=50",
+            "status": 401,
+            "error": "{\r\n  \"message\": \"Requires authentication\",\r\n  \"documentation_url\": \"https://docs.github.com/rest\",\r\n  \"status\": \"401\"\r\n}",
+            "latency_ms": 227,
+            "note": "rate_limited_or_unauthorized"
+          }
+        ],
+        "total": 0,
+        "latency_ms": 939
+      },
+      "file": "data/benchmark_2026-06-07/multi_source_bench/raw/source_12.ndjson",
+      "elapsed_ms": 940
+    },
+    "13": {
+      "records": 0,
+      "meta": {
+        "source": "dns_dumpster_via_crt",
+        "queries": [
+          {
+            "url": "https://crt.sh/?q=%25.myshopify.com&output=json&dedupe=1&limit=833",
+            "error": "HTTP/2: \"headers timeout after 10000\"",
+            "attempt": 1,
+            "latency_ms": 10010
+          },
+          {
+            "url": "https://crt.sh/?q=%25.myshopify.com&output=json&dedupe=1&limit=833",
+            "error": "HTTP/2: \"headers timeout after 10000\"",
+            "attempt": 2,
+            "latency_ms": 10004
+          },
+          {
+            "url": "https://crt.sh/?q=%25.shopify.com&output=json&dedupe=1&limit=833",
+            "error": "HTTP/2: \"headers timeout after 10000\"",
+            "attempt": 1,
+            "latency_ms": 10001
+          },
+          {
+            "url": "https://crt.sh/?q=%25.shopify.com&output=json&dedupe=1&limit=833",
+            "error": "HTTP/2: \"headers timeout after 10000\"",
+            "attempt": 2,
+            "latency_ms": 10007
+          },
+          {
+            "url": ".bigcommerce.com",
+            "status": "deadline_exceeded",
+            "error": "hit 25000ms cap"
+          }
+        ],
+        "total": 0,
+        "latency_ms": 42024
+      },
+      "file": "data/benchmark_2026-06-07/multi_source_bench/raw/source_13.ndjson",
+      "elapsed_ms": 42025
+    },
+    "14": {
+      "records": 18,
+      "meta": {
+        "source": "amazon_affiliate",
+        "status": "directory_seed",
+        "total": 19,
+        "sampled": 1000,
+        "latency_ms": 0
+      },
+      "file": "data/benchmark_2026-06-07/multi_source_bench/raw/source_14.ndjson",
+      "elapsed_ms": 2
+    }
+  },
+  "aggregate": {
+    "unique_domains": 1010,
+    "raw_records": 1021
+  },
+  "finished_at": "2026-06-07T14:38:59.001Z"
+}

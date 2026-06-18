@@ -1,0 +1,2 @@
+{"domain":"mingalondon.com","platform":"shopify","product_endpoint":"https://mingalondon.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":585,"country_code":"US","currency":null}
+{"domain":"pinarello.com","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":893,"country_code":"US","currency":null}

@@ -1,0 +1,22 @@
+{
+  "last_n_tup_ins": 1197758,
+  "last_n_tup_ins_at": "2026-06-08T09:03:06.951974+00:00",
+  "last_hour_checked": "2026-06-08T08:00:00+00:00",
+  "last_check_result": "FAIL",
+  "last_check_real_rows": 99060,
+  "last_check_source": "n_tup_ins_delta",
+  "last_n_live_tup": 50566947,
+  "last_db_host": "maglev.proxy.rlwy.net:31310/railway",
+  "last_fire_buy": "BUY-35386",
+  "last_filed_child": "BUY-35393",
+  "last_fire_note": "Manual heartbeat for 07:00-08:00Z. n_tup_ins delta since prior fire 07:10:31Z (567,688 \u2192 1,109,202) = 541,514 rows in 0.9824h = 551,204/hr. Estimated 07:00-08:00Z window count (back-calculated from 08:09:28Z sample and rate) = ~462,457 rows. Both signals well above 150K threshold -> no child filed per BUY-29861 rule.",
+  "last_manual_fire_buy": "BUY-35386",
+  "last_manual_fire_at": "2026-06-08T09:03:06.951974+00:00",
+  "last_manual_fire_hour_checked": "2026-06-08T08:00:00+00:00",
+  "last_manual_fire_result": "FAIL",
+  "last_manual_fire_real_rows": 99060,
+  "last_manual_fire_source": "n_tup_ins_delta",
+  "last_manual_filed_child": "BUY-35393",
+  "last_manual_fire_note": "88,556 inserts in 53m38s (08:09:28Z \u2192 09:03:06Z) = 99,060/hr. FAIL at 66.0% of 150K target. Filed BUY-35393 under BUY-29861 per BUY-29861 rule. Estimated 08:00-09:00Z window count (back-calculated) = ~165K (uncertain, 1h-rate is 99K). Postmaster at 06:03:42Z is 2.99h old, no second restart. Rate dropped ~6\u00d7 from prior-hour 552K/hr peak; this is the BUY-30590 maglev DB read/write contention cap expressing itself under reduced post-burst pressure.",
+  "last_manual_fire_doc": "docs/buy-35386-hourly-throughput-check-2026-06-08T08.md"
+}

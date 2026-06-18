@@ -1,0 +1,35 @@
+[deep-page] input records=22 ecom=22 by_platform={"shopify":21,"woocommerce":1} concurrency=22
+[dp] away.com page=1 status=0 bodyLen=undefined
+[dp] casper.com page=1 status=429 bodyLen=undefined
+[dp:wc] fashionnova.com page=1 status=400 bodyLen=undefined
+[dp] glossier.com page=1 status=429 bodyLen=undefined
+[dp] store.google.com page=1 status=404 bodyLen=undefined
+[dp] ssense.com page=1 status=403 bodyLen=undefined
+[dp] mrporter.com page=1 status=0 bodyLen=undefined
+[dp] allbirds.com page=1 status=200 bodyLen=1577656
+[dp] kith.net page=1 status=0 bodyLen=undefined
+[dp] fashionnova.com page=1 status=200 bodyLen=1142214
+[dp] gymshark.com page=1 status=200 bodyLen=1697089
+[dp] warbyparker.com page=1 status=403 bodyLen=undefined
+[dp] brilliantearth.com page=1 status=403 bodyLen=undefined
+[dp] kith.com page=1 status=200 bodyLen=1570575
+[dp] endclothing.com page=1 status=404 bodyLen=undefined
+[dp] shop.hbo.com page=1 status=200 bodyLen=1582329
+[dp] society6.com page=1 status=200 bodyLen=2976018
+[dp] mytheresa.com page=1 status=200 bodyLen=938871
+[dp] mytheresa.com parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[dp] ruggable.com page=1 status=404 bodyLen=undefined
+[dp] allbirds.co.uk page=1 status=200 bodyLen=1799600
+[dp] casper.com page=1 status=429 bodyLen=undefined
+[dp] glossier.com page=1 status=429 bodyLen=undefined
+[dp] casper.com page=1 status=429 bodyLen=undefined
+[dp] glossier.com page=1 status=429 bodyLen=undefined
+[dp] gymshark.co.uk page=1 status=0 bodyLen=undefined
+[dp] net-a-porter.com page=1 status=0 bodyLen=undefined
+[dp] casper.com page=1 status=429 bodyLen=undefined
+[dp] glossier.com page=1 status=429 bodyLen=undefined
+[dp] casper.com page=1 status=429 bodyLen=undefined
+[dp] glossier.com page=1 status=429 bodyLen=undefined
+[dp] casper.com page=1 status=429 bodyLen=undefined
+[dp] glossier.com page=1 status=429 bodyLen=undefined
+[deep-page] DONE: {"stores_processed":22,"stores_failed":0,"total_products":1750,"by_platform":{"shopify":21,"woocommerce":1},"started_at":"2026-06-07T13:59:46.723Z","finished_at":"2026-06-07T14:00:47.009Z","output_rows":1750}

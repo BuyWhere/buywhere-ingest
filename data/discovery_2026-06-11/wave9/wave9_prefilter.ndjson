@@ -1,0 +1,3 @@
+{"domain":"glossier.com","platform":"shopify","product_endpoint":"https://glossier.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":224,"country_code":"US","currency":null}
+{"domain":"hudabeauty.com","platform":"shopify","product_endpoint":"https://hudabeauty.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":318,"country_code":"US","currency":null}
+{"domain":"nudestix.com","platform":"shopify","product_endpoint":"https://nudestix.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":380,"country_code":"US","currency":null}

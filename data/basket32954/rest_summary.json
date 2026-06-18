@@ -1,0 +1,10 @@
+{
+  "total": 300,
+  "successes": 108,
+  "success_rate": 36.0,
+  "by_status": {
+    "200": 300
+  },
+  "top_errors": [],
+  "base_url": "https://api.buywhere.ai/v1/products/search"
+}

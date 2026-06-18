@@ -1,0 +1,27 @@
+[prefilter] input=data/benchmark_2026-06-07/tranco_slice_3_tail.txt domains=1249 concurrency=200
+[prefilter] worker=177 checked=50/1249 passed=0 failed=50 by_platform={}
+[prefilter] worker=127 checked=100/1249 passed=0 failed=100 by_platform={}
+[prefilter] worker=77 checked=150/1249 passed=0 failed=150 by_platform={}
+[prefilter] worker=33 checked=200/1249 passed=0 failed=200 by_platform={}
+[prefilter] worker=55 checked=250/1249 passed=0 failed=250 by_platform={}
+[prefilter] worker=105 checked=300/1249 passed=0 failed=300 by_platform={}
+[prefilter] worker=155 checked=350/1249 passed=0 failed=350 by_platform={}
+[prefilter] worker=16 checked=400/1249 passed=0 failed=400 by_platform={}
+[prefilter] worker=178 checked=450/1249 passed=0 failed=450 by_platform={}
+[prefilter] worker=128 checked=500/1249 passed=0 failed=500 by_platform={}
+[prefilter] worker=78 checked=550/1249 passed=0 failed=550 by_platform={}
+[prefilter] worker=33 checked=600/1249 passed=0 failed=600 by_platform={}
+[prefilter] worker=54 checked=650/1249 passed=0 failed=650 by_platform={}
+[prefilter] worker=104 checked=700/1249 passed=0 failed=700 by_platform={}
+[prefilter] worker=154 checked=750/1249 passed=0 failed=750 by_platform={}
+[prefilter] worker=16 checked=800/1249 passed=0 failed=800 by_platform={}
+[prefilter] worker=175 checked=850/1249 passed=0 failed=850 by_platform={}
+[prefilter] worker=125 checked=900/1249 passed=0 failed=900 by_platform={}
+[prefilter] worker=75 checked=950/1249 passed=0 failed=950 by_platform={}
+[prefilter] worker=33 checked=1000/1249 passed=0 failed=1000 by_platform={}
+[prefilter] worker=52 checked=1050/1249 passed=0 failed=1050 by_platform={}
+[prefilter] worker=102 checked=1100/1249 passed=0 failed=1100 by_platform={}
+[prefilter] worker=152 checked=1150/1249 passed=0 failed=1150 by_platform={}
+[prefilter] worker=16 checked=1200/1249 passed=0 failed=1200 by_platform={}
+[prefilter] worker=47 checked=1249/1249 passed=0 failed=1249 by_platform={}
+[prefilter] done: {"checked":1249,"passed":0,"failed":1249,"by_platform":{},"started_at":"2026-06-07T14:51:57.505Z","finished_at":"2026-06-07T14:56:54.758Z","output":"data/benchmark_2026-06-07/prefilter/tranco_slice_3_tail.ndjson","output_rows":0}

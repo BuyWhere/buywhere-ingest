@@ -1,0 +1,74 @@
+{
+  "tranco_slice_mid_5k.ndjson": {
+    "done_at": "2026-06-07T14:02:04.046Z",
+    "elapsed_ms": 1319,
+    "products": 0,
+    "out": "/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/data/benchmark_2026-06-07/deep-page/tranco_slice_mid_5k_products.ndjson"
+  },
+  "tranco_slice_mid_5k_v2.ndjson": {
+    "done_at": "2026-06-07T14:02:07.163Z",
+    "elapsed_ms": 3116,
+    "products": 500,
+    "out": "/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/data/benchmark_2026-06-07/deep-page/tranco_slice_mid_5k_v2_products.ndjson"
+  },
+  "tranco_slice_4.ndjson": {
+    "done_at": "2026-06-07T14:24:29.867Z",
+    "elapsed_ms": 1597,
+    "products": 0,
+    "out": "/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/data/benchmark_2026-06-07/deep-page/tranco_slice_4_products.ndjson"
+  },
+  "tranco_slice_5.ndjson": {
+    "done_at": "2026-06-07T14:24:30.793Z",
+    "elapsed_ms": 926,
+    "products": 0,
+    "out": "/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/data/benchmark_2026-06-07/deep-page/tranco_slice_5_products.ndjson"
+  },
+  "tranco_slice_6.ndjson": {
+    "done_at": "2026-06-07T14:24:30.925Z",
+    "elapsed_ms": 131,
+    "products": 0,
+    "out": "/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/data/benchmark_2026-06-07/deep-page/tranco_slice_6_products.ndjson"
+  },
+  "tranco_slice_7.ndjson": {
+    "done_at": "2026-06-07T14:24:33.643Z",
+    "elapsed_ms": 2718,
+    "products": 2297,
+    "out": "/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/data/benchmark_2026-06-07/deep-page/tranco_slice_7_products.ndjson"
+  },
+  "tranco_slice_0.ndjson": {
+    "done_at": "2026-06-07T14:32:22.926Z",
+    "elapsed_ms": 69019,
+    "products": 1203,
+    "out": "/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/data/benchmark_2026-06-07/deep-page/tranco_slice_0_products.ndjson"
+  },
+  "tranco_slice_e1.ndjson": {
+    "done_at": "2026-06-07T14:33:23.216Z",
+    "elapsed_ms": 60289,
+    "products": 45,
+    "out": "/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/data/benchmark_2026-06-07/deep-page/tranco_slice_e1_products.ndjson"
+  },
+  "tranco_slice_e2.ndjson": {
+    "done_at": "2026-06-07T14:33:27.398Z",
+    "elapsed_ms": 4181,
+    "products": 500,
+    "out": "/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/data/benchmark_2026-06-07/deep-page/tranco_slice_e2_products.ndjson"
+  },
+  "tranco_slice_3_tail.ndjson": {
+    "done_at": "2026-06-07T14:57:08.824Z",
+    "elapsed_ms": 166,
+    "products": 0,
+    "out": "/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/data/benchmark_2026-06-07/deep-page/tranco_slice_3_tail_products.ndjson"
+  },
+  "tranco_slice_1_tail.ndjson": {
+    "done_at": "2026-06-07T14:57:51.040Z",
+    "elapsed_ms": 2193,
+    "products": 0,
+    "out": "/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/data/benchmark_2026-06-07/deep-page/tranco_slice_1_tail_products.ndjson"
+  },
+  "tranco_slice_2_tail.ndjson": {
+    "done_at": "2026-06-07T14:58:31.209Z",
+    "elapsed_ms": 136,
+    "products": 0,
+    "out": "/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/data/benchmark_2026-06-07/deep-page/tranco_slice_2_tail_products.ndjson"
+  }
+}

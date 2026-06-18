@@ -1,0 +1,16 @@
+{"domain":"doxygen.org","platform":"magento","product_endpoint":"https://doxygen.org/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":169,"country_code":"US","currency":null}
+{"domain":"buymeacoffee.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":18,"country_code":"US","currency":null}
+{"domain":"livechat.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":183,"country_code":"US","currency":null}
+{"domain":"travelaudience.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1844,"country_code":"US","currency":null}
+{"domain":"dinahosting.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":491,"country_code":"US","currency":null}
+{"domain":"vistaprint.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":491,"country_code":"US","currency":null}
+{"domain":"etrade.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":550,"country_code":"US","currency":null}
+{"domain":"gq.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":370,"country_code":"US","currency":null}
+{"domain":"zazzle.com","platform":"woocommerce","product_endpoint":"https://zazzle.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":1057,"country_code":"US","currency":null}
+{"domain":"adspower.net","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":62,"country_code":"US","currency":null}
+{"domain":"foxsports.com","platform":"woocommerce","product_endpoint":"https://foxsports.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":289,"country_code":"US","currency":null}
+{"domain":"lovable.app","platform":"woocommerce","product_endpoint":"https://lovable.app/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":732,"country_code":"US","currency":null}
+{"domain":"tradedoubler.com","platform":"woocommerce","product_endpoint":"https://tradedoubler.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":207,"country_code":"US","currency":null}
+{"domain":"sapphireonline.pk","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":473,"country_code":"US","currency":null}
+{"domain":"estadao.com.br","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":207,"country_code":"BR","currency":null}
+{"domain":"lovable.dev","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":639,"country_code":"US","currency":null}

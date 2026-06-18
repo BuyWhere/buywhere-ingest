@@ -1,0 +1,10 @@
+{"domain":"blenderseyewear.com","platform":"shopify","product_endpoint":"https://blenderseyewear.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":3580,"country_code":"US","currency":null}
+{"domain":"digits.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":300,"country_code":"US","currency":null}
+{"domain":"ishorts.com.br","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":415,"country_code":"BR","currency":null}
+{"domain":"graphis.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1015,"country_code":"US","currency":null}
+{"domain":"serconsrus.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1285,"country_code":"US","currency":null}
+{"domain":"trusteeglobal.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":474,"country_code":"US","currency":null}
+{"domain":"bitsum.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":997,"country_code":"US","currency":null}
+{"domain":"stipjakarta.ac.id","platform":"woocommerce","product_endpoint":"https://stipjakarta.ac.id/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":7022,"country_code":"ID","currency":null}
+{"domain":"visitutah.com","platform":"woocommerce","product_endpoint":"https://visitutah.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":661,"country_code":"US","currency":null}
+{"domain":"tormach.com","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1596,"country_code":"US","currency":null}

@@ -1,0 +1,3 @@
+{"domain":"microperfumes.com","platform":"shopify","product_endpoint":"https://microperfumes.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":2272,"country_code":"US","currency":null}
+{"domain":"vyaparapp.in","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1435,"country_code":"IN","currency":null}
+{"domain":"rcrcq.ca","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":1071,"country_code":"CA","currency":null}

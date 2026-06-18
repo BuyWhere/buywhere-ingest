@@ -1,0 +1,13 @@
+{
+  "last_n_tup_ins": 1944290,
+  "last_n_tup_ins_at": "2026-06-08T14:04:44.161962+00:00",
+  "last_hour_checked": "2026-06-08T13:00:00+00:00",
+  "last_check_result": "PASS",
+  "last_check_real_rows": 1170360,
+  "last_check_source": "n_tup_ins_delta",
+  "last_n_live_tup": 52198046,
+  "last_db_host": "maglev.proxy.rlwy.net:31310/railway",
+  "last_fire_buy": "BUY-35582",
+  "last_fire_note": "PASS ~298,277 rows (198.9% of 150K). Sustained steady-state post BUY-35444 3rd restart. No failure child filed.",
+  "last_fire_doc": "docs/buy-35582-hourly-throughput-check-2026-06-08T12.md"
+}

@@ -1,0 +1,9 @@
+{"domain":"wonderchef.com","platform":"shopify","product_endpoint":"https://wonderchef.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":570,"country_code":"US","currency":null}
+{"domain":"ulefone.com","platform":"shopify","product_endpoint":"https://ulefone.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":1347,"country_code":"US","currency":null}
+{"domain":"getrecharge.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":307,"country_code":"US","currency":null}
+{"domain":"tekkietown.co.za","platform":"shopify","product_endpoint":"https://tekkietown.co.za/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":6346,"country_code":"US","currency":null}
+{"domain":"ashleyhomestore.ca","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":164,"country_code":"CA","currency":null}
+{"domain":"que.es","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":610,"country_code":"ES","currency":null}
+{"domain":"fashiongo.net","platform":"woocommerce","product_endpoint":"https://fashiongo.net/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":8328,"country_code":"US","currency":null}
+{"domain":"casadelaudio.com","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1116,"country_code":"US","currency":null}
+{"domain":"kaznex.kz","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":695,"country_code":"US","currency":null}

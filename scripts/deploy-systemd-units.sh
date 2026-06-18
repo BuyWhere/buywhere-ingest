@@ -18,7 +18,10 @@ PLAIN_UNITS=(
   paperclip-buy30331-sustained-loop.service
   paperclip-buy30590-deep-page-loop.service
   paperclip-buy30727-lane-supervisor.service
+  paperclip-buy31716-fleet-keep-alive.service
+  paperclip-buy31716-fleet-keep-alive.timer
   paperclip-lane-keep-alive.service
+  paperclip-lane-keep-alive.timer
 )
 
 # Templated units — installed once, instantiated per workspace via the

@@ -1,0 +1,24 @@
+{
+  "started_at": "2026-06-11T06:52:48.714Z",
+  "sources": [
+    "3"
+  ],
+  "per_source": {
+    "3": {
+      "records": 10000,
+      "meta": {
+        "url": "https://tranco-list.eu/top-1m.csv.zip",
+        "status": 200,
+        "sampled": 10000,
+        "latency_ms": 32146
+      },
+      "file": "data/discovery_2026-06-11/raw/source_3.ndjson",
+      "elapsed_ms": 32783
+    }
+  },
+  "aggregate": {
+    "unique_domains": 10000,
+    "raw_records": 10000
+  },
+  "finished_at": "2026-06-11T06:53:21.536Z"
+}

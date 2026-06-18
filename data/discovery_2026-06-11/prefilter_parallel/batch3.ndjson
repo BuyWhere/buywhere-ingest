@@ -1,0 +1,13 @@
+{"domain":"easycash.id","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":385,"country_code":"ID","currency":null}
+{"domain":"luvmehair.com","platform":"shopify","product_endpoint":"https://luvmehair.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":6479,"country_code":"US","currency":null}
+{"domain":"serviceautopilot.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":13011,"country_code":"US","currency":null}
+{"domain":"melmagazine.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":5,"country_code":"US","currency":null}
+{"domain":"pypestream.com","platform":"woocommerce","product_endpoint":"https://pypestream.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":1350,"country_code":"US","currency":null}
+{"domain":"autostraddle.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":78,"country_code":"US","currency":null}
+{"domain":"uau.edu","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1063,"country_code":"US","currency":null}
+{"domain":"prelert.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":365,"country_code":"US","currency":null}
+{"domain":"hmhn.org","platform":"woocommerce","product_endpoint":"https://hmhn.org/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":2483,"country_code":"US","currency":null}
+{"domain":"nova.xyz","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":68,"country_code":"US","currency":null}
+{"domain":"foundries.io","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":331,"country_code":"US","currency":null}
+{"domain":"peppermayo.com","platform":"shopify","product_endpoint":"https://peppermayo.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":4280,"country_code":"US","currency":null}
+{"domain":"theleague.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":801,"country_code":"US","currency":null}

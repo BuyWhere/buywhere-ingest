@@ -1,0 +1,44 @@
+# paperclip-buy32819-probe-loop.service
+# BUY-33197: Systemd durability for the non-Shopify source lane.
+# Spawns the Tranco-derived WooCommerce / products.json probe loop, which runs
+# in parallel with the existing sustained + deep-page loops on a different
+# cursor and a lower concurrency (10) so it does not compete for the existing
+# rate-limit budget. Source 'woocommerce' / lane 'buy32819_non_shopify' in the
+# catalog DB keeps it isolated from the exhausted Shopify pool.
+[Unit]
+Description=Paperclip BUY-32819 Non-Shopify Probe Loop — Tranco-derived WooCommerce / products.json
+After=network.target paperclip.service
+Wants=paperclip.service
+
+[Service]
+Type=simple
+User=paperclip
+Group=paperclip
+WorkingDirectory=/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c
+ExecStart=/usr/bin/node scripts/buy32819-probe-loop.mjs
+Restart=always
+RestartSec=15
+StartLimitIntervalSec=300
+StartLimitBurst=10
+
+# Env knobs (overridable in /etc/paperclip/buy32819.env if needed).
+Environment=PROBE_CONCURRENCY=10
+Environment=BATCH_DOMAINS=100
+Environment=PROBE_TIMEOUT_MS=8000
+Environment=SLEEP_MS=5000
+Environment=PER_PAGE=20
+Environment=CLEANUP_EVERY=6
+Environment=CLEANUP_TIMEOUT_S=120
+
+# Logging
+StandardOutput=append:/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/logs/buy32819-systemd.log
+StandardError=append:/paperclip/instances/default/workspaces/3ec8f6dd-1735-4479-9825-a2c42edac34c/logs/buy32819-systemd-err.log
+SyslogIdentifier=paperclip-buy32819
+
+# Resource limits — half the budget of the sustained loop so the lane
+# stays out of the rate-limit contention zone.
+LimitNOFILE=65535
+MemoryMax=2G
+
+[Install]
+WantedBy=multi-user.target

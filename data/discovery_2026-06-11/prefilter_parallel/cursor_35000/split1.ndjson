@@ -1,0 +1,9 @@
+{"domain":"netmera.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1019,"country_code":"US","currency":null}
+{"domain":"signin.aws","platform":"woocommerce","product_endpoint":"https://signin.aws/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":602,"country_code":"US","currency":null}
+{"domain":"sitesearch360.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":54,"country_code":"US","currency":null}
+{"domain":"inc42.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":28,"country_code":"US","currency":null}
+{"domain":"quadlayers.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":485,"country_code":"US","currency":null}
+{"domain":"hashthemes.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":670,"country_code":"US","currency":null}
+{"domain":"vitals.co","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1550,"country_code":"US","currency":null}
+{"domain":"frase.io","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":766,"country_code":"US","currency":null}
+{"domain":"sundayguardianlive.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":496,"country_code":"US","currency":null}

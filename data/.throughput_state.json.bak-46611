@@ -1,0 +1,33 @@
+{
+  "last_n_tup_ins": 52690459,
+  "last_n_tup_ins_at": "2026-06-13T14:05:29.515304+00:00",
+  "last_hour_checked": "2026-06-13T13:00:00+00:00",
+  "last_hour_window_start": "2026-06-13T13:00:00Z",
+  "last_hour_window_end": "2026-06-13T14:00:00Z",
+  "last_check_result": "FAIL",
+  "last_check_real_rows": 43470,
+  "last_check_source": "n_tup_ins_delta",
+  "last_n_live_tup": 83904614,
+  "last_db_host": "maglev.proxy.rlwy.net:31310/railway",
+  "last_check_delta_rows": 41744,
+  "last_check_delta_hours": 0.96,
+  "last_check_rate": 43470,
+  "last_check_threshold": 150000,
+  "last_pm_start": "2026-06-08T10:21:09.112373+00:00",
+  "last_issue_identifier": "BUY-46527",
+  "last_fire_timestamp": "2026-06-13T14:05:29Z",
+  "last_note": "2026-06-13 13:00-14:00Z hour FAIL @ 43,470/hr (29% of 150,000/hr target). Maglev write stall returned after the 12-13Z recovery (BUY-45740/45772). n_tup_ins delta 52,648,715 @13:07:52Z -> 52,690,459 @14:05:29Z = +41,744 over 0.96h = 43,470/hr. Live 45s+ sample at 14:06-14:08Z showed flat n_tup_ins (52,690,459 -> 52,690,477, +18/~5min) = stalled. count_window + MAX(created_at) both timed out under contention. pm_start 2026-06-08T10:21:09Z unchanged (no restart, delta valid, not a stats reset). Upper bound crediting unmeasured first 8min at prior peak 369,700/hr is ~92,000 = 61% of target — FAIL under every reconstruction. Filed child BUY-46527 under BUY-29861, assigned to user MRfjkCUzuFyLTtKHcVLDaJxoAAWxM7b6 (priority high). NOTE: cron dispatcher --dry-run state-dedup false-positived this hour because the prior MANUAL fire stored last_hour_checked using a window-END convention (13:00 for the 12-13Z hour) while the dispatcher uses window-START; --force is also buggy for FAIL (line 615 requires `not args.force`, so --force suppresses FAIL filing). Filed manually to honor the BUY-29861 contract.",
+  "last_closed_day": {
+    "date": "2026-06-11",
+    "n_tup_ins_open": 44622141,
+    "n_tup_ins_close": 44898133,
+    "delta": 275992,
+    "n_live_tup_close": 76752961,
+    "open_at": "2026-06-11T23:02:31+00:00",
+    "close_at": "2026-06-12T00:04:06.230363+00:00",
+    "db_host": "maglev.proxy.rlwy.net:31310/railway",
+    "source": "midnight_snapshot"
+  },
+  "last_midnight_recorded_date": "2026-06-11",
+  "last_failure_child_identifier": "BUY-46527"
+}

@@ -37,9 +37,21 @@ WORKSPACE_3EC="3ec8f6dd-1735-4479-9825-a2c42edac34c"
 LOOP_DEFS=(
   "node.*buy30331-sustained-loop\\.mjs:nohup setsid node /paperclip/instances/default/workspaces/${WORKSPACE_3EC}/scripts/buy30331-sustained-loop.mjs >> $ROOT_DIR/logs/supervised-buy30331.log 2>&1 &"
   "node.*buy30590-deep-page-loop\\.mjs:nohup setsid node /paperclip/instances/default/workspaces/${WORKSPACE_3EC}/scripts/buy30590-deep-page-loop.mjs >> $ROOT_DIR/logs/supervised-buy30590-deep.log 2>&1 &"
-  "node.*buy30727-lane-supervisor\\.mjs:nohup setsid node /paperclip/instances/default/workspaces/${WORKSPACE_3EC}/scripts/buy30727-lane-supervisor.mjs >> $ROOT_DIR/logs/supervised-buy30727.log 2>&1 &"
-  "node.*buy30331-ingest-stream\\.mjs:nohup setsid node /paperclip/instances/default/workspaces/${WORKSPACE_3EC}/scripts/buy30331-ingest-stream.mjs --catalog-file $ROOT_DIR/data/.catalog_db_url >> $ROOT_DIR/logs/supervised-buy30331-ingest.log 2>&1 &"
+  # BUY-31452: buy30727 CC-MAIN lane supervisor PERMANENTLY DISABLED — all 47 indices saturated.
+  # Commented out entirely (not just stop-marker gated) to prevent any respawn races.
+  # "node.*buy30727-lane-supervisor\\.mjs:nohup setsid node /paperclip/instances/default/workspaces/${WORKSPACE_3EC}/scripts/buy30727-lane-supervisor.mjs >> $ROOT_DIR/logs/supervised-buy30727.log 2>&1 &"
+  # NOTE: buy30331-ingest-stream.mjs removed — it is a one-shot bulk ingest utility
+  # that requires NDJSON file arguments, not a persistent loop. Supervising it
+  # causes a crash loop (exits "No input files" → restart → hit max restarts).
 )
+
+# BUY-31452: stop-marker check for buy30727 only. If the marker file exists
+# at $ROOT_DIR/data/buy30727-supervisor.stopped, treat buy30727 as permanently
+# disabled (do not respawn). This overrides is_loop_alive for that one pattern.
+buy30727_stop_marker="$ROOT_DIR/data/buy30727-supervisor.stopped"
+is_buy30727_stopped() {
+  [[ -f "$buy30727_stop_marker" ]]
+}
 
 log() {
   local ts
@@ -49,6 +61,10 @@ log() {
 
 is_loop_alive() {
   local pattern="$1"
+  # BUY-31452: respect stop marker for buy30727
+  if [[ "$pattern" == *buy30727-lane-supervisor* ]] && is_buy30727_stopped; then
+    return 1  # pretend dead so restart logic is bypassed
+  fi
   # pgrep -f can match the supervisor's own shell — count only node processes
   local count
   count=$(pgrep -af "$pattern" 2>/dev/null | grep -c "[n]ode" || true)
@@ -66,6 +82,11 @@ start_loop() {
   local cmd="$2"
   local name
   name=$(short_name "$pattern")
+  # BUY-31452: respect stop marker
+  if [[ "$pattern" == *buy30727-lane-supervisor* ]] && is_buy30727_stopped; then
+    log "Skipped: $name (stop marker present)"
+    return 0
+  fi
   if is_loop_alive "$pattern"; then
     return 0
   fi

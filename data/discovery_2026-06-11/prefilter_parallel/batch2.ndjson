@@ -1,0 +1,15 @@
+{"domain":"keitaro.io","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1273,"country_code":"US","currency":null}
+{"domain":"mileiq.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":581,"country_code":"US","currency":null}
+{"domain":"gqjapan.jp","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":301,"country_code":"JP","currency":null}
+{"domain":"spond.com","platform":"magento","product_endpoint":"https://spond.com/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":336,"country_code":"US","currency":null}
+{"domain":"tailorbrands.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":41,"country_code":"US","currency":null}
+{"domain":"flair.co","platform":"shopify","product_endpoint":"https://flair.co/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":6737,"country_code":"US","currency":null}
+{"domain":"shift.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":27,"country_code":"US","currency":null}
+{"domain":"onetreeplanted.org","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":185,"country_code":"US","currency":null}
+{"domain":"dvdfab.cn","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":5339,"country_code":"CN","currency":null}
+{"domain":"idealsvdr.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":8371,"country_code":"US","currency":null}
+{"domain":"ohiodnr.gov","platform":"woocommerce","product_endpoint":"https://ohiodnr.gov/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":1445,"country_code":"US","currency":null}
+{"domain":"smart-hub.io","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":7214,"country_code":"US","currency":null}
+{"domain":"nobullproject.com","platform":"shopify","product_endpoint":"https://nobullproject.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":6568,"country_code":"US","currency":null}
+{"domain":"residenthome.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":8,"country_code":"US","currency":null}
+{"domain":"affiliatly.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":12767,"country_code":"US","currency":null}

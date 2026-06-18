@@ -1,0 +1,22 @@
+{
+  "last_n_tup_ins": 2909852,
+  "last_n_tup_ins_at": "2026-06-08T01:07:41.754639+00:00",
+  "last_hour_checked": "2026-06-08T02:00:00+00:00",
+  "last_check_result": "FAIL",
+  "last_check_real_rows": 0,
+  "last_check_source": "maglev_unreachable",
+  "last_n_live_tup": 42930549,
+  "last_db_host": "maglev.proxy.rlway.net:31310/railway",
+  "last_fire_buy": "BUY-35085",
+  "last_filed_child": "BUY-35092",
+  "last_fire_note": "Maglev Postgres in startup/restart (TCP accepts, Postgres handshake ECONNRESET). Same fingerprint as BUY-34770 + BUY-35041. Writer pipe dark.",
+  "last_manual_fire_buy": "BUY-35199",
+  "last_manual_fire_at": "2026-06-08T05:15:01.560041+00:00",
+  "last_manual_fire_hour_checked": "2026-06-08T04:00:00+00:00",
+  "last_manual_fire_result": "FAIL",
+  "last_manual_fire_real_rows": 0,
+  "last_manual_fire_source": "writer_pipe_dark_maglev_unreachable",
+  "last_manual_filed_child": "BUY-35212",
+  "last_manual_fire_note": "Maglev still in startup/restart at 05:01:25Z; 5 retries all ECONNRESET. Writer pipe dark: 20 cycles, 499,220 valid, 0 written, 1,007 batch errors. 4th consecutive sub-bar hour. Parallel fires created BUY-35212 (canonical, earliest), BUY-35213, BUY-35220 (closed as done duplicate).",
+  "last_manual_fire_doc": "docs/buy-35199-hourly-throughput-check-2026-06-08T04.md"
+}

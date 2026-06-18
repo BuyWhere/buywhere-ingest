@@ -1,0 +1,20 @@
+{
+  "ingest": {
+    "at": "2026-06-15T23:47:04+00:00",
+    "errors": 0,
+    "inserted": 173,
+    "partial": false,
+    "records": 173
+  },
+  "ingestedBy": "BUY-52085",
+  "local": {
+    "path": "data/retailer-direct/floydhome.ndjson",
+    "sha256": "ec887b1716fd70a770dc463ef453a8c32c287a8c1a232b4d9ecfad29017960ea",
+    "size": 3270745
+  },
+  "r2": {
+    "bucket": "buywhere-data",
+    "key": "scrape-artifacts/2026-06-15/floydhome.ndjson"
+  },
+  "schemaVersion": 2
+}

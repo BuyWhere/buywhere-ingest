@@ -1,0 +1,33 @@
+{
+  "last_n_tup_ins": 50294061,
+  "last_n_tup_ins_at": "2026-06-12T22:04:25.000000+00:00",
+  "last_hour_checked": "2026-06-12T21:00:00+00:00",
+  "last_hour_window_start": "2026-06-12T20:00:00Z",
+  "last_hour_window_end": "2026-06-12T21:00:00Z",
+  "last_check_result": "PASS",
+  "last_check_real_rows": 264054,
+  "last_check_source": "n_tup_ins_delta",
+  "last_n_live_tup": 81515560,
+  "last_db_host": "maglev.proxy.rlwy.net:31310/railway",
+  "last_check_delta_rows": 264054,
+  "last_check_delta_hours": 0.9769,
+  "last_check_rate": 270277,
+  "last_check_threshold": 150000,
+  "last_pm_start": "2026-06-08T10:21:09.112373+00:00",
+  "last_issue_identifier": "BUY-44788",
+  "last_fire_timestamp": "2026-06-12T22:04:25Z",
+  "last_note": "2026-06-12 20:00-21:00Z hour PASS: n_tup_ins delta 264,054 rows over 0.9769h (anchor S1=50,030,007 @21:05:48Z -> S3=50,294,061 @22:04:25Z) = 270,277/hr reported by Oracle. 180.2% of 150,000/hr threshold (+120,277 rows/hr over target). n_live_tup: 81,515,560. pm_start=2026-06-08T10:21:09Z (4d11h43m prior, delta method valid - no restart in window). n_tup_ins PRIMARY signal is canonical per BUY-33694. Hour-bucket COUNT(*) secondary skipped under maglev contention (expected, per dispatcher pattern). Per BUY-44788 task spec, 150K+ threshold met -> NO failure child issue created. Prior hour (19-20Z, BUY-44582) PASS @ 237,309/hr. 18-19Z reconstructed PASS @ 341,493/hr. 17-18Z (BUY-44386) FAIL child BUY-44395 already filed. 16-17Z (BUY-44277) PASS @ 285,136/hr. No new failure child for 20-21Z (PASS). Closing BUY-44788 as done.",
+  "last_closed_day": {
+    "date": "2026-06-11",
+    "n_tup_ins_open": 44622141,
+    "n_tup_ins_close": 44898133,
+    "delta": 275992,
+    "n_live_tup_close": 76752961,
+    "open_at": "2026-06-11T23:02:31+00:00",
+    "close_at": "2026-06-12T00:04:06.230363+00:00",
+    "db_host": "maglev.proxy.rlwy.net:31310/railway",
+    "source": "midnight_snapshot"
+  },
+  "last_midnight_recorded_date": "2026-06-11",
+  "last_failure_child_identifier": null
+}

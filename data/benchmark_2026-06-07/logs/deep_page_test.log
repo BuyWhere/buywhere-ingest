@@ -1,0 +1,4 @@
+[deep-page] input records=2 ecom=2 by_platform={"shopify":2} concurrency=2
+[dp] gymshark.com page=1 status=200 bodyLen=1697088
+[dp] allbirds.com page=1 status=200 bodyLen=1577656
+[deep-page] DONE: {"stores_processed":2,"stores_failed":0,"total_products":100,"by_platform":{"shopify":2},"started_at":"2026-06-07T13:45:44.163Z","finished_at":"2026-06-07T13:45:44.660Z","output_rows":100}

@@ -1,0 +1,10 @@
+{"domain":"theonion.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":8,"country_code":"US","currency":null}
+{"domain":"amarujala.com","platform":"woocommerce","product_endpoint":"https://amarujala.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":259,"country_code":"US","currency":null}
+{"domain":"halodoc.com","platform":"woocommerce","product_endpoint":"https://halodoc.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":3870,"country_code":"US","currency":null}
+{"domain":"vlr.gg","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":976,"country_code":"US","currency":null}
+{"domain":"but.fr","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":484,"country_code":"FR","currency":null}
+{"domain":"bom.gov.au","platform":"woocommerce","product_endpoint":"https://bom.gov.au/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":270,"country_code":"AU","currency":null}
+{"domain":"turbify.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":935,"country_code":"US","currency":null}
+{"domain":"websitedemos.net","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":63,"country_code":"US","currency":null}
+{"domain":"leadsquared.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":44,"country_code":"US","currency":null}
+{"domain":"ecobee.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":709,"country_code":"US","currency":null}

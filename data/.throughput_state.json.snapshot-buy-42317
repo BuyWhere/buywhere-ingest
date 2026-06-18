@@ -1,0 +1,32 @@
+{
+  "last_n_tup_ins": 44375421,
+  "last_n_tup_ins_at": "2026-06-11T22:01:37.000000Z",
+  "last_hour_checked": "2026-06-11T21:00:00+00:00",
+  "last_hour_window_start": "2026-06-11T21:01:42Z",
+  "last_hour_window_end": "2026-06-11T22:01:37Z",
+  "last_check_result": "PASS",
+  "last_check_real_rows": 422605,
+  "last_check_source": "n_tup_ins_delta",
+  "last_n_live_tup": 76341362,
+  "last_db_host": "maglev.proxy.rlwy.net:31310/railway",
+  "last_check_delta_rows": 422018,
+  "last_check_delta_hours": 0.9986,
+  "last_check_rate": 422605,
+  "last_check_threshold": 150000,
+  "last_pm_start": "2026-06-08T10:21:09.112373+00:00",
+  "last_issue_identifier": "none",
+  "last_fire_timestamp": "2026-06-11T22:01:37Z",
+  "last_note": "21:00-22:00Z hour PASS: delta 422,018 over 0.9986h (2026-06-11T21:01:42Z anchor -> 2026-06-11T22:01:37Z) = 422,605/hr (n_tup_ins PRIMARY signal under maglev contention). S1 43,953,403 (2026-06-11T21:01:42Z) -> S2 44,375,421 (2026-06-11T22:01:37Z) -> delta 422,018 in 0.9986h = 422,605/hr. n_live_tup: 76,341,362. pm_start=2026-06-08T10:21:09Z (well outside this hour, delta method valid). count(*) TIMED OUT (30s) \u2014 maglev contention. NO child issue filed (rate 422,605/hr >= 150,000/hr threshold by +272,605/hr, +181.7%). Auto-dispatcher cron still broken (BUY-33694); this heartbeat at 2026-06-11T22:01:37Z is the canonical fire for the 21:00-22:00Z window. State file backup at /tmp/throughput_state.42178.backup.json.",
+  "last_closed_day": {
+    "date": "2026-06-10",
+    "n_tup_ins_open": 30148362,
+    "n_tup_ins_close": 30542209,
+    "delta": 393847,
+    "n_live_tup_close": 65495587,
+    "open_at": "2026-06-10T23:01:43.565471+00:00",
+    "close_at": "2026-06-11T00:01:03.257837+00:00",
+    "db_host": "maglev.proxy.rlwy.net:31310/railway",
+    "source": "midnight_snapshot"
+  },
+  "last_midnight_recorded_date": "2026-06-10"
+}

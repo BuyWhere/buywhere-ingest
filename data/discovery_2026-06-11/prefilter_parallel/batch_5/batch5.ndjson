@@ -1,0 +1,9 @@
+{"domain":"sorellasthebrand.com","platform":"shopify","product_endpoint":"https://sorellasthebrand.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":420,"country_code":"US","currency":null}
+{"domain":"floranext.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":737,"country_code":"US","currency":null}
+{"domain":"fpif.org","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":6460,"country_code":"US","currency":null}
+{"domain":"bebodywise.com","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":686,"country_code":"US","currency":null}
+{"domain":"oficialfarma.com.br","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":12245,"country_code":"BR","currency":null}
+{"domain":"leapfrog.com","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":12863,"country_code":"US","currency":null}
+{"domain":"spellbee.org","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":584,"country_code":"US","currency":null}
+{"domain":"memberpress.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":327,"country_code":"US","currency":null}
+{"domain":"saaslio.com","platform":"woocommerce","product_endpoint":"https://saaslio.com/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":286,"country_code":"US","currency":null}

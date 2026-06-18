@@ -1,0 +1,33 @@
+{
+  "last_n_tup_ins": 50656943,
+  "last_n_tup_ins_at": "2026-06-13T00:04:28+00:00",
+  "last_hour_checked": "2026-06-12T23:00:00+00:00",
+  "last_hour_window_start": "2026-06-12T23:00:00Z",
+  "last_hour_window_end": "2026-06-13T00:00:00Z",
+  "last_check_result": "FAIL",
+  "last_check_real_rows": 117352,
+  "last_check_source": "n_tup_ins_delta",
+  "last_n_live_tup": 81873186,
+  "last_db_host": "maglev.proxy.rlwy.net:31310/railway",
+  "last_check_delta_rows": 111224,
+  "last_check_delta_hours": 0.9478,
+  "last_check_rate": 117352,
+  "last_check_threshold": 150000,
+  "last_pm_start": "2026-06-08T10:21:09.112373+00:00",
+  "last_issue_identifier": "BUY-45014",
+  "last_fire_timestamp": "2026-06-13T00:04:28Z",
+  "last_note": "2026-06-12 23:00-24:00Z hour FAIL: n_tup_ins delta 111,224 rows over 0.9478h (anchor S3=50,545,719 @23:07:36Z -> S4=50,656,943 @00:04:28Z) = 117,352/hr reported by Oracle. 78.2% of 150,000/hr threshold (-32,648 rows/hr below target). n_live_tup delta 81,762,891 -> 81,873,186 = +110,295 over 0.9478h = 116,372/hr (corroborates). pm_start=2026-06-08T10:21:09Z (4d13h43m prior, no restart in window, delta method valid). n_tup_ins PRIMARY signal canonical per BUY-33694. Hour-bucket COUNT(*) + MAX(created_at) timed out (maglev contention) - fast-path only. Per BUY-45014 task spec, below 150K threshold -> FAIL child issue BUY-45014 filed (assignee Rich, parent BUY-29861). 22-23Z (BUY-44888) PASS @ 238,979/hr. 21-22Z (BUY-44788) PASS @ 270,277/hr. 20-21Z (BUY-44685) PASS @ 264,054/hr. 19-20Z (BUY-44582) PASS @ 237,309/hr. 18-19Z (BUY-44486) PASS @ 341,493/hr. 17-18Z (BUY-44395) FAIL filed. 16-17Z (BUY-44277) PASS @ 285,136/hr. Closing BUY-45000 as done after filing BUY-45014.",
+  "last_closed_day": {
+    "date": "2026-06-11",
+    "n_tup_ins_open": 44622141,
+    "n_tup_ins_close": 44898133,
+    "delta": 275992,
+    "n_live_tup_close": 76752961,
+    "open_at": "2026-06-11T23:02:31+00:00",
+    "close_at": "2026-06-12T00:04:06.230363+00:00",
+    "db_host": "maglev.proxy.rlwy.net:31310/railway",
+    "source": "midnight_snapshot"
+  },
+  "last_midnight_recorded_date": "2026-06-11",
+  "last_failure_child_identifier": "BUY-45014"
+}

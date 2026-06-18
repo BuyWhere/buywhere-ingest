@@ -1,0 +1,2 @@
+{"domain":"voltareninfo.com","platform":"schema-product","product_endpoint":null,"probe_status":200,"detection_method":"schema_org","latency_ms":1165,"country_code":"US","currency":null}
+{"domain":"pothys.com","platform":"shopify","product_endpoint":"https://pothys.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":7678,"country_code":"US","currency":null}

@@ -1,0 +1,69 @@
+[ingest-daemon] dedup: 5768 -> 5757 (removed 11 duplicate skus)
+(node:368805) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:368805) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+[ingest-daemon] curated_products.ndjson.processing.ndjson failed: bind message has 29464 parameter formats but 0 parameters
+[ingest-daemon] dedup: 5768 -> 5757 (removed 11 duplicate skus)
+[ingest-daemon] curated_products.ndjson.processing.ndjson failed: bind message has 29464 parameter formats but 0 parameters
+[ingest-daemon] dedup: 5768 -> 5757 (removed 11 duplicate skus)
+[ingest-daemon] curated_products.ndjson.processing.ndjson failed: bind message has 29464 parameter formats but 0 parameters
+[ingest-daemon] dedup: 5768 -> 5757 (removed 11 duplicate skus)
+[ingest-daemon] curated_products.ndjson.processing.ndjson failed: bind message has 29464 parameter formats but 0 parameters
+[ingest-daemon] dedup: 5768 -> 5757 (removed 11 duplicate skus)
+[ingest-daemon] curated_products.ndjson.processing.ndjson failed: bind message has 29464 parameter formats but 0 parameters
+[ingest-daemon] dedup: 5768 -> 5757 (removed 11 duplicate skus)
+[ingest-daemon] curated_products.ndjson.processing.ndjson failed: bind message has 29464 parameter formats but 0 parameters
+[ingest-daemon] dedup: 5768 -> 5757 (removed 11 duplicate skus)
+[ingest-daemon] curated_products.ndjson.processing.ndjson failed: bind message has 29464 parameter formats but 0 parameters
+[ingest-daemon] dedup: 5768 -> 5757 (removed 11 duplicate skus)
+[ingest-daemon] curated_products.ndjson.processing.ndjson failed: bind message has 29464 parameter formats but 0 parameters
+[ingest-daemon] dedup: 5768 -> 5757 (removed 11 duplicate skus)
+[ingest-daemon] curated_products.ndjson.processing.ndjson failed: bind message has 29464 parameter formats but 0 parameters
+[ingest-daemon] dedup: 5768 -> 5757 (removed 11 duplicate skus)
+[ingest-daemon] curated_products.ndjson.processing.ndjson failed: bind message has 29464 parameter formats but 0 parameters
+[ingest-daemon] dedup: 5768 -> 5757 (removed 11 duplicate skus)
+[ingest-daemon] curated_products.ndjson.processing.ndjson failed: bind message has 29464 parameter formats but 0 parameters
+[ingest-daemon] dedup: 5768 -> 5757 (removed 11 duplicate skus)
+[ingest-daemon] curated_products.ndjson.processing.ndjson failed: bind message has 29464 parameter formats but 0 parameters
+[ingest-daemon] dedup: 5768 -> 5757 (removed 11 duplicate skus)
+[ingest-daemon] curated_products.ndjson.processing.ndjson failed: bind message has 29464 parameter formats but 0 parameters
+[ingest-daemon] dedup: 5768 -> 5757 (removed 11 duplicate skus)
+[ingest-daemon] curated_products.ndjson.processing.ndjson failed: bind message has 29464 parameter formats but 0 parameters
+[ingest-daemon] dedup: 5768 -> 5757 (removed 11 duplicate skus)
+[ingest-daemon] curated_products.ndjson.processing.ndjson failed: bind message has 29464 parameter formats but 0 parameters
+[ingest-daemon] dedup: 5768 -> 5757 (removed 11 duplicate skus)
+[ingest-daemon] curated_products.ndjson.processing.ndjson failed: bind message has 29464 parameter formats but 0 parameters
+[ingest-daemon] dedup: 5768 -> 5757 (removed 11 duplicate skus)
+[ingest-daemon] curated_products.ndjson.processing.ndjson failed: bind message has 29464 parameter formats but 0 parameters
+[ingest-daemon] dedup: 5768 -> 5757 (removed 11 duplicate skus)
+[ingest-daemon] curated_products.ndjson.processing.ndjson failed: bind message has 29464 parameter formats but 0 parameters
+[ingest-daemon] dedup: 5768 -> 5757 (removed 11 duplicate skus)
+[ingest-daemon] curated_products.ndjson.processing.ndjson failed: bind message has 29464 parameter formats but 0 parameters
+[ingest-daemon] dedup: 5768 -> 5757 (removed 11 duplicate skus)
+[ingest-daemon] curated_products.ndjson.processing.ndjson failed: bind message has 29464 parameter formats but 0 parameters
+[ingest-daemon] dedup: 5768 -> 5757 (removed 11 duplicate skus)
+[ingest-daemon] curated_products.ndjson.processing.ndjson failed: bind message has 29464 parameter formats but 0 parameters
+[ingest-daemon] dedup: 5768 -> 5757 (removed 11 duplicate skus)
+[ingest-daemon] curated_products.ndjson.processing.ndjson failed: bind message has 29464 parameter formats but 0 parameters
+[ingest-daemon] {"ts":"2026-06-07T14:24:41.912Z","file":"tranco_slice_4_products.ndjson.processing.ndjson","rows":0,"written":0,"fabricated":false,"fabrication_share":null,"elapsed_ms":1,"rows_per_sec":0}
+[ingest-daemon] {"ts":"2026-06-07T14:24:41.914Z","file":"tranco_slice_5_products.ndjson.processing.ndjson","rows":0,"written":0,"fabricated":false,"fabrication_share":null,"elapsed_ms":1,"rows_per_sec":0}
+[ingest-daemon] {"ts":"2026-06-07T14:24:41.914Z","file":"tranco_slice_6_products.ndjson.processing.ndjson","rows":0,"written":0,"fabricated":false,"fabrication_share":null,"elapsed_ms":0,"rows_per_sec":0}
+[ingest-daemon] dedup: 2297 -> 2287 (removed 10 duplicate skus)
+[ingest-daemon] {"ts":"2026-06-07T14:24:45.595Z","file":"tranco_slice_7_products.ndjson.processing.ndjson","rows":2297,"written":2287,"fabricated":false,"fabrication_share":{"zeroPriceShare":0,"nullImageShare":0,"nullSkuShare":0,"emptyTitleShare":0},"elapsed_ms":3681,"rows_per_sec":"621.3"}
+[ingest-daemon] dedup: 1203 -> 1202 (removed 1 duplicate skus)
+[ingest-daemon] tranco_slice_0_products.ndjson.processing.ndjson failed: canceling statement due to statement timeout
+[ingest-daemon] dedup: 1203 -> 1202 (removed 1 duplicate skus)
+[ingest-daemon] dedup: 500 -> 456 (removed 44 duplicate skus)
+[ingest-daemon] {"ts":"2026-06-07T14:34:14.370Z","file":"tranco_slice_e1_products.ndjson.processing.ndjson","rows":45,"written":45,"fabricated":false,"fabrication_share":{"zeroPriceShare":0,"nullImageShare":0,"nullSkuShare":0,"emptyTitleShare":0},"elapsed_ms":47028,"rows_per_sec":"1.0"}
+[ingest-daemon] {"ts":"2026-06-07T14:34:14.448Z","file":"tranco_slice_e2_products.ndjson.processing.ndjson","rows":500,"written":456,"fabricated":false,"fabrication_share":{"zeroPriceShare":0,"nullImageShare":0,"nullSkuShare":0,"emptyTitleShare":0},"elapsed_ms":17087,"rows_per_sec":"26.7"}
+[ingest-daemon] {"ts":"2026-06-07T14:34:14.590Z","file":"tranco_slice_0_products.ndjson.processing.ndjson","rows":1203,"written":1202,"fabricated":false,"fabrication_share":{"zeroPriceShare":0.0008319467554076539,"nullImageShare":0.11231281198003328,"nullSkuShare":0,"emptyTitleShare":0},"elapsed_ms":32243,"rows_per_sec":"37.3"}
+[ingest-daemon] {"ts":"2026-06-07T14:57:13.532Z","file":"tranco_slice_3_tail_products.ndjson.processing.ndjson","rows":0,"written":0,"fabricated":false,"fabrication_share":null,"elapsed_ms":0,"rows_per_sec":0}
+[ingest-daemon] {"ts":"2026-06-07T14:57:58.577Z","file":"tranco_slice_1_tail_products.ndjson.processing.ndjson","rows":0,"written":0,"fabricated":false,"fabrication_share":null,"elapsed_ms":0,"rows_per_sec":0}
+[ingest-daemon] {"ts":"2026-06-07T14:58:43.622Z","file":"tranco_slice_2_tail_products.ndjson.processing.ndjson","rows":0,"written":0,"fabricated":false,"fabrication_share":null,"elapsed_ms":0,"rows_per_sec":0}

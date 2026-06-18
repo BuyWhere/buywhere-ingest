@@ -1,0 +1,20 @@
+{
+  "ingest": {
+    "at": "2026-06-15T23:51:15+00:00",
+    "errors": 0,
+    "inserted": 162,
+    "partial": false,
+    "records": 162
+  },
+  "ingestedBy": "BUY-52085",
+  "local": {
+    "path": "data/retailer-direct/patternbeauty.ndjson",
+    "sha256": "2cc1a213fec1ddc9d932efca3b46c8646989fe4f285eaeb10e39aadd5e71775d",
+    "size": 841715
+  },
+  "r2": {
+    "bucket": "buywhere-data",
+    "key": "scrape-artifacts/2026-06-15/patternbeauty.ndjson"
+  },
+  "schemaVersion": 2
+}

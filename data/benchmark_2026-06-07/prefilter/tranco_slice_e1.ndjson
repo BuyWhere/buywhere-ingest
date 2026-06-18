@@ -1,0 +1,4 @@
+{"domain":"vincecare.com","platform":"shopify","product_endpoint":"https://vincecare.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":271,"country_code":"US","currency":null}
+{"domain":"x-sense.com","platform":"shopify","product_endpoint":"https://x-sense.com/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":267,"country_code":"US","currency":null}
+{"domain":"scooboo.in","platform":"shopify","product_endpoint":"https://scooboo.in/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":3825,"country_code":"IN","currency":null}
+{"domain":"ambientweather.com","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1091,"country_code":"US","currency":null}

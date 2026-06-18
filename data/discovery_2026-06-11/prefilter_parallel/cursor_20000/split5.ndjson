@@ -1,0 +1,2 @@
+{"domain":"thoughtcatalog.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1024,"country_code":"US","currency":null}
+{"domain":"likuid.com","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1109,"country_code":"US","currency":null}

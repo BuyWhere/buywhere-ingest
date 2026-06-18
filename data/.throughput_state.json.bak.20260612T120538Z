@@ -1,0 +1,32 @@
+{
+  "last_n_tup_ins": 47044567,
+  "last_n_tup_ins_at": "2026-06-12T11:04:27.190262+00:00",
+  "last_hour_checked": "2026-06-12T10:00:00+00:00",
+  "last_hour_window_start": "2026-06-12T09:05:59.530085Z",
+  "last_hour_window_end": "2026-06-12T11:04:27.190262+00:00",
+  "last_check_result": "PASS",
+  "last_check_real_rows": 710995,
+  "last_check_source": "n_tup_ins_delta",
+  "last_n_live_tup": 78294426,
+  "last_db_host": "maglev.proxy.rlwy.net:31310/railway",
+  "last_check_delta_rows": 710995,
+  "last_check_delta_hours": 1.97435,
+  "last_check_rate": 360116,
+  "last_check_threshold": 150000,
+  "last_pm_start": "2026-06-08T10:21:09.112373+00:00",
+  "last_issue_identifier": "BUY-43592",
+  "last_fire_timestamp": "2026-06-12T11:04:27.190262+00:00",
+  "last_note": "2026-06-12 10:00-11:00Z hour PASS: raw delta 710,995 rows over 1.97435h (2026-06-12T09:05:59.530Z anchor from BUY-43393 -> 2026-06-12T11:04:27.190Z sample) = 360,116/hr (n_tup_ins PRIMARY signal under maglev contention). S1 46,333,572 (from BUY-43393 prior fire) -> S2 47,044,567 (now). n_live_tup: 78,294,426. pm_start=2026-06-08T10:21:09Z (3d22h43m prior, delta method valid). Rate 360,116/hr is 240% of 150,000/hr threshold (+140% vs threshold). Hour-over-hour: 09:00-10:00Z was ~360K/hr (extrapolated from this anchor-to-sample mid-straddle), 08:00-09:00Z was 487,718/hr (BUY-43393 PASS). Anchor-to-sample straddles 10:00Z so rate is averaged over the straddle, but throughput is approximately stationary on this lane. Auto-dispatcher cron still broken (BUY-33694); this heartbeat at 2026-06-12T11:04:27Z is the canonical fire for the 10:00-11:00Z window. NO child failure issue created (PASS).",
+  "last_closed_day": {
+    "date": "2026-06-11",
+    "n_tup_ins_open": 44622141,
+    "n_tup_ins_close": 44898133,
+    "delta": 275992,
+    "n_live_tup_close": 76752961,
+    "open_at": "2026-06-11T23:02:31+00:00",
+    "close_at": "2026-06-12T00:04:06.230363+00:00",
+    "db_host": "maglev.proxy.rlwy.net:31310/railway",
+    "source": "midnight_snapshot"
+  },
+  "last_midnight_recorded_date": "2026-06-11"
+}

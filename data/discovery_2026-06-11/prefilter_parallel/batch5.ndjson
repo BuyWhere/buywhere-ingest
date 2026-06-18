@@ -1,0 +1,2 @@
+{"domain":"fizzo.org","platform":"woocommerce","product_endpoint":"https://fizzo.org/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":57,"country_code":"US","currency":null}
+{"domain":"buttercms.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":268,"country_code":"US","currency":null}

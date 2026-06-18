@@ -1,0 +1,5 @@
+{"domain":"ex2.com","platform":"magento","product_endpoint":"https://ex2.com/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":247,"country_code":"US","currency":null}
+{"domain":"revibe.co.za","platform":"shopify","product_endpoint":"https://revibe.co.za/products.json?limit=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":2770,"country_code":"US","currency":null}
+{"domain":"otonanswer.jp","platform":"magento","product_endpoint":"https://otonanswer.jp/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":87,"country_code":"JP","currency":null}
+{"domain":"mangaforfree.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":529,"country_code":"US","currency":null}
+{"domain":"ruggable.com","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":55,"country_code":"US","currency":null}

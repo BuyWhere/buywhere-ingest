@@ -1,0 +1,20 @@
+{
+  "ingest": {
+    "at": "2026-06-15T23:46:35+00:00",
+    "errors": 0,
+    "inserted": 560,
+    "partial": false,
+    "records": 560
+  },
+  "ingestedBy": "BUY-52085",
+  "local": {
+    "path": "data/retailer-direct/kbdfans.ndjson",
+    "sha256": "437d8eaa09e7dd63af42e45f06c5efff8ac7c53c4188eed322af5a6a021c08f5",
+    "size": 31366081
+  },
+  "r2": {
+    "bucket": "buywhere-data",
+    "key": "scrape-artifacts/2026-06-15/kbdfans.ndjson"
+  },
+  "schemaVersion": 2
+}

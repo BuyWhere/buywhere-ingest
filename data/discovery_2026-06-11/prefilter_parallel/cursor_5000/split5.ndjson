@@ -1,0 +1,11 @@
+{"domain":"lazada.com.my","platform":"woocommerce","product_endpoint":"https://lazada.com.my/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":85,"country_code":"MY","currency":null}
+{"domain":"singaporeair.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":211,"country_code":"US","currency":null}
+{"domain":"learncbse.in","platform":"magento","product_endpoint":"https://learncbse.in/rest/V1/products?searchCriteria[pageSize]=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":70,"country_code":"IN","currency":null}
+{"domain":"8888.bg","platform":"woocommerce","product_endpoint":"https://8888.bg/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":5640,"country_code":"US","currency":null}
+{"domain":"xskt.com.vn","platform":"woocommerce","product_endpoint":"https://xskt.com.vn/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":730,"country_code":"VN","currency":null}
+{"domain":"truper.com","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":522,"country_code":"US","currency":null}
+{"domain":"brstej.com","platform":"magento-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":1426,"country_code":"US","currency":null}
+{"domain":"saya.pk","platform":"shopify-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":6690,"country_code":"US","currency":null}
+{"domain":"mobizil.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":213,"country_code":"US","currency":null}
+{"domain":"erothots.co","platform":"woocommerce","product_endpoint":"https://erothots.co/wp-json/wc/v3/products?per_page=1","probe_status":200,"detection_method":"platform_endpoint","latency_ms":1013,"country_code":"US","currency":null}
+{"domain":"thenkiri.com","platform":"woocommerce-html","product_endpoint":null,"probe_status":200,"detection_method":"html_signature","latency_ms":591,"country_code":"US","currency":null}

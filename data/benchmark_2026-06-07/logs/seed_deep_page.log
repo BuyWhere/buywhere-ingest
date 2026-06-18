@@ -1,0 +1,30 @@
+[deep-page] input records=26 ecom=26 by_platform={"shopify":26} concurrency=30
+[dp] redbubble.com page=1 status=403 bodyLen=undefined
+[dp] stockx.com page=1 status=403 bodyLen=undefined
+[dp] goat.com page=1 status=403 bodyLen=undefined
+[dp] gearbest.com page=1 status=0 bodyLen=undefined
+[dp] cafago.com page=1 status=0 bodyLen=undefined
+[dp] mrporter.com page=1 status=0 bodyLen=undefined
+[dp] fashionnova.com page=1 status=200 bodyLen=1142214
+[dp] ssense.com page=1 status=403 bodyLen=undefined
+[dp] gymshark.com page=1 status=200 bodyLen=1697088
+[dp] allbirds.com page=1 status=200 bodyLen=1577656
+[dp] society6.com page=1 status=200 bodyLen=1528044
+[dp] teepublic.com page=1 status=406 bodyLen=undefined
+[dp] kith.com page=1 status=200 bodyLen=1570575
+[dp] sony.com page=1 status=403 bodyLen=undefined
+[dp] miniinthebox.com page=1 status=404 bodyLen=undefined
+[dp] mytheresa.com page=1 status=200 bodyLen=938870
+[dp] mytheresa.com parse err: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[dp] geekbuying.com page=1 status=404 bodyLen=undefined
+[dp] lightinthebox.com page=1 status=404 bodyLen=undefined
+[dp] bose.com page=1 status=404 bodyLen=undefined
+[dp] dyson.com page=1 status=404 bodyLen=undefined
+[dp] endclothing.com page=1 status=404 bodyLen=undefined
+[dp] banggood.com page=1 status=404 bodyLen=undefined
+[dp] farfetch.com page=1 status=404 bodyLen=undefined
+[dp] tomtop.com page=1 status=0 bodyLen=undefined
+[dp] fltkicks.com page=1 status=0 bodyLen=undefined
+[deep-page] worker=13 stores=25 failed=0 products=1250 by_platform={"shopify":25}
+[dp] net-a-porter.com page=1 status=0 bodyLen=undefined
+[deep-page] DONE: {"stores_processed":26,"stores_failed":0,"total_products":1250,"by_platform":{"shopify":26},"started_at":"2026-06-07T13:51:37.940Z","finished_at":"2026-06-07T13:51:53.505Z","output_rows":1250}
