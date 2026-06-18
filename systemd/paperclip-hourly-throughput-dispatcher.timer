@@ -1,0 +1,15 @@
+[Unit]
+Description=Paperclip Hourly Throughput Dispatcher — fires at top of every hour
+Requires=paperclip-hourly-throughput-dispatcher.service
+
+[Timer]
+# Fire at the top of every hour, with a small jitter so we don't collide
+# with other top-of-hour system tasks.
+OnCalendar=*:00:00
+RandomizedDelaySec=120
+# Catch up on missed hours after downtime
+Persistent=true
+AccuracySec=30
+
+[Install]
+WantedBy=timers.target

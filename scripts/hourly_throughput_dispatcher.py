@@ -394,7 +394,7 @@ def dedup_check_existing_child(hour_start: datetime) -> bool:
     # only appears for the 22:00 hour; 21:00–22:00 window only for 21:00).
     end = hour_start + timedelta(hours=1)
     window_tag = (
-        f"{hour_start.strftime('%H:%M')}–{end.strftime('%H:%M')} window)"
+        f"{hour_start.strftime('%Y-%m-%d %H:%M')}–{end.strftime('%H:%M')} window)"
     )
     try:
         r = requests.get(
@@ -783,11 +783,15 @@ def main() -> int:
                     "this run. The next hour's run will compute the delta."
                 )
             elif real_rows < TARGET_ROWS_PER_HOUR and not args.force:
-                failure_identifier = create_stall_issue(
-                    hour_start, real_rows, source, note,
-                    hour_data, stat, max_created, db_host, fire_ts,
-                )
-                print(f"[throughput-dispatcher] FAIL — filed {failure_identifier} under BUY-29861")
+                try:
+                    failure_identifier = create_stall_issue(
+                        hour_start, real_rows, source, note,
+                        hour_data, stat, max_created, db_host, fire_ts,
+                    )
+                    print(f"[throughput-dispatcher] FAIL — filed {failure_identifier} under BUY-29861")
+                except Exception as e:
+                    print(f"[throughput-dispatcher] FAIL — create_stall_issue failed: {e.__class__.__name__}: {e}")
+                    failure_identifier = None
             elif args.force and real_rows < TARGET_ROWS_PER_HOUR:
                 # --force on a real FAIL: correctly report the actual result
                 print(f"[throughput-dispatcher] FAIL (--force override — no issue filed): {real_rows:,} < {TARGET_ROWS_PER_HOUR:,}")
