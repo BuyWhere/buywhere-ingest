@@ -1,21 +1,59 @@
 {
-  "last_n_tup_ins": 31343603,
-  "last_n_tup_ins_at": "2026-06-18T23:29:52.447819+00:00",
-  "last_hour_checked": "2026-06-18T22:00:00+00:00",
-  "last_hour_window_start": "2026-06-18T22:00:00+00:00",
-  "last_hour_window_end": "2026-06-18T23:00:00+00:00",
-  "last_check_result": "PASS",
-  "last_check_real_rows": 198033,
+  "last_n_tup_ins": 31844328,
+  "last_n_tup_ins_at": "2026-06-19T06:20:23.060126+00:00",
+  "last_hour_checked": "2026-06-19T04:00:00+00:00",
+  "last_hour_window_start": "2026-06-19T04:00:00+00:00",
+  "last_hour_window_end": "2026-06-19T05:00:00+00:00",
+  "last_check_result": "FAIL",
+  "last_check_real_rows": 651,
   "last_check_source": "n_tup_ins_delta",
-  "last_n_live_tup": 126041256,
+  "last_n_live_tup": 126536128,
   "last_db_host": "maglev.proxy.rlwy.net:31310/railway",
-  "last_check_delta_rows": 3743,
-  "last_check_delta_hours": 0.018900881944444448,
-  "last_check_rate": 198033,
+  "last_check_delta_rows": 219,
+  "last_check_delta_hours": 0.3364222505555556,
+  "last_check_rate": 651,
   "last_check_threshold": 150000,
   "last_pm_start": "2026-06-16 08:52:01.162919+00:00",
-  "last_fire_timestamp": "2026-06-18T23:29:52Z",
-  "last_note": "2026-06-18 22:00-23:00Z hour PASS: 198,033/hr via n_tup_ins_delta. n_tup_ins delta 3,743 over 0.019h = 198,033/hr. n_tup_ins=31,343,603, n_live_tup=126,041,256. pm_start=2026-06-16 08:52:01.162919+00:00. No child filed.",
-  "last_issue_identifier": null,
-  "last_failure_child_identifier": "BUY-53160"
+  "last_fire_timestamp": "2026-06-19T06:20:23Z",
+  "last_note": "2026-06-19 04:00-05:00Z hour FAIL: 651/hr via n_tup_ins_delta. n_tup_ins delta 219 over 0.336h = 651/hr. n_tup_ins=31,844,328, n_live_tup=126,536,128. pm_start=2026-06-16 08:52:01.162919+00:00. Filed child BUY-53400 under BUY-29861.",
+  "last_issue_identifier": "BUY-53400",
+  "last_failure_child_identifier": "BUY-53400",
+  "retrofilled_children": [
+    {
+      "issue": "BUY-53359",
+      "window": "2026-06-19T01:00-02:00Z",
+      "rows": 94572,
+      "pct": 63.0,
+      "reason": "API 500 \u2014 retrofiled per BUY-53341"
+    },
+    {
+      "issue": "BUY-53360",
+      "window": "2026-06-19T02:00-03:00Z",
+      "rows": 8486,
+      "pct": 5.7,
+      "reason": "API 500 \u2014 retrofiled per BUY-53341"
+    },
+    {
+      "issue": "BUY-53361",
+      "window": "2026-06-19T03:00-04:00Z",
+      "rows": 120152,
+      "pct": 80.1,
+      "reason": "API 500 \u2014 retrofiled per BUY-53341"
+    },
+    {
+      "issue": "BUY-53398",
+      "window": "2026-06-19T04:00-05:00Z",
+      "rows": 2803,
+      "pct": 1.9,
+      "reason": "API 500 \u2014 retrofiled per BUY-53341 (2026-06-19T04:00-05:00Z)"
+    },
+    {
+      "issue": "BUY-53399",
+      "window": "2026-06-19T05:00-06:00Z",
+      "rows": 2198,
+      "pct": 1.5,
+      "reason": "API 500 \u2014 retrofiled per BUY-53341 (2026-06-19T05:00-06:00Z)"
+    }
+  ],
+  "pending_children": []
 }

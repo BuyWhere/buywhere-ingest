@@ -143,8 +143,22 @@ def load_state() -> dict[str, Any]:
 def save_state(state: dict[str, Any]) -> None:
     STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
     tmp = STATE_FILE.with_suffix(".json.tmp")
-    tmp.write_text(json.dumps(state, indent=2))
+    normalized = _normalize_state_for_json(state)
+    tmp.write_text(json.dumps(normalized, indent=2))
     tmp.replace(STATE_FILE)
+
+
+def _normalize_state_for_json(value: Any) -> Any:
+    """Return a JSON-safe copy for state writes."""
+    if isinstance(value, datetime):
+        return value.isoformat()
+    if isinstance(value, dict):
+        return {str(k): _normalize_state_for_json(v) for k, v in value.items()}
+    if isinstance(value, (list, tuple, set)):
+        return [_normalize_state_for_json(v) for v in value]
+    if isinstance(value, (str, int, float, bool)) or value is None:
+        return value
+    return str(value)
 
 
 # ---------------------------------------------------------------------------
@@ -424,6 +438,55 @@ def dedup_check_existing_child(hour_start: datetime) -> bool:
     return False
 
 
+
+def _retry_pending_children(state: dict[str, Any]) -> list[str]:
+    """Retry filing any pending child issues that were buffered during an API outage.
+
+    Returns a list of newly-filed identifiers for use in the run note.
+    """
+    pending = state.get("pending_children", [])
+    if not pending:
+        return []
+
+    filed_ids = []
+    remaining = []
+    for entry in pending:
+        hs_label = "<unknown>"
+        try:
+            # hour_start is stored as ISO string; parse it back for create_stall_issue
+            hs = entry.get("hour_start")
+            if isinstance(hs, str):
+                hs = datetime.fromisoformat(hs)
+            elif isinstance(hs, dict) and "iso" in hs:
+                hs = datetime.fromisoformat(hs["iso"])
+            else:
+                hs = datetime.fromisoformat(str(hs))
+            hs_label = hs.strftime("%H:%M") + "Z"
+            ident = create_stall_issue(
+                hour_start=hs,
+                real_rows=entry["real_rows"],
+                source=entry["source"],
+                note=entry.get("note", "retried from pending buffer"),
+                hour_data=entry.get("hour_data"),
+                stat=entry.get("stat", {}),
+                max_created=entry.get("max_created"),
+                db_host=entry.get("db_host", "unknown"),
+                fire_ts=entry.get("fire_ts", ""),
+            )
+            filed_ids.append(ident)
+            print(f"[throughput-dispatcher] RETRY filed pending child {ident} "
+                  f"for {hs.strftime('%H:%M')}Z window")
+        except Exception as e:
+            remaining.append(entry)
+            print(f"[throughput-dispatcher] RETRY failed for pending child "
+                  f"({hs_label} window): {e.__class__.__name__}: {e}")
+            if hs is None:
+                hs = datetime.fromtimestamp(0, tz=timezone.utc)
+
+    state["pending_children"] = remaining
+    return filed_ids
+
+
 def create_stall_issue(
     hour_start: datetime,
     real_rows: int,
@@ -631,6 +694,15 @@ def main() -> int:
     state = load_state()
     failure_identifier = None
 
+    # BUY-53341: retry any pending children buffered from a previous API outage
+    # before proceeding with the current hour's check.
+    if not args.dry_run:
+        retried = _retry_pending_children(state)
+        if retried:
+            print(f"[throughput-dispatcher] RETRY filed {len(retried)} previously-buffered children: {', '.join(retried)}")
+        if state.get("pending_children"):
+            print(f"[throughput-dispatcher] RETRY still pending: {len(state['pending_children'])} child(ren) remain unbuffered")
+
     # BUY-52603 fix: the prior exit-early check `(hour_start + 1h) > now` caused the
     # dispatcher to exit when it ran AT the hour boundary (window just closed but
     # condition was still true), and also fired for the wrong window when
@@ -791,6 +863,20 @@ def main() -> int:
                     print(f"[throughput-dispatcher] FAIL — filed {failure_identifier} under BUY-29861")
                 except Exception as e:
                     print(f"[throughput-dispatcher] FAIL — create_stall_issue failed: {e.__class__.__name__}: {e}")
+                    # BUY-53341: buffer the failure for retry on the next fire
+                    pending = state.setdefault("pending_children", [])
+                    pending.append({
+                        "hour_start": hour_start.isoformat(),
+                        "real_rows": real_rows,
+                        "source": source,
+                        "note": note,
+                        "hour_data": hour_data,
+                        "stat": stat,
+                        "max_created": max_created,
+                        "db_host": db_host,
+                        "fire_ts": fire_ts,
+                    })
+                    state["pending_children"] = pending
                     failure_identifier = None
             elif args.force and real_rows < TARGET_ROWS_PER_HOUR:
                 # --force on a real FAIL: correctly report the actual result

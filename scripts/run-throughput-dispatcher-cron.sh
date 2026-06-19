@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
-# BUY-53178: Hourly throughput dispatcher cron wrapper.
+# BUY-53390: Hourly throughput dispatcher cron wrapper.
 #
 # Sets PAPERCLIP_API_URL to the production URL so that file-child-issue API
 # calls don't fall back to localhost:3000.
 #
 # API key strategy (tried in order):
+#   0. Persisted env from ~/.throughput_dispatcher_env (updated by heartbeat)
 #   1. Inherited from heartbeat env (PAPERCLIP_API_KEY already set)
 #   2. Minted from the running server's AGENT_JWT_SECRET
 #
@@ -14,11 +15,18 @@
 set -u
 
 REPO="/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default"
-LOGDIR="$REPO/logs"
+LOGDIR="${LOGDIR:-$REPO/logs}"
 mkdir -p "$LOGDIR"
 
 export PAPERCLIP_API_URL="https://paperclip.richteo.com"
 export PAPERCLIP_COMPANY_ID="177bc805-e3c8-4336-84cb-8e1e482d5a17"
+
+# Step 0: source persisted credentials from ~/.throughput_dispatcher_env if available
+if [ -f "$HOME/.throughput_dispatcher_env" ]; then
+    set -a
+    . "$HOME/.throughput_dispatcher_env"
+    set +a
+fi
 
 # Try to mint a token from the running server if PAPERCLIP_API_KEY isn't set
 if [ -z "${PAPERCLIP_API_KEY:-}" ]; then
