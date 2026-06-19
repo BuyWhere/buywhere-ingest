@@ -36,6 +36,7 @@ from src.scrapers.woocommerce import WooCommerceScraper
 from src.scrapers.shopify_store import ShopifyScraper
 from src.scrapers.zalora_sg import ZaloraSGScraper
 from src.scrapers.tokopedia import TokopediaScraper
+from src.scrapers.eveandboy import EveandboyScraper
 
 
 SCRAPER_CONFIG = {
@@ -177,6 +178,20 @@ SCRAPER_CONFIG = {
             "region": "US",
             "country_code": "US",
             "currency": "USD",
+            "is_active": True,
+            "in_stock": True,
+        },
+    },
+    "eveandboy": {
+        "factory": lambda limit: EveandboyScraper(max_products=limit),
+        "enabled_by_default": True,
+        "defaults": {
+            "merchant_id": "eveandboy_th",
+            "source": "eveandboy",
+            "platform": "custom",
+            "region": "TH",
+            "country_code": "TH",
+            "currency": "THB",
             "is_active": True,
             "in_stock": True,
         },

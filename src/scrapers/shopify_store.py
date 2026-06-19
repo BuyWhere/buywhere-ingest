@@ -54,7 +54,7 @@ class ShopifyScraper(BaseScraper):
             url=f"{self.base_url}/products/{data.get('handle')}",
             brand=self._clean_text(data.get("vendor")),
             image_url=image_url,
-            sku=self._clean_text(first_variant.get("sku") or first_variant.get("barcode")),
+            sku=self._clean_text(first_variant.get("sku") or first_variant.get("barcode") or str(first_variant.get("id", ""))),
             category=self._clean_text(data.get("product_type")),
             category_path=[self._clean_text(data.get("product_type"))] if data.get("product_type") else None,
             raw_data=data,

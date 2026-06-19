@@ -92,6 +92,18 @@ def _normalize_category_path(value: Any) -> list[str] | None:
     return _normalize_category_path([value])
 
 
+def _truncate_gtin(value: Any, max_len: int = 14) -> str | None:
+    """Truncate GTIN to fit the varchar(N) DB column."""
+    if value is None:
+        return None
+    s = str(value).strip()
+    if not s:
+        return None
+    return s[:max_len]
+
+
+
+
 def normalize_product_row(
     product: dict[str, Any],
     *,
@@ -170,7 +182,7 @@ def normalize_product_row(
         product.get("country_code") or defaults.get("country_code"),
         product.get("platform") or defaults.get("platform"),
         in_stock,
-        product.get("gtin") or raw_data.get("gtin"),
+        _truncate_gtin(product.get("gtin") or raw_data.get("gtin")),
     )
 
 

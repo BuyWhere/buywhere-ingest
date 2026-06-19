@@ -1,0 +1,1 @@
+{"generated_at": "2026-06-19T17:39:55.048350", "total_found": 68, "errors": [{"error": "PH_API_TOKEN not set", "platform": "product_hunt"}, {"error": "Smithery API returned 404", "platform": "smithery"}], "by_threat_level": {"critical": 6, "high": 20, "medium": 11, "monitor": 31}, "summary": {"critical_count": 6, "high_count": 20, "medium_count": 11, "monitor_count": 31}}

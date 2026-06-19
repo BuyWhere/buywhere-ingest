@@ -1,4 +1,4 @@
-"""Scrapers package for SG merchants."""
+"""Scrapers package for merchant product extraction (SG, TH, US, SEA)."""
 
 from .base_scraper import BaseScraper, Product
 from .courts_sg import CourtsSGScraper
@@ -25,6 +25,7 @@ from .gain_city import GainCityScraper
 from .forty_two import FortyTwoScraper
 from .cold_storage_sg import ColdStorageSGScraper
 from .guardian_sg import GuardianSGScraper
+from .guardian_my import GuardianMYScraper
 from .summerhouse import SummerhouseScraper
 from .paper_source import PaperSourceScraper
 from .floor_and_decor import FloorAndDecorScraper
@@ -37,6 +38,7 @@ from .zalora_sg import ZaloraSGScraper
 from .tokopedia import TokopediaScraper
 from .lazada_vn import LazadaVNScraper
 from .lazada_my import LazadaMYScraper
+from .lazada_th import LazadaTHScraper
 from .shopee_sg import ShopeeSGScraper
 from .shopee_my import ShopeeMYScraper
 from .carousell_sg import CarousellSGScraper
@@ -44,7 +46,19 @@ from .qoo10_sg import Qoo10SGScraper
 from .etsy_us import EtsyUSScraper
 from .ebay_us import EbayUSScraper
 from .ebay_us_api import EbayUSApiScraper
-
+from .makro_pro_th import MakroProTHScraper
+from .tops_th import TopsTHScraper
+from .bach_hoaxanh_vn import BachHoaXanhVNScraper
+from .cooponline_vn import CoopOnlineVNScraper
+from .nguyen_kim_vn import NguyenKimVNScraper
+from .locknlock_vn import LocknLockVNScraper
+from .eveandboy import EveandboyScraper
+from .klik_indomaret import KlikIndomaretScraper
+from .alfagift_id import AlfagiftIDScraper
+from .powerbuy_th import PowerBuyTHScraper
+from .central_th import CentralTHScraper
+from .toysrus_th import ToysRUsTHScraper
+from .toykingdom_ph import ToyKingdomPHScraper
 SCRAPERS = {
     "courts_sg": CourtsSGScraper,
     "decathlon_sg": DecathlonSGScraper,
@@ -70,6 +84,7 @@ SCRAPERS = {
     "forty_two": FortyTwoScraper,
     "cold_storage_sg": ColdStorageSGScraper,
     "guardian_sg": GuardianSGScraper,
+    "guardian_my": GuardianMYScraper,
     "summerhouse": SummerhouseScraper,
     "paper_source": PaperSourceScraper,
     "floor_and_decor": FloorAndDecorScraper,
@@ -80,6 +95,7 @@ SCRAPERS = {
     "tokopedia": TokopediaScraper,
     "lazada_vn": LazadaVNScraper,
     "lazada_my": LazadaMYScraper,
+    "lazada_th": LazadaTHScraper,
     "shopee_sg": ShopeeSGScraper,
     "shopee_my": ShopeeMYScraper,
     "carousell_sg": CarousellSGScraper,
@@ -87,4 +103,17 @@ SCRAPERS = {
     "etsy_us": EtsyUSScraper,
     "ebay_us": EbayUSScraper,
     "ebay_us_api": EbayUSApiScraper,
+    "makro_pro_th": MakroProTHScraper,
+    "tops_th": TopsTHScraper,
+    "bach_hoaxanh_vn": BachHoaXanhVNScraper,
+    "cooponline_vn": CoopOnlineVNScraper,
+    "nguyen_kim_vn": NguyenKimVNScraper,
+    "locknlock_vn": LocknLockVNScraper,
+    "eveandboy": EveandboyScraper,
+    "klik_indomaret": KlikIndomaretScraper,
+    "alfagift_id": AlfagiftIDScraper,
+    "powerbuy_th": PowerBuyTHScraper,
+    "central_th": CentralTHScraper,
+    "toysrus_th": ToysRUsTHScraper,
+    "toykingdom_ph": ToyKingdomPHScraper,
 }

@@ -1,0 +1,95 @@
+{
+  "zone": "residential_proxy1",
+  "country": "my",
+  "session": "buy53492",
+  "results": [
+    {
+      "method": "http",
+      "url": "https://www.watsons.com.my/",
+      "status": 200,
+      "final_url": "https://www.watsons.com.my/",
+      "title": null,
+      "server": "*",
+      "ok": true,
+      "elapsed_ms": 1843,
+      "detail": "<!DOCTYPE html><html lang=\"en\" dir=\"ltr\"><head>     <meta charset=\"utf-8\">     <base href=\"/\">     <title>Health and Beauty Online Shop | Watsons Malaysia</titl"
+    },
+    {
+      "method": "playwright",
+      "url": "https://www.watsons.com.my/",
+      "status": 403,
+      "final_url": "https://www.watsons.com.my/",
+      "title": "Access Denied",
+      "server": "AkamaiGHost",
+      "ok": false,
+      "elapsed_ms": 5880,
+      "detail": "<html><head> <title>Access Denied</title> </head><body> <h1>Access Denied</h1>   You don't have permission to access \"http://www.watsons.com.my/\" on this server"
+    },
+    {
+      "method": "http",
+      "url": "https://api.watsons.com.my/",
+      "status": 404,
+      "final_url": "https://api.watsons.com.my/",
+      "title": null,
+      "server": "*",
+      "ok": false,
+      "elapsed_ms": 4335,
+      "detail": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 404 \u2013 Not Found</title><style type=\"text/css\">body {font-family:Tahoma,Arial,sans-serif;} h1, h2, h3, b"
+    },
+    {
+      "method": "playwright",
+      "url": "https://api.watsons.com.my/",
+      "status": 403,
+      "final_url": "https://api.watsons.com.my/",
+      "title": "Access Denied",
+      "server": "AkamaiGHost",
+      "ok": false,
+      "elapsed_ms": 7604,
+      "detail": "<html><head> <title>Access Denied</title> </head><body> <h1>Access Denied</h1>   You don't have permission to access \"http://api.watsons.com.my/\" on this server"
+    },
+    {
+      "method": "http",
+      "url": "https://www.sephora.my/",
+      "status": 200,
+      "final_url": "https://www.sephora.my/",
+      "title": null,
+      "server": "envoy",
+      "ok": true,
+      "elapsed_ms": 1973,
+      "detail": "<!DOCTYPE html><html  lang=\"en\"><head><meta charset=\"utf-8\" data-n-head=\"ssr\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> <title>Sepho"
+    },
+    {
+      "method": "playwright",
+      "url": "https://www.sephora.my/",
+      "status": 502,
+      "final_url": "https://www.sephora.my/",
+      "title": "",
+      "server": null,
+      "ok": false,
+      "elapsed_ms": 5355,
+      "detail": "<html><head></head><body></body></html>"
+    },
+    {
+      "method": "http",
+      "url": "https://api.sephora.sg/",
+      "status": 200,
+      "final_url": "https://api.sephora.sg/",
+      "title": null,
+      "server": "envoy",
+      "ok": true,
+      "elapsed_ms": 4722,
+      "detail": "<!DOCTYPE html><html  lang=\"en\"><head><meta charset=\"utf-8\" data-n-head=\"ssr\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> <title>Sepho"
+    },
+    {
+      "method": "playwright",
+      "url": "https://api.sephora.sg/",
+      "status": 502,
+      "final_url": "https://api.sephora.sg/",
+      "title": "",
+      "server": null,
+      "ok": false,
+      "elapsed_ms": 5084,
+      "detail": "<html><head></head><body></body></html>"
+    }
+  ]
+}

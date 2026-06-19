@@ -77,3 +77,143 @@ Traceback (most recent call last):
   File "/home/paperclip/.local/lib/python3.12/site-packages/requests/adapters.py", line 729, in send
     raise ConnectionError(e, request=request)
 requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=3000): Max retries exceeded with url: /api/companies/177bc805-e3c8-4336-84cb-8e1e482d5a17/issues (Caused by NewConnectionError("HTTPConnection(host='localhost', port=3000): Failed to establish a new connection: [Errno 111] Connection refused"))
+[throughput-dispatcher] Checking hour 2026-06-18T23:00:00+00:00 → 2026-06-19T00:00:00+00:00
+[throughput-dispatcher] DB: maglev.proxy.rlwy.net:31310/railway
+[throughput-dispatcher] dedup_check_existing_child: API returned HTTP 500; continuing
+[throughput-dispatcher] hour_bucket_count: TIMEOUT after 30s (maglev contention — using n_tup_ins delta only)
+[throughput-dispatcher] real_rows=236,611 target=150,000 (157.7%) source=n_tup_ins_delta
+[throughput-dispatcher] PASS — 236,611 >= 150,000. No issue filed.
+[midnight-snapshot] No UTC midnight boundary crossed; nothing to do.
+[throughput-dispatcher] Checking hour 2026-06-19T00:00:00+00:00 → 2026-06-19T01:00:00+00:00
+[throughput-dispatcher] DB: maglev.proxy.rlwy.net:31310/railway
+[throughput-dispatcher] dedup_check_existing_child: API returned HTTP 500; continuing
+[throughput-dispatcher] hour_bucket_count: TIMEOUT after 30s (maglev contention — using n_tup_ins delta only)
+[throughput-dispatcher] real_rows=153,343 target=150,000 (102.2%) source=n_tup_ins_delta
+[throughput-dispatcher] PASS — 153,343 >= 150,000. No issue filed.
+[midnight-snapshot] No UTC midnight boundary crossed; nothing to do.
+[throughput-dispatcher] Checking hour 2026-06-19T01:00:00+00:00 → 2026-06-19T02:00:00+00:00
+[throughput-dispatcher] DB: maglev.proxy.rlwy.net:31310/railway
+[throughput-dispatcher] dedup_check_existing_child: API returned HTTP 500; continuing
+[throughput-dispatcher] hour_bucket_count: TIMEOUT after 30s (maglev contention — using n_tup_ins delta only)
+[throughput-dispatcher] real_rows=94,572 target=150,000 (63.0%) source=n_tup_ins_delta
+[throughput-dispatcher] FAIL — create_stall_issue failed: HTTPError: 500 Server Error: Internal Server Error for url: https://paperclip.richteo.com/api/companies/177bc805-e3c8-4336-84cb-8e1e482d5a17/issues
+[midnight-snapshot] No UTC midnight boundary crossed; nothing to do.
+[throughput-dispatcher] Checking hour 2026-06-19T02:00:00+00:00 → 2026-06-19T03:00:00+00:00
+[throughput-dispatcher] DB: maglev.proxy.rlwy.net:31310/railway
+[throughput-dispatcher] dedup_check_existing_child: API returned HTTP 500; continuing
+[throughput-dispatcher] hour_bucket_count: TIMEOUT after 30s (maglev contention — using n_tup_ins delta only)
+[throughput-dispatcher] real_rows=8,486 target=150,000 (5.7%) source=n_tup_ins_delta
+[throughput-dispatcher] FAIL — create_stall_issue failed: HTTPError: 500 Server Error: Internal Server Error for url: https://paperclip.richteo.com/api/companies/177bc805-e3c8-4336-84cb-8e1e482d5a17/issues
+[midnight-snapshot] No UTC midnight boundary crossed; nothing to do.
+[throughput-dispatcher] Checking hour 2026-06-19T03:00:00+00:00 → 2026-06-19T04:00:00+00:00
+[throughput-dispatcher] DB: maglev.proxy.rlwy.net:31310/railway
+[throughput-dispatcher] dedup_check_existing_child: API returned HTTP 500; continuing
+[throughput-dispatcher] hour_bucket_count: TIMEOUT after 30s (maglev contention — using n_tup_ins delta only)
+[throughput-dispatcher] real_rows=120,152 target=150,000 (80.1%) source=n_tup_ins_delta
+[throughput-dispatcher] FAIL — create_stall_issue failed: HTTPError: 500 Server Error: Internal Server Error for url: https://paperclip.richteo.com/api/companies/177bc805-e3c8-4336-84cb-8e1e482d5a17/issues
+[midnight-snapshot] No UTC midnight boundary crossed; nothing to do.
+[throughput-dispatcher] Checking hour 2026-06-19T04:00:00+00:00 → 2026-06-19T05:00:00+00:00
+[throughput-dispatcher] DB: maglev.proxy.rlwy.net:31310/railway
+[throughput-dispatcher] dedup_check_existing_child: API returned HTTP 500; continuing
+[throughput-dispatcher] hour_bucket_count: TIMEOUT after 30s (maglev contention — using n_tup_ins delta only)
+[throughput-dispatcher] real_rows=2,803 target=150,000 (1.9%) source=n_tup_ins_delta
+[throughput-dispatcher] FAIL — create_stall_issue failed: HTTPError: 500 Server Error: Internal Server Error for url: https://paperclip.richteo.com/api/companies/177bc805-e3c8-4336-84cb-8e1e482d5a17/issues
+Traceback (most recent call last):
+  File "/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/scripts/hourly_throughput_dispatcher.py", line 943, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/scripts/hourly_throughput_dispatcher.py", line 909, in main
+    save_state(state)
+  File "/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/scripts/hourly_throughput_dispatcher.py", line 146, in save_state
+    tmp.write_text(json.dumps(state, indent=2))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.12/json/encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "/usr/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.12/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type datetime is not JSON serializable
+[throughput-dispatcher] Checking hour 2026-06-19T05:00:00+00:00 → 2026-06-19T06:00:00+00:00
+[throughput-dispatcher] DB: maglev.proxy.rlwy.net:31310/railway
+[throughput-dispatcher] dedup_check_existing_child: API returned HTTP 500; continuing
+[throughput-dispatcher] hour_bucket_count: TIMEOUT after 30s (maglev contention — using n_tup_ins delta only)
+[throughput-dispatcher] real_rows=2,204 target=150,000 (1.5%) source=n_tup_ins_delta
+[throughput-dispatcher] FAIL — create_stall_issue failed: HTTPError: 500 Server Error: Internal Server Error for url: https://paperclip.richteo.com/api/companies/177bc805-e3c8-4336-84cb-8e1e482d5a17/issues
+[midnight-snapshot] No UTC midnight boundary crossed; nothing to do.
+[throughput-dispatcher] Checking hour 2026-06-19T05:00:00+00:00 → 2026-06-19T06:00:00+00:00
+[throughput-dispatcher] DB: maglev.proxy.rlwy.net:31310/railway
+[throughput-dispatcher] Already ran for 2026-06-19T05:00:00+00:00, skipping (use --force to override).
+[throughput-dispatcher] Checking hour 2026-06-19T06:00:00+00:00 → 2026-06-19T07:00:00+00:00
+[throughput-dispatcher] DB: maglev.proxy.rlwy.net:31310/railway
+[throughput-dispatcher] hour_bucket_count: TIMEOUT after 30s (maglev contention — using n_tup_ins delta only)
+[throughput-dispatcher] real_rows=4,073 target=150,000 (2.7%) source=n_tup_ins_delta
+[throughput-dispatcher] FAIL — filed BUY-53417 under BUY-29861
+[midnight-snapshot] No UTC midnight boundary crossed; nothing to do.
+[throughput-dispatcher] Checking hour 2026-06-19T07:00:00+00:00 → 2026-06-19T08:00:00+00:00
+[throughput-dispatcher] DB: maglev.proxy.rlwy.net:31310/railway
+[throughput-dispatcher] hour_bucket_count: TIMEOUT after 30s (maglev contention — using n_tup_ins delta only)
+[throughput-dispatcher] real_rows=8,398 target=150,000 (5.6%) source=n_tup_ins_delta
+[throughput-dispatcher] FAIL — filed BUY-53439 under BUY-29861
+[midnight-snapshot] No UTC midnight boundary crossed; nothing to do.
+[throughput-dispatcher] Checking hour 2026-06-19T08:00:00+00:00 → 2026-06-19T09:00:00+00:00
+[throughput-dispatcher] DB: maglev.proxy.rlwy.net:31310/railway
+[throughput-dispatcher] hour_bucket_count: TIMEOUT after 30s (maglev contention — using n_tup_ins delta only)
+[throughput-dispatcher] real_rows=873 target=150,000 (0.6%) source=n_tup_ins_delta
+[throughput-dispatcher] FAIL — filed BUY-53464 under BUY-29861
+[midnight-snapshot] No UTC midnight boundary crossed; nothing to do.
+[throughput-dispatcher] Checking hour 2026-06-19T09:00:00+00:00 → 2026-06-19T10:00:00+00:00
+[throughput-dispatcher] DB: maglev.proxy.rlwy.net:31310/railway
+[throughput-dispatcher] hour_bucket_count: TIMEOUT after 30s (maglev contention — using n_tup_ins delta only)
+[throughput-dispatcher] real_rows=54 target=150,000 (0.0%) source=n_tup_ins_delta
+[throughput-dispatcher] FAIL — filed BUY-53494 under BUY-29861
+[midnight-snapshot] No UTC midnight boundary crossed; nothing to do.
+[throughput-dispatcher] Checking hour 2026-06-19T10:00:00+00:00 → 2026-06-19T11:00:00+00:00
+[throughput-dispatcher] DB: maglev.proxy.rlwy.net:31310/railway
+[throughput-dispatcher] hour_bucket_count: TIMEOUT after 30s (maglev contention — using n_tup_ins delta only)
+[throughput-dispatcher] real_rows=2,019 target=150,000 (1.3%) source=n_tup_ins_delta
+[throughput-dispatcher] FAIL — filed BUY-53526 under BUY-29861
+[midnight-snapshot] No UTC midnight boundary crossed; nothing to do.
+[throughput-dispatcher] Checking hour 2026-06-19T11:00:00+00:00 → 2026-06-19T12:00:00+00:00
+[throughput-dispatcher] DB: maglev.proxy.rlwy.net:31310/railway
+[throughput-dispatcher] hour_bucket_count: TIMEOUT after 30s (maglev contention — using n_tup_ins delta only)
+[throughput-dispatcher] real_rows=2,500 target=150,000 (1.7%) source=n_tup_ins_delta
+[throughput-dispatcher] FAIL — filed BUY-53546 under BUY-29861
+[midnight-snapshot] No UTC midnight boundary crossed; nothing to do.
+[throughput-dispatcher] Checking hour 2026-06-19T12:00:00+00:00 → 2026-06-19T13:00:00+00:00
+[throughput-dispatcher] DB: maglev.proxy.rlwy.net:31310/railway
+[throughput-dispatcher] hour_bucket_count: TIMEOUT after 30s (maglev contention — using n_tup_ins delta only)
+[throughput-dispatcher] real_rows=16,135 target=150,000 (10.8%) source=n_tup_ins_delta
+[throughput-dispatcher] FAIL — filed BUY-53575 under BUY-29861
+[midnight-snapshot] No UTC midnight boundary crossed; nothing to do.
+[throughput-dispatcher] Checking hour 2026-06-19T13:00:00+00:00 → 2026-06-19T14:00:00+00:00
+[throughput-dispatcher] DB: maglev.proxy.rlwy.net:31310/railway
+[throughput-dispatcher] hour_bucket_count: TIMEOUT after 30s (maglev contention — using n_tup_ins delta only)
+[throughput-dispatcher] real_rows=9,565 target=150,000 (6.4%) source=n_tup_ins_delta
+[throughput-dispatcher] FAIL — filed BUY-53605 under BUY-29861
+[midnight-snapshot] No UTC midnight boundary crossed; nothing to do.
+[throughput-dispatcher] Checking hour 2026-06-19T14:00:00+00:00 → 2026-06-19T15:00:00+00:00
+[throughput-dispatcher] DB: maglev.proxy.rlwy.net:31310/railway
+[throughput-dispatcher] hour_bucket_count: TIMEOUT after 30s (maglev contention — using n_tup_ins delta only)
+[throughput-dispatcher] real_rows=467 target=150,000 (0.3%) source=n_tup_ins_delta
+[throughput-dispatcher] FAIL — filed BUY-53635 under BUY-29861
+[midnight-snapshot] No UTC midnight boundary crossed; nothing to do.
+[throughput-dispatcher] Checking hour 2026-06-19T15:00:00+00:00 → 2026-06-19T16:00:00+00:00
+[throughput-dispatcher] DB: maglev.proxy.rlwy.net:31310/railway
+[throughput-dispatcher] hour_bucket_count: TIMEOUT after 30s (maglev contention — using n_tup_ins delta only)
+[throughput-dispatcher] real_rows=287 target=150,000 (0.2%) source=n_tup_ins_delta
+[throughput-dispatcher] FAIL — filed BUY-53671 under BUY-29861
+[midnight-snapshot] No UTC midnight boundary crossed; nothing to do.

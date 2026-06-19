@@ -141,5 +141,44 @@
       "is_active": true,
       "in_stock": true
     }
+  },
+  "lazada_th": {
+    "scraper_key": "lazada_th",
+    "defaults": {
+      "merchant_id": "lazada_th",
+      "source": "lazada_th",
+      "platform": "custom",
+      "region": "SEA",
+      "country_code": "TH",
+      "currency": "THB",
+      "is_active": true,
+      "in_stock": true
+    }
+  },
+  "eveandboy": {
+    "scraper_key": "eveandboy",
+    "defaults": {
+      "merchant_id": "eveandboy_th",
+      "source": "eveandboy",
+      "platform": "custom",
+      "region": "TH",
+      "country_code": "TH",
+      "currency": "THB",
+      "is_active": true,
+      "in_stock": true
+    }
+  },
+  "toykingdom_ph": {
+    "scraper_key": "toykingdom_ph",
+    "defaults": {
+      "merchant_id": "toykingdom_ph",
+      "source": "toykingdom_ph",
+      "platform": "shopify",
+      "region": "PH",
+      "country_code": "PH",
+      "currency": "PHP",
+      "is_active": true,
+      "in_stock": true
+    }
   }
 }

@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-06-19T16:16:54Z",
+  "issue": "BUY-53681",
+  "dispatcher_functional": true,
+  "last_check": {
+    "result": "FAIL",
+    "hour": "2026-06-19T15:00:00+00:00",
+    "real_rows": 287,
+    "source": "n_tup_ins_delta",
+    "child_filed": "BUY-53671"
+  },
+  "pending_children": 0,
+  "retrofiled_count": 5,
+  "ingestion_lanes": "all stopped (0 active lanes)",
+  "n_tup_ins": 31887316,
+  "n_live_tup": 127707929,
+  "db_host": "maglev.proxy.rlwy.net:31310/railway",
+  "next_fire": "17:00Z",
+  "root_cause": "ingestion lanes dead \u2014 keep-alive system at 0 across all 12 lanes"
+}

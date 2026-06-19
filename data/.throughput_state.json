@@ -1,23 +1,23 @@
 {
-  "last_n_tup_ins": 31844328,
-  "last_n_tup_ins_at": "2026-06-19T06:20:23.060126+00:00",
-  "last_hour_checked": "2026-06-19T04:00:00+00:00",
-  "last_hour_window_start": "2026-06-19T04:00:00+00:00",
-  "last_hour_window_end": "2026-06-19T05:00:00+00:00",
+  "last_n_tup_ins": 31887316,
+  "last_n_tup_ins_at": "2026-06-19T16:00:01.914551+00:00",
+  "last_hour_checked": "2026-06-19T15:00:00+00:00",
+  "last_hour_window_start": "2026-06-19T15:00:00+00:00",
+  "last_hour_window_end": "2026-06-19T16:00:00+00:00",
   "last_check_result": "FAIL",
-  "last_check_real_rows": 651,
+  "last_check_real_rows": 287,
   "last_check_source": "n_tup_ins_delta",
-  "last_n_live_tup": 126536128,
+  "last_n_live_tup": 127707929,
   "last_db_host": "maglev.proxy.rlwy.net:31310/railway",
-  "last_check_delta_rows": 219,
-  "last_check_delta_hours": 0.3364222505555556,
-  "last_check_rate": 651,
+  "last_check_delta_rows": 287,
+  "last_check_delta_hours": 1.0000959461111112,
+  "last_check_rate": 287,
   "last_check_threshold": 150000,
   "last_pm_start": "2026-06-16 08:52:01.162919+00:00",
-  "last_fire_timestamp": "2026-06-19T06:20:23Z",
-  "last_note": "2026-06-19 04:00-05:00Z hour FAIL: 651/hr via n_tup_ins_delta. n_tup_ins delta 219 over 0.336h = 651/hr. n_tup_ins=31,844,328, n_live_tup=126,536,128. pm_start=2026-06-16 08:52:01.162919+00:00. Filed child BUY-53400 under BUY-29861.",
-  "last_issue_identifier": "BUY-53400",
-  "last_failure_child_identifier": "BUY-53400",
+  "last_fire_timestamp": "2026-06-19T16:00:01Z",
+  "last_note": "2026-06-19 15:00-16:00Z hour FAIL: 287/hr via n_tup_ins_delta. n_tup_ins delta 287 over 1.000h = 287/hr. n_tup_ins=31,887,316, n_live_tup=127,707,929. pm_start=2026-06-16 08:52:01.162919+00:00. Filed child BUY-53671 under BUY-29861.",
+  "last_issue_identifier": "BUY-53671",
+  "last_failure_child_identifier": "BUY-53671",
   "retrofilled_children": [
     {
       "issue": "BUY-53359",
@@ -55,5 +55,6 @@
       "reason": "API 500 \u2014 retrofiled per BUY-53341 (2026-06-19T05:00-06:00Z)"
     }
   ],
-  "pending_children": []
+  "pending_children": [],
+  "notes": " [BUY-53501: corrected failure child from BUY-53494 (never existed) to BUY-53510] [BUY-53501: verified BUY-53494 exists \u2014 it was created by the dispatcher but hidden from paginated list queries]"
 }
