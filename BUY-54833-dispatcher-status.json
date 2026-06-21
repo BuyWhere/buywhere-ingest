@@ -1,0 +1,35 @@
+{
+  "issue": "BUY-54833",
+  "canonical": "BUY-29861",
+  "checked_at": "2026-06-21T07:00:02+00:00",
+  "dispatcher_status": "operational",
+  "hour_checked": "2026-06-21T06:00:00+00:00 - 2026-06-21T07:00:00+00:00",
+  "last_result": "PASS",
+  "last_rows": 155682,
+  "last_pct": 103.8,
+  "last_child_issue": "none (PASS — no issue filed)",
+  "hour_in_progress": "2026-06-21T07:00:00+00:00 - 2026-06-21T08:00:00+00:00",
+  "next_cron_fire": "2026-06-21T08:00:01+00:00",
+  "catalog_n_live_tup": 127663376,
+  "n_tup_ins": 35023239,
+  "n_tup_ins_delta": 155695,
+  "delta_hours": 1.0001,
+  "db_host": "maglev.proxy.rlwy.net:31310/railway",
+  "pm_start": "2026-06-21 04:06:07.509522+00:00",
+  "pm_restart_guard": "inert (pm_start unchanged from prior fire)",
+  "notes": [
+    "Dispatcher operational - firing hourly via systemd timer (OnCalendar=*:00:00, jitter 120s)",
+    "Last check (06:00-07:00Z): PASS at 155,682/hr (103.8% of 150k target) — no child filed",
+    "Used n_tup_ins delta (155,695 rows over 1.0001h) since hour_bucket_count SELECT COUNT(*) timed out at 30s on maglev contention",
+    "Postmaster start (04:06:07Z) is unchanged from prior fire — no new restart, so the restart guard correctly did not trigger",
+    "dedup_check_existing_child API call returned 401 (stale token in cron wrapper env); benign on PASS — on FAIL it would fall into the pending-children buffer per BUY-53341",
+    "This heartbeat (07:04:38Z, BUY-54833) ran AFTER the 07:00:02Z cron fire and confirmed the 06:00-07:00Z result; next fire at 08:00:00Z will check 07:00-08:00Z"
+  ],
+  "recent_failures": [
+    {"hour": "2026-06-21T05:00:00+00:00", "rows": 73459, "pct": 49.0, "child": "BUY-54803"},
+    {"hour": "2026-06-21T04:00:00+00:00", "rows": 0, "pct": 0.0, "child": "none (postmaster restart)"},
+    {"hour": "2026-06-21T03:00:00+00:00", "rows": 67388, "pct": 44.9, "child": "BUY-54742"},
+    {"hour": "2026-06-21T02:00:00+00:00", "rows": 163, "pct": 0.1, "child": "BUY-54712"},
+    {"hour": "2026-06-21T01:00:00+00:00", "rows": 101867, "pct": 67.9, "child": "BUY-54687"}
+  ]
+}
