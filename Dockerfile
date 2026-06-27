@@ -7,17 +7,13 @@ RUN npm ci --omit=dev
 
 COPY src ./src
 COPY scripts ./scripts
-# BUY-34835: bundle the v14 WAT pool snapshot (43,650 candidate domains,
-# 5MB) as the default candidate list for the `discover.cc` worker. The
-# producer can override this with CC_CANDIDATE_LIST_URL (e.g. a Tranco
-# slice hosted in R2, or a re-pulled WAT pool) without rebuilding the
-# image.
-# Kai 2026-06-27: COPY data uses wildcard with `|| true` so build doesn't fail
-# when data/ contains only the placeholder .gitkeep (WAT pool snapshot is
-# provided via CC_CANDIDATE_LIST_URL at runtime, not bundled).
-COPY data/.gitkeep data/README.md ./data/ || true
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+# Create an empty data/ directory at runtime. WAT pool snapshot and brand/retailer 
+# lists are provided via CC_CANDIDATE_LIST_URL / SITEMAP_BRAND_LIST env vars at 
+# runtime, not bundled in the image.
+RUN mkdir -p /app/data && echo "# WAT pool + brand/retailer lists provided via env vars" > /app/data/README.md
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["server"]
