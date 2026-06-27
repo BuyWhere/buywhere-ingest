@@ -1361,3 +1361,4 @@ const healthServer = http.createServer(async (req, res) => {
 healthServer.listen(healthPort, () => {
   console.log(`[worker] healthz server listening on port ${healthPort}`);
 });
+// Last verified: 2026-06-27 - worker fix deploy attempt
