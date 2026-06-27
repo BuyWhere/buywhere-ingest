@@ -136,6 +136,8 @@ async function main() {
 
   await pgBoss.start();
   console.log('[cc-producer] pgboss started (schema bootstrapped if needed)');
+  // BUY-58445: ensure queue is registered before sending
+  await pgBoss.createQueue(QUEUE_NAME);
 
   const candidates = await loadCandidateList(CANDIDATE_LIST);
   summary.totalCandidates = candidates.length;

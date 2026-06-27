@@ -101,6 +101,8 @@ async function main() {
 
   await pgBoss.start();
   console.log('[producer] pgboss started (schema bootstrapped if needed)');
+  // BUY-58445: ensure queue is registered before sending
+  await pgBoss.createQueue(QUEUE_NAME);
 
   const candidates = await findCandidateMerchants(BATCH_LIMIT);
   summary.candidatesFound = candidates.length;

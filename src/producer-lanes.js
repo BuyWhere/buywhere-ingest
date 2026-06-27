@@ -261,6 +261,10 @@ async function main() {
 
 try {
   await pgBoss.start();
+  // BUY-58445: ensure queues are registered before sending
+  for (const role of ROLES) {
+    await pgBoss.createQueue(`${QUEUE_PREFIX}${role}`);
+  }
   await main();
 } catch (err) {
   console.error('[lanes-producer] fatal:', err);

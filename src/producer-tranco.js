@@ -116,6 +116,8 @@ async function main() {
 
   await pgBoss.start();
   console.log('[tranco-producer] pgboss started (schema bootstrapped if needed)');
+  // BUY-58445: ensure queue is registered before sending
+  await pgBoss.createQueue(QUEUE_NAME);
 
   for (let b = 0; b < totalBatches; b++) {
     const rankStart = b * BATCH_SIZE + 1; // 1-based rank range

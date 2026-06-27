@@ -147,6 +147,8 @@ async function main() {
 
   await pgBoss.start();
   console.log('[producer-embed] pgboss started');
+  // BUY-58445: ensure queue is registered before sending
+  await pgBoss.createQueue(EMBED_QUEUE);
 
   const products = await findProductsToEmbed(FETCH_LIMIT);
   summary.candidatesFound = products.length;
