@@ -27,7 +27,11 @@ if (!catalogDbUrl) {
 const QUEUE_NAME = 'discover.tranco';
 const BATCH_SIZE = parseInt(process.env.TRANCO_PRODUCER_BATCH_SIZE || '1000', 10);
 const TOP_N = parseInt(process.env.TRANCO_PRODUCER_TOP_N || '1000000', 10);
-const SINGLETON_HOURS = parseInt(process.env.TRANCO_PRODUCER_SINGLETON_HOURS || '23', 10);
+// pg-boss asserts expireInHours/60/60 < 24 (strict-less-than). With
+// expireInHours = SINGLETON_HOURS + 1, the safe max for SINGLETON_HOURS
+// is 22 (so expireInHours=23). We default to 22, which gives a 22-hour
+// dedupe window — covers the daily cron with a small margin.
+const SINGLETON_HOURS = Math.max(1, Math.min(22, parseInt(process.env.TRANCO_PRODUCER_SINGLETON_HOURS || '22', 10)));
 const ENABLED_KINDS = (process.env.TRANCO_PRODUCER_KINDS || SUPPORTED_KINDS.join(','))
   .split(',').map((s) => s.trim()).filter((k) => SUPPORTED_KINDS.includes(k));
 const TRANCO_LIST_ID = process.env.TRANCO_LIST_ID || null;

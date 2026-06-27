@@ -24,7 +24,11 @@ if (!catalogDbUrl) {
 
 const QUEUE_NAME = 'scrape.woocommerce.deep';
 const BATCH_LIMIT = parseInt(process.env.WC_PRODUCER_BATCH_LIMIT || '500', 10);
-const SINGLETON_HOURS = parseInt(process.env.WC_DEEP_SINGLETON_HOURS || process.env.WC_PRODUCER_SINGLETON_HOURS || '23', 10);
+// pg-boss asserts expireInHours/60/60 < 24 (strict-less-than). With
+// expireInHours = SINGLETON_HOURS + 1, the safe max for SINGLETON_HOURS
+// is 22 (so expireInHours=23). We default to 22, which gives a 22-hour
+// dedupe window — covers the daily cron with a small margin.
+const SINGLETON_HOURS = Math.max(1, Math.min(22, parseInt(process.env.WC_DEEP_SINGLETON_HOURS || process.env.WC_PRODUCER_SINGLETON_HOURS || '22', 10)));
 const START_PAGE = parseInt(process.env.WC_DEEP_START_PAGE || '1', 10);
 const END_PAGE = parseInt(process.env.WC_DEEP_END_PAGE || '80', 10);
 const COUNTRY_FILTER = (process.env.WC_PRODUCER_COUNTRY || '').split(',').map(s => s.trim()).filter(Boolean);
