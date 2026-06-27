@@ -7,7 +7,7 @@ import { createHash } from 'node:crypto';
 // ---------------------------------------------------------------------------
 function textHash(title, description) {
   const text = `${title || ''} ${description != null ? description : ''}`;
-  return createHash('md5').update(text).digest('hex');
+  return createHash('sha256').update(text).digest('hex');
 }
 
 // ---------------------------------------------------------------------------
@@ -143,34 +143,32 @@ test('textHash: batch of products produces unique hashes', async () => {
 });
 
 // ---------------------------------------------------------------------------
-// Test 11: Jina API payload structure (mocked)
+// Test 11: Cohere API payload structure (mocked)
 // ---------------------------------------------------------------------------
-test('Jina API payload structure for batch embedding', async () => {
+test('Cohere API payload structure for batch embedding', async () => {
   const texts = [
     'Product Title 1 Short description',
     'Product Title 2 A longer description with more details about this product',
     'Product Title 3',
   ];
 
-  // Expected payload shape per BUY-41136 spec
+  // Expected payload shape per BUY-41133 spec
   const expectedPayload = {
-    model: 'jina-embeddings-v3',
-    task: 'retrieval.passage',
-    dimensions: 512,
-    input: texts,
+    model: 'embed-multilingual-v3.0',
+    input_type: 'search_document',
+    texts,
   };
 
   assert.deepStrictEqual(
     expectedPayload,
     {
-      model: 'jina-embeddings-v3',
-      task: 'retrieval.passage',
-      dimensions: 512,
-      input: texts,
+      model: 'embed-multilingual-v3.0',
+      input_type: 'search_document',
+      texts,
     },
-    'Jina API payload must match spec'
+    'Cohere API payload must match spec'
   );
-  assert.strictEqual(expectedPayload.input.length, 3);
+  assert.strictEqual(expectedPayload.texts.length, 3);
 });
 
 // ---------------------------------------------------------------------------

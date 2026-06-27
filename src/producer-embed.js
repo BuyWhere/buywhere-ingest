@@ -5,14 +5,20 @@ import crypto from 'crypto';
 
 dotenv.config();
 
-const catalogDbUrl = process.env.CATALOG_DB_URL || process.env.DATABASE_URL;
+const queueDbUrl = process.env.CATALOG_DB_URL || process.env.DATABASE_URL;
+const replicaDbUrl = process.env.REPLICA_DATABASE_URL || queueDbUrl;
+const vectorDbUrl = process.env.VECTOR_DB_URL || queueDbUrl;
 
-if (!catalogDbUrl) {
+if (!queueDbUrl) {
   throw new Error('Missing CATALOG_DB_URL (or DATABASE_URL) environment variable.');
 }
+if (!replicaDbUrl) {
+  throw new Error('Missing REPLICA_DATABASE_URL (or CATALOG_DB_URL / DATABASE_URL) environment variable.');
+}
+if (!vectorDbUrl) {
+  throw new Error('Missing VECTOR_DB_URL (or CATALOG_DB_URL / DATABASE_URL) environment variable.');
+}
 
-// The maglev-replica products table is the same catalog DB — the query uses
-// the product_embeddings table which lives in the same DB.
 const EMBED_QUEUE = 'embed.products';
 const BATCH_SIZE = 100;          // products per pg-boss job
 const FETCH_LIMIT = 50000;       // max products per cron run
@@ -20,12 +26,17 @@ const SINGLETON_HOURS = 6;       // prevent re-enqueue of same job within window
 const ENQUEUE_BATCH = 500;       // products per embed.products job payload
 
 const pgBoss = new PgBoss({
-  connectionString: catalogDbUrl,
+  connectionString: queueDbUrl,
   schema: 'pgboss',
 });
 
-const db = new pg.Pool({
-  connectionString: catalogDbUrl,
+const readDb = new pg.Pool({
+  connectionString: replicaDbUrl,
+  max: 2,
+});
+
+const vectorDb = new pg.Pool({
+  connectionString: vectorDbUrl,
   max: 2,
 });
 
@@ -40,7 +51,7 @@ const summary = {
 
 function textHash(title, description) {
   const text = `${title || ''} ${description != null ? description : ''}`;
-  return crypto.createHash('md5').update(text).digest('hex');
+  return crypto.createHash('sha256').update(text).digest('hex');
 }
 
 // ---------------------------------------------------------------------------
@@ -51,30 +62,41 @@ function textHash(title, description) {
 //   - Limited to FETCH_LIMIT per run
 // ---------------------------------------------------------------------------
 async function findProductsToEmbed(limit) {
-  // The priority ordering from BUY-41136 spec:
-  // - NOT EXISTS: no embedding yet
-  // - EXISTS with hash mismatch: text changed since last embed
-  // - ORDER BY price DESC NULLS LAST
-  const result = await db.query(
+  // Prod uses a split topology: products live in the catalog DB while
+  // product_embeddings live in VECTOR_DB_URL. We cannot LEFT JOIN across
+  // those databases, so fetch high-priority candidates from the catalog DB
+  // first, then filter them against the vector DB in-process.
+  const scanLimit = Math.max(limit * 20, limit);
+  const sourceResult = await readDb.query(
     `SELECT p.id, p.title, p.description
        FROM products p
       WHERE p.is_active = true
-        AND (
-          NOT EXISTS (
-            SELECT 1 FROM product_embeddings pe
-             WHERE pe.product_id = p.id
-          )
-          OR EXISTS (
-            SELECT 1 FROM product_embeddings pe
-             WHERE pe.product_id = p.id
-               AND pe.text_hash != md5(p.title || ' ' || COALESCE(p.description, ''))
-          )
-        )
       ORDER BY p.price DESC NULLS LAST
       LIMIT $1`,
-    [limit]
+    [scanLimit]
   );
-  return result.rows;
+
+  if (sourceResult.rows.length === 0) {
+    return [];
+  }
+
+  const ids = sourceResult.rows.map((row) => String(row.id));
+  const existingResult = await vectorDb.query(
+    `SELECT product_id::text AS product_id, text_hash
+       FROM product_embeddings
+      WHERE product_id::text = ANY($1::text[])`,
+    [ids]
+  );
+  const existingHashById = new Map(
+    existingResult.rows.map((row) => [String(row.product_id), row.text_hash])
+  );
+
+  return sourceResult.rows
+    .filter((row) => {
+      const hash = textHash(row.title, row.description);
+      return existingHashById.get(String(row.id)) !== hash;
+    })
+    .slice(0, limit);
 }
 
 async function enqueueEmbedJobs(products) {
@@ -118,7 +140,10 @@ async function enqueueEmbedJobs(products) {
 
 async function main() {
   console.log('[producer-embed] Starting embed.products job producer...');
-  console.log(`[producer-embed] config: FETCH_LIMIT=${FETCH_LIMIT} ENQUEUE_BATCH=${ENQUEUE_BATCH}`);
+  console.log(
+    `[producer-embed] config: FETCH_LIMIT=${FETCH_LIMIT} ENQUEUE_BATCH=${ENQUEUE_BATCH} ` +
+    `queueDb=${queueDbUrl === replicaDbUrl ? 'shared' : 'primary'} readDb=${replicaDbUrl === queueDbUrl ? 'primary' : 'replica'}`
+  );
 
   await pgBoss.start();
   console.log('[producer-embed] pgboss started');
@@ -151,5 +176,6 @@ main()
   })
   .finally(async () => {
     try { await pgBoss.stop(); } catch {}
-    try { await db.end(); } catch {}
+    try { await readDb.end(); } catch {}
+    try { await vectorDb.end(); } catch {}
   });

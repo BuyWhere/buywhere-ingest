@@ -6,11 +6,11 @@ import https from 'https';
 
 dotenv.config();
 
-const catalogDbUrl = process.env.CATALOG_DB_URL || process.env.DATABASE_URL;
-const vectorDbUrl = process.env.VECTOR_DB_URL || catalogDbUrl; // fallback to catalog DB if no separate vector DB
+const queueDbUrl = process.env.CATALOG_DB_URL || process.env.DATABASE_URL;
+const vectorDbUrl = process.env.VECTOR_DB_URL || queueDbUrl; // fallback to catalog DB if no separate vector DB
 const cohereApiKey = process.env.COHERE_API_KEY;
 
-if (!catalogDbUrl) {
+if (!queueDbUrl) {
   throw new Error('Missing CATALOG_DB_URL (or DATABASE_URL) environment variable.');
 }
 if (!cohereApiKey) {
@@ -27,12 +27,12 @@ const MAX_RETRIES = 3;
 const BOSS_CONCURRENCY = 3;
 
 const pgBoss = new PgBoss({
-  connectionString: catalogDbUrl,
+  connectionString: queueDbUrl,
   schema: 'pgboss',
 });
 
 const db = new pg.Pool({
-  connectionString: catalogDbUrl,
+  connectionString: queueDbUrl,
   max: 4,
 });
 
@@ -123,6 +123,26 @@ async function upsertProductEmbeddings(records) {
   }
 }
 
+async function updatePipelineState(lastProcessedProductId, embeddedCount) {
+  if (!embeddedCount) return;
+
+  await vectorDb.query(
+    `INSERT INTO embedding_pipeline_state (
+       id,
+       last_processed_product_id,
+       products_embedded,
+       started_at,
+       updated_at
+     )
+     VALUES ('main', $1::uuid, $2::bigint, NOW(), NOW())
+     ON CONFLICT (id) DO UPDATE
+       SET last_processed_product_id = EXCLUDED.last_processed_product_id,
+           products_embedded = COALESCE(embedding_pipeline_state.products_embedded, 0) + EXCLUDED.products_embedded,
+           updated_at = NOW()`,
+    [lastProcessedProductId, embeddedCount]
+  );
+}
+
 // ---------------------------------------------------------------------------
 // embed.products worker
 // BOSS_CONCURRENCY=3: batchSize=100 products → Jina API → upsert
@@ -205,6 +225,7 @@ await pgBoss.work(EMBED_QUEUE, {
     }
 
     await upsertProductEmbeddings(records);
+    await updatePipelineState(records[records.length - 1]?.product_id ?? null, records.length);
 
     console.log(`[embed] job ${id} completed: ${records.length} products embedded, ${skippedHashMatch.length} skipped`);
   } catch (err) {
@@ -254,7 +275,7 @@ import('express').then(({ default: express }) => {
     try {
       const r = await vectorDb.query('SELECT count(*)::bigint AS n FROM product_embeddings');
       const stateRow = await vectorDb.query(
-        "SELECT id, last_processed_product_id, products_embedded, started_at FROM embedding_pipeline_state WHERE id = 'main'"
+        "SELECT id, last_processed_product_id, products_embedded, started_at, updated_at FROM embedding_pipeline_state WHERE id = 'main'"
       );
       out.checks.vector_db = {
         status: 'ok',
