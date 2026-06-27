@@ -1,0 +1,21 @@
+{
+  "checkTimestamp": "2026-06-27T12:03:00.832645+00:00",
+  "agentId": "8ca957f8-0911-4e81-a963-e2cf54c97d44",
+  "agentName": "Rex",
+  "issueIdentifier": "BUY-58357",
+  "parentIssueIdentifier": "BUY-55643",
+  "podId": "2416e35c-dc6e-48ec-a891-815e509ae03d",
+  "slaStatus": "approaching_breach",
+  "hoursSinceOriginalRequest": 115.05,
+  "hoursSinceEscalation": 39.97,
+  "supportReplyFound": false,
+  "inboxScan": "partners@buywhere.ai (615 msgs) \u2014 no support reply; combativenote933@agentmail.to (Nova) \u2014 0 msgs",
+  "escalationThreadStatus": {
+    "threadId": "0737f541-94d9-4e66-b4d9-1c0decb131a9",
+    "found": true,
+    "messageCount": 2,
+    "lastMessage": "Partners Inbox <partners@buywhere.ai> (2026-06-25T20:07:02.644Z)"
+  },
+  "nextAction": "continue_monitoring",
+  "recommendation": "SLA approaching breach (~115h of 120h threshold). No support reply received. Continue monitoring. Next check should catch potential breach at ~120h (approx 2026-06-27T17:02Z)."
+}
