@@ -121,11 +121,18 @@ async function enqueueEmbedJobs(products) {
       const jobId = await pgBoss.send(EMBED_QUEUE, payload, {
         // No singletonKey — we always want to enqueue every batch.
         // The hash-gate in the worker is what prevents redundant API calls.
+        // pg-boss asserts expireInHours/60/60 < 24 (strict-less-than), so
+        // 24 is rejected with "configuration assert: expiration cannot
+        // exceed 24 hours". 23 is the max legal value. (BUY-58437)
         retryLimit: 2,
-        expireInHours: 24,
+        expireInHours: 23,
       });
-      jobsEnqueued++;
-      productsEnqueued += batch.length;
+      if (jobId) {
+        jobsEnqueued++;
+        productsEnqueued += batch.length;
+      } else {
+        summary.errors.push({ batch_start: i, error: 'null_jobId_silent_reject' });
+      }
       console.log(`[producer-embed] enqueued job ${jobId || '<accepted>'} with ${batch.length} products (job ${jobsEnqueued}, total ${productsEnqueued})`);
     } catch (err) {
       const msg = String(err && err.message || err);

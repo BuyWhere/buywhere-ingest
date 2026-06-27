@@ -76,7 +76,8 @@ async function enqueueShopifyJobs(merchants) {
         retryLimit: 2,
         expireInHours: 23,
       });
-      enqueued++;
+      if (jobId) enqueued++;
+      else skippedSingleton++;
       console.log(`[producer] Enqueued scrape.shopify job ${jobId || '<accepted>'} for ${domain} (${merchant.onboarding_stage}, country=${merchant.country})`);
     } catch (err) {
       const msg = String(err && err.message || err);

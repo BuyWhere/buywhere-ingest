@@ -71,7 +71,8 @@ async function enqueueBatchJob(rankStart, rankEnd, kind) {
       retryLimit: 1,
       expireInHours: SINGLETON_HOURS + 1,
     });
-    summary.enqueued++;
+    if (jobId) summary.enqueued++;
+    else summary.skippedSingleton++;
     console.log(`[tranco-producer] Enqueued ${QUEUE_NAME} job ${jobId || '<accepted>'} for ranks ${rankStart}-${rankEnd} (kind=${kind}, key=${singletonKey})`);
   } catch (err) {
     const msg = String(err && err.message || err);

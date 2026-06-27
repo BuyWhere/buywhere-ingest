@@ -83,7 +83,8 @@ async function enqueueSitemapJob({ kind, domain, source, country, sitemapUrl, pr
       retryLimit: 1,
       expireInHours: EXPIRE_HOURS,
     });
-    summary.enqueued++;
+    if (jobId) summary.enqueued++;
+    else summary.skippedSingleton++;
     console.log(`[sitemap-producer] Enqueued ${QUEUE_NAME} job ${jobId || '<accepted>'} for ${domain} kind=${kind} url=${sitemapUrl} (singleton=${singletonKey})`);
   } catch (err) {
     const msg = String(err && err.message || err);

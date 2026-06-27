@@ -112,7 +112,8 @@ async function enqueueDiscoverJobs({ kind, candidateList, totalCandidates, known
         retryLimit: 1,
         expireInHours: SINGLETON_HOURS + 1,
       });
-      enqueued++;
+      if (jobId) enqueued++;
+      else skippedSingleton++;
       console.log(`[cc-producer] Enqueued ${QUEUE_NAME} job ${jobId || '<accepted>'} for kind=${kind} segment ${segmentStart}-${segmentEnd} (singleton=${singletonKey})`);
     } catch (err) {
       const msg = String((err && err.message) || err);

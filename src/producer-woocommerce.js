@@ -99,7 +99,8 @@ async function enqueueWcJobs(merchants) {
         retryLimit: 1,
         expireInHours: SINGLETON_HOURS + 1,
       });
-      enqueued++;
+      if (jobId) enqueued++;
+      else skippedSingleton++;
       console.log(`[wc-producer] Enqueued ${QUEUE_NAME} job ${jobId || '<accepted>'} for ${domain} (${merchant.onboarding_stage}, country=${merchant.country}, pages=${START_PAGE}-${END_PAGE})`);
     } catch (err) {
       const msg = String(err && err.message || err);

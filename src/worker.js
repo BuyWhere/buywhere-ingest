@@ -66,7 +66,11 @@ if (!ingestApiKey) {
 const DEEP_START_PAGE = parseInt(process.env.DEEP_START_PAGE || '7', 10);
 const DEEP_END_PAGE = parseInt(process.env.DEEP_END_PAGE || '80', 10);
 const DEEP_LIMIT = parseInt(process.env.DEEP_LIMIT || '250', 10);
-const DEEP_SINGLETON_HOURS = parseInt(process.env.DEEP_SINGLETON_HOURS || '23', 10);
+// pg-boss asserts expireInHours/60/60 < 24 (strict-less-than). With
+// expireInHours = DEEP_SINGLETON_HOURS + 1, the safe max for DEEP_SINGLETON_HOURS
+// is 22 (so expireInHours=23). We default to 22, which gives a 22-hour
+// dedupe window — covers the daily cron with a small margin. (BUY-58443)
+const DEEP_SINGLETON_HOURS = Math.max(1, Math.min(22, parseInt(process.env.DEEP_SINGLETON_HOURS || '22', 10)));
 
 // BUY-34834: WooCommerce deep-page queue (queue name imported from src/queues.js).
 // The WC Store API (https://<domain>/wp-json/wc/store/products?per_page=100&page=N)
