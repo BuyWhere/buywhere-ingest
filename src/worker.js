@@ -84,6 +84,25 @@ pgBoss.on('error', (err) => {
 
 await pgBoss.start();
 
+// Minimal health server started IMMEDIATELY so Railway's healthcheck passes
+// before the slower pgBoss.work() subscriptions complete. The full /healthz
+// with stats is handled by the health server at the bottom of this file,
+// but we need a responsive port during startup.
+const _earlyHealthPort = parseInt(process.env.PORT || '3000', 10);
+const _earlyHealthServer = http.createServer((req, res) => {
+  if (req.url === '/health' || req.url === '/healthz') {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify({ status: 'healthy', timestamp: new Date().toISOString(), service: 'buywhere-ingest-worker', starting: true }));
+  } else {
+    res.statusCode = 404;
+    res.end(JSON.stringify({ error: 'not found' }));
+  }
+});
+_earlyHealthServer.listen(_earlyHealthPort, () => {
+  console.log(`[worker] early healthz server listening on port ${_earlyHealthPort}`);
+});
+
 function deriveSource(domain, payload) {
   return (payload && payload.source && payload.source !== 'shopify')
     ? payload.source
@@ -1358,7 +1377,9 @@ const healthServer = http.createServer(async (req, res) => {
     }));
   }
 });
+// Close the early health server and start the full one
+try { _earlyHealthServer.close(); } catch (e) { /* already closed */ }
 healthServer.listen(healthPort, () => {
-  console.log(`[worker] healthz server listening on port ${healthPort}`);
+  console.log(`[worker] full healthz server listening on port ${healthPort}`);
 });
 // Last verified: 2026-06-27 - worker fix deploy attempt
