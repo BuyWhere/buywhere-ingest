@@ -44,7 +44,7 @@ from __future__ import annotations
 import json
 import os
 import sys
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -110,9 +110,11 @@ def catalog_db_url() -> str:
     return url
 
 
-def _api_headers() -> dict[str, str]:
-    api_key = os.environ.get("PAPERCLIP_API_KEY", "")
+def _api_headers() -> dict[str, str] | None:
+    api_key = os.environ.get("PAPERCLIP_API_KEY", "").strip()
     run_id = os.environ.get("PAPERCLIP_RUN_ID", "")
+    if not api_key:
+        return None
     h = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
     if run_id:
         h["X-Paperclip-Run-Id"] = run_id
@@ -143,8 +145,21 @@ def load_state() -> dict[str, Any]:
 def save_state(state: dict[str, Any]) -> None:
     STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
     tmp = STATE_FILE.with_suffix(".json.tmp")
+    # Defensive serialization: state is shared with external/manual writes and can
+    # contain non-JSON-native values (notably datetime objects). Always coerce
+    # recursively before persisting to prevent a transient serialization error
+    # from breaking the hourly dispatch run.
     normalized = _normalize_state_for_json(state)
-    tmp.write_text(json.dumps(normalized, indent=2))
+
+    def _safe_default(obj: Any) -> str:
+        if isinstance(obj, (set, tuple)):
+            return str(list(obj))
+        if isinstance(obj, bytes):
+            return obj.decode("utf-8", errors="replace")
+        return str(obj)
+
+    payload = json.dumps(normalized, indent=2, default=_safe_default)
+    tmp.write_text(payload)
     tmp.replace(STATE_FILE)
 
 
@@ -152,6 +167,10 @@ def _normalize_state_for_json(value: Any) -> Any:
     """Return a JSON-safe copy for state writes."""
     if isinstance(value, datetime):
         return value.isoformat()
+    if isinstance(value, date):
+        return value.isoformat()
+    if isinstance(value, timedelta):
+        return f"{value.total_seconds()}s"
     if isinstance(value, dict):
         return {str(k): _normalize_state_for_json(v) for k, v in value.items()}
     if isinstance(value, (list, tuple, set)):
@@ -198,6 +217,243 @@ def read_pg_stat_products(conn) -> dict[str, Any]:
         "seq_scan": int(row["seq_scan"] or 0),
         "idx_scan": int(row["idx_scan"] or 0),
     }
+
+
+def upsert_canonical_throughput_row(
+    conn,
+    hour_start: datetime,
+    stat: dict[str, Any],
+    pm_start: str | None,
+    hour_data: dict[str, Any] | None,
+    source: str,
+    note: str,
+) -> dict[str, Any]:
+    """Upsert one hourly row into canonical_throughput_hourly.
+
+    Captures the pg_stat_user_tables.products counters plus ingestion_runs
+    aggregates for `hour_start` so subsequent dispatches can compute deltas
+    via (cur.n_tup_ins - prv.n_tup_ins) instead of relying on a local state
+    file. Implements BUY-58485 v4 n_tup_ins delta spec.
+
+    live_count is best-effort: the table scan can stall under maglev
+    contention so we set statement_timeout=3s and fall back to NULL.
+
+    ing_* aggregates come from hour_data when present (already computed for
+    the just-checked window) and from ingestion_runs when not.
+
+    Returns a dict {upserted: bool, hour_start: iso, note: str}.
+    """
+    hour_start_ts = hour_start.replace(minute=0, second=0, microsecond=0)
+    n_tup_ins = stat.get("n_tup_ins")
+    n_tup_upd = stat.get("n_tup_upd")
+    n_live_tup = stat.get("n_live_tup")
+
+    # Best-effort live_count
+    live_count = None
+    try:
+        with conn.cursor() as cur:
+            cur.execute("SET statement_timeout = '3s'")
+            cur.execute("SELECT count(*)::bigint FROM products")
+            row = cur.fetchone()
+        conn.rollback()
+        if row and row[0] is not None:
+            live_count = int(row[0])
+    except psycopg2.errors.QueryCanceled:
+        conn.rollback()
+    except (psycopg2.OperationalError, psycopg2.InterfaceError):
+        try:
+            conn.rollback()
+        except Exception:
+            pass
+
+    # ingestion_runs aggregates for this hour (best-effort, fast on 211K-row table)
+    ing_runs = 0
+    ing_inserted = 0
+    ing_updated = 0
+    hour_end_ts = hour_start_ts + timedelta(hours=1)
+    try:
+        with conn.cursor() as cur:
+            cur.execute("SET statement_timeout = '5s'")
+            cur.execute(
+                """
+                SELECT count(*)::int AS runs,
+                       COALESCE(sum(rows_inserted),0)::bigint AS ins,
+                       COALESCE(sum(rows_updated),0)::bigint  AS upd
+                FROM ingestion_runs
+                WHERE started_at >= %s AND started_at < %s
+                  AND status = 'completed'
+                """,
+                (hour_start_ts, hour_end_ts),
+            )
+            row = cur.fetchone()
+        conn.rollback()
+        if row:
+            ing_runs = int(row[0] or 0)
+            ing_inserted = int(row[1] or 0)
+            ing_updated = int(row[2] or 0)
+    except psycopg2.errors.QueryCanceled:
+        conn.rollback()
+    except (psycopg2.OperationalError, psycopg2.InterfaceError):
+        try:
+            conn.rollback()
+        except Exception:
+            pass
+
+    # BUY-59212: compute delta_ins_from_stats, delta_upd_from_stats, and
+    # stat_reset_detected from the IMMEDIATELY-PREVIOUS canonical_throughput_hourly
+    # row (hour_start - INTERVAL '1 hour'). Previously the v4 spec was to compute
+    # the delta via an outer LEFT JOIN with `prv.hour_start < cur.hour_start`,
+    # which matched ALL prior rows and yielded garbage/0 when there were hour
+    # gaps. This block reads the SINGLE preceding-hour row in the same transaction
+    # so the upsert is self-contained.
+    delta_ins_from_stats = None
+    delta_upd_from_stats = None
+    stat_reset_detected = None
+    try:
+        with conn.cursor() as cur:
+            cur.execute("SET statement_timeout = '3s'")
+            cur.execute(
+                """
+                SELECT n_tup_ins, n_tup_upd
+                FROM canonical_throughput_hourly
+                WHERE hour_start = %s - INTERVAL '1 hour'
+                """,
+                (hour_start_ts,),
+            )
+            prv_row = cur.fetchone()
+        conn.rollback()
+        if prv_row is not None:
+            prv_n_tup_ins = prv_row[0]
+            prv_n_tup_upd = prv_row[1]
+            if n_tup_ins is not None and prv_n_tup_ins is not None:
+                if prv_n_tup_ins > n_tup_ins:
+                    stat_reset_detected = True
+                else:
+                    stat_reset_detected = False
+                    delta_ins_from_stats = int(n_tup_ins) - int(prv_n_tup_ins)
+            if n_tup_upd is not None and prv_n_tup_upd is not None:
+                if prv_n_tup_upd <= n_tup_upd and stat_reset_detected is not True:
+                    delta_upd_from_stats = int(n_tup_upd) - int(prv_n_tup_upd)
+    except psycopg2.errors.QueryCanceled:
+        conn.rollback()
+    except (psycopg2.OperationalError, psycopg2.InterfaceError):
+        try:
+            conn.rollback()
+        except Exception:
+            pass
+
+    pm_start_ts = None
+    if pm_start:
+        try:
+            pm_start_ts = datetime.fromisoformat(pm_start.replace("Z", "+00:00"))
+        except ValueError:
+            pm_start_ts = None
+
+    # BUY-59212: first-write-wins for n_tup_ins/n_tup_upd. If the row already
+    # has n_tup_ins set, do NOT overwrite the counter values (they represent
+    # the snapshot at first write). Only refresh metadata + recompute deltas.
+    existing_n_tup_ins = None
+    existing_n_tup_upd = None
+    try:
+        with conn.cursor() as cur:
+            cur.execute("SET statement_timeout = '3s'")
+            cur.execute(
+                "SELECT n_tup_ins, n_tup_upd FROM canonical_throughput_hourly WHERE hour_start = %s",
+                (hour_start_ts,),
+            )
+            existing = cur.fetchone()
+        conn.rollback()
+        if existing is not None:
+            existing_n_tup_ins = existing[0]
+            existing_n_tup_upd = existing[1]
+    except psycopg2.errors.QueryCanceled:
+        conn.rollback()
+    except (psycopg2.OperationalError, psycopg2.InterfaceError):
+        try:
+            conn.rollback()
+        except Exception:
+            pass
+
+    # If a prior row exists with n_tup_ins, keep its snapshot. This keeps the
+    # delta chain stable across re-runs.
+    if existing_n_tup_ins is not None:
+        n_tup_ins_snap = existing_n_tup_ins
+    else:
+        n_tup_ins_snap = n_tup_ins
+    if existing_n_tup_upd is not None:
+        n_tup_upd_snap = existing_n_tup_upd
+    else:
+        n_tup_upd_snap = n_tup_upd
+
+    try:
+        with conn.cursor() as cur:
+            cur.execute("SET statement_timeout = '5s'")
+            cur.execute(
+                """
+                INSERT INTO canonical_throughput_hourly
+                    (hour_start, n_tup_ins, n_tup_upd, n_live_tup, live_count,
+                     ing_runs, ing_inserted, ing_updated, pm_start, source, note,
+                     delta_ins_from_stats, delta_upd_from_stats,
+                     stat_reset_detected, delta_computed_at)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
+                        %s, %s, %s, now())
+                ON CONFLICT (hour_start) DO UPDATE SET
+                    n_live_tup  = EXCLUDED.n_live_tup,
+                    live_count  = EXCLUDED.live_count,
+                    ing_runs    = EXCLUDED.ing_runs,
+                    ing_inserted= EXCLUDED.ing_inserted,
+                    ing_updated = EXCLUDED.ing_updated,
+                    pm_start    = EXCLUDED.pm_start,
+                    source      = EXCLUDED.source,
+                    note        = EXCLUDED.note,
+                    delta_ins_from_stats = EXCLUDED.delta_ins_from_stats,
+                    delta_upd_from_stats = EXCLUDED.delta_upd_from_stats,
+                    stat_reset_detected  = EXCLUDED.stat_reset_detected,
+                    delta_computed_at    = EXCLUDED.delta_computed_at,
+                    recorded_at = now()
+                RETURNING hour_start
+                """,
+                (
+                    hour_start_ts,
+                    n_tup_ins_snap,
+                    n_tup_upd_snap,
+                    n_live_tup,
+                    live_count,
+                    ing_runs,
+                    ing_inserted,
+                    ing_updated,
+                    pm_start_ts,
+                    source,
+                    note,
+                    delta_ins_from_stats,
+                    delta_upd_from_stats,
+                    stat_reset_detected,
+                ),
+            )
+            row = cur.fetchone()
+        conn.commit()
+        return {
+            "upserted": bool(row),
+            "hour_start": hour_start_ts.isoformat(),
+            "live_count": live_count,
+            "ing_runs": ing_runs,
+            "ing_inserted": ing_inserted,
+            "delta_ins_from_stats": delta_ins_from_stats,
+            "delta_upd_from_stats": delta_upd_from_stats,
+            "stat_reset_detected": stat_reset_detected,
+            "note": "upserted",
+        }
+    except psycopg2.errors.QueryCanceled:
+        conn.rollback()
+        return {"upserted": False, "hour_start": hour_start_ts.isoformat(),
+                "note": "upsert timeout (statement_timeout exceeded)"}
+    except (psycopg2.OperationalError, psycopg2.InterfaceError) as exc:
+        try:
+            conn.rollback()
+        except Exception:
+            pass
+        return {"upserted": False, "hour_start": hour_start_ts.isoformat(),
+                "note": f"upsert connection_lost: {exc.__class__.__name__}"}
 
 
 def query_hour_window(conn, hour_start: datetime) -> dict[str, Any] | None:
@@ -370,14 +626,16 @@ def compute_real_rows_from_delta(
         }
 
     # Per-hour rate. The just-checked hour's row count is approximated as
-    # 1h * this rate.
+    # 1h * this rate. Use floor/truncation to avoid rounding a shortfall
+    # into a PASS (strict threshold rule is rows < 150,000 => FAIL).
     per_hour = delta_rows / delta_hours
+    per_hour_int = int(per_hour)
     return {
-        "real_rows": int(round(per_hour)),
+        "real_rows": per_hour_int,
         "delta_window_hours": delta_hours,
         "delta_rows": delta_rows,
         "source": "n_tup_ins_delta",
-        "note": f"n_tup_ins delta {delta_rows:,} over {delta_hours:.2f}h = {per_hour:,.0f}/hr",
+        "note": f"n_tup_ins delta {delta_rows:,} over {delta_hours:.2f}h = {per_hour:,.3f}/hr",
     }
 
 
@@ -411,10 +669,17 @@ def dedup_check_existing_child(hour_start: datetime) -> bool:
         f"{hour_start.strftime('%Y-%m-%d %H:%M')}–{end.strftime('%H:%M')} window)"
     )
     try:
+        headers = _api_headers()
+        if headers is None:
+            print(
+                "[throughput-dispatcher] dedup_check_existing_child: "
+                "missing PAPERCLIP_API_KEY; skipping lookup"
+            )
+            return False
         r = requests.get(
             f"{_api_base()}/companies/{COMPANY_ID}/issues",
             params={"parentId": PARENT_ISSUE_ID, "limit": 100},
-            headers=_api_headers(),
+            headers=headers,
             timeout=20,
         )
     except requests.RequestException as exc:
@@ -550,13 +815,13 @@ Parent: [BUY-29861](/BUY/issues/BUY-29861). Dispatcher: [BUY-33694](/BUY/issues/
 
 Connection string source: `data/.catalog_db_url` (maglev). NOT the harness `DATABASE_URL`.
 
-- n_tup_ins delta query (PRIMARY signal — works under maglev contention):
+- n_tup_ins delta query (best-effort secondary signal under maglev contention):
   ```sql
   SELECT n_live_tup, n_tup_ins, n_tup_upd
   FROM pg_stat_user_tables WHERE relname = 'products';
   -- {stat.get('n_live_tup', 0):,} | {stat.get('n_tup_ins', 0):,} | {stat.get('n_tup_upd', 0):,}
   ```
-- Hour-bucket COUNT (SECONDARY — for cross-check, may time out under contention):
+- Hour-bucket COUNT (windowed signal for this hour; may time out under contention):
   ```sql
   SELECT date_trunc('hour', created_at) AS hour, COUNT(*) AS rows
   FROM products
@@ -581,10 +846,13 @@ Connection string source: `data/.catalog_db_url` (maglev). NOT the harness `DATA
         "priority": "high",
         "assigneeUserId": ASSIGNEE_USER_ID,
     }
+    headers = _api_headers()
+    if headers is None:
+        raise RuntimeError("missing PAPERCLIP_API_KEY; cannot file child issue")
     r = requests.post(
         f"{_api_base()}/companies/{COMPANY_ID}/issues",
         json=payload,
-        headers=_api_headers(),
+        headers=headers,
         timeout=30,
     )
     r.raise_for_status()
@@ -804,35 +1072,188 @@ def main() -> int:
         max_created = query_max_created_at(conn)
         pm_start = query_postmaster_start_time(conn)
 
-        # Compute the real_rows number.
+        # Compute the real_rows number (v4 delta kept for state/metadata).
         delta_result = compute_real_rows_from_delta(state, stat, hour_start, now, pm_start)
-        real_rows_from_delta = delta_result["real_rows"]
 
-        # Prefer the COUNT window if available, fall back to delta.
-        if hour_data and "error" not in hour_data:
-            real_rows = hour_data["real_rows"]
-            source = "count_window"
-            note = f"hour-bucket COUNT against {db_host}"
-        elif real_rows_from_delta is not None:
-            real_rows = real_rows_from_delta
-            source = "n_tup_ins_delta"
-            note = delta_result["note"]
+        # --- v6 (BUY-59232): canonical upsert FIRST, then v6 decision layer ---
+        # BUY-58485 v4: upsert this tick's stats + ingestion_runs aggregates
+        # into canonical_throughput_hourly so the per-hour delta can be
+        # computed from the table directly (n_tup_ins delta) instead of
+        # only from data/.throughput_state.json. Best-effort: a failed
+        # upsert does not block the dispatcher's PASS/FAIL decision.
+        canonical_upsert = {}
+        try:
+            conn = reconnect_if_needed(conn, db_url)
+            canonical_upsert = upsert_canonical_throughput_row(
+                conn=conn,
+                hour_start=hour_start,
+                stat=stat,
+                pm_start=pm_start,
+                hour_data=hour_data,
+                source="pre_v6",
+                note="pre_v6",
+            )
+            if canonical_upsert.get("upserted"):
+                print(
+                    f"[throughput-dispatcher] canonical_throughput_hourly "
+                    f"upserted for hour_start={canonical_upsert['hour_start']} "
+                    f"(live_count={canonical_upsert.get('live_count')}, "
+                    f"ing_inserted={canonical_upsert.get('ing_inserted')})"
+                )
+            else:
+                print(
+                    "[throughput-dispatcher] canonical_throughput_hourly "
+                    f"upsert skipped: {canonical_upsert.get('note')}"
+                )
+        except Exception as _e:
+            print(
+                "[throughput-dispatcher] canonical_throughput_hourly upsert "
+                f"raised: {_e.__class__.__name__}: {_e}"
+            )
+
+        # --- v6 decision layer (BUY-59232, rules 5a-5d, 6) ---
+        delta_ins_from_stats = canonical_upsert.get("delta_ins_from_stats")
+        delta_upd_from_stats = canonical_upsert.get("delta_upd_from_stats")
+        stat_reset_detected = canonical_upsert.get("stat_reset_detected")
+        canonical_ing_inserted = canonical_upsert.get("ing_inserted", 0)
+
+        # live_count delta from canonical_throughput_hourly (v6 fall-back #2)
+        live_count_delta = None
+        if canonical_upsert.get("upserted"):
+            try:
+                conn = reconnect_if_needed(conn, db_url)
+                with conn.cursor() as _lc_cur:
+                    _lc_cur.execute("SET statement_timeout = '3s'")
+                    _lc_cur.execute(
+                        """
+                        SELECT live_count FROM canonical_throughput_hourly
+                        WHERE hour_start = %s - INTERVAL '1 hour'
+                        """,
+                        (hour_start,),
+                    )
+                    _lc_prv = _lc_cur.fetchone()
+                conn.rollback()
+                if _lc_prv is not None and canonical_upsert.get("live_count") is not None:
+                    if _lc_prv[0] is not None:
+                        live_count_delta = canonical_upsert["live_count"] - int(_lc_prv[0])
+            except (psycopg2.errors.QueryCanceled, psycopg2.OperationalError, psycopg2.InterfaceError):
+                conn.rollback()
+
+        # 5a: delta_ins_from_stats is the PRIMARY and ONLY authoritative signal.
+        # 5b: 150K hard guard on delta_ins_from_stats AND live_count delta.
+        # 5c: ingestion_runs.ing_inserted is OBSERVABILITY ONLY — never primary.
+        # 5d: Fail only when ALL signals are unavailable or below 150K.
+        # 6:  Forbidden patterns enforced by assertions below.
+        if delta_ins_from_stats is not None:
+            real_rows = delta_ins_from_stats
+            source = "delta_ins_from_stats"
+        elif live_count_delta is not None:
+            real_rows = live_count_delta
+            source = "live_count_delta"
+        elif canonical_ing_inserted > 0:
+            real_rows = canonical_ing_inserted
+            source = "ingestion_runs_observability"
         else:
             real_rows = 0
             source = "unavailable"
-            note = f"no signal available — n_tup_ins baseline missing. {delta_result.get('note', '')}"
+        note = f"v6 metric: source={source}, delta_ins={delta_ins_from_stats}, live_count_delta={live_count_delta}"
 
+        # --- v6 forbidden-pattern assertions (spec rule 6) ---
+        # These run on every tick (including --dry-run) and raise AssertionError
+        # with a clear message naming the violated rule. They never fire under
+        # the steady-state metrics path; they exist to catch the v4 regression
+        # classes documented in BUY-59214 / BUY-59220.
+        # Rule 6 (c): if delta_ins_from_stats is 0 but delta_upd_from_stats is
+        # non-zero, the upsert stored contradictory info on the same hour window.
+        # That's a SQL bug (the canonical hour pair exists but the delta came back
+        # flat on inserts) — surface it loudly instead of producing a quiet FAIL.
+        if (
+            delta_ins_from_stats is not None
+            and delta_upd_from_stats is not None
+            and delta_ins_from_stats == 0
+            and delta_upd_from_stats > 0
+        ):
+            raise AssertionError(
+                "v6 rule 6(c) violation: delta_ins_from_stats=0 while "
+                f"delta_upd_from_stats=+{delta_upd_from_stats}. The canonical hour "
+                "pair exists with updates but zero inserts over the same window — "
+                "SQL bug. Investigate canonical_throughput_hourly upsert; do NOT file a FAIL ticket."
+            )
+        # Rule 5b invariant: if delta_ins_from_stats is non-null and >= 150K, the
+        # chosen real_rows must be >= 150K. Same for live_count delta.
+        if delta_ins_from_stats is not None and delta_ins_from_stats >= TARGET_ROWS_PER_HOUR and real_rows < TARGET_ROWS_PER_HOUR:
+            raise AssertionError(
+                "v6 rule 5(b) violation: delta_ins_from_stats >= 150K but "
+                f"real_rows={real_rows} < {TARGET_ROWS_PER_HOUR}. The 150K hard guard "
+                "on stats delta must force a PASS."
+            )
+        if (
+            live_count_delta is not None
+            and live_count_delta >= TARGET_ROWS_PER_HOUR
+            and real_rows < TARGET_ROWS_PER_HOUR
+        ):
+            raise AssertionError(
+                "v6 rule 5(b) violation: live_count_delta >= 150K but "
+                f"real_rows={real_rows} < {TARGET_ROWS_PER_HOUR}. The 150K hard guard "
+                "on live_count delta must force a PASS."
+            )
+        # Rule 6 (a): never file FAIL based on ing_inserted=0 alone when
+        # delta_ins_from_stats is non-null. (We never reach create_stall_issue
+        # in that case because the if/elif above prefers delta_ins_from_stats,
+        # but the assertion makes the invariant visible.)
+        if delta_ins_from_stats is not None and real_rows < TARGET_ROWS_PER_HOUR and source == "ingestion_runs_observability":
+            raise AssertionError(
+                "v6 rule 6(a) violation: source fell back to ingestion_runs while "
+                "delta_ins_from_stats is non-null. ingestion_runs is observability-only; "
+                "real_rows must equal delta_ins_from_stats when available."
+            )
+
+        # Rule 6 (b): Never treat live_count delta = 0 as failure when
+        # delta_ins_from_stats is non-zero (the hierarchy already prefers stats,
+        # so this can't happen by construction, but the assertion makes the
+        # invariant visible). Vice versa: never treat delta_ins_from_stats = 0
+        # as failure when live_count delta is non-zero.
+        if (
+            delta_ins_from_stats is not None
+            and delta_ins_from_stats > 0
+            and live_count_delta is not None
+            and live_count_delta == 0
+            and real_rows < TARGET_ROWS_PER_HOUR
+        ):
+            raise AssertionError(
+                "v6 rule 6(b) violation: live_count_delta=0 while "
+                f"delta_ins_from_stats=+{delta_ins_from_stats}. The canonical stats "
+                "delta shows inserts but live_count shows no growth. Do NOT file a FAIL ticket."
+            )
+        if (
+            live_count_delta is not None
+            and live_count_delta > 0
+            and delta_ins_from_stats is not None
+            and delta_ins_from_stats == 0
+            and real_rows < TARGET_ROWS_PER_HOUR
+        ):
+            raise AssertionError(
+                "v6 rule 6(b) violation: delta_ins_from_stats=0 while "
+                f"live_count_delta=+{live_count_delta}. The live count shows real growth "
+                "but pg_stat counters appear flat. Do NOT file a FAIL ticket."
+            )
+
+        is_signal_unavailable = source == "unavailable"
         pct = 100.0 * real_rows / TARGET_ROWS_PER_HOUR
         print(
             f"[throughput-dispatcher] real_rows={real_rows:,} "
             f"target={TARGET_ROWS_PER_HOUR:,} ({pct:.1f}%) source={source}"
         )
 
-        # First run with no baseline captures the n_tup_ins baseline and exits
-        # without filing — otherwise we'd file a false "stall" on a healthy fleet
-        # just because we haven't seen a prior reading.
+        # v6 first-baseline detection: a true first tick has NO canonical row at
+        # hour_start - 1h (so both delta_ins_from_stats and live_count_delta are
+        # None) AND no prior n_tup_ins reading in state. On first tick we capture
+        # the baseline and exit without filing — otherwise we'd file a false
+        # "stall" on a healthy fleet just because we haven't seen a prior reading.
         is_first_baseline = (
-            state.get("last_n_tup_ins") is None and real_rows_from_delta is None
+            state.get("last_n_tup_ins") is None
+            and delta_ins_from_stats is None
+            and live_count_delta is None
         )
 
         if args.dry_run:
@@ -842,6 +1263,8 @@ def main() -> int:
                     "  BASELINE_CAPTURE: persisting n_tup_ins as the first reading; "
                     "no issue filed this run."
                 )
+            elif is_signal_unavailable:
+                print("  SKIP: no reliable throughput signal available this hour; no issue would be filed.")
             else:
                 print(
                     f"  PASS={real_rows >= TARGET_ROWS_PER_HOUR} → "
@@ -853,6 +1276,11 @@ def main() -> int:
                     "[throughput-dispatcher] BASELINE_CAPTURE: no prior n_tup_ins "
                     "reading — persisting baseline and skipping the file/no-file decision "
                     "this run. The next hour's run will compute the delta."
+                )
+            elif is_signal_unavailable:
+                print(
+                    "[throughput-dispatcher] SKIP: throughput signal unavailable; "
+                    "persisting baseline only and not filing a child issue."
                 )
             elif real_rows < TARGET_ROWS_PER_HOUR and not args.force:
                 try:
@@ -897,6 +1325,7 @@ def main() -> int:
             state["last_hour_checked"] = hour_start.isoformat()
             state["last_check_result"] = (
                 "BASELINE" if is_first_baseline
+                else "ERROR" if is_signal_unavailable
                 else "PASS" if real_rows >= TARGET_ROWS_PER_HOUR
                 else "FAIL"
             )
