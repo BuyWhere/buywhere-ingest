@@ -83,6 +83,14 @@ pgBoss.on('error', (err) => {
 });
 
 await pgBoss.start();
+console.log('[worker] pg-boss started');
+
+// Ensure all queue partitions exist before subscribing with work().
+// pgBoss.start() does not auto-create partitions for queues that are
+// registered only via work(); they must be created explicitly via
+// createQueue() or send(). This bootstrap makes fresh deployments
+// self-contained.
+await ensureQueuePartitions(pgBoss);
 
 // Minimal health server started IMMEDIATELY so Railway's healthcheck passes
 // before the slower pgBoss.work() subscriptions complete. The full /healthz
@@ -108,6 +116,7 @@ function deriveSource(domain, payload) {
     ? payload.source
     : `shopify_${domain.replace(/[^a-z0-9]/gi, '').toLowerCase()}`;
 }
+
 
 async function createIngestionRun(source, payload) {
   try {
@@ -1111,6 +1120,42 @@ console.log(`[worker] listening on queue ${DISCOVER_SITEMAP_QUEUE}`);
 // ---------------------------------------------------------------------------
 const LANE_QUEUE_PREFIX = 'scrape.shopify.lane.';
 const LANE_QUEUES = LANE_ROLES.map((role) => `${LANE_QUEUE_PREFIX}${role}`);
+/**
+ * Ensure pg-boss queue partitions exist for all queues used by this worker.
+ * pgBoss.start() creates the base schema but does NOT auto-create partitions
+ * for queues that have not yet received a send() call. Since this worker
+ * subscribes via work() before any send(), we proactively create every queue
+ * here so that fresh deployments never require manual SQL.
+ *
+ * This calls pgBoss.createQueue() which is idempotent — it calls the
+ * pgboss.create_queue() PL/pgSQL function that uses ON CONFLICT DO NOTHING.
+ */
+async function ensureQueuePartitions(boss) {
+  const queueNames = [
+    PAGE1_QUEUE,
+    DEEP_QUEUE,
+    WC_DEEP_QUEUE,
+    DISCOVER_CC_QUEUE,
+    DISCOVER_TRANCO_QUEUE,
+    DISCOVER_SITEMAP_QUEUE,
+    ...LANE_QUEUES,
+  ];
+  // BUY-30092: Use a SECURITY DEFINER wrapper (pgboss.create_queue_safe) because
+  // ingest_rw does not own pgboss.job and therefore cannot ATTACH PARTITION.
+  // The safe wrapper runs as the function owner (postgres). pg-boss's built-in
+  // boss.createQueue() calls pgboss.create_queue() directly, which would fail
+  // under the least-privilege ingest_rw role.
+  for (const name of queueNames) {
+    try {
+      await db.query(`SELECT pgboss.create_queue_safe($1, $2)`, [name, JSON.stringify({ policy: 'standard' })]);
+      console.log(`[worker] ensured pg-boss queue partition: ${name}`);
+    } catch (err) {
+      console.error(`[worker] failed to ensure queue partition for ${name}:`, err.message);
+    }
+  }
+}
+
+
 // BUY-48425: lane runner routes through the shared chunkedIngest helper,
 // which reads the same INGEST_BATCH_LIMIT (default 1000) as WC and deep.
 // The hunt/hunt2/stock lanes paginate up to 40 pages of 250 = up to 10k
