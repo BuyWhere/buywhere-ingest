@@ -30,6 +30,21 @@ import {
 } from './laneRunner.js';
 import { chunkArray } from './chunker.js';
 
+// BUY-59728: import queue names from src/queues.js to keep them hoisted
+// above the top-level `await ensureQueuePartitions(pgBoss)` call. Function
+// declarations are hoisted but `const` initialisers are not — declaring
+// these inside this file caused a temporal-dead-zone crash every boot.
+import {
+  PAGE1_QUEUE,
+  DEEP_QUEUE,
+  WC_DEEP_QUEUE,
+  DISCOVER_CC_QUEUE,
+  DISCOVER_TRANCO_QUEUE,
+  DISCOVER_SITEMAP_QUEUE,
+  LANE_QUEUES,
+  LANE_QUEUE_PREFIX,
+} from './queues.js';
+
 dotenv.config();
 
 const catalogDbUrl = process.env.CATALOG_DB_URL || process.env.DATABASE_URL;
@@ -43,25 +58,22 @@ if (!ingestApiKey) {
   throw new Error('Missing BUYWHERE_API_KEY environment variable.');
 }
 
-// BUY-33060 / BUY-34833: two queues, same shape.
+// BUY-33060 / BUY-34833: two queues, same shape (queue names imported from src/queues.js).
 // - scrape.shopify:       page 1 (XML sitemap → first ~250 products), as before.
 // - scrape.shopify.deep:  pages 7-80 via Shopify /products.json?page=N&limit=250.
 //   Enqueued by the page-1 handler after completion (success OR 0-results),
 //   so a single cron tick fans out to one deep job per scraped domain.
-const PAGE1_QUEUE = 'scrape.shopify';
-const DEEP_QUEUE = 'scrape.shopify.deep';
 const DEEP_START_PAGE = parseInt(process.env.DEEP_START_PAGE || '7', 10);
 const DEEP_END_PAGE = parseInt(process.env.DEEP_END_PAGE || '80', 10);
 const DEEP_LIMIT = parseInt(process.env.DEEP_LIMIT || '250', 10);
 const DEEP_SINGLETON_HOURS = parseInt(process.env.DEEP_SINGLETON_HOURS || '23', 10);
 
-// BUY-34834: WooCommerce deep-page queue. The WC Store API
-// (https://<domain>/wp-json/wc/store/products?per_page=100&page=N) returns the
-// whole catalog in one shape, so we don't split into page-1 + deep — a single
-// job per merchant does the whole deep-page. Producer (npm run producer:wc)
+// BUY-34834: WooCommerce deep-page queue (queue name imported from src/queues.js).
+// The WC Store API (https://<domain>/wp-json/wc/store/products?per_page=100&page=N)
+// returns the whole catalog in one shape, so we don't split into page-1 + deep —
+// a single job per merchant does the whole deep-page. Producer (npm run producer:wc)
 // finds merchants with source='woocommerce' and onboarding_stage in
 // ('discovered','interested') and enqueues one job per merchant.
-const WC_DEEP_QUEUE = 'scrape.woocommerce.deep';
 const WC_DEEP_START_PAGE = parseInt(process.env.WC_DEEP_START_PAGE || '1', 10);
 const WC_DEEP_END_PAGE = parseInt(process.env.WC_DEEP_END_PAGE || '80', 10);
 const WC_DEEP_PER_PAGE = parseInt(process.env.WC_DEEP_PER_PAGE || '100', 10);
@@ -517,7 +529,6 @@ console.log(`[worker] listening on queue ${WC_DEEP_QUEUE}`);
 // Shopify producer (npm run producer) picks them up on the next cron tick
 // and enqueues `scrape.shopify` jobs for actual catalog ingestion.
 // ---------------------------------------------------------------------------
-const DISCOVER_CC_QUEUE = 'discover.cc';
 const DISCOVER_SEGMENT_SIZE = parseInt(process.env.DISCOVER_SEGMENT_SIZE || '1000', 10);
 const DISCOVER_PROBE_CONCURRENCY = parseInt(process.env.DISCOVER_PROBE_CONCURRENCY || '25', 10);
 const DISCOVER_PROBE_TIMEOUT_MS = parseInt(process.env.DISCOVER_PROBE_TIMEOUT_MS || '20000', 10);
@@ -696,7 +707,6 @@ console.log(`[worker] listening on queue ${DISCOVER_CC_QUEUE}`);
 // jobs within CACHE_TTL_MS use the cached copy. The cache key prefers
 // the job's trancoListId hint, then TRANCO_LIST_ID env, then "latest".
 // ---------------------------------------------------------------------------
-const DISCOVER_TRANCO_QUEUE = 'discover.tranco';
 const TRANCO_PROBE_CONCURRENCY = parseInt(process.env.TRANCO_PROBE_CONCURRENCY || '8', 10);
 const TRANCO_PROBE_TIMEOUT_MS = parseInt(process.env.TRANCO_PROBE_TIMEOUT_MS || '6000', 10);
 const TRANCO_LIST_CACHE_TTL_MS = parseInt(process.env.TRANCO_LIST_CACHE_TTL_MS || (24 * 60 * 60 * 1000), 10);
@@ -965,7 +975,6 @@ console.log(`[worker] listening on queue ${DISCOVER_TRANCO_QUEUE}`);
 // hundred ms each; the retailer lane is mostly Best Buy + Walmart = a
 // few seconds each).
 // ---------------------------------------------------------------------------
-const DISCOVER_SITEMAP_QUEUE = 'discover.sitemap';
 const SITEMAP_FETCH_TIMEOUT_MS = parseInt(process.env.SITEMAP_FETCH_TIMEOUT_MS || '20000', 10);
 const SITEMAP_MAX_DEPTH = parseInt(process.env.SITEMAP_MAX_DEPTH || '4', 10);
 const SITEMAP_MAX_LOCS = parseInt(process.env.SITEMAP_MAX_LOCS || '50000', 10);
@@ -1118,8 +1127,6 @@ console.log(`[worker] listening on queue ${DISCOVER_SITEMAP_QUEUE}`);
 // LANE_SINGLETON_HOURS, so the table is the second line of defense for
 // candidates that slip through the singleton window.
 // ---------------------------------------------------------------------------
-const LANE_QUEUE_PREFIX = 'scrape.shopify.lane.';
-const LANE_QUEUES = LANE_ROLES.map((role) => `${LANE_QUEUE_PREFIX}${role}`);
 /**
  * Ensure pg-boss queue partitions exist for all queues used by this worker.
  * pgBoss.start() creates the base schema but does NOT auto-create partitions
