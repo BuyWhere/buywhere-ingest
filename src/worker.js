@@ -1364,7 +1364,9 @@ const healthServer = http.createServer(async (req, res) => {
     else if (stats.failed_runs > 0 && stats.completed_runs === 0) status = 'unhealthy';
     else if (stats.running_runs > 5) status = 'busy';
 
-    res.statusCode = status === 'healthy' ? 200 : 503;
+    // Railway healthcheck requires HTTP 200 — return 200 even when busy.
+    // Worker reports status=busy for observability but does not reject probes.
+    res.statusCode = 200;
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify({
       status,
