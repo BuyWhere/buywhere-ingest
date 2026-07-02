@@ -35,15 +35,34 @@ const summary = {
 };
 
 async function findCandidateMerchants(limit) {
+  // BUY-59785: skip merchants that have been recently scraped so the producer
+  // doesn't get stuck re-finding the same N oldest merchants (which then
+  // singleton-dedupe out every cycle). pgboss.job is partitioned by queue
+  // name; we look up the most recent completed scrape.shopify job per domain
+  // and exclude domains scraped within the singleton window.
   const result = await db.query(
-    `SELECT id, name, source, country, onboarding_stage
-       FROM merchants
-      WHERE source = 'shopify'
-        AND onboarding_stage IN ('discovered', 'interested', 'backfilled_orphan')
-        AND ($1::text[] IS NULL OR cardinality($1::text[]) = 0 OR country = ANY($1::text[]))
-      ORDER BY created_at ASC
-      LIMIT $2`,
-    [COUNTRY_FILTER.length ? COUNTRY_FILTER : null, limit]
+    `SELECT m.id, m.name, m.source, m.country, m.onboarding_stage
+       FROM merchants m
+      WHERE m.source = 'shopify'
+        AND m.onboarding_stage IN ('discovered', 'interested', 'backfilled_orphan')
+        AND ($1::text[] IS NULL OR cardinality($1::text[]) = 0 OR m.country = ANY($1::text[]))
+        AND NOT EXISTS (
+          SELECT 1 FROM pgboss.job j
+          WHERE j.name = 'scrape.shopify'
+            AND j.state IN ('active', 'created')
+            AND j.created_on > now() - ($2::text || ' hours')::interval
+            AND j.data->>'domain' = m.id
+        )
+        AND NOT EXISTS (
+          SELECT 1 FROM pgboss.job j
+          WHERE j.name = 'scrape.shopify'
+            AND j.state = 'completed'
+            AND j.created_on > now() - ($2::text || ' hours')::interval
+            AND j.data->>'domain' = m.id
+        )
+      ORDER BY m.created_at ASC
+      LIMIT $3`,
+    [COUNTRY_FILTER.length ? COUNTRY_FILTER : null, String(SINGLETON_HOURS), limit]
   );
   return result.rows;
 }
