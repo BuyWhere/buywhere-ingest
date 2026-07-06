@@ -131,6 +131,95 @@ describe('fetchTrancoList', () => {
 // probeWooCommerce
 // ---------------------------------------------------------------------------
 
+
+  // ---------------------------------------------------------------------------
+  // BUY-60453: TRANCO_CSV_URL direct-download path (zip + plain csv)
+  // ---------------------------------------------------------------------------
+  const { deflateRawSync } = await import('node:zlib');
+
+  // Build a minimal single-file DEFLATE zip in memory.
+  function makeZip(filename, csvText) {
+    const data = Buffer.from(csvText, 'utf-8');
+    const compressed = deflateRawSync(data);
+    const nameBuf = Buffer.from(filename, 'utf-8');
+    const localHeader = Buffer.alloc(30);
+    localHeader.writeUInt32LE(0x04034b50, 0);
+    localHeader.writeUInt16LE(20, 4);            // version needed
+    localHeader.writeUInt16LE(8, 8);             // method = DEFLATE
+    localHeader.writeUInt16LE(0, 10);            // mod time
+    localHeader.writeUInt16LE(0, 12);            // mod date
+    // CRC32
+    let crc = 0xffffffff;
+    for (const b of data) {
+      crc ^= b;
+      for (let k = 0; k < 8; k++) crc = (crc >>> 1) ^ (0xedb88320 & -(crc & 1));
+    }
+    crc = (crc ^ 0xffffffff) >>> 0;
+    localHeader.writeUInt32LE(crc, 14);
+    localHeader.writeUInt32LE(compressed.length, 18);
+    localHeader.writeUInt32LE(data.length, 22);
+    localHeader.writeUInt16LE(nameBuf.length, 26);
+    localHeader.writeUInt16LE(0, 28);
+    const localFile = compressed;
+    const centralDir = Buffer.alloc(46);
+    centralDir.writeUInt32LE(0x02014b50, 0);
+    centralDir.writeUInt16LE(20, 4);
+    centralDir.writeUInt16LE(8, 10);
+    centralDir.writeUInt32LE(crc, 16);
+    centralDir.writeUInt32LE(compressed.length, 20);
+    centralDir.writeUInt32LE(data.length, 24);
+    centralDir.writeUInt16LE(nameBuf.length, 28);
+    centralDir.writeUInt16LE(0, 30);
+    centralDir.writeUInt16LE(0, 32);
+    centralDir.writeUInt16LE(0, 34);
+    centralDir.writeUInt16LE(0, 36);
+    centralDir.writeUInt32LE(0, 38);
+    centralDir.writeUInt32LE(0, 42); // local header offset = 0 (local header is first)
+    const cdStart = localHeader.length + nameBuf.length + localFile.length;
+    const eocd = Buffer.alloc(22);
+    eocd.writeUInt32LE(0x06054b50, 0);
+    eocd.writeUInt16LE(1, 10);             // entries
+    eocd.writeUInt16LE(1, 8);              // entries on disk
+    eocd.writeUInt32LE(centralDir.length + nameBuf.length, 12); // cd size
+    eocd.writeUInt32LE(cdStart, 16);       // cd offset
+    return Buffer.concat([localHeader, nameBuf, localFile, centralDir, nameBuf, eocd]);
+  }
+
+  it('parses a DEFLATE zip from csvUrl option', async () => {
+    const csv = 'rank,domain\n1,google.com\n2,example.com\n3,test.org\n';
+    const zipBuf = makeZip('top-1m.csv', csv);
+    const fetchImpl = async () => new Response(zipBuf, {
+      status: 200,
+      headers: { 'content-type': 'application/zip' },
+    });
+    const out = await fetchTrancoList({ fetchImpl, csvUrl: 'https://x/top-1m.csv.zip', limit: 100 });
+    assert.equal(out.rows.length, 3);
+    assert.deepEqual(out.rows[0], { rank: 1, domain: 'google.com' });
+    assert.deepEqual(out.rows[2], { rank: 3, domain: 'test.org' });
+    assert.equal(out.listId, 'daily');
+  });
+
+  it('parses a plain CSV (non-zip) from csvUrl option', async () => {
+    const csv = '1,google.com\n2,facebook.com\n';
+    const fetchImpl = async () => new Response(csv, {
+      status: 200,
+      headers: { 'content-type': 'text/csv' },
+    });
+    const out = await fetchTrancoList({ fetchImpl, csvUrl: 'https://x/list.csv', limit: 100 });
+    assert.equal(out.rows.length, 2);
+    assert.equal(out.rows[0].domain, 'google.com');
+  });
+
+  it('honors limit on the zip path', async () => {
+    const csv = '1,a.com\n2,b.com\n3,c.com\n4,d.com\n5,e.com\n';
+    const zipBuf = makeZip('top-1m.csv', csv);
+    const fetchImpl = async () => new Response(zipBuf, {
+      status: 200, headers: { 'content-type': 'application/zip' },
+    });
+    const out = await fetchTrancoList({ fetchImpl, csvUrl: 'https://x.zip', limit: 2 });
+    assert.equal(out.rows.length, 2);
+  });
+
 describe('probeWooCommerce', () => {
   it('returns ok=true on a real WC Store API response', async () => {
     const fetchImpl = mockFetchByUrl([

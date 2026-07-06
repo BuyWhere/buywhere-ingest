@@ -28,6 +28,59 @@
 const DEFAULT_PROBE_TIMEOUT_MS = 6000;
 const MAX_BODY_BYTES = 64 * 1024; // 64 KB is plenty for fingerprinting
 
+import { inflateRawSync } from 'node:zlib';
+
+/**
+ * Extract the first file from a zip buffer without external dependencies.
+ * Handles STORE (0) and DEFLATE (8) compression methods.
+ * @param {Buffer} buf - raw zip bytes
+ * @returns {string} decompressed file contents (utf-8)
+ */
+function unzipSingleFile(buf) {
+  // Find the End of Central Directory record (PK\x05\x06).
+  const eocdSig = Buffer.from([0x50, 0x4b, 0x05, 0x06]);
+  let eocd = -1;
+  for (let i = buf.length - 22; i >= Math.max(0, buf.length - 65557); i--) {
+    if (buf[i] === 0x50 && buf[i + 1] === 0x4b && buf[i + 2] === 0x05 && buf[i + 3] === 0x06) {
+      eocd = i;
+      break;
+    }
+  }
+  if (eocd < 0) throw new Error('zip: EOCD record not found');
+  const cdOffset = buf.readUInt32LE(eocd + 16);
+  const cdEntries = buf.readUInt16LE(eocd + 10);
+  let off = cdOffset;
+  for (let e = 0; e < cdEntries; e++) {
+    const sig = buf.readUInt32LE(off);
+    if (sig !== 0x02014b50) throw new Error(`zip: bad central directory entry at ${off}`);
+    const method = buf.readUInt16LE(off + 10);
+    const compSize = buf.readUInt32LE(off + 20);
+    const uncompSize = buf.readUInt32LE(off + 24);
+    const nameLen = buf.readUInt16LE(off + 28);
+    const extraLen = buf.readUInt16LE(off + 30);
+    const commentLen = buf.readUInt16LE(off + 32);
+    const localHeaderOff = buf.readUInt32LE(off + 42);
+    // Read local file header to find the real data offset.
+    const localNameLen = buf.readUInt16LE(localHeaderOff + 26);
+    const localExtraLen = buf.readUInt16LE(localHeaderOff + 28);
+    const dataOff = localHeaderOff + 30 + localNameLen + localExtraLen;
+    const compressed = buf.subarray(dataOff, dataOff + compSize);
+    let out;
+    if (method === 0) {
+      out = compressed;
+    } else if (method === 8) {
+      out = inflateRawSync(compressed);
+    } else {
+      throw new Error(`zip: unsupported compression method ${method}`);
+    }
+    if (out.length !== uncompSize) {
+      throw new Error(`zip: size mismatch (expected ${uncompSize}, got ${out.length})`);
+    }
+    return out.toString('utf-8');
+  }
+  throw new Error('zip: no entries found');
+}
+
 /**
  * Fetch the latest Tranco top-N list as a `[{rank, domain}]` array.
  *
@@ -51,6 +104,33 @@ export async function fetchTrancoList(opts = {}) {
 
   let listId = opts.listId;
   let availableDate = null;
+
+  // BUY-60453: Tranco's metadata API (`/api/lists/latest`) was removed, which
+  // broke the `/lists/<id>/full` flow (404 on the metadata lookup). When
+  // TRANCO_CSV_URL is set (e.g. the daily bundled zip), fetch it directly and
+  // decompress if needed. Falls back to the legacy metadata flow otherwise.
+  const directCsvUrl = opts.csvUrl || process.env.TRANCO_CSV_URL || null;
+
+  if (directCsvUrl) {
+    const directRes = await fetchWithTimeout(fetchImpl, directCsvUrl, fetchTimeoutMs);
+    if (!directRes.ok) {
+      throw new Error(`Tranco list csv fetch failed: ${directRes.status} ${await safeText(directRes)}`);
+    }
+    const contentType = (directRes.headers && (directRes.headers.get('content-type') || '')) || '';
+    const isZip = /zip/i.test(contentType) || /\.zip($|\?)/i.test(directCsvUrl);
+    let csvBody;
+    if (isZip) {
+      const buf = Buffer.from(await directRes.arrayBuffer());
+      csvBody = unzipSingleFile(buf);
+    } else {
+      const text = await readBoundedText(directRes, 64 * 1024 * 1024);
+      if (!text.ok) throw new Error(`Tranco list csv body unreadable: ${text.reason}`);
+      csvBody = text.body;
+    }
+    const rows = parseCsvRows(csvBody, limit);
+    return { listId: listId || 'daily', availableDate: null, rows };
+  }
+
   if (!listId) {
     const metaUrl = 'https://tranco-list.eu/api/lists/latest';
     const metaRes = await fetchWithTimeout(fetchImpl, metaUrl, fetchTimeoutMs);
@@ -74,9 +154,14 @@ export async function fetchTrancoList(opts = {}) {
   if (!csvText.ok) {
     throw new Error(`Tranco list csv body unreadable: ${csvText.reason}`);
   }
+  const rows = parseCsvRows(csvText.body, limit);
 
+  return { listId, availableDate, rows };
+}
+
+function parseCsvRows(csvBody, limit) {
   const rows = [];
-  const lines = csvText.body.split(/\r?\n/);
+  const lines = csvBody.split(/\r?\n/);
   for (let i = 0; i < lines.length; i++) {
     if (rows.length >= limit) break;
     const line = lines[i].trim();
@@ -91,8 +176,7 @@ export async function fetchTrancoList(opts = {}) {
     if (!domain || !domain.includes('.') || domain.length > 253) continue;
     rows.push({ rank, domain });
   }
-
-  return { listId, availableDate, rows };
+  return rows;
 }
 
 async function fetchWithTimeout(fetchImpl, url, timeoutMs) {
