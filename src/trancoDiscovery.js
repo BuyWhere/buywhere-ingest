@@ -84,10 +84,13 @@ function unzipSingleFile(buf) {
 /**
  * Fetch the latest Tranco top-N list as a `[{rank, domain}]` array.
  *
- * Tranco API:
+ * Tranco API (BUY-60997: endpoints reorganized; resolved with fallbacks):
  *   1. GET https://tranco-list.eu/api/lists/latest
- *      → { list_id: "...", available_date: "YYYY-MM-DD" }
- *   2. GET https://tranco-list.eu/lists/<list_id>/full
+ *      — legacy; now 404. Falls back to /api/lists/date/<YYYY-MM-DD>
+ *        for today, yesterday, and 2-days-ago until one returns 200.
+ *      → { list_id, available_date, download }
+ *   2. GET <meta.download>  (preferred) or
+ *      https://tranco-list.eu/download/<list_id>/<prefix>
  *      → text/csv with `rank,domain\n` rows.
  *
  * @param {object} [opts]
@@ -105,10 +108,9 @@ export async function fetchTrancoList(opts = {}) {
   let listId = opts.listId;
   let availableDate = null;
 
-  // BUY-60453: Tranco's metadata API (`/api/lists/latest`) was removed, which
-  // broke the `/lists/<id>/full` flow (404 on the metadata lookup). When
-  // TRANCO_CSV_URL is set (e.g. the daily bundled zip), fetch it directly and
-  // decompress if needed. Falls back to the legacy metadata flow otherwise.
+  // BUY-60453: when TRANCO_CSV_URL is set (e.g. the daily bundled zip), fetch
+  // it directly and decompress if needed. This short-circuits the metadata
+  // lookup entirely.
   const directCsvUrl = opts.csvUrl || process.env.TRANCO_CSV_URL || null;
 
   if (directCsvUrl) {
@@ -131,24 +133,59 @@ export async function fetchTrancoList(opts = {}) {
     return { listId: listId || 'daily', availableDate: null, rows };
   }
 
+  let apiDownloadUrl = null;
   if (!listId) {
-    const metaUrl = 'https://tranco-list.eu/api/lists/latest';
-    const metaRes = await fetchWithTimeout(fetchImpl, metaUrl, fetchTimeoutMs);
-    if (!metaRes.ok) {
-      throw new Error(`Tranco list metadata fetch failed: ${metaRes.status} ${await safeText(metaRes)}`);
+    // BUY-60997: the Tranco project reorganized its endpoints. The legacy
+    // `/api/lists/latest` metadata URL now returns 404, and the CSV moved
+    // from `/lists/<id>/full` to `/download/<id>/<prefix>`. Try the modern
+    // metadata endpoints in order (latest -> today -> yesterday -> 2 days
+    // ago), accepting any non-4xx/5xx response.
+    const isoDaysFromNow = (offset) => new Date(Date.now() + offset * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+    const metaCandidates = [
+      'https://tranco-list.eu/api/lists/latest',
+      `https://tranco-list.eu/api/lists/date/${isoDaysFromNow(0)}`,
+      `https://tranco-list.eu/api/lists/date/${isoDaysFromNow(-1)}`,
+      `https://tranco-list.eu/api/lists/date/${isoDaysFromNow(-2)}`,
+    ];
+    let metaRes = null;
+    let lastErrorStatus = null;
+    for (const metaUrl of metaCandidates) {
+      metaRes = await fetchWithTimeout(fetchImpl, metaUrl, fetchTimeoutMs);
+      if (metaRes.ok) break;
+      lastErrorStatus = metaRes.status;
+      // Stop early on auth/client errors that aren't "not found" retries.
+      if (metaRes.status >= 400 && metaRes.status < 500 && metaRes.status !== 404) break;
+    }
+    if (!metaRes || !metaRes.ok) {
+      throw new Error(`Tranco list metadata fetch failed: ${lastErrorStatus ?? 'no_response'} ${metaRes ? await safeText(metaRes) : ''}`.trimEnd());
     }
     const meta = await metaRes.json();
     listId = meta.list_id || meta.listId || meta.id;
-    availableDate = meta.available_date || meta.availableDate || null;
+    availableDate = meta.available_date || meta.availableDate || meta.created_on || meta.createdOn || null;
+    apiDownloadUrl = meta.download || null;
     if (!listId) {
       throw new Error(`Tranco list metadata missing list_id: ${JSON.stringify(meta).slice(0, 200)}`);
     }
   }
 
-  const csvUrl = `https://tranco-list.eu/lists/${listId}/full`;
-  const csvRes = await fetchWithTimeout(fetchImpl, csvUrl, fetchTimeoutMs);
-  if (!csvRes.ok) {
-    throw new Error(`Tranco list csv fetch failed: ${csvRes.status} ${await safeText(csvRes)}`);
+  // BUY-60997: prefer the download URL advertised by the metadata response,
+  // then the canonical `/download/<id>/<prefix>` shape, then the legacy
+  // `/lists/<id>/full` path as a last resort.
+  const csvCandidates = [
+    opts.downloadUrl,
+    apiDownloadUrl,
+    `https://tranco-list.eu/download/${listId}/${limit}`,
+    `https://tranco-list.eu/download/${listId}/full`,
+  ].filter(Boolean);
+  let csvRes = null;
+  let csvUrl = null;
+  for (const candidate of csvCandidates) {
+    csvRes = await fetchWithTimeout(fetchImpl, candidate, fetchTimeoutMs);
+    csvUrl = candidate;
+    if (csvRes.ok) break;
+  }
+  if (!csvRes || !csvRes.ok) {
+    throw new Error(`Tranco list csv fetch failed: ${csvRes ? csvRes.status : 'no_response'} (url=${csvUrl || 'none'}) ${csvRes ? await safeText(csvRes) : ''}`.trimEnd());
   }
   const csvText = await readBoundedText(csvRes, 64 * 1024 * 1024); // 64 MB cap on the full list
   if (!csvText.ok) {

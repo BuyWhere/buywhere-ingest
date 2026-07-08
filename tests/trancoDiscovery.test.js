@@ -63,8 +63,8 @@ describe('fetchTrancoList', () => {
       '5,wordpress.com',
     ].join('\n');
     const fetchImpl = mockFetchByUrl([
-      ['/api/lists/latest', async () => jsonResponse({ list_id: 'L1', available_date: '2026-06-07' })],
-      ['/lists/L1/full', async () => textResponse(csv, 200, { 'content-type': 'text/csv' })],
+      ['/api/lists/latest', async () => jsonResponse({ list_id: 'L1', available_date: '2026-06-07', download: 'https://tranco-list.eu/download/L1/1000000' })],
+      ['/download/L1/', async () => textResponse(csv, 200, { 'content-type': 'text/csv' })],
     ]);
     // No listId — the producer path always starts with the latest-list
     // metadata fetch, which yields availableDate.
@@ -79,7 +79,7 @@ describe('fetchTrancoList', () => {
   it('skips metadata fetch when listId is supplied', async () => {
     const csv = 'rank,domain\n1,a.com\n';
     const fetchImpl = mockFetchByUrl([
-      ['/lists/L-PINNED/full', async () => textResponse(csv, 200, { 'content-type': 'text/csv' })],
+      ['/download/L-PINNED/', async () => textResponse(csv, 200, { 'content-type': 'text/csv' })],
     ]);
     const out = await fetchTrancoList({ fetchImpl, listId: 'L-PINNED' });
     assert.equal(out.listId, 'L-PINNED');
@@ -91,7 +91,7 @@ describe('fetchTrancoList', () => {
     const csv = 'rank,domain\n1,a.com\n2,b.com\n3,c.com\n';
     const fetchImpl = mockFetchByUrl([
       ['/api/lists/latest', async () => jsonResponse({ list_id: 'L2' })],
-      ['/lists/L2/full', async () => textResponse(csv, 200, { 'content-type': 'text/csv' })],
+      ['/download/L2/', async () => textResponse(csv, 200, { 'content-type': 'text/csv' })],
     ]);
     const out = await fetchTrancoList({ fetchImpl, limit: 2 });
     assert.equal(out.rows.length, 2);
@@ -118,12 +118,44 @@ describe('fetchTrancoList', () => {
   it('surfaces upstream 500 from the csv endpoint', async () => {
     const fetchImpl = mockFetchByUrl([
       ['/api/lists/latest', async () => jsonResponse({ list_id: 'L9' })],
-      ['/lists/L9/full', async () => new Response('csv service down', { status: 503 })],
+      ['/download/L9/', async () => new Response('csv service down', { status: 503 })],
     ]);
     await assert.rejects(
       () => fetchTrancoList({ fetchImpl, fetchTimeoutMs: 1000 }),
       /Tranco list csv fetch failed/
     );
+  });
+
+  // BUY-60997 regression: the legacy /api/lists/latest endpoint now 404s.
+  // The fix must fall back to /api/lists/date/<YYYY-MM-DD> and still resolve
+  // a valid list + CSV download.
+  it('falls back to date-based metadata when /api/lists/latest 404s (BUY-60997)', async () => {
+    const csv = 'rank,domain\n1,example.com\n2,foo.com\n';
+    const fetchImpl = mockFetchByUrl([
+      ['/api/lists/latest', async () => new Response('404: Not Found', { status: 404 })],
+      ['/api/lists/date/', async () => jsonResponse({ list_id: 'JZK4Y', available_date: '2026-07-07', download: 'https://tranco-list.eu/download/JZK4Y/1000000' })],
+      ['/download/JZK4Y/', async () => textResponse(csv, 200, { 'content-type': 'text/csv' })],
+    ]);
+    const out = await fetchTrancoList({ fetchImpl });
+    assert.equal(out.listId, 'JZK4Y');
+    assert.equal(out.availableDate, '2026-07-07');
+    assert.equal(out.rows.length, 2);
+    assert.deepEqual(out.rows[0], { rank: 1, domain: 'example.com' });
+  });
+
+  // BUY-60997 regression: when the API-provided download URL is absent and
+  // the canonical /download/<id>/<limit> path is the only candidate, it must
+  // still fetch the CSV.
+  it('uses canonical /download/<id>/<limit> when metadata has no download field', async () => {
+    const csv = 'rank,domain\n1,bar.com\n';
+    const fetchImpl = mockFetchByUrl([
+      ['/api/lists/latest', async () => jsonResponse({ list_id: 'ABC' })],
+      ['/download/ABC/', async () => textResponse(csv, 200, { 'content-type': 'text/csv' })],
+    ]);
+    const out = await fetchTrancoList({ fetchImpl, limit: 1000000 });
+    assert.equal(out.listId, 'ABC');
+    assert.equal(out.rows.length, 1);
+    assert.deepEqual(out.rows[0], { rank: 1, domain: 'bar.com' });
   });
 });
 
