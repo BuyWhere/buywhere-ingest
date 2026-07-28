@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
- * Hourly throughput dispatcher — v6.4 (BUY-62327)
+ * Hourly throughput dispatcher — v6.5 (BUY-63662)
  *
  * Top of every UTC hour, snapshot pg_stat_all_tables.products and
  * ingestion_runs into canonical_throughput_hourly, compute net products added
- * as delta_ins_from_stats, and file failure child issues on BUY-59639 when
+ * as delta_ins_from_stats, and file failure child issues on BUY-29861 when
  * throughput < 150K.
  *
  * Canonical DB is read from data/.catalog_db_url (always maglev).
@@ -28,8 +28,8 @@ const STMT_TIMEOUT_FAST_RETRY_S = 20;
 const STMT_TIMEOUT_COUNT_S = 30;
 const STMT_TIMEOUT_MAX_CREATED_S = 8;
 
-const PARENT_ISSUE_ID = 'be9d4eef-94bc-451e-b574-a620d48a7ffb'; // BUY-59639 canonical v6 dispatcher (current active)
-const PASS_COMMENT_ISSUE_ID = 'be9d4eef-94bc-451e-b574-a620d48a7ffb'; // BUY-59639 canonical v6 dispatcher (current active)
+const PARENT_ISSUE_ID = '4891fe2c-4957-46c9-a45d-451c157af77a'; // BUY-29861 hourly throughput failure report
+const PASS_COMMENT_ISSUE_ID = '4891fe2c-4957-46c9-a45d-451c157af77a'; // BUY-29861 hourly throughput failure report
 const COMPANY_ID = '177bc805-e3c8-4336-84cb-8e1e482d5a17';
 const ASSIGNEE_USER_ID = 'MRfjkCUzuFyLTtKHcVLDaJxoAAWxM7b6';
 
@@ -106,6 +106,7 @@ async function retryFetch(url, options = {}) {
   const maxSleep = options.maxSleep || 20_000;
   let delay = initialDelay;
   let lastError = null;
+  let partitionNtupIns = null;
 
   for (let attempt = 1; attempt <= maxAttempts; attempt++) {
     try {
@@ -169,6 +170,7 @@ async function withTimeout(client, timeoutSeconds, fn) {
 async function readPgStatAllProducts(client) {
   let row = null;
   let lastError = null;
+  let partitionNtupIns = null;
   const timeouts = [STMT_TIMEOUT_FAST_S, STMT_TIMEOUT_FAST_RETRY_S];
   for (const timeout of timeouts) {
     try {
@@ -179,6 +181,16 @@ async function readPgStatAllProducts(client) {
            FROM pg_stat_all_tables
            WHERE relname = 'products' AND schemaname = 'public'`
         );
+        try {
+          const partResult = await c.query(
+              `SELECT COUNT(*)::int AS partition_count,
+                      COALESCE(SUM(n_tup_ins), 0)::bigint AS sum_ins
+               FROM pg_stat_all_tables
+               WHERE relname LIKE 'products_%' AND schemaname = 'public'`
+          );
+          const partitionCount = parseInt(partResult.rows[0].partition_count || 0, 10);
+          partitionNtupIns = partitionCount > 0 ? parseInt(partResult.rows[0].sum_ins || 0, 10) : null;
+        } catch { /* partition-sum is best-effort */ }
         return result.rows[0];
       });
       if (row) break;
@@ -203,6 +215,7 @@ async function readPgStatAllProducts(client) {
     n_tup_del: parseInt(row.n_tup_del || 0, 10),
     seq_scan: parseInt(row.seq_scan || 0, 10),
     idx_scan: parseInt(row.idx_scan || 0, 10),
+    partition_n_tup_ins: partitionNtupIns,
   };
 }
 
@@ -431,93 +444,88 @@ async function upsertCanonicalThroughputRow(client, hourStart, stat, pmStart, ho
 // v6 decision logic
 // ---------------------------------------------------------------------------
 
-function selectV6ThroughputSignal(deltaInsFromStats, canonicalIngInserted, liveCountDelta, nLiveTupDelta) {
-  // nLiveTupGuardBlockedByIngInserted: only for fallback case when delta_ins_from_stats is NULL
-  const nLiveTupGuardBlockedByIngInserted =
-    nLiveTupDelta != null &&
-    nLiveTupDelta >= TARGET_ROWS_PER_HOUR &&
-    canonicalIngInserted != null &&
-    canonicalIngInserted < TARGET_ROWS_PER_HOUR;
+function normalizeV6DecisionArgs(argCount, hourData, deltaInsFromStats, canonicalIngInserted, liveCountDelta, nLiveTupDelta, partitionNtupIns, previousPartitionNtupIns) {
+  if (argCount > 4 || (hourData !== null && typeof hourData === 'object')) {
+    return { hourData, deltaInsFromStats, canonicalIngInserted, liveCountDelta, nLiveTupDelta, partitionNtupIns, previousPartitionNtupIns };
+  }
+  return {
+    hourData: null,
+    deltaInsFromStats: hourData,
+    canonicalIngInserted: deltaInsFromStats,
+    liveCountDelta: canonicalIngInserted,
+    nLiveTupDelta: liveCountDelta,
+    partitionNtupIns: nLiveTupDelta,
+    previousPartitionNtupIns: partitionNtupIns,
+  };
+}
 
-  // v6.4: When delta_ins_from_stats is non-null and below target, use n_live_tup_delta guard if >= 150K
-  // UNLESS ing_inserted corroboration blocks it (autovacuum bloat release detected)
-  if (
-    deltaInsFromStats != null &&
-    deltaInsFromStats < TARGET_ROWS_PER_HOUR &&
-    nLiveTupDelta != null &&
-    nLiveTupDelta >= TARGET_ROWS_PER_HOUR &&
-    !nLiveTupGuardBlockedByIngInserted
-  ) {
+function nLiveTupGuardAllowed(canonicalIngInserted) {
+  return canonicalIngInserted == null || canonicalIngInserted >= TARGET_ROWS_PER_HOUR;
+}
+
+function nLiveTupGuardPasses(nLiveTupDelta, canonicalIngInserted) {
+  return nLiveTupDelta != null && nLiveTupDelta >= TARGET_ROWS_PER_HOUR && nLiveTupGuardAllowed(canonicalIngInserted);
+}
+
+function selectV6ThroughputSignal(hourData, deltaInsFromStats, canonicalIngInserted, liveCountDelta, nLiveTupDelta, partitionNtupIns, previousPartitionNtupIns) {
+  ({ hourData, deltaInsFromStats, canonicalIngInserted, liveCountDelta, nLiveTupDelta, partitionNtupIns, previousPartitionNtupIns } =
+    normalizeV6DecisionArgs(arguments.length, hourData, deltaInsFromStats, canonicalIngInserted, liveCountDelta, nLiveTupDelta, partitionNtupIns, previousPartitionNtupIns));
+	  const partDelta = (partitionNtupIns != null && previousPartitionNtupIns != null && (partitionNtupIns > 0 || previousPartitionNtupIns > 0))
+	    ? partitionNtupIns - previousPartitionNtupIns
+	    : null;
+	  if (deltaInsFromStats != null && deltaInsFromStats < TARGET_ROWS_PER_HOUR && nLiveTupGuardPasses(nLiveTupDelta, canonicalIngInserted)) {
+	    return [nLiveTupDelta, 'n_live_tup_delta_guard'];
+	  }
+	  if (deltaInsFromStats != null) {
+	    return [deltaInsFromStats, 'delta_ins_from_stats'];
+	  }
+	  if (partDelta != null) {
+	    return [partDelta, 'partition_sum_n_tup_ins'];
+	  }
+  if (nLiveTupGuardPasses(nLiveTupDelta, canonicalIngInserted)) {
     return [nLiveTupDelta, 'n_live_tup_delta_guard'];
   }
-
-  if (deltaInsFromStats != null) {
-    return [deltaInsFromStats, 'delta_ins_from_stats'];
-  }
-
-  // Fallback case: delta_ins_from_stats is NULL - ing_inserted blocking applies here
-  if (
-    nLiveTupDelta != null &&
-    nLiveTupDelta >= TARGET_ROWS_PER_HOUR &&
-    !nLiveTupGuardBlockedByIngInserted
-  ) {
-    return [nLiveTupDelta, 'n_live_tup_delta_guard'];
-  }
-
   if (liveCountDelta != null && liveCountDelta >= TARGET_ROWS_PER_HOUR) {
     return [liveCountDelta, 'live_count_delta'];
   }
-
   const ingInserted = canonicalIngInserted || 0;
   if (ingInserted > 0) {
     return [ingInserted, 'ingestion_runs_observability'];
   }
-
-  if (liveCountDelta != null) {
+  if (liveCountDelta != null && liveCountDelta > 0) {
     return [liveCountDelta, 'live_count_delta'];
   }
   return [0, 'unavailable'];
 }
 
-function shouldFileV6FailureTicket(deltaInsFromStats, canonicalIngInserted, liveCountDelta, nLiveTupDelta) {
-  // When delta_ins_from_stats is non-null and below target, use n_live_tup_delta guard if >= 150K
-  // (ing_inserted is observability-only when delta_ins_from_stats is available)
-  if (deltaInsFromStats != null) {
-    if (deltaInsFromStats >= TARGET_ROWS_PER_HOUR) {
-      return false;
-    }
-    if (
-      nLiveTupDelta != null &&
-      nLiveTupDelta >= TARGET_ROWS_PER_HOUR &&
-      !(canonicalIngInserted != null && canonicalIngInserted < TARGET_ROWS_PER_HOUR)
-    ) {
-      return false;
-    }
-    if (liveCountDelta != null && liveCountDelta >= TARGET_ROWS_PER_HOUR) {
-      return false;
-    }
-    return true;
-  }
-
-  const nLiveTupGuardBlockedByIngInserted =
-    nLiveTupDelta != null &&
-    nLiveTupDelta >= TARGET_ROWS_PER_HOUR &&
-    canonicalIngInserted != null &&
-    canonicalIngInserted < TARGET_ROWS_PER_HOUR;
-
-  if (
-    nLiveTupDelta != null &&
-    nLiveTupDelta >= TARGET_ROWS_PER_HOUR &&
-    !nLiveTupGuardBlockedByIngInserted
-  ) {
+function shouldFileV6FailureTicket(hourData, deltaInsFromStats, canonicalIngInserted, liveCountDelta, nLiveTupDelta, partitionNtupIns, previousPartitionNtupIns) {
+  ({ hourData, deltaInsFromStats, canonicalIngInserted, liveCountDelta, nLiveTupDelta, partitionNtupIns, previousPartitionNtupIns } =
+    normalizeV6DecisionArgs(arguments.length, hourData, deltaInsFromStats, canonicalIngInserted, liveCountDelta, nLiveTupDelta, partitionNtupIns, previousPartitionNtupIns));
+	  const partDelta = (partitionNtupIns != null && previousPartitionNtupIns != null && (partitionNtupIns > 0 || previousPartitionNtupIns > 0))
+	    ? partitionNtupIns - previousPartitionNtupIns
+	    : null;
+	  if (deltaInsFromStats != null) {
+	    if (deltaInsFromStats >= TARGET_ROWS_PER_HOUR) return false;
+	    if (nLiveTupGuardPasses(nLiveTupDelta, canonicalIngInserted)) return false;
+	    if (liveCountDelta != null && liveCountDelta >= TARGET_ROWS_PER_HOUR) return false;
+	    return true;
+	  }
+	  if (partDelta != null) {
+	    return partDelta < TARGET_ROWS_PER_HOUR;
+	  }
+  if (nLiveTupGuardPasses(nLiveTupDelta, canonicalIngInserted)) {
     return false;
   }
   if (liveCountDelta != null && liveCountDelta >= TARGET_ROWS_PER_HOUR) {
     return false;
   }
-  const ingestionUnavailableOrLow = canonicalIngInserted === null || canonicalIngInserted < TARGET_ROWS_PER_HOUR;
-  const liveCountUnavailableOrLow = liveCountDelta === null || liveCountDelta < TARGET_ROWS_PER_HOUR;
-  return ingestionUnavailableOrLow && liveCountUnavailableOrLow;
+  if (canonicalIngInserted != null) {
+    return canonicalIngInserted < TARGET_ROWS_PER_HOUR;
+  }
+  if (liveCountDelta != null && liveCountDelta > 0) {
+    return liveCountDelta < TARGET_ROWS_PER_HOUR;
+  }
+  return false;
 }
 
 function assertV6ForbiddenPatterns({
@@ -529,7 +537,25 @@ function assertV6ForbiddenPatterns({
   currentNTupIns,
   previousNTupIns,
 }) {
-  // Rule 6(c)
+  // Rule 6(a): stats delta must remain authoritative when present.
+  if (deltaInsFromStats != null && source === 'ingestion_runs_observability') {
+    throw new Error(
+      `v6 rule 6(a) violation: source fell back to ingestion_runs_observability while delta_ins_from_stats=${deltaInsFromStats}. Use pg_stat_all_tables.products.n_tup_ins delta as the authoritative signal.`
+    );
+  }
+
+  // Rule 6(b): live_count_delta cannot contradict stats delta in either direction.
+  if (
+    deltaInsFromStats != null &&
+    liveCountDelta != null &&
+    ((liveCountDelta === 0 && deltaInsFromStats > 0) || (deltaInsFromStats === 0 && liveCountDelta > 0))
+  ) {
+    throw new Error(
+      `v6 rule 6(b) violation: live_count_delta=${liveCountDelta} contradicts delta_ins_from_stats=${deltaInsFromStats}. Do NOT file using live_count_delta.`
+    );
+  }
+
+  // Rule 6(c): detect data integrity issue in canonical_throughput_hourly upsert
   if (
     deltaInsFromStats != null &&
     deltaInsFromStats === 0 &&
@@ -539,41 +565,6 @@ function assertV6ForbiddenPatterns({
   ) {
     throw new Error(
       `v6 rule 6(c) violation: delta_ins_from_stats=0 while raw consecutive n_tup_ins values differ (${previousNTupIns} -> ${currentNTupIns}). Investigate canonical_throughput_hourly upsert; do NOT file a FAIL ticket.`
-    );
-  }
-  // Rule 6(a)
-  if (
-    deltaInsFromStats != null &&
-    realRows < TARGET_ROWS_PER_HOUR &&
-    source === 'ingestion_runs_observability'
-  ) {
-    throw new Error(
-      'v6 rule 6(a) violation: source fell back to ingestion_runs while delta_ins_from_stats is non-null. ingestion_runs is observability-only; real_rows must equal delta_ins_from_stats when available.'
-    );
-  }
-  // Rule 6(b)
-  if (
-    deltaInsFromStats != null &&
-    deltaInsFromStats > 0 &&
-    liveCountDelta != null &&
-    liveCountDelta === 0 &&
-    realRows < TARGET_ROWS_PER_HOUR &&
-    source === 'live_count_delta'
-  ) {
-    throw new Error(
-      `v6 rule 6(b) violation: live_count_delta=0 while delta_ins_from_stats=+${deltaInsFromStats}. Do NOT file a FAIL ticket.`
-    );
-  }
-  if (
-    liveCountDelta != null &&
-    liveCountDelta > 0 &&
-    deltaInsFromStats != null &&
-    deltaInsFromStats === 0 &&
-    realRows < TARGET_ROWS_PER_HOUR &&
-    source === 'delta_ins_from_stats'
-  ) {
-    throw new Error(
-      `v6 rule 6(b) violation: delta_ins_from_stats=0 while live_count_delta=+${liveCountDelta}. Do NOT file a FAIL ticket.`
     );
   }
 }
@@ -612,7 +603,7 @@ async function dedupCheckExistingChild(hourStart) {
   }
 }
 
-async function retryPendingChildren(state) {
+async function retryPendingChildren(state, overrides = {}) {
   const pending = state.pending_children || [];
   if (!pending.length) return [];
   const headers = apiHeaders();
@@ -625,7 +616,13 @@ async function retryPendingChildren(state) {
   for (const entry of pending) {
     const hs = entry.hour_start_iso ? new Date(entry.hour_start_iso) : null;
     try {
-      const ident = await createStallIssue(
+      const dedupFn = overrides.dedupCheckExistingChild || dedupCheckExistingChild;
+      if (hs && await dedupFn(hs)) {
+        console.log(`[throughput-dispatcher] RETRY dedup skipped pending child for ${hs.toISOString()}`);
+        continue;
+      }
+      const createFn = overrides.createStallIssue || createStallIssue;
+      const ident = await createFn(
         hs, entry.real_rows, entry.source, entry.note,
         entry.hour_data, entry.stat, entry.max_created, entry.db_host, entry.fire_ts
       );
@@ -644,7 +641,7 @@ async function createStallIssue(hourStart, realRows, source, note, hourData, sta
   const description = buildEvidenceMarkdown(hourStart, realRows, source, note, hourData, stat, maxCreated, dbHost, fireTs);
   const hourEnd = new Date(hourStart.getTime() + 60 * 60 * 1000);
   const title =
-    `[BUY-59639 dispatcher] Hourly throughput check ` +
+    `[BUY-29861 dispatcher] Hourly throughput check ` +
     `(${hourStart.getUTCFullYear()}-${pad2(hourStart.getUTCMonth() + 1)}-${pad2(hourStart.getUTCDate())} ${pad2(hourStart.getUTCHours())}:${pad2(hourStart.getUTCMinutes())} UTC fire, ` +
     `${pad2(hourStart.getUTCHours())}:${pad2(hourStart.getUTCMinutes())}–` +
     `${pad2(hourEnd.getUTCHours())}:${pad2(hourEnd.getUTCMinutes())} window)`;
@@ -654,6 +651,7 @@ async function createStallIssue(hourStart, realRows, source, note, hourData, sta
     title,
     description,
     parentId: PARENT_ISSUE_ID,
+    parentIssueId: PARENT_ISSUE_ID,
     status: 'todo',
     priority: 'high',
     assigneeUserId: ASSIGNEE_USER_ID,
@@ -682,6 +680,21 @@ async function createStallIssue(hourStart, realRows, source, note, hourData, sta
     const vbody = await vr.json();
     if (vbody.id !== issueId || vbody.identifier !== identifier) {
       throw new Error(`createStallIssue: silent rollback detected for ${identifier}`);
+    }
+    if (vbody.parentId !== PARENT_ISSUE_ID && vbody.parentIssueId !== PARENT_ISSUE_ID) {
+      const pr = await retryFetch(`${apiBase()}/issues/${issueId}`, {
+        method: 'PATCH',
+        headers,
+        body: JSON.stringify({ parentId: PARENT_ISSUE_ID, parentIssueId: PARENT_ISSUE_ID }),
+      });
+      if (!pr.ok) {
+        const text = await pr.text().catch(() => '');
+        throw new Error(`createStallIssue: parent repair PATCH returned ${pr.status}; ${identifier} is unparented: ${text}`);
+      }
+      const repaired = await pr.json().catch(() => ({}));
+      if (repaired.parentId !== PARENT_ISSUE_ID && repaired.parentIssueId !== PARENT_ISSUE_ID) {
+        throw new Error(`createStallIssue: parent verification failed for ${identifier}; API did not persist BUY-29861 parent`);
+      }
     }
   }
   return identifier;
@@ -713,7 +726,7 @@ function buildEvidenceMarkdown(hourStart, realRows, source, note, hourData, stat
 
 **Result: ${realRows >= TARGET_ROWS_PER_HOUR ? 'PASS' : 'FAIL'} — ${realRows.toLocaleString()} / ${TARGET_ROWS_PER_HOUR.toLocaleString()} (${pct.toFixed(1)}%).**
 
-Parent: [BUY-59639](/BUY/issues/BUY-59639). Dispatcher: [BUY-59639](/BUY/issues/BUY-59639). Source: \`${source}\`.
+Parent: [BUY-29861](/BUY/issues/BUY-29861). Dispatcher: [BUY-29861](/BUY/issues/BUY-29861). Source: \`${source}\`.
 
 > ${note}
 
@@ -795,7 +808,7 @@ async function postParentPassComment(hourStart, realRows, source) {
       body: JSON.stringify({ body }),
     });
     if (resp.ok) {
-      console.log('[throughput-dispatcher] PASS comment posted on BUY-59639');
+      console.log('[throughput-dispatcher] PASS comment posted on BUY-29861');
     } else {
       console.log(`[throughput-dispatcher] WARNING: PASS comment POST ${resp.status}`);
     }
@@ -815,7 +828,7 @@ function buildRunNote({ hourStart, hourEnd, result, realRows, source, deltaRows,
   if (nLiveTupDelta != null) parts.push(`n_live_tup delta ${nLiveTupDelta.toLocaleString()}.`);
   parts.push(`n_tup_ins=${stat && stat.n_tup_ins != null ? stat.n_tup_ins.toLocaleString() : 0}, n_live_tup=${stat && stat.n_live_tup != null ? stat.n_live_tup.toLocaleString() : 0}.`);
   if (pmStart) parts.push(`pm_start=${pmStart}.`);
-  if (failureIdentifier) parts.push(`Filed child ${failureIdentifier} under BUY-59639.`);
+  if (failureIdentifier) parts.push(`Filed child ${failureIdentifier} under BUY-29861.`);
   else parts.push('No child filed.');
   return parts.join(' ');
 }
@@ -1040,25 +1053,24 @@ async function main() {
       }
     }
 
-    const [realRows, source] = selectV6ThroughputSignal(deltaInsFromStats, canonicalIngInserted, liveCountDelta, nLiveTupDelta);
-    const note = `v6.4 metric: source=${source}, delta_ins=${deltaInsFromStats}, live_count_delta=${liveCountDelta}, n_live_tup_delta=${nLiveTupDelta}`;
-
-    // Forbidden-pattern assertions
-    assertV6ForbiddenPatterns({
-      deltaInsFromStats,
-      deltaUpdFromStats,
-      realRows,
-      source,
-      liveCountDelta,
+	    const previousPartitionNtupIns = state.last_partition_n_tup_ins != null ? state.last_partition_n_tup_ins : null;
+	    const [realRows, source] = selectV6ThroughputSignal(hourData, deltaInsFromStats, canonicalIngInserted, liveCountDelta, nLiveTupDelta, stat && stat.partition_n_tup_ins, previousPartitionNtupIns);
+	    const note = `v6.5 metric: source=${source}, created_at_count=${hourData && !hourData.error ? hourData.real_rows : "?"}, partition_sum=${stat && stat.partition_n_tup_ins != null ? stat.partition_n_tup_ins : null}, n_live_tup_delta=${nLiveTupDelta}`;
+	    // Forbidden-pattern assertions
+	    assertV6ForbiddenPatterns({
+	      deltaInsFromStats,
+	      deltaUpdFromStats,
+	      realRows,
+	      source,
+	      liveCountDelta,
       currentNTupIns: canonicalUpsert.n_tup_ins,
       previousNTupIns,
     });
 
     console.log(`[throughput-dispatcher] real_rows=${realRows.toLocaleString()} target=${TARGET_ROWS_PER_HOUR.toLocaleString()} (${(100.0 * realRows / TARGET_ROWS_PER_HOUR).toFixed(1)}%) source=${source}`);
 
-    const isFirstBaseline = !state.last_n_tup_ins && deltaInsFromStats == null && liveCountDelta == null;
-    const shouldFileFailure = shouldFileV6FailureTicket(deltaInsFromStats, canonicalIngInserted, liveCountDelta, nLiveTupDelta);
-
+    const isFirstBaseline = !state.last_n_tup_ins && deltaInsFromStats == null && liveCountDelta == null && previousPartitionNtupIns == null;
+    const shouldFileFailure = shouldFileV6FailureTicket(hourData, deltaInsFromStats, canonicalIngInserted, liveCountDelta, nLiveTupDelta, stat && stat.partition_n_tup_ins, previousPartitionNtupIns);
     if (dryRun) {
       console.log('[throughput-dispatcher] --dry-run: would NOT call the Paperclip API');
       if (isFirstBaseline) {
@@ -1066,7 +1078,7 @@ async function main() {
       } else if (source === 'unavailable') {
         console.log('  SKIP: no reliable throughput signal available this hour; no issue would be filed.');
       } else {
-        console.log(`  PASS=${!shouldFileFailure} → ${shouldFileFailure ? 'would file under BUY-59639' : 'no-op'}`);
+        console.log(`  PASS=${!shouldFileFailure} → ${shouldFileFailure ? 'would file under BUY-29861' : 'no-op'}`);
       }
     } else {
       if (isFirstBaseline) {
@@ -1076,7 +1088,7 @@ async function main() {
       } else if (shouldFileFailure && realRows < TARGET_ROWS_PER_HOUR && !force) {
         try {
           failureIdentifier = await createStallIssue(hourStart, realRows, source, note, hourData, stat, maxCreated, dbHost, fireTs);
-          console.log(`[throughput-dispatcher] FAIL — filed ${failureIdentifier} under BUY-59639`);
+          console.log(`[throughput-dispatcher] FAIL — filed ${failureIdentifier} under BUY-29861`);
           await writeEvidenceMarkdown(hourStart, realRows, source, note, hourData, stat, maxCreated, dbHost, fireTs, failureIdentifier);
         } catch (err) {
           console.log(`[throughput-dispatcher] FAIL — createStallIssue failed: ${err.name}: ${err.message}`);
@@ -1110,6 +1122,7 @@ async function main() {
     // Persist state
     if (!dryRun) {
       state.last_n_tup_ins = stat.n_tup_ins;
+      if (stat && stat.partition_n_tup_ins != null) state.last_partition_n_tup_ins = stat.partition_n_tup_ins;
       state.last_n_tup_ins_at = toPythonIsoString(now);
       state.last_hour_checked = toPythonIsoString(hourStart);
       state.last_check_result = isFirstBaseline
@@ -1172,4 +1185,5 @@ module.exports = {
   selectV6ThroughputSignal,
   shouldFileV6FailureTicket,
   assertV6ForbiddenPatterns,
+  retryPendingChildren,
 };
