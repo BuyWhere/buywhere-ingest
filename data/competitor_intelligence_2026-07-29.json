@@ -1,0 +1,376 @@
+{
+  "generated_at": "2026-07-29T01:08:00.413225",
+  "total_found": 41,
+  "errors": [
+    {
+      "error": "PH_API_TOKEN not set",
+      "platform": "product_hunt"
+    },
+    {
+      "error": "Smithery API returned 404",
+      "platform": "smithery"
+    }
+  ],
+  "by_threat_level": {
+    "critical": 7,
+    "high": 20,
+    "medium": 11,
+    "monitor": 3
+  },
+  "by_platform": {
+    "github": 37,
+    "hackernews": 4
+  },
+  "competitors": [
+    {
+      "name": "AI-Smart-Pantry-Assistant-",
+      "description": "Many households face problems such as food wastage, expired groceries, duplicate purchases,and difficulty deciding what to cook with available ingredients. A smart AI-based pantrymanagement system helps users track pantry inventory, receive recipe suggestions, manage expirydates, and generate shopping lists.",
+      "url": "https://github.com/vedasagnavi/AI-Smart-Pantry-Assistant-",
+      "stars": 1,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "Drip-Fashion-Outfit-Suggestion-",
+      "description": "A full-stack fashion platform combining short video reels with e-commerce. Users discover trends through outfit videos, get AI-powered recommendations, follow brands, and shop directly from content.",
+      "url": "https://github.com/hassanshehzad1/Drip-Fashion-Outfit-Suggestion-",
+      "stars": 1,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "VEDAMO_OG",
+      "description": "Vedamo is an AI-powered universal discovery platform that lets users search naturally and find relevant services across multiple domains such as travel, shopping, food, education, and more. Instead of switching between multiple apps, users simply describe what they need, and Vedamo organizes the best available options in one place.",
+      "url": "https://github.com/DHG-DEV/VEDAMO_OG",
+      "stars": 1,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "ShoppingAI",
+      "description": "",
+      "url": "https://github.com/erikfloresq/ShoppingAI",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "ayvora-platform",
+      "description": "AI shopping platform",
+      "url": "https://github.com/8299515-arch/ayvora-platform",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "aiman-creation",
+      "description": "Aiman Creation Shopping Website",
+      "url": "https://github.com/atika836/aiman-creation",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "SmartCart-AI",
+      "description": "AI powered shopping price tracker for Romanian supermarkets.",
+      "url": "https://github.com/tonclainvestment-cyber/SmartCart-AI",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "AI-shopping-compare",
+      "description": "",
+      "url": "https://github.com/malkamaryles-design/AI-shopping-compare",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "letrusto",
+      "description": "AI Shopping Assistant - Know Before You Buy",
+      "url": "https://github.com/LeTrusto/letrusto",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "AI-Telegram-Shopping-Assistant",
+      "description": "AI Shopping Assistant for Telegram using n8n. In this workflow, the Agent can handle both text and voice messages to provide product search results from Amazon India and offer personalized styling advice.",
+      "url": "https://github.com/ANIRUTHREDDY3071/AI-Telegram-Shopping-Assistant",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "genpark-proactive-e-commerce-team-agent-skill",
+      "description": "Goal-driven proactive AI team agent for e-commerce operations (ClawTeams style)",
+      "url": "https://github.com/alphaparkinc/genpark-proactive-e-commerce-team-agent-skill",
+      "stars": 9,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "genpark-competitor-price-tracking-alert-agent-skill",
+      "description": "E-commerce competitor price monitoring and alert agent",
+      "url": "https://github.com/alphaparkinc/genpark-competitor-price-tracking-alert-agent-skill",
+      "stars": 9,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "Agent-commerce",
+      "description": "\u7535\u5546\u667a\u80fd\u4f53",
+      "url": "https://github.com/xie-good/Agent-commerce",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "agentic-commerce-demo",
+      "description": "",
+      "url": "https://github.com/barrel/agentic-commerce-demo",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "haruplate-conversational-commerce-agent",
+      "description": "",
+      "url": "https://github.com/shenian36/haruplate-conversational-commerce-agent",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "AI-Commerce-Growth-Agent",
+      "description": "AI-powered product insight and growth analytics agent for cross-border e-commerce",
+      "url": "https://github.com/Wangxinxin1168/AI-Commerce-Growth-Agent",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "agentic-ecommerce",
+      "description": "specialized e-commerce platform for PC components",
+      "url": "https://github.com/kyawagwin/agentic-ecommerce",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "agents",
+      "description": "Agent Commerce Infrastructure: Registry, Ephemeral Compute, Payments, Trust",
+      "url": "https://github.com/AsyncSan/agents",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "E-commerce_store_agent_manager",
+      "description": "",
+      "url": "https://github.com/AutomataForge/E-commerce_store_agent_manager",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "secure_agent_commerce_with_ap2_and_ucp",
+      "description": "Google's Codelab - Secure Agent Commerce with AP2 and UCP",
+      "url": "https://github.com/gelob33/secure_agent_commerce_with_ap2_and_ucp",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "Api-Integration",
+      "description": "Next.js + TypeScript app that fetches, displays & searches products from the DummyJSON API.",
+      "url": "https://github.com/Ali-salman04/Api-Integration",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "50-ai-product-tear-downs",
+      "description": "Curated catalog of 50 real AI products torn down with a PM lens; browse/search API + Markdown export.",
+      "url": "https://github.com/barath2211/50-ai-product-tear-downs",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "ai-product-rag",
+      "description": "Retrieval-Augmented Generation (RAG) system for intelligent document Q&A. Built with Python, LlamaIndex, FastAPI, and Ollama. Features local embeddings, vector search, and RESTful API.",
+      "url": "https://github.com/devtejasqa/ai-product-rag",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "Product-Inventory-Management-System",
+      "description": "A full-stack CRUD inventory management application with REST APIs, real database persistence, stock tracking, search, filtering, pagination, and server-side business rule validation.",
+      "url": "https://github.com/mshahnawaz1202/Product-Inventory-Management-System",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "product-finder",
+      "description": "A modern responsive product explorer built with HTML, CSS, and JavaScript using the DummyJSON API. Includes live search, category filters, sorting, loading states, error handling, dark mode, and product details.",
+      "url": "https://github.com/Said-87/product-finder",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "ApexPlanet-Task-4",
+      "description": "Responsive e-commerce website with product search, filters, cart, wishlist, dark mode, and API integration.",
+      "url": "https://github.com/SatakshiChauhan13/ApexPlanet-Task-4",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "TechGearApi",
+      "description": "**TechGearAPI** is a RESTful ASP.NET Core Web API for managing products and users. It demonstrates clean architecture with Entity Framework Core, PostgreSQL, JWT authentication, BCrypt password hashing, role-based authorization, custom middleware, and CRUD operations with search, sorting, and pagination.",
+      "url": "https://github.com/AhsanNaveed-gh/TechGearApi",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "substack-api-mcp",
+      "description": "MCP server for Substack posts (FastMCP + substack-api-client)",
+      "url": "https://github.com/alxgntv/substack-api-mcp",
+      "stars": 60,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "genpark-mcp-server-tool-schema-validator-skill",
+      "description": "Model Context Protocol (MCP) server tool JSON schema validator",
+      "url": "https://github.com/alphaparkinc/genpark-mcp-server-tool-schema-validator-skill",
+      "stars": 9,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "mcp-explorer",
+      "description": "CLI tool for exploring an MCP server",
+      "url": "https://github.com/simonw/mcp-explorer",
+      "stars": 7,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "mcp-media-9router",
+      "description": "An MCP server that provides AI agents with unified access to web search, content extraction, media intelligence, and knowledge retrieval through the 9Router API.",
+      "url": "https://github.com/mhiqrambg/mcp-media-9router",
+      "stars": 5,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "mcp_server",
+      "description": "\u4e00\u4e2a\u529f\u80fd\u4e30\u5bcc\u7684mcp\u670d\u52a1\u5668",
+      "url": "https://github.com/hgcjd666666/mcp_server",
+      "stars": 3,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "mysql-mcp-server",
+      "description": "\u57fa\u4e8e FastMCP \u6784\u5efa\uff0c\u8fd0\u884c\u65f6\u52a8\u6001\u8fde\u63a5\u4efb\u610f MySQL \u5b9e\u4f8b\uff0c\u8ba9\u667a\u80fd\u4f53\u53ef\u8de8\u5b9e\u4f8b\u67e5\u8be2\u4e0e\u8bca\u65ad",
+      "url": "https://github.com/raduis2136/mysql-mcp-server",
+      "stars": 3,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "opendot",
+      "description": "A terminal AI agent you can fully undo \u2014 every file and shell action is snapshotted and reversible. Model-agnostic (any LLM), and connects to 1000+ app tools and MCP servers.",
+      "url": "https://github.com/vedaant00/opendot",
+      "stars": 3,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "kafka-mcp-enterprise-server-kip-1318",
+      "description": "A production-ready Model Context Protocol (MCP) server for Apache Kafka. Features Information Flow Control (IFC) sandboxing, granular namespace isolation, and strict bounded buffers to securely bridge autonomous AI agents with enterprise streaming infrastructure.",
+      "url": "https://github.com/vaquarkhan/kafka-mcp-enterprise-server-kip-1318",
+      "stars": 2,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "mcp-archimate",
+      "description": "MCP server for ArchiMate enterprise architecture modeling \u2014 build, validate and export models that open in Archi",
+      "url": "https://github.com/byrondelgado/mcp-archimate",
+      "stars": 2,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "mcp-server",
+      "description": "",
+      "url": "https://github.com/keijumasukawa/mcp-server",
+      "stars": 1,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "Protocol-Level Attacks on Agentic Commerce Platforms: Taxonomy and Defense",
+      "description": "HN mention for keyword 'agentic commerce'",
+      "url": "https://arxiv.org/abs/2607.21824",
+      "hn_id": "49079217",
+      "hn_points": 2,
+      "hn_comments": 0,
+      "hn_created_at": "2026-07-28T04:07:08Z",
+      "keyword": "agentic commerce",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "I analyzed all 14,865 listings in Coinbase's x402 agent-payment registry",
+      "description": "HN mention for keyword 'x402'",
+      "url": "https://github.com/rikocr8orh8/x402-bazaar-survey/blob/master/POST.md",
+      "hn_id": "49084398",
+      "hn_points": 4,
+      "hn_comments": 0,
+      "hn_created_at": "2026-07-28T14:25:07Z",
+      "keyword": "x402",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "The State of X402",
+      "description": "HN mention for keyword 'x402'",
+      "url": "https://vibesprings.net/state-of-x402",
+      "hn_id": "49068328",
+      "hn_points": 3,
+      "hn_comments": 0,
+      "hn_created_at": "2026-07-27T11:58:46Z",
+      "keyword": "x402",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Show HN: We added x402 so AI agents can pay to use our cloud simulation API",
+      "description": "HN mention for keyword 'x402'",
+      "url": "https://www.cloudworldmodel.ai/blog/x402-cloud-simulation-api",
+      "hn_id": "49010610",
+      "hn_points": 3,
+      "hn_comments": 0,
+      "hn_created_at": "2026-07-22T17:45:50Z",
+      "keyword": "x402",
+      "threat_level": "medium",
+      "platform": "hackernews"
+    }
+  ],
+  "summary": {
+    "critical_count": 7,
+    "high_count": 20,
+    "medium_count": 11,
+    "monitor_count": 3
+  }
+}
