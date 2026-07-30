@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-30T01:27:27.045433",
-  "total_found": 43,
+  "generated_at": "2026-07-30T09:40:58.757848",
+  "total_found": 33,
   "errors": [
     {
       "error": "PH_API_TOKEN not set",
@@ -14,22 +14,14 @@
   "by_threat_level": {
     "critical": 10,
     "high": 20,
-    "medium": 10,
+    "medium": 0,
     "monitor": 3
   },
   "by_platform": {
-    "github": 40,
+    "github": 30,
     "hackernews": 3
   },
   "competitors": [
-    {
-      "name": "zgenie-your-smart-shopping-ai",
-      "description": "",
-      "url": "https://github.com/pragasridhar-pgn/zgenie-your-smart-shopping-ai",
-      "stars": 1,
-      "threat_level": "high",
-      "platform": "github"
-    },
     {
       "name": "AI-Personal-Finance-Manager",
       "description": "Smart Shop Brain is an AI-powered inventory and sales management web app that helps retailers track products, monitor stock, record sales, and gain data-driven insights. It includes smart reorder alerts, profit analysis, price optimization, and sales predictions to support better business decisions through an interactive analytics dashboard.",
@@ -47,25 +39,9 @@
       "platform": "github"
     },
     {
-      "name": "CartIQ",
-      "description": "AI smart Shopping Assistant",
-      "url": "https://github.com/malgariniharikareddy-07/CartIQ",
-      "stars": 0,
-      "threat_level": "high",
-      "platform": "github"
-    },
-    {
-      "name": "CartIQ",
-      "description": "AI Smart Shopping Assistant",
-      "url": "https://github.com/vedasrireddy1/CartIQ",
-      "stars": 0,
-      "threat_level": "high",
-      "platform": "github"
-    },
-    {
-      "name": "CartIQ",
-      "description": "AI Smart Shopping Assistant",
-      "url": "https://github.com/muskuhasini-klh/CartIQ",
+      "name": "ai-shopping",
+      "description": "ai",
+      "url": "https://github.com/Active-Coupns/ai-shopping",
       "stars": 0,
       "threat_level": "high",
       "platform": "github"
@@ -79,17 +55,17 @@
       "platform": "github"
     },
     {
-      "name": "Buy_wise",
-      "description": "ai powered personalized shopping assistant ",
-      "url": "https://github.com/Manuprasad-SS/Buy_wise",
+      "name": "ShoppingSite_PHP_withAi",
+      "description": "",
+      "url": "https://github.com/Xojiakmal/ShoppingSite_PHP_withAi",
       "stars": 0,
       "threat_level": "high",
       "platform": "github"
     },
     {
-      "name": "ShoppingSite_PHP_withAi",
-      "description": "",
-      "url": "https://github.com/Xojiakmal/ShoppingSite_PHP_withAi",
+      "name": "OXLY",
+      "description": "AI-Powered Shopping Made Simple",
+      "url": "https://github.com/syedmuhammadhashim12-cyber/OXLY",
       "stars": 0,
       "threat_level": "high",
       "platform": "github"
@@ -103,10 +79,34 @@
       "platform": "github"
     },
     {
+      "name": "AI-shopping-compare",
+      "description": "",
+      "url": "https://github.com/malkistern/AI-shopping-compare",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "ai_shopping_bot",
+      "description": "",
+      "url": "https://github.com/fulltimefarmer/ai_shopping_bot",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "ai-shopping-assistant",
+      "description": "",
+      "url": "https://github.com/Weiweila0/ai-shopping-assistant",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
       "name": "genpark-agent-to-agent-brand-commerce-representative-skill",
       "description": "Agent-to-Agent (A2A) brand commerce representative for LLM search recommendation",
       "url": "https://github.com/alphaparkinc/genpark-agent-to-agent-brand-commerce-representative-skill",
-      "stars": 4,
+      "stars": 9,
       "threat_level": "high",
       "platform": "github"
     },
@@ -114,6 +114,14 @@
       "name": "olist-insight-agent",
       "description": "Agentic AI system that investigates Olist e-commerce data through multi-step reasoning, combining SQL analytics and RAG-based semantic review search to answer complex business questions.",
       "url": "https://github.com/daffaalhanif/olist-insight-agent",
+      "stars": 1,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "accessible-shopping-visually-impaired-agent-skill",
+      "description": "\ud83d\uded2 Production-grade multi-agent Claude Skill for accessible retail UX & inclusive store design. Audits indoor wayfinding (NFC/BLE beacons/tactile paving), screen-reader e-commerce UX (WCAG 2.2 AAA), AR audio assistance, and ADA/European Accessibility Act compliance with quality gates. \u267f\u2728",
+      "url": "https://github.com/dungnotnull/accessible-shopping-visually-impaired-agent-skill",
       "stars": 1,
       "threat_level": "high",
       "platform": "github"
@@ -151,14 +159,6 @@
       "platform": "github"
     },
     {
-      "name": "nikky-commerce-agent",
-      "description": "",
-      "url": "https://github.com/Tadiwadzika/nikky-commerce-agent",
-      "stars": 0,
-      "threat_level": "high",
-      "platform": "github"
-    },
-    {
       "name": "E_commerce_merchant_support_agent",
       "description": "Built an AI-powered E-commerce Merchant Support Agent using FastAPI, LangGraph, LangChain, and OpenAI to automate merchant queries, retrieve order information, and deliver intelligent responses through REST APIs and a responsive web interface.",
       "url": "https://github.com/Bhumijoshi2005/E_commerce_merchant_support_agent",
@@ -175,9 +175,9 @@
       "platform": "github"
     },
     {
-      "name": "vector-vertex-commerce-333",
-      "description": "Small codebase for agent experiments and utility scripts.",
-      "url": "https://github.com/ForbesRichard9/vector-vertex-commerce-333",
+      "name": "dubba-E-commerce-Customer-Support-Langraph-Agent",
+      "description": "",
+      "url": "https://github.com/chaisthra/dubba-E-commerce-Customer-Support-Langraph-Agent",
       "stars": 0,
       "threat_level": "high",
       "platform": "github"
@@ -187,6 +187,14 @@
       "description": "DeepStore is a full-featured React e-commerce application with product listings, category filtering, search, shopping cart, authentication, and API integration, designed with a responsive and modern UI.",
       "url": "https://github.com/deepakrajput08/DeepStore",
       "stars": 1,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "product-similarity-service",
+      "description": "Product similarity search API built with FastAPI, scikit-learn, and FAISS (HNSW) \u2014 dual backend support.",
+      "url": "https://github.com/Baibhab23/product-similarity-service",
+      "stars": 0,
       "threat_level": "critical",
       "platform": "github"
     },
@@ -223,6 +231,14 @@
       "platform": "github"
     },
     {
+      "name": "ecommerce-product-cart",
+      "description": "A modern and responsive e-commerce web application built using HTML, CSS, and JavaScript. The application fetches products from the Fake Store API, allows users to search and filter products, and provides a fully functional shopping cart.",
+      "url": "https://github.com/Abdul-Jabbar311/ecommerce-product-cart",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
       "name": "Product-Management-System",
       "description": "A Spring Boot REST API-based Product Management System that provides CRUD operations for managing products. The application includes product creation, retrieval, updating price and stock details, deletion, category-based search, and price-based filtering with business rule validations.",
       "url": "https://github.com/alex1198/Product-Management-System",
@@ -244,102 +260,6 @@
       "url": "https://github.com/spacengine/orosy-mcp",
       "stars": 0,
       "threat_level": "critical",
-      "platform": "github"
-    },
-    {
-      "name": "smart-catalog",
-      "description": "A Spring Boot product catalog API with semantic search, AI-generated summaries, JWT security, Redis caching, MySQL persistence, observability, Docker, and Kubernetes.",
-      "url": "https://github.com/swiftsoft-cto/smart-catalog",
-      "stars": 0,
-      "threat_level": "critical",
-      "platform": "github"
-    },
-    {
-      "name": "E-Commerce-React-Router",
-      "description": "A responsive React.js E-Commerce application built with React Router, Context API, and DummyJSON API. Features include product browsing, dynamic product details, shopping cart management, protected checkout, user authentication, search functionality, persistent cart using localStorage, and an order success page",
-      "url": "https://github.com/snehasingh177/E-Commerce-React-Router",
-      "stars": 0,
-      "threat_level": "critical",
-      "platform": "github"
-    },
-    {
-      "name": "ScientificFigureLibrary",
-      "description": "Standard MCP server and MCP App for scientific figure templates from FigureYa and user-supplied references",
-      "url": "https://github.com/xuzhougeng/ScientificFigureLibrary",
-      "stars": 6,
-      "threat_level": "medium",
-      "platform": "github"
-    },
-    {
-      "name": "MCP-server",
-      "description": "New Repo",
-      "url": "https://github.com/Samarth201104/MCP-server",
-      "stars": 2,
-      "threat_level": "medium",
-      "platform": "github"
-    },
-    {
-      "name": "MOKE_MCP",
-      "description": "\u4e3a\u6479\u5ba2\uff08Mockplus\uff09\u5f00\u53d1\u4e00\u6b3e\u5bf9\u6807 Figma MCP Server \u7684 MCP Server\uff0c\u4f7f AI \u7f16\u7801\u52a9\u624b\uff08Trae\u3001Cursor\u3001Claude Code\u3001VS Code Copilot \u7b49\uff09\u80fd\u591f\u76f4\u63a5\u8bfb\u53d6\u6479\u5ba2\u8bbe\u8ba1\u6587\u4ef6\u4e2d\u7684\u8bbe\u8ba1\u6570\u636e\uff08\u56fe\u5c42\u7ed3\u6784\u3001\u6837\u5f0f\u3001\u989c\u8272\u3001\u6392\u7248\u3001\u5207\u56fe\u7b49\uff09\uff0c\u4ece\u800c\u5728\u8bbe\u8ba1\u2192\u4ee3\u7801\u5de5\u4f5c\u6d41\u4e2d\u751f\u6210\u7cbe\u51c6\u7684\u524d\u7aef\u4ee3\u7801\u3002\u540c\u65f6\u63d0\u4f9b CLI \u5de5\u5177\u652f\u6301\u9879\u76ee\u521d\u59cb\u5316\u548c\u914d\u7f6e\u7ba1\u7406\u3002",
-      "url": "https://github.com/bosong/MOKE_MCP",
-      "stars": 2,
-      "threat_level": "medium",
-      "platform": "github"
-    },
-    {
-      "name": "cortex-os",
-      "description": "Cortex OS - Bionic cognitive engine: cortical memory, 5-way recall, session state, 3-segment context, self-evolving skills, knowledge graph viz, MCP Server, Docker deploy",
-      "url": "https://github.com/qi-mouren/cortex-os",
-      "stars": 2,
-      "threat_level": "medium",
-      "platform": "github"
-    },
-    {
-      "name": "AshCode",
-      "description": "A terminal coding agent in Python \u2014 streaming agentic loop, 13 built-in tools, MCP servers, subagents, context compaction, and a configurable approval layer for shell and file operations.",
-      "url": "https://github.com/AuthRan/AshCode",
-      "stars": 2,
-      "threat_level": "medium",
-      "platform": "github"
-    },
-    {
-      "name": "mcp-test-server",
-      "description": "Minimal MCP server exposing user CRUD tools (add/update/delete/search/list) over Streamable HTTP, with optional API key or bearer token authentication \u2014 for testing MCP clients.",
-      "url": "https://github.com/parthdevani27/mcp-test-server",
-      "stars": 1,
-      "threat_level": "medium",
-      "platform": "github"
-    },
-    {
-      "name": "PostgreSQL-MCP-Server",
-      "description": "Professional PostgreSQL Database Access for AI Assistants via Model Context Protocol",
-      "url": "https://github.com/d-j7code/PostgreSQL-MCP-Server",
-      "stars": 1,
-      "threat_level": "medium",
-      "platform": "github"
-    },
-    {
-      "name": "ploomes-mcp",
-      "description": "MCP server for Ploomes CRM implementation tools",
-      "url": "https://github.com/JoseAlmeida-Ploomes/ploomes-mcp",
-      "stars": 1,
-      "threat_level": "medium",
-      "platform": "github"
-    },
-    {
-      "name": "apps-mcp",
-      "description": "Unofficial MCP server for theapps.jp Apps API (MIT)",
-      "url": "https://github.com/manmaru-ai/apps-mcp",
-      "stars": 1,
-      "threat_level": "medium",
-      "platform": "github"
-    },
-    {
-      "name": "kettu-marketplace-mcp",
-      "description": "Kettu Marketplace Intelligence \u2014 MCP servers for Russian & Chinese marketplaces",
-      "url": "https://github.com/neuratechcompany-ops/kettu-marketplace-mcp",
-      "stars": 1,
-      "threat_level": "medium",
       "platform": "github"
     },
     {
@@ -382,7 +302,7 @@
   "summary": {
     "critical_count": 10,
     "high_count": 20,
-    "medium_count": 10,
+    "medium_count": 0,
     "monitor_count": 3
   }
 }
