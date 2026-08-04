@@ -16,6 +16,83 @@ const { Pool } = require('pg');
 
 const REPO_ROOT = path.resolve(__dirname, '..');
 
+// ---------------------------------------------------------------------------
+// Credentials loader — ensures valid API token
+// ---------------------------------------------------------------------------
+
+const CREDENTIALS_FILE = path.join(process.env.HOME || '/home/paperclip', '.throughput_dispatcher_env');
+
+function isTokenValid(token) {
+  if (!token) return false;
+  try {
+    const payload = token.split('.')[1];
+    if (!payload) return false;
+    const decoded = JSON.parse(Buffer.from(payload, 'base64url').toString('utf8'));
+    // Valid if expires more than 60 seconds from now
+    return decoded.exp > (Date.now() / 1000) + 60;
+  } catch {
+    return false;
+  }
+}
+
+function loadCredentials() {
+  // 1. Check env var first
+  let apiKey = (process.env.PAPERCLIP_API_KEY || '').trim();
+  if (isTokenValid(apiKey)) {
+    return apiKey;
+  }
+
+  // 2. Try loading from persisted credentials file
+  if (fs.existsSync(CREDENTIALS_FILE)) {
+    try {
+      const content = fs.readFileSync(CREDENTIALS_FILE, 'utf8');
+      const match = content.match(/PAPERCLIP_API_KEY="([^"]+)"/);
+      if (match && isTokenValid(match[1])) {
+        return match[1];
+      }
+    } catch (e) {
+      console.log(`[credentials] Failed to load ${CREDENTIALS_FILE}: ${e.message}`);
+    }
+  }
+
+  // 3. Try to mint a fresh token
+  console.log('[credentials] No valid token found, attempting to mint...');
+  try {
+    const { execSync } = require('child_process');
+    const mintScript = path.join(REPO_ROOT, 'scripts', 'mint-throughput-dispatcher-token.py');
+    if (fs.existsSync(mintScript)) {
+      const minted = execSync(`python3 ${mintScript}`, { encoding: 'utf8' }).trim();
+      if (isTokenValid(minted)) {
+        // Persist for future runs
+        try {
+          const dir = path.dirname(CREDENTIALS_FILE);
+          if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+          const content = `PAPERCLIP_API_KEY="${minted}"\nPAPERCLIP_RUN_ID=""\nPAPERCLIP_AGENT_ID=""\n`;
+          fs.writeFileSync(CREDENTIALS_FILE, content, 'utf8');
+          fs.chmodSync(CREDENTIALS_FILE, 0o600);
+          console.log('[credentials] Minted and persisted new token');
+        } catch (persistErr) {
+          console.log(`[credentials] Could not persist token: ${persistErr.message}`);
+        }
+        return minted;
+      }
+    }
+  } catch (e) {
+    console.log(`[credentials] Mint failed: ${e.message}`);
+  }
+
+  return null;
+}
+
+// Pre-load credentials into env if not present/valid
+if (!process.env.PAPERCLIP_API_KEY || !isTokenValid(process.env.PAPERCLIP_API_KEY)) {
+  const freshToken = loadCredentials();
+  if (freshToken) {
+    process.env.PAPERCLIP_API_KEY = freshToken;
+    console.log('[credentials] Using fresh/minted token');
+  }
+}
+
 const SYNTHETIC_MERCHANTS = [
   'shopnow', 'techdepot', 'fastshop', 'megamart', 'smartcart',
   'valuehub', 'easycart', 'quickbuy', 'primestore', 'globalmart',
