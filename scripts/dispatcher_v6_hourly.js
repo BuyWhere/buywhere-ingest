@@ -106,7 +106,6 @@ async function retryFetch(url, options = {}) {
   const maxSleep = options.maxSleep || 20_000;
   let delay = initialDelay;
   let lastError = null;
-  let partitionNtupIns = null;
 
   for (let attempt = 1; attempt <= maxAttempts; attempt++) {
     try {
@@ -459,6 +458,12 @@ function normalizeV6DecisionArgs(argCount, hourData, deltaInsFromStats, canonica
   };
 }
 
+// v6.4 (BUY-60573 follow-up): Adds ing_inserted corroboration to the
+// n_live_tup_delta_guard. When canonical ing_inserted is available AND
+// < target, the guard is BLOCKED (autovacuum bloat release detected) and
+// execution falls through to delta_ins_from_stats (correct FAIL). When
+// ing_inserted is unavailable OR >= target, the guard still fires to
+// preserve stale-counter protection.
 function nLiveTupGuardAllowed(canonicalIngInserted) {
   return canonicalIngInserted == null || canonicalIngInserted >= TARGET_ROWS_PER_HOUR;
 }
@@ -470,27 +475,27 @@ function nLiveTupGuardPasses(nLiveTupDelta, canonicalIngInserted) {
 function selectV6ThroughputSignal(hourData, deltaInsFromStats, canonicalIngInserted, liveCountDelta, nLiveTupDelta, partitionNtupIns, previousPartitionNtupIns) {
   ({ hourData, deltaInsFromStats, canonicalIngInserted, liveCountDelta, nLiveTupDelta, partitionNtupIns, previousPartitionNtupIns } =
     normalizeV6DecisionArgs(arguments.length, hourData, deltaInsFromStats, canonicalIngInserted, liveCountDelta, nLiveTupDelta, partitionNtupIns, previousPartitionNtupIns));
-	  const partDelta = (partitionNtupIns != null && previousPartitionNtupIns != null && (partitionNtupIns > 0 || previousPartitionNtupIns > 0))
-	    ? partitionNtupIns - previousPartitionNtupIns
-	    : null;
-	  if (deltaInsFromStats != null && deltaInsFromStats < TARGET_ROWS_PER_HOUR && nLiveTupGuardPasses(nLiveTupDelta, canonicalIngInserted)) {
-	    return [nLiveTupDelta, 'n_live_tup_delta_guard'];
-	  }
-	  if (deltaInsFromStats != null) {
-	    return [deltaInsFromStats, 'delta_ins_from_stats'];
-	  }
-	  if (partDelta != null) {
-	    return [partDelta, 'partition_sum_n_tup_ins'];
-	  }
+    const partDelta = (partitionNtupIns != null && previousPartitionNtupIns != null && (partitionNtupIns > 0 || previousPartitionNtupIns > 0))
+      ? partitionNtupIns - previousPartitionNtupIns
+      : null;
+    if (deltaInsFromStats != null && deltaInsFromStats < TARGET_ROWS_PER_HOUR && nLiveTupGuardPasses(nLiveTupDelta, canonicalIngInserted)) {
+      return [nLiveTupDelta, 'n_live_tup_delta_guard'];
+    }
+    if (deltaInsFromStats != null) {
+      return [deltaInsFromStats, 'delta_ins_from_stats'];
+    }
+    if (partDelta != null) {
+      return [partDelta, 'partition_sum_n_tup_ins'];
+    }
   if (nLiveTupGuardPasses(nLiveTupDelta, canonicalIngInserted)) {
     return [nLiveTupDelta, 'n_live_tup_delta_guard'];
-  }
-  if (liveCountDelta != null && liveCountDelta >= TARGET_ROWS_PER_HOUR) {
-    return [liveCountDelta, 'live_count_delta'];
   }
   const ingInserted = canonicalIngInserted || 0;
   if (ingInserted > 0) {
     return [ingInserted, 'ingestion_runs_observability'];
+  }
+  if (liveCountDelta != null && liveCountDelta >= TARGET_ROWS_PER_HOUR) {
+    return [liveCountDelta, 'live_count_delta'];
   }
   if (liveCountDelta != null && liveCountDelta > 0) {
     return [liveCountDelta, 'live_count_delta'];
@@ -501,24 +506,26 @@ function selectV6ThroughputSignal(hourData, deltaInsFromStats, canonicalIngInser
 function shouldFileV6FailureTicket(hourData, deltaInsFromStats, canonicalIngInserted, liveCountDelta, nLiveTupDelta, partitionNtupIns, previousPartitionNtupIns) {
   ({ hourData, deltaInsFromStats, canonicalIngInserted, liveCountDelta, nLiveTupDelta, partitionNtupIns, previousPartitionNtupIns } =
     normalizeV6DecisionArgs(arguments.length, hourData, deltaInsFromStats, canonicalIngInserted, liveCountDelta, nLiveTupDelta, partitionNtupIns, previousPartitionNtupIns));
-	  const partDelta = (partitionNtupIns != null && previousPartitionNtupIns != null && (partitionNtupIns > 0 || previousPartitionNtupIns > 0))
-	    ? partitionNtupIns - previousPartitionNtupIns
-	    : null;
-	  if (deltaInsFromStats != null) {
-	    if (deltaInsFromStats >= TARGET_ROWS_PER_HOUR) return false;
-	    if (nLiveTupGuardPasses(nLiveTupDelta, canonicalIngInserted)) return false;
-	    if (liveCountDelta != null && liveCountDelta >= TARGET_ROWS_PER_HOUR) return false;
-	    return true;
-	  }
-	  if (partDelta != null) {
-	    return partDelta < TARGET_ROWS_PER_HOUR;
-	  }
+    const partDelta = (partitionNtupIns != null && previousPartitionNtupIns != null && (partitionNtupIns > 0 || previousPartitionNtupIns > 0))
+      ? partitionNtupIns - previousPartitionNtupIns
+      : null;
+    if (deltaInsFromStats != null) {
+      if (deltaInsFromStats >= TARGET_ROWS_PER_HOUR) return false;
+      if (nLiveTupGuardPasses(nLiveTupDelta, canonicalIngInserted)) return false;
+      if (liveCountDelta != null && liveCountDelta >= TARGET_ROWS_PER_HOUR) return false;
+      return true;
+    }
+    if (partDelta != null) {
+      return partDelta < TARGET_ROWS_PER_HOUR;
+    }
   if (nLiveTupGuardPasses(nLiveTupDelta, canonicalIngInserted)) {
     return false;
   }
   if (liveCountDelta != null && liveCountDelta >= TARGET_ROWS_PER_HOUR) {
     return false;
   }
+  // BUY-63152 fix: file when ing_inserted is LOW (< target, ingestion throttled).
+  // When ing_inserted is HIGH (>= target), ingestion is healthy — no need to file.
   if (canonicalIngInserted != null) {
     return canonicalIngInserted < TARGET_ROWS_PER_HOUR;
   }
@@ -592,11 +599,16 @@ async function dedupCheckExistingChild(hourStart) {
     }
     const body = await resp.json();
     const issues = Array.isArray(body) ? body : body.issues || [];
-    return issues.some((issue) => {
+    const match = issues.find((issue) => {
       if (!issue.title) return false;
       if (issue.title.includes(windowTag)) return true;
       return issue.title.includes(dateTag) && issue.title.includes(fallbackTag);
     });
+    if (match) {
+      const ident = match.identifier || null;
+      return { identifier: ident };
+    }
+    return false;
   } catch (err) {
     console.log(`[throughput-dispatcher] dedup_check_existing_child: ${err.name}: ${err.message}`);
     return false;
@@ -617,8 +629,15 @@ async function retryPendingChildren(state, overrides = {}) {
     const hs = entry.hour_start_iso ? new Date(entry.hour_start_iso) : null;
     try {
       const dedupFn = overrides.dedupCheckExistingChild || dedupCheckExistingChild;
-      if (hs && await dedupFn(hs)) {
-        console.log(`[throughput-dispatcher] RETRY dedup skipped pending child for ${hs.toISOString()}`);
+      const dedupResult = hs ? await dedupFn(hs) : false;
+      if (dedupResult) {
+        const dedupIdent = dedupResult && dedupResult.identifier ? dedupResult.identifier : null;
+        if (dedupIdent) {
+          state.last_failure_child_identifier = dedupIdent;
+          console.log(`[throughput-dispatcher] RETRY dedup skipped pending child for ${hs.toISOString()} (existing: ${dedupIdent})`);
+        } else {
+          console.log(`[throughput-dispatcher] RETRY dedup skipped pending child for ${hs.toISOString()} (identifier unknown)`);
+        }
         continue;
       }
       const createFn = overrides.createStallIssue || createStallIssue;
@@ -1053,19 +1072,19 @@ async function main() {
       }
     }
 
-	    const previousPartitionNtupIns = state.last_partition_n_tup_ins != null ? state.last_partition_n_tup_ins : null;
-	    const [realRows, source] = selectV6ThroughputSignal(hourData, deltaInsFromStats, canonicalIngInserted, liveCountDelta, nLiveTupDelta, stat && stat.partition_n_tup_ins, previousPartitionNtupIns);
-	    const note = `v6.5 metric: source=${source}, created_at_count=${hourData && !hourData.error ? hourData.real_rows : "?"}, partition_sum=${stat && stat.partition_n_tup_ins != null ? stat.partition_n_tup_ins : null}, n_live_tup_delta=${nLiveTupDelta}`;
-	    // Forbidden-pattern assertions
-	    assertV6ForbiddenPatterns({
-	      deltaInsFromStats,
-	      deltaUpdFromStats,
-	      realRows,
-	      source,
-	      liveCountDelta,
-      currentNTupIns: canonicalUpsert.n_tup_ins,
-      previousNTupIns,
-    });
+      const previousPartitionNtupIns = state.last_partition_n_tup_ins != null ? state.last_partition_n_tup_ins : null;
+      const [realRows, source] = selectV6ThroughputSignal(hourData, deltaInsFromStats, canonicalIngInserted, liveCountDelta, nLiveTupDelta, stat && stat.partition_n_tup_ins, previousPartitionNtupIns);
+      const note = `v6.5 metric: source=${source}, created_at_count=${hourData && !hourData.error ? hourData.real_rows : "?"}, partition_sum=${stat && stat.partition_n_tup_ins != null ? stat.partition_n_tup_ins : null}, n_live_tup_delta=${nLiveTupDelta}`;
+      // Forbidden-pattern assertions
+      assertV6ForbiddenPatterns({
+        deltaInsFromStats,
+        deltaUpdFromStats,
+        realRows,
+        source,
+        liveCountDelta,
+        currentNTupIns: canonicalUpsert.n_tup_ins,
+        previousNTupIns,
+      });
 
     console.log(`[throughput-dispatcher] real_rows=${realRows.toLocaleString()} target=${TARGET_ROWS_PER_HOUR.toLocaleString()} (${(100.0 * realRows / TARGET_ROWS_PER_HOUR).toFixed(1)}%) source=${source}`);
 
@@ -1090,6 +1109,20 @@ async function main() {
           failureIdentifier = await createStallIssue(hourStart, realRows, source, note, hourData, stat, maxCreated, dbHost, fireTs);
           console.log(`[throughput-dispatcher] FAIL — filed ${failureIdentifier} under BUY-29861`);
           await writeEvidenceMarkdown(hourStart, realRows, source, note, hourData, stat, maxCreated, dbHost, fireTs, failureIdentifier);
+          try {
+            await withTimeout(client, 5, async (c) => {
+              return c.query(
+                `UPDATE canonical_throughput_hourly
+                    SET failure_issue_id = $1::text,
+                        recorded_at = now()
+                  WHERE hour_start = $2::timestamptz`,
+                [failureIdentifier, hourStart.toISOString()]
+              );
+            });
+            console.log(`[throughput-dispatcher] canonical_throughput_hourly.failure_issue_id updated to ${failureIdentifier}`);
+          } catch (dbErr) {
+            console.log(`[throughput-dispatcher] WARNING: failed to persist failure_issue_id to DB: ${dbErr.name}: ${dbErr.message}`);
+          }
         } catch (err) {
           console.log(`[throughput-dispatcher] FAIL — createStallIssue failed: ${err.name}: ${err.message}`);
           state.pending_children = state.pending_children || [];
