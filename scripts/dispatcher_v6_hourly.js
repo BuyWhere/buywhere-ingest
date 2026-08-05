@@ -243,6 +243,21 @@ async function withTimeout(client, timeoutSeconds, fn) {
   }
 }
 
+
+async function connectPoolWithRetry(pool, maxAttempts = 3, initialDelay = 3000) {
+  let delay = initialDelay;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      return await pool.connect();
+    } catch (err) {
+      if (attempt === maxAttempts) throw err;
+      console.log(`[db-retry] attempt ${attempt}/${maxAttempts}: pool.connect failed: ${err.name}: ${err.message}; retrying in ${delay}ms`);
+      await sleep(delay);
+      delay = Math.min(delay * 2, 30000);
+    }
+  }
+}
+
 async function readPgStatAllProducts(client) {
   let row = null;
   let lastError = null;
@@ -1045,7 +1060,7 @@ async function main() {
     }
 
 
-    client = await pool.connect();
+    client = await connectPoolWithRetry(pool);
 
     // Primary: pg_stat_all_tables
     const stat = await readPgStatAllProducts(client);
