@@ -1311,4 +1311,5 @@ module.exports = {
   shouldFileV6FailureTicket,
   assertV6ForbiddenPatterns,
   retryPendingChildren,
+  connectPoolWithRetry,
 };
