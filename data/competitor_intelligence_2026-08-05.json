@@ -1,0 +1,300 @@
+{
+  "generated_at": "2026-08-05T01:29:24.766033",
+  "total_found": 32,
+  "errors": [
+    {
+      "error": "PH_API_TOKEN not set",
+      "platform": "product_hunt"
+    },
+    {
+      "error": "Smithery API returned 404",
+      "platform": "smithery"
+    }
+  ],
+  "by_threat_level": {
+    "critical": 9,
+    "high": 20,
+    "medium": 0,
+    "monitor": 3
+  },
+  "by_platform": {
+    "github": 29,
+    "hackernews": 3
+  },
+  "competitors": [
+    {
+      "name": "AI-Shopping-Application",
+      "description": "",
+      "url": "https://github.com/msaawariya/AI-Shopping-Application",
+      "stars": 1,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "My-first-website-Vaishnavi-Alankar",
+      "description": "i have created a website for jwellary shop of my friend. i used some ai named Antigravity, Stitch, Google-Flow, Google AI Studio.",
+      "url": "https://github.com/GaneshNil/My-first-website-Vaishnavi-Alankar",
+      "stars": 1,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "aarya",
+      "description": "AARYA \u2014 Hinglish voice AI for SMB shop operations: billing, khata/ledger, inventory by voice. VAD \u2192 Whisper \u2192 fine-tuned Qwen 2.5-7B (LoRA) \u2192 SQLite \u2192 Kokoro TTS. Fully offline via Ollama.",
+      "url": "https://github.com/dhanraj176/aarya",
+      "stars": 1,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "Neuroshop-AI",
+      "description": "online shopping app",
+      "url": "https://github.com/SANJANA0328/Neuroshop-AI",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "findly",
+      "description": "AI Shopping Intelligence Platform",
+      "url": "https://github.com/wldnkhs/findly",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "buypilot",
+      "description": "AI-powered shopping assistant",
+      "url": "https://github.com/mazarindcstartup/buypilot",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "super-list-ai",
+      "description": "AI-powered collaborative shopping list application",
+      "url": "https://github.com/antonioservandols-dot/super-list-ai",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "Ai-Shopping-Agent-",
+      "description": "AI- powered party planning agent for Cymbal Mart that converts host intent into a curated , budget - conscious shopping list with portion math and seamless checkout.",
+      "url": "https://github.com/anshikagoyal35/Ai-Shopping-Agent-",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "AI-SHOPPING-AGENT",
+      "description": "",
+      "url": "https://github.com/SummayaRao14/AI-SHOPPING-AGENT",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "AI-Shopping-Assistant",
+      "description": "an intelligent Multi agent-based system built using CrewAI that helps users find the best products across multiple e-commerce platforms.",
+      "url": "https://github.com/doaamostafa67988/AI-Shopping-Assistant",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "Agentic-Commerce-Protocol",
+      "description": "",
+      "url": "https://github.com/JavierBonill4/Agentic-Commerce-Protocol",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "E-commerce-agent",
+      "description": "",
+      "url": "https://github.com/mayurkatre08/E-commerce-agent",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "agentic-commerce-fraud-benchmark",
+      "description": "Behavioral benchmark for distinguishing AI-agent-driven from human-driven commerce transactions, independent of fraud status",
+      "url": "https://github.com/bishtashish708/agentic-commerce-fraud-benchmark",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "WhatsApp_Commerce_and_Support_Agent",
+      "description": "",
+      "url": "https://github.com/maybemnv/WhatsApp_Commerce_and_Support_Agent",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "hermes-commerce-dach-x402",
+      "description": "DACH x402 Compliance for AI Agents",
+      "url": "https://github.com/marketingkioldenburg/hermes-commerce-dach-x402",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "ecom-agent-platform",
+      "description": "E-commerce multi-agent customer service platform built with Spring Boot and Spring AI Alibaba.",
+      "url": "https://github.com/aigcbilibili/ecom-agent-platform",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "ecommerce-agent-vendor-failover",
+      "description": "Route an e-commerce support agent across model vendors with the OpenAI Python SDK.",
+      "url": "https://github.com/Lyle-0014/ecommerce-agent-vendor-failover",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "crossborder-ai-commerce-hub",
+      "description": "Local AI operations hub for cross-border e-commerce sourcing, compliance, listings, media workflows, and multi-agent orchestration.",
+      "url": "https://github.com/songyang208/crossborder-ai-commerce-hub",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "Real-Time-E-Commerce-Events-Anomaly-Detection-AI-Agent-Alerting-Platform-Databricks",
+      "description": "",
+      "url": "https://github.com/sagarshah95/Real-Time-E-Commerce-Events-Anomaly-Detection-AI-Agent-Alerting-Platform-Databricks",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "ecommerce-3agent-audit-kit",
+      "description": "E-commerce \u4e09 Agent \u672c\u5730\u5ba1\u67e5\u5de5\u5177\u5305 - \u9694\u79bb\u5ba1\u8ba1\u73af\u5883\uff0c\u652f\u6301\u591a\u5e73\u53f0\u540c\u6b65\u4e0eAI\u96c6\u6210",
+      "url": "https://github.com/cheshi888/ecommerce-3agent-audit-kit",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "best-amazon-scraper",
+      "description": "The best Amazon scraper for extracting products, prices, reviews, sellers, search results, categories, and public e-commerce data through ready-to-use APIs.",
+      "url": "https://github.com/xiaozhucchongya-byte/best-amazon-scraper",
+      "stars": 1,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "taobao-desktop-agent-skill",
+      "description": "Taobao Desktop Agent Skill for product search, SKU prices, cart, chat, orders, ratings, and optional affiliate API fallback.",
+      "url": "https://github.com/edisoncccc/taobao-desktop-agent-skill",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "agentic-shopping-cart",
+      "description": "Conversational shopping assistant: natural-language product search and real checkout via the Nash delivery API. Next.js + Hono + OpenAI function calling.",
+      "url": "https://github.com/shawn-dsz/agentic-shopping-cart",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "cartifi-ecommerce",
+      "description": "A React-based e-commerce web application with product search, category filtering, shopping cart, Context API, useReducer, React Router, JSON backup data, and FakeStore API integration.",
+      "url": "https://github.com/jebajebahar1110/cartifi-ecommerce",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "best-walmart-scraper",
+      "description": "The best Walmart scraper for extracting products, prices, reviews, sellers, inventory, search results, and marketplace data through ready-to-use APIs.",
+      "url": "https://github.com/xiaozhucchongya-byte/best-walmart-scraper",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "best-ebay-scraper",
+      "description": "The best eBay scraper for extracting products, prices, sellers, reviews, sold listings, search results, and marketplace data through ready-to-use APIs.",
+      "url": "https://github.com/xiaozhucchongya-byte/best-ebay-scraper",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "Cartify",
+      "description": "Cartify is an e-commerce storefront built with React and Tailwind CSS. Browse products by category, search in real time, and manage a persistent shopping cart \u2014 with a clean, modern UI and product data from the DummyJSON API.",
+      "url": "https://github.com/RitikGarg89/Cartify",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "Responsive-Dashboard",
+      "description": "DummyJSON Dashboard is a responsive web application built with HTML, CSS, and JavaScript. It fetches and displays users, products, carts, and quotes from the DummyJSON API. The project includes search, sorting, filtering, responsive design, and demonstrates REST API integration with modern JavaScript.",
+      "url": "https://github.com/gamersmk93/Responsive-Dashboard",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "responsive-dummyjson-dashboar",
+      "description": "A responsive multi-page dashboard built with HTML, CSS, and JavaScript that fetches and displays users, products, carts, and quotes from the DummyJSON API. Features real-time search, filtering, sorting, loading states, error handling, dark mode, and mobile-friendly design.",
+      "url": "https://github.com/princerana83074-hash/responsive-dummyjson-dashboar",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "What is the actual point of agentic commerce?",
+      "description": "HN mention for keyword 'agentic commerce'",
+      "url": "https://talkshi.com/blog/actual-point-of-agentic-commerce",
+      "hn_id": "49161710",
+      "hn_points": 7,
+      "hn_comments": 6,
+      "hn_created_at": "2026-08-03T21:31:40Z",
+      "keyword": "agentic commerce",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Show HN: Merona \u2013 x402 settlement index (raw feeds overstate volume ~100x)",
+      "description": "HN mention for keyword 'x402'",
+      "url": "https://merona.io",
+      "hn_id": "49177138",
+      "hn_points": 2,
+      "hn_comments": 0,
+      "hn_created_at": "2026-08-05T00:31:51Z",
+      "keyword": "x402",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "An Alternative to X402",
+      "description": "HN mention for keyword 'x402'",
+      "url": "https://github.com/programmaman/d402",
+      "hn_id": "49156618",
+      "hn_points": 1,
+      "hn_comments": 0,
+      "hn_created_at": "2026-08-03T14:54:35Z",
+      "keyword": "x402",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    }
+  ],
+  "summary": {
+    "critical_count": 9,
+    "high_count": 20,
+    "medium_count": 0,
+    "monitor_count": 3
+  }
+}
