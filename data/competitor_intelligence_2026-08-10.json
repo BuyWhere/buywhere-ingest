@@ -1,0 +1,372 @@
+{
+  "generated_at": "2026-08-10T01:26:04.417704",
+  "total_found": 40,
+  "errors": [
+    {
+      "error": "PH_API_TOKEN not set",
+      "platform": "product_hunt"
+    },
+    {
+      "error": "Smithery API returned 404",
+      "platform": "smithery"
+    }
+  ],
+  "by_threat_level": {
+    "critical": 5,
+    "high": 20,
+    "medium": 12,
+    "monitor": 3
+  },
+  "by_platform": {
+    "github": 35,
+    "hackernews": 5
+  },
+  "competitors": [
+    {
+      "name": "AI-ShoppingAgent",
+      "description": "",
+      "url": "https://github.com/Yeaits/AI-ShoppingAgent",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "AI-Shopping-Agent",
+      "description": "",
+      "url": "https://github.com/Apurvagit28/AI-Shopping-Agent",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "AI_SHOPPING-AGENT",
+      "description": "",
+      "url": "https://github.com/Tushar-ksheerasagar/AI_SHOPPING-AGENT",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "AI_Shopping_Agent",
+      "description": "",
+      "url": "https://github.com/yuashi/AI_Shopping_Agent",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "xiaocanmou-ai",
+      "description": "A multimodal AI Agent helping elderly users make safer online shopping decisions.",
+      "url": "https://github.com/byliao330-blip/xiaocanmou-ai",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "SmartBuy-AI-Autonomous-AI-Shopping-Agent",
+      "description": "An agentic AI system that autonomously researches and compares products across Amazon and Flipkart, asks context-aware questions, uses web-based RAG for additional product knowledge, and executes the purchasing workflow through browser automation up to the payment stage.",
+      "url": "https://github.com/Sankhyaan/SmartBuy-AI-Autonomous-AI-Shopping-Agent",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "AI-RV-Marketplace-Infrastructure-",
+      "description": "AI RV Marketplace Infrastructure for AI shopping experiences with ChatGPT/Claude/Gemini, etc...",
+      "url": "https://github.com/MatchRV/AI-RV-Marketplace-Infrastructure-",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "AI-Powered-Intelligent-Shopping-Agent",
+      "description": "",
+      "url": "https://github.com/manishakhatri09087-glitch/AI-Powered-Intelligent-Shopping-Agent",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "AI-Enabled-Smart-Shopping-Cart-AI-Computer-Vision-Edge-AI",
+      "description": "Designed and developed an intelligent shopping cart combining RFID tracking and deep-learning computer vision to identify products, maintain real-time inventory, and detect unscanned or anomalous items.",
+      "url": "https://github.com/Abdulaziz1088778/AI-Enabled-Smart-Shopping-Cart-AI-Computer-Vision-Edge-AI",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "shopora-ai",
+      "description": "AI-powered Telegram shopping assistant with text and voice search using n8n, Google Gemini, Groq Whisper, and Amazon product search.",
+      "url": "https://github.com/Rudraksh6755/shopora-ai",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "genpark-ecommerce-cross-platform-inventory-sync-engine-skill",
+      "description": "Cross-platform e-commerce inventory sync & purchase order agent",
+      "url": "https://github.com/alphaparkinc/genpark-ecommerce-cross-platform-inventory-sync-engine-skill",
+      "stars": 1,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "perfomance_ecomm",
+      "description": "Hackathon OS Agents for Commerce",
+      "url": "https://github.com/guicastle/perfomance_ecomm",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "Agentic-Commerce-Over-Shopify-s-UCP",
+      "description": "",
+      "url": "https://github.com/ashutoshanandmehta/Agentic-Commerce-Over-Shopify-s-UCP",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "multi_agent_e-commerce_dispute_investigation",
+      "description": "",
+      "url": "https://github.com/Dung092005/multi_agent_e-commerce_dispute_investigation",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "AiFinPay-Gemini-Commerce-Agent",
+      "description": "Open protocol enabling AI agents to automatically pay websites and APIs through intelligent micropayments.",
+      "url": "https://github.com/coinsecuritiescompany/AiFinPay-Gemini-Commerce-Agent",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "vogue-flow",
+      "description": "VogueFlow \u2014 Real-Time Agentic Commerce Engine",
+      "url": "https://github.com/nikzayn/vogue-flow",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "nexora",
+      "description": "Nexora - an agentic multi-agent market-intelligence system for e-commerce sellers",
+      "url": "https://github.com/aashishjoyson/nexora",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "agentic-ecommerce-shopping-assistant",
+      "description": "Multi-agent e-commerce assistant for product search, price comparison, sentiment analysis, and recommendations.",
+      "url": "https://github.com/Gthejesraj/agentic-ecommerce-shopping-assistant",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "shopify-ai-agent",
+      "description": "AI-powered Shopify commerce assistant with conversational AI, product discovery, recommendations, orders, wishlist, reviews, and FAQ support.",
+      "url": "https://github.com/LakshnaTarunyaY/shopify-ai-agent",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "Sonic_E-Commerce_Assistant",
+      "description": "An autonomous email support agent for Sonic, a fictional e-commerce platform. The agent polls a support inbox, reasons about each customer email using an LLM, resolves it using two complementary knowledge sources \u2014 a vector-searchable FAQ knowledge base and a relational customer/order database exposed via MCP \u2014 and replies to the customer automatic",
+      "url": "https://github.com/ahmed-hadaka/Sonic_E-Commerce_Assistant",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "mydentify-public-api",
+      "description": "Public, keyless REST API for a product-discovery directory featuring intent-based product search, a weekly community product leaderboard, startup directory catalog, and an unauthenticated product-listing submission workflow. Also exposes agent-native surfaces (llms.txt, published agent skills, ai.tx",
+      "url": "https://github.com/api-evangelist/mydentify-public-api",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "ecommerce-backend",
+      "description": "A Spring Boot-based e-commerce backend built with Java 17, Spring Data JPA, MySQL, and REST APIs, featuring product management, customer orders, checkout processing, product search, and category management.",
+      "url": "https://github.com/messuuu/ecommerce-backend",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "ecommerce-catalog",
+      "description": "Full-stack E-Commerce Product Catalog with Cart & Admin Panel built using React 19, Tailwind CSS, PHP 8 REST API (PDO), and MySQL schema. Features live search, category filters (Mobiles & Fashion), checkout simulation, and inventory CRUD management.",
+      "url": "https://github.com/sridharpalivela1-svg/ecommerce-catalog",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "ShopSphere-Full-Stack-E-Commerce-Web-Application",
+      "description": "Developed a Full-Stack E-Commerce Web Application using React, Vite, Bootstrap, Java, Spring Boot, Spring Data JPA/Hibernate, and MySQL. Implemented product browsing, search, category filtering, price sorting, and shopping cart functionality, with REST APIs connecting the frontend and backend.",
+      "url": "https://github.com/jeba04/ShopSphere-Full-Stack-E-Commerce-Web-Application",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": ".github",
+      "description": "Download ReadMe Docs to build clear, searchable product help that guides users from first setup to advanced workflows. Create an organized knowledge base, publish API details, manage updates, and deliver a polished ReadMe Docs developer portal that helps teams answer questions faster.",
+      "url": "https://github.com/ReadMe-Docs/.github",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "reasonix-mcp",
+      "description": "MCP server + detached agent daemon: spawn and steer Reasonix coding agents from Claude Code",
+      "url": "https://github.com/AsmodeusX/reasonix-mcp",
+      "stars": 2,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "awsmcproxy",
+      "description": "A multi-profile proxy for the AWS MCP Server: opens one SigV4-signed connection per AWS profile and adds a profile argument to every tool, so a single client connection can reach multiple AWS accounts. Needs no config file, no uvx and no mcp-proxy-for-aws.",
+      "url": "https://github.com/winebarrel/awsmcproxy",
+      "stars": 2,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "weather-mcp-server",
+      "description": "",
+      "url": "https://github.com/modern-data-engineering-lab/weather-mcp-server",
+      "stars": 1,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "AccountMcpServer",
+      "description": "",
+      "url": "https://github.com/AnandKittappa/AccountMcpServer",
+      "stars": 1,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "mcp-assert",
+      "description": "Testing library for MCP servers",
+      "url": "https://github.com/collinsrs/mcp-assert",
+      "stars": 1,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "reverse-engineering-mcp-server",
+      "description": "A production-ready Model Context Protocol (MCP) server written in Node.js for Java `.jar` package decompilation, multi-engine candidate benchmark evaluation, Maven project structuring, non-breaking syntax repair, **GumTree Spoon AST analysis & obfuscation renaming**, and **ASM bytecode parity metrics evaluation**.",
+      "url": "https://github.com/sapyyy/reverse-engineering-mcp-server",
+      "stars": 1,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "ProjectResearchServer",
+      "description": "ProjectResearchServer mcp.server.fastmcp with 3 tools",
+      "url": "https://github.com/danialkh/ProjectResearchServer",
+      "stars": 1,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "mcp-threat-hunting-agent",
+      "description": "Model Context Protocol (MCP) server for SIEM log query and MITRE ATT&CK mapping",
+      "url": "https://github.com/kelvinodarikpe88/mcp-threat-hunting-agent",
+      "stars": 1,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "mcp-vitest-docs",
+      "description": "Documentation site for mcp-vitest - Vitest-native testing for Model Context Protocol servers. Next.js 16 + Fumadocs.",
+      "url": "https://github.com/nixrajput/mcp-vitest-docs",
+      "stars": 1,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "pbx-mcp",
+      "description": "MCP server for Asterisk and FreeSWITCH. Lets AI assistants inspect channels, SIP registrations, trunk status and dialplan on a live PBX.",
+      "url": "https://github.com/ictinnovations/pbx-mcp",
+      "stars": 1,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "What is the actual point of agentic commerce?",
+      "description": "HN mention for keyword 'agentic commerce'",
+      "url": "https://talkshi.com/blog/actual-point-of-agentic-commerce",
+      "hn_id": "49161710",
+      "hn_points": 7,
+      "hn_comments": 7,
+      "hn_created_at": "2026-08-03T21:31:40Z",
+      "keyword": "agentic commerce",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Show HN: Merona \u2013 x402 settlement index (raw feeds overstate volume ~100x)",
+      "description": "HN mention for keyword 'x402'",
+      "url": "https://merona.io",
+      "hn_id": "49177138",
+      "hn_points": 3,
+      "hn_comments": 0,
+      "hn_created_at": "2026-08-05T00:31:51Z",
+      "keyword": "x402",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Show HN: AgisHub \u2013 pay-per-call tools for AI agents over x402 (USDC on Base)",
+      "description": "HN mention for keyword 'x402'",
+      "url": "https://api.agishub.com/try",
+      "hn_id": "49207617",
+      "hn_points": 2,
+      "hn_comments": 0,
+      "hn_created_at": "2026-08-07T08:51:05Z",
+      "keyword": "x402",
+      "threat_level": "medium",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Agent-tools.net \u2013 pay-per-call APIs for AI agents, paid via x402/USDC on Base",
+      "description": "HN mention for keyword 'x402'",
+      "url": "https://agent-tools.net/",
+      "hn_id": "49194345",
+      "hn_points": 1,
+      "hn_comments": 0,
+      "hn_created_at": "2026-08-06T09:12:09Z",
+      "keyword": "x402",
+      "threat_level": "medium",
+      "platform": "hackernews"
+    },
+    {
+      "name": "An Alternative to X402",
+      "description": "HN mention for keyword 'x402'",
+      "url": "https://github.com/programmaman/d402",
+      "hn_id": "49156618",
+      "hn_points": 1,
+      "hn_comments": 0,
+      "hn_created_at": "2026-08-03T14:54:35Z",
+      "keyword": "x402",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    }
+  ],
+  "summary": {
+    "critical_count": 5,
+    "high_count": 20,
+    "medium_count": 12,
+    "monitor_count": 3
+  }
+}
