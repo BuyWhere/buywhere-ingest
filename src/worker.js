@@ -15,6 +15,7 @@ import {
   probeTrancoHost,
   SUPPORTED_KINDS,
 } from './trancoDiscovery.js';
+import { finalizeDiscoverRun } from './ingestionRunStatus.js';
 import {
   walkSitemapForProducts,
   countryFromHost,
@@ -755,9 +756,9 @@ async function getTrancoListCached(listIdHint) {
 
 async function insertTrancoMerchant(domain, source, kind, evidence) {
   // Same idempotency shape as the BUY-34835 / discover.cc path. The
-  // `name` column is the only non-required text column; we leave it NULL
-  // for tranco discoveries (the WC deep lane fills it later from the
-  // WC store response if available).
+  // Use the domain as a placeholder name — merchants.name is NOT NULL.
+  // The WC deep lane replaces this with the store's real name later.
+  
   //
   // `source` is the per-kind source label, e.g. `tranco_woocommerce`.
   // ON CONFLICT (id) DO UPDATE bumps updated_at so a re-probe of an
@@ -771,7 +772,7 @@ async function insertTrancoMerchant(domain, source, kind, evidence) {
          SET updated_at = NOW(),
              source = COALESCE(EXCLUDED.source, merchants.source)
        RETURNING id, (xmax = 0) AS inserted`,
-      [domain, null, source]
+      [domain, domain, source]
     );
     if (r.rows.length > 0) {
       return { ok: true, inserted: r.rows[0].inserted === true };
@@ -928,7 +929,8 @@ await pgBoss.work(DISCOVER_TRANCO_QUEUE, {
     // rowsInserted = newly-discovered merchants (the main BUY-34836 KPI).
     // rowsUpdated = re-confirmed via probe (already in the table).
     // rowsFailed = probes that hit a non-tranco site (the expected case).
-    await updateIngestionRun(runId, 'completed', insertedNew, insertedExisting, stats.dead);
+    const finalRun = finalizeDiscoverRun(insertedNew, insertedExisting, stats.dead);
+    await updateIngestionRun(runId, finalRun.status, insertedNew, insertedExisting, stats.dead, finalRun.errorMessage);
     console.log(`[worker] ${DISCOVER_TRANCO_QUEUE} ranks ${rankStart}-${rankEnd} (kind=${kind}) done`, {
       probed: stats.probed,
       verified: stats.verified,
