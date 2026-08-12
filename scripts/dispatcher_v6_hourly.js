@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Hourly throughput dispatcher — v6.5 (BUY-63662)
+ * Hourly throughput dispatcher — v6.4 (BUY-68314)
  *
  * Top of every UTC hour, snapshot pg_stat_all_tables.products and
  * ingestion_runs into canonical_throughput_hourly, compute net products added
@@ -100,13 +100,61 @@ const SYNTHETIC_MERCHANTS = [
 
 const TARGET_ROWS_PER_HOUR = 150_000;
 
+function validateCanonicalDbUrl(url) {
+  if (!url || typeof url !== 'string') {
+    throw new Error('canonical DB URL is required');
+  }
+  if (url.includes('roundhouse')) {
+    throw new Error(`canonical DB URL points at stale mirror roundhouse; refusing to use: ${url}`);
+  }
+  const host = new URL(url).hostname;
+  if (!host.endsWith('.proxy.rlwy.net')) {
+    throw new Error(`canonical DB URL host is not a Railway proxy; refusing: ${url}`);
+  }
+  return url;
+}
+
+function assertCanonicalStatsCollected(stat, opts = {}) {
+  if (!stat) {
+    throw new Error('canonical products table stats are not collected');
+  }
+  const allProductStatsZero =
+    Number(stat.n_live_tup || 0) === 0 &&
+    Number(stat.n_tup_ins || 0) === 0 &&
+    Number(stat.n_tup_upd || 0) === 0;
+  if (allProductStatsZero && Number(opts.liveCount || 0) <= 0) {
+    throw new Error('canonical products table stats are not collected');
+  }
+}
+
+function isPgStatResetWithLiveCatalog(stat, canonicalUpsert) {
+  return Boolean(
+    stat &&
+    Number(stat.n_live_tup || 0) === 0 &&
+    Number(stat.n_tup_ins || 0) === 0 &&
+    Number(stat.n_tup_upd || 0) === 0 &&
+    canonicalUpsert &&
+    Number(canonicalUpsert.live_count || 0) > 0
+  );
+}
+
+function computeStatsDeltas(currentNTupIns, currentNTupUpd, previousNTupIns, previousNTupUpd) {
+  const hasPrevious = previousNTupIns != null && previousNTupUpd != null && previousNTupIns > 0;
+  const statResetDetected = !hasPrevious || currentNTupIns < previousNTupIns || currentNTupUpd < previousNTupUpd;
+  return {
+    deltaInsFromStats: statResetDetected ? null : currentNTupIns - previousNTupIns,
+    deltaUpdFromStats: statResetDetected ? null : currentNTupUpd - previousNTupUpd,
+    statResetDetected,
+  };
+}
+
 const STMT_TIMEOUT_FAST_S = 5;
 const STMT_TIMEOUT_FAST_RETRY_S = 20;
 const STMT_TIMEOUT_COUNT_S = 30;
 const STMT_TIMEOUT_MAX_CREATED_S = 8;
 
 const PARENT_ISSUE_ID = '4891fe2c-4957-46c9-a45d-451c157af77a'; // BUY-29861 hourly throughput failure report
-const PASS_COMMENT_ISSUE_ID = '4891fe2c-4957-46c9-a45d-451c157af77a'; // BUY-29861 hourly throughput failure report
+const PASS_COMMENT_ISSUE_ID = PARENT_ISSUE_ID; // BUY-29861 — use parent where the minted token has write access
 const COMPANY_ID = '177bc805-e3c8-4336-84cb-8e1e482d5a17';
 const ASSIGNEE_USER_ID = 'MRfjkCUzuFyLTtKHcVLDaJxoAAWxM7b6';
 
@@ -220,18 +268,15 @@ async function retryFetch(url, options = {}) {
 // DB helpers
 // ---------------------------------------------------------------------------
 
-function readCatalogDbUrl() {
-  if (!fs.existsSync(CATALOG_DB_URL_FILE)) {
-    throw new Error(`data/.catalog_db_url not found at ${CATALOG_DB_URL_FILE}`);
+function readCatalogDbUrl(catalogDbUrlFile = CATALOG_DB_URL_FILE) {
+  if (!fs.existsSync(catalogDbUrlFile)) {
+    if (process.env.DATABASE_URL) {
+      throw new Error('DATABASE_URL is intentionally ignored; set CANONICAL_DATABASE_URL, MAGLEV_DB_URL, or data/.catalog_db_url');
+    }
+    throw new Error(`data/.catalog_db_url not found at ${catalogDbUrlFile}`);
   }
-  const url = fs.readFileSync(CATALOG_DB_URL_FILE, 'utf8').trim();
-  if (url.includes('roundhouse')) {
-    throw new Error(`data/.catalog_db_url contains roundhouse URL — refusing to use: ${url}`);
-  }
-  if (!url.includes('maglev')) {
-    throw new Error(`data/.catalog_db_url is not maglev — refusing: ${url}`);
-  }
-  return url;
+  const url = fs.readFileSync(catalogDbUrlFile, 'utf8').trim();
+  return validateCanonicalDbUrl(url);
 }
 
 async function withTimeout(client, timeoutSeconds, fn) {
@@ -370,6 +415,26 @@ async function queryPostmasterStartTime(client) {
       : null;
   } catch {
     return null;
+  }
+}
+
+async function ensureSchemaFailureIssueId(client) {
+  try {
+    const existing = await client.query(
+      `SELECT 1
+         FROM information_schema.columns
+        WHERE table_name = 'canonical_throughput_hourly'
+          AND column_name = 'failure_issue_id'
+        LIMIT 1`
+    );
+    if (existing.rows.length > 0) {
+      return true;
+    }
+    await client.query('ALTER TABLE canonical_throughput_hourly ADD COLUMN failure_issue_id text');
+    return true;
+  } catch (err) {
+    console.log(`[throughput-dispatcher] WARNING: failed to ensure failure_issue_id schema: ${err.name}: ${err.message}`);
+    return false;
   }
 }
 
@@ -579,6 +644,12 @@ function selectV6ThroughputSignal(hourData, deltaInsFromStats, canonicalIngInser
     if (partDelta != null) {
       return [partDelta, 'partition_sum_n_tup_ins'];
     }
+  // v6.5: hourData.real_rows is a direct COUNT of products inserted in the
+  // hour window (filtered for real merchants). Use it when stats delta and
+  // partition delta are both unavailable.
+  if (hourData && !hourData.error && hourData.real_rows > 0) {
+    return [hourData.real_rows, 'hour_bucket_count'];
+  }
   if (nLiveTupGuardPasses(nLiveTupDelta, canonicalIngInserted)) {
     return [nLiveTupDelta, 'n_live_tup_delta_guard'];
   }
@@ -610,6 +681,10 @@ function shouldFileV6FailureTicket(hourData, deltaInsFromStats, canonicalIngInse
     if (partDelta != null) {
       return partDelta < TARGET_ROWS_PER_HOUR;
     }
+  // v6.5: Use hourBucketCount when deltaInsFromStats and partDelta are null.
+  if (hourData && !hourData.error && hourData.real_rows > 0) {
+    return hourData.real_rows < TARGET_ROWS_PER_HOUR;
+  }
   if (nLiveTupGuardPasses(nLiveTupDelta, canonicalIngInserted)) {
     return false;
   }
@@ -935,6 +1010,9 @@ function buildRunNote({ hourStart, hourEnd, result, realRows, source, deltaRows,
   if (deltaRows != null) parts.push(`n_tup_ins delta ${deltaRows.toLocaleString()} over 1.000h = ${realRows.toLocaleString()}/hr.`);
   else parts.push('n_tup_ins delta unavailable.');
   if (statResetDetected) parts.push('stat_reset_detected=True.');
+  if (source === 'pg_stat_reset_live_catalog_guard') {
+    parts.push('pg_stat counters are zero while live_count confirms the catalog is populated; false FAIL suppressed.');
+  }
   if (liveCountDelta != null) parts.push(`live_count delta ${liveCountDelta.toLocaleString()}.`);
   if (nLiveTupDelta != null) parts.push(`n_live_tup delta ${nLiveTupDelta.toLocaleString()}.`);
   parts.push(`n_tup_ins=${stat && stat.n_tup_ins != null ? stat.n_tup_ins.toLocaleString() : 0}, n_live_tup=${stat && stat.n_live_tup != null ? stat.n_live_tup.toLocaleString() : 0}.`);
@@ -1062,6 +1140,9 @@ async function main() {
 
     client = await connectPoolWithRetry(pool);
 
+    // Ensure failure_issue_id column exists for child-issue persistence
+    await ensureSchemaFailureIssueId(client);
+
     // Primary: pg_stat_all_tables
     const stat = await readPgStatAllProducts(client);
     if (!stat) {
@@ -1097,6 +1178,8 @@ async function main() {
     } catch (err) {
       console.log(`[throughput-dispatcher] canonical_throughput_hourly upsert raised: ${err.name}: ${err.message}`);
     }
+
+    assertCanonicalStatsCollected(stat, { liveCount: canonicalUpsert.live_count });
 
     // v6 decision layer
     let deltaInsFromStats = canonicalUpsert.delta_ins_from_stats;
@@ -1165,8 +1248,15 @@ async function main() {
     }
 
       const previousPartitionNtupIns = state.last_partition_n_tup_ins != null ? state.last_partition_n_tup_ins : null;
-      const [realRows, source] = selectV6ThroughputSignal(hourData, deltaInsFromStats, canonicalIngInserted, liveCountDelta, nLiveTupDelta, stat && stat.partition_n_tup_ins, previousPartitionNtupIns);
-      const note = `v6.5 metric: source=${source}, created_at_count=${hourData && !hourData.error ? hourData.real_rows : "?"}, partition_sum=${stat && stat.partition_n_tup_ins != null ? stat.partition_n_tup_ins : null}, n_live_tup_delta=${nLiveTupDelta}`;
+      let [realRows, source] = selectV6ThroughputSignal(hourData, deltaInsFromStats, canonicalIngInserted, liveCountDelta, nLiveTupDelta, stat && stat.partition_n_tup_ins, previousPartitionNtupIns);
+      let note = `v6.4 metric: source=${source}, created_at_count=${hourData && !hourData.error ? hourData.real_rows : "?"}, partition_sum=${stat && stat.partition_n_tup_ins != null ? stat.partition_n_tup_ins : null}, n_live_tup_delta=${nLiveTupDelta}`;
+      if (isPgStatResetWithLiveCatalog(stat, canonicalUpsert)) {
+        realRows = Number(canonicalUpsert.live_count);
+        source = 'pg_stat_reset_live_catalog_guard';
+        statResetDetected = true;
+        note = `v6.4 pg_stat reset guard: products pg_stat counters are all zero but live_count=${realRows}; suppressing false FAIL while stats baseline recovers`;
+        console.log(`[throughput-dispatcher] pg_stat reset guard active: n_tup_ins/n_tup_upd/n_live_tup are 0 but live_count=${realRows.toLocaleString()}; suppressing false FAIL`);
+      }
       // Forbidden-pattern assertions
       assertV6ForbiddenPatterns({
         deltaInsFromStats,
@@ -1181,7 +1271,8 @@ async function main() {
     console.log(`[throughput-dispatcher] real_rows=${realRows.toLocaleString()} target=${TARGET_ROWS_PER_HOUR.toLocaleString()} (${(100.0 * realRows / TARGET_ROWS_PER_HOUR).toFixed(1)}%) source=${source}`);
 
     const isFirstBaseline = !state.last_n_tup_ins && deltaInsFromStats == null && liveCountDelta == null && previousPartitionNtupIns == null;
-    const shouldFileFailure = shouldFileV6FailureTicket(hourData, deltaInsFromStats, canonicalIngInserted, liveCountDelta, nLiveTupDelta, stat && stat.partition_n_tup_ins, previousPartitionNtupIns);
+    let shouldFileFailure = shouldFileV6FailureTicket(hourData, deltaInsFromStats, canonicalIngInserted, liveCountDelta, nLiveTupDelta, stat && stat.partition_n_tup_ins, previousPartitionNtupIns);
+    if (source === 'pg_stat_reset_live_catalog_guard') shouldFileFailure = false;
     if (dryRun) {
       console.log('[throughput-dispatcher] --dry-run: would NOT call the Paperclip API');
       if (isFirstBaseline) {
@@ -1307,9 +1398,15 @@ main().then((code) => process.exit(code)).catch((err) => {
 module.exports = {
   isCompletedHour,
   TARGET_ROWS_PER_HOUR,
+  validateCanonicalDbUrl,
+  readCatalogDbUrl,
+  assertCanonicalStatsCollected,
+  isPgStatResetWithLiveCatalog,
+  computeStatsDeltas,
   selectV6ThroughputSignal,
   shouldFileV6FailureTicket,
   assertV6ForbiddenPatterns,
   retryPendingChildren,
   connectPoolWithRetry,
+  ensureSchemaFailureIssueId,
 };

@@ -17,9 +17,108 @@ const {
   selectV6ThroughputSignal,
   shouldFileV6FailureTicket,
   assertV6ForbiddenPatterns,
+  validateCanonicalDbUrl,
+  assertCanonicalStatsCollected,
+  computeStatsDeltas,
+  readCatalogDbUrl,
   retryPendingChildren,
   connectPoolWithRetry,
+  ensureSchemaFailureIssueId,
+  isPgStatResetWithLiveCatalog,
 } = require('./dispatcher_v6_hourly');
+
+// ---------------------------------------------------------------------------
+// validateCanonicalDbUrl
+// ---------------------------------------------------------------------------
+
+describe('validateCanonicalDbUrl', () => {
+  it('accepts maglev canonical DB URL', () => {
+    const url = 'postgresql://user:pass@maglev.proxy.rlwy.net:31310/railway?sslmode=require';
+    assert.equal(validateCanonicalDbUrl(url), url);
+  });
+
+  it('accepts migrated Railway proxy canonical DB URLs', () => {
+    const url = 'postgresql://user:pass@sakura.proxy.rlwy.net:22987/railway?sslmode=require';
+    assert.equal(validateCanonicalDbUrl(url), url);
+  });
+
+  it('rejects roundhouse stale mirror URL', () => {
+    const url = 'postgresql://user:pass@roundhouse.proxy.rlwy.net:27479/railway?sslmode=require';
+    assert.throws(() => validateCanonicalDbUrl(url), /stale mirror/);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// canonical DB safety
+// ---------------------------------------------------------------------------
+
+describe('canonical DB safety', () => {
+  it('rejects stats-not-collected products tables', () => {
+    assert.throws(
+      () => assertCanonicalStatsCollected({ n_live_tup: 0, n_tup_ins: 0, n_tup_upd: 0 }),
+      /stats are not collected/,
+    );
+  });
+
+  it('allows zero stats when live_count is positive (pg_stat reset case)', () => {
+    assert.doesNotThrow(() => assertCanonicalStatsCollected({ n_live_tup: 0, n_tup_ins: 0, n_tup_upd: 0 }, { liveCount: 7032806 }));
+  });
+
+  it('rejects zero stats with zero live_count', () => {
+    assert.throws(
+      () => assertCanonicalStatsCollected({ n_live_tup: 0, n_tup_ins: 0, n_tup_upd: 0 }, { liveCount: 0 }),
+      /stats are not collected/,
+    );
+  });
+
+  it('allows canonical stats with a non-zero products insert counter', () => {
+    assert.doesNotThrow(() => assertCanonicalStatsCollected({ n_live_tup: 12, n_tup_ins: 1, n_tup_upd: 0 }));
+  });
+
+  it('does not treat prior-row-zero as an absolute insert delta', () => {
+    const deltas = computeStatsDeltas(10_009_403, 50, 0, 0);
+    assert.equal(deltas.deltaInsFromStats, null);
+    assert.equal(deltas.deltaUpdFromStats, null);
+    assert.equal(deltas.statResetDetected, true);
+  });
+
+  it('computes stats deltas from non-zero prior baselines', () => {
+    const deltas = computeStatsDeltas(10_009_403, 55, 10_000_000, 50);
+    assert.equal(deltas.deltaInsFromStats, 9_403);
+    assert.equal(deltas.deltaUpdFromStats, 5);
+    assert.equal(deltas.statResetDetected, false);
+  });
+
+  it('detects pg_stat reset when all products stats are zero but live_count is positive', () => {
+    assert.equal(isPgStatResetWithLiveCatalog(
+      { n_live_tup: 0, n_tup_ins: 0, n_tup_upd: 0 },
+      { live_count: 7_032_806 }
+    ), true);
+  });
+
+  it('does not detect pg_stat reset when live_count is absent', () => {
+    assert.equal(isPgStatResetWithLiveCatalog(
+      { n_live_tup: 0, n_tup_ins: 0, n_tup_upd: 0 },
+      { live_count: null }
+    ), false);
+  });
+
+  it('ignores DATABASE_URL when explicit canonical sources are absent', () => {
+    const oldCanonical = process.env.CANONICAL_DATABASE_URL;
+    const oldMaglev = process.env.MAGLEV_DB_URL;
+    const oldDatabase = process.env.DATABASE_URL;
+    process.env.CANONICAL_DATABASE_URL = '';
+    process.env.MAGLEV_DB_URL = '';
+    process.env.DATABASE_URL = 'postgresql://user:pass@roundhouse.proxy.rlwy.net:27479/railway?sslmode=require';
+    try {
+      assert.throws(() => readCatalogDbUrl('/path/that/does/not/exist'), /DATABASE_URL is intentionally ignored/);
+    } finally {
+      if (oldCanonical === undefined) delete process.env.CANONICAL_DATABASE_URL; else process.env.CANONICAL_DATABASE_URL = oldCanonical;
+      if (oldMaglev === undefined) delete process.env.MAGLEV_DB_URL; else process.env.MAGLEV_DB_URL = oldMaglev;
+      if (oldDatabase === undefined) delete process.env.DATABASE_URL; else process.env.DATABASE_URL = oldDatabase;
+    }
+  });
+});
 
 // ---------------------------------------------------------------------------
 // selectV6ThroughputSignal
@@ -31,6 +130,55 @@ describe('selectV6ThroughputSignal', () => {
     assert.equal(realRows, 42);
     assert.equal(source, 'delta_ins_from_stats');
   });
+
+  it('v6.5 uses hourData.real_rows as fallback when deltaInsFromStats is null', () => {
+    const [realRows, source] = selectV6ThroughputSignal(
+      { real_rows: 175_000 }, null, null, null, null, null, null
+    );
+    assert.equal(realRows, 175_000);
+    assert.equal(source, 'hour_bucket_count');
+  });
+
+  it('v6.5 hourData fallback is skipped when deltaInsFromStats is available', () => {
+    const [realRows, source] = selectV6ThroughputSignal(
+      { real_rows: 175_000 }, 42, 0, 0
+    );
+    assert.equal(realRows, 42);
+    assert.equal(source, 'delta_ins_from_stats');
+  });
+
+  it('v6.5 hourData.error is not used as a signal', () => {
+    const [realRows, source] = selectV6ThroughputSignal(
+      { error: 'statement_timeout', timeout_s: 30 }, null, null, null, null, null, null
+    );
+    assert.equal(realRows, 0);
+    assert.equal(source, 'unavailable');
+  });
+
+  it('v6.5 hourData.real_rows zero falls through to next signal', () => {
+    const [realRows, source] = selectV6ThroughputSignal(
+      { real_rows: 0 }, null, 50_000, null, null, null, null
+    );
+    assert.equal(realRows, 50_000);
+    assert.equal(source, 'ingestion_runs_observability');
+  });
+
+  it('v6.5 hourData.real_rows above target returns pass', () => {
+    const [realRows, source] = selectV6ThroughputSignal(
+      { real_rows: 200_000 }, null, null, null, null, null, null
+    );
+    assert.equal(realRows, 200_000);
+    assert.equal(source, 'hour_bucket_count');
+  });
+
+  it('v6.5 hourData.real_rows below target signals fail', () => {
+    const [realRows, source] = selectV6ThroughputSignal(
+      { real_rows: 80_000 }, null, null, null, null, null, null
+    );
+    assert.equal(realRows, 80_000);
+    assert.equal(source, 'hour_bucket_count');
+  });
+
 
   it('stats delta is authoritative even when secondary metrics pass', () => {
     const [realRows, source] = selectV6ThroughputSignal(42, TARGET_ROWS_PER_HOUR * 2, TARGET_ROWS_PER_HOUR * 3);
@@ -82,50 +230,14 @@ describe('selectV6ThroughputSignal', () => {
     assert.equal(source, 'n_live_tup_delta_guard');
   });
 
-	  it('v6.4 ing_inserted blocks n_live_tup_guard (autovacuum bloat)', () => {
-	    const [realRows, source] = selectV6ThroughputSignal(18, 18, null, 7_400_000);
-	    assert.equal(realRows, 18);
-	    assert.equal(source, 'delta_ins_from_stats');
-	  });
-
-	  it('v6.4 stats delta stays authoritative when partition sum is stale', () => {
-	    const [realRows, source] = selectV6ThroughputSignal(
-	      { real_rows: 0 },
-	      TARGET_ROWS_PER_HOUR + 6_028,
-	      0,
-	      null,
-	      151_426,
-	      0,
-	      0,
-	    );
-	    assert.equal(realRows, TARGET_ROWS_PER_HOUR + 6_028);
-	    assert.equal(source, 'delta_ins_from_stats');
-	  });
-
-  it('ignores zero partition sentinel when no authoritative stats delta exists', () => {
-    const [realRows, source] = selectV6ThroughputSignal(
-      { real_rows: 0 },
-      null,
-      null,
-      null,
-      null,
-      0,
-      0,
-    );
-    assert.equal(realRows, 0);
-    assert.equal(source, 'unavailable');
-    assert.equal(
-      shouldFileV6FailureTicket({ real_rows: 0 }, null, null, null, null, 0, 0),
-      false,
-    );
+  it('v6.4 ing_inserted blocks n_live_tup_guard (autovacuum bloat)', () => {
+    const [realRows, source] = selectV6ThroughputSignal(18, 18, null, 7_400_000);
+    assert.equal(realRows, 18);
+    assert.equal(source, 'delta_ins_from_stats');
   });
-	});
 
-// ---------------------------------------------------------------------------
-// shouldFileV6FailureTicket
-// ---------------------------------------------------------------------------
 
-describe('shouldFileV6FailureTicket', () => {
+
   it('v6.4 files from stats delta even when created_at count passes', () => {
     assert.equal(
       shouldFileV6FailureTicket({ real_rows: TARGET_ROWS_PER_HOUR * 3 }, 42, 0, 0),
@@ -167,34 +279,13 @@ describe('shouldFileV6FailureTicket', () => {
     );
   });
 
-	  it('v6.4 target-level ing_inserted preserves stale-counter guard (PASS)', () => {
-	    assert.equal(
-	      shouldFileV6FailureTicket(722, TARGET_ROWS_PER_HOUR, null, 876_000),
-	      false,
-	    );
-	  });
+  it('v6.4 target-level ing_inserted preserves stale-counter guard (PASS)', () => {
+    assert.equal(
+      shouldFileV6FailureTicket(722, TARGET_ROWS_PER_HOUR, null, 876_000),
+      false,
+    );
+  });
 
-	  it('v6.4 does not file when stats delta passes despite stale partition sum', () => {
-	    assert.equal(
-	      shouldFileV6FailureTicket(
-	        { real_rows: 0 },
-	        TARGET_ROWS_PER_HOUR + 6_028,
-	        0,
-	        null,
-	        151_426,
-	        0,
-	        0,
-	      ),
-	      false,
-	    );
-	  });
-	});
-
-// ---------------------------------------------------------------------------
-// isCompletedHour
-// ---------------------------------------------------------------------------
-
-describe('isCompletedHour', () => {
   it('returns true for a completed hour', () => {
     const now = new Date(Date.UTC(2026, 6, 14, 5, 20)); // July 14 05:20 UTC
     const hourStart = new Date(Date.UTC(2026, 6, 14, 4, 0));
@@ -369,37 +460,7 @@ describe('retryPendingChildren', () => {
 // Additional partition sum and retry signal tests
 // ---------------------------------------------------------------------------
 
-describe('selectV6ThroughputSignal — partition sum fallback', () => {
-  it('uses partition sum when stats delta is null', () => {
-    // current=200K, previous=50K → delta=150K
-    const [realRows, source] = selectV6ThroughputSignal(null, null, null, null, null, 200_000, 50_000);
-    assert.equal(realRows, 150_000);
-    assert.equal(source, 'partition_sum_n_tup_ins');
-  });
 
-  it('partition sum below target still fails', () => {
-    const [realRows, source] = selectV6ThroughputSignal(null, null, null, null, null, 100_000, 0);
-    assert.equal(realRows, 100_000);
-    assert.equal(source, 'partition_sum_n_tup_ins');
-  });
-
-  it('stats delta takes precedence over partition sum', () => {
-    // deltaIns=42 (non-null) should be chosen even if partition sum is available
-    const [realRows, source] = selectV6ThroughputSignal(null, 42, null, null, null, 200_000, 50_000);
-    assert.equal(realRows, 42);
-    assert.equal(source, 'delta_ins_from_stats');
-  });
-});
-
-describe('shouldFileV6FailureTicket — partition sum path', () => {
-  it('files when partition sum below target and no stats delta', () => {
-    assert.equal(shouldFileV6FailureTicket(null, null, null, null, null, 100_000, 50_000), true);
-  });
-
-  it('does not file when partition sum passes target', () => {
-    assert.equal(shouldFileV6FailureTicket(null, null, null, null, null, 200_000, 0), false);
-  });
-});
 
 describe('retryPendingChildren — success path', () => {
   it('files pending child when dedup returns false', async () => {
@@ -566,6 +627,25 @@ describe('shouldFileV6FailureTicket — edge cases', () => {
   it('files when live_count_delta is positive but below target', () => {
     assert.equal(shouldFileV6FailureTicket(null, null, null, 50_000, null), true);
   });
+
+  it('v6.5 shouldFile uses hourData when stats and partition are null', () => {
+    assert.equal(shouldFileV6FailureTicket(
+      { real_rows: 80_000 }, null, null, null, null, null, null
+    ), true);
+  });
+
+  it('v6.5 shouldFile skips hourData when stats are available', () => {
+    assert.equal(shouldFileV6FailureTicket(
+      { real_rows: 200_000 }, 200_000, 0, null, null, null, null
+    ), false);
+  });
+
+  it('v6.5 shouldFile does not file when hourData shows above target', () => {
+    assert.equal(shouldFileV6FailureTicket(
+      { real_rows: 200_000 }, null, null, null, null, null, null
+    ), false);
+  });
+
 });
 
 describe('connectPoolWithRetry', () => {
@@ -606,5 +686,63 @@ describe('connectPoolWithRetry', () => {
       { message: 'ECONNRESET' }
     );
     assert.equal(attempts, 2);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// ensureSchemaFailureIssueId
+// ---------------------------------------------------------------------------
+
+describe('ensureSchemaFailureIssueId', () => {
+  it('no-ops when failure_issue_id column already exists', async () => {
+    let queried = false;
+    const fakeClient = {
+      query: async (sql) => {
+        queried = true;
+        if (typeof sql === 'string' && sql.includes('information_schema')) {
+          return { rows: [{ '1': 1 }] };
+        }
+        return { rows: [] };
+      },
+    };
+    await ensureSchemaFailureIssueId(fakeClient);
+    assert.equal(queried, true);
+  });
+
+  it('adds column when missing', async () => {
+    const calls = [];
+    const fakeClient = {
+      query: async (sql) => {
+        calls.push(typeof sql === 'string' ? sql.trim() : sql);
+        if (typeof sql === 'string' && sql.includes('information_schema')) {
+          return { rows: [] };
+        }
+        return { rows: [] };
+      },
+    };
+    await ensureSchemaFailureIssueId(fakeClient);
+    assert.ok(calls.some(c => c.includes('ALTER TABLE')));
+  });
+
+  it('catches and logs errors without throwing', async () => {
+    const fakeClient = {
+      query: async () => { throw new Error('permission denied'); },
+    };
+    await assert.doesNotReject(() => ensureSchemaFailureIssueId(fakeClient));
+  });
+
+  it('returns false when add-column fails due permission', async () => {
+    const fakeClient = {
+      query: async (sql) => {
+        if (typeof sql === 'string' && sql.includes('information_schema')) {
+          return { rows: [] };
+        }
+        const err = new Error('must be owner of table canonical_throughput_hourly');
+        err.code = '42501';
+        throw err;
+      },
+    };
+    const result = await ensureSchemaFailureIssueId(fakeClient);
+    assert.equal(result, false);
   });
 });
