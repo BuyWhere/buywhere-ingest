@@ -33,7 +33,7 @@ State file: data/.throughput_state.json
       "last_n_tup_ins": <int>,        # value of n_tup_ins at last successful run
       "last_n_tup_ins_at": <iso>,     # timestamp of that reading
       "last_hour_checked": <iso>,     # hour boundary last evaluated
-      "last_check_result": "PASS"|"FAIL"|"ERROR",
+      "last_check_result": "PASS"|"FAIL"|"BELOW_TARGET"|"BASELINE"|"ERROR",
       "last_check_real_rows": <int>,
       "last_check_source": "n_tup_ins_delta"|"count_window"|"unavailable"
     }
@@ -44,6 +44,8 @@ from __future__ import annotations
 import json
 import os
 import sys
+import time
+import base64
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
@@ -55,6 +57,11 @@ if str(REPO_ROOT) not in sys.path:
 import psycopg2
 import psycopg2.extras
 import requests
+from requests.adapters import HTTPAdapter
+
+_session = requests.Session()
+_session.mount("http://", HTTPAdapter(pool_connections=4, pool_maxsize=8))
+_session.mount("https://", HTTPAdapter(pool_connections=4, pool_maxsize=8))
 
 # Synthetic merchants to exclude from real-row count
 SYNTHETIC_MERCHANTS = {
@@ -79,8 +86,9 @@ STMT_TIMEOUT_FAST_RETRY_S = 20 # one retry when the fast path is transiently con
 STMT_TIMEOUT_COUNT_S = 30      # for the hour-bucket COUNT (best-effort)
 STMT_TIMEOUT_MAX_CREATED_S = 8 # for MAX(created_at) staleness snapshot
 
-# BUY-29861 — parent for failure child issues
+# BUY-29861 — parent for failure child issues and PASS comments (canonical v6 dispatcher)
 PARENT_ISSUE_ID = "4891fe2c-4957-46c9-a45d-451c157af77a"
+PASS_COMMENT_ISSUE_ID = PARENT_ISSUE_ID
 COMPANY_ID = "177bc805-e3c8-4336-84cb-8e1e482d5a17"
 
 # User to assign failure issues to (board owner)
@@ -88,6 +96,266 @@ ASSIGNEE_USER_ID = "MRfjkCUzuFyLTtKHcVLDaJxoAAWxM7b6"
 
 CATALOG_DB_URL_FILE = REPO_ROOT / "data" / ".catalog_db_url"
 STATE_FILE = REPO_ROOT / "data" / ".throughput_state.json"
+
+# BUY-58452: evidence markdown report directory in the owning agent workspace.
+EVIDENCE_DIR = Path(
+    "/paperclip/instances/default/workspaces/"
+    "a29ac9dc-cf0a-455b-964c-e75bd2f5fc47/BUY-58452"
+)
+
+
+def select_v6_throughput_signal(
+    delta_ins_from_stats: int | None,
+    canonical_ing_inserted: int | None,
+    live_count_delta: int | None,
+    n_live_tup_delta: int | None = None,
+) -> tuple[int, str]:
+    """Select the v6 pass/fail metric without letting weak signals mask passes.
+
+    The returned metric is for evidence/display. The pass/fail predicate below
+    enforces the same ordering so ticket creation cannot diverge from the
+    evidence source.
+
+    v6.2 hard guard (BUY-60573): n_live_tup_delta is the pg_stat_user_tables
+    live-tuple *estimate* delta. Unlike the live_count delta (from SELECT
+    count(*), which times out under maglev contention), n_live_tup is always
+    available and is updated by ANALYZE. When the authoritative
+    delta_ins_from_stats is below target BUT n_live_tup_delta is >= 150K, the
+    stats insert counter is lagged/stale (not a true reset) and real inserts
+    demonstrably happened. In that case the hard guard forces a PASS so we do
+    not file a false-positive stall ticket on a healthy fleet.
+
+    v6.4 (BUY-60953-fix): ing_inserted corroboration guards the
+    n_live_tup_delta_guard against false positives from autovacuum bloat
+    release. When ing_inserted is available and below target, an n_live_tup
+    surge is likely from vacuum freeing dead tuple space, not real insert
+    growth. 2026-07-08 18Z exhibited this: ing_inserted=18 with
+    n_live_tup_delta=+7.4M (autovacuum).
+    """
+    # BUY-63915 fix: the Python guard predicate was inverted relative to the JS
+    # dispatcher (nLiveTupGuardAllowed). When ing_inserted is LOW (< target),
+    # ingestion was throttled and a large n_live_tup_delta is almost certainly
+    # autovacuum/analyze dead-tuple release, not real inserts — the guard must be
+    # BLOCKED so a low delta_ins_from_stats is NOT overridden. The guard should
+    # be ALLOWED only when ing_inserted is unavailable (None) OR >= target
+    # (ingestion healthy — a live-tuple surge corroborates real inserts despite
+    # a lagged pg_stat counter, per v6.2 BUY-60573 stale-counter pattern).
+    # 2026-07-31 03Z–10Z run exposed this inversion: 8 consecutive hours of
+    # collapse (delta_ins 0..15K, ing 0..477K) were masked as PASS via
+    # n_live_tup_delta_guard (autovacuum +1.5M surge), causing 5 missed
+    # children (04Z/06Z/07Z/08Z/10Z) retrofiled under BUY-63915.
+    n_live_tup_guard_blocked_by_ing_inserted = (
+        n_live_tup_delta is not None
+        and n_live_tup_delta >= TARGET_ROWS_PER_HOUR
+        and canonical_ing_inserted is not None
+        and int(canonical_ing_inserted) < TARGET_ROWS_PER_HOUR
+    )
+
+    # v6.2 rule 5(b) hard guard: n_live_tup corroboration overrides a low
+    # delta_ins_from_stats. This blocks the stale-counter false-FAIL pattern
+    # observed on 2026-07-06 22Z/23Z (delta_ins=2262/722 but n_live_tup grew
+    # +247K/+876K).
+    if (
+        delta_ins_from_stats is not None
+        and delta_ins_from_stats < TARGET_ROWS_PER_HOUR
+        and n_live_tup_delta is not None
+        and n_live_tup_delta >= TARGET_ROWS_PER_HOUR
+        and not n_live_tup_guard_blocked_by_ing_inserted
+    ):
+        return int(n_live_tup_delta), "n_live_tup_delta_guard"
+
+    if delta_ins_from_stats is not None:
+        return int(delta_ins_from_stats), "delta_ins_from_stats"
+
+    # When the primary stats delta is unavailable, n_live_tup_delta still
+    # serves as a corroborating pass signal unless v6.4 ing_inserted
+    # corroboration blocks a phantom live-tuple surge.
+    if (
+        n_live_tup_delta is not None
+        and n_live_tup_delta >= TARGET_ROWS_PER_HOUR
+        and not n_live_tup_guard_blocked_by_ing_inserted
+    ):
+        return int(n_live_tup_delta), "n_live_tup_delta_guard"
+
+    if live_count_delta is not None and live_count_delta >= TARGET_ROWS_PER_HOUR:
+        return int(live_count_delta), "live_count_delta"
+    ing_inserted = int(canonical_ing_inserted or 0)
+    if ing_inserted > 0:
+        return ing_inserted, "ingestion_runs_observability"
+    if live_count_delta is not None:
+        return int(live_count_delta), "live_count_delta"
+    return 0, "unavailable"
+
+
+def should_file_v6_failure_ticket(
+    *,
+    delta_ins_from_stats: int | None,
+    canonical_ing_inserted: int | None,
+    live_count_delta: int | None,
+    n_live_tup_delta: int | None = None,
+) -> bool:
+    """Return True when a v6 failure child should be filed.
+
+    Rule 5a/5b/5d: delta_ins_from_stats is the PRIMARY authoritative signal.
+    When non-null, it governs the decision directly: >= target passes, while
+    below target files unless the v6.2 n_live_tup hard guard proves real growth
+    and v6.4 ing_inserted corroboration does not block that guard.
+
+    v6.2 rule 5(b) hard guard (BUY-60573): if delta_ins_from_stats is below
+    target but n_live_tup_delta (the always-available pg_stat live-tuple
+    estimate delta) is >= 150K, the insert counter is stale and real inserts
+    happened — do NOT file.
+
+    v6.4 (BUY-63152): ing_inserted corroboration blocks the n_live_tup hard
+    guard when ing_inserted is available AND < target — autovacuum bloat
+    release produced a phantom positive delta while zero/few rows were
+    actually inserted. When ing_inserted is unavailable (None) OR >= target,
+    the guard still fires to preserve stale-counter protection.
+
+    Rule 5d: when delta_ins_from_stats is NULL (true stat reset / first tick),
+    fall back to ingestion_runs and live_count. File only if every available
+    fallback signal is also below 150K.
+    """
+    if delta_ins_from_stats is not None:
+        if int(delta_ins_from_stats) >= TARGET_ROWS_PER_HOUR:
+            return False
+        # BUY-63915 fix: the guard is allowed (no file) only when ing_inserted
+        # is unavailable (None) OR >= target — i.e. ingestion corroborates that
+        # a live-tuple surge is real inserts despite a lagged pg_stat counter
+        # (v6.2 BUY-60573 stale-counter pattern). When ing_inserted is LOW
+        # (< target), a large n_live_tup_delta is autovacuum/analyze dead-tuple
+        # release and must NOT override the authoritative low delta_ins_from_stats.
+        if (
+            n_live_tup_delta is not None
+            and int(n_live_tup_delta) >= TARGET_ROWS_PER_HOUR
+            and (canonical_ing_inserted is None or int(canonical_ing_inserted) >= TARGET_ROWS_PER_HOUR)
+        ):
+            return False
+        if live_count_delta is not None and int(live_count_delta) >= TARGET_ROWS_PER_HOUR:
+            return False
+        return True
+
+    # delta_ins_from_stats is NULL: stat reset or first-ever tick.
+    # n_live_tup_delta corroborates real growth only when ing_inserted is
+    # >= target (or unavailable/None as neutral). When ing_inserted is LOW (< target),
+    # a live-tuple surge is autovacuum noise — block the guard so we fall
+    # through to the ingestion_runs/live_count fallback which is the only
+    # reliable signal when pg_stat counters have been reset.
+    if (
+        n_live_tup_delta is not None
+        and n_live_tup_delta >= TARGET_ROWS_PER_HOUR
+        and canonical_ing_inserted is not None
+        and int(canonical_ing_inserted) < TARGET_ROWS_PER_HOUR
+    ):
+        # v6.4: n_live_tup guard is blocked by low ing_inserted (autovacuum
+        # bloat). Do NOT return True here — fall through to check if
+        # live_count_delta >= target (Rule 5d: FAIL only when ALL signals
+        # are below 150K).
+        pass
+    elif (
+        n_live_tup_delta is not None
+        and int(n_live_tup_delta) >= TARGET_ROWS_PER_HOUR
+        and (canonical_ing_inserted is None or int(canonical_ing_inserted) >= TARGET_ROWS_PER_HOUR)
+    ):
+        return False  # guard allows a stale-counter pass
+    # Fall back to ingestion_runs and live_count (rule 5c/5d).
+    ingestion_unavailable_or_low = (
+        canonical_ing_inserted is None or int(canonical_ing_inserted) < TARGET_ROWS_PER_HOUR
+    )
+    live_count_unavailable_or_low = (
+        live_count_delta is None or int(live_count_delta) < TARGET_ROWS_PER_HOUR
+    )
+    return ingestion_unavailable_or_low and live_count_unavailable_or_low
+
+
+def is_completed_hour(hour_start: datetime, now: datetime) -> bool:
+    """Return True only when the entire hourly window has elapsed."""
+    if hour_start.tzinfo is None:
+        hour_start = hour_start.replace(tzinfo=timezone.utc)
+    if now.tzinfo is None:
+        now = now.replace(tzinfo=timezone.utc)
+    hour_start = hour_start.astimezone(timezone.utc).replace(minute=0, second=0, microsecond=0)
+    now = now.astimezone(timezone.utc)
+    return hour_start + timedelta(hours=1) <= now
+
+
+def assert_v6_forbidden_patterns(
+    *,
+    delta_ins_from_stats: int | None,
+    delta_upd_from_stats: int | None,
+    real_rows: int,
+    source: str,
+    live_count_delta: int | None,
+    current_n_tup_ins: int | None = None,
+    previous_n_tup_ins: int | None = None,
+) -> None:
+    """Enforce v6 forbidden decision patterns before filing failures."""
+    # Rule 6(c): never report delta_ins_from_stats=0 if raw consecutive
+    # n_tup_ins values clearly differ. A zero insert delta with update movement
+    # is not itself contradictory; canonical products can legitimately receive
+    # updates without inserts for an hour.
+    if (
+        delta_ins_from_stats is not None
+        and delta_ins_from_stats == 0
+        and current_n_tup_ins is not None
+        and previous_n_tup_ins is not None
+        and int(current_n_tup_ins) != int(previous_n_tup_ins)
+    ):
+        raise AssertionError(
+            "v6 rule 6(c) violation: delta_ins_from_stats=0 while raw "
+            f"consecutive n_tup_ins values differ ({previous_n_tup_ins} -> "
+            f"{current_n_tup_ins}). Investigate canonical_throughput_hourly "
+            "upsert; do NOT file a FAIL ticket."
+        )
+
+    # Rule 6(a): never file FAIL based on ing_inserted=0 alone when
+    # delta_ins_from_stats is non-null.
+    if delta_ins_from_stats is not None and real_rows < TARGET_ROWS_PER_HOUR and source == "ingestion_runs_observability":
+        raise AssertionError(
+            "v6 rule 6(a) violation: source fell back to ingestion_runs while "
+            "delta_ins_from_stats is non-null. ingestion_runs is observability-only; "
+            "real_rows must equal delta_ins_from_stats when available."
+        )
+
+    # Rule 6(b): never let a zero secondary metric become the selected failure
+    # metric when another available counter shows movement.
+    if (
+        delta_ins_from_stats is not None
+        and delta_ins_from_stats > 0
+        and live_count_delta is not None
+        and live_count_delta == 0
+        and real_rows < TARGET_ROWS_PER_HOUR
+        and source == "live_count_delta"
+    ):
+        raise AssertionError(
+            "v6 rule 6(b) violation: live_count_delta=0 while "
+            f"delta_ins_from_stats=+{delta_ins_from_stats}. The canonical stats "
+            "delta shows inserts but live_count shows no growth. Do NOT file a FAIL ticket."
+        )
+    if (
+        live_count_delta is not None
+        and live_count_delta > 0
+        and delta_ins_from_stats is not None
+        and delta_ins_from_stats == 0
+        and real_rows < TARGET_ROWS_PER_HOUR
+        and source == "delta_ins_from_stats"
+    ):
+        raise AssertionError(
+            "v6 rule 6(b) violation: delta_ins_from_stats=0 while "
+            f"live_count_delta=+{live_count_delta}. The live count shows real growth "
+            "but pg_stat counters appear flat. Do NOT file a FAIL ticket."
+        )
+
+
+
+def _fmt_int(value: Any, default: str = "?") -> str:
+    """Format an int with thousands separators, tolerating None/missing."""
+    if value is None:
+        return default
+    try:
+        return f"{int(value):,}"
+    except (TypeError, ValueError):
+        return default
 
 
 def catalog_db_url() -> str:
@@ -102,17 +370,15 @@ def catalog_db_url() -> str:
         raise ValueError(
             f"data/.catalog_db_url contains roundhouse URL — this is wrong: {url}"
         )
-    if "maglev" not in url:
-        raise ValueError(
-            f"data/.catalog_db_url is neither maglev nor roundhouse — "
-            f"refusing to use unrecognized catalog target: {url}"
-        )
+    # The canonical catalog has migrated hosts over time (maglev, sakura, ...).
+    # Accept any Railway proxy host for the catalog role while still refusing the
+    # known-wrong harness DB (roundhouse, which is ~4.2M rows, not the catalog).
     return url
 
 
 def _api_headers() -> dict[str, str] | None:
     api_key = os.environ.get("PAPERCLIP_API_KEY", "").strip()
-    run_id = os.environ.get("PAPERCLIP_RUN_ID", "")
+    run_id = _jwt_run_id(api_key) or os.environ.get("PAPERCLIP_RUN_ID", "")
     if not api_key:
         return None
     h = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
@@ -121,8 +387,100 @@ def _api_headers() -> dict[str, str] | None:
     return h
 
 
+def _jwt_run_id(api_key: str) -> str | None:
+    try:
+        payload = api_key.split(".")[1]
+        payload += "=" * (-len(payload) % 4)
+        decoded = json.loads(base64.urlsafe_b64decode(payload.encode()))
+        return decoded.get("run_id")
+    except Exception:
+        return None
+
+
 def _api_base() -> str:
     return os.environ.get("PAPERCLIP_API_URL", "http://localhost:3000").rstrip("/") + "/api"
+
+
+def _retry_request(
+    method,
+    url,
+    *,
+    max_attempts=3,
+    initial_delay=2.0,
+    backoff_factor=2.0,
+    max_sleep=20.0,
+    **kwargs,
+):
+    """Execute an HTTP request with exponential backoff retry on 429 / 5xx.
+
+    Args:
+        method: 'get' or 'post'.
+        url: request URL.
+        max_attempts: maximum number of attempts (default 3).
+        initial_delay: seconds to wait before first retry (default 2.0).
+        backoff_factor: multiplier per retry step (default 2.0).
+        max_sleep: maximum sleep between attempts. Paperclip heartbeat runs are
+            bounded; the dispatcher must buffer API work rather than sleeping
+            for minutes inside the cron wrapper.
+        **kwargs: forwarded to requests.{method}.
+
+    Returns:
+        requests.Response (raises on non-retryable errors after exhausting retries).
+    """
+    delay = initial_delay
+    last_exc = None
+    for attempt in range(1, max_attempts + 1):
+        try:
+            resp = _session.request(method, url, **kwargs)
+        except requests.RequestException as exc:
+            last_exc = exc
+            if attempt == max_attempts:
+                raise
+            print(f'[retry] attempt {attempt}/{max_attempts} failed '
+                  f'(network error: {exc.__class__.__name__}: {exc}); '
+                  f'retrying in {delay:.1f}s')
+            time.sleep(delay)
+            delay *= backoff_factor
+            continue
+
+        if resp.status_code == 429:
+            if attempt == max_attempts:
+                print(f'[retry] attempt {attempt}/{max_attempts}: 429 still returned; giving up')
+                resp.raise_for_status()  # will raise the 429
+            # Respect Retry-After when it fits inside this cron run's bounded
+            # budget. Long rate-limit waits are handled by buffering the child
+            # issue for the next hourly fire instead of risking heartbeat
+            # timeout.
+            retry_after = resp.headers.get('Retry-After')
+            if retry_after:
+                try:
+                    wait = float(retry_after)
+                except (TypeError, ValueError):
+                    wait = delay
+            else:
+                wait = delay
+            wait = min(wait, max_sleep)
+            print(f'[retry] attempt {attempt}/{max_attempts}: 429 rate-limited; '
+                  f'retrying in {wait:.1f}s (Retry-After={retry_after})')
+            time.sleep(wait)
+            delay *= backoff_factor
+            continue
+
+        # Retry 5xx on best-effort basis (dedup GET, child-filing POST)
+        if 500 <= resp.status_code < 600:
+            if attempt == max_attempts:
+                print(f'[retry] attempt {attempt}/{max_attempts}: HTTP {resp.status_code}; giving up')
+                resp.raise_for_status()
+            print(f'[retry] attempt {attempt}/{max_attempts}: HTTP {resp.status_code}; '
+                  f'retrying in {delay:.1f}s')
+            time.sleep(min(delay, max_sleep))
+            delay *= backoff_factor
+            continue
+
+        # Success
+        return resp
+
+    raise RuntimeError(f'exhausted {max_attempts} attempts for {method.upper()} {url}') from last_exc
 
 
 # ---------------------------------------------------------------------------
@@ -309,9 +667,11 @@ def upsert_canonical_throughput_row(
     delta_ins_from_stats = None
     delta_upd_from_stats = None
     stat_reset_detected = None
+    previous_n_tup_ins = None
+    previous_n_tup_upd = None
     try:
         with conn.cursor() as cur:
-            cur.execute("SET statement_timeout = '3s'")
+            cur.execute("SET statement_timeout = '10s'")
             cur.execute(
                 """
                 SELECT n_tup_ins, n_tup_upd
@@ -325,14 +685,19 @@ def upsert_canonical_throughput_row(
         if prv_row is not None:
             prv_n_tup_ins = prv_row[0]
             prv_n_tup_upd = prv_row[1]
+            previous_n_tup_ins = prv_n_tup_ins
+            previous_n_tup_upd = prv_n_tup_upd
             if n_tup_ins is not None and prv_n_tup_ins is not None:
-                if prv_n_tup_ins > n_tup_ins:
+                if prv_n_tup_ins > n_tup_ins or prv_n_tup_ins == 0:
+                    # Counter went backward (true reset) or prior snapshot is
+                    # zero (post-reset — never a valid baseline).  Mark as
+                    # reset so the decision layer falls back to other signals.
                     stat_reset_detected = True
                 else:
                     stat_reset_detected = False
                     delta_ins_from_stats = int(n_tup_ins) - int(prv_n_tup_ins)
             if n_tup_upd is not None and prv_n_tup_upd is not None:
-                if prv_n_tup_upd <= n_tup_upd and stat_reset_detected is not True:
+                if (prv_n_tup_upd <= n_tup_upd or prv_n_tup_upd == 0) and stat_reset_detected is not True:
                     delta_upd_from_stats = int(n_tup_upd) - int(prv_n_tup_upd)
     except psycopg2.errors.QueryCanceled:
         conn.rollback()
@@ -354,11 +719,16 @@ def upsert_canonical_throughput_row(
     # the snapshot at first write). Only refresh metadata + recompute deltas.
     existing_n_tup_ins = None
     existing_n_tup_upd = None
+    existing_delta_ins = None
+    existing_delta_upd = None
+    existing_stat_reset = None
     try:
         with conn.cursor() as cur:
             cur.execute("SET statement_timeout = '3s'")
             cur.execute(
-                "SELECT n_tup_ins, n_tup_upd FROM canonical_throughput_hourly WHERE hour_start = %s",
+                """SELECT n_tup_ins, n_tup_upd, delta_ins_from_stats,
+                          delta_upd_from_stats, stat_reset_detected
+                   FROM canonical_throughput_hourly WHERE hour_start = %s""",
                 (hour_start_ts,),
             )
             existing = cur.fetchone()
@@ -366,6 +736,9 @@ def upsert_canonical_throughput_row(
         if existing is not None:
             existing_n_tup_ins = existing[0]
             existing_n_tup_upd = existing[1]
+            existing_delta_ins = existing[2]
+            existing_delta_upd = existing[3]
+            existing_stat_reset = existing[4]
     except psycopg2.errors.QueryCanceled:
         conn.rollback()
     except (psycopg2.OperationalError, psycopg2.InterfaceError):
@@ -374,8 +747,9 @@ def upsert_canonical_throughput_row(
         except Exception:
             pass
 
-    # If a prior row exists with n_tup_ins, keep its snapshot. This keeps the
-    # delta chain stable across re-runs.
+    # If a prior row exists with n_tup_ins, keep its snapshot and its deltas.
+    # This keeps the delta chain stable across re-runs and prevents --force
+    # backfills from inflating historical deltas with current stats.
     if existing_n_tup_ins is not None:
         n_tup_ins_snap = existing_n_tup_ins
     else:
@@ -384,6 +758,12 @@ def upsert_canonical_throughput_row(
         n_tup_upd_snap = existing_n_tup_upd
     else:
         n_tup_upd_snap = n_tup_upd
+    if existing_delta_ins is not None:
+        delta_ins_from_stats = existing_delta_ins
+    if existing_delta_upd is not None:
+        delta_upd_from_stats = existing_delta_upd
+    if existing_stat_reset is not None:
+        stat_reset_detected = existing_stat_reset
 
     try:
         with conn.cursor() as cur:
@@ -441,6 +821,11 @@ def upsert_canonical_throughput_row(
             "delta_ins_from_stats": delta_ins_from_stats,
             "delta_upd_from_stats": delta_upd_from_stats,
             "stat_reset_detected": stat_reset_detected,
+            "n_tup_ins": n_tup_ins_snap,
+            "n_tup_upd": n_tup_upd_snap,
+            "previous_n_tup_ins": previous_n_tup_ins,
+            "previous_n_tup_upd": previous_n_tup_upd,
+            "n_live_tup": n_live_tup,
             "note": "upserted",
         }
     except psycopg2.errors.QueryCanceled:
@@ -553,91 +938,7 @@ def connect_catalog(db_url: str):
 # ---------------------------------------------------------------------------
 
 
-def compute_real_rows_from_delta(
-    state: dict[str, Any],
-    stat: dict[str, Any],
-    hour_start: datetime,
-    now: datetime,
-    pm_start: str | None,
-) -> dict[str, Any]:
-    """Compute the per-hour insertion rate from the n_tup_ins delta since last run.
-
-    Semantics: the per-hour rate is (now_n_tup_ins - last_n_tup_ins) /
-    (now - last_at). This is the throughput we observed between the prior fire
-    and the current fire; we treat it as the best estimate of how many rows
-    were inserted in the just-checked hour (since writer activity in the past
-    ~hour is the dominant signal).
-
-    We require:
-      - now > last_at (sanity)
-      - delta_rows >= 0 (no backwards movement in the counter; negative means
-        stats reset, treat as unavailable)
-
-    Returns:
-      {
-        "real_rows": int | None,
-        "delta_window_hours": float,
-        "source": "n_tup_ins_delta" | "unavailable",
-        "note": str,
-      }
-    """
-    now_n = stat.get("n_tup_ins")
-    if now_n is None:
-        return {"real_rows": None, "source": "unavailable", "note": "no n_tup_ins reading"}
-
-    last_n = state.get("last_n_tup_ins")
-    last_at = state.get("last_n_tup_ins_at")
-    if last_n is None or last_at is None:
-        return {
-            "real_rows": None,
-            "source": "unavailable",
-            "note": "no prior n_tup_ins reading — first run, baseline only",
-        }
-
-    last_at_dt = datetime.fromisoformat(last_at.replace("Z", "+00:00"))
-    if last_at_dt.tzinfo is None:
-        last_at_dt = last_at_dt.replace(tzinfo=timezone.utc)
-
-    if pm_start:
-        pm_start_dt = datetime.fromisoformat(pm_start.replace("Z", "+00:00"))
-        if pm_start_dt.tzinfo is None:
-            pm_start_dt = pm_start_dt.replace(tzinfo=timezone.utc)
-        if pm_start_dt > last_at_dt:
-            return {
-                "real_rows": None,
-                "source": "unavailable",
-                "note": (
-                    "postmaster restarted after the saved n_tup_ins baseline "
-                    f"(pm_start={pm_start_dt.isoformat()}, baseline_at={last_at_dt.isoformat()})"
-                ),
-            }
-
-    delta_hours = (now - last_at_dt).total_seconds() / 3600.0
-
-    delta_rows = now_n - last_n
-    if delta_hours <= 0 or delta_rows < 0:
-        return {
-            "real_rows": None,
-            "source": "unavailable",
-            "note": (
-                f"non-monotonic n_tup_ins (now={now_n}, last={last_n}, "
-                f"delta_h={delta_hours:.2f}, delta_rows={delta_rows})"
-            ),
-        }
-
-    # Per-hour rate. The just-checked hour's row count is approximated as
-    # 1h * this rate. Use floor/truncation to avoid rounding a shortfall
-    # into a PASS (strict threshold rule is rows < 150,000 => FAIL).
-    per_hour = delta_rows / delta_hours
-    per_hour_int = int(per_hour)
-    return {
-        "real_rows": per_hour_int,
-        "delta_window_hours": delta_hours,
-        "delta_rows": delta_rows,
-        "source": "n_tup_ins_delta",
-        "note": f"n_tup_ins delta {delta_rows:,} over {delta_hours:.2f}h = {per_hour:,.3f}/hr",
-    }
-
+# --- v6 decision layer uses canonical_throughput_hourly deltas (spec rule 5a) ---
 
 # ---------------------------------------------------------------------------
 # Paperclip API integration
@@ -661,12 +962,15 @@ def dedup_check_existing_child(hour_start: datetime) -> bool:
     Belt-and-suspenders: if the parentId fetch fails, we fall through (return
     False) so the check never strands a real failure.
     """
-    # Anchor on the window substring: "HH:MM–HH:MM window)" with U+2013 en-dash.
-    # The window uniquely identifies the dispatched hour (22:00–23:00 window
-    # only appears for the 22:00 hour; 21:00–22:00 window only for 21:00).
+    # Anchor on the current failure-title substring:
+    # "HH:00–HH:00 UTC YYYY-MM-DD" with U+2013 en-dash. Older dispatcher
+    # titles used "HH:MM–HH:MM window)"; the active format comes from
+    # format_failure_issue_title(). Keep the same exact tag here so same-hour
+    # reruns cannot file duplicate children when state was not advanced.
     end = hour_start + timedelta(hours=1)
     window_tag = (
-        f"{hour_start.strftime('%Y-%m-%d %H:%M')}–{end.strftime('%H:%M')} window)"
+        f"{hour_start.strftime('%H')}:00–{end.strftime('%H')}:00 UTC "
+        f"{hour_start.strftime('%Y-%m-%d')}"
     )
     try:
         headers = _api_headers()
@@ -676,7 +980,8 @@ def dedup_check_existing_child(hour_start: datetime) -> bool:
                 "missing PAPERCLIP_API_KEY; skipping lookup"
             )
             return False
-        r = requests.get(
+        r = _retry_request(
+            "get",
             f"{_api_base()}/companies/{COMPANY_ID}/issues",
             params={"parentId": PARENT_ISSUE_ID, "limit": 100},
             headers=headers,
@@ -718,14 +1023,16 @@ def _retry_pending_children(state: dict[str, Any]) -> list[str]:
     for entry in pending:
         hs_label = "<unknown>"
         try:
-            # hour_start is stored as ISO string; parse it back for create_stall_issue
-            hs = entry.get("hour_start")
-            if isinstance(hs, str):
-                hs = datetime.fromisoformat(hs)
-            elif isinstance(hs, dict) and "iso" in hs:
-                hs = datetime.fromisoformat(hs["iso"])
+            # hour_start is stored as ISO string; parse it back for create_stall_issue.
+            # BUY-61439: try hour_start_iso first (canonical field name), fall back to
+            # hour_start for backward compat with pre-patch state files.
+            hs_raw = entry.get("hour_start_iso") or entry.get("hour_start")
+            if isinstance(hs_raw, str):
+                hs = datetime.fromisoformat(hs_raw)
+            elif isinstance(hs_raw, dict) and "iso" in hs_raw:
+                hs = datetime.fromisoformat(hs_raw["iso"])
             else:
-                hs = datetime.fromisoformat(str(hs))
+                hs = datetime.fromisoformat(str(hs_raw))
             hs_label = hs.strftime("%H:%M") + "Z"
             ident = create_stall_issue(
                 hour_start=hs,
@@ -752,7 +1059,7 @@ def _retry_pending_children(state: dict[str, Any]) -> list[str]:
     return filed_ids
 
 
-def create_stall_issue(
+def build_evidence_markdown(
     hour_start: datetime,
     real_rows: int,
     source: str,
@@ -762,6 +1069,8 @@ def create_stall_issue(
     max_created: dict | None,
     db_host: str,
     fire_ts: str,
+    stat_reset_detected: bool | None = None,
+    ingestion_counts: dict | None = None,
 ) -> str:
     hour_end = hour_start + timedelta(hours=1)
     pct = 100.0 * real_rows / TARGET_ROWS_PER_HOUR
@@ -785,7 +1094,7 @@ def create_stall_issue(
         else "| (timeout — staleness inferred from n_tup_ins delta) |"
     )
 
-    description = f"""# Hourly Throughput Check — {hour_label}
+    return f"""# Hourly Throughput Check — {hour_label}
 
 **Result: {"PASS" if real_rows >= TARGET_ROWS_PER_HOUR else "FAIL"} — {real_rows:,} / {TARGET_ROWS_PER_HOUR:,} ({pct:.1f}%).**
 
@@ -797,12 +1106,15 @@ Parent: [BUY-29861](/BUY/issues/BUY-29861). Dispatcher: [BUY-33694](/BUY/issues/
 
 | Metric | Value |
 |---|---|
+| Canonical metric used | `{source}` |
 | Real rows (per `{source}`) | **{real_rows:,}** |
 | Threshold | {TARGET_ROWS_PER_HOUR:,} |
 | Margin vs. threshold | **{margin:+,} ({pct - 100:.1f}%)** |
 | % of 150,000/hr target | **{pct:.1f}%** |
-| `pg_stat_user_tables.products.n_live_tup` | {stat.get('n_live_tup', '?'):,} |
-| `pg_stat_user_tables.products.n_tup_ins`  | {stat.get('n_tup_ins', '?'):,} |
+| `pg_stat_user_tables.products.n_live_tup` | {_fmt_int(stat.get('n_live_tup'))} |
+| `pg_stat_user_tables.products.n_tup_ins`  | {_fmt_int(stat.get('n_tup_ins'))} |
+| `pg_stat_user_tables.products.n_tup_upd`  | {_fmt_int(stat.get('n_tup_upd'))} |
+| `stat_reset_detected` flag | {stat_reset_detected if stat_reset_detected is not None else 'N/A'} |
 | `MAX(created_at)` (snapshot {fire_ts}) {max_block} |
 
 ## Hour-bucket COUNT verification (best-effort)
@@ -810,6 +1122,19 @@ Parent: [BUY-29861](/BUY/issues/BUY-29861). Dispatcher: [BUY-33694](/BUY/issues/
 | total_rows | real_rows | first_row | last_row |
 |---:|---:|---|---|
 {count_block}
+
+## ingestion_runs (observability-only)
+
+| Field | Value |
+|---|---|
+| `ing_runs` | {_fmt_int((ingestion_counts or {}).get('ing_runs'))} |
+| `ing_inserted` | {_fmt_int((ingestion_counts or {}).get('ing_inserted'))} |
+| `ing_updated` | {_fmt_int((ingestion_counts or {}).get('ing_updated'))} |
+
+## canonical_throughput_hourly upsert confirmation
+
+- Hour row upserted: `{hour_label}`
+- `stat_reset_detected`: {stat_reset_detected if stat_reset_detected is not None else 'N/A'}
 
 ## DB proof (canonical PostgreSQL @ {db_host})
 
@@ -819,7 +1144,7 @@ Connection string source: `data/.catalog_db_url` (maglev). NOT the harness `DATA
   ```sql
   SELECT n_live_tup, n_tup_ins, n_tup_upd
   FROM pg_stat_user_tables WHERE relname = 'products';
-  -- {stat.get('n_live_tup', 0):,} | {stat.get('n_tup_ins', 0):,} | {stat.get('n_tup_upd', 0):,}
+  -- {_fmt_int(stat.get('n_live_tup'), '0')} | {_fmt_int(stat.get('n_tup_ins'), '0')} | {_fmt_int(stat.get('n_tup_upd'), '0')}
   ```
 - Hour-bucket COUNT (windowed signal for this hour; may time out under contention):
   ```sql
@@ -831,11 +1156,106 @@ Connection string source: `data/.catalog_db_url` (maglev). NOT the harness `DATA
   ```
 """
 
-    title = (
-        f"[BUY-33694 dispatcher] Hourly throughput check "
-        f"({hour_start.strftime('%Y-%m-%d %H:%M')} UTC fire, "
-        f"{hour_start.strftime('%H:%M')}–{hour_end.strftime('%H:%M')} window)"
+
+
+def write_evidence_markdown(
+    hour_start: datetime,
+    real_rows: int,
+    source: str,
+    note: str,
+    hour_data: dict | None,
+    stat: dict,
+    max_created: dict | None,
+    db_host: str,
+    fire_ts: str,
+    failure_child_identifier: str | None = None,
+    stat_reset_detected: bool | None = None,
+    ingestion_counts: dict | None = None,
+) -> Path | None:
+    """Write the hourly evidence report markdown to the agent workspace.
+
+    Always writes a report for every run so the evidence is durable on disk,
+    regardless of whether the hour passed or failed. The path follows the
+    BUY-29861 / BUY-62317 spec:
+    BUY-58452/hourly-throughput-YYYY-MM-DDTHHZ.md
+    """
+    try:
+        EVIDENCE_DIR.mkdir(parents=True, exist_ok=True)
+        md = build_evidence_markdown(
+            hour_start, real_rows, source, note, hour_data, stat, max_created, db_host, fire_ts,
+            stat_reset_detected=stat_reset_detected,
+            ingestion_counts=ingestion_counts,
+        )
+        if failure_child_identifier:
+            md += f"\n\nFailure child: [{failure_child_identifier}](/BUY/issues/{failure_child_identifier})\n"
+        hour_label = hour_start.strftime("%Y-%m-%dT%H")
+        path = EVIDENCE_DIR / f"hourly-throughput-{hour_label}Z.md"
+        path.write_text(md)
+        print(f"[throughput-dispatcher] evidence markdown written: {path}")
+        return path
+    except Exception as e:
+        print(f"[throughput-dispatcher] WARNING: failed to write evidence markdown: {e.__class__.__name__}: {e}")
+        return None
+
+
+def post_parent_pass_comment(
+    hour_start: datetime,
+    real_rows: int,
+    source: str,
+) -> None:
+    """Post a one-line PASS comment on the parent BUY-29861 issue.
+
+    Non-blocking: a comment failure is logged but does not fail the run.
+    """
+    headers = _api_headers()
+    if headers is None:
+        print("[throughput-dispatcher] WARNING: no API key; skipping PASS comment")
+        return
+    hour_end = hour_start + timedelta(hours=1)
+    body = (
+        f"PASS — {real_rows:,} products added in "
+        f"{hour_start.strftime('%H:%M')}–{hour_end.strftime('%H:%M')} UTC "
+        f"{hour_start.strftime('%Y-%m-%d')} (source={source}, target=150,000)."
     )
+    try:
+        r = _retry_request(
+            "post",
+            f"{_api_base()}/issues/{PASS_COMMENT_ISSUE_ID}/comments",
+            json={"body": body},
+            headers=headers,
+            timeout=15,
+        )
+        r.raise_for_status()
+        print(f"[throughput-dispatcher] PASS comment posted on {PASS_COMMENT_ISSUE_ID}")
+    except Exception as e:
+        print(f"[throughput-dispatcher] WARNING: PASS comment failed: {e.__class__.__name__}: {e}")
+
+
+def format_failure_issue_title(hour_start: datetime, hour_end: datetime, real_rows: int) -> str:
+    return (
+        f"HOURLY THROUGHPUT FAILURE — {real_rows:,} products added in "
+        f"{hour_start.strftime('%H')}:00–{hour_end.strftime('%H')}:00 UTC "
+        f"{hour_start.strftime('%Y-%m-%d')} (target {TARGET_ROWS_PER_HOUR:,})"
+    )
+
+
+def create_stall_issue(
+    hour_start: datetime,
+    real_rows: int,
+    source: str,
+    note: str,
+    hour_data: dict | None,
+    stat: dict,
+    max_created: dict | None,
+    db_host: str,
+    fire_ts: str,
+) -> str:
+    description = build_evidence_markdown(
+        hour_start, real_rows, source, note, hour_data, stat, max_created, db_host, fire_ts
+    )
+
+    hour_end = hour_start + timedelta(hours=1)
+    title = format_failure_issue_title(hour_start, hour_end, real_rows)
 
     payload = {
         "companyId": COMPANY_ID,
@@ -849,14 +1269,104 @@ Connection string source: `data/.catalog_db_url` (maglev). NOT the harness `DATA
     headers = _api_headers()
     if headers is None:
         raise RuntimeError("missing PAPERCLIP_API_KEY; cannot file child issue")
-    r = requests.post(
+    r = _retry_request(
+        "post",
         f"{_api_base()}/companies/{COMPANY_ID}/issues",
         json=payload,
         headers=headers,
         timeout=30,
     )
     r.raise_for_status()
-    return r.json().get("identifier", "BUY-????")
+    body = r.json()
+    identifier = body.get("identifier", "BUY-????")
+    issue_id = body.get("id")
+
+    # BUY-60542: Post-creation verification. The Paperclip server can return
+    # HTTP 201 with a valid-looking identifier but silently roll back the DB
+    # transaction (issue sequence advances but no row persists). Verify the
+    # issue actually exists before reporting success; if it doesn't, raise so
+    # the caller buffers it for retry.
+    #
+    # BUY-60559: The original verification used
+    #   GET /companies/{id}/issues?identifier=...&take=5
+    # but that list endpoint IGNORES the identifier filter and returns recent
+    # issues regardless, so the newly created issue rarely appears in the
+    # first 5 rows — producing false "silent rollback" RuntimeErrors even when
+    # the issue persisted fine. Switch to the direct
+    #   GET /api/issues/{issue_id}
+    # endpoint, which reliably returns the single issue by id.
+    if issue_id:
+        try:
+            vr = _retry_request(
+                "get",
+                f"{_api_base()}/issues/{issue_id}",
+                headers=headers,
+                timeout=15,
+            )
+            if vr.ok:
+                vbody = vr.json()
+                if not (vbody.get("id") == issue_id and vbody.get("identifier") == identifier):
+                    raise RuntimeError(
+                        f"create_stall_issue: server returned 201 with {identifier} "
+                        f"but issue did not persist (silent rollback detected)"
+                    )
+            elif vr.status_code == 404:
+                raise RuntimeError(
+                    f"create_stall_issue: server returned 201 with {identifier} "
+                    f"but GET /api/issues/{issue_id} returned 404 (silent rollback detected)"
+                )
+            else:
+                raise RuntimeError(
+                    f"create_stall_issue: verification GET for {issue_id} "
+                    f"returned HTTP {vr.status_code} — cannot confirm issue {identifier} persisted; "
+                    f"caller MUST buffer this child for retry"
+                )
+        except requests.RequestException:
+            raise RuntimeError(
+                f"create_stall_issue: verification GET for {issue_id} failed "
+                f"(verification errored) — cannot confirm issue {identifier} persisted; "
+                f"caller MUST buffer this child for retry"
+            )
+
+        # BUY-61439: secondary verification — list parent children and confirm
+        # the identifier appears in the list. This is advisory only: the list
+        # endpoint can lag or paginate/filter inconsistently under load, while
+        # direct GET by id is the authoritative persistence check.
+        try:
+            lr = _retry_request(
+                "get",
+                f"{_api_base()}/companies/{COMPANY_ID}/issues",
+                params={"parentId": PARENT_ISSUE_ID, "limit": 100},
+                headers=headers,
+                timeout=20,
+            )
+            if lr.ok:
+                lbody = lr.json()
+                lissues = lbody if isinstance(lbody, list) else lbody.get("issues", [])
+                found = any(
+                    issue.get("id") == issue_id and issue.get("identifier") == identifier
+                    for issue in lissues
+                )
+                if not found:
+                    print(
+                        f"[throughput-dispatcher] create_stall_issue: secondary verification "
+                        f"did not find {identifier} in parent listing — continuing because "
+                        f"direct GET confirmed persistence"
+                    )
+            else:
+                print(
+                    f"[throughput-dispatcher] create_stall_issue: secondary verification "
+                    f"GET returned HTTP {lr.status_code} — skipping (issue {identifier} "
+                    f"confirmed via direct GET already)"
+                )
+        except requests.RequestException as _sec_exc:
+            print(
+                f"[throughput-dispatcher] create_stall_issue: secondary verification "
+                f"failed ({_sec_exc.__class__.__name__}: {_sec_exc}) — issue {identifier} "
+                f"confirmed via direct GET already, continuing"
+            )
+
+    return identifier
 
 
 def build_run_note(
@@ -866,28 +1376,30 @@ def build_run_note(
     result: str,
     real_rows: int,
     source: str,
-    delta_result: dict[str, Any],
+    delta_rows: int | None,
     stat: dict[str, Any],
     pm_start: str | None,
     failure_identifier: str | None,
+    stat_reset_detected: bool | None,
+    live_count_delta: int | None,
+    n_live_tup_delta: int | None = None,
 ) -> str:
-    rate = delta_result.get("real_rows")
-    delta_rows = delta_result.get("delta_rows")
-    delta_hours = delta_result.get("delta_window_hours")
     parts = [
         (
             f"{hour_start:%Y-%m-%d %H:%M}-{hour_end:%H:%M}Z hour {result}: "
             f"{real_rows:,}/hr via {source}."
         )
     ]
-    if delta_rows is not None and delta_hours is not None and rate is not None:
-        parts.append(
-            f"n_tup_ins delta {delta_rows:,} over {delta_hours:.3f}h = {rate:,}/hr."
-        )
+    if delta_rows is not None:
+        parts.append(f"n_tup_ins delta {delta_rows:,} over 1.000h = {real_rows:,}/hr.")
     else:
-        note = delta_result.get("note")
-        if note:
-            parts.append(str(note))
+        parts.append("n_tup_ins delta unavailable.")
+    if stat_reset_detected:
+        parts.append("stat_reset_detected=True.")
+    if live_count_delta is not None:
+        parts.append(f"live_count delta {live_count_delta:,}.")
+    if n_live_tup_delta is not None:
+        parts.append(f"n_live_tup delta {n_live_tup_delta:,}.")
     parts.append(
         f"n_tup_ins={stat.get('n_tup_ins', 0):,}, n_live_tup={stat.get('n_live_tup', 0):,}."
     )
@@ -943,6 +1455,14 @@ def main() -> int:
         if hour_start.tzinfo is None:
             hour_start = hour_start.replace(tzinfo=timezone.utc)
         hour_start = hour_start.replace(minute=0, second=0, microsecond=0)
+        if not is_completed_hour(hour_start, now):
+            print(
+                "ERROR: --check-hour must target a completed UTC hour "
+                f"(got {hour_start.isoformat()} → "
+                f"{(hour_start + timedelta(hours=1)).isoformat()}, "
+                f"now={now.isoformat()})"
+            )
+            return 2
     else:
         hour_start = now.replace(minute=0, second=0, microsecond=0) - timedelta(hours=1)
     fire_ts = now.strftime("%Y-%m-%d %H:%M UTC")
@@ -968,8 +1488,15 @@ def main() -> int:
         retried = _retry_pending_children(state)
         if retried:
             print(f"[throughput-dispatcher] RETRY filed {len(retried)} previously-buffered children: {', '.join(retried)}")
+            # BUY-59705: buffered retries are the only place we file a failure
+            # child for an already-recorded hour, so update the latest failure
+            # pointer to match the most recent retry.
+            state["last_failure_child_identifier"] = retried[-1]
         if state.get("pending_children"):
             print(f"[throughput-dispatcher] RETRY still pending: {len(state['pending_children'])} child(ren) remain unbuffered")
+        # BUY-59705: persist the drained pending_children list before any
+        # early-exit path can return without saving state.
+        save_state(state)
 
     # BUY-52603 fix: the prior exit-early check `(hour_start + 1h) > now` caused the
     # dispatcher to exit when it ran AT the hour boundary (window just closed but
@@ -1072,9 +1599,6 @@ def main() -> int:
         max_created = query_max_created_at(conn)
         pm_start = query_postmaster_start_time(conn)
 
-        # Compute the real_rows number (v4 delta kept for state/metadata).
-        delta_result = compute_real_rows_from_delta(state, stat, hour_start, now, pm_start)
-
         # --- v6 (BUY-59232): canonical upsert FIRST, then v6 decision layer ---
         # BUY-58485 v4: upsert this tick's stats + ingestion_runs aggregates
         # into canonical_throughput_hourly so the per-hour delta can be
@@ -1090,8 +1614,8 @@ def main() -> int:
                 stat=stat,
                 pm_start=pm_start,
                 hour_data=hour_data,
-                source="pre_v6",
-                note="pre_v6",
+                source="v6",
+                note="v6 decision layer active",
             )
             if canonical_upsert.get("upserted"):
                 print(
@@ -1116,6 +1640,30 @@ def main() -> int:
         delta_upd_from_stats = canonical_upsert.get("delta_upd_from_stats")
         stat_reset_detected = canonical_upsert.get("stat_reset_detected")
         canonical_ing_inserted = canonical_upsert.get("ing_inserted", 0)
+        previous_n_tup_ins = canonical_upsert.get("previous_n_tup_ins")
+
+        # A missing immediate-prior canonical row means this tick is only a
+        # baseline capture. Never treat the current absolute pg_stat counter as
+        # hourly throughput; doing so can turn first-row/backfill gaps into a
+        # massive false PASS (for example 202M/hr at midnight).
+        missing_prior_baseline = (
+            canonical_upsert.get("upserted")
+            and previous_n_tup_ins is None
+            and canonical_upsert.get("n_tup_ins") is not None
+            and delta_ins_from_stats == canonical_upsert.get("n_tup_ins")
+        )
+        if missing_prior_baseline:
+            delta_ins_from_stats = None
+            delta_upd_from_stats = None
+            stat_reset_detected = None
+            canonical_upsert["delta_ins_from_stats"] = None
+            canonical_upsert["delta_upd_from_stats"] = None
+            canonical_upsert["stat_reset_detected"] = None
+            print(
+                "[throughput-dispatcher] canonical baseline only: missing "
+                "immediate prior hour row; ignoring absolute n_tup_ins counter "
+                "for this decision"
+            )
 
         # live_count delta from canonical_throughput_hourly (v6 fall-back #2)
         live_count_delta = None
@@ -1123,7 +1671,7 @@ def main() -> int:
             try:
                 conn = reconnect_if_needed(conn, db_url)
                 with conn.cursor() as _lc_cur:
-                    _lc_cur.execute("SET statement_timeout = '3s'")
+                    _lc_cur.execute("SET statement_timeout = '10s'")
                     _lc_cur.execute(
                         """
                         SELECT live_count FROM canonical_throughput_hourly
@@ -1139,49 +1687,74 @@ def main() -> int:
             except (psycopg2.errors.QueryCanceled, psycopg2.OperationalError, psycopg2.InterfaceError):
                 conn.rollback()
 
+        # v6.2 (BUY-60573): n_live_tup delta from canonical_throughput_hourly.
+        # This is the pg_stat_user_tables live-tuple *estimate*, always
+        # available (no count(*) scan) and updated by ANALYZE. When the
+        # authoritative delta_ins_from_stats is stale/lagged but n_live_tup
+        # grew by >= 150K, real inserts demonstrably happened — the hard guard
+        # blocks a false-positive FAIL.
+        n_live_tup_delta = None
+        if canonical_upsert.get("upserted"):
+            try:
+                conn = reconnect_if_needed(conn, db_url)
+                with conn.cursor() as _nlt_cur:
+                    _nlt_cur.execute("SET statement_timeout = '10s'")
+                    _nlt_cur.execute(
+                        """
+                        SELECT n_live_tup, n_tup_ins FROM canonical_throughput_hourly
+                        WHERE hour_start = %s - INTERVAL '1 hour'
+                        """,
+                        (hour_start,),
+                    )
+                    _nlt_prv = _nlt_cur.fetchone()
+                conn.rollback()
+                cur_nlt = canonical_upsert.get("n_live_tup")
+                if _nlt_prv is not None and cur_nlt is not None and _nlt_prv[0] is not None:
+                    n_live_tup_delta = int(cur_nlt) - int(_nlt_prv[0])
+                if previous_n_tup_ins is None and _nlt_prv is not None and _nlt_prv[1] is not None:
+                    previous_n_tup_ins = int(_nlt_prv[1])
+            except (psycopg2.errors.QueryCanceled, psycopg2.OperationalError, psycopg2.InterfaceError):
+                conn.rollback()
+
         # 5a: delta_ins_from_stats is the PRIMARY and ONLY authoritative signal.
         # 5b: 150K hard guard on delta_ins_from_stats AND live_count delta.
         # 5c: ingestion_runs.ing_inserted is OBSERVABILITY ONLY — never primary.
         # 5d: Fail only when ALL signals are unavailable or below 150K.
         # 6:  Forbidden patterns enforced by assertions below.
-        if delta_ins_from_stats is not None:
-            real_rows = delta_ins_from_stats
-            source = "delta_ins_from_stats"
-        elif live_count_delta is not None:
-            real_rows = live_count_delta
-            source = "live_count_delta"
-        elif canonical_ing_inserted > 0:
-            real_rows = canonical_ing_inserted
-            source = "ingestion_runs_observability"
-        else:
-            real_rows = 0
-            source = "unavailable"
-        note = f"v6 metric: source={source}, delta_ins={delta_ins_from_stats}, live_count_delta={live_count_delta}"
+        real_rows, source = select_v6_throughput_signal(
+            delta_ins_from_stats=delta_ins_from_stats,
+            canonical_ing_inserted=canonical_ing_inserted,
+            live_count_delta=live_count_delta,
+            n_live_tup_delta=n_live_tup_delta,
+        )
+        note = (f"v6 metric: source={source}, delta_ins={delta_ins_from_stats}, "
+                f"live_count_delta={live_count_delta}, n_live_tup_delta={n_live_tup_delta}")
 
         # --- v6 forbidden-pattern assertions (spec rule 6) ---
         # These run on every tick (including --dry-run) and raise AssertionError
         # with a clear message naming the violated rule. They never fire under
         # the steady-state metrics path; they exist to catch the v4 regression
         # classes documented in BUY-59214 / BUY-59220.
-        # Rule 6 (c): if delta_ins_from_stats is 0 but delta_upd_from_stats is
-        # non-zero, the upsert stored contradictory info on the same hour window.
-        # That's a SQL bug (the canonical hour pair exists but the delta came back
-        # flat on inserts) — surface it loudly instead of producing a quiet FAIL.
-        if (
-            delta_ins_from_stats is not None
-            and delta_upd_from_stats is not None
-            and delta_ins_from_stats == 0
-            and delta_upd_from_stats > 0
-        ):
-            raise AssertionError(
-                "v6 rule 6(c) violation: delta_ins_from_stats=0 while "
-                f"delta_upd_from_stats=+{delta_upd_from_stats}. The canonical hour "
-                "pair exists with updates but zero inserts over the same window — "
-                "SQL bug. Investigate canonical_throughput_hourly upsert; do NOT file a FAIL ticket."
-            )
+        assert_v6_forbidden_patterns(
+            delta_ins_from_stats=delta_ins_from_stats,
+            delta_upd_from_stats=delta_upd_from_stats,
+            real_rows=real_rows,
+            source=source,
+            live_count_delta=live_count_delta,
+            current_n_tup_ins=canonical_upsert.get("n_tup_ins"),
+            previous_n_tup_ins=previous_n_tup_ins,
+        )
         # Rule 5b invariant: if delta_ins_from_stats is non-null and >= 150K, the
         # chosen real_rows must be >= 150K. Same for live_count delta.
-        if delta_ins_from_stats is not None and delta_ins_from_stats >= TARGET_ROWS_PER_HOUR and real_rows < TARGET_ROWS_PER_HOUR:
+        # EXCEPTION (v6.3 BUY-60953): stats_mismatch_ingestion_runs_guard
+        # deliberately returns real_rows < target when pg_stat counter is
+        # unreliable and ing_inserted shows a genuine miss.
+        if (
+            delta_ins_from_stats is not None
+            and delta_ins_from_stats >= TARGET_ROWS_PER_HOUR
+            and real_rows < TARGET_ROWS_PER_HOUR
+            and source != "stats_mismatch_ingestion_runs_guard"
+        ):
             raise AssertionError(
                 "v6 rule 5(b) violation: delta_ins_from_stats >= 150K but "
                 f"real_rows={real_rows} < {TARGET_ROWS_PER_HOUR}. The 150K hard guard "
@@ -1197,47 +1770,6 @@ def main() -> int:
                 f"real_rows={real_rows} < {TARGET_ROWS_PER_HOUR}. The 150K hard guard "
                 "on live_count delta must force a PASS."
             )
-        # Rule 6 (a): never file FAIL based on ing_inserted=0 alone when
-        # delta_ins_from_stats is non-null. (We never reach create_stall_issue
-        # in that case because the if/elif above prefers delta_ins_from_stats,
-        # but the assertion makes the invariant visible.)
-        if delta_ins_from_stats is not None and real_rows < TARGET_ROWS_PER_HOUR and source == "ingestion_runs_observability":
-            raise AssertionError(
-                "v6 rule 6(a) violation: source fell back to ingestion_runs while "
-                "delta_ins_from_stats is non-null. ingestion_runs is observability-only; "
-                "real_rows must equal delta_ins_from_stats when available."
-            )
-
-        # Rule 6 (b): Never treat live_count delta = 0 as failure when
-        # delta_ins_from_stats is non-zero (the hierarchy already prefers stats,
-        # so this can't happen by construction, but the assertion makes the
-        # invariant visible). Vice versa: never treat delta_ins_from_stats = 0
-        # as failure when live_count delta is non-zero.
-        if (
-            delta_ins_from_stats is not None
-            and delta_ins_from_stats > 0
-            and live_count_delta is not None
-            and live_count_delta == 0
-            and real_rows < TARGET_ROWS_PER_HOUR
-        ):
-            raise AssertionError(
-                "v6 rule 6(b) violation: live_count_delta=0 while "
-                f"delta_ins_from_stats=+{delta_ins_from_stats}. The canonical stats "
-                "delta shows inserts but live_count shows no growth. Do NOT file a FAIL ticket."
-            )
-        if (
-            live_count_delta is not None
-            and live_count_delta > 0
-            and delta_ins_from_stats is not None
-            and delta_ins_from_stats == 0
-            and real_rows < TARGET_ROWS_PER_HOUR
-        ):
-            raise AssertionError(
-                "v6 rule 6(b) violation: delta_ins_from_stats=0 while "
-                f"live_count_delta=+{live_count_delta}. The live count shows real growth "
-                "but pg_stat counters appear flat. Do NOT file a FAIL ticket."
-            )
-
         is_signal_unavailable = source == "unavailable"
         pct = 100.0 * real_rows / TARGET_ROWS_PER_HOUR
         print(
@@ -1255,6 +1787,12 @@ def main() -> int:
             and delta_ins_from_stats is None
             and live_count_delta is None
         )
+        should_file_failure_ticket = should_file_v6_failure_ticket(
+            delta_ins_from_stats=delta_ins_from_stats,
+            canonical_ing_inserted=canonical_ing_inserted,
+            live_count_delta=live_count_delta,
+            n_live_tup_delta=n_live_tup_delta,
+        )
 
         if args.dry_run:
             print("[throughput-dispatcher] --dry-run: would NOT call the Paperclip API")
@@ -1267,8 +1805,8 @@ def main() -> int:
                 print("  SKIP: no reliable throughput signal available this hour; no issue would be filed.")
             else:
                 print(
-                    f"  PASS={real_rows >= TARGET_ROWS_PER_HOUR} → "
-                    f"{'no-op' if real_rows >= TARGET_ROWS_PER_HOUR else 'would file under BUY-29861'}"
+                    f"  PASS={not should_file_failure_ticket} → "
+                    f"{'would file under BUY-29861' if should_file_failure_ticket else 'no-op'}"
                 )
         else:
             if is_first_baseline:
@@ -1282,18 +1820,32 @@ def main() -> int:
                     "[throughput-dispatcher] SKIP: throughput signal unavailable; "
                     "persisting baseline only and not filing a child issue."
                 )
-            elif real_rows < TARGET_ROWS_PER_HOUR and not args.force:
+            elif should_file_failure_ticket and real_rows < TARGET_ROWS_PER_HOUR and not args.force:
                 try:
                     failure_identifier = create_stall_issue(
                         hour_start, real_rows, source, note,
                         hour_data, stat, max_created, db_host, fire_ts,
                     )
                     print(f"[throughput-dispatcher] FAIL — filed {failure_identifier} under BUY-29861")
+                    write_evidence_markdown(
+                        hour_start, real_rows, source, note,
+                        hour_data, stat, max_created, db_host, fire_ts,
+                        failure_child_identifier=failure_identifier,
+                        stat_reset_detected=stat_reset_detected,
+                        ingestion_counts={
+                            "ing_runs": canonical_upsert.get("ing_runs"),
+                            "ing_inserted": canonical_upsert.get("ing_inserted"),
+                            "ing_updated": canonical_upsert.get("ing_updated"),
+                        },
+                    )
                 except Exception as e:
                     print(f"[throughput-dispatcher] FAIL — create_stall_issue failed: {e.__class__.__name__}: {e}")
-                    # BUY-53341: buffer the failure for retry on the next fire
+                    # BUY-53341: buffer the failure for retry on the next fire.
+                    # BUY-61439: include hour_start iso explicitly in the buffer entry
+                    # for reliable retry parsing.
                     pending = state.setdefault("pending_children", [])
                     pending.append({
+                        "hour_start_iso": hour_start.isoformat(),
                         "hour_start": hour_start.isoformat(),
                         "real_rows": real_rows,
                         "source": source,
@@ -1305,12 +1857,33 @@ def main() -> int:
                         "fire_ts": fire_ts,
                     })
                     state["pending_children"] = pending
+                    print(f"[throughput-dispatcher] FAIL — buffered child for {hour_start.isoformat()} "
+                          f"(real_rows={real_rows}) in pending_children "
+                          f"({len(pending)} pending total)")
                     failure_identifier = None
             elif args.force and real_rows < TARGET_ROWS_PER_HOUR:
                 # --force on a real FAIL: correctly report the actual result
                 print(f"[throughput-dispatcher] FAIL (--force override — no issue filed): {real_rows:,} < {TARGET_ROWS_PER_HOUR:,}")
+            elif real_rows >= TARGET_ROWS_PER_HOUR:
+                print(f"[throughput-dispatcher] PASS — {real_rows:,} >= {TARGET_ROWS_PER_HOUR:,} (source={source}). No issue filed.")
+                post_parent_pass_comment(hour_start, real_rows, source)
+                write_evidence_markdown(
+                    hour_start, real_rows, source, note,
+                    hour_data, stat, max_created, db_host, fire_ts,
+                    stat_reset_detected=stat_reset_detected,
+                    ingestion_counts={
+                        "ing_runs": canonical_upsert.get("ing_runs"),
+                        "ing_inserted": canonical_upsert.get("ing_inserted"),
+                        "ing_updated": canonical_upsert.get("ing_updated"),
+                    },
+                )
             else:
-                print(f"[throughput-dispatcher] PASS — {real_rows:,} >= {TARGET_ROWS_PER_HOUR:,}. No issue filed.")
+                # Below-target readings only reach this branch when every filing
+                # path is suppressed by an explicit guard or unavailable signal.
+                print(
+                    f"[throughput-dispatcher] BELOW_TARGET — {real_rows:,} < {TARGET_ROWS_PER_HOUR:,} "
+                    f"(source={source}). No failure child filed: guarded by v6 hard-pass logic."
+                )
 
         if args.dry_run:
             print("[throughput-dispatcher] dry-run: leaving data/.throughput_state.json unchanged")
@@ -1323,11 +1896,20 @@ def main() -> int:
             state["last_n_tup_ins"] = stat.get("n_tup_ins")
             state["last_n_tup_ins_at"] = now.isoformat()
             state["last_hour_checked"] = hour_start.isoformat()
+            # v6 fail-only filing means the result categories are not binary:
+            #   PASS         — real_rows >= target (or guard upgraded via
+            #                   n_live_tup_delta / live_count_delta)
+            #   FAIL         — real_rows < target AND v6 rule 5a/5d opened a child
+            #   BELOW_TARGET — real_rows < target but an explicit v6 hard-pass
+            #                   guard or unavailable signal suppressed filing.
+            #   BASELINE     — first-ever tick, no prior reading
+            #   ERROR        — throughput signal unavailable
             state["last_check_result"] = (
                 "BASELINE" if is_first_baseline
                 else "ERROR" if is_signal_unavailable
                 else "PASS" if real_rows >= TARGET_ROWS_PER_HOUR
-                else "FAIL"
+                else "FAIL" if should_file_failure_ticket
+                else "BELOW_TARGET"
             )
             state["last_check_real_rows"] = real_rows
             state["last_check_source"] = source
@@ -1336,13 +1918,9 @@ def main() -> int:
             state["last_hour_window_start"] = hour_start.isoformat()
             state["last_hour_window_end"] = (hour_start + timedelta(hours=1)).isoformat()
             state["last_check_threshold"] = TARGET_ROWS_PER_HOUR
-            state["last_check_delta_rows"] = delta_result.get("delta_rows")
-            state["last_check_delta_hours"] = delta_result.get("delta_window_hours")
-            state["last_check_rate"] = (
-                delta_result.get("real_rows")
-                if delta_result.get("real_rows") is not None
-                else real_rows
-            )
+            state["last_check_delta_rows"] = delta_ins_from_stats
+            state["last_check_delta_hours"] = None
+            state["last_check_rate"] = real_rows
             state["last_pm_start"] = pm_start
             state["last_fire_timestamp"] = now.strftime("%Y-%m-%dT%H:%M:%SZ")
             state["last_issue_identifier"] = failure_identifier
@@ -1355,10 +1933,13 @@ def main() -> int:
                 result=run_result,
                 real_rows=real_rows,
                 source=source,
-                delta_result=delta_result,
+                delta_rows=delta_ins_from_stats,
                 stat=stat,
                 pm_start=pm_start,
                 failure_identifier=failure_identifier,
+                stat_reset_detected=stat_reset_detected,
+                live_count_delta=live_count_delta,
+                n_live_tup_delta=n_live_tup_delta,
             )
             save_state(state)
     finally:
