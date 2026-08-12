@@ -1,0 +1,360 @@
+{
+  "generated_at": "2026-08-12T01:07:04.494402",
+  "total_found": 40,
+  "errors": [
+    {
+      "error": "PH_API_TOKEN not set",
+      "platform": "product_hunt"
+    },
+    {
+      "error": "Smithery API returned 404",
+      "platform": "smithery"
+    }
+  ],
+  "by_threat_level": {
+    "critical": 8,
+    "high": 20,
+    "medium": 12,
+    "monitor": 0
+  },
+  "by_platform": {
+    "github": 38,
+    "hackernews": 2
+  },
+  "competitors": [
+    {
+      "name": "TrustCart",
+      "description": "AI-powered shopping decision platform",
+      "url": "https://github.com/25r21a05em/TrustCart",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "ai-shopping-assistant",
+      "description": "AI Powered Shopping Assistant - Final Year Project",
+      "url": "https://github.com/manikandannaresh04/ai-shopping-assistant",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "ai-shopping",
+      "description": "",
+      "url": "https://github.com/Sharmarke1994/ai-shopping",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "shopping_AI",
+      "description": "",
+      "url": "https://github.com/lokesh-iitm/shopping_AI",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "ai-shopping-agent",
+      "description": "TikTok Shop-inspired chat-first AI shopping guide prototype for US K-Beauty sunscreen",
+      "url": "https://github.com/teemoweng/ai-shopping-agent",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "ai-shopping-assitant",
+      "description": "",
+      "url": "https://github.com/AkashSrivastava920/ai-shopping-assitant",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "ai-shopping-assistant",
+      "description": "AI \u7535\u5546\u667a\u80fd\u5bfc\u8d2d\u52a9\u624b \u2014 \u57fa\u4e8e RAG + Agent \u7684\u591a\u6a21\u6001\u8d2d\u7269\u63a8\u8350\u7cfb\u7edf",
+      "url": "https://github.com/zqq25/ai-shopping-assistant",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "EasyMart-AI-Grocery-FT",
+      "description": "EasyMart \u2013 AI-Powered Grocery Shopping Platform | React.js Frontend",
+      "url": "https://github.com/luckygiri02/EasyMart-AI-Grocery-FT",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "AGENTIC_AI_SHOPPING-AGENT-",
+      "description": "",
+      "url": "https://github.com/sameer2001-hash/AGENTIC_AI_SHOPPING-AGENT-",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "ai-pc-shopping-agent",
+      "description": "Explainable AI laptop recommendation and DIY PC build assistant",
+      "url": "https://github.com/M1rae56/ai-pc-shopping-agent",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "commerce-agent-bench",
+      "description": "commerce-agent-bench",
+      "url": "https://github.com/harukiseller-droid/commerce-agent-bench",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "herald",
+      "description": "Agentic Commerce on 0G",
+      "url": "https://github.com/0verlabs/herald",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "ai-commerce-intelligence-agent",
+      "description": "",
+      "url": "https://github.com/maojingwen71-svg/ai-commerce-intelligence-agent",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "e_commerce_assistant_agent_practice",
+      "description": "",
+      "url": "https://github.com/AbdlSi/e_commerce_assistant_agent_practice",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "CPE-310-E-commerce-agents",
+      "description": "",
+      "url": "https://github.com/edwindavid-ui/CPE-310-E-commerce-agents",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "AgentShield",
+      "description": "Trust and risk infrastructure for autonomous AI agent commerce using x402 and Algorand.",
+      "url": "https://github.com/zainabfatma12/AgentShield",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "ShopEasy-E-Commerce-Support-Agent",
+      "description": "E-Commecre Support Agent",
+      "url": "https://github.com/Hanad-Muqaddar/ShopEasy-E-Commerce-Support-Agent",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "e-commerce-audit-dashboard",
+      "description": "Agent-Readiness Audit Dashboard for E-Commerce storefronts. Evaluates AI shopping agent compatibility, interpretability, and executability.",
+      "url": "https://github.com/alura-gonzalez/e-commerce-audit-dashboard",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "project01",
+      "description": "e-commerce point&Ai Agent&RPA",
+      "url": "https://github.com/1pullme/project01",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "ecommerce-ai-agent-platform",
+      "description": "Agente de IA sobre dados de e-commerce, constru\u00eddo com a Gemini Enterprise Agent Platform (Vertex AI)",
+      "url": "https://github.com/fabricioespel-bit/ecommerce-ai-agent-platform",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "E-commerce",
+      "description": "E-Commerce Website using API \u2014 A responsive e-commerce web application that fetches and displays product data using APIs. Includes product browsing, search/filter functionality, product details, and a dynamic shopping cart with a clean and user-friendly interface.",
+      "url": "https://github.com/Deepti32/E-commerce",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "E-Commerce",
+      "description": "E-Commerce Website using API \u2014 A responsive e-commerce web application that fetches and displays product data using APIs. Includes product browsing, search/filter functionality, product details, and a dynamic shopping cart with a clean and user-friendly interface.",
+      "url": "https://github.com/pravallika7855/E-Commerce",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "shopsphere-ecommerce",
+      "description": "ShopSphere \u2014 Modern E-Commerce Product Catalog  A production-ready responsive e-commerce web application built with React, Vite, React Router, Fetch API, and localStorage. Features product browsing, search, category filtering, sorting, product details, shopping cart management, responsive UI, API error handling, performance optimization, ",
+      "url": "https://github.com/sumwolf01/shopsphere-ecommerce",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "Shop-",
+      "description": "A responsive e-commerce store built with React, Tailwind CSS, React Router, TanStack Query, Context API, and useReducer. Includes product search, filtering, product details, shopping cart, LocalStorage, and form validation.",
+      "url": "https://github.com/alisafaei7811-blip/Shop-",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "FreshCart-Modern-E-Commerce-Platform",
+      "description": "Modern full-featured e-commerce platform built with React, Vite, Tailwind CSS, and Context API \u2014 featuring authentication, product browsing, cart, wishlist, search, categories, brands, and checkout.",
+      "url": "https://github.com/Farhadaa11/FreshCart-Modern-E-Commerce-Platform",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "vaylo-ecommerce",
+      "description": "Modern full-stack fashion e-commerce website built with React, Tailwind CSS, Node.js, and Express.js \u2014 featuring product search, filtering, wishlist, cart, checkout, and REST APIs",
+      "url": "https://github.com/wajeehabaig9/vaylo-ecommerce",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "e-commerce",
+      "description": "Shoppy is a React-based Indian e-commerce website using DummyJSON API, React Router, Props, useState, useEffect, nested & dynamic routes. It includes product search, filtering, sorting, categories, cart, coupons, address, checkout, authentication, and a dark responsive UI.",
+      "url": "https://github.com/shangchi-s/e-commerce",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "minishop",
+      "description": "MiniShop is a full-stack e-commerce demo application built with React.js, Node.js, Express.js, and MongoDB. It provides product management with complete CRUD functionality, search and category filtering, responsive UI, and a RESTful backend API.",
+      "url": "https://github.com/shetafreya/minishop",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "trustabl-cursor",
+      "description": "Bring Trustabl's AI-agent safety & reliability scanner into Cursor \u2014 scan your agents, tools, and MCP servers, get a production-readiness score with severity-ranked findings, and fix issues before they ship.",
+      "url": "https://github.com/trustabl/trustabl-cursor",
+      "stars": 6,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "plane-mcp",
+      "description": "An MCP (Model Context Protocol) server for Plane, the open-source project management tool \u2014 plus a setup wizard that binds a project folder to a Plane project in one command.",
+      "url": "https://github.com/babazulu/plane-mcp",
+      "stars": 3,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "mcpd",
+      "description": "One host for all your MCP servers \u2014 shared instances, lazy start, live dashboard, a fraction of the RAM. Includes MCP servers compiled to native binaries with scriptc.",
+      "url": "https://github.com/milind-soni/mcpd",
+      "stars": 2,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "safe-web-search-mcp",
+      "description": "A small Windows MCP server that gives compatible AI apps one web-search tool.",
+      "url": "https://github.com/ZoeyDevOps/safe-web-search-mcp",
+      "stars": 2,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "agent-risk-scanner",
+      "description": "Static security scanner for AI Agents, MCP Servers, Codex Skills, and plugins.",
+      "url": "https://github.com/RoganZero/agent-risk-scanner",
+      "stars": 2,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "cc-usage-awareness",
+      "description": "MCP server that reports your Claude Code plan usage as percentages, so the agent can see how much quota is left. Zero dependencies, stdlib only.",
+      "url": "https://github.com/Peaches99/cc-usage-awareness",
+      "stars": 2,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "mnemo",
+      "description": "Give your AI agents a git repo as a brain. Local-first persistent memory for OpenCode, Claude Code, Cursor & Codex \u2014 MCP server + auto-capture plugin. Auditable, branchable, zero-dep.",
+      "url": "https://github.com/JoaquimLegal/mnemo",
+      "stars": 2,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "sushruta-anatomy",
+      "description": "A local-first 3D anatomy atlas for medical students \u2014 3,534 structures, a study assistant that drives the 3D view, and an MCP server that renders it inside Claude. Source-available; anatomy is CC BY-SA 4.0.",
+      "url": "https://github.com/atultiwari/sushruta-anatomy",
+      "stars": 2,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "ilinxa-capture",
+      "description": "Video frame extraction & composition service for AI vision pipelines, extracts frames via FFmpeg and composes them into 1\u00d71/2\u00d72/4\u00d74 grid sheets for multimodal LLMs. REST API, Web UI, and MCP server over one core engine.",
+      "url": "https://github.com/ilinxa/ilinxa-capture",
+      "stars": 2,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "bitrix-mcp",
+      "description": "Bitrix MCP Server",
+      "url": "https://github.com/shelezyaka/bitrix-mcp",
+      "stars": 1,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "Show HN: AgisHub \u2013 pay-per-call tools for AI agents over x402 (USDC on Base)",
+      "description": "HN mention for keyword 'x402'",
+      "url": "https://api.agishub.com/try",
+      "hn_id": "49207617",
+      "hn_points": 2,
+      "hn_comments": 0,
+      "hn_created_at": "2026-08-07T08:51:05Z",
+      "keyword": "x402",
+      "threat_level": "medium",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Agent-tools.net \u2013 pay-per-call APIs for AI agents, paid via x402/USDC on Base",
+      "description": "HN mention for keyword 'x402'",
+      "url": "https://agent-tools.net/",
+      "hn_id": "49194345",
+      "hn_points": 1,
+      "hn_comments": 0,
+      "hn_created_at": "2026-08-06T09:12:09Z",
+      "keyword": "x402",
+      "threat_level": "medium",
+      "platform": "hackernews"
+    }
+  ],
+  "summary": {
+    "critical_count": 8,
+    "high_count": 20,
+    "medium_count": 12,
+    "monitor_count": 0
+  }
+}
