@@ -625,9 +625,11 @@ def upsert_canonical_throughput_row(
             pass
 
     # ingestion_runs aggregates for this hour (best-effort, fast on 211K-row table)
-    ing_runs = 0
-    ing_inserted = 0
-    ing_updated = 0
+    # None means the query failed/unavailable; this is distinct from an explicit
+    # zero count and is important for v6.4 ing_inserted corroboration semantics.
+    ing_runs = None
+    ing_inserted = None
+    ing_updated = None
     hour_end_ts = hour_start_ts + timedelta(hours=1)
     try:
         with conn.cursor() as cur:
@@ -649,6 +651,10 @@ def upsert_canonical_throughput_row(
             ing_runs = int(row[0] or 0)
             ing_inserted = int(row[1] or 0)
             ing_updated = int(row[2] or 0)
+        else:
+            ing_runs = 0
+            ing_inserted = 0
+            ing_updated = 0
     except psycopg2.errors.QueryCanceled:
         conn.rollback()
     except (psycopg2.OperationalError, psycopg2.InterfaceError):

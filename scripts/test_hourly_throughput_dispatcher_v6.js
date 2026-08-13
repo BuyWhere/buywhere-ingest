@@ -639,6 +639,24 @@ describe('shouldFileV6FailureTicket — edge cases', () => {
     assert.equal(shouldFileV6FailureTicket(null, null, null, 50_000, null), true);
   });
 
+  it('files when all fallback metrics are null/unavailable', () => {
+    assert.equal(shouldFileV6FailureTicket(null, null, null, null), true);
+  });
+
+  it('does not file when ingested fallback passes and live_count is unavailable', () => {
+    assert.equal(
+      shouldFileV6FailureTicket(null, TARGET_ROWS_PER_HOUR, null, null, null, null, null),
+      false,
+    );
+  });
+
+  it('does not file when live_count passes and ingested fallback is unavailable', () => {
+    assert.equal(
+      shouldFileV6FailureTicket(null, null, null, TARGET_ROWS_PER_HOUR, null, null, null),
+      false,
+    );
+  });
+
   it('v6.5 shouldFile uses hourData when stats and partition are null', () => {
     assert.equal(shouldFileV6FailureTicket(
       { real_rows: 80_000 }, null, null, null, null, null, null
