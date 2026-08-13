@@ -1,0 +1,392 @@
+{
+  "generated_at": "2026-08-13T01:07:03.823599",
+  "total_found": 43,
+  "errors": [
+    {
+      "error": "PH_API_TOKEN not set",
+      "platform": "product_hunt"
+    },
+    {
+      "error": "Smithery API returned 404",
+      "platform": "smithery"
+    }
+  ],
+  "by_threat_level": {
+    "critical": 9,
+    "high": 20,
+    "medium": 12,
+    "monitor": 2
+  },
+  "by_platform": {
+    "github": 39,
+    "hackernews": 4
+  },
+  "competitors": [
+    {
+      "name": "ai-ecommerce-shopping-assistant",
+      "description": "AI-powered e-commerce shopping and product recommendation assistant built with Python, FastAPI, Azure OpenAI, Azure AI Search, LangGraph, and PostgreSQL.",
+      "url": "https://github.com/anvithayerneni/ai-ecommerce-shopping-assistant",
+      "stars": 1,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "AI-Shopping-Agent",
+      "description": "",
+      "url": "https://github.com/PallaKalyan2005/AI-Shopping-Agent",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "ai-shopping-assistant",
+      "description": "",
+      "url": "https://github.com/likhita123420/ai-shopping-assistant",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "ai-shopping-assitant",
+      "description": "",
+      "url": "https://github.com/sreelatha4/ai-shopping-assitant",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "ai-shopping-assistant",
+      "description": "",
+      "url": "https://github.com/sreelatha4/ai-shopping-assistant",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "shop-yourself-app",
+      "description": "A simple shopping website created using AI.",
+      "url": "https://github.com/manyay794-hub/shop-yourself-app",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "ai-shopping-decision-assistant",
+      "description": "\u783a\u9009 Lens\uff1a\u89c4\u5219\u7b5b\u9009\u3001\u591a\u7ef4\u6392\u5e8f\u4e0e RAG \u8bc1\u636e\u589e\u5f3a\u7684 AI \u8d2d\u7269\u51b3\u7b56\u52a9\u624b",
+      "url": "https://github.com/lx-Meteors/ai-shopping-decision-assistant",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "AI-Final-Project---Shopping-Website",
+      "description": "",
+      "url": "https://github.com/orlitamana/AI-Final-Project---Shopping-Website",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "Prodapt_AI_shopping_decision_assistant",
+      "description": "",
+      "url": "https://github.com/ArvindNandigam/Prodapt_AI_shopping_decision_assistant",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "AmazonNow",
+      "description": "AI-powered intent-driven shopping assistant that transforms natural-language goals into intelligent, personalized shopping carts.",
+      "url": "https://github.com/adars-h-agrawal/AmazonNow",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "womenswear-ecommerce-skills",
+      "description": "Bilingual womenswear e-commerce operations knowledge base and composable agent skills / \u4e2d\u82f1\u6587\u53cc\u8bed\u5973\u88c5\u7535\u5546\u8fd0\u8425\u77e5\u8bc6\u5e93\u4e0e\u53ef\u7ec4\u5408\u667a\u80fd\u4f53\u6280\u80fd",
+      "url": "https://github.com/yu19991110/womenswear-ecommerce-skills",
+      "stars": 22,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "ai-agent-ecommerce-data",
+      "description": "AI Agent E-commerce Data \u4e2d\u6587\u793a\u4f8b\uff1a\u5c06\u5408\u6cd5\u516c\u5f00\u7684\u5546\u54c1\u3001\u4ef7\u683c\u3001\u8bc4\u5206\u548c\u7c7b\u76ee\u5b57\u6bb5\u6574\u7406\u4e3a Agent \u53ef\u7528\u6570\u636e\u3002",
+      "url": "https://github.com/scrapapi/ai-agent-ecommerce-data",
+      "stars": 1,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "AgentCommerce",
+      "description": "Production-minded multi-agent e-commerce recommendation and marketing system with LangGraph, FastAPI, pgvector, Redis, reproducible evaluation, and fault injection.",
+      "url": "https://github.com/fxl112233/AgentCommerce",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "Agentic-Commerce",
+      "description": "Agentic Commerce",
+      "url": "https://github.com/MEGA-M1ND/Agentic-Commerce",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "agentic-commerce",
+      "description": "Service-side agents: any website with an API + DB can staff its own agent. Reference implementation: a Medusa store \u2014 client agent relays your goals, the store's agent answers from live data, and every write waits for your approval. npm run demo.",
+      "url": "https://github.com/szihai/agentic-commerce",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "langchain-agent-commerce",
+      "description": "",
+      "url": "https://github.com/madhukart-ai/langchain-agent-commerce",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "enhansome-agentic-commerce",
+      "description": "",
+      "url": "https://github.com/enhansome/enhansome-agentic-commerce",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "agentic-commerce-project",
+      "description": "",
+      "url": "https://github.com/SJulapalli/agentic-commerce-project",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "agentic-commerce-platform",
+      "description": "Created by Leap: https://leap.new",
+      "url": "https://github.com/Riyansmk01/agentic-commerce-platform",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "e-commerce",
+      "description": "Generated by Coding Agent",
+      "url": "https://github.com/fiyazmalik286-jpg/e-commerce",
+      "stars": 0,
+      "threat_level": "high",
+      "platform": "github"
+    },
+    {
+      "name": "amazon-data-api",
+      "description": "Amazon marketplace data APIs for product search, ASIN research, keywords, traffic, reviews, sales estimates, price history, market research and competitor analysis.",
+      "url": "https://github.com/nexscope-ai/amazon-data-api",
+      "stars": 7,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "Product_Search_API",
+      "description": "",
+      "url": "https://github.com/saboatraupova01/Product_Search_API",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "product-search-filter",
+      "description": "a Product Search & Filter application that consumes a real REST API and allows the user to search, filter, sort, and paginate products.",
+      "url": "https://github.com/srinivasa-ravi-idury/product-search-filter",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "product-api",
+      "description": "Use this description:  > **FastAPI Product API for managing products with CRUD operations, search, filtering, validation, error handling, and automated testing.**",
+      "url": "https://github.com/dorismwende/product-api",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "search-microservice",
+      "description": "A fuzzy search API over 1,000,000 real Amazon products, built to run on a free-tier cloud VM (2 CPU, 12 GB RAM). It answers a typical query in 3 ms, and in 13 ms when the query has never been seen before.",
+      "url": "https://github.com/Mehedi-Hasan-Abir/search-microservice",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "shopsphere",
+      "description": "A responsive e-commerce product catalog built with HTML5, CSS3, and modular JavaScript. It features REST API integration, client-side routing, product search/filtering/sorting, product details, a persistent shopping cart using localStorage, responsive architecture, accessibility features, and performance-focused development.",
+      "url": "https://github.com/ChinmayJangid0099/shopsphere",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "Shop",
+      "description": "\ud83d\udecd\ufe0f ShopSphere \u2014 A modern, responsive e-commerce product catalog built with Vanilla JavaScript, Vite, REST API integration, client-side routing, LocalStorage, search, filters, favorites, and cart management.",
+      "url": "https://github.com/Avinash4926/Shop",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "E--commerce",
+      "description": "A responsive e-commerce website built with HTML, CSS, and JavaScript, featuring product browsing, search and sorting, categories, wishlist, shopping cart, user authentication, profile management, and product details. The project uses the DummyJSON API to fetch product data and LocalStorage to manage users, cart, wishlist, and profile information.",
+      "url": "https://github.com/Ali-Mohamed-Helal/E--commerce",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "E-Commerce-App",
+      "description": "A Flutter e-commerce app with login, product browsing, search, filtering, cart management, and profiles. It uses Provider, Hive, secure storage, Dio/HTTP, and go_router for state, data, API, and navigation management.",
+      "url": "https://github.com/amu-muha/E-Commerce-App",
+      "stars": 0,
+      "threat_level": "critical",
+      "platform": "github"
+    },
+    {
+      "name": "repo-context-mcp",
+      "description": "MCP server: repo map, code search, and token-aware context packs for AI coding agents",
+      "url": "https://github.com/nduc99911/repo-context-mcp",
+      "stars": 8,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "crux-mcp",
+      "description": "MCP server for the Chrome UX Report \u2014 real-user Core Web Vitals for any origin or URL",
+      "url": "https://github.com/miguelrisero/crux-mcp",
+      "stars": 2,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "shopify-store-builder-mcp",
+      "description": "MCP server that lets AI assistants create and manage Shopify stores - themes, pages, navigation. TypeScript + Shopify Admin GraphQL API.",
+      "url": "https://github.com/nazariinalyvaikobs/shopify-store-builder-mcp",
+      "stars": 2,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "Partuno",
+      "description": "Partuno \u2014 DigiKey and Mouser MCP server for electronics component search, BOM analysis, sourcing comparison, and safe distributor workflows.",
+      "url": "https://github.com/JPMarhefka/Partuno",
+      "stars": 2,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "mcp-server-bioscience",
+      "description": "",
+      "url": "https://github.com/wangshuaifbj-collab/mcp-server-bioscience",
+      "stars": 1,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "zendesk-mcp-server",
+      "description": "",
+      "url": "https://github.com/BigSnailBob/zendesk-mcp-server",
+      "stars": 1,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "pixabay-mcp-server",
+      "description": "Production-ready Model Context Protocol (MCP) server for the Pixabay API \u2014 search and fetch royalty-free images and videos, with license-aware usage guidance. Unofficial; not affiliated with or endorsed by Pixabay.",
+      "url": "https://github.com/hanoak/pixabay-mcp-server",
+      "stars": 1,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "mcp-safe-share",
+      "description": "Generate redacted, shareable MCP configuration diagnostics without starting any servers.",
+      "url": "https://github.com/pial-open-source/mcp-safe-share",
+      "stars": 1,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "dotplot-mcp",
+      "description": "See individual users, not aggregate charts \u2014 YC's Dot Plot methodology as an MCP server",
+      "url": "https://github.com/brownglasses/dotplot-mcp",
+      "stars": 1,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "imageforge-mcp",
+      "description": "A lightweight TypeScript MCP server for generating and editing images with `gpt-image-2` through the OpenAI Images API.",
+      "url": "https://github.com/chanshawoh/imageforge-mcp",
+      "stars": 1,
+      "threat_level": "medium",
+      "platform": "github"
+    },
+    {
+      "name": "I monetized my API in 30 minutes with x402 no accounts, no API keys, fast USDC",
+      "description": "HN mention for keyword 'x402'",
+      "url": "https://6766587364.lol",
+      "hn_id": "49270993",
+      "hn_points": 2,
+      "hn_comments": 0,
+      "hn_created_at": "2026-08-12T11:56:08Z",
+      "keyword": "x402",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Show HN: AgisHub \u2013 pay-per-call tools for AI agents over x402 (USDC on Base)",
+      "description": "HN mention for keyword 'x402'",
+      "url": "https://api.agishub.com/try",
+      "hn_id": "49207617",
+      "hn_points": 2,
+      "hn_comments": 0,
+      "hn_created_at": "2026-08-07T08:51:05Z",
+      "keyword": "x402",
+      "threat_level": "medium",
+      "platform": "hackernews"
+    },
+    {
+      "name": "I put an API behind an x402 paywall for nine days: 1,835 callers, zero payments",
+      "description": "HN mention for keyword 'x402'",
+      "url": "https://saishav.substack.com/p/i-spent-nine-days-selling-to-ai-agents",
+      "hn_id": "49276962",
+      "hn_points": 1,
+      "hn_comments": 0,
+      "hn_created_at": "2026-08-12T18:53:47Z",
+      "keyword": "x402",
+      "threat_level": "monitor",
+      "platform": "hackernews"
+    },
+    {
+      "name": "Agent-tools.net \u2013 pay-per-call APIs for AI agents, paid via x402/USDC on Base",
+      "description": "HN mention for keyword 'x402'",
+      "url": "https://agent-tools.net/",
+      "hn_id": "49194345",
+      "hn_points": 1,
+      "hn_comments": 0,
+      "hn_created_at": "2026-08-06T09:12:09Z",
+      "keyword": "x402",
+      "threat_level": "medium",
+      "platform": "hackernews"
+    }
+  ],
+  "summary": {
+    "critical_count": 9,
+    "high_count": 20,
+    "medium_count": 12,
+    "monitor_count": 2
+  }
+}
