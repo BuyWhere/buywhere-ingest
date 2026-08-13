@@ -216,18 +216,20 @@ describe('selectV6ThroughputSignal', () => {
     assert.equal(source, 'ingestion_runs_observability');
   });
 
-  it('v6.4 n_live_tup_guard fires when stats below + ing_inserted unavailable', () => {
-    const nLiveTup = 7_400_000;
-    const [realRows, source] = selectV6ThroughputSignal(722, null, null, nLiveTup);
-    assert.equal(realRows, nLiveTup);
+  it('v6.4 n_live_tup_guard fires when stats unavailable + ing_inserted unavailable', () => {
+    // Rule 5b.v6.4: delta_ins_from_stats null, canonical_ing_inserted null (unavailable)
+    // → nLiveTupGuard fires (ing_inserted unavailable = allowed by v6.4).
+    const [realRows, source] = selectV6ThroughputSignal(null, null, null, 7_400_000);
+    assert.equal(realRows, 7_400_000);
     assert.equal(source, 'n_live_tup_delta_guard');
   });
 
-  it('v6.4 n_live_tup_guard fires when stats below + ing_inserted corroborates target', () => {
-    const nLiveTup = 876_000;
-    const [realRows, source] = selectV6ThroughputSignal(722, TARGET_ROWS_PER_HOUR, null, nLiveTup);
-    assert.equal(realRows, nLiveTup);
-    assert.equal(source, 'n_live_tup_delta_guard');
+  it('v6.4 keeps stats delta authoritative when n_live_tup guard would pass', () => {
+    // Rule 5a: delta_ins_from_stats=722 is non-null and authoritative.
+    // nLiveTupGuard allowed but does NOT override stats per rule 5b.v6.4.
+    const [realRows, source] = selectV6ThroughputSignal(722, TARGET_ROWS_PER_HOUR, null, 876_000);
+    assert.equal(realRows, 722);
+    assert.equal(source, 'delta_ins_from_stats');
   });
 
   it('v6.4 ing_inserted blocks n_live_tup_guard (autovacuum bloat)', () => {
@@ -272,17 +274,21 @@ describe('selectV6ThroughputSignal', () => {
     );
   });
 
-  it('v6.4 unavailable ing_inserted preserves stale-counter guard (PASS)', () => {
+  it('v6.4 unavailable ing_inserted cannot rescue a low stats delta', () => {
+    // Rule 5d: delta_ins_from_stats=722 is non-null and < target → FILE.
+    // Secondary metrics cannot rescue a non-null stats delta.
     assert.equal(
       shouldFileV6FailureTicket(722, null, null, 876_000),
-      false,
+      true,
     );
   });
 
-  it('v6.4 target-level ing_inserted preserves stale-counter guard (PASS)', () => {
+  it('v6.4 target-level ing_inserted cannot rescue a low stats delta', () => {
+    // Rule 5d: delta_ins_from_stats=722 is non-null and < target → FILE.
+    // nLiveTupGuard allowed but cannot override stats per rule 5a.
     assert.equal(
       shouldFileV6FailureTicket(722, TARGET_ROWS_PER_HOUR, null, 876_000),
-      false,
+      true,
     );
   });
 
@@ -546,18 +552,23 @@ describe('isCompletedHour — edge cases', () => {
 });
 
 describe('assertV6ForbiddenPatterns — additional rules', () => {
-  it('rule 6(a): allows when source is n_live_tup_delta_guard with stats available', () => {
-    assert.doesNotThrow(() => {
-      assertV6ForbiddenPatterns({
-        deltaInsFromStats: 42,
-        deltaUpdFromStats: 0,
-        realRows: 42,
-        source: 'n_live_tup_delta_guard',
-        liveCountDelta: null,
-        currentNTupIns: null,
-        previousNTupIns: null,
-      });
-    });
+  it('rule 5a/5b.v6.4: rejects n_live_tup_delta_guard with stats available', () => {
+    // Rule 5a/5b.v6.4: source must NEVER be n_live_tup_delta_guard when
+    // delta_ins_from_stats is non-null. The new assertion fires here.
+    assert.throws(
+      () => {
+        assertV6ForbiddenPatterns({
+          deltaInsFromStats: 42,
+          deltaUpdFromStats: 0,
+          realRows: 42,
+          source: 'n_live_tup_delta_guard',
+          liveCountDelta: null,
+          currentNTupIns: null,
+          previousNTupIns: null,
+        });
+      },
+      /v6 rule 5a/,
+    );
   });
 
   it('rule 6(b): allows when both are null', () => {
