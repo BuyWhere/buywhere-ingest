@@ -686,15 +686,13 @@ function shouldFileV6FailureTicket(hourData, deltaInsFromStats, canonicalIngInse
   if (liveCountDelta != null && liveCountDelta >= TARGET_ROWS_PER_HOUR) {
     return false;
   }
-  // BUY-63152 fix: file when ing_inserted is LOW (< target, ingestion throttled).
-  // When ing_inserted is HIGH (>= target), ingestion is healthy — no need to file.
-  if (canonicalIngInserted != null) {
-    return canonicalIngInserted < TARGET_ROWS_PER_HOUR;
-  }
-  if (liveCountDelta != null) {
-    return liveCountDelta < TARGET_ROWS_PER_HOUR;
-  }
-  return false;
+  // Rule 5d fail-only condition:
+  // file only when all available fallback signals are below/absent target.
+  const ingestionUnavailableOrLow =
+    canonicalIngInserted == null || canonicalIngInserted < TARGET_ROWS_PER_HOUR;
+  const liveCountUnavailableOrLow =
+    liveCountDelta == null || liveCountDelta < TARGET_ROWS_PER_HOUR;
+  return ingestionUnavailableOrLow && liveCountUnavailableOrLow;
 }
 
 function assertV6ForbiddenPatterns({

@@ -9,11 +9,14 @@ set -u
 
 ENV_FILE="$HOME/.throughput_dispatcher_env"
 
-# Only write when PAPERCLIP_API_KEY is actually available
-if [ -n "${PAPERCLIP_API_KEY:-}" ]; then
+# Only write when PAPERCLIP_API_KEY is actually available and non-whitespace.
+TRIMMED_API_KEY="$(printf '%s' "${PAPERCLIP_API_KEY:-}" | tr -d '[:space:]')"
+TRIMMED_RUN_ID="$(printf '%s' "${PAPERCLIP_RUN_ID:-}" | tr -d '[:space:]')"
+
+if [ -n "$TRIMMED_API_KEY" ]; then
     cat > "$ENV_FILE" <<- ENVEOF
-	PAPERCLIP_API_KEY="${PAPERCLIP_API_KEY}"
-	PAPERCLIP_RUN_ID="${PAPERCLIP_RUN_ID:-}"
+	PAPERCLIP_API_KEY="${TRIMMED_API_KEY}"
+	PAPERCLIP_RUN_ID="${TRIMMED_RUN_ID}"
 	PAPERCLIP_AGENT_ID="${PAPERCLIP_AGENT_ID:-a29ac9dc-cf0a-455b-964c-e75bd2f5fc47}"
 	ENVEOF
     chmod 600 "$ENV_FILE"
