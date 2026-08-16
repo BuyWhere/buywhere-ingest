@@ -160,10 +160,7 @@ const ASSIGNEE_USER_ID = 'MRfjkCUzuFyLTtKHcVLDaJxoAAWxM7b6';
 
 const CATALOG_DB_URL_FILE = path.join(REPO_ROOT, 'data', '.catalog_db_url');
 const STATE_FILE = path.join(REPO_ROOT, 'data', '.throughput_state.json');
-const EVIDENCE_DIR = path.join(
-  '/paperclip/instances/default/workspaces/',
-  'a29ac9dc-cf0a-455b-964c-e75bd2f5fc47/BUY-58452'
-);
+const EVIDENCE_DIR = path.join(REPO_ROOT, 'data', 'evidence');
 
 // ---------------------------------------------------------------------------
 // State helpers

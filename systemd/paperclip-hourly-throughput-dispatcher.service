@@ -1,24 +1,18 @@
 [Unit]
-Description=Paperclip Hourly Throughput Dispatcher — BUY-33694 replacement for Oracle's broken routine
-After=network.target paperclip.service
-Wants=paperclip.service
+Description=Paperclip Hourly Throughput Dispatcher v6.4 — BUY-68474
+After=network.target
+Wants=network.target
 
 [Service]
 Type=oneshot
 User=paperclip
 Group=paperclip
 WorkingDirectory=/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default
-ExecStart=/usr/bin/python3 scripts/hourly_throughput_dispatcher.py
-Environment=PAPERCLIP_API_URL=https://paperclip.richteo.com
-Environment=PAPERCLIP_COMPANY_ID=177bc805-e3c8-4336-84cb-8e1e482d5a17
+ExecStart=/usr/bin/env bash scripts/run-throughput-dispatcher-cron.sh
+Environment=NODE_ENV=production
 StandardOutput=append:/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/logs/throughput-dispatcher-stdout.log
 StandardError=append:/paperclip/instances/default/projects/177bc805-e3c8-4336-84cb-8e1e482d5a17/18221361-973a-493e-9e19-4c43b7a1c6eb/_default/logs/throughput-dispatcher-stderr.log
 SyslogIdentifier=paperclip-hourly-throughput-dispatcher
-
-# Resource limits — lightweight: 5 min timeout, 256MB RAM
 TimeoutStartSec=300
 LimitNOFILE=16384
 MemoryMax=256M
-
-[Install]
-WantedBy=multi-user.target
