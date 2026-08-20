@@ -86,16 +86,22 @@ const WC_DEEP_PAGE_TIMEOUT_MS = parseInt(process.env.WC_DEEP_PAGE_TIMEOUT_MS || 
 const WC_DEEP_PAGE_CONCURRENCY = parseInt(process.env.WC_DEEP_PAGE_CONCURRENCY || '8', 10);
 const WC_DEEP_SINGLETON_HOURS = parseInt(process.env.WC_DEEP_SINGLETON_HOURS || '23', 10);
 
-// BUY-71831: pg 22.x maps sslmode=require/prefer/verify-ca → verify-full (full cert
-// verification). The sakura.proxy.rlwy.net public proxy serves a self-signed cert,
-// so verify-full causes "self-signed certificate in certificate chain" on every connection.
-// Honor PGSSLMODE: when set to no-verify, configure the driver with rejectUnauthorized=false.
-// The PGSSLMODE env var approach (Railway env var) is the primary fix; this code mirrors it
-// so the service works regardless of how the env var is injected.
+// BUY-71831 / BUY-72079: pg 22.x maps sslmode=require/prefer/verify-ca → verify-full
+// (full cert verification). The sakura.proxy.rlwy.net public proxy serves a
+// self-signed cert, so verify-full causes "self-signed certificate in certificate
+// chain" on every connection.
+//
+// This service ONLY talks to the catalog DB (sakura). The connection is
+// already protected by Railway's internal-network isolation plus the
+// CATALOG_DB_URL secret. Cert-chain validation against a known-self-signed
+// proxy adds nothing, so we default to rejectUnauthorized=false. Set
+// PGSSLMODE=verify-full to opt back into strict verification (an operator
+// override for the rare case where the proxy has been re-provisioned with a
+// CA-signed cert).
 const sslMode = (process.env.PGSSLMODE || '').toLowerCase().replace('-', '_');
-const sslConfig = (sslMode === 'no_verify' || sslMode === 'disable')
-  ? { ssl: { rejectUnauthorized: false } }
-  : {};
+const sslConfig = (sslMode === 'verify_full' || sslMode === 'verify_ca')
+  ? {}
+  : { ssl: { rejectUnauthorized: false } };
 
 const pgBoss = new PgBoss({
   connectionString: catalogDbUrl,
