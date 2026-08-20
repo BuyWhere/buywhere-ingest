@@ -86,31 +86,55 @@ const WC_DEEP_PAGE_TIMEOUT_MS = parseInt(process.env.WC_DEEP_PAGE_TIMEOUT_MS || 
 const WC_DEEP_PAGE_CONCURRENCY = parseInt(process.env.WC_DEEP_PAGE_CONCURRENCY || '8', 10);
 const WC_DEEP_SINGLETON_HOURS = parseInt(process.env.WC_DEEP_SINGLETON_HOURS || '23', 10);
 
-// BUY-71831 / BUY-72079: pg 22.x maps sslmode=require/prefer/verify-ca → verify-full
-// (full cert verification). The sakura.proxy.rlwy.net public proxy serves a
-// self-signed cert, so verify-full causes "self-signed certificate in certificate
-// chain" on every connection.
+// BUY-71831 / BUY-72079: pg's connection-string parser overrides any ssl
+// option we pass to pg.Pool if the URL itself contains `?sslmode=...` —
+// see pg/lib/connection-parameters.js line 60:
+//   config = Object.assign({}, config, parse(config.connectionString))
+// And pg-connection-string v2.13+ maps sslmode=require/verify-ca/verify-full
+// to strict cert verification (rejectUnauthorized defaults to true). The
+// sakura.proxy.rlwy.net public proxy serves a self-signed cert, so any
+// sslmode that triggers strict verification crashes the worker with
+// SELF_SIGNED_CERT_IN_CHAIN.
 //
 // This service ONLY talks to the catalog DB (sakura). The connection is
 // already protected by Railway's internal-network isolation plus the
 // CATALOG_DB_URL secret. Cert-chain validation against a known-self-signed
-// proxy adds nothing, so we default to rejectUnauthorized=false. Set
-// PGSSLMODE=verify-full to opt back into strict verification (an operator
-// override for the rare case where the proxy has been re-provisioned with a
-// CA-signed cert).
+// proxy adds nothing, so we strip sslmode from the URL and pass our own
+// ssl option. Set PGSSLMODE=verify-full to opt back into strict verification
+// (an operator override for the rare case where the proxy has been
+// re-provisioned with a CA-signed cert).
 const sslMode = (process.env.PGSSLMODE || '').toLowerCase().replace('-', '_');
-const sslConfig = (sslMode === 'verify_full' || sslMode === 'verify_ca')
+const useStrictVerification = (sslMode === 'verify_full' || sslMode === 'verify_ca');
+const sslConfig = useStrictVerification
   ? {}
   : { ssl: { rejectUnauthorized: false } };
+// Strip sslmode/ssl from the URL so the connection-string parser can't
+// override our ssl option. (Object.assign({}, config, parse(connectionString))
+// would otherwise re-set ssl to the strict-verify value.)
+function stripSslFromUrl(url) {
+  try {
+    const u = new URL(url);
+    u.searchParams.delete('sslmode');
+    u.searchParams.delete('ssl');
+    u.searchParams.delete('sslca');
+    u.searchParams.delete('sslcert');
+    u.searchParams.delete('sslkey');
+    u.searchParams.delete('sslrootcert');
+    return u.toString();
+  } catch (e) {
+    return url;
+  }
+}
+const catalogDbUrlClean = stripSslFromUrl(catalogDbUrl);
 
 const pgBoss = new PgBoss({
-  connectionString: catalogDbUrl,
+  connectionString: catalogDbUrlClean,
   schema: 'pgboss',
   ...sslConfig,
 });
 
 const db = new pg.Pool({
-  connectionString: catalogDbUrl,
+  connectionString: catalogDbUrlClean,
   ...sslConfig,
 });
 
