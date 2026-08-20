@@ -9,6 +9,35 @@ if (!catalogDbUrl) {
   throw new Error('Missing CATALOG_DB_URL (or DATABASE_URL) environment variable.');
 }
 
+// BUY-71831 / BUY-72079 / BUY-72219: pg's connection-string parser overrides
+// any ssl option we pass to pg.Pool if the URL itself contains `?sslmode=...`,
+// and pg-connection-string v2.13+ maps sslmode=require/verify-ca/verify-full
+// to strict cert verification. The sakura.proxy.rlwy.net public proxy serves
+// a self-signed cert, so any strict sslmode crashes the pool with
+// SELF_SIGNED_CERT_IN_CHAIN. Strip sslmode from the URL and pass our own
+// ssl option, matching the worker.js init. Set PGSSLMODE=verify-full to opt
+// back into strict verification (operator override).
+const sslMode = (process.env.PGSSLMODE || '').toLowerCase().replace('-', '_');
+const useStrictVerification = (sslMode === 'verify_full' || sslMode === 'verify_ca');
+const sslConfig = useStrictVerification
+  ? {}
+  : { ssl: { rejectUnauthorized: false } };
+function stripSslFromUrl(url) {
+  try {
+    const u = new URL(url);
+    u.searchParams.delete('sslmode');
+    u.searchParams.delete('ssl');
+    u.searchParams.delete('sslca');
+    u.searchParams.delete('sslcert');
+    u.searchParams.delete('sslkey');
+    u.searchParams.delete('sslrootcert');
+    return u.toString();
+  } catch (e) {
+    return url;
+  }
+}
+const catalogDbUrlClean = stripSslFromUrl(catalogDbUrl);
+
 // BUY-34833 / BUY-34834 / BUY-34835 / BUY-34836 / BUY-34837: surface all
 // ingest queues in /healthz:
 //   - scrape.shopify           — Shopify page 1 (XML sitemap → first ~250)
@@ -32,7 +61,8 @@ const TRACKED_QUEUES = [
 ];
 
 const db = new pg.Pool({
-  connectionString: catalogDbUrl,
+  connectionString: catalogDbUrlClean,
+  ...sslConfig,
 });
 
 // BUY-52236: ingestion_runs column is `started_at` (set in Phase 2 schema),
