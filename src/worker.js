@@ -86,13 +86,26 @@ const WC_DEEP_PAGE_TIMEOUT_MS = parseInt(process.env.WC_DEEP_PAGE_TIMEOUT_MS || 
 const WC_DEEP_PAGE_CONCURRENCY = parseInt(process.env.WC_DEEP_PAGE_CONCURRENCY || '8', 10);
 const WC_DEEP_SINGLETON_HOURS = parseInt(process.env.WC_DEEP_SINGLETON_HOURS || '23', 10);
 
+// BUY-71831: pg 22.x maps sslmode=require/prefer/verify-ca → verify-full (full cert
+// verification). The sakura.proxy.rlwy.net public proxy serves a self-signed cert,
+// so verify-full causes "self-signed certificate in certificate chain" on every connection.
+// Honor PGSSLMODE: when set to no-verify, configure the driver with rejectUnauthorized=false.
+// The PGSSLMODE env var approach (Railway env var) is the primary fix; this code mirrors it
+// so the service works regardless of how the env var is injected.
+const sslMode = (process.env.PGSSLMODE || '').toLowerCase().replace('-', '_');
+const sslConfig = (sslMode === 'no_verify' || sslMode === 'disable')
+  ? { ssl: { rejectUnauthorized: false } }
+  : {};
+
 const pgBoss = new PgBoss({
   connectionString: catalogDbUrl,
   schema: 'pgboss',
+  ...sslConfig,
 });
 
 const db = new pg.Pool({
   connectionString: catalogDbUrl,
+  ...sslConfig,
 });
 
 pgBoss.on('error', (err) => {
